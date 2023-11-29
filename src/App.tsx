@@ -1,11 +1,10 @@
 // Importing React Hooke
-import * as React from "react";
 // import { useState } from 'react'
 import { useEffect } from "react";
 // Styles
 import "./App.css";
 // react-router-dom
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 // Dependencies
 import { driver } from "driver.js";
 import Login from "./pages/Login";
