@@ -31,6 +31,14 @@ const driverObj = driver({
       element: "#intro-element-3",
       popover: { title: "Fight", description: "This is Link Fight..." },
     },
+    {
+      element: "#intro-element-4",
+      popover: { title: "Toggle", description: "This is Link Toggle..." },
+    },
+    {
+      element: "#intro-element-5",
+      popover: { title: "Full Screen", description: "If you have Full Screen click on this button..." },
+    },
   ],
 });
 

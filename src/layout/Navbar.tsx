@@ -82,6 +82,7 @@ function Navbar() {
             />
           </div>
           <button
+            id="intro-element-5"
             onClick={() => {
               const el = document.getElementById("root");
               const isFullScreen = document.fullscreenElement;
@@ -95,7 +96,7 @@ function Navbar() {
             <FullscreenIcon />
           </button>
           {!toggle ? (
-            <div className="flex items-center gap-10">
+            <div id="intro-element-4" className="flex items-center gap-10">
               <button
                 className="h-fit w-fit"
                 onClick={() => {
@@ -167,28 +168,24 @@ function Navbar() {
                 title: "Home",
                 href: "/",
                 showLine: true,
-                driver: "intro-element-1",
               },
               {
                 id: 2,
                 title: "Hotel",
                 href: "/hotel",
                 showLine: true,
-                driver: "intro-element-2",
               },
               {
                 id: 3,
                 title: "Fight",
                 href: "/fight",
                 showLine: true,
-                driver: "intro-element-3",
               },
-            ].map(({ driver, id, title, href, showLine = false }) => (
+            ].map(({ id, title, href, showLine = false }) => (
               <Link
                 onClick={() => {
                   setToggle(false);
                 }}
-                id={driver}
                 key={id + Math.random()}
                 to={href}
                 className={`text-sm pb-[16px]    whitespace-nowrap ${
