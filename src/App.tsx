@@ -17,15 +17,19 @@ const driverObj = driver({
   showProgress: true,
   steps: [
     {
-      element: "#some-element",
+      element: "#intro-element-1",
       popover: {
-        title: "Title",
-        description: "ده تيست يا مخلص ماشي متبقاش ذكي ",
+        title: "Home",
+        description: "This is Link Home Page...",
       },
     },
     {
-      element: "#some-element2",
-      popover: { title: "Title", description: "Description" },
+      element: "#intro-element-2",
+      popover: { title: "Hotel", description: "This is Link Hotel..." },
+    },
+    {
+      element: "#intro-element-3",
+      popover: { title: "Fight", description: "This is Link Fight..." },
     },
   ],
 });

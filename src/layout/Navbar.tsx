@@ -15,26 +15,35 @@ function Navbar() {
       <nav
         className={`hidden  lg:flex justify-between  h-[4.625rem] bg-[#283965] sticky top-[-1px]  z-50  `}
       >
-        <div
-          className="lg:flex justify-between items-center w-full  p-0 px-[7.5rem] "
-        >
+        <div className="lg:flex justify-between items-center w-full  p-0 px-[7.5rem] ">
           {/* Logo */}
           <div>
             <ConnectingAirportsIcon
               className={`text-slate-400 font-bold text-4xl duration-300`}
-              style={{fontSize:"3rem"}}
+              style={{ fontSize: "3rem" }}
             />
           </div>
           {/* Links */}
           <div className={`flex  lg:gap-[28px] gap-[40px]`}>
             {[
-              { id: 1, title: "Home", href: "/" },
-              { id: 2, title: "Hotel", href: "/hotel" },
-              { id: 3, title: "Fight", href: "/fight" },
-            ].map(({ id, title, href }) => (
+              { id: 1, title: "Home", href: "/", driver: "intro-element-1" },
+              {
+                id: 2,
+                title: "Hotel",
+                href: "/hotel",
+                driver: "intro-element-2",
+              },
+              {
+                id: 3,
+                title: "Fight",
+                href: "/fight",
+                driver: "intro-element-3",
+              },
+            ].map(({ driver, id, title, href }) => (
               <Link
                 key={id + Math.random()}
                 to={href}
+                id={driver}
                 className={`text-[1rem] font-medium whitespace-nowrap text-[#FFF] hover:text-[#b0b0b0e5]  `}
               >
                 <button>{title}</button>
@@ -69,7 +78,7 @@ function Navbar() {
           <div className="flex gap-3 items-center">
             <ConnectingAirportsIcon
               className={`text-slate-400 font-bold text-4xl duration-300`}
-              style={{fontSize:"2rem"}}
+              style={{ fontSize: "2rem" }}
             />
           </div>
           <button
@@ -153,14 +162,33 @@ function Navbar() {
             className={`flex flex-col gap-[16px]  px-8`}
           >
             {[
-              { id: 1, title: "Home", href: "/", showLine: true },
-              { id: 2, title: "Hotel", href: "/hotel", showLine: true },
-              { id: 3, title: "Fight", href: "/fight", showLine: true },
-            ].map(({ id, title, href, showLine = false }) => (
+              {
+                id: 1,
+                title: "Home",
+                href: "/",
+                showLine: true,
+                driver: "intro-element-1",
+              },
+              {
+                id: 2,
+                title: "Hotel",
+                href: "/hotel",
+                showLine: true,
+                driver: "intro-element-2",
+              },
+              {
+                id: 3,
+                title: "Fight",
+                href: "/fight",
+                showLine: true,
+                driver: "intro-element-3",
+              },
+            ].map(({ driver, id, title, href, showLine = false }) => (
               <Link
                 onClick={() => {
                   setToggle(false);
                 }}
+                id={driver}
                 key={id + Math.random()}
                 to={href}
                 className={`text-sm pb-[16px]    whitespace-nowrap ${
