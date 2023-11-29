@@ -1,10 +1,17 @@
+// Importing React Hooke
+import * as React from "react";
 // import { useState } from 'react'
-import './App.css'
-import { driver } from "driver.js";
 import { useEffect } from "react";
-import Form from './components/Form';
-import Home from "./pages/home/Home.jsx";
-
+// Styles
+import "./App.css";
+// react-router-dom
+import { Routes, Route, Link } from "react-router-dom";
+// Dependencies
+import { driver } from "driver.js";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+// Components
+// import Form from './components/Form';
 
 // Handle driver
 const driverObj = driver({
@@ -29,21 +36,28 @@ function RunDriver() {
   const runningDriver = localStorage.getItem("driver");
 
   if (!runningDriver) {
-    localStorage.setItem("driver", 'true');
+    localStorage.setItem("driver", "true");
     driverObj.drive();
   }
 }
+
+// App Component
 function App() {
   // const [count, setCount] = useState(0)
 
-    useEffect(() => {
-      RunDriver();
-    }, []);
+  useEffect(() => {
+    RunDriver();
+  }, []);
 
   return (
     <>
+      <Routes>
+        <Route path="/" element={<></>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
     </>
   );
 }
 
-export default App
+export default App;
