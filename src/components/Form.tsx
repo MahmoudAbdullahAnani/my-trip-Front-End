@@ -2,7 +2,6 @@
 import * as React from "react";
 import querystring from "query-string";
 import axios from "axios";
-import Filter from "./test";
 
 // Test fetching on Amadeus
 // 1) fetch get token
@@ -66,7 +65,6 @@ export default function Form() {
 
   return (
     <>
-      <Filter />
       <div className={`w-[200px]`}>
         <input
           ref={keywordRef}

@@ -1,8 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 // MUI
-import Container from "@mui/material/Container";
-import FlightIcon from "@mui/icons-material/Flight";
 import ConnectingAirportsIcon from "@mui/icons-material/ConnectingAirports";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 // react-router-dom
@@ -18,14 +16,13 @@ function Navbar() {
         className={`hidden  lg:flex justify-between  h-[4.625rem] bg-[#283965] sticky top-[-1px]  z-50  `}
       >
         <div
-          maxWidth="xl"
-          className="lg:flex justify-between items-center w-full p-0 px-[7.5rem] "
+          className="lg:flex justify-between items-center w-full  p-0 px-[7.5rem] "
         >
           {/* Logo */}
           <div>
             <ConnectingAirportsIcon
               className={`text-slate-400 font-bold text-4xl duration-300`}
-              fontSize="0"
+              style={{fontSize:"3rem"}}
             />
           </div>
           {/* Links */}
@@ -72,7 +69,7 @@ function Navbar() {
           <div className="flex gap-3 items-center">
             <ConnectingAirportsIcon
               className={`text-slate-400 font-bold text-4xl duration-300`}
-              fontSize="0"
+              style={{fontSize:"2rem"}}
             />
           </div>
           <button
