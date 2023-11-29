@@ -13,9 +13,8 @@ import Signup from "./pages/Signup";
 // import Form from './components/Form';
 
 // Handle driver
-const driverObj = driver({
-  showProgress: true,
-  steps: [
+
+const handleSteps = window.innerWidth > 1024 ?[
     {
       element: "#intro-element-1",
       popover: {
@@ -30,7 +29,8 @@ const driverObj = driver({
     {
       element: "#intro-element-3",
       popover: { title: "Fight", description: "This is Link Fight..." },
-    },
+    }
+  ] :[
     {
       element: "#intro-element-4",
       popover: { title: "Toggle", description: "This is Link Toggle..." },
@@ -39,7 +39,10 @@ const driverObj = driver({
       element: "#intro-element-5",
       popover: { title: "Full Screen", description: "If you have Full Screen click on this button..." },
     },
-  ],
+  ]
+const driverObj = driver({
+  showProgress: true,
+  steps: handleSteps,
 });
 
 function RunDriver() {
