@@ -9,12 +9,16 @@ import { Routes, Route } from "react-router-dom";
 import { driver } from "driver.js";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./data/store";
 import ForgotPassword from "./components/ResetPassword/ForgotPassword";
 import VerifyCode from "./components/ResetPassword/VerifyCode";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
-import jwt from "jsonwebtoken";
+import axios from "axios";
+import { addUserLogged } from "./data/Features/LoggedUser";
+import { useRecoilState } from "recoil";
+import isLoading from "./data/RecoilState/Loading";
+import Loder from "./components/loder/Loder";
 
 // Components
 // import Form from './components/Form';
@@ -80,25 +84,32 @@ export const test = (firstName: string, lastName: string) => {
   );
 };
 
-function oncData() {
-  if (!localStorage.getItem("token")) {
-    return false;
-  }
-  // return payload by jwt
-  try {
-    const token = localStorage.getItem("token") || "";
-
-    // const payload = jwt.verify(token, import.meta.env.VITE_PUBLIC_JWT_SECRET);
-    // return payload;
-  } catch (err) {
-    // err
-    console.log(err);
-    
-  }
-
-}
 // App Component
 function App() {
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useRecoilState(isLoading);
+  const oncData = async () => {
+    if (!localStorage.getItem("token")) {
+      return false;
+    }
+
+    const token = localStorage.getItem("token") || "";
+    await axios
+      .get(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}me`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}me`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(({ data }) => dispatch(addUserLogged(data)))
+      .catch((error) => console.log(error));
+    setLoading(false);
+    return true;
+  };
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
 
   // const [count, setCount] = useState(0)
@@ -107,6 +118,16 @@ function App() {
     RunDriver();
     oncData();
   }, []);
+
+  if (loading) {
+    return (
+      <div
+        className={`z-50 h-[100%] w-full absolute top-0 flex justify-center items-center bg-[#283965]`}
+      >
+        <Loder />
+      </div>
+    );
+  }
 
   return (
     <>
