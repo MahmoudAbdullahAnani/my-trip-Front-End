@@ -108,7 +108,7 @@ function ForgotPassword() {
           <span
             className={`bg-red-400 my-2 text-center rounded-md text-[#fafafa]`}
           >
-            {incorrectData}
+            {Array.isArray(incorrectData) ? incorrectData[0] : incorrectData}
           </span>
         )}
         {emailInputs.map(
@@ -142,7 +142,20 @@ function ForgotPassword() {
 export default ForgotPassword;
 
 /* Forgot Password ui */
-export function LinksForgotPassword() {
+export function LinksForgotPassword(isSignUp: { isSignUp: boolean }) {
+  if (isSignUp) {
+    return <div className={`flex justify-around  `}>
+      <Link
+        className={`text-sm text-red-300 hover:text-red-400`}
+        to={`/forgotPassword`}
+      >
+        Forgot Password?
+      </Link>
+      <Link className={`text-sm text-red-300 hover:text-red-400`} to={`/login`}>
+        Login?
+      </Link>
+    </div>;
+  }
   return (
     <div className={`flex justify-around  `}>
       <Link

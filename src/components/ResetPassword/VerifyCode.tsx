@@ -112,7 +112,7 @@ function VerifyCode() {
           <span
             className={`bg-red-400 my-2 text-center rounded-md text-[#fafafa]`}
           >
-            {incorrectData}
+            {Array.isArray(incorrectData) ? incorrectData[0] : incorrectData}
           </span>
         )}
         {emailInputs.map(

@@ -143,7 +143,7 @@ function Login() {
           <span
             className={`bg-red-400 my-2 text-center rounded-md text-[#fafafa]`}
           >
-            {incorrectData}
+            {Array.isArray(incorrectData) ? incorrectData[0] : incorrectData}
           </span>
         )}
         {LoginInputs.map(
@@ -170,7 +170,7 @@ function Login() {
           Submit {isSubmitting && <Loder />}
         </button>
         {/* Forgot Password ui */}
-        <LinksForgotPassword />
+        <LinksForgotPassword isSignUp={false} />
       </form>
     </div>
   );
