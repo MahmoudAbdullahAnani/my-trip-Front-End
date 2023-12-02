@@ -1,15 +1,22 @@
 "use client";
-import { useState } from "react";
 // MUI
 import ConnectingAirportsIcon from "@mui/icons-material/ConnectingAirports";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 // react-router-dom
 import { Link } from "react-router-dom";
+import DialogComponent from "../components/DialogComponent";
 
 // create context
-
+// Importing States
+import { useRecoilState } from "recoil";
+import sidBar from "../data/RecoilState/Sidebar";
+import { useSelector } from "react-redux";
+import { RootState } from "../data/store";
 function Navbar() {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useRecoilState(sidBar);
+
+  const stateUserData = useSelector((state: RootState) => state.loggedUser);
+
   return (
     <>
       <nav
@@ -51,9 +58,13 @@ function Navbar() {
             ))}
           </div>
           <div className={`flex gap-4 text-white`}>
-            <Link to={`/login`} className={``}>
-              Login
-            </Link>
+            {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
+              <DialogComponent />
+            ) : (
+              <Link to={`/login`} className={``}>
+                Login
+              </Link>
+            )}
             <Link to={`/signup`} className={``}>
               Signup
             </Link>
@@ -198,15 +209,21 @@ function Navbar() {
             <div
               className={`flex gap-4 text-white bg-emerald-400 justify-around  rounded-lg`}
             >
-              <Link
-                onClick={() => {
-                  setToggle(false);
-                }}
-                to={`/login`}
-                className={`py-2 bg-emerald-500 text-center w-[40%]`}
-              >
-                Login
-              </Link>
+              {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
+                <DialogComponent
+                  stylesBtn={"py-2 w-[40%] bg-emerald-500 text-center"}
+                />
+              ) : (
+                <Link
+                  onClick={() => {
+                    setToggle(false);
+                  }}
+                  to={`/login`}
+                  className={`py-2 bg-emerald-500 text-center w-[40%]`}
+                >
+                  Login
+                </Link>
+              )}
               <Link
                 onClick={() => {
                   setToggle(false);

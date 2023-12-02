@@ -1,19 +1,18 @@
-import { InputForm } from "../components/FormComponents";
+import { Link } from "react-router-dom";
+
 import { useForm, SubmitHandler, UseFormRegisterReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import z from "zod";
 import axios from "axios";
 import { useState } from "react";
-import Loder from "../components/loder/Loder";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addUserLogged } from "../data/Features/LoggedUser";
-import { LinksForgotPassword } from "../components/ResetPassword/ForgotPassword";
-// interfaces
+import { InputForm } from "../FormComponents";
+import Loder from "../loder/Loder";
+import { userLoggedOut } from "../../data/Features/LoggedUser";
 export interface Inputs {
-  userName: string;
-  password: string;
+  email: string;
 }
 interface DTOInputs {
   placeholder: string;
@@ -24,32 +23,17 @@ interface DTOInputs {
   error: unknown;
 }
 // Schema Login
-const LoginSchema = z.object({
-  userName: z
+const emailSchema = z.object({
+  email: z
     .string()
-    .min(3, { message: "the user name very short" })
-    .max(30, { message: "the user name very long" }),
-  password: z
-    .string()
-    .min(3, { message: "the password very short" })
-    .max(20, { message: "the password very long" }),
+    .min(1, { message: "Must be enter email" })
+    .email("invalid email"),
 });
-// Set Data In window
-export interface SchemaUser {
-  password: string;
-  age: number;
-  email: string;
-  phoneNumber: string;
-  userName: string;
-  _id: string;
-  firstName: string;
-  lastName: string;
-  role: string;
-}
-function setData(token: string) {
-  localStorage.setItem("token", token);
-}
-function Login() {
+
+// function setData(token: string) {
+//   localStorage.setItem("token", token);
+// }
+function ForgotPassword() {
   // State Management
   const dispatch = useDispatch();
 
@@ -62,75 +46,58 @@ function Login() {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<Inputs>({
-    resolver: zodResolver(LoginSchema),
+    resolver: zodResolver(emailSchema),
     mode: "onChange",
   });
   const onSubmit: SubmitHandler<Inputs> = async ({
-    userName,
-    password,
+    email,
   }: {
-    userName: string;
-    password: string;
+    email: string;
   }) => {
     setIncorrectData("");
-    // console.log(data);
+
     // 1) axios post req on /signin
     await axios
       .post(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
-          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}signin`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}signin`,
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}resetPassword`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}resetPassword`,
         {
-          userName,
-          password,
+          email,
         }
       )
       .then((response) => {
-        navigate("/");
-        dispatch(addUserLogged(response.data?.data));
-        setData(response.data.token);
+        if (response.data.status === "success") {
+          localStorage.setItem("verifyCodeEmail", email);
+          dispatch(userLoggedOut());
+          navigate("/verifyCode");
+        }
       })
       .catch(({ response }) => {
-        setIncorrectData(response.data?.message);
+        console.log(response);
+        setIncorrectData(response.data?.error);
       });
     reset();
   };
   // Inputs UI
 
-  const LoginInputs = [
+  const emailInputs = [
     {
-      type: "text",
-      placeholder: "write your user name...",
+      type: "email",
+      placeholder: "write your email...",
       classes:
         "px-3 py-2 rounded-lg bg-slate-400 placeholder:text-white focus:text-[#000] focus:bg-white ",
-      register: register("userName"),
-      name: "userName",
+      register: register("email"),
+      name: "email",
       error: (
         <span
           className={`bg-red-400 mt-2 text-center rounded-md text-[#fafafa]`}
         >
-          {errors?.userName?.message}
-        </span>
-      ),
-    },
-    {
-      type: "password",
-      placeholder: "write your password...",
-      classes:
-        "px-3 py-2 rounded-lg bg-slate-400 placeholder:text-white focus:text-[#000] focus:bg-white ",
-
-      register: register("password"),
-      name: "password",
-      error: (
-        <span
-          className={`bg-red-400 mt-2 text-center rounded-md text-[#fafafa]`}
-        >
-          {errors?.password?.message}
+          {errors?.email?.message}
         </span>
       ),
     },
   ];
-
   return (
     <div className={`bg-slate-600 h-[100vh] flex justify-center items-center`}>
       <form
@@ -144,7 +111,7 @@ function Login() {
             {incorrectData}
           </span>
         )}
-        {LoginInputs.map(
+        {emailInputs.map(
           ({ placeholder, type, classes, register, error }: DTOInputs) => {
             return (
               <div key={placeholder} className={`grid`}>
@@ -167,11 +134,29 @@ function Login() {
         >
           Submit {isSubmitting && <Loder />}
         </button>
-        {/* Forgot Password ui */}
-        <LinksForgotPassword />
       </form>
     </div>
   );
 }
 
-export default Login;
+export default ForgotPassword;
+
+/* Forgot Password ui */
+export function LinksForgotPassword() {
+  return (
+    <div className={`flex justify-around  `}>
+      <Link
+        className={`text-sm text-red-300 hover:text-red-400`}
+        to={`/forgotPassword`}
+      >
+        Forgot Password?
+      </Link>
+      <Link
+        className={`text-sm text-red-300 hover:text-red-400`}
+        to={`/signup`}
+      >
+        Sign Up?
+      </Link>
+    </div>
+  );
+}

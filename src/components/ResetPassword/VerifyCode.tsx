@@ -1,19 +1,17 @@
-import { InputForm } from "../components/FormComponents";
+import { useEffect} from "react"
 import { useForm, SubmitHandler, UseFormRegisterReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import z from "zod";
 import axios from "axios";
 import { useState } from "react";
-import Loder from "../components/loder/Loder";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addUserLogged } from "../data/Features/LoggedUser";
-import { LinksForgotPassword } from "../components/ResetPassword/ForgotPassword";
-// interfaces
+// import { useDispatch } from "react-redux";
+import { InputForm } from "../FormComponents";
+import Loder from "../loder/Loder";
+// import { userLoggedOut } from "../../data/Features/LoggedUser";
 export interface Inputs {
-  userName: string;
-  password: string;
+  code: string;
 }
 interface DTOInputs {
   placeholder: string;
@@ -24,36 +22,27 @@ interface DTOInputs {
   error: unknown;
 }
 // Schema Login
-const LoginSchema = z.object({
-  userName: z
+const codeSchema = z.object({
+  code: z
     .string()
-    .min(3, { message: "the user name very short" })
-    .max(30, { message: "the user name very long" }),
-  password: z
-    .string()
-    .min(3, { message: "the password very short" })
-    .max(20, { message: "the password very long" }),
+    .min(6, { message: "It must consist of 6 boxes" })
+    .max(6, { message: "It must consist of 6 boxes" }),
 });
-// Set Data In window
-export interface SchemaUser {
-  password: string;
-  age: number;
-  email: string;
-  phoneNumber: string;
-  userName: string;
-  _id: string;
-  firstName: string;
-  lastName: string;
-  role: string;
-}
-function setData(token: string) {
-  localStorage.setItem("token", token);
-}
-function Login() {
-  // State Management
-  const dispatch = useDispatch();
 
+// function setData(token: string) {
+//   localStorage.setItem("token", token);
+// }
+function VerifyCode() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("verifyCodeEmail")) {
+      navigate("/forgotPassword");
+    }
+  }, [])
+  // State Management
+  //   const dispatch = useDispatch();
+
 
   const [incorrectData, setIncorrectData] = useState<string>("");
   const {
@@ -62,75 +51,57 @@ function Login() {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<Inputs>({
-    resolver: zodResolver(LoginSchema),
+    resolver: zodResolver(codeSchema),
     mode: "onChange",
   });
   const onSubmit: SubmitHandler<Inputs> = async ({
-    userName,
-    password,
+    code,
   }: {
-    userName: string;
-    password: string;
+    code: string;
   }) => {
     setIncorrectData("");
-    // console.log(data);
+
     // 1) axios post req on /signin
     await axios
       .post(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
-          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}signin`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}signin`,
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}verifyCode`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}verifyCode`,
         {
-          userName,
-          password,
+          code,
+          email: localStorage.getItem("verifyCodeEmail"),
         }
       )
       .then((response) => {
-        navigate("/");
-        dispatch(addUserLogged(response.data?.data));
-        setData(response.data.token);
+        if (response?.data.status === "success") {
+          navigate("/resetPassword");
+        }
       })
       .catch(({ response }) => {
-        setIncorrectData(response.data?.message);
+        console.log(response);
+        setIncorrectData(response?.data.message);
       });
     reset();
   };
   // Inputs UI
 
-  const LoginInputs = [
+  const emailInputs = [
     {
       type: "text",
-      placeholder: "write your user name...",
+      placeholder: "enter verify code...",
       classes:
         "px-3 py-2 rounded-lg bg-slate-400 placeholder:text-white focus:text-[#000] focus:bg-white ",
-      register: register("userName"),
-      name: "userName",
+      register: register("code"),
+      name: "code",
       error: (
         <span
           className={`bg-red-400 mt-2 text-center rounded-md text-[#fafafa]`}
         >
-          {errors?.userName?.message}
-        </span>
-      ),
-    },
-    {
-      type: "password",
-      placeholder: "write your password...",
-      classes:
-        "px-3 py-2 rounded-lg bg-slate-400 placeholder:text-white focus:text-[#000] focus:bg-white ",
-
-      register: register("password"),
-      name: "password",
-      error: (
-        <span
-          className={`bg-red-400 mt-2 text-center rounded-md text-[#fafafa]`}
-        >
-          {errors?.password?.message}
+          {errors?.code?.message}
         </span>
       ),
     },
   ];
-
   return (
     <div className={`bg-slate-600 h-[100vh] flex justify-center items-center`}>
       <form
@@ -144,7 +115,7 @@ function Login() {
             {incorrectData}
           </span>
         )}
-        {LoginInputs.map(
+        {emailInputs.map(
           ({ placeholder, type, classes, register, error }: DTOInputs) => {
             return (
               <div key={placeholder} className={`grid`}>
@@ -165,13 +136,11 @@ function Login() {
           type="submit"
           disabled={isSubmitting}
         >
-          Submit {isSubmitting && <Loder />}
+          Verify {isSubmitting && <Loder />}
         </button>
-        {/* Forgot Password ui */}
-        <LinksForgotPassword />
       </form>
     </div>
   );
 }
 
-export default Login;
+export default VerifyCode;
