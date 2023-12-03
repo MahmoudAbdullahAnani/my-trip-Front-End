@@ -88,6 +88,7 @@ export const test = (firstName: string, lastName: string) => {
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useRecoilState(isLoading);
+
   const oncData = async () => {
     if (!localStorage.getItem("token")) {
       return false;
