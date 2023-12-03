@@ -90,10 +90,11 @@ function App() {
   const [loading, setLoading] = useRecoilState(isLoading);
 
   const oncData = async () => {
+    // if notfound token return false
     if (!localStorage.getItem("token")) {
-      return false;
+      return setLoading(false);
     }
-
+    // if get token then fetch to data me 
     const token = localStorage.getItem("token") || "";
     await axios
       .get(
