@@ -19,6 +19,7 @@ interface DTOInputs {
   // error?: React.ReactHTMLElement<HTMLSpanElement>;
   error: unknown;
 }
+
 // Schema Login
 const singUpSchema = z
   .object({
