@@ -29,8 +29,8 @@ const singUpSchema = z
       .max(30, { message: "the first name very long" }),
     lastName: z
       .string()
-      .min(3, { message: "the first name very short" })
-      .max(30, { message: "the first name very long" }),
+      .min(3, { message: "the last name very short" })
+      .max(30, { message: "the last name very long" }),
     userName: z
       .string()
       .min(3, { message: "the user name very short" })

@@ -94,7 +94,7 @@ function App() {
     if (!localStorage.getItem("token")) {
       return setLoading(false);
     }
-    // if get token then fetch to data me 
+    // if get token then fetch to data me
     const token = localStorage.getItem("token") || "";
     await axios
       .get(
