@@ -108,7 +108,12 @@ function App() {
         }
       )
       .then(({ data }) => dispatch(addUserLogged(data)))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        if (error.response?.data.statusCode === 401) {
+          localStorage.removeItem("token");
+        }
+      });
     setLoading(false);
     return true;
   };
