@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import querystring from "query-string";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 // Test fetching on Amadeus
 // 1) fetch get token
@@ -21,7 +21,7 @@ async function GetTokenAmadeus(): Promise<string> {
       "Content-Type": "application/x-www-form-urlencoded",
     },
   });
-  console.log(res.data.access_token);
+  // console.log(res.data.access_token);
   return res.data.access_token;
 }
 
@@ -32,6 +32,9 @@ async function GetTokenAmadeus(): Promise<string> {
 // });
 
 const MainAPI = import.meta.env.VITE_PUBLIC_API;
+import { toast } from "react-toastify";
+import { useRecoilState } from "recoil";
+import {textSearch } from "../data/RecoilState/FormHandling";
 
 async function FetchExampleData(token: string, route: string, query: string) {
   try {
@@ -42,38 +45,48 @@ async function FetchExampleData(token: string, route: string, query: string) {
     });
     return res.data;
   } catch (error) {
-    console.log("error api", error);
+    // console.log("error api", error);
+    // console.log("typeOf error api", typeof error);
   }
 }
 
 export default function Form() {
   const [dataLocations, setDataLocations] = React.useState([]);
-  const [keyword, setKeyword] = React.useState("");
+  const [keyword, setKeyword] = useRecoilState(textSearch);
+
   const GetPlace = async () => {
     const token = await GetTokenAmadeus();
-
-    const data = await FetchExampleData(
-      token,
-      "reference-data/locations",
-      `subType=CITY,AIRPORT&keyword=${keyword}`
-    );
-    setDataLocations(data?.data);
+    try {
+      await FetchExampleData(
+        token,
+        "reference-data/locations",
+        `subType=CITY,AIRPORT&keyword=${keyword}`
+      ).then((data) => {
+        setDataLocations(data?.data);
+      });
+    } catch (err) {
+      const errorResponse = err as AxiosError<{ errors: [string] }>;
+      return toast.error(errorResponse?.response?.data?.errors[0], {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
   const keywordRef = React.useRef(null);
-
-  const [inputFocus, setInputFocus] = React.useState(false);
-
+  document.addEventListener("click", () => {
+    setDataLocations([]);
+  });
   return (
     <>
-      <div className={`w-[200px]`}>
+      <div className={``}>
         <input
           ref={keywordRef}
-          onBlur={() => {
-            setInputFocus(false);
-          }}
-          onFocus={() => {
-            setInputFocus(true);
-          }}
           type="text"
           className={`bg-red-400 `}
           value={keyword}
@@ -81,15 +94,14 @@ export default function Form() {
             setKeyword(e.target.value);
           }}
           onKeyDown={() => {
-            // setKeyword("");
             if (keyword !== "") {
               return GetPlace();
             }
             return setDataLocations([]);
           }}
         />
-        {dataLocations !== undefined || inputFocus ? (
-          <div className={`flex flex-col bg-red-900 `}>
+        {dataLocations !== undefined ? (
+          <div className={`flex flex-col bg-red-900 w-full`}>
             {dataLocations.map(
               ({
                 iataCode,

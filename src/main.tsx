@@ -11,7 +11,7 @@ import { store } from "./data/store.tsx";
 import { Provider } from "react-redux";
 import { RecoilRoot } from "recoil";
 
-
+import "react-toastify/dist/ReactToastify.css";
 
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
