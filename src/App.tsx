@@ -21,6 +21,8 @@ import isLoading from "./data/RecoilState/Loading";
 import Loder from "./components/loder/Loder";
 // import Form from "./components/Form";
 import HandleForm from "./components/HandleForm";
+import HandleFieldsData from "./components/HandleFieldsData";
+
 
 // Components
 // import Form from './components/Form';
@@ -140,6 +142,7 @@ function App() {
 
   return (
     <>
+      <HandleFieldsData />
       <Routes>
         <Route
           path="/"

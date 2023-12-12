@@ -8,5 +8,13 @@ const destinationSearch = atom({
   key: "destinationSearch", // unique ID (with respect to other atoms/selectors)
   default: "", // default value (aka initial value)
 });
+const dateGo = atom({
+  key: "dateGo", // unique ID (with respect to other atoms/selectors)
+  default: new Date() as Date | undefined, // default value (aka initial value)
+});
+const dateReturn = atom({
+  key: "dateReturn", // unique ID (with respect to other atoms/selectors)
+  default: new Date() as Date | undefined, // default value (aka initial value)
+});
 
-export { textSearch, destinationSearch };
+export { textSearch, destinationSearch, dateGo, dateReturn };
