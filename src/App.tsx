@@ -139,6 +139,7 @@ function App() {
 
   return (
     <>
+      <Form />
       <Routes>
         <Route
           path="/"
