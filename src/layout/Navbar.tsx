@@ -46,6 +46,12 @@ function Navbar() {
                 href: "/fight",
                 driver: "intro-element-3",
               },
+              {
+                id: 4,
+                title: "Search",
+                href: "/search",
+                driver: "intro-element-4",
+              },
             ].map(({ driver, id, title, href }) => (
               <Link
                 key={id + Math.random()}
@@ -190,6 +196,12 @@ function Navbar() {
                 id: 3,
                 title: "Fight",
                 href: "/fight",
+                showLine: true,
+              },
+              {
+                id: 4,
+                title: "Search",
+                href: "/search",
                 showLine: true,
               },
             ].map(({ id, title, href, showLine = false }) => (
