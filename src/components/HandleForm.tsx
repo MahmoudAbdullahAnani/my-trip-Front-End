@@ -11,8 +11,8 @@ import { useState } from "react";
 function HandleForm() {
   const [go] = useRecoilState(textSearch);
   const [ret] = useRecoilState(destinationSearch);
-  const [originCodeState, setOriginCodeState] = useState("");
-  const [returnCodeState, setReturnCodeState] = useState("");
+  const [, setOriginCodeState] = useState("");
+  const [, setReturnCodeState] = useState("");
   // console.log(originCodeState);
   // console.log(returnCodeState);
   // Get Date
@@ -20,25 +20,27 @@ function HandleForm() {
   const [dateRet] = useRecoilState(dateReturn);
 
   const getTravels = () => {
+    let goStack: string = "";
+    let returnStack: string = "";
     if (go) {
       const startIndex = go.indexOf("(");
       const endIndex = go.indexOf(")");
       const originCode = go.slice(startIndex + 1, endIndex);
+      goStack = originCode;
       setOriginCodeState(originCode);
     }
     if (ret) {
       const startIndex = ret.indexOf("(");
       const endIndex = ret.indexOf(")");
       const originCode = ret.slice(startIndex + 1, endIndex);
+      returnStack = originCode;
       setReturnCodeState(originCode);
     }
     console.log(`
-    Origin: ${originCodeState}
-    Destination: ${returnCodeState}
+    Origin: ${goStack}
+    Destination: ${returnStack}
     Date Go: ${dateGoState}
     Date Return: ${dateRet}
-    
-
     `);
   };
   return (
