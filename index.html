@@ -1,10 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/jquery-ui.structure.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/jquery-ui.theme.min.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <title>Vite + React + TS</title>
+    <script>
+      $(function () {
+        $(".searchName").autocomplete({
+          source: function (req, res) {
+            $.ajax({
+              url: "http://localhost:3000/airportSearch/",
+              dataType: "json",
+              type: "GET",
+              data: req,
+              success: function (data) {
+                res(
+                  $.map(data, function (el) {
+                    console.log(el);
+                    return {
+                      label:
+                        el.address.cityName +
+                        ", " +
+                        el.name +
+                        " (" +
+                        el.iataCode +
+                        ")",
+                      value: el.iataCode,
+                    };
+                  })
+                );
+              },
+              error: function (err) {
+                console.log(err.status);
+              },
+            });
+          },
+        });
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>

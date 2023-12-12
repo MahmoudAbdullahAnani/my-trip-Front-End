@@ -19,6 +19,7 @@ import { addUserLogged } from "./data/Features/LoggedUser";
 import { useRecoilState } from "recoil";
 import isLoading from "./data/RecoilState/Loading";
 import Loder from "./components/loder/Loder";
+import Form from "./components/Form";
 
 // Components
 // import Form from './components/Form';
@@ -148,6 +149,58 @@ function App() {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/verifyCode" element={<VerifyCode />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
+        <Route path="/test2" element={<Form />} />
+        <Route
+          path="/test"
+          element={
+            <>
+              <form className="form-inline">
+                <label htmlFor="text">
+                  Origin:
+                  <input
+                    type="text"
+                    className="searchName"
+                    placeholder="traveling from"
+                    name="origin"
+                    // onChange={(e) => {
+                    //   console.log(e.target.value);
+                    // }}
+                    // onInput={(e) => {
+                    //   console.log(e);
+                    // }}
+                  />
+                </label>
+
+                <label htmlFor="text">
+                  Destination:
+                  <input
+                    type="text"
+                    className="searchName"
+                    placeholder="traveling to"
+                    name="Destination"
+                  />
+                </label>
+
+                <label htmlFor="text">
+                  Depature Date:
+                  <input type="date" className="" name="depart_date" />
+                </label>
+
+                <label htmlFor="text">
+                  Return Date:
+                  <input type="date" className="" name="return_date" />
+                </label>
+
+                <label htmlFor="text">
+                  Adult(s):
+                  <input type="number" className="" name="NumberOfAdults" />
+                </label>
+
+                <button type="submit">Submit</button>
+              </form>
+            </>
+          }
+        />
       </Routes>
     </>
   );
