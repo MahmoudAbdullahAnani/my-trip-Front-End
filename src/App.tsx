@@ -73,7 +73,7 @@ function RunDriver() {
   }
 }
 
- const test = (firstName: string, lastName: string) => {
+const test = (firstName: string, lastName: string) => {
   return (
     <>
       {localStorage.getItem("token") ? (
