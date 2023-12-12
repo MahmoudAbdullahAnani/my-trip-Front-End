@@ -19,7 +19,8 @@ import { addUserLogged } from "./data/Features/LoggedUser";
 import { useRecoilState } from "recoil";
 import isLoading from "./data/RecoilState/Loading";
 import Loder from "./components/loder/Loder";
-import Form from "./components/Form";
+// import Form from "./components/Form";
+import HandleForm from "./components/HandleForm";
 
 // Components
 // import Form from './components/Form';
@@ -149,7 +150,7 @@ function App() {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/verifyCode" element={<VerifyCode />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route path="/search" element={<Form />} />
+        <Route path="/search" element={<HandleForm />} />
       </Routes>
     </>
   );

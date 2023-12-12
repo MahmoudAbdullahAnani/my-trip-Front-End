@@ -34,7 +34,7 @@ async function GetTokenAmadeus(): Promise<string> {
 const MainAPI = import.meta.env.VITE_PUBLIC_API;
 import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
-import {textSearch } from "../data/RecoilState/FormHandling";
+import {destinationSearch, textSearch } from "../data/RecoilState/FormHandling";
 
 async function FetchExampleData(token: string, route: string, query: string) {
   try {
@@ -50,9 +50,11 @@ async function FetchExampleData(token: string, route: string, query: string) {
   }
 }
 
-export default function Form() {
+export default function Form({ isOrigin }: { isOrigin: boolean }) {
   const [dataLocations, setDataLocations] = React.useState([]);
-  const [keyword, setKeyword] = useRecoilState(textSearch);
+  const [keyword, setKeyword] = useRecoilState(
+    isOrigin ? textSearch : destinationSearch
+  );
 
   const GetPlace = async () => {
     const token = await GetTokenAmadeus();
@@ -84,11 +86,11 @@ export default function Form() {
   });
   return (
     <>
-      <div className={``}>
+      <div className={`w-full`}>
         <input
           ref={keywordRef}
           type="text"
-          className={`bg-red-400 `}
+          className={`bg-red-400 w-full border`}
           value={keyword}
           onChange={(e) => {
             setKeyword(e.target.value);
@@ -101,7 +103,7 @@ export default function Form() {
           }}
         />
         {dataLocations !== undefined ? (
-          <div className={`flex flex-col bg-red-900 w-full`}>
+          <div className={`flex flex-col bg-red-900 `}>
             {dataLocations.map(
               ({
                 iataCode,
