@@ -102,7 +102,7 @@ function App() {
     const token = localStorage.getItem("token") || "";
     await axios
       .get(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}me`
           : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}me`,
         {

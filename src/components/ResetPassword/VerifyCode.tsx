@@ -64,7 +64,7 @@ function VerifyCode() {
     // 1) axios post req on /signin
     await axios
       .post(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}verifyCode`
           : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}verifyCode`,
         {

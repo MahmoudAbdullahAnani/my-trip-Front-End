@@ -36,6 +36,7 @@ function HandleForm() {
       returnStack = originCode;
       setReturnCodeState(originCode);
     }
+    
     console.log(`
     Origin: ${goStack}
     Destination: ${returnStack}
