@@ -7,8 +7,10 @@ import {
   textSearch,
 } from "../data/RecoilState/FormHandling";
 import { useState } from "react";
+import TypeTravelComponent from "./TypeTravelComponent";
+import HandleFieldsData from "./HandleFieldsData";
 
-function HandleForm() {
+function HandleForm({ oneWay = false }: { oneWay: boolean }) {
   const [go] = useRecoilState(textSearch);
   const [ret] = useRecoilState(destinationSearch);
   const [, setOriginCodeState] = useState("");
@@ -36,7 +38,7 @@ function HandleForm() {
       returnStack = originCode;
       setReturnCodeState(originCode);
     }
-    
+
     console.log(`
     Origin: ${goStack}
     Destination: ${returnStack}
@@ -44,13 +46,29 @@ function HandleForm() {
     Date Return: ${dateRet}
     `);
   };
+
+  if (oneWay) {
+    return (
+      <div className={`flex justify-between `}>
+        {/* Field Return City or end go*/}
+        <Form isOrigin={true} />
+        <TypeTravelComponent />
+        <HandleFieldsData />
+        {/* Get Travels*/}
+        <button className={`bg-green-300`} onClick={() => getTravels()}>
+          Show Values
+        </button>
+      </div>
+    );
+  }
   return (
     <div className={`flex justify-between `}>
       {/* Field Origin City or start go*/}
       <Form isOrigin={true} />
       {/* Field Return City or end go*/}
       <Form isOrigin={false} />
-
+      <TypeTravelComponent />
+      <HandleFieldsData />
       {/* Get Travels*/}
       <button className={`bg-green-300`} onClick={() => getTravels()}>
         Show Values

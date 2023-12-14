@@ -2,7 +2,7 @@
 import { ReactNode, useState } from "react";
 import DatePicker, { CalendarContainer } from "react-datepicker";
 import { useRecoilState } from "recoil";
-import { dateGo } from "../data/RecoilState/FormHandling";
+import { dateGo, typeTravel } from "../data/RecoilState/FormHandling";
 
 const MyContainer = ({
   children,
@@ -19,8 +19,8 @@ const MyContainer = ({
   );
 };
 
-const handleCalendarClose = () => console.log("Calendar closed");
-const handleCalendarOpen = () => console.log("Calendar opened");
+const handleCalendarClose = () => null;
+const handleCalendarOpen = () => null;
 
 function HandleFieldsData() {
   // ======= Travel Return ==============
@@ -34,6 +34,19 @@ function HandleFieldsData() {
 //   console.log("End Date", endDate);
 
   // ======= Travel Return ==============
+  const [typeTravelState] = useRecoilState(typeTravel);
+
+  if (typeTravelState) {
+   return (
+     <DatePicker
+       selected={startDate}
+       onChange={(date: Date) => setStartDate(date)}
+       placeholderText="I have been cleared!"
+       className={`border-2`}
+       minDate={new Date()}
+     />
+   );
+}
   return (
     <>
       <DatePicker

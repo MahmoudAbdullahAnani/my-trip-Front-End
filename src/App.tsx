@@ -21,8 +21,7 @@ import isLoading from "./data/RecoilState/Loading";
 import Loder from "./components/loder/Loder";
 // import Form from "./components/Form";
 import HandleForm from "./components/HandleForm";
-import HandleFieldsData from "./components/HandleFieldsData";
-
+import { typeTravel } from "./data/RecoilState/FormHandling";
 
 // Components
 // import Form from './components/Form';
@@ -92,6 +91,7 @@ const test = (firstName: string, lastName: string) => {
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useRecoilState(isLoading);
+  const [typeTravelState] = useRecoilState(typeTravel);
 
   const oncData = async () => {
     // if notfound token return false
@@ -142,7 +142,6 @@ function App() {
 
   return (
     <>
-      <HandleFieldsData />
       <Routes>
         <Route
           path="/"
@@ -153,7 +152,10 @@ function App() {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/verifyCode" element={<VerifyCode />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route path="/search" element={<HandleForm />} />
+        <Route
+          path="/search"
+          element={<HandleForm oneWay={typeTravelState} />}
+        />
       </Routes>
     </>
   );
