@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import Form from "./Form";
+// import Form from "./Form";
 import {
   dateGo,
   dateReturn,
@@ -51,7 +51,7 @@ function HandleForm({ oneWay = false }: { oneWay: boolean }) {
     return (
       <div className={`flex justify-between `}>
         {/* Field Return City or end go*/}
-        <Form isOrigin={true} />
+        {/* <Form isOrigin={true} /> */}
         <TypeTravelComponent />
         <HandleFieldsData />
         {/* Get Travels*/}
@@ -64,9 +64,9 @@ function HandleForm({ oneWay = false }: { oneWay: boolean }) {
   return (
     <div className={`flex justify-between `}>
       {/* Field Origin City or start go*/}
-      <Form isOrigin={true} />
+      {/* <Form isOrigin={true} /> */}
       {/* Field Return City or end go*/}
-      <Form isOrigin={false} />
+      {/* <Form isOrigin={false} /> */}
       <TypeTravelComponent />
       <HandleFieldsData />
       {/* Get Travels*/}
