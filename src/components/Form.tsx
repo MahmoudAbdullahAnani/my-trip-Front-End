@@ -2,6 +2,8 @@
 import * as React from "react";
 // import querystring from "query-string";
 import axios, { AxiosError } from "axios";
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
 
 // Test fetching on Amadeus
 // 1) fetch get token
@@ -56,7 +58,10 @@ import {
 async function FetchExampleData(route: string, query: string) {
   try {
     const res = await axios.get(
-      `https://live-airport-city-search.onrender.com/${route}?${query}`
+      `https://live-airport-city-search.onrender.com/${route}?${query}`,
+      {
+        cancelToken: source.token,
+      }
     );
     return res.data;
   } catch (error) {
@@ -101,7 +106,7 @@ export default function Form({ isOrigin }: { isOrigin: boolean }) {
     try {
       await FetchExampleData("airportSearch", `term=${keyword}`).then(
         ({ data }) => {
-          console.log(data);
+          // console.log(data);
 
           setDataLocations(data);
         }

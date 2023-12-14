@@ -20,5 +20,21 @@ const typeTravel = atom({
   key: "typeTravel", // unique ID (with respect to other atoms/selectors)
   default: false, // default value (aka initial value)
 });
+const dateSearchOrigin = atom({
+  key: "dateSearchOrigin", // unique ID (with respect to other atoms/selectors)
+  default: [], // default value (aka initial value)
+});
+const dateSearchDestination = atom({
+  key: "dateSearchDestination", // unique ID (with respect to other atoms/selectors)
+  default: [], // default value (aka initial value)
+});
 
-export { textSearch, destinationSearch, dateGo, dateReturn, typeTravel };
+export {
+  textSearch,
+  destinationSearch,
+  dateGo,
+  dateReturn,
+  typeTravel,
+  dateSearchOrigin,
+  dateSearchDestination,
+};
