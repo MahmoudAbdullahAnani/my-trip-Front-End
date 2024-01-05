@@ -19,39 +19,43 @@ function Navbar() {
 
   return (
     <>
+      {/* Desktop */}
       <nav
-        className={`hidden  lg:flex justify-between  h-[4.625rem] bg-[#283965] sticky top-[-1px]  z-50  `}
+        className={`hidden  lg:flex justify-between  h-[4.625rem]  sticky top-[-1px]  z-50  `}
       >
         <div className="lg:flex justify-between items-center w-full  p-0 px-[7.5rem] ">
-          {/* Logo */}
-          <div>
-            <ConnectingAirportsIcon
-              className={`text-slate-400 font-bold text-4xl duration-300`}
-              style={{ fontSize: "3rem" }}
-            />
+          <div className={`flex gap-4 text-white`}>
+            {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
+              <DialogComponent />
+            ) : (
+              <Link to={`/login`} className={``}>
+                تسجيل الدخول
+              </Link>
+            )}
           </div>
           {/* Links */}
           <div className={`flex  lg:gap-[28px] gap-[40px]`}>
             {[
-              { id: 1, title: "Home", href: "/", driver: "intro-element-1" },
-              {
-                id: 2,
-                title: "Hotel",
-                href: "/hotel",
-                driver: "intro-element-2",
-              },
-              {
-                id: 3,
-                title: "Fight",
-                href: "/fight",
-                driver: "intro-element-3",
-              },
               {
                 id: 4,
-                title: "Search",
+                title: "الخطط",
                 href: "/search",
                 driver: "intro-element-4",
               },
+              {
+                id: 3,
+                title: "توصيل",
+                href: "/contactUs",
+                driver: "intro-element-3",
+              },
+              {
+                id: 2,
+                title: "فنادق",
+                href: "/hotel",
+                driver: "intro-element-2",
+              },
+
+              { id: 1, title: "طيران", href: "/", driver: "intro-element-1" },
             ].map(({ driver, id, title, href }) => (
               <Link
                 key={id + Math.random()}
@@ -63,20 +67,17 @@ function Navbar() {
               </Link>
             ))}
           </div>
-          <div className={`flex gap-4 text-white`}>
-            {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
-              <DialogComponent />
-            ) : (
-              <Link to={`/login`} className={``}>
-                Login
-              </Link>
-            )}
-            <Link to={`/signup`} className={``}>
-              Signup
-            </Link>
+          {/* Logo */}
+          <div>
+            <ConnectingAirportsIcon
+              className={`text-slate-400 font-bold text-4xl duration-300`}
+              style={{ fontSize: "3rem" }}
+            />
           </div>
         </div>
       </nav>
+
+      {/* Mob */}
 
       <nav
         style={{

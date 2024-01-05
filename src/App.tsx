@@ -23,6 +23,7 @@ import {Loder} from "./components/loder/Loder";
 import HandleForm from "./components/HandleForm";
 import { typeTravel } from "./data/RecoilState/FormHandling";
 import HeroSection from "./components/Home/HeroSection";
+import MoveBgHeroSection from "./components/Home/MoveBgHeroSection";
 
 // Components
 // import Form from './components/Form';
@@ -150,7 +151,9 @@ console.log(stateUserData);
           path="/"
           element={
             <>
+              <MoveBgHeroSection />
               <HeroSection />
+              <div>mahmoudsss</div>
             </>
           }
         />
