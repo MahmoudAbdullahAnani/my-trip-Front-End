@@ -18,10 +18,11 @@ import axios from "axios";
 import { addUserLogged } from "./data/Features/LoggedUser";
 import { useRecoilState } from "recoil";
 import isLoading from "./data/RecoilState/Loading";
-import Loder from "./components/loder/Loder";
+import {Loder} from "./components/loder/Loder";
 // import Form from "./components/Form";
 import HandleForm from "./components/HandleForm";
 import { typeTravel } from "./data/RecoilState/FormHandling";
+import HeroSection from "./components/Home/HeroSection";
 
 // Components
 // import Form from './components/Form';
@@ -75,17 +76,17 @@ function RunDriver() {
   }
 }
 
-const test = (firstName: string, lastName: string) => {
-  return (
-    <>
-      {localStorage.getItem("token") ? (
-        <>Name: {`${firstName} ${lastName}`}</>
-      ) : (
-        <>login</>
-      )}
-    </>
-  );
-};
+// const test = (firstName: string, lastName: string) => {
+//   return (
+//     <>
+//       {localStorage.getItem("token") ? (
+//         <>Name: {`${firstName} ${lastName}`}</>
+//       ) : (
+//         <>login</>
+//       )}
+//     </>
+//   );
+// };
 
 // App Component
 function App() {
@@ -122,6 +123,7 @@ function App() {
     return true;
   };
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
+console.log(stateUserData);
 
   // const [count, setCount] = useState(0)
 
@@ -146,7 +148,11 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<>{test(stateUserData.firstName, stateUserData.lastName)}</>}
+          element={
+            <>
+              <HeroSection />
+            </>
+          }
         />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

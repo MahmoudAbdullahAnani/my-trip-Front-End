@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { useDispatch } from "react-redux";
 import { InputForm } from "../FormComponents";
-import Loder from "../loder/Loder";
+import { LoderBtn } from "../loder/Loder";
 // import { userLoggedOut } from "../../data/Features/LoggedUser";
 export interface Inputs {
   password: string;
@@ -170,7 +170,7 @@ function ResetPassword() {
           type="submit"
           disabled={isSubmitting}
         >
-          Verify {isSubmitting && <Loder />}
+          Verify {isSubmitting && <LoderBtn />}
         </button>
       </form>
     </div>

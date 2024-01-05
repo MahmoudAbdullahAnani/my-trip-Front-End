@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import axios from "axios";
 import { useState } from "react";
-import Loder from "../components/loder/Loder";
+import {LoderBtn} from "../components/loder/Loder";
 import { LinksForgotPassword } from "../components/ResetPassword/ForgotPassword";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -327,7 +327,7 @@ function Signup() {
             type="submit"
             disabled={isSubmitting}
           >
-            Submit {isSubmitting && <Loder />}
+            Submit {isSubmitting && <LoderBtn />}
           </button>
           {/* Forgot Password ui */}
           <LinksForgotPassword isSignUp={true} />
