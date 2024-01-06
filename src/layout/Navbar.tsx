@@ -5,7 +5,8 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 // react-router-dom
 import { Link, useLocation } from "react-router-dom";
 import DialogComponent from "../components/DialogComponent";
-
+// Images
+import logo from "./../../public/assets/logo.png";
 // create context
 // Importing States
 import { useRecoilState } from "recoil";
@@ -75,7 +76,7 @@ function Navbar() {
             <img
               width={100}
               height={100}
-              src="/public/assets/logo.png"
+              src={logo}
               className={`text-slate-400 font-bold pt-[24px] text-4xl duration-300`}
               style={{ fontSize: "3rem" }}
             />
