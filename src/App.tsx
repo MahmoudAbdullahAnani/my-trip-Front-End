@@ -18,7 +18,7 @@ import axios from "axios";
 import { addUserLogged } from "./data/Features/LoggedUser";
 import { useRecoilState } from "recoil";
 import isLoading from "./data/RecoilState/Loading";
-import {Loder} from "./components/loder/Loder";
+import { Loder } from "./components/loder/Loder";
 // import Form from "./components/Form";
 import HandleForm from "./components/HandleForm";
 import { typeTravel } from "./data/RecoilState/FormHandling";
@@ -124,7 +124,7 @@ function App() {
     return true;
   };
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
-console.log(stateUserData);
+  console.log(stateUserData);
 
   // const [count, setCount] = useState(0)
 
@@ -151,9 +151,14 @@ console.log(stateUserData);
           path="/"
           element={
             <>
-              <MoveBgHeroSection />
-              <HeroSection />
-              <div>mahmoudsss</div>
+              <MoveBgHeroSection>
+                <HeroSection />
+              </MoveBgHeroSection>
+              <div
+                className={`lg:mt-[calc(100vh-74px)] mt-[calc(100vh-50.6px)]`}
+              >
+                This is test content
+              </div>
             </>
           }
         />

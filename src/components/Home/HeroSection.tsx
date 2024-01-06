@@ -1,8 +1,8 @@
 
 function HeroSection() {
   return (
-    <div className={`h-[100vh] `}>
-      This is test contant
+    <div className={``}>
+      This is test content
     </div>
   )
 }

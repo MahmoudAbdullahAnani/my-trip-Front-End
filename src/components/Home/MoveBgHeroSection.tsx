@@ -1,11 +1,16 @@
-function MoveBgHeroSection() {
+import React from "react";
+
+function MoveBgHeroSection({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`h-[100vh] absolute w-full top-0  bg-red-900 `}>
+    <div className={`h-[100vh] absolute w-full top-0 flex  bg-red-900 `}>
       <img
-        className={`h-topHero w-full`}
-        src="https://mahmoud-abdullah-anani.vercel.app/static/media/Home-Avtar.93e9c5d0be05dbf228c4.jpg"
+        className={` h-[100vh] absolute w-full top-0  bg-red-900 lg:object-fill object-cover`}
+        src="/public/assets/heroSection.jpeg"
         alt=""
       />
+      <div className={`w-full h-full z-10 flex justify-center items-center  `}>
+        {children}
+      </div>
     </div>
   );
 }

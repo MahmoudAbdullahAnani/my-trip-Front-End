@@ -3,7 +3,7 @@
 import ConnectingAirportsIcon from "@mui/icons-material/ConnectingAirports";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 // react-router-dom
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import DialogComponent from "../components/DialogComponent";
 
 // create context
@@ -14,17 +14,20 @@ import { useSelector } from "react-redux";
 import { RootState } from "../data/store";
 function Navbar() {
   const [toggle, setToggle] = useRecoilState(sidBar);
-
+  const { pathname } = useLocation();
+  
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
 
   return (
     <>
       {/* Desktop */}
       <nav
-        className={`hidden  lg:flex justify-between  h-[4.625rem]  sticky top-[-1px]  z-50  `}
+        className={`hidden  lg:flex justify-between ${
+          pathname !== "/" && "bg-slate-600"
+        } sticky top-[-1px]  z-50  `}
       >
-        <div className="lg:flex justify-between items-center w-full  p-0 px-[7.5rem] ">
-          <div className={`flex gap-4 text-white`}>
+        <div className="lg:flex justify-between  w-full  p-0 px-[7.5rem] ">
+          <div className={`flex gap-4 pt-[32px] text-white`}>
             {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
               <DialogComponent />
             ) : (
@@ -34,7 +37,7 @@ function Navbar() {
             )}
           </div>
           {/* Links */}
-          <div className={`flex  lg:gap-[28px] gap-[40px]`}>
+          <div className={`flex  lg:gap-[28px] pt-[32px] gap-[40px]`}>
             {[
               {
                 id: 4,
@@ -68,12 +71,15 @@ function Navbar() {
             ))}
           </div>
           {/* Logo */}
-          <div>
-            <ConnectingAirportsIcon
-              className={`text-slate-400 font-bold text-4xl duration-300`}
+          <Link to={`/`}>
+            <img
+              width={100}
+              height={100}
+              src="/public/assets/logo.png"
+              className={`text-slate-400 font-bold pt-[24px] text-4xl duration-300`}
               style={{ fontSize: "3rem" }}
             />
-          </div>
+          </Link>
         </div>
       </nav>
 
