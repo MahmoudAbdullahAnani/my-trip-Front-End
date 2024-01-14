@@ -6,7 +6,7 @@ import {
   textSearch,
 } from "../data/RecoilState/FormHandling";
 import { useState } from "react";
-import TypeTravelComponent from "./TypeTravelComponent";
+// import TypeTravelComponent from "./TypeTravelComponent";
 import HandleFieldsData from "./HandleFieldsData";
 import FieldSearchAirs from "./FieldSearchAirs";
 
@@ -49,20 +49,22 @@ function HandleForm({ oneWay = false }: { oneWay: boolean }) {
 
   if (oneWay) {
     return (
-      <div className={`flex flex-col w-[400px] justify-between gap-5`}>
-        <TypeTravelComponent />
+      <>
+        {/* <TypeTravelComponent /> */}
         <FieldSearchAirs />
         <HandleFieldsData />
         {/* Get Travels*/}
-        <button className={`bg-green-300`} onClick={() => getTravels()}>
-          Show Values
-        </button>
-      </div>
+        <div className={``}>
+          <button className={`bg-green-300`} onClick={() => getTravels()}>
+            Show Values
+          </button>
+        </div>
+      </>
     );
   }
   return (
-    <div className={`flex flex-col w-[400px] justify-between gap-5`}>
-      <TypeTravelComponent />
+    <>
+      {/* <TypeTravelComponent /> */}
       <FieldSearchAirs />
 
       <HandleFieldsData />
@@ -70,7 +72,7 @@ function HandleForm({ oneWay = false }: { oneWay: boolean }) {
       <button className={`bg-green-300`} onClick={() => getTravels()}>
         Show Values
       </button>
-    </div>
+    </>
   );
 }
 

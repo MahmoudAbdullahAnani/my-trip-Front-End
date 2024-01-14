@@ -36,9 +36,10 @@ function FieldSearchAirs() {
   console.log("destination", destination);
 
   return (
-    <div className={`flex flex-col gap-5`}>
+    <div className={`flex flex-row-reverse gap-5 `}>
       {/* Input Origin Air */}
       <Autocomplete
+        dir="rtl"
         disablePortal
         id="combo-box-demo"
         options={origin}
@@ -46,8 +47,7 @@ function FieldSearchAirs() {
         renderInput={(params) => (
           <TextField
             {...params}
-            className={``}
-            label="Origin Location"
+            className={`w-[188px] rounded-[8px] border-0 outline-0 text-[#117C99] text-[14px] font-[600]`}
             onChange={async (e) => {
               const dateSearch = await getData(
                 "airportSearch",
@@ -60,7 +60,14 @@ function FieldSearchAirs() {
               );
               setDataSearchOriginState(newExampleData);
             }}
-            sx={{}}
+            sx={{
+              width: "188px",
+              direction: "rtl",
+              boxShadow:
+                "box-shadow: 0px 4px 15px 0px rgba(88, 168, 247, 0.25);",
+              background: "#FFF",
+              color: "#117C99",
+            }}
           />
         )}
       />
@@ -73,7 +80,6 @@ function FieldSearchAirs() {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Destination Location"
             onChange={async (e) => {
               const dateSearch = await getData(
                 "airportSearch",
@@ -85,6 +91,14 @@ function FieldSearchAirs() {
                 }
               );
               setDataSearchDestinationState(newExampleData);
+            }}
+            className={`w-[188px] rounded-[8px] border-0 outline-0 text-[#117C99] text-[14px] font-[600]`}
+            sx={{
+              width: "188px",
+              direction: "rtl",
+              boxShadow:
+                "box-shadow: 0px 4px 15px 0px rgba(88, 168, 247, 0.25);",
+              background: "#FFF",
             }}
           />
         )}

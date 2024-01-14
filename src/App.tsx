@@ -20,8 +20,8 @@ import { useRecoilState } from "recoil";
 import isLoading from "./data/RecoilState/Loading";
 import { Loder } from "./components/loder/Loder";
 // import Form from "./components/Form";
-import HandleForm from "./components/HandleForm";
-import { typeTravel } from "./data/RecoilState/FormHandling";
+// import HandleForm from "./components/HandleForm";
+// import { typeTravel } from "./data/RecoilState/FormHandling";
 import HeroSection from "./components/Home/HeroSection";
 import MoveBgHeroSection from "./components/Home/MoveBgHeroSection";
 
@@ -93,7 +93,6 @@ function RunDriver() {
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useRecoilState(isLoading);
-  const [typeTravelState] = useRecoilState(typeTravel);
 
   const oncData = async () => {
     // if notfound token return false
@@ -169,7 +168,7 @@ function App() {
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route
           path="/search"
-          element={<HandleForm oneWay={typeTravelState} />}
+          element={<></>}
         />
       </Routes>
     </>

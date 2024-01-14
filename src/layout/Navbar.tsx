@@ -16,7 +16,7 @@ import { RootState } from "../data/store";
 function Navbar() {
   const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
-  
+
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
 
   return (
@@ -32,13 +32,17 @@ function Navbar() {
             {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
               <DialogComponent />
             ) : (
-              <Link to={`/login`} className={``}>
+              <Link
+                to={`/login`}
+                style={{ border: "1px solid #F9C534" }}
+                className={` text-[14px] font-[600] text-[#B6E7FB] w-[188px] h-[34px] rounded-[10px] text-center flex justify-center items-center `}
+              >
                 تسجيل الدخول
               </Link>
             )}
           </div>
           {/* Links */}
-          <div className={`flex  lg:gap-[28px] pt-[32px] gap-[40px]`}>
+          <div className={`flex  lg:gap-[28px] pt-[32px] gap-[40px]  `}>
             {[
               {
                 id: 4,
@@ -61,14 +65,15 @@ function Navbar() {
 
               { id: 1, title: "طيران", href: "/", driver: "intro-element-1" },
             ].map(({ driver, id, title, href }) => (
-              <Link
-                key={id + Math.random()}
-                to={href}
-                id={driver}
-                className={`text-[1rem] font-medium whitespace-nowrap text-[#FFF] hover:text-[#b0b0b0e5]  `}
-              >
-                <button>{title}</button>
-              </Link>
+              <div key={id + Math.random()}>
+                <Link
+                  to={href}
+                  id={driver}
+                  className={`text-[18px] font-[600] whitespace-nowrap text-[#828282] hover:text-[#117C99] duration-200 `}
+                >
+                  {title}
+                </Link>
+              </div>
             ))}
           </div>
           {/* Logo */}
