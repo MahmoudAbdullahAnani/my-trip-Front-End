@@ -144,7 +144,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className={`container `}>
       <Routes>
         <Route
           path="/"
@@ -171,7 +171,7 @@ function App() {
           element={<></>}
         />
       </Routes>
-    </>
+    </div>
   );
 }
 

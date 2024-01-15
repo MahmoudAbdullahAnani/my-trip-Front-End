@@ -21,7 +21,7 @@ function HandleForm({ oneWay = false }: { oneWay: boolean }) {
   const [dateGoState] = useRecoilState(dateGo);
   const [dateRet] = useRecoilState(dateReturn);
 
-  const getTravels = () => {
+   const getTravels = () => {
     let goStack: string = "";
     let returnStack: string = "";
     if (go) {

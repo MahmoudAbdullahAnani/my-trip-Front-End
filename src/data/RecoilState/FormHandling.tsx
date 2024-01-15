@@ -29,6 +29,13 @@ const dateSearchDestination = atom({
   default: [], // default value (aka initial value)
 });
 
+const typeSystem = atom({
+  key: "typeSystem", // unique ID (with respect to other atoms/selectors)
+  default: 'air', // default value (aka initial value)
+});
+
+
+
 export {
   textSearch,
   destinationSearch,
@@ -37,4 +44,5 @@ export {
   typeTravel,
   dateSearchOrigin,
   dateSearchDestination,
+  typeSystem,
 };

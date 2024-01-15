@@ -27,7 +27,7 @@ function Navbar() {
           pathname !== "/" && "bg-slate-600"
         } sticky top-[-1px]  z-50  `}
       >
-        <div className="lg:flex justify-between  w-full  p-0 px-[7.5rem] ">
+        <div className="lg:flex justify-between  w-full  p-0 px-[96px] ">
           <div className={`flex gap-4 pt-[32px] text-white`}>
             {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
               <DialogComponent />
@@ -35,7 +35,7 @@ function Navbar() {
               <Link
                 to={`/login`}
                 style={{ border: "1px solid #F9C534" }}
-                className={` text-[14px] font-[600] text-[#B6E7FB] w-[188px] h-[34px] rounded-[10px] text-center flex justify-center items-center `}
+                className={` text-[14px] font-[600] text-[#B6E7FB] hover:text-[#b6e7fb7d] w-[188px] h-[34px] rounded-[10px] text-center flex justify-center items-center `}
               >
                 تسجيل الدخول
               </Link>

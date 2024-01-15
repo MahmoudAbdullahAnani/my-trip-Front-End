@@ -36,73 +36,84 @@ function FieldSearchAirs() {
   console.log("destination", destination);
 
   return (
-    <div className={`flex flex-row-reverse gap-5 `}>
-      {/* Input Origin Air */}
-      <Autocomplete
-        dir="rtl"
-        disablePortal
-        id="combo-box-demo"
-        options={origin}
-        className={``}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            className={`w-[188px] rounded-[8px] border-0 outline-0 text-[#117C99] text-[14px] font-[600]`}
-            onChange={async (e) => {
-              const dateSearch = await getData(
-                "airportSearch",
-                `term=${e.target.value}`
-              );
-              const newExampleData = dateSearch.data.map(
-                (obj: { address: { cityName: string } }) => {
-                  return { label: obj.address.cityName, ...obj };
-                }
-              );
-              setDataSearchOriginState(newExampleData);
-            }}
-            sx={{
-              width: "188px",
-              direction: "rtl",
-              boxShadow:
-                "box-shadow: 0px 4px 15px 0px rgba(88, 168, 247, 0.25);",
-              background: "#FFF",
-              color: "#117C99",
-            }}
-          />
-        )}
-      />
-      {/* Input destination Air */}
-      <Autocomplete
-        disablePortal
-        id="combo-box-demo"
-        options={origin}
-        sx={{ width: 300 }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            onChange={async (e) => {
-              const dateSearch = await getData(
-                "airportSearch",
-                `term=${e.target.value}`
-              );
-              const newExampleData = dateSearch.data.map(
-                (obj: { address: { cityName: string } }) => {
-                  return { label: obj.address.cityName, ...obj };
-                }
-              );
-              setDataSearchDestinationState(newExampleData);
-            }}
-            className={`w-[188px] rounded-[8px] border-0 outline-0 text-[#117C99] text-[14px] font-[600]`}
-            sx={{
-              width: "188px",
-              direction: "rtl",
-              boxShadow:
-                "box-shadow: 0px 4px 15px 0px rgba(88, 168, 247, 0.25);",
-              background: "#FFF",
-            }}
-          />
-        )}
-      />
+    <div className={`flex gap-[24px]`}>
+      <div className={`flex flex-col gap-[6px]`}>
+        {/* Input Origin Air */}
+        <h4 className={`text-[#000] text-[20px] font-[500] `}>المغادرة من</h4>
+        <Autocomplete
+          dir="rtl"
+          disablePortal
+          id="combo-box-demo"
+          options={origin}
+          className={``}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              className={`outline-none`}
+              onChange={async (e) => {
+                const dateSearch = await getData(
+                  "airportSearch",
+                  `term=${e.target.value}`
+                );
+                const newExampleData = dateSearch.data.map(
+                  (obj: { address: { cityName: string } }) => {
+                    return { label: obj.address.cityName, ...obj };
+                  }
+                );
+                setDataSearchOriginState(newExampleData);
+              }}
+              sx={{
+                width: "188px",
+                height: "48px",
+                direction: "rtl",
+                boxShadow:
+                  "box-shadow: 0px 4px 15px 0px rgba(88, 168, 247, 0.25);",
+                background: "#FFF",
+                color: "#117C99",
+              }}
+            />
+          )}
+        />
+      </div>
+      <div className={`flex flex-col gap-[6px]`}>
+        {/* Input destination Air */}
+        <h4 className={`text-[#000] text-[20px] font-[500] `}>الوجهة</h4>
+
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={destination}
+          className={``}
+          sx={{}}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              onChange={async (e) => {
+                const dateSearch = await getData(
+                  "airportSearch",
+                  `term=${e.target.value}`
+                );
+                const newExampleData = dateSearch.data.map(
+                  (obj: { address: { cityName: string } }) => {
+                    return { label: obj.address.cityName, ...obj };
+                  }
+                );
+                setDataSearchDestinationState(newExampleData);
+              }}
+              className={``}
+              sx={{
+                height: "48px",
+
+                width: "188px",
+                direction: "rtl",
+                boxShadow:
+                  "box-shadow: 0px 4px 15px 0px rgba(88, 168, 247, 0.25);",
+                background: "#FFF",
+              }}
+            />
+          )}
+        />
+      </div>
     </div>
   );
 }
