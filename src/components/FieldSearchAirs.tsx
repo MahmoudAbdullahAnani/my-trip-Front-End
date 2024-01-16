@@ -37,7 +37,7 @@ function FieldSearchAirs() {
 
   return (
     <div
-      className={`flex gap-[24px] sm:justify-normal justify-center  lg:flex-nowrap flex-wrap`}
+      className={`flex sm:gap-[24px] gap-[10px] sm:justify-normal justify-center  lg:flex-nowrap flex-wrap`}
     >
       <div className={`flex flex-col gap-[6px]`}>
         {/* Input Origin Air */}
