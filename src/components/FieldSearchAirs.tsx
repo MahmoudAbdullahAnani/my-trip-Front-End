@@ -36,7 +36,7 @@ function FieldSearchAirs() {
   console.log("destination", destination);
 
   return (
-    <div className={`flex gap-[24px]`}>
+    <div className={`flex gap-[24px] lg:flex-nowrap flex-wrap`}>
       <div className={`flex flex-col gap-[6px]`}>
         {/* Input Origin Air */}
         <h4 className={`text-[#000] text-[20px] font-[500] `}>المغادرة من</h4>
