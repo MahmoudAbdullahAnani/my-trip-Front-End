@@ -14,7 +14,7 @@ function FormModule({ children }: Props) {
           stroke: "#FFF",
           backdropFilter: "blur(10px)",
         }}
-        className={`lg:pr-[106px] lg:pe-[82px] pr-[10px] py-10 flex flex-col gap-5 xl:h-[calc(283px-(47px+.5rem))]  `}
+        className={`lg:pr-[106px] lg:pe-[82px] pr-[10px] py-10 flex flex-col gap-5 xl:h-[calc(283px-(47px+.5rem))] sm:rounded-tl-[25px] rounded-t-[25px] border border-[#FFF] border-1 border-b-0  `}
       >
         {children}
       </div>
@@ -36,7 +36,7 @@ function FormModule({ children }: Props) {
             stroke: "#FFF",
             backdropFilter: "blur(10px)",
           }}
-          className={`w-[29%] h-[47px] rounded-r-lg absolute left-[0%] top-[100%] pt-[calc(47px+.5rem)] z-[-1]`}
+          className={`rounded-bl-[25px] border border-[#FFF] border-1 border-t-0 w-[29%] h-[47px] rounded-r-lg absolute left-[0%] top-[100%] pt-[calc(47px+.5rem)] z-[-1]`}
         ></div>
         <div
           style={{
@@ -45,7 +45,7 @@ function FormModule({ children }: Props) {
             stroke: "#FFF",
             backdropFilter: "blur(10px)",
           }}
-          className={`w-[calc(99%-(177px+30%))] rounded-l-lg h-[47px]  absolute right-[0] top-[100%] pt-[calc(47px+.5rem)] z-[-1]`}
+          className={`rounded-br-[25px] border border-[#FFF] border-1 border-t-0 w-[calc(99%-(177px+30%))] rounded-l-lg h-[47px]  absolute right-[0] top-[100%] pt-[calc(47px+.5rem)] z-[-1]`}
         ></div>
       </div>
     </div>

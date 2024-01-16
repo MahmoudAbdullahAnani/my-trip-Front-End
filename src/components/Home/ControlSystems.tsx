@@ -307,7 +307,7 @@ function ControlSystems() {
   const [typeSystemState, setTypeSystemState] = useRecoilState(typeSystem);
   return (
     <>
-      <div className={`flex justify-end gap-[24px] `}>
+      <div className={`sm:flex hidden justify-end gap-[24px] `}>
         {dataSystems.map(({ name, title, iconActive, icon }) => (
           <div
             key={`${name}-${Math.random()}`}
@@ -337,7 +337,7 @@ function ControlSystems() {
             stroke: "#FFF",
             backdropFilter: "blur(10px)",
           }}
-          className={`w-[167px] h-[100%] border border-1 border-[#FFF] border-y-0 rounded-[] absolute right-0`}
+          className={`sm:block hidden w-[167px] h-[100%] border border-1 border-[#FFF] border-y-0 rounded-[] absolute right-0`}
         ></div>
       </div>
     </>

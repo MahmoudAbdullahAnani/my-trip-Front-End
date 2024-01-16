@@ -24,7 +24,7 @@ function HeroSection() {
     <FormModule>
       <div>
         <form
-          className={`flex justify-start gap-[26px] lg:flex-nowrap flex-wrap`}
+          className={`flex justify-start lg:gap-[26px] gap-[10px] lg:flex-nowrap flex-wrap`}
         >
           <div className={`flex gap-[12px] `}>
             <input
@@ -84,7 +84,9 @@ function HeroSection() {
       </div>
       {/* Inputs */}
       {/* <TypeTravelComponent /> */}
-      <div className={`flex xl:flex-nowrap flex-wrap gap-[24px] `}>
+      <div
+        className={`flex xl:flex-nowrap flex-wrap sm:gap-[24px] gap-[10px] sm:justify-normal justify-center`}
+      >
         <FieldSearchAirs />
         <HandleFieldsData />
         <LevelTravel />

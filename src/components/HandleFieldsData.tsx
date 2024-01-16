@@ -141,7 +141,9 @@ function HandleFieldsData() {
     );
   }
   return (
-    <div className={`flex gap-[24px] lg:flex-nowrap flex-wrap `}>
+    <div
+      className={`flex sm:gap-[24px] gap-[10px]  sm:justify-normal justify-center lg:flex-nowrap flex-wrap `}
+    >
       <div className={`flex flex-col gap-[6px]`}>
         <h4 className={`text-[#000] text-[20px] font-[500] `}>الذهاب</h4>
         <DatePicker

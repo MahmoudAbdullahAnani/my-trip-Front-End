@@ -23,7 +23,7 @@ function Navbar() {
     <>
       {/* Desktop */}
       <nav
-        className={`hidden  lg:flex justify-between ${
+        className={`hidden lg:flex justify-between ${
           pathname !== "/" && "bg-slate-600"
         } sticky top-[-1px]  z-50  `}
       >
@@ -96,9 +96,13 @@ function Navbar() {
           borderBottom: "1px solid #0000001c",
           paddingBottom: "5px",
           boxShadow: "0px 0px 7px -4px dimgrey",
+          fill: "rgba(182, 231, 251, 0.30)",
+          strokeWidth: "1px",
+          stroke: "#FFF",
+          backdropFilter: "blur(10px)",
         }}
         className={`lg:hidden pt-[.8rem] block justify-between gap-5   ${
-          toggle ? "bg-[#FFF]" : "bg-[#F5F5F5]"
+          toggle ? "bg-[#005A6C]" : ""
         }  items-center sticky top-0 z-50`}
       >
         {/* Logo */}
@@ -106,10 +110,15 @@ function Navbar() {
           className={`flex justify-between w-full items-center  ps-[0.75rem] pe-[1.625rem]`}
         >
           <div className="flex gap-3 items-center">
-            <ConnectingAirportsIcon
-              className={`text-slate-400 font-bold text-4xl duration-300`}
-              style={{ fontSize: "2rem" }}
-            />
+            <Link to={`/`}>
+              <img
+                width={50}
+                height={50}
+                src={logo}
+                className={`text-slate-400 font-bold text-4xl duration-300`}
+                style={{ fontSize: "3rem" }}
+              />
+            </Link>
           </div>
           <button
             id="intro-element-5"
@@ -123,7 +132,7 @@ function Navbar() {
               }
             }}
           >
-            <FullscreenIcon />
+            {/* <FullscreenIcon /> */}
           </button>
           {!toggle ? (
             <div id="intro-element-4" className="flex items-center gap-10">
@@ -183,9 +192,15 @@ function Navbar() {
         {/* Side */}
 
         <div
+          style={{
+            fill: "rgba(182, 231, 251, 0.30)",
+            strokeWidth: "1px",
+            stroke: "#FFF",
+            backdropFilter: "blur(10px)",
+          }}
           className={`absolute top-16 z-50 h-[100vh] left-0 pt-12 ${
             toggle ? "w-full" : "w-0"
-          } duration-300 overflow-hidden bg-[#FFF]`}
+          } duration-300 overflow-hidden bg-[#005A6C]`}
         >
           {/* Links */}
           <div
@@ -226,7 +241,7 @@ function Navbar() {
                 to={href}
                 className={`text-sm pb-[16px]    whitespace-nowrap ${
                   showLine && "border-b-2"
-                } border-[#E5E5E5] text-[#171717]`}
+                } border-[#E5E5E5] text-[#FFF]`}
               >
                 <button>{title}</button>
               </Link>
