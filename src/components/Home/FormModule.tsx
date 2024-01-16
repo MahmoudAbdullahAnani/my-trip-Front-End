@@ -14,7 +14,7 @@ function FormModule({ children }: Props) {
           stroke: "#FFF",
           backdropFilter: "blur(10px)",
         }}
-        className={`lg:pr-[106px] lg:pe-[82px] pr-[10px] sm:py-10 py-1 flex flex-col sm:gap-5 gap-1 xl:h-[calc(283px-(47px+.5rem))] sm:rounded-tl-[25px] rounded-tl-[25px] border border-[#FFF] border-1 border-b-0  `}
+        className={`lg:pr-[106px] lg:pe-[82px] pr-[10px] sm:py-10 py-1 flex flex-col sm:gap-5 gap-1 xl:h-[calc(283px-(47px+.5rem))] sm:rounded-t-[0px] rounded-t-[25px] sm:rounded-tl-[25px]  border border-[#FFF] border-1 border-b-0  `}
       >
         {children}
       </div>

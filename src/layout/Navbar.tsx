@@ -200,31 +200,32 @@ function Navbar() {
         >
           {/* Links */}
           <div
+            dir="rtl"
             style={{ fontFamily: "Inter" }}
             className={`flex flex-col gap-[16px]  px-8`}
           >
             {[
               {
                 id: 1,
-                title: "Home",
+                title: "طيران",
                 href: "/",
                 showLine: true,
               },
               {
                 id: 2,
-                title: "Hotel",
+                title: "فنادق",
                 href: "/hotel",
                 showLine: true,
               },
               {
                 id: 3,
-                title: "Fight",
-                href: "/fight",
+                title: "توصيل",
+                href: "/contactUs",
                 showLine: true,
               },
               {
                 id: 4,
-                title: "Search",
+                title: "الخطط",
                 href: "/search",
                 showLine: true,
               },
@@ -257,7 +258,7 @@ function Navbar() {
                   to={`/login`}
                   className={`py-2 bg-emerald-500 text-center w-[40%]`}
                 >
-                  Login
+                  تسجيل دخول
                 </Link>
               )}
               <Link
@@ -267,7 +268,7 @@ function Navbar() {
                 to={`/signup`}
                 className={`py-2 w-[40%] bg-emerald-500 text-center`}
               >
-                Signup
+                انشاء حساب
               </Link>
             </div>
           </div>
