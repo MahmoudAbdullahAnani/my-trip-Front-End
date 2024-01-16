@@ -1,7 +1,3 @@
-"use client";
-// MUI
-import ConnectingAirportsIcon from "@mui/icons-material/ConnectingAirports";
-import FullscreenIcon from "@mui/icons-material/Fullscreen";
 // react-router-dom
 import { Link, useLocation } from "react-router-dom";
 import DialogComponent from "../components/DialogComponent";
