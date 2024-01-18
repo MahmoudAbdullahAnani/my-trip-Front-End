@@ -307,7 +307,7 @@ function ControlSystems() {
   const [typeSystemState, setTypeSystemState] = useRecoilState(typeSystem);
   return (
     <>
-      <div className={`sm:flex hidden justify-end gap-[24px] `}>
+      <div className={`sm:flex hidden justify-end gap-[24px]  `}>
         {dataSystems.map(({ name, title, iconActive, icon }) => (
           <div
             key={`${name}-${Math.random()}`}
@@ -316,30 +316,30 @@ function ControlSystems() {
               fill: "rgba(182, 231, 251, 0.30)",
               strokeWidth: "1px",
               stroke: "#FFF",
-              backdropFilter: "blur(10px)",
+              backdropFilter: "blur(20px)",
             }}
             className={`${
               typeSystemState === name
-                ? "text-[#117C99] text-[14px] font-[700] rounded-[17px] rounded-b-[0px] border border-[#FFF] border-1 border-b-0"
-                : "text-[#4F4F4F] text-[12px] font-[600] rounded-[17px] border border-[#FFF] border-1"
-            } text-center gap-[10px] h-[63px] w-[167px] cursor-pointer flex justify-center items-center `}
+                ? "text-[#117C99] text-[20px] h-[calc(48px+6px)]  font-[700] rounded-[17px] rounded-b-[0px] border border-[#FFF] border-1 border-b-0"
+                : "text-[#4F4F4F] text-[14px] h-[calc(48px)] font-[600] rounded-[17px] border border-[#FFF] border-1"
+            } text-center gap-[10px] w-[146px] bg-[#b6e7fb29] hover:bg-[#b6e7fb48] hover:text-[#117C99]  cursor-pointer flex justify-center items-center `}
           >
             {title}
             {typeSystemState === name ? <>{iconActive} </> : <>{icon}</>}
           </div>
         ))}
       </div>
-      <div className={`w-[100%] h-[8px] relative`}>
+      {/* <div className={`w-[100%] h-[8px] relative `}>
         <div
           style={{
-            fill: "rgba(182, 231, 251, 0.30)",
-            strokeWidth: "1px",
-            stroke: "#FFF",
-            backdropFilter: "blur(10px)",
+            // fill: "rgba(182, 231, 251, 0.30)",
+            // strokeWidth: "1px",
+            // stroke: "#FFF",
+            backdropFilter: "blur(20px)",
           }}
-          className={`sm:block hidden w-[167px] h-[100%] border border-1 border-[#FFF] border-y-0 rounded-[] absolute right-0`}
+          className={`roundedTop sm:block hidden w-[146px] h-[107%] bg-[#b6e7fb29] border border-1 border-[#FFF] border-y-0 absolute right-0`}
         ></div>
-      </div>
+      </div> */}
     </>
   );
 }

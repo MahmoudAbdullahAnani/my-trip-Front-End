@@ -65,7 +65,9 @@ function Navbar() {
                 <Link
                   to={href}
                   id={driver}
-                  className={`text-[18px] font-[600] whitespace-nowrap text-[#828282] hover:text-[#117C99] duration-200 `}
+                  className={`text-[18px] font-[600] whitespace-nowrap  ${
+                    href === pathname ? "text-[#117C99]" : "text-[#FFF]"
+                  } hover:text-[#117C99] duration-200 `}
                 >
                   {title}
                 </Link>

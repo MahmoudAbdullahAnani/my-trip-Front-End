@@ -149,7 +149,7 @@ function App() {
         <Route
           path="/"
           element={
-            <>
+            <section>
               <MoveBgHeroSection>
                 <HeroSection />
               </MoveBgHeroSection>
@@ -158,7 +158,7 @@ function App() {
               >
                 This is test content
               </div>
-            </>
+            </section>
           }
         />
         <Route path="/login" element={<Login />} />
