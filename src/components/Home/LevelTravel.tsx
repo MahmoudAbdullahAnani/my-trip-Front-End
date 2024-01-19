@@ -66,49 +66,68 @@ function LevelTravel() {
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
   // Handle Data
   //---> Adults
   const [adultsDataState, setAdultsData] = useRecoilState(adultsData);
-  const incrementAdults = () => {
-    setAdultsData(adultsDataState + 1);
-  };
-  const decrementAdults = () => {
-    if (adultsDataState >= 1) {
-      setAdultsData(adultsDataState - 1);
-    }
-  };
 
   //---> Youths Data
-  const [youthsDataState, setyouthsData] = useRecoilState(youthsData);
-  const incrementYouthsDataState = () => {
-    setyouthsData(youthsDataState + 1);
-  };
-  const decrementYouthsDataState = () => {
-    if (youthsDataState >= 1) {
-      setyouthsData(youthsDataState - 1);
-    }
-  };
-  //---> Children Data
-  const [childrenDataState, setchildrenDataState] =
-    useRecoilState(childrenData);
-  const incrementChildrenDataState = () => {
-    setchildrenDataState(childrenDataState + 1);
-  };
-  const decrementChildrenDataState = () => {
-    if (childrenDataState >= 1) {
-      setchildrenDataState(childrenDataState - 1);
-    }
-  };
+  const [youthsDataState, setYouthsData] = useRecoilState(youthsData);
 
+  //---> Children Data
+  const [childrenDataState, setChildrenDataState] =
+    useRecoilState(childrenData);
+
+  // Handle increment and decrement data
+  function incrementAndDecrementData(
+    typeData: string,
+    data: string | number,
+    typeOration: string
+  ): void {
+    if (typeOration === "increment") {
+      if (typeData === "adults") {
+        setAdultsData(+data + 1);
+        return;
+      } else if (typeData === "youths") {
+        setYouthsData(+data + 1);
+        return;
+      } else if (typeData === "children") {
+        setChildrenDataState(+data + 1);
+        return;
+      } else {
+        return;
+      }
+    } else {
+      if (typeData === "adults") {
+        if (adultsDataState > 1) {
+          setAdultsData(adultsDataState - 1);
+        }
+        return;
+      } else if (typeData === "youths") {
+        if (youthsDataState >= 1) {
+          setYouthsData(youthsDataState - 1);
+        }
+        return;
+      } else if (typeData === "children") {
+        if (childrenDataState >= 1) {
+          setChildrenDataState(childrenDataState - 1);
+        }
+        return;
+      } else {
+        return;
+      }
+    }
+  }
   //---> Level Travel Data
   const [levelTravelDataState, setLevelTravelData] =
     useRecoilState(levelTravelData);
   function handleChangeLevelTravelData(e: { target: { value: string } }) {
     setLevelTravelData(e.target.value);
   }
+
   return (
     <div className={``}>
       <div className={`flex flex-col gap-[6px]`}>
@@ -159,7 +178,7 @@ function LevelTravel() {
               </>
             )}
           </div>
-          <span className={`absolute left-[15px]`}>{iconDropDown}</span>
+          <span className={`absolute left-[15px] ${open&&"rotate-180"}`}>{iconDropDown}</span>
         </div>
       </div>
 
@@ -185,7 +204,13 @@ function LevelTravel() {
               <div className={`flex gap-2`}>
                 <span
                   className={`border rounded-md px-2 `}
-                  onClick={incrementAdults}
+                  onClick={() =>
+                    incrementAndDecrementData(
+                      "adults",
+                      adultsDataState,
+                      "increment"
+                    )
+                  }
                 >
                   +
                 </span>
@@ -194,7 +219,13 @@ function LevelTravel() {
                   className={`border rounded-md px-2 ${
                     adultsDataState < 1 && "opacity-30"
                   }`}
-                  onClick={decrementAdults}
+                  onClick={() =>
+                    incrementAndDecrementData(
+                      "adults",
+                      adultsDataState,
+                      "decrement"
+                    )
+                  }
                 >
                   -
                 </span>
@@ -207,7 +238,13 @@ function LevelTravel() {
               <div className={`flex gap-2`}>
                 <span
                   className={`border rounded-md px-2 `}
-                  onClick={incrementYouthsDataState}
+                  onClick={() =>
+                    incrementAndDecrementData(
+                      "youths",
+                      youthsDataState,
+                      "increment"
+                    )
+                  }
                 >
                   +
                 </span>
@@ -216,7 +253,13 @@ function LevelTravel() {
                   className={`border rounded-md px-2 ${
                     youthsDataState < 1 && "opacity-30"
                   }`}
-                  onClick={decrementYouthsDataState}
+                  onClick={() =>
+                    incrementAndDecrementData(
+                      "youths",
+                      youthsDataState,
+                      "decrement"
+                    )
+                  }
                 >
                   -
                 </span>
@@ -232,7 +275,13 @@ function LevelTravel() {
               <div className={`flex gap-2`}>
                 <span
                   className={`border rounded-md px-2 `}
-                  onClick={incrementChildrenDataState}
+                  onClick={() =>
+                    incrementAndDecrementData(
+                      "children",
+                      childrenDataState,
+                      "increment"
+                    )
+                  }
                 >
                   +
                 </span>
@@ -241,7 +290,13 @@ function LevelTravel() {
                   className={`border rounded-md px-2 ${
                     childrenDataState < 1 && "opacity-30"
                   }`}
-                  onClick={decrementChildrenDataState}
+                  onClick={() =>
+                    incrementAndDecrementData(
+                      "children",
+                      childrenDataState,
+                      "decrement"
+                    )
+                  }
                 >
                   -
                 </span>
