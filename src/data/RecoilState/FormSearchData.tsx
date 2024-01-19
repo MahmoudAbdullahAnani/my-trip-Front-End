@@ -5,11 +5,7 @@ const adultsData = atom({
   key: "adults",
   default: 1,
 });
-// Studentsover
-const studentsoverData = atom({
-  key: "studentsoverData",
-  default: 0,
-});
+
 // Youths
 const youthsData = atom({
   key: "youthsData",
@@ -20,5 +16,10 @@ const childrenData = atom({
   key: "childrenData",
   default: 0,
 });
+// LevelTravel
+const levelTravelData = atom({
+  key: "levelTravelData",
+  default: "economy",
+});
 
-export { adultsData, studentsoverData, youthsData, childrenData };
+export { adultsData, youthsData, childrenData, levelTravelData };
