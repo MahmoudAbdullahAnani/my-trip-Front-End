@@ -48,6 +48,7 @@ function FieldSearchAirs() {
           id="combo-box-demo"
           options={origin}
           className={``}
+          onChange={(e) => console.log(e.target)}
           renderInput={(params) => (
             <TextField
               {...params}

@@ -22,4 +22,13 @@ const levelTravelData = atom({
   default: "economy",
 });
 
-export { adultsData, youthsData, childrenData, levelTravelData };
+
+
+// //  UI
+// Open Module Date
+const moduleDate = atom({
+  key: "moduleDate",
+  default: false,
+});
+
+export { adultsData, youthsData, childrenData, levelTravelData, moduleDate };

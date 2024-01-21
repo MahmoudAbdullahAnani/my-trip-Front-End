@@ -3,10 +3,12 @@ import { useRecoilState } from "recoil";
 import { useState } from "react";
 import { typeSystem, typeTravel } from "../../data/RecoilState/FormHandling";
 import FieldSearchAirs from "../FieldSearchAirs";
-import HandleFieldsData from "../HandleFieldsData";
+// import HandleFieldsData from "../HandleFieldsData";
 import LevelTravel from "./LevelTravel";
 import MoreData from "./MoreData";
 import FormModule from "./FormModule";
+// import FieldsDate from "./FieldsDate";
+import UiFildesDate from "./UiFildesDate";
 // import TypeTravelComponent from "../TypeTravelComponent";
 
 function HeroSection() {
@@ -88,7 +90,9 @@ function HeroSection() {
         className={`flex xl:flex-nowrap flex-wrap sm:gap-[24px] gap-[10px] sm:justify-normal justify-center`}
       >
         <FieldSearchAirs />
-        <HandleFieldsData />
+        {/* <HandleFieldsData /> */}
+        <UiFildesDate />
+        
         <LevelTravel />
       </div>
       <div>

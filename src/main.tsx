@@ -13,11 +13,10 @@ import { RecoilRoot } from "recoil";
 
 import "react-toastify/dist/ReactToastify.css";
 
-// import 'react-date-range/dist/styles.css'; // main css file
-// import 'react-date-range/dist/theme/default.css'; // theme css file
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
 import "react-datepicker/dist/react-datepicker.css";
-
-
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

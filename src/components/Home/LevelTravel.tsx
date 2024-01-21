@@ -8,6 +8,7 @@ import {
   levelTravelData,
   youthsData,
 } from "../../data/RecoilState/FormSearchData";
+
 const iconData = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -19,16 +20,16 @@ const iconData = (
     <path
       d="M19 21V19C19 17.9391 18.5786 16.9217 17.8284 16.1715C17.0783 15.4214 16.0609 15 15 15H9C7.93913 15 6.92172 15.4214 6.17157 16.1715C5.42143 16.9217 5 17.9391 5 19V21"
       stroke="#333333"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12 11C14.2091 11 16 9.20911 16 6.99997C16 4.79083 14.2091 2.99997 12 2.99997C9.79086 2.99997 8 4.79083 8 6.99997C8 9.20911 9.79086 11 12 11Z"
       stroke="#333333"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -43,9 +44,9 @@ const iconDropDown = (
     <path
       d="M6 8.99997L12 15L18 8.99997"
       stroke="black"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -66,7 +67,7 @@ function LevelTravel() {
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -178,7 +179,9 @@ function LevelTravel() {
               </>
             )}
           </div>
-          <span className={`absolute left-[15px] ${open&&"rotate-180"}`}>{iconDropDown}</span>
+          <span className={`absolute left-[15px] ${open && "rotate-180"}`}>
+            {iconDropDown}
+          </span>
         </div>
       </div>
 

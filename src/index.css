@@ -108,6 +108,16 @@
   -ms-border-radius:0;
   -o-border-radius:0;
 } */
+/* Start Css Date */
+.rdrCalendarWrapper {
+  fill: rgba(182, 231, 251, 0.3);
+  stroke-width: 1px;
+  stroke: #fff;
+  backdrop-filter: blur(10px) !important;
+
+  background-color: #005A6C !important;
+}
+/* End Css Date */
 
 body {
   /* font-family: Arial, Helvetica, sans-serif; */

@@ -150,7 +150,7 @@ function HandleFieldsData() {
           selected={startDate}
           onChange={(date: Date) => {
             setStartDate(date);
-            setDateGoState(date);
+            setDateGoState(`${date}`);
           }}
           showIcon
           icon={
@@ -249,7 +249,7 @@ function HandleFieldsData() {
           selected={endDate}
           onChange={(date: Date) => {
             setEndDate(date);
-            setDateReturnState(date);
+            setDateReturnState(`${date}`);
           }}
           showIcon
           icon={

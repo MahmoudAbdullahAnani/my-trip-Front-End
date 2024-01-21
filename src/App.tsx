@@ -24,6 +24,7 @@ import { Loder } from "./components/loder/Loder";
 // import { typeTravel } from "./data/RecoilState/FormHandling";
 import HeroSection from "./components/Home/HeroSection";
 import MoveBgHeroSection from "./components/Home/MoveBgHeroSection";
+import MyTestCombobox from "./components/test/FormTest";
 
 // Components
 // import Form from './components/Form';
@@ -168,7 +169,11 @@ function App() {
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route
           path="/search"
-          element={<></>}
+          element={
+            <>
+              <MyTestCombobox />
+            </>
+          }
         />
       </Routes>
     </div>
