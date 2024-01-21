@@ -69,3 +69,32 @@
 "SHIJIAZHUANG",
 "ZHUHAI"
 ]
+
+
+{
+    "type": "location",
+    "subType": "CITY",
+    "name": "CAIRO",
+    "detailedName": "CAIRO/IL/US",
+    "id": "CCIR",
+ /*   "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/CCIR",
+        "methods": [
+            "GET"
+        ]
+    },*/
+    "timeZoneOffset": "-06:00",
+    "iataCode": "CIR",
+    "geoCode": {
+        "latitude": 37,
+        "longitude": -89.18
+    },
+    "address": {
+        "cityName": "CAIRO",
+        "cityCode": "CIR",
+        "countryName": "UNITED STATES OF AMERICA",
+        "countryCode": "US",
+        "stateCode": "IL",
+        "regionCode": "NAMER"
+    }
+}

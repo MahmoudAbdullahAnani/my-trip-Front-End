@@ -38,7 +38,7 @@ function HeroSection() {
               name="TypeTravel"
               type="radio"
               className={`cursor-pointer`}
-              checked={typeTravelState === "roundTrip" ? true : false}
+              checked={typeTravelState === "roundTrip"}
             />
             <label
               htmlFor="roundTrip"
@@ -57,7 +57,7 @@ function HeroSection() {
               name="TypeTravel"
               type="radio"
               className={`cursor-pointer`}
-              checked={typeTravelState === "oneWay" ? true : false}
+              checked={typeTravelState === "oneWay"}
             />
             <label
               htmlFor="oneWay"
@@ -73,7 +73,7 @@ function HeroSection() {
               name="TypeTravel"
               type="radio"
               className={`cursor-pointer`}
-              checked={typeTravelState === "radio-1" ? true : false}
+              checked={typeTravelState === "radio-1" }
             />
             <label
               htmlFor="radio-1"

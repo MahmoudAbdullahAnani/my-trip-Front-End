@@ -3,6 +3,8 @@ import { useRecoilState } from "recoil";
 import {
   dateSearchDestination,
   dateSearchOrigin,
+  destinationSearch,
+  textSearch,
 } from "../data/RecoilState/FormHandling";
 import { Autocomplete, TextField } from "@mui/material";
 const CancelToken = axios.CancelToken;
@@ -32,6 +34,8 @@ function FieldSearchAirs() {
   const [destination, setDataSearchDestinationState] = useRecoilState(
     dateSearchDestination
   );
+  const [, setLocationFrom] = useRecoilState(textSearch);
+  const [, setDestinationSearchState] = useRecoilState(destinationSearch);
   console.log("origin", origin);
   console.log("destination", destination);
 
@@ -48,7 +52,11 @@ function FieldSearchAirs() {
           id="combo-box-demo"
           options={origin}
           className={``}
-          onChange={(e) => console.log(e.target)}
+          onChange={
+            ({ target }) =>
+              setLocationFrom((target as HTMLInputElement)?.innerHTML)
+            // console.log((target as HTMLInputElement)?.innerHTML)
+          }
           renderInput={(params) => (
             <TextField
               {...params}
@@ -59,8 +67,17 @@ function FieldSearchAirs() {
                   `term=${e.target.value}`
                 );
                 const newExampleData = dateSearch.data.map(
-                  (obj: { address: { cityName: string } }) => {
-                    return { label: obj.address.cityName, ...obj };
+                  (obj: {
+                    address: { cityName: string };
+                    detailedName: string;
+                    iataCode: string;
+                  }) => {
+                    // console.log(`${obj.detailedName}, ${obj.iataCode}`);
+
+                    return {
+                      label: `${obj.detailedName}, ${obj.iataCode}`,
+                      ...obj,
+                    };
                   }
                 );
                 setDataSearchOriginState(newExampleData);
@@ -87,6 +104,9 @@ function FieldSearchAirs() {
           id="combo-box-demo"
           options={destination}
           className={``}
+          onChange={({ target }) =>
+            setDestinationSearchState((target as HTMLInputElement)?.innerHTML)
+          }
           sx={{}}
           renderInput={(params) => (
             <TextField
@@ -97,8 +117,15 @@ function FieldSearchAirs() {
                   `term=${e.target.value}`
                 );
                 const newExampleData = dateSearch.data.map(
-                  (obj: { address: { cityName: string } }) => {
-                    return { label: obj.address.cityName, ...obj };
+                  (obj: {
+                    address: { cityName: string };
+                    detailedName: string;
+                    iataCode: string;
+                  }) => {
+                    return {
+                      label: `${obj.detailedName}, ${obj.iataCode}`,
+                      ...obj,
+                    };
                   }
                 );
                 setDataSearchDestinationState(newExampleData);
