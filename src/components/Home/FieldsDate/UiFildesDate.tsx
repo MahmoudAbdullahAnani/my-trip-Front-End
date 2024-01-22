@@ -1,11 +1,11 @@
 import { useRecoilState } from "recoil";
-import { moduleDate } from "../../data/RecoilState/FormSearchData";
+import { moduleDate } from "../../../data/RecoilState/FormSearchData";
 import FieldsDate from "./FieldsDate";
 import {
   dateGo,
   dateReturn,
   typeTravel,
-} from "../../data/RecoilState/FormHandling";
+} from "../../../data/RecoilState/FormHandling";
 import { useRef } from "react";
 
 const iconDate = (
@@ -127,7 +127,7 @@ function UiFildesDate() {
           </span>
         </div>
       </div>
-      {!typeTravelRecoilState  && (
+      {typeTravelRecoilState === "roundTrip" && (
         <div className={`flex flex-col gap-[6px]`}>
           <h4 className={`text-[#000] text-[20px] font-[500] `}>العودة</h4>
           <div className={`relative `}>

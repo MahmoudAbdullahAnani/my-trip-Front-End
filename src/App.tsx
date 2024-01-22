@@ -19,15 +19,12 @@ import { addUserLogged } from "./data/Features/LoggedUser";
 import { useRecoilState } from "recoil";
 import isLoading from "./data/RecoilState/Loading";
 import { Loder } from "./components/loder/Loder";
-// import Form from "./components/Form";
-// import HandleForm from "./components/HandleForm";
-// import { typeTravel } from "./data/RecoilState/FormHandling";
-import HeroSection from "./components/Home/HeroSection";
-import MoveBgHeroSection from "./components/Home/MoveBgHeroSection";
-import MyTestCombobox from "./components/test/FormTest";
 
-// Components
-// import Form from './components/Form';
+import HeroSection from "./components/Home/Systems/HeroSection";
+import MoveBgHeroSection from "./components/Home/Systems/MoveBgHeroSection";
+import NavTopMobile from "./layout/NavTopMobile";
+
+
 
 // Handle driver
 
@@ -151,14 +148,15 @@ function App() {
           path="/"
           element={
             <section>
+              <NavTopMobile />
               <MoveBgHeroSection>
                 <HeroSection />
               </MoveBgHeroSection>
-              <div
+              {/* <div
                 className={`lg:mt-[calc(100vh-74px)] mt-[calc(100vh-50.6px)]`}
               >
                 This is test content
-              </div>
+              </div> */}
             </section>
           }
         />
@@ -167,14 +165,7 @@ function App() {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/verifyCode" element={<VerifyCode />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route
-          path="/search"
-          element={
-            <>
-              <MyTestCombobox />
-            </>
-          }
-        />
+        <Route path="/search" element={<>{/* <MyTestCombobox /> */}</>} />
       </Routes>
     </div>
   );

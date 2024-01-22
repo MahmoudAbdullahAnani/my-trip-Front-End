@@ -99,7 +99,7 @@ function Navbar() {
           stroke: "#FFF",
           backdropFilter: "blur(10px)",
         }}
-        className={`lg:hidden pt-[.8rem] block justify-between gap-5   ${
+        className={`lg: hidden pt-[.8rem] block justify-between gap-5   ${
           toggle ? "bg-[#005A6C]" : ""
         }  items-center sticky top-0 z-50`}
       >

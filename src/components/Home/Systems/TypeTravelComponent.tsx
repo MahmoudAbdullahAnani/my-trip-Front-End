@@ -1,38 +1,20 @@
 import { useRecoilState } from "recoil";
-// import HandleForm from "../HandleForm";
-import { useState } from "react";
-import { typeSystem, typeTravel } from "../../data/RecoilState/FormHandling";
-import FieldSearchAirs from "../FieldSearchAirs";
-// import HandleFieldsData from "../HandleFieldsData";
-import LevelTravel from "./LevelTravel";
-import MoreData from "./MoreData";
-import FormModule from "./FormModule";
-// import FieldsDate from "./FieldsDate";
-import UiFildesDate from "./UiFildesDate";
-// import TypeTravelComponent from "../TypeTravelComponent";
+import { typeTravel } from "../../../data/RecoilState/FormHandling";
 
-function HeroSection() {
-  const [, setTypeTravelRecoilState] = useRecoilState(typeTravel);
-  const [typeSystemState] = useRecoilState(typeSystem);
-  const [typeTravelState, setTypeTravel] = useState("roundTrip");
-
-  if (typeSystemState === "car") {
-    return <FormModule>cart</FormModule>;
-  }
-  if (typeSystemState === "hotel") {
-    return <FormModule>Hotels</FormModule>;
-  }
+function TypeTravelComponent() {
+  const [typeTravelState, setTypeTravelRecoilState] =
+    useRecoilState(typeTravel);
+  // const [typeTravelState, setTypeTravel] = useState("roundTrip");
   return (
-    <FormModule>
-      <div>
+    <>
+      <div className="lg:block hidden">
         <form
           className={`flex justify-start lg:gap-[26px] gap-[10px] lg:flex-nowrap flex-wrap`}
         >
           <div className={`flex gap-[12px] `}>
             <input
               onChange={() => {
-                setTypeTravel("roundTrip");
-                setTypeTravelRecoilState(false);
+                setTypeTravelRecoilState("roundTrip");
               }}
               id="roundTrip"
               name="TypeTravel"
@@ -50,8 +32,7 @@ function HeroSection() {
           <div className={`flex gap-[12px]`}>
             <input
               onChange={() => {
-                setTypeTravel("oneWay");
-                setTypeTravelRecoilState(true);
+                setTypeTravelRecoilState("oneWay");
               }}
               id="oneWay"
               name="TypeTravel"
@@ -68,15 +49,15 @@ function HeroSection() {
           </div>
           <div className={`flex gap-[12px]`}>
             <input
-              onChange={() => setTypeTravel("radio-1")}
-              id="radio-1"
+              onChange={() => setTypeTravelRecoilState("hyper")}
+              id="hyper"
               name="TypeTravel"
               type="radio"
               className={`cursor-pointer`}
-              checked={typeTravelState === "radio-1" }
+              checked={typeTravelState === "hyper"}
             />
             <label
-              htmlFor="radio-1"
+              htmlFor="hyper"
               className="radio-label text-[14px] font-[400] text-[#000] cursor-pointer whitespace-nowrap"
             >
               وجهات متعددة
@@ -84,22 +65,8 @@ function HeroSection() {
           </div>
         </form>
       </div>
-      {/* Inputs */}
-      {/* <TypeTravelComponent /> */}
-      <div
-        className={`flex xl:flex-nowrap flex-wrap sm:gap-[24px] gap-[10px] sm:justify-normal justify-center`}
-      >
-        <FieldSearchAirs />
-        {/* <HandleFieldsData /> */}
-        <UiFildesDate />
-        
-        <LevelTravel />
-      </div>
-      <div>
-        <MoreData />
-      </div>
-    </FormModule>
+    </>
   );
 }
 
-export default HeroSection;
+export default TypeTravelComponent;

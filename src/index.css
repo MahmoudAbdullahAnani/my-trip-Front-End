@@ -4,6 +4,12 @@
 
 /* @import url('https://fonts.cdnfonts.com/css/lama-sans'); */
 
+@layer components {
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   font-family: LamaSans;
   src: url(./../public/assets/font/LamaSans-Medium.ttf);
@@ -75,15 +81,17 @@
 
 /* Style the checkmark/indicator */
 .containerCheckBox .checkmark:after {
-  left: 30%;
-  top: 15%;
+  left: 16%;
+  top: 0%;
+  /* rotate: 40deg; */
   width: 6.5px;
   height: 11px;
   border: solid #117c99;
   border-width: 0 3px 3px 0;
   -webkit-transform: translate(50%);
   -ms-transform: translate(50%);
-  transform: rotate(45deg);
+  transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
   -moz-transform: translate(50%);
   -o-transform: translate(50%);
   border-radius: 1px;
@@ -111,17 +119,27 @@
 /* Start Css Date */
 .rdrCalendarWrapper {
   fill: rgba(182, 231, 251, 0.3);
-  stroke-width: 1px;
+  strokewidth: 1px;
   stroke: #fff;
   backdrop-filter: blur(10px) !important;
 
-  background-color: #005A6C !important;
+  background-color: #005a6c !important;
 }
 /* End Css Date */
+
+/* Start Css Autocomplete */
+.peartAutocomplete .MuiAutocomplete-inputRoot {
+  padding: 0px;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+/* End Css Autocomplete */
 
 body {
   /* font-family: Arial, Helvetica, sans-serif; */
   /* height: 800vw; */
+  background-color: rgba(56, 50, 50, 0.546);
 }
 .react-datepicker__calendar-icon {
   position: absolute;

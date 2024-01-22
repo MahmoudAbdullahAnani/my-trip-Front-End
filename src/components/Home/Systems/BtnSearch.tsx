@@ -3,17 +3,17 @@ import {
   dateGo,
   dateReturn,
   destinationSearch,
-  textSearch,
-} from "../../data/RecoilState/FormHandling";
+  originSearch,
+} from "../../../data/RecoilState/FormHandling";
 import {
   adultsData,
   childrenData,
   levelTravelData,
   youthsData,
-} from "../../data/RecoilState/FormSearchData";
+} from "../../../data/RecoilState/FormSearchData";
 
 function BtnSearch() {
-  const [locationFrom] = useRecoilState(textSearch);
+  const [locationFrom] = useRecoilState(originSearch);
   const [destinationSearchState] = useRecoilState(destinationSearch);
   const [dateGoState] = useRecoilState(dateGo);
   const [dateReturnState] = useRecoilState(dateReturn);

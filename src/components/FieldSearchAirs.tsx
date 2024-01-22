@@ -4,7 +4,7 @@ import {
   dateSearchDestination,
   dateSearchOrigin,
   destinationSearch,
-  textSearch,
+  originSearch,
 } from "../data/RecoilState/FormHandling";
 import { Autocomplete, TextField } from "@mui/material";
 const CancelToken = axios.CancelToken;
@@ -34,24 +34,25 @@ function FieldSearchAirs() {
   const [destination, setDataSearchDestinationState] = useRecoilState(
     dateSearchDestination
   );
-  const [, setLocationFrom] = useRecoilState(textSearch);
+  const [, setLocationFrom] = useRecoilState(originSearch);
   const [, setDestinationSearchState] = useRecoilState(destinationSearch);
-  console.log("origin", origin);
-  console.log("destination", destination);
+  // console.log("origin", origin);
+  // console.log("destination", destination);
 
   return (
     <div
       className={`flex sm:gap-[24px] gap-[10px] sm:justify-normal justify-center  lg:flex-nowrap flex-wrap`}
     >
-      <div className={`flex flex-col gap-[6px]`}>
+      <div className={`peartAutocomplete flex flex-col gap-[6px]`}>
         {/* Input Origin Air */}
         <h4 className={`text-[#000] text-[20px] font-[500] `}>المغادرة من</h4>
         <Autocomplete
-          dir="rtl"
+          freeSolo
           disablePortal
+          dir="rtl"
           id="combo-box-demo"
           options={origin}
-          className={``}
+          className={`text-end`}
           onChange={
             ({ target }) =>
               setLocationFrom((target as HTMLInputElement)?.innerHTML)
@@ -60,7 +61,8 @@ function FieldSearchAirs() {
           renderInput={(params) => (
             <TextField
               {...params}
-              className={`outline-none`}
+              className={`outline-none `}
+              placeholder="المغادرة من..."
               onChange={async (e) => {
                 const dateSearch = await getData(
                   "airportSearch",
@@ -76,7 +78,6 @@ function FieldSearchAirs() {
 
                     return {
                       label: `${obj.detailedName}, ${obj.iataCode}`,
-                      ...obj,
                     };
                   }
                 );
@@ -90,16 +91,18 @@ function FieldSearchAirs() {
                   "box-shadow: 0px 4px 15px 0px rgba(88, 168, 247, 0.25);",
                 background: "#FFF",
                 color: "#117C99",
+                borderRadius: "8px",
               }}
             />
           )}
         />
       </div>
-      <div className={`flex flex-col gap-[6px]`}>
+      <div className={`peartAutocomplete flex flex-col gap-[6px]`}>
         {/* Input destination Air */}
         <h4 className={`text-[#000] text-[20px] font-[500] `}>الوجهة</h4>
 
         <Autocomplete
+          freeSolo
           disablePortal
           id="combo-box-demo"
           options={destination}
@@ -139,6 +142,7 @@ function FieldSearchAirs() {
                 boxShadow:
                   "box-shadow: 0px 4px 15px 0px rgba(88, 168, 247, 0.25);",
                 background: "#FFF",
+                borderRadius: "8px",
               }}
             />
           )}

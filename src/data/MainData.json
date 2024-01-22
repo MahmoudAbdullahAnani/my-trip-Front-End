@@ -77,12 +77,12 @@
     "name": "CAIRO",
     "detailedName": "CAIRO/IL/US",
     "id": "CCIR",
- /*   "self": {
+    "self": {
         "href": "https://test.api.amadeus.com/v1/reference-data/locations/CCIR",
         "methods": [
             "GET"
         ]
-    },*/
+    },
     "timeZoneOffset": "-06:00",
     "iataCode": "CIR",
     "geoCode": {

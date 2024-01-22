@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { typeSystem } from "../../data/RecoilState/FormHandling";
+import { typeSystem } from "../../../data/RecoilState/FormHandling";
 
 const dataSystems = [
   {
@@ -307,7 +307,7 @@ function ControlSystems() {
   const [typeSystemState, setTypeSystemState] = useRecoilState(typeSystem);
   return (
     <>
-      <div className={`sm:flex hidden justify-end gap-[24px]  `}>
+      <div className={`lg:flex hidden justify-end gap-[24px]  `}>
         {dataSystems.map(({ name, title, iconActive, icon }) => (
           <div
             key={`${name}-${Math.random()}`}

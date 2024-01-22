@@ -7,7 +7,7 @@ import {
   childrenData,
   levelTravelData,
   youthsData,
-} from "../../data/RecoilState/FormSearchData";
+} from "../../../data/RecoilState/FormSearchData";
 
 const iconData = (
   <svg

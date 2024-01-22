@@ -38,7 +38,7 @@ import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
 import {
   destinationSearch,
-  textSearch,
+  originSearch,
 } from "../data/RecoilState/FormHandling";
 
 // async function FetchExampleData(token: string, route: string, query: string) {
@@ -73,7 +73,7 @@ async function FetchExampleData(route: string, query: string) {
 export default function Form({ isOrigin }: { isOrigin: boolean }) {
   const [dataLocations, setDataLocations] = React.useState([]);
   const [keyword, setKeyword] = useRecoilState(
-    isOrigin ? textSearch : destinationSearch
+    isOrigin ? originSearch : destinationSearch
   );
 
   // const GetPlace = async () => {
