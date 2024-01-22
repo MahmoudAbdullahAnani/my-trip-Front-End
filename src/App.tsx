@@ -22,7 +22,7 @@ import { Loder } from "./components/loder/Loder";
 
 import HeroSection from "./components/Home/Systems/HeroSection";
 import MoveBgHeroSection from "./components/Home/Systems/MoveBgHeroSection";
-import NavTopMobile from "./layout/NavTopMobile";
+// import NavTopMobile from "./layout/NavTopMobile";
 
 
 
@@ -148,7 +148,7 @@ function App() {
           path="/"
           element={
             <section>
-              <NavTopMobile />
+              
               <MoveBgHeroSection>
                 <HeroSection />
               </MoveBgHeroSection>

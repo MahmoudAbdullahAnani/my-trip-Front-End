@@ -3,13 +3,17 @@ import React from "react";
 import mainImage1 from "./../../../../public/assets/heroSection.jpeg";
 function MoveBgHeroSection({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`h-[100vh] absolute w-full top-0 flex  bg-red-[##b37948] `}>
+    <div
+      className={`h-[100vh] absolute w-full top-0 flex  bg-red-[##b37948]  `}
+    >
       <img
         className={` h-[100vh] absolute w-full top-0  bg-red-[##b37948] lg:object-fill object-cover`}
         src={mainImage1}
         alt=""
       />
-      <div className={`w-full h-full z-10 flex justify-center items-center  `}>
+      <div
+        className={`w-full h-full z-10 flex justify-center lg:items-center mt-[calc(25px+54px)]`}
+      >
         {children}
       </div>
     </div>

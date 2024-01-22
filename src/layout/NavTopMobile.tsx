@@ -4,7 +4,7 @@ import { iconHi, iconNotifications, iconUser } from "../assets/icons/home";
 function NavTopMobile() {
   return (
     <div
-      className={`lg:hidden flex justify-between ps-[16px] pe-[20px] pt-[calc(54px+26px)] z-20 absolute top-0 w-full`}
+      className={`lg:hidden flex justify-between ps-[16px] pe-[20px] `}
     >
       {/* Icon Notifications */}
       <div className={`rounded-full hover:bg-[#59adca3d] cursor-pointer`}>
