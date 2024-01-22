@@ -73,23 +73,23 @@ export const switchLocation = (
     <path
       d="M5 9.84521H19"
       stroke="black"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M5 15.8452H19"
       stroke="black"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M14 4.84521L9 9.84521L15 15.8452L10 20.8452"
       stroke="black"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -136,16 +136,16 @@ export const iconUser = (
     <path
       d="M24 23C26.2091 23 28 21.2091 28 19C28 16.7909 26.2091 15 24 15C21.7909 15 20 16.7909 20 19C20 21.2091 21.7909 23 24 23Z"
       stroke="#117C99"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M31 33V31C31 29.9391 30.5786 28.9217 29.8284 28.1716C29.0783 27.4214 28.0609 27 27 27H21C19.9391 27 18.9217 27.4214 18.1716 28.1716C17.4214 28.9217 17 29.9391 17 31V33"
       stroke="#117C99"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -159,7 +159,7 @@ export const iconNotifications = (
     xmlns="http://www.w3.org/2000/svg"
   >
     <g filter="url(#filter0_b_552_2485)">
-      <rect width="48" height="48" rx="24" fill="#B6E7FB" fill-opacity="0.3" />
+      <rect width="48" height="48" rx="24" fill="#B6E7FB" fillOpacity="0.3" />
       <rect
         x="0.5"
         y="0.5"
@@ -171,16 +171,16 @@ export const iconNotifications = (
       <path
         d="M18 19.9973C18 18.406 18.6321 16.8799 19.7574 15.7547C20.8826 14.6295 22.4087 13.9973 24 13.9973C25.5913 13.9973 27.1174 14.6295 28.2426 15.7547C29.3679 16.8799 30 18.406 30 19.9973C30 26.9973 33 28.9973 33 28.9973H15C15 28.9973 18 26.9973 18 19.9973Z"
         stroke="#005A6C"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M22.3 32.9973C22.4674 33.3018 22.7135 33.5557 23.0125 33.7325C23.3116 33.9094 23.6526 34.0026 24 34.0026C24.3475 34.0026 24.6885 33.9094 24.9876 33.7325C25.2866 33.5557 25.5327 33.3018 25.7 32.9973"
         stroke="#005A6C"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </g>
     <defs>
@@ -191,9 +191,9 @@ export const iconNotifications = (
         width="56"
         height="56"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feGaussianBlur in="BackgroundImageFix" stdDeviation="2" />
         <feComposite
           in2="SourceAlpha"
@@ -215,8 +215,8 @@ export const iconNotifications = (
         y2="48"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="white" />
-        <stop offset="1" stop-color="white" stop-opacity="0" />
+        <stop stopColor="white" />
+        <stop offset="1" stopColor="white" stopOpacity="0" />
       </linearGradient>
     </defs>
   </svg>

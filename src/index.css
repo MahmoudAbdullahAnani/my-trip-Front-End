@@ -119,7 +119,7 @@
 /* Start Css Date */
 .rdrCalendarWrapper {
   fill: rgba(182, 231, 251, 0.3);
-  stroke-width: 1px;
+  strokewidth: 1px;
   stroke: #fff;
   backdrop-filter: blur(10px) !important;
 
