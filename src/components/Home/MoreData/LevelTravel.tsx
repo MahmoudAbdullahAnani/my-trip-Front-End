@@ -133,7 +133,7 @@ function LevelTravel() {
     <div className={``}>
       <div className={`flex flex-col gap-[6px]`}>
         {/* Input Origin Air */}
-        <h4 className={`text-[#000] text-[20px] font-[500] `}>
+        <h4 className={`text-[#000] text-[20px] font-[500] hidden ml:block`}>
           المسافرين & الدرجة
         </h4>
         <div

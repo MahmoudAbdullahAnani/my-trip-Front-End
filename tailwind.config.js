@@ -2,10 +2,10 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-
     extend: {
       screens: {
-        mm:"375px",
+        mm: "375px",
+        ml: "426px",
         sm: "576px",
         md: "768px",
         lg: "992px",

@@ -109,7 +109,9 @@ function UiFildesDate() {
       className={`flex sm:gap-[24px] gap-[10px]  sm:justify-normal justify-center lg:flex-nowrap flex-wrap  relative`}
     >
       <div className={`flex flex-col gap-[6px]`}>
-        <h4 className={`text-[#000] text-[20px] font-[500] `}>الذهاب</h4>
+        <h4 className={`text-[#000] text-[20px] font-[500] hidden ml:block`}>
+          الذهاب
+        </h4>
         <div className={`relative `}>
           <input
             ref={refIcon1}
@@ -129,7 +131,9 @@ function UiFildesDate() {
       </div>
       {typeTravelRecoilState === "roundTrip" && (
         <div className={`flex flex-col gap-[6px]`}>
-          <h4 className={`text-[#000] text-[20px] font-[500] `}>العودة</h4>
+          <h4 className={`text-[#000] text-[20px] font-[500] hidden ml:block `}>
+            العودة
+          </h4>
           <div className={`relative `}>
             <input
               ref={refIcon2}
