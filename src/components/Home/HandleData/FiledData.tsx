@@ -7,7 +7,7 @@ function FiledData() {
   return (
     <>
       <div
-        className={`flex xl:flex-nowrap flex-wrap sm:gap-[24px] gap-[10px] sm:justify-normal justify-center`}
+        className={`flex xl:flex-nowrap flex-wrap sm:gap-[24px] gap-[10px] sm:justify-normal ml:flex-row flex-row-reverse justify-center`}
       >
         <HandleFieldsSearch />
         <UiFildesDate />

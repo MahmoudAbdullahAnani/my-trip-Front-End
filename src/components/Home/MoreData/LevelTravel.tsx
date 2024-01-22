@@ -142,7 +142,7 @@ function LevelTravel() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
-          className={`text-[14px] relative font-medium text-[#117C99]  w-[212px] h-[48px] rounded-lg bg-[#FFF] flex justify-start items-center px-[15px] cursor-pointer `}
+          className={`text-[14px] relative font-medium text-[#117C99] ml:w-[212px] w-[156px] h-[48px] rounded-lg bg-[#FFF] flex justify-start items-center px-[15px] cursor-pointer `}
         >
           {iconData}
           <div className={`flex gap-[5px]`}>
@@ -170,8 +170,8 @@ function LevelTravel() {
             )} */}
             {levelTravelDataState !== "" && (
               <>
-                &
-                <div className={``}>
+                <span className="ml:block hidden">&</span>
+                <div className={`ml:block hidden`}>
                   <span>
                     {handleTranslationLevelTravelData(levelTravelDataState)}
                   </span>
