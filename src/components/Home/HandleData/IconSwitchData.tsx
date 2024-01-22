@@ -36,13 +36,13 @@ function IconSwitchData() {
     <>
       <span
         onClick={handleSwitchData}
-        className={`relative top-[calc(38px/2)] cursor-pointer duration-300 hidden ml:block ${animation}`}
+        className={`relative top-[calc(38px/2)] cursor-pointer duration-300 hidden sm:block ${animation}`}
       >
         {switchLocation}
       </span>
       <span
         onClick={handleSwitchData}
-        className={`absolute left-[45px] z-10 cursor-pointer duration-300 ml:hidden block ${animation}`}
+        className={`absolute left-[45px] z-10 cursor-pointer duration-300 sm:hidden block ${animation}`}
       >
         {switchLocationMobile}
       </span>

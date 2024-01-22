@@ -63,11 +63,11 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
   const [, setDestinationSearchState] = useRecoilState(destinationSearch);
   const refFocus = useRef(null);
   return (
-    <div className="relative no-scrollbar ml:w-fit w-full">
+    <div className="relative no-scrollbar sm:w-fit w-full">
       <Combobox value={selectedPerson} onChange={setSelectedPerson}>
         <div
           style={{ boxShadow: "0px 4px 15px 0px rgba(88, 168, 247, 0.25)" }}
-          className={`bg-[#FFF] w-full ml:w-[188px] h-[48px] rounded-[8px] relative`}
+          className={`bg-[#FFF] w-full sm:w-[188px] h-[48px] rounded-[8px] relative`}
         >
           <Combobox.Input
             ref={refFocus}
@@ -80,14 +80,14 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
               setQuery(event.target.value);
             }}
             style={{ boxShadow: "0px 4px 15px 0px rgba(88, 168, 247, 0.25)" }}
-            className={`bg-[#FFF]  w-full ml:w-[188px] h-[48px] rounded-[8px] ml:text-center ml:px-0 p-[10px] text-[#117C99] text-[14px] font-[600]`}
+            className={`bg-[#FFF]  w-full sm:w-[188px] h-[48px] rounded-[8px] sm:text-center sm:px-0 p-[10px] text-[#117C99] text-[14px] font-[600]`}
           />
           {typeInput === "from" ? (
             <>
               {" "}
               {fromSwitchDataState && (
                 <div
-                  className={`absolute top-0 flex justify-center items-center left-0 bg-[#FFF]  ml:w-[188px] w-full h-[48px] rounded-[8px]`}
+                  className={`absolute top-0 flex justify-center items-center left-0 bg-[#FFF]  sm:w-[188px] w-full h-[48px] rounded-[8px]`}
                 >
                   <span
                     onClick={() => setFromSwitchDataState("")}
@@ -125,7 +125,7 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
               {" "}
               {toSwitchDataState && (
                 <div
-                  className={`absolute top-0 flex justify-center items-center left-0 bg-[#FFF]  ml:w-[188px] w-full h-[48px] rounded-[8px]`}
+                  className={`absolute top-0 flex justify-center items-center left-0 bg-[#FFF]  sm:w-[188px] w-full h-[48px] rounded-[8px]`}
                 >
                   <span
                     onClick={() => setToSwitchDataState("")}
@@ -162,7 +162,7 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
 
           <div
             // onClick={() => refFocus.current.focus()}
-            className={`absolute top-[11.85px] right-[15px] ml:block hidden`}
+            className={`absolute top-[11.85px] right-[15px] sm:block hidden`}
           >
             {typeInput === "from" ? (
               <span>{iconFrom}</span>

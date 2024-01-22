@@ -24,7 +24,7 @@ function TypeTravelComponentMobile() {
             typeTravelState === "hyper"
               ? "bg-[#117C99] text-[#FFF] font-[700] whitespace-nowrap"
               : "font-[400] text-[#333] "
-          }   flex-1 text-center rounded-[60px] flex items-center justify-center cursor-pointer text-[16px] p-[10px] sm:whitespace-nowrap `}
+          }   flex-1 text-center rounded-[60px] flex items-center justify-center cursor-pointer text-[16px] p-[10px] lg:whitespace-nowrap `}
         >
           <h5>وجهات متعددة</h5>
         </div>
@@ -35,7 +35,7 @@ function TypeTravelComponentMobile() {
             typeTravelState === "roundTrip"
               ? "bg-[#117C99] text-[#FFF] font-[700] whitespace-nowrap"
               : "font-[400] text-[#333]"
-          } flex-1 text-center rounded-[60px] flex items-center justify-center cursor-pointer text-[16px] p-[10px] sm:whitespace-nowrap `}
+          } flex-1 text-center rounded-[60px] flex items-center justify-center cursor-pointer text-[16px] p-[10px] lg:whitespace-nowrap `}
         >
           <h5>ذهاب وعودة</h5>
         </div>
@@ -46,7 +46,7 @@ function TypeTravelComponentMobile() {
             typeTravelState === "oneWay"
               ? "bg-[#117C99] text-[#FFF] font-[700] whitespace-nowrap"
               : "font-[400]  text-[#333]"
-          }  flex-1 text-center rounded-[60px] flex items-center justify-center cursor-pointer text-[16px] p-[10px] sm:whitespace-nowrap`}
+          }  flex-1 text-center rounded-[60px] flex items-center justify-center cursor-pointer text-[16px] p-[10px] lg:whitespace-nowrap`}
         >
           <h5>ذهاب فقط</h5>
         </div>
