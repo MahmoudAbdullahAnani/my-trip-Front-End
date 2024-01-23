@@ -67,8 +67,8 @@ function ResetPassword() {
     await axios
       .post(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
-          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}updatePassword`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}updatePassword`,
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/updatePassword`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/updatePassword`,
         {
           password,
           confirmPassword,

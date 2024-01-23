@@ -16,6 +16,7 @@ const initialState: SchemaUser = {
   firstName: "",
   lastName: "",
   role: "",
+  avatar:"",
 };
 
 export const isLoggedUser = createSlice({
@@ -37,6 +38,7 @@ export const isLoggedUser = createSlice({
       state.firstName = "";
       state.lastName = "";
       state.role = "";
+      state.avatar = "";
       return state
     },
   },

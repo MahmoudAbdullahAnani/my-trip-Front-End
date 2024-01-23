@@ -12,7 +12,7 @@ import { addUserLogged } from "../data/Features/LoggedUser";
 import { LinksForgotPassword } from "../components/ResetPassword/ForgotPassword";
 // interfaces
 export interface Inputs {
-  userName: string;
+  email: string;
   password: string;
 }
 interface DTOInputs {
@@ -25,10 +25,10 @@ interface DTOInputs {
 }
 // Schema Login
 const LoginSchema = z.object({
-  userName: z
+  email: z
     .string()
-    .min(3, { message: "the user name very short" })
-    .max(30, { message: "the user name very long" }),
+    .min(3, { message: "the email very short" })
+    .max(30, { message: "the email very long" }),
   password: z
     .string()
     .min(3, { message: "the password very short" })
@@ -47,6 +47,7 @@ export interface SchemaUser {
   role: string;
   active?: boolean;
   verificationCode?: string;
+  avatar?: string;
 }
 function setData(token: string) {
   localStorage.setItem("token", token);
@@ -68,10 +69,10 @@ function Login() {
     mode: "onChange",
   });
   const onSubmit: SubmitHandler<Inputs> = async ({
-    userName,
+    email,
     password,
   }: {
-    userName: string;
+    email: string;
     password: string;
   }) => {
     setIncorrectData("");
@@ -80,10 +81,10 @@ function Login() {
     await axios
       .post(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
-          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}signin`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}signin`,
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/signin`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/signin`,
         {
-          userName,
+          email,
           password,
         }
       )
@@ -102,16 +103,16 @@ function Login() {
   const LoginInputs = [
     {
       type: "text",
-      placeholder: "write your user name...",
+      placeholder: "write your email...",
       classes:
         "px-3 py-2 rounded-lg bg-slate-400 placeholder:text-white focus:text-[#000] focus:bg-white ",
-      register: register("userName"),
+      register: register("email"),
       name: "userName",
       error: (
         <span
           className={`bg-red-400 mt-2 text-center rounded-md text-[#fafafa]`}
         >
-          {errors?.userName?.message}
+          {errors?.email?.message}
         </span>
       ),
     },

@@ -60,8 +60,8 @@ function ForgotPassword() {
     await axios
       .post(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
-          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}resetPassword`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}resetPassword`,
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/resetPassword`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/resetPassword`,
         {
           email,
         }
