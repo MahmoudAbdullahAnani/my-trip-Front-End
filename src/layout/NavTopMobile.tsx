@@ -3,15 +3,29 @@ import { iconHi, iconNotifications, iconUser } from "../assets/icons/home";
 import { useSelector } from "react-redux";
 import { RootState } from "../data/store";
 
+// Component
+import NotificationComponent from "../components/Home/Systems/Notification/NotificationComponent";
+import { useRecoilState } from "recoil";
+import { allNotifications } from "../data/RecoilState/Notifications/NotificationsData";
+import { useEffect } from "react";
 function NavTopMobile() {
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
+
+  const [allNotificationsState] = useRecoilState(allNotifications);
+  console.log("allNotificationsState===> ", allNotificationsState);
+  // console.log("publicNotifications===> ", publicNotifications);
+  useEffect(() => {}, [allNotifications]);
 
   return (
     <div className={`lg:hidden flex justify-between ps-[16px] pe-[20px] `}>
       {/* Icon Notifications */}
-      <div className={`rounded-full hover:bg-[#59adca3d] cursor-pointer`}>
-        {iconNotifications}
-      </div>
+      {stateUserData._id === "" ? (
+        <div className={`rounded-full hover:bg-[#59adca3d] cursor-pointer`}>
+          {iconNotifications}
+        </div>
+      ) : (
+        <NotificationComponent />
+      )}
       {/* Icon User */}
       <div className={`flex gap-[16px]`}>
         {stateUserData.userName === "" ? (

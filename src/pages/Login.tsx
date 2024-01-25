@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUserLogged } from "../data/Features/LoggedUser";
 import { LinksForgotPassword } from "../components/ResetPassword/ForgotPassword";
+import { reRenderData } from "../data/RecoilState/Notifications/NotificationsData";
+import { useRecoilState } from "recoil";
 // interfaces
 export interface Inputs {
   email: string;
@@ -53,6 +55,8 @@ function setData(token: string) {
   localStorage.setItem("token", token);
 }
 function Login() {
+  const [, setReRenderDataApp] = useRecoilState(reRenderData);
+
   // State Management
   const dispatch = useDispatch();
 
@@ -92,6 +96,7 @@ function Login() {
         navigate("/");
         dispatch(addUserLogged(response.data?.data));
         setData(response.data.token);
+        setReRenderDataApp(false);
       })
       .catch(({ response }) => {
         setIncorrectData(response.data?.message);

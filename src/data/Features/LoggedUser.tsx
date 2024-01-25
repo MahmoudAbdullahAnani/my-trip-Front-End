@@ -16,7 +16,7 @@ const initialState: SchemaUser = {
   firstName: "",
   lastName: "",
   role: "",
-  avatar:"",
+  avatar: "",
 };
 
 export const isLoggedUser = createSlice({
@@ -26,7 +26,6 @@ export const isLoggedUser = createSlice({
     addUserLogged: (state, action: PayloadAction<SchemaUser>) => {
       state = action.payload;
       return state;
-
     },
     userLoggedOut: (state) => {
       state.password = "";
@@ -39,7 +38,7 @@ export const isLoggedUser = createSlice({
       state.lastName = "";
       state.role = "";
       state.avatar = "";
-      return state
+      return state;
     },
   },
 });

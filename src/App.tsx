@@ -22,9 +22,13 @@ import { Loder } from "./components/loder/Loder";
 
 import HeroSection from "./components/Home/Systems/HeroSection";
 import MoveBgHeroSection from "./components/Home/Systems/MoveBgHeroSection";
+import {
+  allNotifications,
+  privateNotifications,
+  publicNotifications,
+  reRenderData,
+} from "./data/RecoilState/Notifications/NotificationsData";
 // import NavTopMobile from "./layout/NavTopMobile";
-
-
 
 // Handle driver
 
@@ -89,6 +93,77 @@ function RunDriver() {
 
 // App Component
 function App() {
+  const [, setAllNotifications] =
+    useRecoilState(allNotifications);
+  const [publicNotificationsState, setPublicNotifications] =
+    useRecoilState(publicNotifications);
+  const [privateNotificationsState, setPrivateNotifications] =
+    useRecoilState(privateNotifications);
+  const [reRenderDataApp, setReRenderDataApp] = useRecoilState(reRenderData);
+  const getPublicNotifications = async () => {
+    // if get token then fetch to data me
+    const token = localStorage.getItem("token") || "";
+    await axios
+      .get(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/public/notifications`
+          : `${
+              import.meta.env.VITE_PUBLIC_API_PRODUCTION
+            }/public/notifications`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(async ({ data }) => {
+        setPublicNotifications(data?.AllNotifications);
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response?.data.statusCode === 401) {
+          localStorage.removeItem("token");
+        }
+      });
+    // setLoading(false);
+    return true;
+  };
+  const getPrivateNotifications = async () => {
+    // if get token then fetch to data me
+    const token = localStorage.getItem("token") || "";
+    await axios
+      .get(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/notificationsUserMe`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/notificationsUserMe`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(async ({ data }) => {
+        // console.log(data?.Notifications);
+        setPrivateNotifications(data?.Notifications);
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response?.data.statusCode === 401) {
+          localStorage.removeItem("token");
+        }
+      });
+    // setLoading(false);
+    return true;
+  };
+  const handleAllNotifications = () => {
+    const allNotifications = [
+      ...publicNotificationsState,
+      ...privateNotificationsState,
+    ];
+    setAllNotifications(allNotifications);
+    setReRenderDataApp(!reRenderDataApp);
+  };
+
   const dispatch = useDispatch();
   const [loading, setLoading] = useRecoilState(isLoading);
 
@@ -110,7 +185,12 @@ function App() {
           },
         }
       )
-      .then(({ data }) => dispatch(addUserLogged(data)))
+      .then(async ({ data }) => {
+        dispatch(addUserLogged(data));
+        await getPublicNotifications();
+        await getPrivateNotifications();
+        handleAllNotifications();
+      })
       .catch((error) => {
         console.log(error);
         if (error.response?.data.statusCode === 401) {
@@ -128,7 +208,7 @@ function App() {
   useEffect(() => {
     RunDriver();
     oncData();
-  }, []);
+  }, [reRenderDataApp]);
   // const [dataSearchState] = useRecoilState(dateSearch);
 
   if (loading) {
@@ -148,7 +228,6 @@ function App() {
           path="/"
           element={
             <section>
-              
               <MoveBgHeroSection>
                 <HeroSection />
               </MoveBgHeroSection>
