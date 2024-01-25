@@ -221,7 +221,7 @@ function App() {
   }
 
   return (
-    <div className={` `}>
+    <>
       <Routes>
         <Route
           path="/"
@@ -245,7 +245,7 @@ function App() {
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="/search" element={<>{/* <MyTestCombobox /> */}</>} />
       </Routes>
-    </div>
+    </>
   );
 }
 
