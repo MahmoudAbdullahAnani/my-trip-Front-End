@@ -12,7 +12,7 @@ function MoveBgHeroSection({ children }: { children: React.ReactNode }) {
         alt=""
       />
       <div
-        className={`w-full h-full z-10 flex justify-center lg:items-center mt-[calc(25px+54px)]`}
+        className={`w-full h-full z-10 flex justify-center lg:items-center `}
       >
         {children}
       </div>

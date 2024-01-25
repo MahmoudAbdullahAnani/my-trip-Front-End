@@ -5,13 +5,13 @@ import DialogComponent from "../components/DialogComponent";
 import logo from "./../../public/assets/logo.png";
 // create context
 // Importing States
-import { useRecoilState } from "recoil";
-import sidBar from "../data/RecoilState/Sidebar";
+// import { useRecoilState } from "recoil";
+// import sidBar from "../data/RecoilState/Sidebar";
 import { useSelector } from "react-redux";
 import { RootState } from "../data/store";
 import { iconArithmetic, iconHome, iconTicket } from "../assets/icons/home";
 function Navbar() {
-  const [toggle, setToggle] = useRecoilState(sidBar);
+  // const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
 
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
@@ -92,36 +92,31 @@ function Navbar() {
 
       <nav
         style={{
-          borderBottom: "1px solid #0000001c",
-          paddingBottom: "5px",
-          fill: "rgba(182, 231, 251, 0.30)",
-          strokeWidth: "1px",
-          stroke: "#FFF",
-          backdropFilter: "blur(10px)",
-
           boxShadow: "0px 1px 10px 0px rgba(0, 90, 108, 0.30)",
         }}
-        className={`lg:hidden pt-[.8rem]  gap-5 items-center h-[50px] absolute w-full bottom-0 z-50 flex justify-between bg-[#FFF] mx-[26px]`}
+        className={`lg:hidden items-center h-[80px] absolute w-full bottom-0 z-50 flex gap-[57px] justify-between bg-[#FFF] ps-[26px] pe-[16px]`}
       >
         {[
-          { id: 1, title: "الرئيسية", route: "/", icon: iconHome },
-          { id: 2, title: "التذكرة", route: "/ticket", icon: iconTicket },
           {
             id: 3,
             title: "حسابي",
             route: "/arithmetic",
             icon: iconArithmetic,
           },
+          { id: 2, title: "التذكرة", route: "/ticket", icon: iconTicket },
+          { id: 1, title: "الرئيسية", route: "/", icon: iconHome },
         ].map(({ icon, route, title, id }) => (
           <Link
-            style={{
-              background: "rgba(0, 90, 108, 0.30)",
-            }}
-            className={`flex justify-center items-center gap-[2px] h-[48px] rounded-[16px]  px-[10px] py-[16px] text-center`}
+            // style={{
+            //   background: "rgba(0, 90, 108, 0.30)",
+            // }}
+            className={`flex justify-center ${
+              pathname === route && "bg-[#005A6C4D]"
+            } items-center gap-[2px] h-[48px] rounded-[16px] duration-300 px-[10px] py-[16px] text-center`}
             to={`${route}`}
             key={`${id}----${Math.random()}`}
           >
-            {/* <span>{title}</span> */}
+            {pathname === route && <span className={`text-[14px] font-bold text-[#005A6C]`}>{title}</span>}
             <span>{icon}</span>
           </Link>
         ))}

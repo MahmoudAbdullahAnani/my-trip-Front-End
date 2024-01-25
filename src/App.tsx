@@ -9,8 +9,8 @@ import { Routes, Route } from "react-router-dom";
 import { driver } from "driver.js";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./data/store";
+import { useDispatch } from "react-redux";
+// import { RootState } from "./data/store";
 import ForgotPassword from "./components/ResetPassword/ForgotPassword";
 import VerifyCode from "./components/ResetPassword/VerifyCode";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
@@ -93,8 +93,7 @@ function RunDriver() {
 
 // App Component
 function App() {
-  const [, setAllNotifications] =
-    useRecoilState(allNotifications);
+  const [, setAllNotifications] = useRecoilState(allNotifications);
   const [publicNotificationsState, setPublicNotifications] =
     useRecoilState(publicNotifications);
   const [privateNotificationsState, setPrivateNotifications] =
@@ -200,8 +199,8 @@ function App() {
     setLoading(false);
     return true;
   };
-  const stateUserData = useSelector((state: RootState) => state.loggedUser);
-  console.log(stateUserData);
+  // const stateUserData = useSelector((state: RootState) => state.loggedUser);
+  // console.log(stateUserData);
 
   // const [count, setCount] = useState(0)
 
