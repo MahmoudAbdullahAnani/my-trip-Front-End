@@ -138,7 +138,7 @@
 
 body {
   /* font-family: Arial, Helvetica, sans-serif; */
-  /* height: 800vw; */
+  height: 800vw;
   /* background-color: rgba(56, 50, 50, 0.546); */
 }
 .react-datepicker__calendar-icon {
