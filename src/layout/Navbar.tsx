@@ -9,6 +9,7 @@ import { useRecoilState } from "recoil";
 import sidBar from "../data/RecoilState/Sidebar";
 import { useSelector } from "react-redux";
 import { RootState } from "../data/store";
+import { iconArithmetic, iconHome, iconTicket } from "../assets/icons/home";
 function Navbar() {
   const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
@@ -93,188 +94,37 @@ function Navbar() {
         style={{
           borderBottom: "1px solid #0000001c",
           paddingBottom: "5px",
-          boxShadow: "0px 0px 7px -4px dimgrey",
           fill: "rgba(182, 231, 251, 0.30)",
           strokeWidth: "1px",
           stroke: "#FFF",
           backdropFilter: "blur(10px)",
-        }}
-        className={`lg: hidden pt-[.8rem] block justify-between gap-5   ${
-          toggle ? "bg-[#005A6C]" : ""
-        }  items-center sticky top-0 z-50`}
-      >
-        {/* Logo */}
-        <div
-          className={`flex justify-between w-full items-center  ps-[0.75rem] pe-[1.625rem]`}
-        >
-          <div className="flex gap-3 items-center">
-            <Link to={`/`}>
-              <img
-                width={50}
-                height={50}
-                src={logo}
-                className={`text-slate-400 font-bold text-4xl duration-300`}
-                style={{ fontSize: "3rem" }}
-              />
-            </Link>
-          </div>
-          <button
-            id="intro-element-5"
-            onClick={() => {
-              const el = document.getElementById("root");
-              const isFullScreen = document.fullscreenElement;
-              if (isFullScreen) {
-                document.exitFullscreen();
-              } else {
-                el?.requestFullscreen();
-              }
-            }}
-          >
-            {/* <FullscreenIcon /> */}
-          </button>
-          {!toggle ? (
-            <div id="intro-element-4" className="flex items-center gap-10">
-              <button
-                className="h-fit w-fit"
-                onClick={() => {
-                  if (toggle) {
-                    setToggle(false);
-                  } else {
-                    setToggle(true);
-                  }
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 28 28"
-                  fill="none"
-                >
-                  <path d="M3.5 21H24.5" stroke="#262626" />
-                  <path d="M3.5 14H24.5" stroke="#262626" />
-                  <path d="M3.5 7H24.5" stroke="#262626" />
-                </svg>
-              </button>
-            </div>
-          ) : (
-            <button
-              className="h-fit w-fit"
-              onClick={() => {
-                if (toggle) {
-                  setToggle(false);
-                } else {
-                  setToggle(true);
-                }
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="46"
-                height="46"
-                viewBox="0 0 46 46"
-                fill="none"
-              >
-                <path
-                  d="M29.2199 17.6776L17.9062 28.9913C17.5196 29.3778 16.8785 29.3778 16.492 28.9913C16.1054 28.6047 16.1054 27.9636 16.492 27.5771L27.8057 16.2634C28.1922 15.8768 28.8333 15.8768 29.2199 16.2634C29.6064 16.6499 29.6064 17.291 29.2199 17.6776Z"
-                  fill="#292D32"
-                />
-                <path
-                  d="M29.2199 28.9915C28.8333 29.3781 28.1922 29.3781 27.8057 28.9915L16.492 17.6778C16.1054 17.2913 16.1054 16.6501 16.492 16.2636C16.8785 15.877 17.5196 15.877 17.9062 16.2636L29.2199 27.5773C29.6064 27.9639 29.6064 28.605 29.2199 28.9915Z"
-                  fill="#292D32"
-                />
-              </svg>
-            </button>
-          )}
-        </div>
-        {/* Side */}
 
-        <div
-          style={{
-            fill: "rgba(182, 231, 251, 0.30)",
-            strokeWidth: "1px",
-            stroke: "#FFF",
-            backdropFilter: "blur(10px)",
-          }}
-          className={`absolute top-16 z-50 h-[100vh] left-0 pt-12 ${
-            toggle ? "w-full" : "w-0"
-          } duration-300 overflow-hidden bg-[#005A6C]`}
-        >
-          {/* Links */}
-          <div
-            dir="rtl"
-            style={{ fontFamily: "Inter" }}
-            className={`flex flex-col gap-[16px]  px-8`}
+          boxShadow: "0px 1px 10px 0px rgba(0, 90, 108, 0.30)",
+        }}
+        className={`lg:hidden pt-[.8rem]  gap-5 items-center h-[50px] absolute w-full bottom-0 z-50 flex justify-between bg-[#FFF] mx-[26px]`}
+      >
+        {[
+          { id: 1, title: "الرئيسية", route: "/", icon: iconHome },
+          { id: 2, title: "التذكرة", route: "/ticket", icon: iconTicket },
+          {
+            id: 3,
+            title: "حسابي",
+            route: "/arithmetic",
+            icon: iconArithmetic,
+          },
+        ].map(({ icon, route, title, id }) => (
+          <Link
+            style={{
+              background: "rgba(0, 90, 108, 0.30)",
+            }}
+            className={`flex justify-center items-center gap-[2px] h-[48px] rounded-[16px]  px-[10px] py-[16px] text-center`}
+            to={`${route}`}
+            key={`${id}----${Math.random()}`}
           >
-            {[
-              {
-                id: 1,
-                title: "طيران",
-                href: "/",
-                showLine: true,
-              },
-              {
-                id: 2,
-                title: "فنادق",
-                href: "/hotel",
-                showLine: true,
-              },
-              {
-                id: 3,
-                title: "توصيل",
-                href: "/contactUs",
-                showLine: true,
-              },
-              {
-                id: 4,
-                title: "الخطط",
-                href: "/search",
-                showLine: true,
-              },
-            ].map(({ id, title, href, showLine = false }) => (
-              <Link
-                onClick={() => {
-                  setToggle(false);
-                }}
-                key={id + Math.random()}
-                to={href}
-                className={`text-sm pb-[16px]    whitespace-nowrap ${
-                  showLine && "border-b-2"
-                } border-[#E5E5E5] text-[#FFF]`}
-              >
-                <button>{title}</button>
-              </Link>
-            ))}
-            <div
-              className={`flex gap-4 text-white bg-emerald-400 justify-around  rounded-lg`}
-            >
-              {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
-                <DialogComponent
-                  stylesBtn={"py-2 w-[40%] bg-emerald-500 text-center"}
-                />
-              ) : (
-                <Link
-                  onClick={() => {
-                    setToggle(false);
-                  }}
-                  to={`/login`}
-                  className={`py-2 bg-emerald-500 text-center w-[40%]`}
-                >
-                  تسجيل دخول
-                </Link>
-              )}
-              <Link
-                onClick={() => {
-                  setToggle(false);
-                }}
-                to={`/signup`}
-                className={`py-2 w-[40%] bg-emerald-500 text-center`}
-              >
-                انشاء حساب
-              </Link>
-            </div>
-          </div>
-        </div>
+            {/* <span>{title}</span> */}
+            <span>{icon}</span>
+          </Link>
+        ))}
       </nav>
     </>
   );
