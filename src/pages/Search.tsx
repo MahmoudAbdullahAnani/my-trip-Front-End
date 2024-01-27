@@ -91,8 +91,8 @@ function Search() {
         navigator("/");
       });
   };
+  
   console.log(trip);
-
   const navigator = useNavigate();
   useEffect(() => {
     if (!originLocationCode || !destinationLocationCode || !departureDate) {
