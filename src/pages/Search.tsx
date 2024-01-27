@@ -37,8 +37,8 @@ function Search() {
   // const [childrenDataState] = useRecoilState(childrenData);
   // const [youthsDataState] = useRecoilState(youthsData);
   const [adults] = useRecoilState(adultsData);
-
   const [typeTravelState] = useRecoilState(typeTravel);
+
 
   // Fetching Data
   const getDataSearch = async () => {
