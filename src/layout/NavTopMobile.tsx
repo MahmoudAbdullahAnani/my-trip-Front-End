@@ -17,16 +17,14 @@ function NavTopMobile() {
   useEffect(() => {}, [allNotifications]);
 
   return (
-    <div
-      className={`lg:hidden flex justify-between  mt-[calc(25px+54px)]`}
-    >
+    <div className={`lg:hidden flex justify-between  mt-[calc(25px+54px)]`}>
       {/* Icon Notifications */}
       {stateUserData._id === "" ? (
         <div className={`rounded-full hover:bg-[#59adca3d] cursor-pointer`}>
           {iconNotifications}
         </div>
       ) : (
-        <NotificationComponent />
+          <NotificationComponent />
       )}
       {/* Icon User */}
       <div className={`flex gap-[16px]`}>

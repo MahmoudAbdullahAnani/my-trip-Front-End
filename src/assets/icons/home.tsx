@@ -304,9 +304,9 @@ export const iconArrowLeft = (
     <path
       d="M15.5 6L9.5 12L15.5 18"
       stroke="#117C99"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -321,9 +321,9 @@ export const iconArrowDown = (
     <path
       d="M6 9L12 15L18 9"
       stroke="#117C99"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -338,9 +338,9 @@ export const iconArrowTop = (
     <path
       d="M18 15L12 9L6 15"
       stroke="#117C99"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -360,11 +360,11 @@ export const iconDirection = (
       x2="152.5"
       y2="23"
       stroke="#117C99"
-      stroke-linecap="round"
-      stroke-dasharray="9 9"
+      strokeLinecap="round"
+      strokeDasharray="9 9"
     />
     <circle cx="80" cy="24" r="24" fill="#117C99" />
-    <g clip-path="url(#clip0_849_2589)">
+    <g clipPath="url(#clip0_849_2589)">
       <path
         d="M80.99 33.163L76.4645 26.0919H71.5147C69.3934 26.0919 67.6256 25.0313 67.2721 23.9706C67.6256 22.91 69.3934 21.8493 71.5147 21.8493H76.4645L80.99 14.7782C81.2728 14.354 81.6971 14.2125 82.1213 14.354L82.687 14.4954C83.182 14.7075 83.4648 15.1318 83.3941 15.6268L82.1213 21.8493L85.6569 22.5564L87.7782 20.4351H89.1924L88.4853 23.9706L89.1924 27.5061H87.7782L85.6569 25.3848L82.1213 26.0919L83.3941 32.3145C83.4648 32.8094 83.182 33.2337 82.687 33.4458L82.192 33.658C81.6971 33.7287 81.2728 33.5873 80.99 33.163Z"
         fill="white"
@@ -505,4 +505,3 @@ export const iconArithmetic = (
     />
   </svg>
 );
-
