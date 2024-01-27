@@ -43,10 +43,12 @@ function OfferCard({
   return (
     <>
       <div
-        style={{
-          boxShadow: "0px 4px 4px 0px rgba(17, 124, 153, 0.30)",
-        }}
-        className={`bg-[#FFF] p-[16px] rounded-[26px] flex flex-col gap-[17px] relative`}
+        style={
+          {
+            // boxShadow: "0px 4px 4px 0px",
+          }
+        }
+        className={`bg-[#FFF] p-[16px] rounded-[26px] flex flex-col gap-[17px] relative hover:shadow-lg shadow-[0_35px_60px_-15px_rgba(17, 124, 153, 0.30)]`}
       >
         <div className={`rounded-[16px] `}>
           <img
@@ -56,7 +58,7 @@ function OfferCard({
             height={100}
           />
           <span
-            className={`text-[#F36E16] text-[14px] font-normal p-[8px] bg-[#FDEAB4] rounded-[30px] text-center absolute top-[calc(8px+16px)] right-[calc(8px+16px)]`}
+            className={`text-[#F36E16] text-[14px]  font-normal p-[8px] bg-[#FDEAB4] rounded-[30px] text-center absolute top-[calc(8px+8px+12px)] right-[calc(8px+8px+12px)]`}
           >
             مميز
           </span>
