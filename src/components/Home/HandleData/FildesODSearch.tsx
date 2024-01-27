@@ -79,8 +79,7 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
               // setValue(event.target.value);
               setQuery(event.target.value);
             }}
-            style={{ boxShadow: "0px 4px 15px 0px rgba(88, 168, 247, 0.25)" }}
-            className={`bg-[#FFF]  w-full sm:w-[188px] h-[48px] rounded-[8px] sm:text-center sm:px-0 p-[10px] text-[#117C99] text-[14px] font-[600]`}
+            className={`bg-[#FFF]  w-full shadow-lg focus:shadow-[#58A8F7A0] sm:w-[188px] h-[48px] rounded-[8px] sm:text-center sm:px-0 p-[10px] focus-visible:outline-none text-[#117C99] text-[14px] placeholder:text-[14px] font-[500] placeholder:font-[500]`}
           />
           {typeInput === "from" ? (
             <>

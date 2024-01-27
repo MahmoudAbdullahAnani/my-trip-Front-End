@@ -205,8 +205,6 @@ function App() {
   // const [count, setCount] = useState(0)
 
   useEffect(() => {
-    console.log("VITE_PUBLIC_API_V2===> ", import.meta.env.VITE_PUBLIC_API_V2);
-
     RunDriver();
     oncData();
   }, [reRenderDataApp]);

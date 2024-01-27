@@ -177,7 +177,7 @@ function OfferCard({
             </button>
           )}
           <Link
-            className={`text-[#117C99] rounded-[16px] p-[8px] w-[137px] flex items-center justify-center border border-[#117C99] hover:bg-[#d6eaef6e] gap-[8px]`}
+            className={`text-[#117C99] rounded-[30px] p-[8px] w-[137px] flex items-center justify-center border border-[#117C99] hover:bg-[#d6eaef6e] gap-[8px]`}
             to={`/`}
           >
             <span>{iconArrowLeft}</span>

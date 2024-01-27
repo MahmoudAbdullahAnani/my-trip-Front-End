@@ -131,7 +131,7 @@ function LevelTravel() {
 
   return (
     <div className={``}>
-      <div className={`flex flex-col gap-[6px]`}>
+      <div className={`flex flex-col gap-[6px]  `}>
         {/* Input Origin Air */}
         <h4 className={`text-[#000] text-[20px] font-[500] hidden sm:block`}>
           المسافرين & الدرجة
@@ -142,7 +142,7 @@ function LevelTravel() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
-          className={`text-[14px] relative font-medium text-[#117C99] sm:w-[212px] w-[156px] h-[48px] rounded-lg bg-[#FFF] flex justify-start items-center px-[15px] cursor-pointer `}
+          className={`text-[14px] relative font-medium ${anchorEl&&"shadow-lg"} shadow-[#58A8F7A0] text-[#117C99] sm:w-[212px] w-[156px] h-[48px] rounded-lg bg-[#FFF] flex justify-start items-center px-[15px] cursor-pointer `}
         >
           {iconData}
           <div className={`flex gap-[5px]`}>

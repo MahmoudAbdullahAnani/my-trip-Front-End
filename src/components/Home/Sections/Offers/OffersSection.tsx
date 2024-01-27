@@ -88,7 +88,7 @@ function OffersSection() {
         عروض
       </h2>
       <div
-        className={`grid gap-[16px] lg:grid-cols-2 grid-cols-1 justify-center items-center`}
+        className={`grid gap-[16px] xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-center items-center`}
       >
         {OffersData.map((item, index) => (
           <OfferCard {...item} key={index} />
