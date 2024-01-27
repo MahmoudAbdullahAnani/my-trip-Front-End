@@ -22,12 +22,12 @@ import {
 // Fetching Data
 import axios from "axios";
 import { getTokenForAmadeus } from "../Keys/GetTokenForAmadeus";
-import isLoading from "../data/RecoilState/Loading";
+import { Loder } from "../components/loder/Loder";
 
 function Search() {
   // Statement Data of trip
   const [trip, setTrip] = useState([]);
-  const [, setLoading] = useRecoilState(isLoading);
+  const [loading, setLoading] = useState(true);
   // Data For Search
   const [originLocationCode] = useRecoilState(originSearch);
   const [destinationLocationCode] = useRecoilState(destinationSearch);
@@ -41,7 +41,6 @@ function Search() {
 
   // Fetching Data
   const getDataSearch = async () => {
-    setLoading(true);
     const originLocationCodeQuery = `originLocationCode=${originLocationCode}`;
     const destinationLocationCodeQuery = `destinationLocationCode=${destinationLocationCode}`;
     const adultsQuery = `adults=${adults}`;
@@ -68,38 +67,59 @@ function Search() {
     }
     // console.log("dataOfQuery==> ", dataOfQuery);
 
-    const token = await getTokenForAmadeus();
-    await axios
-      .get(
-        `${
-          import.meta.env.VITE_PUBLIC_API_V2
-        }/shopping/flight-offers?${dataOfQuery}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then(({ data }) => {
-        console.log(data);
-        setTrip(data.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        navigator("/");
-      });
+    if (originLocationCode && destinationLocationCode && departureDate) {
+      const token = await getTokenForAmadeus();
+
+      await axios
+        .get(
+          `${
+            import.meta.env.VITE_PUBLIC_API_V2
+          }/shopping/flight-offers?${dataOfQuery}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(({ data }) => {
+          // console.log(data);
+          // console.log(
+          //   "api==> ",
+          //   `${
+          //     import.meta.env.VITE_PUBLIC_API_V2
+          //   }/shopping/flight-offers?${dataOfQuery}`
+          // );
+          setTrip(data.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.log(error);
+          navigator("/");
+        });
+    }
   };
 
-  console.log(trip);
+  // console.log("trip==> ", trip);
   const navigator = useNavigate();
   useEffect(() => {
     if (!originLocationCode || !destinationLocationCode || !departureDate) {
-      navigator(`/`);
-    } else {
-      getDataSearch();
+      return navigator(`/`);
     }
+    getDataSearch();
   }, []);
+  if (loading) {
+    return (
+      <div
+        className={`z-50 h-[100%] w-full absolute top-0 flex justify-center items-center bg-[#283965]`}
+      >
+        <Loder />
+      </div>
+    );
+  }
+  if (trip.length <= 0) {
+    return <div>Not Found</div>;
+  }
   return <section></section>;
 }
 

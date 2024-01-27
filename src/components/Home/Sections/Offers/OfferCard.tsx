@@ -175,7 +175,8 @@ function OfferCard({
               <span className={`mt-2`}>
                 {toggleMore ? iconArrowTop : iconArrowDown}
               </span>
-              <span>المزيد</span>
+              <span className={`lg:hidden`}>المزيد</span>
+              <span className={`lg:block hidden`}>التفاصيل</span>
             </button>
           )}
           <Link
@@ -194,7 +195,8 @@ function OfferCard({
             <span className={`mt-2`}>
               {toggleMore ? iconArrowTop : iconArrowDown}
             </span>
-            <span>المزيد</span>
+            <span className={`lg:hidden`}>المزيد</span>
+            <span className={`lg:block hidden`}>التفاصيل</span>
           </button>
         )}
       </div>

@@ -1,10 +1,12 @@
 import { useRecoilState } from "recoil";
-import { typeTravel } from "../../../data/RecoilState/FormHandling";
+import { dateReturn, typeTravel } from "../../../data/RecoilState/FormHandling";
 import NavTopMobile from "../../../layout/NavTopMobile";
 
 function TypeTravelComponentMobile() {
   // ذهاب فقط ===> true
   const [typeTravelState, setTypeTravelState] = useRecoilState(typeTravel);
+
+  const [, setReturnDate] = useRecoilState(dateReturn);
 
   return (
     <>
@@ -19,7 +21,10 @@ function TypeTravelComponentMobile() {
         className={`lg:hidden duration-200 z-20 flex justify-between h-[48px]  py-[8px] px-[5px] bg-red-900 gap-[19px] mb-[24px] mt-[45px]`}
       >
         <div
-          onClick={() => setTypeTravelState("hyper")}
+          onClick={() => {
+            setTypeTravelState("hyper");
+            setReturnDate("");
+          }}
           className={`${
             typeTravelState === "hyper"
               ? "bg-[#117C99] text-[#FFF] font-[700] whitespace-nowrap"
@@ -30,7 +35,10 @@ function TypeTravelComponentMobile() {
         </div>
 
         <div
-          onClick={() => setTypeTravelState("roundTrip")}
+          onClick={() => {
+            setTypeTravelState("roundTrip");
+            setReturnDate("");
+          }}
           className={`  ${
             typeTravelState === "roundTrip"
               ? "bg-[#117C99] text-[#FFF] font-[700] whitespace-nowrap"
@@ -41,7 +49,10 @@ function TypeTravelComponentMobile() {
         </div>
 
         <div
-          onClick={() => setTypeTravelState("oneWay")}
+          onClick={() => {
+            setTypeTravelState("oneWay");
+            setReturnDate("");
+          }}
           className={` ${
             typeTravelState === "oneWay"
               ? "bg-[#117C99] text-[#FFF] font-[700] whitespace-nowrap"
