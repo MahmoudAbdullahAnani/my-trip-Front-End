@@ -100,7 +100,7 @@ function Signup() {
       .post(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/signup`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}signup`,
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/signup`,
         {
           firstName,
           lastName,

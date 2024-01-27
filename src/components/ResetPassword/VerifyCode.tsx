@@ -65,7 +65,7 @@ function VerifyCode() {
       .post(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/verifyCode`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}verifyCode`,
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/verifyCode`,
         {
           code,
           email: localStorage.getItem("verifyCodeEmail"),

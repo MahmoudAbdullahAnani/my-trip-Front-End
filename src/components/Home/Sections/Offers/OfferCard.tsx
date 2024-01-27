@@ -11,6 +11,7 @@ import {
   iconArrowTop,
   iconDirection,
 } from "../../../../assets/icons/home";
+import { EGP } from "../../../../Formater/FormatPrice";
 
 interface OfferCardInterface {
   mainImg: string;
@@ -79,7 +80,7 @@ function OfferCard({
           <h5
             className={`text-[#117C99] text-[20px] lg:hidden block font-[700] text-end`}
           >
-            {price} EGP
+            {EGP.format(price)}
           </h5>
         )}
         {toggleMore && (
@@ -158,11 +159,11 @@ function OfferCard({
           <h5
             className={`text-[#117C99] text-[20px] lg:block hidden font-[700] text-end`}
           >
-            {price} EGP
+            {EGP.format(price)}
           </h5>
           {toggleMore ? (
             <h5 className={`text-[#117C99] text-[20px] font-[700] text-end`}>
-              {price} EGP
+              {EGP.format(price)}
             </h5>
           ) : (
             <button
@@ -200,71 +201,3 @@ function OfferCard({
 }
 
 export default OfferCard;
-
-// Maha
-/* 
-      <div className="container mx-auto px-4">
-        <div className="flex mt-3 relative">
-          <div className="absolute left-[272px] top-[10px] bg-orange-200 text-orange-400 w-[45px] h-[33px] rounded-[15px] flex justify-center items-center pb-[5px]">
-            مميز
-          </div>
-
-          <img src={mainImg} alt="" />
-        </div>
-
-        <div className="flex font-medium my-3">
-          <p className="mr-[125px]">{date}</p>
-          <p>{title}</p>
-        </div>
-
-        <p className="flex justify-end opacity-50 font-medium">
-          {detailDate.from}-{detailDate.to}
-        </p>
-
-        <p className="flex justify-end font-bold text-cyan-600 my-3">
-          {price}EGP
-        </p>
-
-        <div className="flex justify-between font-medium my-3">
-          <div className="flex justify-between font-medium">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M6 9L12 15L18 9"
-                stroke="#117C99"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <p className="text-cyan-600 font-bold">المزيد</p>
-          </div>
-
-          <div className="flex justify-between text-cyan-600 w-[125px] h-[50px] rounded-[30px] border-solid border-cyan-600 border-[1px] font-bold px-[17px] items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="24"
-              viewBox="0 0 25 24"
-              fill="none"
-            >
-              <path
-                d="M15.5 6L9.5 12L15.5 18"
-                stroke="#117C99"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-
-            <a href="/">احجز الان</a>
-          </div>
-        </div>
-      </div>
-
-*/

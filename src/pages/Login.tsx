@@ -86,7 +86,7 @@ function Login() {
       .post(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/signin`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}signin`,
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/signin`,
         {
           email,
           password,

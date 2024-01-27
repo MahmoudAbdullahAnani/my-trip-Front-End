@@ -68,7 +68,7 @@ function ResetPassword() {
       .post(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/updatePassword`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}updatePassword`,
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/updatePassword`,
         {
           password,
           confirmPassword,
