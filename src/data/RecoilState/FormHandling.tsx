@@ -22,11 +22,11 @@ const toSwitchData = atom({
 // =================================================
 const dateGo = atom({
   key: "dateGo", // unique ID (with respect to other atoms/selectors)
-  default: "" as string | number | undefined | readonly string[], // default value (aka initial value)
+  default: "" as string | number | undefined | readonly string[] , // default value (aka initial value)
 });
 const dateReturn = atom({
   key: "dateReturn", // unique ID (with respect to other atoms/selectors)
-  default: "" as string | number | undefined | readonly string[], // default value (aka initial value) new Date() as Date | undefined
+  default: "" as string | number | undefined | readonly string[] , // default value (aka initial value) new Date() as Date | undefined
 });
 
 const typeTravel = atom({

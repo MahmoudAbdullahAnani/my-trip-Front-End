@@ -27,6 +27,7 @@ import {
   reRenderData,
 } from "./data/RecoilState/Notifications/NotificationsData";
 import Home from "./pages/Home";
+import Search from "./pages/Search";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -228,7 +229,7 @@ function App() {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/verifyCode" element={<VerifyCode />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route path="/search" element={<>{/* <MyTestCombobox /> */}</>} />
+        <Route path="/search" element={<><Search/></>} />
       </Routes>
     </>
   );
