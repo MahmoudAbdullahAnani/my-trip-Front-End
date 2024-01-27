@@ -4,6 +4,7 @@ import FormModule from "./FormModule";
 import FiledData from "../HandleData/FiledData";
 import TypeTravelComponent from "./TypeTravelComponent";
 import TypeTravelComponentMobile from "./TypeTravelComponentMobile";
+import OffersSection from "../Sections/Offers/OffersSection";
 
 function HeroSection() {
   const [typeSystemState] = useRecoilState(typeSystem);
@@ -22,7 +23,7 @@ function HeroSection() {
         {/* Inputs */}
         <FiledData />
       </FormModule>
-      
+      <OffersSection />
     </>
   );
 }
