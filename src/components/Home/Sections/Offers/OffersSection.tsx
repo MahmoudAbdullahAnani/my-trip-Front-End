@@ -3,7 +3,7 @@ import OfferCard from "./OfferCard";
 // Data
 const OffersData = [
   {
-    mainImg: "./assets/Rectangle 27.png",
+    mainImg: "./../assets/Rectangle 27.png",
     title: "رحله الي مدينة ذهب",
     date: "Feb16,2024",
     price: 3000,
@@ -22,7 +22,7 @@ const OffersData = [
     },
   },
   {
-    mainImg: "./assets/Rectangle 27.png",
+    mainImg: "./../assets/Rectangle 27.png",
     title: "رحله الي مدينة ذهب",
     date: "Feb16,2024",
     price: 3000,
@@ -41,7 +41,7 @@ const OffersData = [
     },
   },
   {
-    mainImg: "./assets/Rectangle 27.png",
+    mainImg: "./../assets/Rectangle 27.png",
     title: "رحله الي مدينة ذهب",
     date: "Feb16,2024",
     price: 3000,
@@ -60,7 +60,7 @@ const OffersData = [
     },
   },
   {
-    mainImg: "./assets/Rectangle 27.png",
+    mainImg: "./../assets/Rectangle 27.png",
     title: "رحله الي مدينة ذهب",
     date: "Feb16,2024",
     price: 3000,

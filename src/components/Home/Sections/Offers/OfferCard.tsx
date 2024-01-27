@@ -3,7 +3,7 @@ import { useState } from "react";
 // react-router-dom
 import { Link } from "react-router-dom";
 // Images
-import exampleImage from "./assets/Rectangle 27.png";
+import exampleImage from "./../assets/Rectangle 27.png";
 // Components Of Data
 import {
   iconArrowDown,
