@@ -15,14 +15,15 @@ function HeroSection() {
     return <FormModule>Hotels</FormModule>;
   }
   return (
-    <div>
+    <>
       <TypeTravelComponentMobile />
       <FormModule>
         <TypeTravelComponent />
         {/* Inputs */}
         <FiledData />
       </FormModule>
-    </div>
+      
+    </>
   );
 }
 

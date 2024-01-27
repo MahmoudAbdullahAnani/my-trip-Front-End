@@ -1,4 +1,4 @@
-import { useEffect} from "react"
+import { useEffect } from "react";
 import { useForm, SubmitHandler, UseFormRegisterReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -39,10 +39,9 @@ function VerifyCode() {
     if (!localStorage.getItem("verifyCodeEmail")) {
       navigate("/forgotPassword");
     }
-  }, [])
+  }, []);
   // State Management
   //   const dispatch = useDispatch();
-
 
   const [incorrectData, setIncorrectData] = useState<string>("");
   const {
@@ -64,9 +63,9 @@ function VerifyCode() {
     // 1) axios post req on /signin
     await axios
       .post(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/verifyCode`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/verifyCode`,
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}verifyCode`,
         {
           code,
           email: localStorage.getItem("verifyCodeEmail"),

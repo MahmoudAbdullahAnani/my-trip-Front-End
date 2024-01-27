@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import axios from "axios";
 import { useState } from "react";
-import {LoderBtn} from "../components/loder/Loder";
+import { LoderBtn } from "../components/loder/Loder";
 import { LinksForgotPassword } from "../components/ResetPassword/ForgotPassword";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -98,9 +98,9 @@ function Signup() {
     // 1) axios post req on /signin
     await axios
       .post(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/signup`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/signup`,
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}signup`,
         {
           firstName,
           lastName,

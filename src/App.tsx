@@ -104,11 +104,11 @@ function App() {
     const token = localStorage.getItem("token") || "";
     await axios
       .get(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/public/notifications`
           : `${
               import.meta.env.VITE_PUBLIC_API_PRODUCTION
-            }/public/notifications`,
+            }public/notifications`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -132,9 +132,9 @@ function App() {
     const token = localStorage.getItem("token") || "";
     await axios
       .get(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/notificationsUserMe`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/notificationsUserMe`,
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}notificationsUserMe`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -175,9 +175,9 @@ function App() {
     const token = localStorage.getItem("token") || "";
     await axios
       .get(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/me`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/me`,
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}me`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

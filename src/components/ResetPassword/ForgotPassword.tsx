@@ -59,9 +59,9 @@ function ForgotPassword() {
     // 1) axios post req on /signin
     await axios
       .post(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development1"
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/resetPassword`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/resetPassword`,
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}resetPassword`,
         {
           email,
         }
@@ -142,9 +142,7 @@ function ForgotPassword() {
 export default ForgotPassword;
 
 /* Forgot Password ui */
-export function LinksForgotPassword({isSignUp}: { isSignUp: boolean }) {
-
-
+export function LinksForgotPassword({ isSignUp }: { isSignUp: boolean }) {
   if (isSignUp) {
     return (
       <div className={`flex justify-around  `}>
