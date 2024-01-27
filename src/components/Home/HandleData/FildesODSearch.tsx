@@ -27,7 +27,7 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
 
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_LIVE_AIRPORT_CITY}/${route}?${query}`,
+        `${import.meta.env.VITE_PUBLIC_LIVE_AIRPORT_CITY}/${route}?${query}`,
         {
           cancelToken: source.token,
         }
@@ -55,8 +55,10 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
   // const [defaultValue, setDefaultValue] = useState<
   //   string | number | readonly string[] | undefined
   // >("");
-  const [fromSwitchDataState, setFromSwitchDataState] = useRecoilState(fromSwitchData);
-  const [toSwitchDataState, setToSwitchDataState] = useRecoilState(toSwitchData);
+  const [fromSwitchDataState, setFromSwitchDataState] =
+    useRecoilState(fromSwitchData);
+  const [toSwitchDataState, setToSwitchDataState] =
+    useRecoilState(toSwitchData);
   // console.log("defaultValue==> ", defaultValue);
 
   const [, setOriginSearchState] = useRecoilState(originSearch);
