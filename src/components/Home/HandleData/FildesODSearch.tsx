@@ -27,7 +27,7 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
 
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_PUBLIC_LIVE_AIRPORT_CITY}/${route}?${query}`,
+        `https://live-airport-city-search.onrender.com/${route}?${query}`,
         {
           cancelToken: source.token,
         }
