@@ -18,7 +18,7 @@ function NavTopMobile() {
 
   return (
     <div
-      className={`lg:hidden flex justify-between ps-[16px] pe-[20px] mt-[calc(25px+54px)]`}
+      className={`lg:hidden flex justify-between  mt-[calc(25px+54px)]`}
     >
       {/* Icon Notifications */}
       {stateUserData._id === "" ? (

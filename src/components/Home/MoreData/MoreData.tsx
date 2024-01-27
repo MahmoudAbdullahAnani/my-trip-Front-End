@@ -8,7 +8,9 @@ function MoreData() {
         >
           <input id="travelNotStope" type="checkbox" />
           <span className="checkmark after:left-0"></span>
-          <span> رحلات بدون توقف</span>
+          <span className={`text-[#117C99] lg:text-[#FFF]`}>
+            رحلات بدون توقف
+          </span>
         </label>
       </div>
       <div className={`flex gap-[12px]`}>
@@ -16,7 +18,9 @@ function MoreData() {
           htmlFor="travelOptions"
           className={`text-[14.957px] text-[#FFF] font-[400] containerCheckBox`}
         >
-          <span> تواريخ مرنة 3 ايام</span>
+          <span className={`text-[#117C99] lg:text-[#FFF]`}>
+            تواريخ مرنة 3 ايام
+          </span>
           <input id="travelOptions" type="checkbox" />
           <span className="checkmark after:left-0"></span>
         </label>

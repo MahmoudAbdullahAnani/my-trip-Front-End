@@ -16,7 +16,7 @@ function TypeTravelComponentMobile() {
           background: "rgba(134, 216, 247, 0.30)",
           backdropFilter: "blur(5px)",
         }}
-        className={`lg:hidden duration-200 z-20 flex justify-between h-[48px] mm:mx-[16px] py-[8px] px-[5px] bg-red-900 gap-[19px] mb-[24px] mt-[45px]`}
+        className={`lg:hidden duration-200 z-20 flex justify-between h-[48px]  py-[8px] px-[5px] bg-red-900 gap-[19px] mb-[24px] mt-[45px]`}
       >
         <div
           onClick={() => setTypeTravelState("hyper")}

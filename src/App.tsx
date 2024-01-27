@@ -20,14 +20,13 @@ import { useRecoilState } from "recoil";
 import isLoading from "./data/RecoilState/Loading";
 import { Loder } from "./components/loder/Loder";
 
-import HeroSection from "./components/Home/Systems/HeroSection";
-import MoveBgHeroSection from "./components/Home/Systems/MoveBgHeroSection";
 import {
   allNotifications,
   privateNotifications,
   publicNotifications,
   reRenderData,
 } from "./data/RecoilState/Notifications/NotificationsData";
+import Home from "./pages/Home";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -106,9 +105,7 @@ function App() {
       .get(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/public/notifications`
-          : `${
-              import.meta.env.VITE_PUBLIC_API_PRODUCTION
-            }public/notifications`,
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}public/notifications`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -223,21 +220,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <section>
-              <MoveBgHeroSection>
-                <HeroSection />
-              </MoveBgHeroSection>
-              {/* <div
-                className={`lg:mt-[calc(100vh-74px)] mt-[calc(100vh-50.6px)]`}
-              >
-                This is test content
-              </div> */}
-            </section>
-          }
-        />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />

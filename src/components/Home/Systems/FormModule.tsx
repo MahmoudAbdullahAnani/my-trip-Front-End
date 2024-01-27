@@ -8,7 +8,7 @@ type Props = {
 function FormModule({ children }: Props) {
   // const [TypeSystemState] = useRecoilState(typeSystem);
   return (
-    <div className={`flex flex-col sm:mx-5 mx-4 `}>
+    <div className={`flex flex-col `}>
       <ControlSystems />
       <div
         dir="rtl"

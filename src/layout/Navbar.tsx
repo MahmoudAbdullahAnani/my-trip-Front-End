@@ -22,9 +22,9 @@ function Navbar() {
       <nav
         className={`hidden lg:flex justify-between ${
           pathname !== "/" && "bg-slate-600"
-        } sticky top-[-1px]  z-50  `}
+        } absolute w-full top-[-1px]  z-50  `}
       >
-        <div className="lg:flex justify-between  w-full  p-0 px-[96px] ">
+        <div className={`lg:flex justify-between fixed  top-0 w-full  p-0 px-[96px] `}>
           <div className={`flex gap-4 pt-[32px] text-white`}>
             {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
               <DialogComponent />
