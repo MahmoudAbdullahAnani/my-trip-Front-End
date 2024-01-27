@@ -71,7 +71,7 @@ function OfferCard({
             </span>
             {!toggleMore && (
               <span
-                className={`text-[#909090] text-[13px] font-[600] lg:hidden block text-end mt-[17px]`}
+                className={`text-[#909090] text-[13px] font-[600]  block text-end mt-[17px]`}
               >
                 {detailDate.from}-{detailDate.to}
               </span>
@@ -80,7 +80,7 @@ function OfferCard({
         </div>
         {!toggleMore && (
           <h5
-            className={`text-[#117C99] text-[20px] lg:hidden block font-[700] text-end`}
+            className={`text-[#117C99] text-[20px]  block font-[700] text-end`}
           >
             {EGP.format(price)}
           </h5>
@@ -120,7 +120,7 @@ function OfferCard({
           </div>
         )}
         <div
-          className={`lg:flex hidden gap-[20px] items-center justify-center`}
+          className={`lg: hidden gap-[20px] items-center justify-center`}
         >
           <div className={`flex flex-col items-end justify-center`}>
             <h6 className={`text-[#000] text-[16px] font-[700] `}>
@@ -158,11 +158,21 @@ function OfferCard({
             toggleMore ? "center gap-[41px]" : "between"
           }`}
         >
-          <h5
+          {/* <h5
             className={`text-[#117C99] text-[20px] lg:block hidden font-[700] text-end`}
           >
             {EGP.format(price)}
-          </h5>
+          </h5> */}
+          <button
+            onClick={() =>  {}}
+            className={`text-[#005A6C] hover:text-[#005a6cc0] text-[14px] font-[700]  hidden lg:flex items-center justify-center`}
+          >
+            <span className={`mt-2`}>
+              {toggleMore ? iconArrowTop : iconArrowDown}
+            </span>
+            <span className={`lg:hidden`}>المزيد</span>
+            <span className={`lg:block hidden`}>التفاصيل</span>
+          </button>
           {toggleMore ? (
             <h5 className={`text-[#117C99] text-[20px] font-[700] text-end`}>
               {EGP.format(price)}
