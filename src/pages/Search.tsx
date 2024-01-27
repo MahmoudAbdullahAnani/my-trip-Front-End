@@ -94,7 +94,6 @@ function Search() {
   console.log(trip);
   const navigator = useNavigate();
   useEffect(() => {
-    console.log("VITE_PUBLIC_API_V2===> ", import.meta.env.VITE_PUBLIC_API_V2);
     if (!originLocationCode || !destinationLocationCode || !departureDate) {
       navigator(`/`);
     } else {

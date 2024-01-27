@@ -205,6 +205,8 @@ function App() {
   // const [count, setCount] = useState(0)
 
   useEffect(() => {
+    console.log("VITE_PUBLIC_API_V2===> ", import.meta.env.VITE_PUBLIC_API_V2);
+
     RunDriver();
     oncData();
   }, [reRenderDataApp]);
@@ -229,7 +231,14 @@ function App() {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/verifyCode" element={<VerifyCode />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route path="/search" element={<><Search/></>} />
+        <Route
+          path="/search"
+          element={
+            <>
+              <Search />
+            </>
+          }
+        />
       </Routes>
     </>
   );
