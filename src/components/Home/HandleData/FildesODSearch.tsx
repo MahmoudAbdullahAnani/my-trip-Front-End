@@ -37,7 +37,6 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
       return res.data;
     } catch (error) {
       console.log("error api airportSearch", error);
-      // console.log("typeOf error api", typeof error);
     }
   };
   const [selectedPerson, setSelectedPerson] = useState("");
