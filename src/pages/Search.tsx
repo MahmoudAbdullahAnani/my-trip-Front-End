@@ -39,7 +39,6 @@ function Search() {
   const [adults] = useRecoilState(adultsData);
   const [typeTravelState] = useRecoilState(typeTravel);
 
-
   // Fetching Data
   const getDataSearch = async () => {
     setLoading(true);
@@ -91,10 +90,11 @@ function Search() {
         navigator("/");
       });
   };
-  
+
   console.log(trip);
   const navigator = useNavigate();
   useEffect(() => {
+    console.log("VITE_PUBLIC_API_V2===> ", import.meta.env.VITE_PUBLIC_API_V2);
     if (!originLocationCode || !destinationLocationCode || !departureDate) {
       navigator(`/`);
     } else {
