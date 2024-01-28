@@ -1,5 +1,6 @@
 import React from "react";
-
+ 
+import logo from "/public/assets/logoWhite.png"
 const Footer = () => {
   return (
     <footer
@@ -15,7 +16,7 @@ const Footer = () => {
                 className="mb-[21.45px] inline-block lg:max-w-[191px] max-w-[121px]"
               >
                 <img
-                  src="/public/assets/logoWhite.png"
+                  src={logo}
                   alt="logo"
                   className="max-w-full"
                 />
