@@ -28,6 +28,7 @@ import {
 } from "./data/RecoilState/Notifications/NotificationsData";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
+import For04 from "./pages/For04";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -223,6 +224,7 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path="/*" element={<For04 />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
