@@ -14,15 +14,15 @@ function PopularDestinationsCard({
   link,
 }: DataInterface) {
   return (
-    <Link to={link} className={`relative w-[400px] h-[337px]`}>
+    <Link to={link} className={``}>
       <img
-        className={`w-full h-full `}
+        className={`h-full object-fill `}
         src={mainImage}
         // width={100}
         // height={100}
       />
       <div
-        className={`flex flex-col gap-[21px] items-center justify-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}
+        className={`flex flex-col sm:gap-[21px] gap-[1px] items-center justify-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}
       >
         <span>{titleAR}</span>
         <span>{titleEN}</span>

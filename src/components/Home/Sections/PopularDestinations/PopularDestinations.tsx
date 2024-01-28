@@ -1,7 +1,9 @@
 import PopularDestinationsCard from "./PopularDestinationsCard";
 import exampleMainImage from "/public/assets/heroSection.jpeg";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import Slider from "react-slick";
+import { Navigation } from "swiper/modules";
 
 const data = [
   {
@@ -32,34 +34,57 @@ const data = [
     titleEN: "Egypt",
     link: "/",
   },
+  {
+    id: 1,
+    mainImage: exampleMainImage,
+    titleAR: "القاهرة",
+    titleEN: "Egypt",
+    link: "/",
+  },
+  {
+    id: 1,
+    mainImage: exampleMainImage,
+    titleAR: "القاهرة",
+    titleEN: "Egypt",
+    link: "/",
+  },
+  {
+    id: 1,
+    mainImage: exampleMainImage,
+    titleAR: "القاهرة",
+    titleEN: "Egypt",
+    link: "/",
+  },
 ];
 
 function PopularDestinations() {
-    const settings = {
-      className: "center",
-      infinite: true,
-      centerPadding: "60px",
-      slidesToShow: 5,
-      swipeToSlide: true,
-      afterChange: function (index:number) {
-        console.log(
-          `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
-        );
-      },
-    };
   return (
-    <section className={`flex flex-col gap-[34px] mt-[107px] pe-[96px]`}>
+    <section
+      className={`flex flex-col gap-[34px] mt-[107px] lg:pe-[96px] pe-[16px]`}
+    >
       <h2 dir="rtl" className={`text-[#000] text-[24px] font-[700] `}>
         الوجهات الرائجة
       </h2>
-      <Slider {...settings}  className={`flex gap-[24px]`}>
+      <Swiper
+        dir="rtl"
+        className={`mySwiper w-full md:h-[337px] sm:h-[200px] `}
+        navigation={true}
+        modules={[Navigation]}
+        spaceBetween={24}
+        slidesPerView={3.3}
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
         {data.map((data) => (
-          <PopularDestinationsCard
-            {...data}
+          <SwiperSlide
+            dir="rtl"
+            className={`rounded-[16px] overflow-hidden`}
             key={`${data.id}----${Math.random()}`}
-          />
+          >
+            <PopularDestinationsCard {...data} />
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
     </section>
   );
 }
