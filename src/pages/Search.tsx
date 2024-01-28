@@ -25,6 +25,9 @@ import { getTokenForAmadeus } from "../Keys/GetTokenForAmadeus";
 import { Loder } from "../components/loder/Loder";
 import CardTrip from "../components/Home/Sections/Search/CardTrip";
 import { iconArrowLeftWhite } from "../assets/icons/home";
+import { TypeSystemSearch } from "../data/RecoilState/Search/TypeSystemSearch";
+import HandleFieldsSearch from "../components/Home/HandleData/HandleFieldsSearch";
+import UiFildesDate from "../components/Home/FieldsDate/UiFildesDate";
 
 // const exampleData = [
 //   {
@@ -281,6 +284,8 @@ function Search() {
   const [adults] = useRecoilState(adultsData);
   const [typeTravelState] = useRecoilState(typeTravel);
 
+  const [, setTypeSystemSearchState] = useRecoilState(TypeSystemSearch);
+
   // Fetching Data
   const getDataSearch = async () => {
     const originLocationCodeQuery = `originLocationCode=${originLocationCode}`;
@@ -338,6 +343,7 @@ function Search() {
   // console.log("trip==> ", trip);
   const navigator = useNavigate();
   useEffect(() => {
+    setTypeSystemSearchState("airline");
     if (!originLocationCode || !destinationLocationCode || !departureDate) {
       return navigator(`/`);
     }
@@ -357,6 +363,7 @@ function Search() {
   }
   return (
     <section className={``}>
+      {/* Header Mobile */}
       <header
         className={`lg:hidden pt-[calc(25px+54px)] pb-[89px] relative bg-d[url('/public/assets/mapHeader.png')]`}
       >
@@ -398,15 +405,30 @@ function Search() {
           className={`absolute w-full h-[50px] bottom-0  z-10`}
         />
       </header>
+      {/* Header Desktop */}
+      <header
+        className={`bg-[#FFF] lg:block hidden pb-[47.5px] pt-[57.5px] relative bg-d[url('/public/assets/mapHeader.png')]`}
+      >
+        <div className={`flex gap-[24px] justify-center items-center `}>
+          <UiFildesDate isSearch={true} />
+          <HandleFieldsSearch isSearch={true} />
+        </div>
+        <div className={`absolute w-full h-full top-0`}></div>
+      </header>
       <div>
-        {trip.map((trip: { itineraries: [], id: string }) => {
-          return (
-            <CardTrip
-              itineraries={trip.itineraries}
-              key={`${trip.id}--${Math.random()}`}
-            />
-          );
-        })}
+        {/* Content Page Search */}
+        {/* Tickets */}
+        <div>
+          {trip.map((trip: { itineraries: []; id: string }) => {
+            return (
+              <CardTrip
+                itineraries={trip.itineraries}
+                key={`${trip.id}--${Math.random()}`}
+              />
+            );
+          })}
+        </div>
+        {/* Filters */}
       </div>
     </section>
   );

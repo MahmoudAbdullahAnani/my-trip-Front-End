@@ -11,6 +11,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../data/store";
 import { iconArithmetic, iconHome, iconTicket } from "../assets/icons/home";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { TypeSystemSearch } from "../data/RecoilState/Search/TypeSystemSearch";
 function Navbar() {
   // const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
@@ -20,17 +22,26 @@ function Navbar() {
     setScrollY(window.scrollY);
   });
 
+  const [typeSystemSearchState] = useRecoilState(TypeSystemSearch);
+
   return (
     <>
       {/* Desktop */}
       <nav
         className={`hidden lg:flex justify-between  ${
-          pathname !== "/" && "bg-slate-600"
-        } absolute w-full top-[-1px]  z-50  `}
+          pathname !== "/" ? "sticky" : "absolute"
+        }  w-full top-[-1px]  z-50 `}
       >
         <div
-          className={`lg:flex justify-between fixed  top-0 w-full  p-0 px-[96px] navbar ${
-            scrollY > innerHeight && "backdrop-blur-md"
+          className={`lg:flex justify-between ${
+            pathname !== "/search" && "fixed"
+          } top-0 w-full  p-0 px-[96px] ${
+            pathname !== "/search" && scrollY > innerHeight
+              ? "backdrop-blur-md"
+              : null
+          }  ${
+            pathname === "/search" &&
+            "bg-[#FFF] border border-x-0 border-t-0 shadow-sm shadow-[#656565]"
           } `}
         >
           <div className={`flex gap-4 pt-[32px] text-white`}>
@@ -52,7 +63,7 @@ function Navbar() {
               {
                 id: 4,
                 title: "الخطط",
-                href: "/search",
+                href: "/plans",
                 driver: "intro-element-4",
               },
               {
@@ -74,9 +85,20 @@ function Navbar() {
                 <Link
                   to={href}
                   id={driver}
-                  className={`text-[18px] font-[600] whitespace-nowrap  ${
-                    href === pathname ? "text-[#117C99]" : "text-[#FFF]"
-                  } hover:text-[#117C99] duration-200 `}
+                  className={`text-[18px]  font-[600] whitespace-nowrap  ${
+                    pathname !== "/search"
+                      ? href === pathname
+                        ? "text-[#117C99]"
+                        : "text-[#FFF]"
+                      : typeSystemSearchState === "airline" && title === "طيران"
+                      ? "text-[#117C99]"
+                      : typeSystemSearchState === "hotels" && title === "فنادق"
+                      ? "text-[#117C99]"
+                      : typeSystemSearchState === "delivery" &&
+                        title === "توصيل"
+                      ? "text-[#117C99]"
+                      : "text-[#656565]"
+                  } hover:text-[#117C99]  duration-200 `}
                 >
                   {title}
                 </Link>
@@ -89,7 +111,7 @@ function Navbar() {
               width={100}
               height={100}
               src={logo}
-              className={`text-slate-400 font-bold pt-[24px] text-4xl duration-300`}
+              className={`text-slate-400 font-bold text-4xl duration-300`}
               style={{ fontSize: "3rem" }}
             />
           </Link>

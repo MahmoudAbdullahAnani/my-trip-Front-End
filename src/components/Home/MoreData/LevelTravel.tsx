@@ -142,7 +142,9 @@ function LevelTravel() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
-          className={`text-[14px] relative font-medium ${anchorEl&&"shadow-lg"} shadow-[#58A8F7A0] text-[#117C99] sm:w-[212px] w-[156px] h-[48px] rounded-lg bg-[#FFF] flex justify-start items-center px-[15px] cursor-pointer `}
+          className={`text-[14px] relative font-medium ${
+            anchorEl && "shadow-lg"
+          } shadow-[#58a8f752] text-[#117C99] sm:w-[212px] w-[156px] h-[48px] rounded-lg bg-[#FFF] flex justify-start items-center px-[15px] cursor-pointer `}
         >
           {iconData}
           <div className={`flex gap-[5px]`}>

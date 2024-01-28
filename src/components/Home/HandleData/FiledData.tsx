@@ -9,8 +9,8 @@ function FiledData() {
       <div
         className={`flex xl:flex-nowrap flex-wrap sm:gap-[24px] gap-[10px] sm:justify-normal ml:flex-row flex-row-reverse justify-center`}
       >
-        <HandleFieldsSearch />
-        <UiFildesDate />
+        <HandleFieldsSearch isSearch={false} />
+        <UiFildesDate isSearch={false} />
         <LevelTravel />
       </div>
       <div>

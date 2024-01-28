@@ -89,7 +89,7 @@ const iconDate = (
   </svg>
 );
 
-function UiFildesDate() {
+function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
   const [, setModuleDateState] = useRecoilState(moduleDate);
   // Initial Date
   const [dateGoState] = useRecoilState(dateGo);
@@ -103,6 +103,67 @@ function UiFildesDate() {
     // setModuleDateState(false);
   };
   const [typeTravelRecoilState] = useRecoilState(typeTravel);
+
+  if (isSearch) {
+    return (
+      <div
+        className={`flex sm:gap-[24px]  gap-[10px] sm:justify-normal justify-center lg:flex-nowrap flex-wrap relative`}
+      >
+        {typeTravelRecoilState === "roundTrip" && (
+          <div className={`flex flex-col gap-[6px]`}>
+            <h4
+              className={`text-[#000] text-[20px] text-end font-[500] hidden sm:block `}
+            >
+              العودة
+            </h4>
+            <div className={`relative `}>
+              <input
+                ref={refIcon2}
+                defaultValue={dateReturnState}
+                onFocus={openDateForm}
+                onBlur={closeDateForm}
+                placeholder={`تاريخ العودة`}
+                className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
+              />
+              <span
+                onClick={() => refIcon2.current?.focus()}
+                className={`absolute top-[12px] right-[15px]`}
+              >
+                {iconDate}
+              </span>
+            </div>
+          </div>
+        )}
+        <div className={`flex flex-col gap-[6px]`}>
+          <h4
+            className={`text-[#000] text-end text-[20px] font-[500] hidden sm:block`}
+          >
+            الذهاب
+          </h4>
+          <div className={`relative `}>
+            <input
+              ref={refIcon1}
+              defaultValue={dateGoState}
+              onFocus={openDateForm}
+              onBlur={closeDateForm}
+              placeholder={`تاريخ الذهاب`}
+              className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
+            />
+            <span
+              onClick={() => refIcon1.current?.focus()}
+              className={`absolute top-[12px] right-[15px]`}
+            >
+              {iconDate}
+            </span>
+          </div>
+        </div>
+
+        <div className="absolute top-[calc(100%+10px)] z-50">
+          <FieldsDate />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -119,7 +180,7 @@ function UiFildesDate() {
             onFocus={openDateForm}
             onBlur={closeDateForm}
             placeholder={`تاريخ الذهاب`}
-            className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58A8F7A0] focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
+            className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
           />
           <span
             onClick={() => refIcon1.current?.focus()}
@@ -141,7 +202,7 @@ function UiFildesDate() {
               onFocus={openDateForm}
               onBlur={closeDateForm}
               placeholder={`تاريخ العودة`}
-              className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58A8F7A0] focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
+              className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
             />
             <span
               onClick={() => refIcon2.current?.focus()}
