@@ -27,6 +27,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import Footer from "./pages/Footer.jsx";
 
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -40,6 +41,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <ToastContainer />
             <Navbar />
             <App />
+            <Footer />
           </GoogleOAuthProvider>
         </RecoilRoot>
       </Provider>

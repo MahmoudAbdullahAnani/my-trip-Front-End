@@ -10,21 +10,29 @@ import logo from "./../../public/assets/logo.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../data/store";
 import { iconArithmetic, iconHome, iconTicket } from "../assets/icons/home";
+import { useState } from "react";
 function Navbar() {
   // const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
-
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
+  const [scrollY, setScrollY] = useState(0);
+  document.addEventListener("scroll", () => {
+    setScrollY(window.scrollY);
+  });
 
   return (
     <>
       {/* Desktop */}
       <nav
-        className={`hidden lg:flex justify-between ${
+        className={`hidden lg:flex justify-between  ${
           pathname !== "/" && "bg-slate-600"
         } absolute w-full top-[-1px]  z-50  `}
       >
-        <div className={`lg:flex justify-between fixed  top-0 w-full  p-0 px-[96px] `}>
+        <div
+          className={`lg:flex justify-between fixed  top-0 w-full  p-0 px-[96px] navbar ${
+            scrollY > innerHeight && "backdrop-blur-md"
+          } `}
+        >
           <div className={`flex gap-4 pt-[32px] text-white`}>
             {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
               <DialogComponent />
@@ -116,7 +124,11 @@ function Navbar() {
             to={`${route}`}
             key={`${id}----${Math.random()}`}
           >
-            {pathname === route && <span className={`text-[14px] font-bold text-[#005A6C]`}>{title}</span>}
+            {pathname === route && (
+              <span className={`text-[14px] font-bold text-[#005A6C]`}>
+                {title}
+              </span>
+            )}
             <span>{icon}</span>
           </Link>
         ))}
