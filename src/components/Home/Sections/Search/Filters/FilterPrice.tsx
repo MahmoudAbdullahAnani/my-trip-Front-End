@@ -35,7 +35,7 @@ function FilterPrice() {
     });
   };
   return (
-    <div className={`flex flex-col gap-[23px] w-[207px]`}>
+    <div className={`flex flex-col gap-[23px] w-[207px] bg-red-900 `}>
       <h2 className={`text-[#000] text-[24px] font-[700] text-end`}>السعر</h2>
       <div className={`w-full flex flex-col gap-[8px]`}>
         <div
