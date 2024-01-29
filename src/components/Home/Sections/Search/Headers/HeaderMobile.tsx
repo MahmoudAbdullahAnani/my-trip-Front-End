@@ -10,6 +10,9 @@ import { iconArrowLeftWhite } from "../../../../../assets/icons/home";
 import mapHeader from "./../../../../../../public/assets/mapHeader.png";
 import headMobile from "./../../../../../../public/assets/headMobile.png";
 
+// عرض اسم المدينة مؤجل
+
+
 function HeaderMobile() {
   const navigator = useNavigate();
   const [destinationLocationCode] = useRecoilState(destinationSearch);
@@ -31,14 +34,14 @@ function HeaderMobile() {
         </button>
         <div className={`flex justify-between`}>
           <div className={`flex flex-col items-end gap-[9px]`}>
-            <span>دبي , الإمارات</span>
+            {/* <span>دبي , الإمارات</span> */}
             <span className={`text-[20px] font-[700]`}>
               {destinationLocationCode || "DXH"}
             </span>
           </div>
           <div></div>
           <div className={`flex flex-col items-end gap-[9px]`}>
-            <span>دبي , الإمارات</span>
+            {/* <span>دبي , الإمارات</span> */}
             <span className={`text-[20px] font-[700]`}>
               {originLocationCode || "DXH"}
             </span>

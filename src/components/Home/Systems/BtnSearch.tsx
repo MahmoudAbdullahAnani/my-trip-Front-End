@@ -14,6 +14,7 @@ import {
 import { Flip, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { ReSearch } from "../../../data/RecoilState/Search/TypeSystemSearch";
+import { LoadingDataSearch } from "../../../data/RecoilState/Search/MainData";
 
 function BtnSearch() {
   const [locationFrom] = useRecoilState(originSearch);
@@ -25,6 +26,7 @@ function BtnSearch() {
   const [youthsDataState] = useRecoilState(youthsData);
   const [adultsDataState] = useRecoilState(adultsData);
   const [reSearchState, setReSearch] = useRecoilState(ReSearch);
+  const [, setLoading] = useRecoilState(LoadingDataSearch);
 
   const handleSearchData = () => {
     if (!locationFrom || !destinationSearchState) {
@@ -54,6 +56,7 @@ function BtnSearch() {
       });
     }
     setReSearch(!reSearchState);
+    setLoading(true);
     console.log({
       locationFrom,
       destinationSearchState,

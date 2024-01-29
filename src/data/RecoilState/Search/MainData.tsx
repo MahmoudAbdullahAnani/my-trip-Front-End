@@ -21,5 +21,16 @@ const PriceFilter = atom({
   key: "PriceFilter", // unique ID (with respect to other atoms/selectors)
   default: { min: 0, max: 0 } as { min: number; max: number }, // default value (aka initial value)
 });
+const LoadingDataSearch = atom({
+  key: "LoadingDataSearch", // unique ID (with respect to other atoms/selectors)
+  default:true, // default value (aka initial value)
+});
 
-export { MainData, MaxPrice, MinPrice, PriceFilter, TripDataFilters };
+export {
+  MainData,
+  MaxPrice,
+  MinPrice,
+  PriceFilter,
+  TripDataFilters,
+  LoadingDataSearch,
+};

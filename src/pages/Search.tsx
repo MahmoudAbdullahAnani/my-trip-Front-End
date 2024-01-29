@@ -1,5 +1,5 @@
 // React
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 // react-router-dom
 import { useNavigate } from "react-router-dom";
 // Data
@@ -32,6 +32,7 @@ import TicketLoading from "../components/loder/TicketLoading";
 import HeaderSearch from "../components/Home/Sections/Search/Headers/HeaderSearch";
 import FiltersBtn from "../components/Home/Sections/Search/Btns/FiltersBtn";
 import {
+  LoadingDataSearch,
   MainData,
   MaxPrice,
   MinPrice,
@@ -762,7 +763,7 @@ function Search() {
   const [, setPriceFilterState] = useRecoilState(PriceFilter);
   const [, setMinPriceState] = useRecoilState(MinPrice);
   const [, setMaxPriceState] = useRecoilState(MaxPrice);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useRecoilState(LoadingDataSearch);
   // Data For Search
   const [originLocationCode] = useRecoilState(originSearch);
   const [destinationLocationCode] = useRecoilState(destinationSearch);
