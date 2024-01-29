@@ -1,9 +1,14 @@
 import { useRecoilState } from "recoil";
 
 import { useNavigate } from "react-router-dom";
-import { destinationSearch, originSearch } from "../../../../../data/RecoilState/FormHandling";
+import {
+  destinationSearch,
+  originSearch,
+} from "../../../../../data/RecoilState/FormHandling";
 import { iconArrowLeftWhite } from "../../../../../assets/icons/home";
 
+import mapHeader from "./../../../../../../public/assets/mapHeader.png";
+import headMobile from "./../../../../../../public/assets/headMobile.png";
 
 function HeaderMobile() {
   const navigator = useNavigate();
@@ -41,11 +46,11 @@ function HeaderMobile() {
         </div>
       </div>
       <img
-        src="/public/assets/mapHeader.png"
+        src={mapHeader}
         className={`absolute w-full h-full top-0 object-cover z-10`}
       />
       <img
-        src="/public/assets/headMobile.png"
+        src={headMobile}
         className={`absolute w-full h-[50px] bottom-0  z-10`}
       />
     </>
