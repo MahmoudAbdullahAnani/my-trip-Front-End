@@ -1,4 +1,3 @@
-
 // const w = {
 //   type: "flight-offer",
 //   id: "1",
@@ -236,13 +235,22 @@
 //     },
 //   ],
 // };
-function CardTrip({ itineraries }: { itineraries: { duration: string }[] }) {
+function CardTrip({
+  itineraries,
+  price,
+}: {
+  itineraries: { duration: string }[];
+  price: { total: string };
+}) {
   const durationH = itineraries[0].duration.split("PT")[1].split("H")[0];
-  const durationM = itineraries[0].duration.split("PT")[1].split("H")[1].split("M")[0];
-
+  const durationM = itineraries[0].duration
+    .split("PT")[1]
+    .split("H")[1]
+    .split("M")[0];
 
   return (
     <div>
+      <span>Price: {price.total}</span>
       <span>durationH:{durationH}</span>
       <span>durationM:{durationM}</span>
     </div>

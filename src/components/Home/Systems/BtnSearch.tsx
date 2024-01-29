@@ -13,6 +13,7 @@ import {
 } from "../../../data/RecoilState/FormSearchData";
 import { Flip, toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { ReSearch } from "../../../data/RecoilState/Search/TypeSystemSearch";
 
 function BtnSearch() {
   const [locationFrom] = useRecoilState(originSearch);
@@ -23,9 +24,9 @@ function BtnSearch() {
   const [childrenDataState] = useRecoilState(childrenData);
   const [youthsDataState] = useRecoilState(youthsData);
   const [adultsDataState] = useRecoilState(adultsData);
+  const [reSearchState, setReSearch] = useRecoilState(ReSearch);
 
   const handleSearchData = () => {
-
     if (!locationFrom || !destinationSearchState) {
       return toast.warn(" يجب اختيار اماكن الذهاب و العودة ", {
         position: "top-right",
@@ -52,6 +53,7 @@ function BtnSearch() {
         transition: Flip,
       });
     }
+    setReSearch(!reSearchState);
     console.log({
       locationFrom,
       destinationSearchState,

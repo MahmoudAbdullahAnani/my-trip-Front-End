@@ -433,6 +433,44 @@ export const iconLeftSwiper = (
     />
   </svg>
 );
+export const iconFFilters = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="24"
+    viewBox="0 0 25 24"
+    fill="none"
+  >
+    <path
+      d="M20.5 7H11.5"
+      stroke="#117C99"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M14.5 17H5.5"
+      stroke="#117C99"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M17.5 20C19.1569 20 20.5 18.6569 20.5 17C20.5 15.3431 19.1569 14 17.5 14C15.8431 14 14.5 15.3431 14.5 17C14.5 18.6569 15.8431 20 17.5 20Z"
+      stroke="#117C99"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7.5 10C9.15685 10 10.5 8.65685 10.5 7C10.5 5.34315 9.15685 4 7.5 4C5.84315 4 4.5 5.34315 4.5 7C4.5 8.65685 5.84315 10 7.5 10Z"
+      stroke="#117C99"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 // Icons Mobile Nav
 export const iconHome = (
