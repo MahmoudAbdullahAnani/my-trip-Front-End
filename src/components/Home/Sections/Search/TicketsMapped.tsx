@@ -7,7 +7,9 @@ import {
 import CardTrip from "./CardTrip";
 import { Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
-import { itinerariesSteps } from "./Filters/NumberOfStopsAirline";
+import { FlightOffer } from "../../../../interface/MainData";
+import FiltersBtn from "./Btns/FiltersBtn";
+import { iconArrowDown, iconFilters } from "../../../../assets/icons/home";
 
 const pageSize = 9;
 
@@ -42,19 +44,15 @@ function TicketsMapped() {
     );
   }
   return (
-    <div className={`col-span-4 lg:col-span-3 flex flex-col items-center`}>
-      {data
-        .slice(pagination.from, pagination.to)
-        .map((trip: itinerariesSteps) => {
-          return (
-            <CardTrip
-              itineraries={trip.itineraries}
-              price={trip.price}
-              key={`${trip.id}--${Math.random()}`}
-              id={trip.id}
-            />
-          );
-        })}
+    <div
+      className={`col-span-4 lg:col-span-3 flex flex-col items-center bg-green-600`}
+    >
+      <div>
+        <FiltersBtn title="ترتيب" icon={iconFilters} drawer={iconArrowDown} />
+      </div>
+      {data.slice(pagination.from, pagination.to).map((trip: FlightOffer) => {
+        return <CardTrip {...trip} key={`${trip.id}--${Math.random()}`} />;
+      })}
       {Math.ceil(data.length / pageSize) !== 1 && (
         <Pagination
           onChange={handlePagination}

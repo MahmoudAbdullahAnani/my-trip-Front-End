@@ -9,6 +9,7 @@ function FiltersSearchAirline() {
       <hr className={`w-[294px] h-[2px] mt-[30px] mb-[26px] bg-[#656565]`} />
       {/* numberOfStops Filter */}
       <NumberOfStopsAirline />
+      <hr className={`w-[294px] h-[2px] mt-[30px] mb-[26px] bg-[#656565]`} />
     </div>
   );
 }

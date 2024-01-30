@@ -5,12 +5,8 @@ import {
   TripStopeFilters,
 } from "../../../../../data/RecoilState/Search/MainData";
 import React from "react";
-
-export interface itinerariesSteps {
-  itineraries: [{ duration: string; segments: [{ numberOfStops: number }] }];
-  id: string;
-  price: { total: string };
-}
+// Interfaces
+import { FlightOffer } from "../../../../../interface/MainData";
 
 function NumberOfStopsAirline() {
   const [tripDataFilters] = useRecoilState(TripDataFilters);
@@ -22,15 +18,15 @@ function NumberOfStopsAirline() {
   const moreStepsRef = React.useRef<HTMLInputElement>(null);
 
   const ticketsNonStop = tripDataFilters.filter(
-    (ticket: itinerariesSteps) =>
+    (ticket: FlightOffer) =>
       ticket.itineraries[0].segments[0].numberOfStops === 0
   );
   const ticketsOneStop = tripDataFilters.filter(
-    (ticket: itinerariesSteps) =>
+    (ticket: FlightOffer) =>
       ticket.itineraries[0].segments[0].numberOfStops === 1
   );
   const ticketsMoreStop = tripDataFilters.filter(
-    (ticket: itinerariesSteps) =>
+    (ticket: FlightOffer) =>
       ticket.itineraries[0].segments[0].numberOfStops >= 2
   );
   function handleChecked() {

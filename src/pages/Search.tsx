@@ -41,6 +41,8 @@ import {
 } from "../data/RecoilState/Search/MainData";
 import FiltersSearchAirline from "../components/Home/Sections/Search/Filters/FiltersSearchAirline";
 import TicketsMapped from "../components/Home/Sections/Search/TicketsMapped";
+import { iconFFilters } from "../assets/icons/home";
+import BookingSteps from "../components/Home/Sections/Search/Headers/BookingSteps";
 
 // const exampleData = [
 //   {
@@ -1594,7 +1596,9 @@ function Search() {
   return (
     <section className={``}>
       <HeaderSearch />
-      <div className={`h-[104px] lg:block hidden`}>text</div>
+      <div className={`h-[104px] lg:block hidden`}>
+        <BookingSteps />
+      </div>
       {/* Content Page Search */}
       <div className={`grid grid-cols-4`}>
         {/* Tickets */}
@@ -1603,7 +1607,7 @@ function Search() {
         <div
           className={`hidden lg:flex flex-col gap-[34px] items-end pe-[96px]`}
         >
-          <FiltersBtn />
+          <FiltersBtn title="تصفية" icon={iconFFilters} />
           {/* Filters */}
           <FiltersSearchAirline />
         </div>

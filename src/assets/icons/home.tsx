@@ -310,6 +310,22 @@ export const iconArrowLeft = (
     />
   </svg>
 );
+export const iconArrowLeftBig = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="41"
+    height="51"
+    viewBox="0 0 41 51"
+    fill="none"
+  >
+    <path
+      d="M39 2L3 25.5L39 49"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+  </svg>
+);
 export const iconArrowLeftWhite = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -468,6 +484,61 @@ export const iconFFilters = (
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+    />
+  </svg>
+);
+export const iconFilters = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="25"
+    height="24"
+    viewBox="0 0 25 24"
+    fill="none"
+  >
+    <path
+      d="M2.5 3H22.5L14.5 12.46V19L10.5 21V12.46L2.5 3Z"
+      stroke="#117C99"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+export const iconChooseFlight = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
+    fill="none"
+  >
+    <path
+      d="M4 18C5.5913 18 7.11742 18.6321 8.24264 19.7574C9.36786 20.8826 10 22.4087 10 24C10 25.5913 9.36786 27.1174 8.24264 28.2426C7.11742 29.3679 5.5913 30 4 30V34C4 35.0609 4.42143 36.0783 5.17157 36.8284C5.92172 37.5786 6.93913 38 8 38H40C41.0609 38 42.0783 37.5786 42.8284 36.8284C43.5786 36.0783 44 35.0609 44 34V30C42.4087 30 40.8826 29.3679 39.7574 28.2426C38.6321 27.1174 38 25.5913 38 24C38 22.4087 38.6321 20.8826 39.7574 19.7574C40.8826 18.6321 42.4087 18 44 18V14C44 12.9391 43.5786 11.9217 42.8284 11.1716C42.0783 10.4214 41.0609 10 40 10H8C6.93913 10 5.92172 10.4214 5.17157 11.1716C4.42143 11.9217 4 12.9391 4 14V18Z"
+      stroke="#117C99"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M26 10V14"
+      stroke="#117C99"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M26 34V38"
+      stroke="#117C99"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M26 22V26"
+      stroke="#117C99"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );
