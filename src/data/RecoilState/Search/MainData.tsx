@@ -26,6 +26,19 @@ const LoadingDataSearch = atom({
   default:true, // default value (aka initial value)
 });
 
+// Stope Filters
+const IfCheckedFilter = atom({
+  key: "IfCheckedFilter", // unique ID (with respect to other atoms/selectors)
+  default: false as boolean, // default value (aka initial value)
+});
+
+const TripStopeFilters = atom({
+  key: "TripStopeFilters", // unique ID (with respect to other atoms/selectors)
+  default: [], // default value (aka initial value)
+});
+
+
+
 export {
   MainData,
   MaxPrice,
@@ -33,4 +46,6 @@ export {
   PriceFilter,
   TripDataFilters,
   LoadingDataSearch,
+  IfCheckedFilter,
+  TripStopeFilters,
 };

@@ -19,7 +19,9 @@
   src: url(./../public/assets/font/GHEEN\ Studio\ -\ Ghaith\ Sans\ Black.otf);
 }
 
-  
+.css-187mznn-MuiSlider-root {
+  color: #117c99 !important;
+}
 /* .GHAITHSANS{
   font-family: "GHAITHSANS", sans-serif;
 
@@ -52,9 +54,10 @@
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
+  border: 1px solid #117C99;
   top: 0;
   left: 100%;
-  background-color: #fff;
+  background-color: #FFF;
   border-radius: 5px;
   width: 20px;
   height: 20px;

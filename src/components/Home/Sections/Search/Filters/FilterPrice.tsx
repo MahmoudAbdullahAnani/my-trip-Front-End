@@ -1,6 +1,7 @@
 import Slider from "@mui/material/Slider";
 import { EGP } from "../../../../../Formater/FormatPrice";
 import {
+  IfCheckedFilter,
   MainData,
   MaxPrice,
   MinPrice,
@@ -13,13 +14,14 @@ function FilterPrice() {
   const [minPriceState] = useRecoilState(MinPrice);
   const [maxPriceState] = useRecoilState(MaxPrice);
   const [priceFilterState, setPriceFilterState] = useRecoilState(PriceFilter);
-  const [mainDataState, ] = useRecoilState(MainData);
-  const [, setTripDataFilters] =
-    useRecoilState(TripDataFilters);
+  const [mainDataState] = useRecoilState(MainData);
+  const [, setTripDataFilters] = useRecoilState(TripDataFilters);
 
   // const [value, setValue] = React.useState<number[]>([20, 37]);
+  const [, setIfCheckedFilterState] = useRecoilState(IfCheckedFilter);
 
   const handleChange = (_event: Event, newValue: number | number[]) => {
+    setIfCheckedFilterState(false);
     const newValueArray = newValue as number[];
     // set Date and tickets
     const ticketsFilter = mainDataState.filter(
@@ -35,7 +37,7 @@ function FilterPrice() {
     });
   };
   return (
-    <div className={`flex flex-col gap-[23px] w-[207px] bg-red-900 `}>
+    <div className={`flex flex-col gap-[23px] w-[207px]`}>
       <h2 className={`text-[#000] text-[24px] font-[700] text-end`}>السعر</h2>
       <div className={`w-full flex flex-col gap-[8px]`}>
         <div

@@ -234,14 +234,11 @@
 //       ],
 //     },
 //   ],
+
+import { itinerariesSteps } from "./Filters/NumberOfStopsAirline";
+
 // };
-function CardTrip({
-  itineraries,
-  price,
-}: {
-  itineraries: { duration: string }[];
-  price: { total: string };
-}) {
+function CardTrip({ itineraries, price, id }: itinerariesSteps) {
   const durationH = itineraries[0].duration.split("PT")[1].split("H")[0];
   const durationM = itineraries[0].duration
     .split("PT")[1]
@@ -250,9 +247,11 @@ function CardTrip({
 
   return (
     <div>
-      <span>Price: {price.total}</span>
-      <span>durationH:{durationH}</span>
-      <span>durationM:{durationM}</span>
+      <span>Price: {price.total}- </span>
+      <span>durationH:{durationH}- </span>
+      <span>durationM:{durationM}- </span>
+      <span>id:{id}& </span>
+      <span>numberOfStops:{itineraries[0].segments[0].numberOfStops} </span>
     </div>
   );
 }
