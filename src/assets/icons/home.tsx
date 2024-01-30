@@ -321,8 +321,8 @@ export const iconArrowLeftBig = (
     <path
       d="M39 2L3 25.5L39 49"
       stroke="#117C99"
-      stroke-width="3"
-      stroke-linecap="round"
+      strokeWidth="3"
+      strokeLinecap="round"
     />
   </svg>
 );
@@ -415,6 +415,42 @@ export const iconDirection = (
     </defs>
   </svg>
 );
+export const iconDirectionSmall = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="124"
+    height="23"
+    viewBox="0 0 124 23"
+    fill="none"
+  >
+    <circle cx="119" cy="12" r="5" fill="#117C99" />
+    <circle cx="5" cy="12" r="4.5" stroke="#005A6C" />
+    <line
+      x1="16.5"
+      y1="11.5"
+      x2="109.5"
+      y2="11.5"
+      stroke="#117C99"
+      stroke-linecap="round"
+      stroke-dasharray="9 9"
+    />
+    <path
+      d="M61.4875 19.4005L57.5063 13.1799H53.1519C51.2857 13.1799 49.7306 12.2468 49.4196 11.3137C49.7306 10.3806 51.2857 9.44753 53.1519 9.44753L57.5063 9.44753L61.4875 3.22693C61.7363 2.8537 62.1096 2.72929 62.4828 2.8537L62.9805 2.97811C63.4159 3.16473 63.6647 3.53796 63.6025 3.97341L62.4828 9.44753L65.5931 10.0696L67.4593 8.20341L68.7034 8.20341L68.0814 11.3137L68.7034 14.424L67.4593 14.424L65.5931 12.5578L62.4828 13.1799L63.6025 18.654C63.6647 19.0895 63.4159 19.4627 62.9805 19.6493L62.545 19.8359C62.1096 19.8981 61.7363 19.7737 61.4875 19.4005Z"
+      fill="#005A6C"
+    />
+  </svg>
+);
+export const iconDot = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="9"
+    height="8"
+    viewBox="0 0 9 8"
+    fill="none"
+  >
+    <circle cx="4.5" cy="4" r="4" fill="#117C99" />
+  </svg>
+);
 export const iconRightSwiper = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -498,9 +534,9 @@ export const iconFilters = (
     <path
       d="M2.5 3H22.5L14.5 12.46V19L10.5 21V12.46L2.5 3Z"
       stroke="#117C99"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -515,30 +551,30 @@ export const iconChooseFlight = (
     <path
       d="M4 18C5.5913 18 7.11742 18.6321 8.24264 19.7574C9.36786 20.8826 10 22.4087 10 24C10 25.5913 9.36786 27.1174 8.24264 28.2426C7.11742 29.3679 5.5913 30 4 30V34C4 35.0609 4.42143 36.0783 5.17157 36.8284C5.92172 37.5786 6.93913 38 8 38H40C41.0609 38 42.0783 37.5786 42.8284 36.8284C43.5786 36.0783 44 35.0609 44 34V30C42.4087 30 40.8826 29.3679 39.7574 28.2426C38.6321 27.1174 38 25.5913 38 24C38 22.4087 38.6321 20.8826 39.7574 19.7574C40.8826 18.6321 42.4087 18 44 18V14C44 12.9391 43.5786 11.9217 42.8284 11.1716C42.0783 10.4214 41.0609 10 40 10H8C6.93913 10 5.92172 10.4214 5.17157 11.1716C4.42143 11.9217 4 12.9391 4 14V18Z"
       stroke="#117C99"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M26 10V14"
       stroke="#117C99"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M26 34V38"
       stroke="#117C99"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M26 22V26"
       stroke="#117C99"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

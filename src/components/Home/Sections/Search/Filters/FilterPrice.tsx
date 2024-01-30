@@ -39,14 +39,14 @@ function FilterPrice() {
   return (
     <div className={`flex flex-col gap-[23px] w-[207px]`}>
       <h2 className={`text-[#000] text-[24px] font-[700] text-end`}>السعر</h2>
-      <div className={`w-full flex flex-col gap-[8px]`}>
+      <div className={`w-full flex flex-col   gap-[8px]`}>
         <div
-          className={`flex justify-between text-[#000] text-[16px] font-[700]`}
+          className={`flex justify-between gap-[10px] text-[#000] text-[16px] font-[700]`}
         >
           <span>{EGP.format(priceFilterState.min)}</span>
           <span>{EGP.format(priceFilterState.max)}</span>
         </div>
-        <div>
+        <div className={`lg:w-[100%] w-[100px] `}>
           <Slider
             getAriaLabel={() => "Temperature range"}
             min={minPriceState}

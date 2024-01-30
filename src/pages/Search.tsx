@@ -30,7 +30,6 @@ import {
 
 import TicketLoading from "../components/loder/TicketLoading";
 import HeaderSearch from "../components/Home/Sections/Search/Headers/HeaderSearch";
-import FiltersBtn from "../components/Home/Sections/Search/Btns/FiltersBtn";
 import {
   LoadingDataSearch,
   MainData,
@@ -39,10 +38,9 @@ import {
   PriceFilter,
   TripDataFilters,
 } from "../data/RecoilState/Search/MainData";
-import FiltersSearchAirline from "../components/Home/Sections/Search/Filters/FiltersSearchAirline";
 import TicketsMapped from "../components/Home/Sections/Search/TicketsMapped";
-import { iconFFilters } from "../assets/icons/home";
 import BookingSteps from "../components/Home/Sections/Search/Headers/BookingSteps";
+import FiltersAir from "../components/Home/Sections/Search/Headers/FiltersAir";
 
 // const exampleData = [
 //   {
@@ -1604,13 +1602,7 @@ function Search() {
         {/* Tickets */}
         <TicketsMapped />
         {/* Filters */}
-        <div
-          className={`hidden lg:flex flex-col gap-[34px] items-end pe-[96px]`}
-        >
-          <FiltersBtn title="تصفية" icon={iconFFilters} />
-          {/* Filters */}
-          <FiltersSearchAirline />
-        </div>
+        <FiltersAir />
       </div>
     </section>
   );

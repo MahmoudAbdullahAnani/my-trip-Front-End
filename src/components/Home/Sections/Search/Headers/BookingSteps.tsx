@@ -5,8 +5,8 @@ function BookingSteps() {
   return (
     <div className={`w-full h-full flex justify-end pe-[309px] `}>
       <HandleStep icon={iconChooseFlight} title="اختيار الرحلة " />
-      <HandleStep icon={iconChooseFlight} title="اختيار الرحلة " />
-      <HandleStep icon={iconChooseFlight} title="اختيار الرحلة " />
+      {/* <HandleStep icon={iconChooseFlight} title="اختيار الرحلة " />
+      <HandleStep icon={iconChooseFlight} title="اختيار الرحلة " /> */}
     </div>
   );
 }

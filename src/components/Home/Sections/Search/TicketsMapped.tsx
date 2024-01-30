@@ -44,22 +44,30 @@ function TicketsMapped() {
     );
   }
   return (
-    <div
-      className={`col-span-4 lg:col-span-3 flex flex-col items-center bg-green-600`}
-    >
-      <div>
+    <div className={`col-span-4 lg:col-span-3 flex flex-col items-center`}>
+      <div className={`lg:block hidden`}>
         <FiltersBtn title="ترتيب" icon={iconFilters} drawer={iconArrowDown} />
       </div>
-      {data.slice(pagination.from, pagination.to).map((trip: FlightOffer) => {
-        return <CardTrip {...trip} key={`${trip.id}--${Math.random()}`} />;
-      })}
-      {Math.ceil(data.length / pageSize) !== 1 && (
-        <Pagination
-          onChange={handlePagination}
-          count={Math.ceil(data.length / pageSize)}
-          variant="outlined"
-        />
-      )}
+      <div className={`mt-[63px] flex flex-col items-center`}>
+        <div className={`flex flex-col gap-[24px]`}>
+          {data
+            .slice(pagination.from, pagination.to)
+            .map((trip: FlightOffer) => {
+              return (
+                <CardTrip {...trip} key={`${trip.id}--${Math.random()}`} />
+              );
+            })}
+        </div>
+        <div className={`my-10`}>
+          {Math.ceil(data.length / pageSize) !== 1 && (
+            <Pagination
+              onChange={handlePagination}
+              count={Math.ceil(data.length / pageSize)}
+              variant="outlined"
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }
