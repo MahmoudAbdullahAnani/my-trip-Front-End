@@ -41,7 +41,7 @@ import {
 import TicketsMapped from "../components/Home/Sections/Search/TicketsMapped";
 import BookingSteps from "../components/Home/Sections/Search/Headers/BookingSteps";
 import FiltersAir from "../components/Home/Sections/Search/Headers/FiltersAir";
-import { GetCurrencyPricesData } from "../data/Fetching/GetCurrencyPricesData";
+// import { GetCurrencyPricesData } from "../data/Fetching/GetCurrencyPricesData";
 import { StoreCurrency } from "../data/Fetching/StoreCurrency";
 // const exampleData = [
 //   {
