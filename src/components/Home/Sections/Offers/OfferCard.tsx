@@ -12,6 +12,8 @@ import {
   iconDirection,
 } from "../../../../assets/icons/home";
 import { EGP } from "../../../../Formater/FormatPrice";
+import { StoreCurrency } from "../../../../data/Fetching/StoreCurrency";
+import { useRecoilState } from "recoil";
 
 interface OfferCardInterface {
   mainImg: string;
@@ -40,6 +42,12 @@ function OfferCard({
   price,
 }: OfferCardInterface) {
   const [toggleMore, setToggleMore] = useState(false);
+
+    const [storeCurrency] = useRecoilState(StoreCurrency);
+
+    // const totalPriceEUR = +price;
+    const totalPriceUSD = +price * +storeCurrency.rates.EUR;
+    const totalPriceEGP = totalPriceUSD * +storeCurrency.rates.EGP;
   return (
     <>
       <div
@@ -82,7 +90,7 @@ function OfferCard({
           <h5
             className={`text-[#117C99] text-[20px]  block font-[700] text-end`}
           >
-            {EGP.format(price)}
+            {EGP.format(+totalPriceEGP)}
           </h5>
         )}
         {toggleMore && (
@@ -119,9 +127,7 @@ function OfferCard({
             </div>
           </div>
         )}
-        <div
-          className={`lg: hidden gap-[20px] items-center justify-center`}
-        >
+        <div className={`lg: hidden gap-[20px] items-center justify-center`}>
           <div className={`flex flex-col items-end justify-center`}>
             <h6 className={`text-[#000] text-[16px] font-[700] `}>
               {detailDate.timeTo}
@@ -161,10 +167,10 @@ function OfferCard({
           {/* <h5
             className={`text-[#117C99] text-[20px] lg:block hidden font-[700] text-end`}
           >
-            {EGP.format(price)}
+            {EGP.format(+totalPriceEGP)}
           </h5> */}
           <button
-            onClick={() =>  {}}
+            onClick={() => {}}
             className={`text-[#005A6C] hover:text-[#005a6cc0] text-[14px] font-[700]  hidden lg:flex items-center justify-center`}
           >
             <span className={`mt-2`}>
@@ -175,7 +181,7 @@ function OfferCard({
           </button>
           {toggleMore ? (
             <h5 className={`text-[#117C99] text-[20px] font-[700] text-end`}>
-              {EGP.format(price)}
+              {EGP.format(+totalPriceEGP)}
             </h5>
           ) : (
             <button

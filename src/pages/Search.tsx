@@ -41,7 +41,8 @@ import {
 import TicketsMapped from "../components/Home/Sections/Search/TicketsMapped";
 import BookingSteps from "../components/Home/Sections/Search/Headers/BookingSteps";
 import FiltersAir from "../components/Home/Sections/Search/Headers/FiltersAir";
-
+import { GetCurrencyPricesData } from "../data/Fetching/GetCurrencyPricesData";
+import { StoreCurrency } from "../data/Fetching/StoreCurrency";
 // const exampleData = [
 //   {
 //     type: "flight-offer",
@@ -1465,7 +1466,809 @@ import FiltersAir from "../components/Home/Sections/Search/Headers/FiltersAir";
 //       },
 //     ],
 //   },
+
+//   {
+//     type: "flight-offer",
+//     id: "1",
+//     source: "GDS",
+//     instantTicketingRequired: false,
+//     nonHomogeneous: false,
+//     oneWay: false,
+//     lastTicketingDate: "2024-02-02",
+//     lastTicketingDateTime: "2024-02-02",
+//     numberOfBookableSeats: 9,
+//     itineraries: [
+//       {
+//         duration: "PT5H20M",
+//         segments: [
+//           {
+//             departure: {
+//               iataCode: "CAI",
+//               terminal: "2",
+//               at: "2024-02-02T19:55:00",
+//             },
+//             arrival: {
+//               iataCode: "AMM",
+//               at: "2024-02-02T22:15:00",
+//             },
+//             carrierCode: "RJ",
+//             number: "506",
+//             aircraft: {
+//               code: "E95",
+//             },
+//             operating: {
+//               carrierCode: "RJ",
+//             },
+//             duration: "PT1H20M",
+//             id: "1",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//           {
+//             departure: {
+//               iataCode: "AMM",
+//               at: "2024-02-02T23:10:00",
+//             },
+//             arrival: {
+//               iataCode: "DXB",
+//               terminal: "1",
+//               at: "2024-02-03T03:15:00",
+//             },
+//             carrierCode: "RJ",
+//             number: "612",
+//             aircraft: {
+//               code: "320",
+//             },
+//             operating: {
+//               carrierCode: "RJ",
+//             },
+//             duration: "PT3H5M",
+//             id: "2",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//         ],
+//       },
+//     ],
+//     price: {
+//       currency: "EUR",
+//       total: "197.63",
+//       base: "44.00",
+//       fees: [
+//         {
+//           amount: "0.00",
+//           type: "SUPPLIER",
+//         },
+//         {
+//           amount: "0.00",
+//           type: "TICKETING",
+//         },
+//       ],
+//       grandTotal: "197.63",
+//     },
+//     pricingOptions: {
+//       fareType: ["PUBLISHED"],
+//       includedCheckedBagsOnly: true,
+//     },
+//     validatingAirlineCodes: ["RJ"],
+//     travelerPricings: [
+//       {
+//         travelerId: "1",
+//         fareOption: "STANDARD",
+//         travelerType: "ADULT",
+//         price: {
+//           currency: "EUR",
+//           total: "197.63",
+//           base: "44.00",
+//         },
+//         fareDetailsBySegment: [
+//           {
+//             segmentId: "1",
+//             cabin: "ECONOMY",
+//             fareBasis: "QLANEG1",
+//             brandedFare: "ECPLUS",
+//             brandedFareLabel: "ECONOMY PLUS",
+//             class: "Q",
+//             includedCheckedBags: {
+//               quantity: 2,
+//             },
+//             amenities: [
+//               {
+//                 description: "CARRY ON BAGGAGE",
+//                 isChargeable: false,
+//                 amenityType: "BAGGAGE",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//               {
+//                 description: "FREE BAGGAGE ALLOWANCE",
+//                 isChargeable: false,
+//                 amenityType: "BAGGAGE",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//               {
+//                 description: "PRE RESERVED SEAT ASSIGNMENT",
+//                 isChargeable: true,
+//                 amenityType: "PRE_RESERVED_SEAT",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//               {
+//                 description: "MILEAGE ACCRUAL",
+//                 isChargeable: false,
+//                 amenityType: "BRANDED_FARES",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//               {
+//                 description: "CHANGEABLE TICKET",
+//                 isChargeable: true,
+//                 amenityType: "BRANDED_FARES",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//               {
+//                 description: "REFUND BEFORE DEPARTURE",
+//                 isChargeable: true,
+//                 amenityType: "BRANDED_FARES",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//             ],
+//           },
+//           {
+//             segmentId: "2",
+//             cabin: "ECONOMY",
+//             fareBasis: "QLANEG1",
+//             brandedFare: "ECPLUS",
+//             brandedFareLabel: "ECONOMY PLUS",
+//             class: "Q",
+//             includedCheckedBags: {
+//               quantity: 2,
+//             },
+//             amenities: [
+//               {
+//                 description: "CARRY ON BAGGAGE",
+//                 isChargeable: false,
+//                 amenityType: "BAGGAGE",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//               {
+//                 description: "FREE BAGGAGE ALLOWANCE",
+//                 isChargeable: false,
+//                 amenityType: "BAGGAGE",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//               {
+//                 description: "PRE RESERVED SEAT ASSIGNMENT",
+//                 isChargeable: true,
+//                 amenityType: "PRE_RESERVED_SEAT",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//               {
+//                 description: "MILEAGE ACCRUAL",
+//                 isChargeable: false,
+//                 amenityType: "BRANDED_FARES",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//               {
+//                 description: "CHANGEABLE TICKET",
+//                 isChargeable: true,
+//                 amenityType: "BRANDED_FARES",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//               {
+//                 description: "REFUND BEFORE DEPARTURE",
+//                 isChargeable: true,
+//                 amenityType: "BRANDED_FARES",
+//                 amenityProvider: {
+//                   name: "BrandedFare",
+//                 },
+//               },
+//             ],
+//           },
+//         ],
+//       },
+//     ],
+//   },
 // ];
+
+
+
+
+
+
+
+// const exampleData = [
+//   {
+//     type: "flight-offer",
+//     id: "1",
+//     source: "GDS",
+//     instantTicketingRequired: false,
+//     nonHomogeneous: false,
+//     oneWay: false,
+//     lastTicketingDate: "2024-01-31",
+//     lastTicketingDateTime: "2024-01-31",
+//     numberOfBookableSeats: 6,
+//     itineraries: [
+//       {
+//         duration: "PT6H30M",
+//         segments: [
+//           {
+//             departure: {
+//               iataCode: "CAI",
+//               terminal: "2",
+//               at: "2024-02-02T01:30:00",
+//             },
+//             arrival: {
+//               iataCode: "MCT",
+//               at: "2024-02-02T07:15:00",
+//             },
+//             carrierCode: "WY",
+//             number: "408",
+//             aircraft: {
+//               code: "738",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT3H45M",
+//             id: "1",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//           {
+//             departure: {
+//               iataCode: "MCT",
+//               at: "2024-02-02T08:45:00",
+//             },
+//             arrival: {
+//               iataCode: "DXB",
+//               terminal: "1",
+//               at: "2024-02-02T10:00:00",
+//             },
+//             carrierCode: "WY",
+//             number: "603",
+//             aircraft: {
+//               code: "7M8",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT1H15M",
+//             id: "2",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//         ],
+//       },
+//       {
+//         duration: "PT8H",
+//         segments: [
+//           {
+//             departure: {
+//               iataCode: "DXB",
+//               terminal: "1",
+//               at: "2024-02-28T11:25:00",
+//             },
+//             arrival: {
+//               iataCode: "MCT",
+//               at: "2024-02-28T12:40:00",
+//             },
+//             carrierCode: "WY",
+//             number: "604",
+//             aircraft: {
+//               code: "7M8",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT1H15M",
+//             id: "3",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//           {
+//             departure: {
+//               iataCode: "MCT",
+//               at: "2024-02-28T14:45:00",
+//             },
+//             arrival: {
+//               iataCode: "CAI",
+//               terminal: "2",
+//               at: "2024-02-28T17:25:00",
+//             },
+//             carrierCode: "WY",
+//             number: "405",
+//             aircraft: {
+//               code: "739",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT4H40M",
+//             id: "4",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//         ],
+//       },
+//     ],
+//     price: {
+//       currency: "EUR",
+//       total: "305.01",
+//       base: "59.00",
+//       fees: [
+//         {
+//           amount: "0.00",
+//           type: "SUPPLIER",
+//         },
+//         {
+//           amount: "0.00",
+//           type: "TICKETING",
+//         },
+//       ],
+//       grandTotal: "305.01",
+//     },
+//     pricingOptions: {
+//       fareType: ["PUBLISHED"],
+//       includedCheckedBagsOnly: true,
+//     },
+//     validatingAirlineCodes: ["WY"],
+//     travelerPricings: [
+//       {
+//         travelerId: "1",
+//         fareOption: "STANDARD",
+//         travelerType: "ADULT",
+//         price: {
+//           currency: "EUR",
+//           total: "305.01",
+//           base: "59.00",
+//         },
+//         fareDetailsBySegment: [
+//           {
+//             segmentId: "1",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 40,
+//               weightUnit: "KG",
+//             },
+//           },
+//           {
+//             segmentId: "2",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 40,
+//               weightUnit: "KG",
+//             },
+//           },
+//           {
+//             segmentId: "3",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 45,
+//               weightUnit: "KG",
+//             },
+//           },
+//           {
+//             segmentId: "4",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 45,
+//               weightUnit: "KG",
+//             },
+//           },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     type: "flight-offer",
+//     id: "2",
+//     source: "GDS",
+//     instantTicketingRequired: false,
+//     nonHomogeneous: false,
+//     oneWay: false,
+//     lastTicketingDate: "2024-01-31",
+//     lastTicketingDateTime: "2024-01-31",
+//     numberOfBookableSeats: 6,
+//     itineraries: [
+//       {
+//         duration: "PT6H30M",
+//         segments: [
+//           {
+//             departure: {
+//               iataCode: "CAI",
+//               terminal: "2",
+//               at: "2024-02-02T01:30:00",
+//             },
+//             arrival: {
+//               iataCode: "MCT",
+//               at: "2024-02-02T07:15:00",
+//             },
+//             carrierCode: "WY",
+//             number: "408",
+//             aircraft: {
+//               code: "738",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT3H45M",
+//             id: "1",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//           {
+//             departure: {
+//               iataCode: "MCT",
+//               at: "2024-02-02T08:45:00",
+//             },
+//             arrival: {
+//               iataCode: "DXB",
+//               terminal: "1",
+//               at: "2024-02-02T10:00:00",
+//             },
+//             carrierCode: "WY",
+//             number: "603",
+//             aircraft: {
+//               code: "7M8",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT1H15M",
+//             id: "2",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//         ],
+//       },
+//       {
+//         duration: "PT9H",
+//         segments: [
+//           {
+//             departure: {
+//               iataCode: "DXB",
+//               terminal: "1",
+//               at: "2024-02-28T17:15:00",
+//             },
+//             arrival: {
+//               iataCode: "MCT",
+//               at: "2024-02-28T18:30:00",
+//             },
+//             carrierCode: "WY",
+//             number: "610",
+//             aircraft: {
+//               code: "7M8",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT1H15M",
+//             id: "5",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//           {
+//             departure: {
+//               iataCode: "MCT",
+//               at: "2024-02-28T21:35:00",
+//             },
+//             arrival: {
+//               iataCode: "CAI",
+//               terminal: "2",
+//               at: "2024-02-29T00:15:00",
+//             },
+//             carrierCode: "WY",
+//             number: "407",
+//             aircraft: {
+//               code: "738",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT4H40M",
+//             id: "6",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//         ],
+//       },
+//     ],
+//     price: {
+//       currency: "EUR",
+//       total: "305.01",
+//       base: "59.00",
+//       fees: [
+//         {
+//           amount: "0.00",
+//           type: "SUPPLIER",
+//         },
+//         {
+//           amount: "0.00",
+//           type: "TICKETING",
+//         },
+//       ],
+//       grandTotal: "305.01",
+//     },
+//     pricingOptions: {
+//       fareType: ["PUBLISHED"],
+//       includedCheckedBagsOnly: true,
+//     },
+//     validatingAirlineCodes: ["WY"],
+//     travelerPricings: [
+//       {
+//         travelerId: "1",
+//         fareOption: "STANDARD",
+//         travelerType: "ADULT",
+//         price: {
+//           currency: "EUR",
+//           total: "305.01",
+//           base: "59.00",
+//         },
+//         fareDetailsBySegment: [
+//           {
+//             segmentId: "1",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 40,
+//               weightUnit: "KG",
+//             },
+//           },
+//           {
+//             segmentId: "2",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 40,
+//               weightUnit: "KG",
+//             },
+//           },
+//           {
+//             segmentId: "5",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 45,
+//               weightUnit: "KG",
+//             },
+//           },
+//           {
+//             segmentId: "6",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 45,
+//               weightUnit: "KG",
+//             },
+//           },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     type: "flight-offer",
+//     id: "3",
+//     source: "GDS",
+//     instantTicketingRequired: false,
+//     nonHomogeneous: false,
+//     oneWay: false,
+//     lastTicketingDate: "2024-01-31",
+//     lastTicketingDateTime: "2024-01-31",
+//     numberOfBookableSeats: 6,
+//     itineraries: [
+//       {
+//         duration: "PT6H30M",
+//         segments: [
+//           {
+//             departure: {
+//               iataCode: "CAI",
+//               terminal: "2",
+//               at: "2024-02-02T01:30:00",
+//             },
+//             arrival: {
+//               iataCode: "MCT",
+//               at: "2024-02-02T07:15:00",
+//             },
+//             carrierCode: "WY",
+//             number: "408",
+//             aircraft: {
+//               code: "738",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT3H45M",
+//             id: "1",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//           {
+//             departure: {
+//               iataCode: "MCT",
+//               at: "2024-02-02T08:45:00",
+//             },
+//             arrival: {
+//               iataCode: "DXB",
+//               terminal: "1",
+//               at: "2024-02-02T10:00:00",
+//             },
+//             carrierCode: "WY",
+//             number: "603",
+//             aircraft: {
+//               code: "7M8",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT1H15M",
+//             id: "2",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//         ],
+//       },
+//       {
+//         duration: "PT13H20M",
+//         segments: [
+//           {
+//             departure: {
+//               iataCode: "DXB",
+//               terminal: "1",
+//               at: "2024-02-28T06:05:00",
+//             },
+//             arrival: {
+//               iataCode: "MCT",
+//               at: "2024-02-28T07:20:00",
+//             },
+//             carrierCode: "WY",
+//             number: "602",
+//             aircraft: {
+//               code: "7M8",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT1H15M",
+//             id: "7",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//           {
+//             departure: {
+//               iataCode: "MCT",
+//               at: "2024-02-28T14:45:00",
+//             },
+//             arrival: {
+//               iataCode: "CAI",
+//               terminal: "2",
+//               at: "2024-02-28T17:25:00",
+//             },
+//             carrierCode: "WY",
+//             number: "405",
+//             aircraft: {
+//               code: "739",
+//             },
+//             operating: {
+//               carrierCode: "WY",
+//             },
+//             duration: "PT4H40M",
+//             id: "8",
+//             numberOfStops: 0,
+//             blacklistedInEU: false,
+//           },
+//         ],
+//       },
+//     ],
+//     price: {
+//       currency: "EUR",
+//       total: "305.01",
+//       base: "59.00",
+//       fees: [
+//         {
+//           amount: "0.00",
+//           type: "SUPPLIER",
+//         },
+//         {
+//           amount: "0.00",
+//           type: "TICKETING",
+//         },
+//       ],
+//       grandTotal: "305.01",
+//     },
+//     pricingOptions: {
+//       fareType: ["PUBLISHED"],
+//       includedCheckedBagsOnly: true,
+//     },
+//     validatingAirlineCodes: ["WY"],
+//     travelerPricings: [
+//       {
+//         travelerId: "1",
+//         fareOption: "STANDARD",
+//         travelerType: "ADULT",
+//         price: {
+//           currency: "EUR",
+//           total: "305.01",
+//           base: "59.00",
+//         },
+//         fareDetailsBySegment: [
+//           {
+//             segmentId: "1",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 40,
+//               weightUnit: "KG",
+//             },
+//           },
+//           {
+//             segmentId: "2",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 40,
+//               weightUnit: "KG",
+//             },
+//           },
+//           {
+//             segmentId: "7",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 45,
+//               weightUnit: "KG",
+//             },
+//           },
+//           {
+//             segmentId: "8",
+//             cabin: "ECONOMY",
+//             fareBasis: "OEL3EG",
+//             class: "O",
+//             includedCheckedBags: {
+//               weight: 45,
+//               weightUnit: "KG",
+//             },
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// ];
+
 
 function Search() {
   // Statement Data of trip
@@ -1474,6 +2277,8 @@ function Search() {
   const [, setPriceFilterState] = useRecoilState(PriceFilter);
   const [, setMinPriceState] = useRecoilState(MinPrice);
   const [, setMaxPriceState] = useRecoilState(MaxPrice);
+  const [storeCurrency] = useRecoilState(StoreCurrency);
+
   const [loading, setLoading] = useRecoilState(LoadingDataSearch);
   // Data For Search
   const [originLocationCode] = useRecoilState(originSearch);
@@ -1533,7 +2338,10 @@ function Search() {
         .then(({ data }) => {
           const prices = data.data.map(
             (ticket: { price: { total: string } }) => {
-              return +ticket.price.total;
+              const totalPriceUSD =
+                +ticket.price.total * +storeCurrency.rates.EUR;
+              const totalPriceEGP = totalPriceUSD * +storeCurrency.rates.EGP;
+              return +totalPriceEGP;
             }
           );
           setMinPriceState(Math.min(...prices));
@@ -1562,7 +2370,9 @@ function Search() {
     setTypeSystemSearchState("airline");
     // Test Price
     // const prices = exampleData.map((ticket: { price: { total: string } }) => {
-    //   return +ticket.price.total;
+    //   const totalPriceUSD = +ticket.price.total * +storeCurrency.rates.EUR;
+    //   const totalPriceEGP = totalPriceUSD * +storeCurrency.rates.EGP;
+    //   return +totalPriceEGP;
     // });
     // setMinPriceState(Math.min(...prices));
     // setMaxPriceState(Math.ceil(Math.max(...prices)));
@@ -1576,6 +2386,7 @@ function Search() {
       return navigator(`/`);
     }
     getDataSearch();
+    // GetCurrencyPricesData();
   }, [reSearchState]);
   if (loading) {
     return (

@@ -23,7 +23,7 @@
 .cornerTicket::after {
   content: "";
   position: absolute;
-  top: -13px;
+  top: -26px;
   width: 26px;
   height: 26px;
   background-color: #e9e9e9;
@@ -38,6 +38,26 @@
   height: 26px;
   background-color: #e9e9e9;
   left: -13px;
+  border-radius: 50%;
+}
+.cornerTicketLG::after {
+  content: "";
+  position: absolute;
+  top: -26px;
+  width: 26px;
+  height: 26px;
+  background-color: #e9e9e9;
+  left: -13px;
+  border-radius: 50%;
+}
+.cornerTicketLG::before {
+  content: "";
+  position: absolute;
+  top: -26px;
+  width: 26px;
+  height: 26px;
+  background-color: #e9e9e9;
+  right: -13px;
   border-radius: 50%;
 }
 /* End cornerTicket */

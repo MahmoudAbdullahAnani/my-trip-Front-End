@@ -20,6 +20,8 @@ function FilterPrice() {
   // const [value, setValue] = React.useState<number[]>([20, 37]);
   const [, setIfCheckedFilterState] = useRecoilState(IfCheckedFilter);
 
+
+  
   const handleChange = (_event: Event, newValue: number | number[]) => {
     setIfCheckedFilterState(false);
     const newValueArray = newValue as number[];
