@@ -2,26 +2,55 @@ import { useRecoilState } from "recoil";
 import { iconDirectionSmall, iconDot } from "../../../../assets/icons/home";
 import { MinPrice } from "../../../../data/RecoilState/Search/MainData";
 
+// Handle Date
+import { format, parseISO } from "date-fns";
+
 function TicketOneWay({
   aircraftCode,
   carrierCode,
   flightNumber,
+  departureIataCode,
+  arrivalIataCodeReturn,
+  durationM,
+  durationH,
+  departureDateGo,
+  arrivalDateReturn,
+  isStope,
   price,
 }: {
   aircraftCode: string;
   carrierCode: string;
   flightNumber: string;
+  departureIataCode: string;
+  arrivalIataCodeReturn: string;
+  durationM: string;
+  durationH: string;
+  departureDateGo: string;
+  arrivalDateReturn: string;
+  isStope: number;
   price: number;
 }) {
   const [minPriceState] = useRecoilState(MinPrice);
 
+  const parsedDepartureDate = parseISO(departureDateGo);
+  const parsedArrivalDate = parseISO(arrivalDateReturn);
+
+  // Time Ticket
+  const handleParsedDepartureTime = format(parsedDepartureDate, "h:mm a");
+  const handleParsedArrivalTime = format(parsedArrivalDate, "h:mm a");
+  // Date Ticket
+  const handleParsedDepartureDate = format(parsedDepartureDate, "MMM, yyyy");
+  const handleParsedArrivalDate = format(parsedArrivalDate, "MMM, yyyy");
+  // Day Ticket
+  const handleParsedDepartureDay = format(parsedDepartureDate, "d");
+  const handleParsedArrivalDay = format(parsedArrivalDate, "d");
   return (
     <div
       className={`lg:w-[548px] ll:w-[648px] relative rounded-s-[16px] flex flex-col justify-center items-center flex-1 `}
       dir="rtl"
     >
       <div
-        className={`flex justify-between pr-[10px] xl:pl-[24px] pl-[10px]  items-end pb-[22px] w-full h-full border  border-t-0 lg:border-b-0 xl:border-b-1 border-x-0`}
+        className={`flex justify-between pr-[10px] xl:pl-[24px] pl-[10px] items-end pb-[22px] w-full h-full border border-t-0 lg:border-b-0 xl:border-b-1 border-x-0`}
       >
         {/* الطائرة */}
         <div className={`flex    flex-col gap-[8px] `}>
@@ -43,36 +72,44 @@ function TicketOneWay({
         {/* Date */}
         <div className={`grid w-[309px]  grid-cols-3  `}>
           <div className={`flex flex-col gap-[8px]`}>
-            <span className={`text-[#231F20] text-[14px] font-[700]`}>CAI</span>
+            <span className={`text-[#231F20] text-[14px] font-[700]`}>
+              {departureIataCode}
+            </span>
             <span className={`text-[#000] text-[20px] font-[700]`}>
-              9:00 AM
+              {handleParsedDepartureTime}
             </span>
-            <span className={`text-[#333] text-[14px] font-[700]`}>
-              16 Feb,2024
-            </span>
+            <div className={`text-[#333] text-[14px] font-[700] flex gap-1`}>
+              <span>{handleParsedDepartureDate}</span>
+              <span>{handleParsedDepartureDay}</span>
+            </div>
           </div>
           <div
             className={`flex flex-col gap-[8px] justify-center items-center`}
           >
             <span className={`text-[#4F4F4F] text-[13px] font-[700]`}>
-              1h30m
+              {durationH}h{durationM}m
             </span>
             <span>{iconDirectionSmall}</span>
-            <div className={`flex items-center   gap-[2px]`}>
-              <span className={`relative top-[2px]`}>{iconDot}</span>
-              <span className={`text-[#117C99] text-[13px] font-[700]`}>
-                بدون توقف
-              </span>
-            </div>
+            {isStope === 0 && (
+              <div className={`flex items-center gap-[2px]`}>
+                <span className={`relative top-[2px]`}>{iconDot}</span>
+                <span className={`text-[#117C99] text-[13px] font-[700]`}>
+                  بدون توقف
+                </span>
+              </div>
+            )}
           </div>
           <div className={`flex flex-col gap-[8px] items-end`}>
-            <span className={`text-[#231F20] text-[14px] font-[700]`}>DHB</span>
+            <span className={`text-[#231F20] text-[14px] font-[700]`}>
+              {arrivalIataCodeReturn}
+            </span>
             <span className={`text-[#000] text-[20px] font-[700]`}>
-              11:30 AM
+              {handleParsedArrivalTime}
             </span>
-            <span className={`text-[#333] text-[14px] font-[700]`}>
-              16 Feb,2024
-            </span>
+            <div className={`text-[#333] text-[14px] font-[700] flex gap-1`}>
+              <span>{handleParsedArrivalDate}</span>
+              <span>{handleParsedArrivalDay}</span>
+            </div>
           </div>
         </div>
         {/* افضل سعر */}
@@ -89,11 +126,11 @@ function TicketOneWay({
               </div>
             )}
           </div>
-          <div
+          <button
             className={` border-2 border-[#117C99] hover:bg-[#117c99f3] text-[#005A6C] hover:text-[#fff] text-[16px] font-[700] xl:w-[93px] w-[73px] ms-auto xl:h-[48px] h-[38px] rounded-[16px] flex justify-center items-center `}
           >
             <span className={` text-[16px] font-[700]`}>التفصيل</span>
-          </div>
+          </button>
         </div>
       </div>
     </div>

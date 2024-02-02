@@ -1690,11 +1690,7 @@ import { StoreCurrency } from "../data/Fetching/StoreCurrency";
 //   },
 // ];
 
-
-
-
-
-
+/*================================================= */
 
 // const exampleData = [
 //   {
@@ -1766,7 +1762,7 @@ import { StoreCurrency } from "../data/Fetching/StoreCurrency";
 //             departure: {
 //               iataCode: "DXB",
 //               terminal: "1",
-//               at: "2024-02-28T11:25:00",
+//               at: "2024-02-05T11:25:00",
 //             },
 //             arrival: {
 //               iataCode: "MCT",
@@ -1793,7 +1789,7 @@ import { StoreCurrency } from "../data/Fetching/StoreCurrency";
 //             arrival: {
 //               iataCode: "CAI",
 //               terminal: "2",
-//               at: "2024-02-28T17:25:00",
+//               at: "2024-02-05T17:25:00",
 //             },
 //             carrierCode: "WY",
 //             number: "405",
@@ -1805,7 +1801,7 @@ import { StoreCurrency } from "../data/Fetching/StoreCurrency";
 //             },
 //             duration: "PT4H40M",
 //             id: "4",
-//             numberOfStops: 0,
+//             numberOfStops: 1,
 //             blacklistedInEU: false,
 //           },
 //         ],
@@ -2268,7 +2264,6 @@ import { StoreCurrency } from "../data/Fetching/StoreCurrency";
 //     ],
 //   },
 // ];
-
 
 function Search() {
   // Statement Data of trip

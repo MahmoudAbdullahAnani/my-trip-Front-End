@@ -10,7 +10,7 @@ function CheckOutTicket({
   return (
     <>
       <div
-        className={`xl:flex hidden flex-col items-center justify-center relative cornerTicket rounded-e-[16px] w-full`}
+        className={`xl:flex hidden flex-col items-center justify-center relative cornerTicket  rounded-e-[16px] w-full`}
       >
         <div
           className={`text-[#117C99] text-[16px] font-[700] p-[8px] rounded-[8px] bg-[#B6E7FB] text-center`}

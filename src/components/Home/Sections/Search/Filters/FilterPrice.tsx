@@ -9,6 +9,7 @@ import {
   TripDataFilters,
 } from "../../../../../data/RecoilState/Search/MainData";
 import { useRecoilState } from "recoil";
+import { StoreCurrency } from "../../../../../data/Fetching/StoreCurrency";
 
 function FilterPrice() {
   const [minPriceState] = useRecoilState(MinPrice);
@@ -17,19 +18,24 @@ function FilterPrice() {
   const [mainDataState] = useRecoilState(MainData);
   const [, setTripDataFilters] = useRecoilState(TripDataFilters);
 
-  // const [value, setValue] = React.useState<number[]>([20, 37]);
   const [, setIfCheckedFilterState] = useRecoilState(IfCheckedFilter);
 
+  const [storeCurrency] = useRecoilState(StoreCurrency);
 
-  
   const handleChange = (_event: Event, newValue: number | number[]) => {
     setIfCheckedFilterState(false);
     const newValueArray = newValue as number[];
     // set Date and tickets
     const ticketsFilter = mainDataState.filter(
       (ticket: { price: { total: string } }) =>
-        +ticket.price.total >= newValueArray[0] &&
-        +ticket.price.total <= newValueArray[1]
+        +ticket.price.total *
+          +storeCurrency.rates.EUR *
+          +storeCurrency.rates.EGP >=
+          newValueArray[0] &&
+        +ticket.price.total *
+          +storeCurrency.rates.EUR *
+          +storeCurrency.rates.EGP <=
+          newValueArray[1]
     );
     setTripDataFilters(ticketsFilter);
     // setUi

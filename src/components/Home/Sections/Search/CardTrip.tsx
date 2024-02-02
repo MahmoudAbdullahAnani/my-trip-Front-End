@@ -13,11 +13,11 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
   const [storeCurrency] = useRecoilState(StoreCurrency);
 
   // Handle Data
-  // const durationH = itineraries[0].duration.split("PT")[1].split("H")[0];
-  // const durationM = itineraries[0].duration
-  //   .split("PT")[1]
-  //   .split("H")[1]
-  //   .split("M")[0];
+  const durationH = itineraries[0].duration.split("PT")[1].split("H")[0];
+  const durationM = itineraries[0].duration
+    .split("PT")[1]
+    .split("H")[1]
+    .split("M")[0];
 
   // const totalPriceEUR = price.total;
   const totalPriceUSD = +price.total * +storeCurrency.rates.EUR;
@@ -35,12 +35,16 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
   // تاريخ الذهاب
   const departureDate = itineraries[0].segments[0].departure.at;
 
+  const departureIataCode = itineraries[0].segments[0].departure.iataCode;
+  const [arrivalIataCodeReturn, setArrivalIataCode] = useState(
+    itineraries[0].segments[0].arrival.iataCode
+  );
+
   // بيانات الطائرة و الرحلة
 
   // كود الذهاب
   const outboundFlight = itineraries[0];
   const outboundSegments = outboundFlight.segments;
-  // console.log(outboundSegments);
 
   // // بيانات الطائرة في الذهاب
   const outboundAircraft = outboundSegments.map((segment) => ({
@@ -48,7 +52,6 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
     flightNumber: segment.number,
     aircraftCode: segment.aircraft.code,
   }));
-  // console.log(outboundAircraft);
 
   const [travelTypeState] = useRecoilState(typeTravel);
   const [dataAirReturn, setDataAirReturn] = useState<
@@ -66,10 +69,25 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
   ]);
   // let daysDifference = 0;
   const [daysDifference, setDaysDifference] = useState(0);
+  // console.log(itineraries);
+
+  const [arrivalIataCodeReturnRound, setArrivalIataCodeReturn] = useState("");
+  const [durationReturnH, setDurationReturnH] = useState("");
+  const [durationReturnM, setDurationReturnM] = useState("");
   useEffect(() => {
+    if (itineraries[0].segments.length > 1) {
+      setArrivalIataCode(itineraries[0].segments[1].arrival.iataCode);
+    }
     if (travelTypeState !== "oneWay") {
       // تاريخ العودة
+      setDurationReturnH(itineraries[1].duration.split("PT")[1].split("H")[0]);
+      setDurationReturnM(
+        itineraries[1].duration.split("PT")[1].split("H")[1].split("M")[0]
+      );
+
       const returnDate = itineraries[1].segments[0].arrival.at;
+
+      setArrivalIataCodeReturn(itineraries[1].segments[0].arrival.iataCode);
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
       setDaysDifference(
@@ -78,13 +96,10 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
           new Date(departureDate.slice(0, 10))
         )
       );
-      // console.log(daysDifference);
 
       const returnFlight = itineraries[1];
-      // console.log(returnFlight);
 
       const returnSegments = returnFlight.segments;
-      // // بيانات الطائرة في العودة
       const returnAircraft = returnSegments.map((segment) => ({
         carrierCode: segment.carrierCode,
         flightNumber: segment.number,
@@ -93,15 +108,7 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
       setDataAirReturn(returnAircraft);
     }
   }, []);
-  // console.log("returnAircraft==> ", dataAirReturn);
 
-  // // كود العودة
-  // console.log(dataAirReturn);
-  // console.log("travelTypeState==> ", travelTypeState);
-
-  // // طباعة بيانات الطائرة
-  // console.log("بيانات الطائرة في الذهاب:", outboundAircraft);
-  // console.log("بيانات الطائرة في العودة:", returnAircraft);
   return (
     <div
       // lg:w-[548px] ll:w-[848px]
@@ -117,6 +124,13 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
           aircraftCode={outboundAircraft[0].aircraftCode}
           carrierCode={outboundAircraft[0].carrierCode}
           flightNumber={outboundAircraft[0].flightNumber}
+          departureIataCode={departureIataCode}
+          arrivalIataCodeReturn={arrivalIataCodeReturn}
+          durationH={durationH}
+          durationM={durationM}
+          departureDateGo={itineraries[0].segments[0].departure.at}
+          arrivalDateReturn={itineraries[0].segments[1].arrival.at}
+          isStope={itineraries[0].segments[0].numberOfStops}
           price={+totalPriceEGP}
         />
       ) : (
@@ -126,8 +140,21 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
           aircraftCode={outboundAircraft[0].aircraftCode}
           carrierCode={outboundAircraft[0].carrierCode}
           flightNumber={outboundAircraft[0].flightNumber}
-          // Data Return
-
+          departureIataCode={departureIataCode}
+          arrivalIataCodeReturnRound={arrivalIataCodeReturnRound}
+          durationH={durationH}
+          durationM={durationM}
+          durationReturnH={durationReturnH}
+          durationReturnM={durationReturnM}
+          isStope1={itineraries[0].segments[0].numberOfStops}
+          isStope2={itineraries[1].segments[1].numberOfStops}
+          //travel 1
+          departureDateGo1={itineraries[0].segments[0].departure.at}
+          arrivalDateReturn1={itineraries[0].segments[1].arrival.at}
+          //travel 2
+          departureDateGo2={itineraries[1].segments[0].departure.at}
+          arrivalDateReturn2={itineraries[1].segments[1].arrival.at}
+          //
           aircraftCodeReturn={dataAirReturn[0].aircraftCode}
           carrierCodeReturn={dataAirReturn[0].carrierCode}
           flightNumberReturn={dataAirReturn[0].flightNumber}
@@ -135,7 +162,7 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
         />
       )}
 
-      <div className="xl:w-[200px] ms-auto xl:flex lg:block lg:w-full lg:pt-3 xl:bg-[#FFF] hidden border-2 border-b-0 xl:border-t-0 border-t-2 lg:border-l-0 xl:border-l-2 border-r-0 border-dashed">
+      <div className="xl:w-[200px] ms-auto xl:flex lg:block lg:w-full lg:pt-3 xl:bg-[#FFF] hidden rounded-e-[16px] border-2 border-b-0 xl:border-t-0 border-t-2 lg:border-l-0 xl:border-l-2 border-r-0 border-dashed">
         {/* <hr
           className={`w-[1px] h-full border border-dashed border-slate-400 `}
         /> */}

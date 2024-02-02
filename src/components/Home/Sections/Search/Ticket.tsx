@@ -1,6 +1,31 @@
 import { useRecoilState } from "recoil";
 import { iconDirectionSmall, iconDot } from "../../../../assets/icons/home";
 import { MinPrice } from "../../../../data/RecoilState/Search/MainData";
+// Parse Date
+import { format, parseISO } from "date-fns";
+
+interface TicketData {
+  daysDifference: number;
+  aircraftCode: string;
+  carrierCode: string;
+  flightNumber: string;
+  aircraftCodeReturn: string;
+  carrierCodeReturn: string;
+  flightNumberReturn: string;
+  departureIataCode: string;
+  arrivalIataCodeReturnRound: string;
+  durationH: string;
+  durationM: string;
+  departureDateGo1: string;
+  arrivalDateReturn1: string;
+  departureDateGo2: string;
+  arrivalDateReturn2: string;
+  durationReturnH: string;
+  durationReturnM: string;
+  isStope1: number;
+  isStope2: number;
+  price: number;
+}
 
 function Ticket({
   daysDifference,
@@ -10,20 +35,47 @@ function Ticket({
   aircraftCodeReturn,
   carrierCodeReturn,
   flightNumberReturn,
+  departureIataCode,
+  arrivalIataCodeReturnRound,
+  durationH,
+  durationM,
+  durationReturnH,
+  durationReturnM,
+  departureDateGo1,
+  arrivalDateReturn1,
+  departureDateGo2,
+  arrivalDateReturn2,
+  isStope1,
+  isStope2,
   price,
-}: {
-  daysDifference: number;
-  aircraftCode: string;
-  carrierCode: string;
-  flightNumber: string;
-  aircraftCodeReturn: string;
-  carrierCodeReturn: string;
-  flightNumberReturn: string;
-  price: number;
-}) {
+}: TicketData) {
   const [minPriceState] = useRecoilState(MinPrice);
-  console.log(daysDifference);
 
+  const parseGo1 = parseISO(`${departureDateGo1}`);
+  const parseReturn1 = parseISO(`${arrivalDateReturn1}`);
+
+  const parseGo2 = parseISO(`${departureDateGo2}`);
+  const parseReturn2 = parseISO(`${arrivalDateReturn2}`);
+  // ========================= Ticket Go ==================
+  // Handle Time
+  const timeTicket1Go = format(parseGo1, "h:mm a");
+  const timeTicket1Return = format(parseReturn1, "h:mm a");
+  // Handle Date
+  const dateTicket1Go = format(parseGo1, "MMM, yyyy");
+  const dateTicket1Return = format(parseReturn1, "MMM, yyyy");
+  // Handle Day
+  const dayTicket1Go = format(parseGo1, "d ");
+  const dayTicket1Return = format(parseReturn1, "d ");
+  // ========================= Ticket Return ==================
+  // Handle Time
+  const timeTicket2Go = format(parseGo2, "h:mm a");
+  const timeTicket2Return = format(parseReturn2, "h:mm a");
+  // Handle Date
+  const dateTicket2Go = format(parseGo2, "MMM, yyyy");
+  const dateTicket2Return = format(parseReturn2, "MMM, yyyy");
+  // Handle Day
+  const dayTicket2Go = format(parseGo2, "d ");
+  const dayTicket2Return = format(parseReturn2, "d ");
   return (
     <div
       className={`lg:w-[548px] ll:w-[648px] relative rounded-s-[16px] flex flex-col justify-center items-center flex-1 `}
@@ -57,36 +109,44 @@ function Ticket({
         {/* Date */}
         <div className={`grid w-[309px]  grid-cols-3 mt-[14px] `}>
           <div className={`flex flex-col gap-[8px]`}>
-            <span className={`text-[#231F20] text-[14px] font-[700]`}>CAI</span>
+            <span className={`text-[#231F20] text-[14px] font-[700]`}>
+              {departureIataCode}
+            </span>
             <span className={`text-[#000] text-[20px] font-[700]`}>
-              9:00 AM
+              {timeTicket1Go}
             </span>
-            <span className={`text-[#333] text-[14px] font-[700]`}>
-              16 Feb,2024
-            </span>
+            <div className={`text-[#333] text-[14px] font-[700] flex gap-1`}>
+              <span>{dateTicket1Go}</span>
+              <span>{dayTicket1Go}</span>
+            </div>
           </div>
           <div
             className={`flex flex-col gap-[8px] justify-center items-center`}
           >
             <span className={`text-[#4F4F4F] text-[13px] font-[700]`}>
-              1h30m
+              {durationH}h{durationM}m
             </span>
             <span>{iconDirectionSmall}</span>
-            <div className={`flex items-center   gap-[2px]`}>
-              <span className={`relative top-[2px]`}>{iconDot}</span>
-              <span className={`text-[#117C99] text-[13px] font-[700]`}>
-                بدون توقف
-              </span>
-            </div>
+            {isStope1 === 0 && (
+              <div className={`flex items-center gap-[2px]`}>
+                <span className={`relative top-[2px]`}>{iconDot}</span>
+                <span className={`text-[#117C99] text-[13px] font-[700]`}>
+                  بدون توقف
+                </span>
+              </div>
+            )}
           </div>
           <div className={`flex flex-col gap-[8px] items-end`}>
-            <span className={`text-[#231F20] text-[14px] font-[700]`}>DHB</span>
+            <span className={`text-[#231F20] text-[14px] font-[700]`}>
+              {arrivalIataCodeReturnRound}
+            </span>
             <span className={`text-[#000] text-[20px] font-[700]`}>
-              11:30 AM
+              {timeTicket1Return}
             </span>
-            <span className={`text-[#333] text-[14px] font-[700]`}>
-              16 Feb,2024
-            </span>
+            <div className={`text-[#333] text-[14px] font-[700] flex gap-1`}>
+              <span>{dateTicket1Return}</span>
+              <span>{dayTicket1Return}</span>
+            </div>
           </div>
         </div>
         {/* افضل سعر */}
@@ -125,45 +185,54 @@ function Ticket({
         {/* Date */}
         <div className={`grid w-[309px]  grid-cols-3  `}>
           <div className={`flex flex-col gap-[8px]`}>
-            <span className={`text-[#231F20] text-[14px] font-[700]`}>CAI</span>
+            <span className={`text-[#231F20] text-[14px] font-[700]`}>
+              {arrivalIataCodeReturnRound}
+            </span>
             <span className={`text-[#000] text-[20px] font-[700]`}>
-              9:00 AM
+              {timeTicket2Go}
             </span>
-            <span className={`text-[#333] text-[14px] font-[700]`}>
-              16 Feb,2024
-            </span>
+            <div className={`text-[#333] text-[14px] font-[700] flex gap-1`}>
+              <span>{dateTicket2Go}</span>
+              <span>{dayTicket2Go}</span>
+            </div>
           </div>
           <div
             className={`flex flex-col gap-[8px] justify-center items-center`}
           >
             <span className={`text-[#4F4F4F] text-[13px] font-[700]`}>
-              1h30m
+              {durationReturnH}h{durationReturnM}m
             </span>
             <span>{iconDirectionSmall}</span>
-            <div className={`flex items-center   gap-[2px]`}>
-              <span className={`relative top-[2px]`}>{iconDot}</span>
-              <span className={`text-[#117C99] text-[13px] font-[700]`}>
-                بدون توقف
-              </span>
-            </div>
+            {isStope2 === 0 && (
+              <div className={`flex items-center   gap-[2px]`}>
+                <span className={`relative top-[2px]`}>{iconDot}</span>
+                <span className={`text-[#117C99] text-[13px] font-[700]`}>
+                  بدون توقف
+                </span>
+              </div>
+            )}
           </div>
           <div className={`flex flex-col gap-[8px] items-end`}>
-            <span className={`text-[#231F20] text-[14px] font-[700]`}>DHB</span>
+            <span className={`text-[#231F20] text-[14px] font-[700]`}>
+              {departureIataCode}
+            </span>
             <span className={`text-[#000] text-[20px] font-[700]`}>
-              11:30 AM
+              {timeTicket2Return}
             </span>
-            <span className={`text-[#333] text-[14px] font-[700]`}>
-              16 Feb,2024
-            </span>
+            <div className={`text-[#333] text-[14px] font-[700] flex gap-1`}>
+              <span>{dateTicket2Return}</span>
+              <span>{dayTicket2Return}</span>
+            </div>
           </div>
         </div>
+
         {/* افضل سعر */}
         <div className="mt-auto lg:mr-1 mr-0">
-          <div
+          <button
             className={` border-2 border-[#117C99] hover:bg-[#117c99f3] text-[#005A6C] hover:text-[#fff] text-[16px] font-[700] xl:w-[93px] w-[73px] ms-auto xl:h-[48px] h-[38px] rounded-[16px] flex justify-center items-center `}
           >
             <span className={` text-[16px] font-[700]`}>التفصيل</span>
-          </div>
+          </button>
         </div>
       </div>
     </div>
