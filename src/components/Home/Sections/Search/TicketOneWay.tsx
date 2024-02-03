@@ -54,9 +54,7 @@ function TicketOneWay({
         className={`px-[26px] relative rounded-[16px] flex flex-col justify-center items-center flex-1 `}
         dir="rtl"
       >
-        <div
-          className={`w-[321px] pb-[22px] py-[20px]`}
-        >
+        <div className={`w-full pb-[22px] py-[20px]`}>
           <div className={`flex flex-col`}>
             <div className={`flex items-start`}>
               {/* الطائرة */}
