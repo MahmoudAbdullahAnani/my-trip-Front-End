@@ -110,65 +110,138 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
   }, []);
 
   return (
-    <div
-      // lg:w-[548px] ll:w-[848px]
-      className={`bg-[#FFF] hover:shadow-md shadow-[#D9D9D9] hidden  rounded-[16px] relative ${
-        travelTypeState === "oneWay" ? "xl:h-[171px]" : "xl:h-[271px]"
-      }  ${
-        travelTypeState === "oneWay" ? "lg:h-[350px]" : "lg:h-[450px]"
-      }  xl:flex lg:grid `}
-    >
-      {travelTypeState === "oneWay" ? (
-        // رايح
-        <TicketOneWay
-          aircraftCode={outboundAircraft[0].aircraftCode}
-          carrierCode={outboundAircraft[0].carrierCode}
-          flightNumber={outboundAircraft[0].flightNumber}
-          departureIataCode={departureIataCode}
-          arrivalIataCodeReturn={arrivalIataCodeReturn}
-          durationH={durationH}
-          durationM={durationM}
-          departureDateGo={itineraries[0].segments[0].departure.at}
-          arrivalDateReturn={itineraries[0].segments[1].arrival.at}
-          isStope={itineraries[0].segments[0].numberOfStops}
-          price={+totalPriceEGP}
-        />
-      ) : (
-        // رايح جاي
-        <Ticket
-          daysDifference={daysDifference}
-          aircraftCode={outboundAircraft[0].aircraftCode}
-          carrierCode={outboundAircraft[0].carrierCode}
-          flightNumber={outboundAircraft[0].flightNumber}
-          departureIataCode={departureIataCode}
-          arrivalIataCodeReturnRound={arrivalIataCodeReturnRound}
-          durationH={durationH}
-          durationM={durationM}
-          durationReturnH={durationReturnH}
-          durationReturnM={durationReturnM}
-          isStope1={itineraries[0].segments[0].numberOfStops}
-          isStope2={itineraries[1].segments[1].numberOfStops}
-          //travel 1
-          departureDateGo1={itineraries[0].segments[0].departure.at}
-          arrivalDateReturn1={itineraries[0].segments[1].arrival.at}
-          //travel 2
-          departureDateGo2={itineraries[1].segments[0].departure.at}
-          arrivalDateReturn2={itineraries[1].segments[1].arrival.at}
-          //
-          aircraftCodeReturn={dataAirReturn[0].aircraftCode}
-          carrierCodeReturn={dataAirReturn[0].carrierCode}
-          flightNumberReturn={dataAirReturn[0].flightNumber}
-          price={+totalPriceEGP}
-        />
-      )}
+    <>
+      {/* Desktop */}
+      <div
+        // lg:w-[548px] ll:w-[848px]
+        className={`bg-[#FFF] hover:shadow-md shadow-[#D9D9D9] hidden  rounded-[16px] relative ${
+          travelTypeState === "oneWay" ? "xl:h-[171px]" : "xl:h-[271px]"
+        }  ${
+          travelTypeState === "oneWay" ? "lg:h-[350px]" : "lg:h-[450px]"
+        }  xl:flex lg:grid `}
+      >
+        {travelTypeState === "oneWay" ? (
+          // رايح
+          <TicketOneWay
+            aircraftCode={outboundAircraft[0].aircraftCode}
+            carrierCode={outboundAircraft[0].carrierCode}
+            flightNumber={outboundAircraft[0].flightNumber}
+            departureIataCode={departureIataCode}
+            arrivalIataCodeReturn={arrivalIataCodeReturn}
+            durationH={durationH}
+            durationM={durationM}
+            departureDateGo={itineraries[0].segments[0].departure.at}
+            arrivalDateReturn={itineraries[0].segments[1].arrival.at}
+            isStope={itineraries[0].segments[0].numberOfStops}
+            price={+totalPriceEGP}
+          />
+        ) : (
+          // رايح جاي
+          <Ticket
+            daysDifference={daysDifference}
+            aircraftCode={outboundAircraft[0].aircraftCode}
+            carrierCode={outboundAircraft[0].carrierCode}
+            flightNumber={outboundAircraft[0].flightNumber}
+            departureIataCode={departureIataCode}
+            arrivalIataCodeReturnRound={arrivalIataCodeReturnRound}
+            durationH={durationH}
+            durationM={durationM}
+            durationReturnH={durationReturnH}
+            durationReturnM={durationReturnM}
+            isStope1={itineraries[0].segments[0].numberOfStops}
+            isStope2={itineraries[1].segments[1].numberOfStops}
+            //travel 1
+            departureDateGo1={itineraries[0].segments[0].departure.at}
+            arrivalDateReturn1={itineraries[0].segments[1].arrival.at}
+            //travel 2
+            departureDateGo2={itineraries[1].segments[0].departure.at}
+            arrivalDateReturn2={itineraries[1].segments[1].arrival.at}
+            //
+            aircraftCodeReturn={dataAirReturn[0].aircraftCode}
+            carrierCodeReturn={dataAirReturn[0].carrierCode}
+            flightNumberReturn={dataAirReturn[0].flightNumber}
+            price={+totalPriceEGP}
+          />
+        )}
 
-      <div className="xl:w-[200px] ms-auto xl:flex lg:block lg:w-full lg:pt-3 xl:bg-[#FFF] hidden rounded-e-[16px] border-2 border-b-0 xl:border-t-0 border-t-2 lg:border-l-0 xl:border-l-2 border-r-0 border-dashed">
-        {/* <hr
+        <div className="xl:w-[200px] ms-auto xl:flex lg:block lg:w-full lg:pt-3 xl:bg-[#FFF] hidden rounded-e-[16px] border-2 border-b-0 xl:border-t-0 border-t-2 lg:border-l-0 xl:border-l-2 border-r-0 border-dashed">
+          {/* <hr
           className={`w-[1px] h-full border border-dashed border-slate-400 `}
         /> */}
-        <CheckOutTicket degree={degree} totalPriceEGP={+totalPriceEGP} />
+          <CheckOutTicket degree={degree} totalPriceEGP={+totalPriceEGP} />
+        </div>
       </div>
-    </div>
+      {/* Mobile */}
+      <div
+        // lg:w-[548px] ll:w-[848px]
+        className={`bg-[#FFF] hover:shadow-md shadow-[#D9D9D9] lg:hidden block  rounded-[16px] relative ${
+          travelTypeState === "oneWay" ? "xl:h-[171px]" : "xl:h-[271px]"
+        }  ${travelTypeState === "oneWay" ? "lg:h-[350px]" : "lg:h-[450px]"}`}
+      >
+        {travelTypeState === "oneWay" ? (
+          // رايح
+          <TicketOneWay
+            isMobile={true}
+            aircraftCode={outboundAircraft[0].aircraftCode}
+            carrierCode={outboundAircraft[0].carrierCode}
+            flightNumber={outboundAircraft[0].flightNumber}
+            departureIataCode={departureIataCode}
+            arrivalIataCodeReturn={arrivalIataCodeReturn}
+            durationH={durationH}
+            durationM={durationM}
+            departureDateGo={itineraries[0].segments[0].departure.at}
+            arrivalDateReturn={itineraries[0].segments[1].arrival.at}
+            isStope={itineraries[0].segments[0].numberOfStops}
+            price={+totalPriceEGP}
+          />
+        ) : (
+          // رايح جاي
+          <Ticket
+            isMobile={true}
+            daysDifference={daysDifference}
+            aircraftCode={outboundAircraft[0].aircraftCode}
+            carrierCode={outboundAircraft[0].carrierCode}
+            flightNumber={outboundAircraft[0].flightNumber}
+            departureIataCode={departureIataCode}
+            arrivalIataCodeReturnRound={arrivalIataCodeReturnRound}
+            durationH={durationH}
+            durationM={durationM}
+            durationReturnH={durationReturnH}
+            durationReturnM={durationReturnM}
+            isStope1={itineraries[0].segments[0].numberOfStops}
+            isStope2={itineraries[1].segments[1].numberOfStops}
+            //travel 1
+            departureDateGo1={itineraries[0].segments[0].departure.at}
+            arrivalDateReturn1={itineraries[0].segments[1].arrival.at}
+            //travel 2
+            departureDateGo2={itineraries[1].segments[0].departure.at}
+            arrivalDateReturn2={itineraries[1].segments[1].arrival.at}
+            //
+            aircraftCodeReturn={dataAirReturn[0].aircraftCode}
+            carrierCodeReturn={dataAirReturn[0].carrierCode}
+            flightNumberReturn={dataAirReturn[0].flightNumber}
+            price={+totalPriceEGP}
+          />
+        )}
+
+        <div className="xl:w-[200px] ms-auto xl:flex lg:block lg:w-full lg:pt-3 xl:bg-[#FFF] hidden rounded-e-[16px] border-2 border-b-0 xl:border-t-0 border-t-2 lg:border-l-0 xl:border-l-2 border-r-0 border-dashed">
+          {/* <hr
+          className={`w-[1px] h-full border border-dashed border-slate-400 `}
+        /> */}
+          <CheckOutTicket degree={degree} totalPriceEGP={+totalPriceEGP} />
+        </div>
+        <div className="xl:w-[200px] ms-auto lg:hidden flex  lg:w-full lg:pt-3 xl:bg-[#FFF]  rounded-e-[16px] border-2 border-b-0  border-t-2 border-x-0 border-dashed">
+          {/* <hr
+          className={`w-[1px] h-full border border-dashed border-slate-400 `}
+        /> */}
+          <CheckOutTicket
+            isMobile={true}
+            degree={degree}
+            totalPriceEGP={+totalPriceEGP}
+          />
+        </div>
+      </div>
+    </>
   );
 }
 
