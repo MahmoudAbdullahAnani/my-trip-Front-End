@@ -123,6 +123,9 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
         {travelTypeState === "oneWay" ? (
           // رايح
           <TicketOneWay
+            dTerminal={itineraries[0].segments[0].departure.terminal || ""}
+            aTerminal={itineraries[0].segments[1].arrival.terminal || ""}
+            degree={degree}
             aircraftCode={outboundAircraft[0].aircraftCode}
             carrierCode={outboundAircraft[0].carrierCode}
             flightNumber={outboundAircraft[0].flightNumber}
@@ -138,6 +141,11 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
         ) : (
           // رايح جاي
           <Ticket
+            d1Terminal={itineraries[0].segments[0].departure.terminal || ""}
+            a1Terminal={itineraries[0].segments[1].arrival.terminal || ""}
+            d2Terminal={itineraries[1].segments[0].departure.terminal || ""}
+            a2Terminal={itineraries[1].segments[1].arrival.terminal || ""}
+            degree={degree}
             daysDifference={daysDifference}
             aircraftCode={outboundAircraft[0].aircraftCode}
             carrierCode={outboundAircraft[0].carrierCode}
@@ -181,6 +189,9 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
         {travelTypeState === "oneWay" ? (
           // رايح
           <TicketOneWay
+            dTerminal={itineraries[0].segments[0].departure.terminal || ""}
+            aTerminal={itineraries[0].segments[1].arrival.terminal || ""}
+            degree={degree}
             isMobile={true}
             aircraftCode={outboundAircraft[0].aircraftCode}
             carrierCode={outboundAircraft[0].carrierCode}
@@ -197,6 +208,11 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
         ) : (
           // رايح جاي
           <Ticket
+            d1Terminal={itineraries[0].segments[0].departure.terminal || ""}
+            a1Terminal={itineraries[0].segments[1].arrival.terminal || ""}
+            d2Terminal={itineraries[1].segments[0].departure.terminal || ""}
+            a2Terminal={itineraries[1].segments[1].arrival.terminal || ""}
+            degree={degree}
             isMobile={true}
             daysDifference={daysDifference}
             aircraftCode={outboundAircraft[0].aircraftCode}

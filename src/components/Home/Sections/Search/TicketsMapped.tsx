@@ -31,9 +31,6 @@ function TicketsMapped() {
       to: pageSize + pageSize * (page - 1),
     });
   }
-  // console.log("tripDataFilters==> ", tripDataFilters);
-  // console.log("tripStopeFiltersState==> ", tripStopeFiltersState);
-  // console.log("data==> ", data);
 
   useEffect(() => {}, [tripDataFilters, tripDataFilters]);
   if (data.length <= 0) {
@@ -48,7 +45,7 @@ function TicketsMapped() {
       <div className={`lg:block hidden`}>
         <FiltersBtn title="ترتيب" icon={iconFilters} drawer={iconArrowDown} />
       </div>
-      <div className={`mt-[63px] flex flex-col items-center`}>
+      <div className={`lg:mt-[63px] mt-[0px] flex flex-col items-center`}>
         <div className={`flex flex-col gap-[24px]`}>
           {data
             .slice(pagination.from, pagination.to)

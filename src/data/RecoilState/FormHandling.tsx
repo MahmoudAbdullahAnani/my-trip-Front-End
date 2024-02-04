@@ -31,7 +31,7 @@ const dateReturn = atom({
 
 const typeTravel = atom({
   key: "typeTravel", // unique ID (with respect to other atoms/selectors)
-  default: "oneWay", // roundTrip, oneWay, hyper
+  default: "roundTrip", // roundTrip, oneWay, hyper
 });
 const dateSearchOrigin = atom({
   key: "dateSearchOrigin", // unique ID (with respect to other atoms/selectors)
