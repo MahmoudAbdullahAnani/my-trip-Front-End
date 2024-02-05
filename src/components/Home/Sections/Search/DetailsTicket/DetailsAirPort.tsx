@@ -11,11 +11,13 @@ function DetailsAirPort({
   airBusCode,
   degree,
 }: InterfaceData) {
-
   return (
     <div dir="rtl" className={`flex flex-col w-[144px] gap-[19px]`}>
       <div className={`flex flex-col gap-[8px]`}>
-        <img src={airPortImage} alt={`${airBusCode}-Logo`} />
+        <img
+          src={`https://assets.duffel.com/img/airlines/for-light-background/full-color-lockup/${airPortImage}.svg`}
+          alt={`${airBusCode}-Logo`}
+        />
         <div className={`flex justify-between gap-[21px]`}>
           <span
             className={`text-[#4F4F4F] whitespace-nowrap text-[13px] font-[700]`}

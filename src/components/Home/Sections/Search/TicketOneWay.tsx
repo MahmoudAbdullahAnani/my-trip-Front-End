@@ -160,7 +160,7 @@ function TicketOneWay({
                 </div>
                 <div className={`ms-auto pe-[24px] `}>
                   <DetailsAirPort
-                    airPortImage={""}
+                    airPortImage={carrierCode}
                     airBusCode={`Airbus A${aircraftCode}`}
                     travelCode={`${carrierCode}-${flightNumber}`}
                     degree={degree}
@@ -192,8 +192,8 @@ function TicketOneWay({
                       src={`https://assets.duffel.com/img/airlines/for-light-background/full-color-lockup/${carrierCode}.svg`}
                       alt="image-air"
                       width={100}
-              height={100}
-              className={`object-cover object-center `}
+                      height={100}
+                      className={`object-cover object-center `}
                     />
                   </span>
                   <div className={`flex justify-start gap-[21px]`}>
@@ -304,7 +304,6 @@ function TicketOneWay({
               width={100}
               height={100}
               className={`object-cover object-center `}
-              
             />
           </span>
           <div className={`flex justify-start gap-[21px]`}>
@@ -445,7 +444,7 @@ function TicketOneWay({
                           </div>
                           <div className={`ms-auto pe-[24px] `}>
                             <DetailsAirPort
-                              airPortImage={""}
+                              airPortImage={carrierCode}
                               airBusCode={`Airbus A${aircraftCode}`}
                               travelCode={`${carrierCode}-${flightNumber}`}
                               degree={degree}

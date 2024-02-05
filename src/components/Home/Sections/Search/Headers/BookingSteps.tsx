@@ -3,6 +3,7 @@ import {
   iconChooseFlightActive,
   iconChooseFlightActiveStep2,
   iconStep1Active,
+  iconStep2Active,
   // iconStep1UnActive,
   // iconStep2Active,
   iconStep2UnActive,
@@ -27,11 +28,13 @@ function BookingSteps() {
         typeStep={"3"}
         title="بيانات الدفع "
         icon={
-          pathname !== "/airPay" && nameBookingState
-            ? iconStep3Active
+          nameBookingState && ticketIdState
+            ? pathname === "/airPay"
+              ? iconStep3Active
+              : iconChooseFlightActive
             : iconStep3UnActive
         }
-        linkEdit={pathname !== "/airData" && pathname !== "/search"}
+        linkEdit={nameBookingState && ticketIdState ? true : false}
         link={"/airPay"}
         // icon={iconChooseFlightActive}
         // activeIcon={iconStep3Active}
@@ -41,14 +44,16 @@ function BookingSteps() {
         typeStep={"2"}
         title="بيانات المسافر "
         icon={
-          pathname !== "/airData" && nameBookingState
-            ? iconChooseFlightActiveStep2
-            : iconStep2UnActive
+          pathname !== "/airData"
+            ? nameBookingState
+              ? iconStep2Active
+              : iconStep2UnActive
+            : iconChooseFlightActiveStep2
         }
         linkEdit={pathname !== "/airData" && nameBookingState ? true : false}
         link={"/airData"}
 
-        // icon={iconChooseFlightActive}
+        // icon={iconChooseFlightActive} iconChooseFlightActiveStep2
         // activeIcon={iconStep2Active}
         // unActiveIcon={iconStep2UnActive}
       />

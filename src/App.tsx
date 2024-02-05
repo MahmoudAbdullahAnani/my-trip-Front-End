@@ -248,6 +248,14 @@ function App() {
             </>
           }
         />
+        <Route
+          path="/airPay"
+          element={
+            <>
+              <AirData />
+            </>
+          }
+        />
       </Routes>
     </>
   );

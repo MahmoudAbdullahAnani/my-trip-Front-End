@@ -224,7 +224,7 @@ function Ticket({
                   </div>
                   <div className={`ms-auto pe-[24px] `}>
                     <DetailsAirPort
-                      airPortImage={""}
+                      airPortImage={carrierCode}
                       airBusCode={`Airbus A${aircraftCode}`}
                       travelCode={`${carrierCode}-${flightNumber}`}
                       degree={degree}
@@ -276,7 +276,7 @@ function Ticket({
                   </div>
                   <div className={`ms-auto pe-[24px]`}>
                     <DetailsAirPort
-                      airPortImage={""}
+                      airPortImage={carrierCode}
                       airBusCode={`Airbus A${aircraftCodeReturn}`}
                       travelCode={`${carrierCodeReturn}-${flightNumberReturn}`}
                       degree={degree}
@@ -578,7 +578,7 @@ function Ticket({
         </div>
       </div>
       <div
-        className={`flex justify-between pr-[10px] xl:pl-[24px] pl-[10px]  items-end pb-[22px] w-full h-full border  border-t-0 lg:border-b-0 xl:border-b-1 border-x-0`}
+        className={`flex justify-between pr-[10px] xl:pl-[14px] pl-[5px]  items-end pb-[22px] w-full h-full border  border-t-0 lg:border-b-0 xl:border-b-1 border-x-0`}
       >
         {/* الطائرة */}
         <div className={`flex flex-col gap-[8px] `}>
@@ -719,7 +719,7 @@ function Ticket({
                           </div>
                           <div className={`ms-auto pe-[24px] `}>
                             <DetailsAirPort
-                              airPortImage={""}
+                              airPortImage={carrierCode}
                               airBusCode={`Airbus A${aircraftCode}`}
                               travelCode={`${carrierCode}-${flightNumber}`}
                               degree={degree}
@@ -775,7 +775,7 @@ function Ticket({
                           </div>
                           <div className={`ms-auto pe-[24px] `}>
                             <DetailsAirPort
-                              airPortImage={""}
+                              airPortImage={carrierCode}
                               airBusCode={`Airbus A${aircraftCodeReturn}`}
                               travelCode={`${carrierCodeReturn}-${flightNumberReturn}`}
                               degree={degree}
