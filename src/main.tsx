@@ -27,7 +27,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import Footer from "./pages/Footer.jsx";
+import Footer from "./layout/Footer.js";
 
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

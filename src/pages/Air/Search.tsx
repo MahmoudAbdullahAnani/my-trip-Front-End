@@ -11,25 +11,25 @@ import {
   destinationSearch,
   originSearch,
   typeTravel,
-} from "../data/RecoilState/FormHandling";
+} from "../../data/RecoilState/FormHandling";
 import {
   adultsData,
   // childrenData,
   // levelTravelData,
   // youthsData,
-} from "../data/RecoilState/FormSearchData";
+} from "../../data/RecoilState/FormSearchData";
 
 // Fetching Data
 import axios from "axios";
-import { getTokenForAmadeus } from "../Keys/GetTokenForAmadeus";
+import { getTokenForAmadeus } from "../../Keys/GetTokenForAmadeus";
 // import { Loder } from "../components/loder/Loder";
 import {
   ReSearch,
   TypeSystemSearch,
-} from "../data/RecoilState/Search/TypeSystemSearch";
+} from "../../data/RecoilState/Search/TypeSystemSearch";
 
-import TicketLoading from "../components/loder/TicketLoading";
-import HeaderSearch from "../components/Home/Sections/Search/Headers/HeaderSearch";
+import TicketLoading from "../../components/loder/TicketLoading";
+import HeaderSearch from "../../components/Home/Sections/Search/Headers/HeaderSearch";
 import {
   LoadingDataSearch,
   MainData,
@@ -37,12 +37,12 @@ import {
   MinPrice,
   PriceFilter,
   TripDataFilters,
-} from "../data/RecoilState/Search/MainData";
-import TicketsMapped from "../components/Home/Sections/Search/TicketsMapped";
-import BookingSteps from "../components/Home/Sections/Search/Headers/BookingSteps";
-import FiltersAir from "../components/Home/Sections/Search/Headers/FiltersAir";
+} from "../../data/RecoilState/Search/MainData";
+import TicketsMapped from "../../components/Home/Sections/Search/TicketsMapped";
+import BookingSteps from "../../components/Home/Sections/Search/Headers/BookingSteps";
+import FiltersAir from "../../components/Home/Sections/Search/Headers/FiltersAir";
 // import { GetCurrencyPricesData } from "../data/Fetching/GetCurrencyPricesData";
-import { StoreCurrency } from "../data/Fetching/StoreCurrency";
+import { StoreCurrency } from "../../data/Fetching/StoreCurrency";
 // const exampleData = [
 //   {
 //     type: "flight-offer",
@@ -2400,7 +2400,7 @@ function Search() {
   return (
     <section className={``}>
       <HeaderSearch />
-      <div className={`h-[104px] lg:block hidden`}>
+      <div className={`h-[104px] mb-[25px] lg:block hidden`}>
         <BookingSteps />
       </div>
       {/* Content Page Search */}

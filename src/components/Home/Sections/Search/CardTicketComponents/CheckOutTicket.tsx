@@ -1,14 +1,25 @@
+import { useRecoilState } from "recoil";
 import { EGP } from "../../../../../Formater/FormatPrice";
+import { TicketId } from "../../../../../data/RecoilState/Search/TicketData";
+import { useNavigate } from "react-router-dom";
 
 function CheckOutTicket({
   degree,
   totalPriceEGP,
   isMobile,
+  ticketId,
 }: {
   degree: string;
+  ticketId: string;
   totalPriceEGP: number;
   isMobile?: boolean;
 }) {
+  const [, setTicketIdState] = useRecoilState(TicketId);
+  const navigator = useNavigate();
+  const ChoseTicket = () => {
+    navigator("/airData");
+    setTicketIdState(ticketId);
+  };
   if (isMobile) {
     return (
       <>
@@ -59,6 +70,7 @@ function CheckOutTicket({
           {EGP.format(+totalPriceEGP)}
         </div>
         <button
+          onClick={ChoseTicket}
           className={`text-[#FFF] text-[20px] w-[154px] h-[48px] font-[700] py-[10px] px-[16px] rounded-[16px] duration-200 bg-[#117C99] hover:bg-[#117c99ba]`}
         >
           <span>اختار الرحلة</span>
@@ -78,6 +90,7 @@ function CheckOutTicket({
           {EGP.format(+totalPriceEGP)}
         </div>
         <button
+          onClick={ChoseTicket}
           className={`text-[#FFF] text-[20px] w-[154px] h-[48px] font-[700] py-[10px] px-[16px] rounded-[16px] duration-200 bg-[#117C99] hover:bg-[#117c99ba]`}
         >
           <span>اختار الرحلة</span>

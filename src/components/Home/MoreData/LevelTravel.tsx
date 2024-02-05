@@ -22,14 +22,14 @@ const iconData = (
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
     <path
       d="M12 11C14.2091 11 16 9.20911 16 6.99997C16 4.79083 14.2091 2.99997 12 2.99997C9.79086 2.99997 8 4.79083 8 6.99997C8 9.20911 9.79086 11 12 11Z"
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
   </svg>
 );
@@ -46,7 +46,7 @@ const iconDropDown = (
       stroke="black"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
   </svg>
 );

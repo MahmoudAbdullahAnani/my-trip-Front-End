@@ -27,8 +27,9 @@ import {
   reRenderData,
 } from "./data/RecoilState/Notifications/NotificationsData";
 import Home from "./pages/Home";
-import Search from "./pages/Search";
+import Search from "./pages/Air/Search";
 import For04 from "./pages/For04";
+import AirData from "./pages/Air/AirData";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -236,6 +237,14 @@ function App() {
           element={
             <>
               <Search />
+            </>
+          }
+        />
+        <Route
+          path="/airData"
+          element={
+            <>
+              <AirData />
             </>
           }
         />

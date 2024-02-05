@@ -9,7 +9,7 @@ import { typeTravel } from "../../../../data/RecoilState/FormHandling";
 import TicketOneWay from "./TicketOneWay";
 import { useEffect, useState } from "react";
 
-function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
+function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
   const [storeCurrency] = useRecoilState(StoreCurrency);
 
   // Handle Data
@@ -123,6 +123,7 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
         {travelTypeState === "oneWay" ? (
           // رايح
           <TicketOneWay
+            ticketId={id}
             dTerminal={itineraries[0].segments[0].departure.terminal || ""}
             aTerminal={itineraries[0].segments[1].arrival.terminal || ""}
             degree={degree}
@@ -141,6 +142,7 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
         ) : (
           // رايح جاي
           <Ticket
+            ticketId={id}
             d1Terminal={itineraries[0].segments[0].departure.terminal || ""}
             a1Terminal={itineraries[0].segments[1].arrival.terminal || ""}
             d2Terminal={itineraries[1].segments[0].departure.terminal || ""}
@@ -176,7 +178,12 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
           {/* <hr
           className={`w-[1px] h-full border border-dashed border-slate-400 `}
         /> */}
-          <CheckOutTicket degree={degree} totalPriceEGP={+totalPriceEGP} />
+
+          <CheckOutTicket
+            ticketId={id}
+            degree={degree}
+            totalPriceEGP={+totalPriceEGP}
+          />
         </div>
       </div>
       {/* Mobile */}
@@ -189,6 +196,7 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
         {travelTypeState === "oneWay" ? (
           // رايح
           <TicketOneWay
+            ticketId={id}
             dTerminal={itineraries[0].segments[0].departure.terminal || ""}
             aTerminal={itineraries[0].segments[1].arrival.terminal || ""}
             degree={degree}
@@ -208,6 +216,7 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
         ) : (
           // رايح جاي
           <Ticket
+            ticketId={id}
             d1Terminal={itineraries[0].segments[0].departure.terminal || ""}
             a1Terminal={itineraries[0].segments[1].arrival.terminal || ""}
             d2Terminal={itineraries[1].segments[0].departure.terminal || ""}
@@ -244,13 +253,18 @@ function CardTrip({ itineraries, price, travelerPricings }: FlightOffer) {
           {/* <hr
           className={`w-[1px] h-full border border-dashed border-slate-400 `}
         /> */}
-          <CheckOutTicket degree={degree} totalPriceEGP={+totalPriceEGP} />
+          <CheckOutTicket
+            ticketId={id}
+            degree={degree}
+            totalPriceEGP={+totalPriceEGP}
+          />
         </div>
         <div className="xl:w-[200px] ms-auto lg:hidden flex  lg:w-full lg:pt-3 xl:bg-[#FFF]  rounded-e-[16px] border-2 border-b-0  border-t-2 border-x-0 border-dashed">
           {/* <hr
           className={`w-[1px] h-full border border-dashed border-slate-400 `}
         /> */}
           <CheckOutTicket
+            ticketId={id}
             isMobile={true}
             degree={degree}
             totalPriceEGP={+totalPriceEGP}

@@ -19,42 +19,42 @@ const dataSystems = [
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M7 14H7.01"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M17 14H17.01"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M19 10H5C3.89543 10 3 10.8954 3 12V16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16V12C21 10.8954 20.1046 10 19 10Z"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M5 18V20"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M19 18V20"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
       </svg>
     ),
@@ -71,42 +71,42 @@ const dataSystems = [
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M7 14H7.01"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M17 14H17.01"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M19 10H5C3.89543 10 3 10.8954 3 12V16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16V12C21 10.8954 20.1046 10 19 10Z"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M5 18V20"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M19 18V20"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
       </svg>
     ),
@@ -128,63 +128,63 @@ const dataSystems = [
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M9 16L9.348 15.76C10.813 14.747 13.188 14.747 14.652 15.76L15 16"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M8 7H8.01"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M16 7H16.01"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M12 7H12.01"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M12 11H12.01"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M16 11H16.01"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M8 11H8.01"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M10 22V15.5M14 15.5V22"
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
       </svg>
     ),
@@ -201,63 +201,63 @@ const dataSystems = [
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M9 16L9.348 15.76C10.813 14.747 13.188 14.747 14.652 15.76L15 16"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M8 7H8.01"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M16 7H16.01"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M12 7H12.01"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M12 11H12.01"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M16 11H16.01"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M8 11H8.01"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
         <path
           d="M10 22V15.5M14 15.5V22"
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
       </svg>
     ),
@@ -279,7 +279,7 @@ const dataSystems = [
           stroke="#117C99"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
       </svg>
     ),
@@ -296,7 +296,7 @@ const dataSystems = [
           stroke="#4F4F4F"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke-linejoin="round"
         />
       </svg>
     ),

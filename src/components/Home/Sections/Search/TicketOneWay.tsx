@@ -17,6 +17,8 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import DetailsTicket from "./DetailsTicket/DetailsTicket";
 import DetailsAirPort from "./DetailsTicket/DetailsAirPort";
 import { Modal } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { TicketId } from "../../../../data/RecoilState/Search/TicketData";
 
 // Images
 
@@ -36,8 +38,10 @@ interface DataOfTicketOneWayComponent {
   price: number;
   dTerminal: string;
   aTerminal: string;
+  ticketId: string;
 }
 function TicketOneWay({
+  ticketId,
   degree,
   dTerminal,
   aTerminal,
@@ -95,6 +99,14 @@ function TicketOneWay({
     setOpenModal(false);
   };
 
+  // Chose Ticket
+  const [, setTicketIdState] = useRecoilState(TicketId);
+  const navigator = useNavigate();
+  const ChoseTicket = () => {
+    navigator("/airData");
+    setTicketIdState(ticketId);
+  };
+
   if (isMobile) {
     return (
       <>
@@ -118,7 +130,9 @@ function TicketOneWay({
                     <span className={`text-[#141414]`}>
                       {durationH}h{durationM}m
                     </span>
-                    <span className={`text-[#4F4F4F] whitespace-nowrap`}>مدة الرحلة</span>
+                    <span className={`text-[#4F4F4F] whitespace-nowrap`}>
+                      مدة الرحلة
+                    </span>
                   </h4>
                   <h3 className={`text-[#117C99] text-[32px] font-bold`}>
                     بيانات الرحلة
@@ -155,6 +169,7 @@ function TicketOneWay({
               </div>
             </div>
             <button
+              onClick={ChoseTicket}
               className={`text-[#FFF] text-[20px] mx-auto w-[154px] h-[48px] font-[700] py-[10px] px-[16px] rounded-[16px] duration-200 bg-[#117C99] hover:bg-[#117c99ba]`}
             >
               <span>اختار الرحلة</span>
@@ -173,7 +188,13 @@ function TicketOneWay({
                 <div className={`flex    flex-col gap-[8px] `}>
                   {/* الطائرة  image*/}
                   <span>
-                    <img src="" alt="image-air" />
+                    <img
+                      src={`https://assets.duffel.com/img/airlines/for-light-background/full-color-lockup/${carrierCode}.svg`}
+                      alt="image-air"
+                      width={100}
+              height={100}
+              className={`object-cover object-center `}
+                    />
                   </span>
                   <div className={`flex justify-start gap-[21px]`}>
                     {/* كود الرحلة */}
@@ -277,7 +298,14 @@ function TicketOneWay({
         <div className={`flex flex-col gap-[8px] `}>
           {/* الطائرة  image*/}
           <span>
-            <img src="" alt="image-air" />
+            <img
+              src={`https://assets.duffel.com/img/airlines/for-light-background/full-color-lockup/${carrierCode}.svg`}
+              alt="image-air"
+              width={100}
+              height={100}
+              className={`object-cover object-center `}
+              
+            />
           </span>
           <div className={`flex justify-start gap-[21px]`}>
             {/* كود الرحلة */}

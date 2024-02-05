@@ -21,70 +21,70 @@ const iconDate = (
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
     <path
       d="M16 1.99997V5.99997"
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
     <path
       d="M8 1.99997V5.99997"
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
     <path
       d="M3 9.99997H21"
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
     <path
       d="M8 14H8.01"
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
     <path
       d="M12 14H12.01"
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
     <path
       d="M16 14H16.01"
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
     <path
       d="M8 18H8.01"
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
     <path
       d="M12 18H12.01"
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
     <path
       d="M16 18H16.01"
       stroke="#333333"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linejoin="round"
     />
   </svg>
 );

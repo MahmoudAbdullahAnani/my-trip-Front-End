@@ -15,6 +15,8 @@ import DetailsTicket from "./DetailsTicket/DetailsTicket";
 import { ClickAwayListener, Modal, Tooltip } from "@mui/material";
 import DetailsAirPort from "./DetailsTicket/DetailsAirPort";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { TicketId } from "../../../../data/RecoilState/Search/TicketData";
 interface TicketData {
   isMobile?: boolean;
   daysDifference: number;
@@ -42,10 +44,12 @@ interface TicketData {
   a1Terminal: string;
   d2Terminal: string;
   a2Terminal: string;
+  ticketId: string;
 }
 
 function Ticket({
   d1Terminal,
+  ticketId,
   a1Terminal,
   d2Terminal,
   a2Terminal,
@@ -133,6 +137,14 @@ function Ticket({
   };
   const handleClose = () => {
     setOpenModal(false);
+  };
+
+  // Chose Ticket
+  const [, setTicketIdState] = useRecoilState(TicketId);
+  const navigator = useNavigate();
+  const ChoseTicket = () => {
+    navigator("/airData");
+    setTicketIdState(ticketId);
   };
 
   // Mobile
@@ -274,6 +286,7 @@ function Ticket({
               </div>
             )}
             <button
+              onClick={ChoseTicket}
               className={`text-[#FFF] text-[20px] mx-auto w-[154px] h-[48px] font-[700] py-[10px] px-[16px] rounded-[16px] duration-200 bg-[#117C99] hover:bg-[#117c99ba]`}
             >
               <span>اختار الرحلة</span>
@@ -300,7 +313,13 @@ function Ticket({
               <div className={`flex items-start gap-[12px]`}>
                 <div className={`flex flex-col gap-[8px]`}>
                   <span>
-                    <img src="" alt="image-air" />
+                    <img
+                      src={`https://assets.duffel.com/img/airlines/for-light-background/full-color-lockup/${carrierCode}.svg`}
+                      alt="image-air"
+                      width={100}
+                      height={100}
+                      className={`object-cover object-center `}
+                    />
                   </span>
                   <div className={`flex justify-start gap-[21px]`}>
                     <span className={`text-[#4F4F4F] text-[13px] font-[700]`}>
@@ -383,7 +402,13 @@ function Ticket({
                 <div className={`flex flex-col gap-[8px] `}>
                   {/* الطائرة  image*/}
                   <span>
-                    <img src="" alt="image-air" />
+                    <img
+                      src={`https://assets.duffel.com/img/airlines/for-light-background/full-color-lockup/${carrierCodeReturn}.svg`}
+                      alt="image-air"
+                      width={100}
+                      height={100}
+                      className={`object-cover object-center `}
+                    />
                   </span>
                   <div className={`flex justify-start gap-[21px]`}>
                     {/* كود الرحلة */}
@@ -477,7 +502,13 @@ function Ticket({
         <div className={`flex flex-col gap-[8px] mt-[31px]`}>
           {/* الطائرة  image*/}
           <span>
-            <img src="" alt="image-air" />
+            <img
+              src={`https://assets.duffel.com/img/airlines/for-light-background/full-color-lockup/${carrierCode}.svg`}
+              alt="image-air"
+              width={100}
+              height={100}
+              className={`object-cover object-center `}
+            />
           </span>
           <div className={`flex justify-start gap-[21px]`}>
             {/* كود الرحلة */}
@@ -553,7 +584,14 @@ function Ticket({
         <div className={`flex flex-col gap-[8px] `}>
           {/* الطائرة  image*/}
           <span>
-            <img src="" alt="image-air" />
+            <img
+              src={`https://assets.duffel.com/img/airlines/for-light-background/full-color-lockup/${carrierCodeReturn}.svg`}
+              alt="image-air"
+              width={100}
+              height={100}
+              className={`object-cover object-center `}
+              // className="w-[80px] h-[80px]"
+            />
           </span>
           <div className={`flex justify-start gap-[21px]`}>
             {/* كود الرحلة */}
