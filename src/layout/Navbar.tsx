@@ -34,14 +34,15 @@ function Navbar() {
       >
         <div
           className={`lg:flex justify-between ${
-            pathname !== "/search" && "fixed"
+            pathname !== "/search" && pathname !== "/airData" ? "fixed" : ""
           } top-0 w-full  p-0 px-[96px] ${
             pathname !== "/search" && scrollY > innerHeight
               ? "backdrop-blur-md"
               : null
           }  ${
-            pathname === "/search" &&
-            "bg-[#FFF] border border-x-0 border-t-0 shadow-sm shadow-[#656565]"
+            pathname === "/search" || pathname === "/airData"
+              ? "bg-[#FFF] border border-x-0 border-t-0 shadow-sm shadow-[#656565]"
+              : ""
           } `}
         >
           <div className={`flex gap-4 pt-[32px] text-white`}>
@@ -85,8 +86,8 @@ function Navbar() {
                 <Link
                   to={href}
                   id={driver}
-                  className={`text-[18px]  font-[600] whitespace-nowrap  ${
-                    pathname !== "/search"
+                  className={`text-[18px] font-[600] whitespace-nowrap  ${
+                    pathname !== "/search" && pathname !== "/airData"
                       ? href === pathname
                         ? "text-[#117C99]"
                         : "text-[#FFF]"

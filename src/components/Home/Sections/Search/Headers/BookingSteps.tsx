@@ -23,7 +23,11 @@ function BookingSteps() {
   const [ticketIdState] = useRecoilState(TicketId);
   const [nameBookingState] = useRecoilState(NameBooking);
   return (
-    <div className={`w-full h-full flex justify-center pe-[309px] mt-[29px]`}>
+    <div
+      className={`w-full h-full flex justify-center ${
+        pathname === "/airData" ? "pe-[0px]" : "pe-[309px]"
+      } mt-[29px]`}
+    >
       <HandleStep
         typeStep={"3"}
         title="بيانات الدفع "

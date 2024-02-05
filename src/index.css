@@ -82,6 +82,36 @@
   border-radius: 50%;
 }
 /* End cornerTicket */
+/* Start Corner Pay */
+.roundedCornerPay::after {
+  content: "";
+  position: absolute;
+  bottom: -0px;
+  width: 22px;
+  height: 22px;
+  background-color: #fff;
+  left: -17px;
+  border-radius: 42%;
+  -webkit-border-radius: 42%;
+  -moz-border-radius: 42%;
+  -ms-border-radius: 42%;
+  -o-border-radius: 42%;
+}
+.roundedCornerPay::before {
+  content: "";
+  position: absolute;
+  bottom: -0px;
+  width: 22px;
+  height: 22px;
+  background-color: #fff;
+  right: -17px;
+  border-radius: 42%;
+  -webkit-border-radius: 42%;
+  -moz-border-radius: 42%;
+  -ms-border-radius: 42%;
+  -o-border-radius: 42%;
+}
+/* Start Corner Pay */
 .css-187mznn-MuiSlider-root {
   color: #117c99 !important;
 }
@@ -308,7 +338,7 @@ input[type="radio"] {
   background-color: transparent !important;
 }
 .MuiTooltip-tooltip > span {
-  color: #D9D9D9 !important;
+  color: #d9d9d9 !important;
   width: 68px !important;
   height: 80px !important;
   top: 0px !important;

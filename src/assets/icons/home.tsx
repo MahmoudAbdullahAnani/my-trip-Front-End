@@ -980,6 +980,30 @@ export const iconStep3UnActive = (
     />
   </svg>
 );
+export const iconTime = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+  >
+    <path
+      d="M15.9998 29.3333C23.3636 29.3333 29.3332 23.3638 29.3332 16C29.3332 8.63619 23.3636 2.66666 15.9998 2.66666C8.63604 2.66666 2.6665 8.63619 2.6665 16C2.6665 23.3638 8.63604 29.3333 15.9998 29.3333Z"
+      stroke="#002684"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M16 8V16L21.3333 18.6667"
+      stroke="#002684"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
 
 // Icons Mobile Nav
 export const iconHome = (
