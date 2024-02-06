@@ -232,30 +232,9 @@ function App() {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/verifyCode" element={<VerifyCode />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
-        <Route
-          path="/search"
-          element={
-            <>
-              <Search />
-            </>
-          }
-        />
-        <Route
-          path="/airData"
-          element={
-            <>
-              <AirData />
-            </>
-          }
-        />
-        <Route
-          path="/airPay"
-          element={
-            <>
-              <AirData />
-            </>
-          }
-        />
+        <Route path="/search" element={<Search />} />
+        <Route path="/airData" element={<AirData />} />
+        <Route path="/airPay" element={<></>} />
       </Routes>
     </>
   );
