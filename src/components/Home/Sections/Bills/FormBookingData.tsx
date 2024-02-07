@@ -1,7 +1,6 @@
 import { useState } from "react";
-import BtnLogin from "../../../BtnAuth/BtnLogin";
-import { iconGoogle } from "../../../../assets/icons/home";
 import HandlerFieldsBooking from "./HandlerFieldsBooking";
+import BtnLoginAirData from "../../../BtnAuth/BtnLoginAirData";
 
 function FormBookingData() {
   const [togglePrice, setTogglePrice] = useState(true);
@@ -33,12 +32,7 @@ function FormBookingData() {
             className={`flex flex-wrap-reverse justify-end items-center gap-[24px] pe-[12px] ps-[12px]`}
           >
             <div className={`flex gap-[18px] justify-between items-center`}>
-              <button className="">
-                <BtnLogin title={`حساب جوجل`} icon={iconGoogle} />
-              </button>
-              <button>
-                <BtnLogin title={`حساب جوجل`} icon={iconGoogle} />
-              </button>
+              <BtnLoginAirData />
             </div>
             <h2 className={`text-[16px] text-end text-[#117C99] font-medium`}>
               يمكن التسجيل السريع من خلال
@@ -46,7 +40,6 @@ function FormBookingData() {
           </div>
           <HandlerFieldsBooking />
         </div>
-        
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import { normalNumber } from "../../../../Formater/FormatPrice";
 
 function DetailsBill({
   title,
@@ -7,7 +6,7 @@ function DetailsBill({
   title: string;
   content: { price: string };
 }) {
-  const handlePrice = normalNumber.format(Math.floor(+content.price));
+  const handlePrice = Math.round(Math.floor(+content.price));
 
   return (
     <div className={`flex gap-2 flex-wrap-reverse justify-end `}>

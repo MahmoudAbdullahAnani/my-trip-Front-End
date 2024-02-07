@@ -6,6 +6,11 @@ import ReactDatePicker from "react-datepicker";
 import { iconDate } from "../../../../assets/icons/home";
 import { country } from "../../../../data/Countrys";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+// Handle Date
+import { format } from "date-fns";
+
+import { DataBooking } from "../../../../data/RecoilState/Search/TicketData";
 
 // Interfaces
 export interface Inputs {
@@ -56,6 +61,10 @@ const AirBookingSchema = z
   );
 
 function HandlerFieldsBooking() {
+  //=========================================================== User Data For air booking ===========================================================================================
+  const [dataBookingState, setDataBookingState] = useRecoilState(DataBooking);
+  //=========================================================== User Data For air booking ===========================================================================================
+
   const navigator = useNavigate();
   const {
     register,
@@ -68,8 +77,35 @@ function HandlerFieldsBooking() {
   });
   // SubmitHandler
   const [startDate, setStartDate] = useState<Date>(new Date());
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log({ ...data });
+  const onSubmit: SubmitHandler<Inputs> = ({
+    birthDate,
+    country,
+    email,
+    fullName,
+    gender,
+    nationality,
+    passportNumber,
+  }) => {
+    const handleBirthDate = format(birthDate, "dd/MM/yyyy");
+    // console.log({
+    //   handleBirthDate,
+    //   country,
+    //   email,
+    //   fullName,
+    //   gender,
+    //   nationality,
+    //   passportNumber,
+    // });
+    setDataBookingState({
+      BirthDateBooking: handleBirthDate,
+      NameBooking: fullName,
+      GenderBooking: gender,
+      EmailBooking: email,
+      PassportNumberBooking: passportNumber,
+      NationalityBooking: nationality,
+      CountryBooking: country,
+    });
+
     return navigator("/airPay");
   };
 
@@ -92,6 +128,7 @@ function HandlerFieldsBooking() {
               </label>
               <div className={`w-full flex flex-col items-end `}>
                 <input
+                  defaultValue={dataBookingState.NameBooking}
                   type="text"
                   id="fullName"
                   {...register("fullName")}
@@ -117,8 +154,18 @@ function HandlerFieldsBooking() {
                 className={`w-[58px] h-[42px] flex justify-center items-center text-center rounded-[8px] text-[#333333] placeholder:text-[#333333] border border-[#117C99] focus-visible:outline-[#117C99]`}
                 {...register("gender")}
               >
-                <option value="Mr">Mr</option>
-                <option value="Mrs">Mrs</option>
+                <option
+                  selected={dataBookingState.GenderBooking === "Mr"}
+                  value="Mr"
+                >
+                  Mr
+                </option>
+                <option
+                  selected={dataBookingState.GenderBooking === "Mrs"}
+                  value="Mrs"
+                >
+                  Mrs
+                </option>
               </select>
             </div>
           </div>
@@ -134,6 +181,7 @@ function HandlerFieldsBooking() {
                 تأكيد البريد الالكتروني
               </label>
               <input
+                defaultValue={dataBookingState.EmailBooking}
                 type="email"
                 id="confirmEmail"
                 {...register("confirmEmail")}
@@ -154,6 +202,7 @@ function HandlerFieldsBooking() {
                 البريد الالكتروني
               </label>
               <input
+                defaultValue={dataBookingState.EmailBooking}
                 type="email"
                 id="email"
                 {...register("email")}
@@ -217,6 +266,7 @@ function HandlerFieldsBooking() {
                 رقم جواز السفر
               </label>
               <input
+                defaultValue={dataBookingState.PassportNumberBooking}
                 type="text"
                 id="passportNumber"
                 {...register("passportNumber")}
@@ -290,7 +340,7 @@ function HandlerFieldsBooking() {
           <span
             className={`w-[294px] h-[48px] rounded-[16px] bg-[#117C99] hover:bg-[#117c99b0] duration-200 text-[#FFF] flex justify-center relative top-0 items-center `}
           >
-            إكمال عملة الدفع
+            ادخال البيانات & إكمال عملة الدفع
           </span>
         </button>
         {/* mobile */}
@@ -300,7 +350,7 @@ function HandlerFieldsBooking() {
           <span
             className={`w-[294px] h-[48px] rounded-[16px] bg-[#117C99] hover:bg-[#117c99b0] duration-200 text-[#FFF] flex justify-center relative top-0 items-center `}
           >
-            إكمال عملة الدفع
+            ادخال البيانات & إكمال عملة الدفع
           </span>
         </button>
       </form>

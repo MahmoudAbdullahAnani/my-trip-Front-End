@@ -1,5 +1,8 @@
-import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+// import { useRecoilState } from "recoil";
+// import { DataBooking } from "../../../../data/RecoilState/Search/TicketData";
 import { iconTime, iconWarning } from "../../../../assets/icons/home";
+import { Flip, toast } from "react-toastify";
 
 function Iusso() {
   return (
@@ -28,29 +31,46 @@ function Iusso2() {
   );
 }
 function BtnPay() {
+  //====================================================== User Data For air booking ===========================================================================================
+  // const [dataBookingState] = useRecoilState(DataBooking);
+  //======================================================= User Data For air booking ===========================================================================================
+  // const navigator = useNavigate();
+  const ClickPay = () => {
+    return toast.warn(" يحب ادخال بيانات الحجز ", {
+      position: "top-right",
+      autoClose: 5075,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Flip,
+    });
+  };
   return (
     <>
       {/* desktop */}
       <div
         className={`roundedCornerPay sm:block hidden absolute -bottom-2 left-[50%] translate-x-[-50%] bg-[#e9e9e9] py-2 md:px-7 px-4 rounded-t-[16px]`}
       >
-        <Link
-          to={"/airPay"}
+        <button
+          onClick={ClickPay}
           className={`w-[294px] h-[48px] rounded-[16px] bg-[#117C99] hover:bg-[#117c99b0] duration-200 text-[#FFF] flex justify-center relative top-0 items-center `}
         >
           إكمال عملة الدفع
-        </Link>
+        </button>
       </div>
       {/* mobile */}
       <div
         className={`sm:hidden block absolute -bottom-2 left-[50%] translate-x-[-50%] bg-[#e9e9e9] py-2 md:px-7 px-4 rounded-t-[16px]`}
       >
-        <Link
-          to={"/airPay"}
+        <button
+          onClick={ClickPay}
           className={`w-[294px] h-[48px] rounded-[16px] bg-[#117C99] hover:bg-[#117c99b0] duration-200 text-[#FFF] flex justify-center relative top-0 items-center `}
         >
           إكمال عملة الدفع
-        </Link>
+        </button>
       </div>
     </>
   );

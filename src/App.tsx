@@ -30,6 +30,7 @@ import Home from "./pages/Home";
 import Search from "./pages/Air/Search";
 import For04 from "./pages/For04";
 import AirData from "./pages/Air/AirData";
+import AirPay from "./pages/Air/AirPay";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -234,7 +235,7 @@ function App() {
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="/search" element={<Search />} />
         <Route path="/airData" element={<AirData />} />
-        <Route path="/airPay" element={<></>} />
+        <Route path="/airPay" element={<AirPay />} />
       </Routes>
     </>
   );

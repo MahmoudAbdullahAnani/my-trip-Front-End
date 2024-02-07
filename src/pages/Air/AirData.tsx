@@ -53,7 +53,7 @@ function AirData() {
       <div className={`h-[104px] mb-[25px] lg:block hidden`}>
         <BookingSteps />
       </div>
-      {/* Content Page Search */}
+      {/* Content Page airData */}
       <div
         className={`flex justify-center xl:flex-nowrap flex-wrap sm:px-[95.5px] px-[5px]  gap-[24px]`}
       >
