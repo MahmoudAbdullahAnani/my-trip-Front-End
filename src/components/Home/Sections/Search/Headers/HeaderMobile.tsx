@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   destinationSearch,
   originSearch,
@@ -12,9 +12,8 @@ import headMobile from "./../../../../../../public/assets/headMobile.png";
 
 // عرض اسم المدينة مؤجل
 
-
 function HeaderMobile() {
-  const navigator = useNavigate();
+  const { pathname } = useLocation();
   const [destinationLocationCode] = useRecoilState(destinationSearch);
   const [originLocationCode] = useRecoilState(originSearch);
   return (
@@ -23,15 +22,23 @@ function HeaderMobile() {
       <div
         className={` flex flex-col gap-[20px] px-[16px] relative z-20 text-[#FFF]`}
       >
-        <button
-          onClick={() => navigator("/")}
+        <Link
+          to={
+            pathname === "/search"
+              ? "/"
+              : pathname === "/airData"
+              ? "/search"
+              : pathname === "/airPay"
+              ? "/airData"
+              : ""
+          }
           style={{
             backdropFilter: "blur(5px)",
           }}
           className={`w-[48px] h-[48px] bg-[#58a3b7] duration-150 hover:bg-[#58a3b7c4] flex justify-center items-center rounded-[48px] `}
         >
           {iconArrowLeftWhite}
-        </button>
+        </Link>
         <div className={`flex justify-between`}>
           <div className={`flex flex-col items-end gap-[9px]`}>
             {/* <span>دبي , الإمارات</span> */}

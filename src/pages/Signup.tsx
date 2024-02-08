@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import z from "zod";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoderBtn } from "../components/loder/Loder";
 import { LinksForgotPassword } from "../components/ResetPassword/ForgotPassword";
 import { useNavigate } from "react-router-dom";
@@ -70,6 +70,9 @@ interface SchemaUser {
   address?: string;
 }
 function Signup() {
+    useEffect(() => {
+      window.scroll(0, 0);
+    }, []);
   // State Management
   const dispatch = useDispatch();
 

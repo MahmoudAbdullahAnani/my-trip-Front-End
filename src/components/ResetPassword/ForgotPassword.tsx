@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import z from "zod";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { InputForm } from "../FormComponents";
@@ -34,6 +34,9 @@ const emailSchema = z.object({
 //   localStorage.setItem("token", token);
 // }
 function ForgotPassword() {
+    useEffect(() => {
+      window.scroll(0, 0);
+    }, []);
   // State Management
   const dispatch = useDispatch();
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import HandlerFieldsBooking from "./HandlerFieldsBooking";
-import BtnLoginAirData from "../../../BtnAuth/BtnLoginAirData";
+// import BtnLoginAirData from "../../../BtnAuth/BtnLoginAirData";
 
 function FormBookingData() {
   const [togglePrice, setTogglePrice] = useState(true);
@@ -28,7 +28,7 @@ function FormBookingData() {
         } relative duration-500 flex flex-wrap items-end flex-col bg-[#FFF] rounded-[16px] rounded-tr-[0px]`}
       >
         <div className={`mt-[31.68px]`}>
-          <div
+          {/* <div
             className={`flex flex-wrap-reverse justify-end items-center gap-[24px] pe-[12px] ps-[12px]`}
           >
             <div className={`flex gap-[18px] justify-between items-center`}>
@@ -37,7 +37,7 @@ function FormBookingData() {
             <h2 className={`text-[16px] text-end text-[#117C99] font-medium`}>
               يمكن التسجيل السريع من خلال
             </h2>
-          </div>
+          </div> */}
           <HandlerFieldsBooking />
         </div>
       </div>

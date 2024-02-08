@@ -39,6 +39,7 @@ function AirData() {
   const [, setTicketChoseState] = useRecoilState(TicketChose);
 
   useEffect(() => {
+    window.scroll(0, 0);
     if (!ticketIdState) {
       return navigator("/search");
     }

@@ -1,4 +1,8 @@
+import { useEffect } from "react";
 function For04() {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
     <div>
       <div className="bg-indigo-900 relative overflow-hidden h-screen">

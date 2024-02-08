@@ -25,7 +25,7 @@ function BookingSteps() {
   return (
     <div
       className={`w-full h-full flex justify-center ${
-        pathname === "/airData" ? "pe-[0px]" : "pe-[309px]"
+        pathname === "/airData" || pathname==="/airPay"? "pe-[0px]" : "pe-[309px]"
       } mt-[29px]`}
     >
       <HandleStep

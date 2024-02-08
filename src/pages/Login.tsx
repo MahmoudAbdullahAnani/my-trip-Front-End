@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import z from "zod";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LoderBtn } from "../components/loder/Loder";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -55,6 +55,9 @@ function setData(token: string) {
   localStorage.setItem("token", token);
 }
 function Login() {
+    useEffect(() => {
+      window.scroll(0, 0);
+    }, []);
   const [, setReRenderDataApp] = useRecoilState(reRenderData);
 
   // State Management

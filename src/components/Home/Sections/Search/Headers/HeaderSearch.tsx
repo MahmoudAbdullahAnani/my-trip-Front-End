@@ -15,7 +15,7 @@ function HeaderSearch() {
         <HeaderMobile />
       </header>
       {/* Header Desktop */}
-      {pathname !== "/airData" && (
+      {pathname !== "/airData" && pathname !== "/airPay" ? (
         <header
           className={`bg-[#FFF] lg:block hidden pb-[47.5px] pt-[57.5px] relative bg-d[url('/public/assets/mapHeader.png')]`}
         >
@@ -30,7 +30,7 @@ function HeaderSearch() {
           </div>
           {/* <div className={`absolute w-full h-full top-0`}></div> */}
         </header>
-      )}
+      ) : null}
     </>
   );
 }

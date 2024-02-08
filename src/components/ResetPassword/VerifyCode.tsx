@@ -33,9 +33,11 @@ const codeSchema = z.object({
 //   localStorage.setItem("token", token);
 // }
 function VerifyCode() {
+
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scroll(0, 0);
     if (!localStorage.getItem("verifyCodeEmail")) {
       navigate("/forgotPassword");
     }

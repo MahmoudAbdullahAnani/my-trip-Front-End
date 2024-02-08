@@ -8,7 +8,13 @@ import { StoreCurrency } from "../../../../data/Fetching/StoreCurrency";
 const tex = 60.7;
 const texAddition = 0;
 
-function AirBill({ priceTotal }: { priceTotal: number }) {
+function AirBill({
+  priceTotal,
+  isPageAirPay = false,
+}: {
+  priceTotal: number;
+  isPageAirPay?:boolean;
+}) {
   const [adultsDataState] = useRecoilState(adultsData);
   const [togglePrice, setTogglePrice] = useState(true);
 
@@ -63,7 +69,7 @@ function AirBill({ priceTotal }: { priceTotal: number }) {
           />
         </div>
         <div className={`h-[calc(64px+80px)]`}></div>
-        <BtnPay />
+        <BtnPay isPageAirPay={isPageAirPay} />
       </div>
     </div>
   );

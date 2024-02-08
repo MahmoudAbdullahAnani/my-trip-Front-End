@@ -54,7 +54,7 @@ function TicketBill() {
       style={{
         boxShadow: " rgb(0 90 108 / 30%)  0 4px 4px",
       }}
-      className={`w-full pe-[24px] pt-[30px] pb-[14px] rounded-[16px] bg-[#FFF]`}
+      className={`w-full pe-[24px] pt-[30px] pb-[14px] xl:mt-0 mt-[50px]  rounded-[16px] bg-[#FFF]`}
     >
       <div
         className={`flex flex-wrap justify-end items-center lg:gap-[113px] gap-[53px] `}

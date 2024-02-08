@@ -2362,6 +2362,7 @@ function Search() {
   // console.log("trip==> ", trip);
   const navigator = useNavigate();
   useEffect(() => {
+    window.scroll(0, 0);
     setTypeSystemSearchState("airline");
     // Test Price
     // const prices = exampleData.map((ticket: { price: { total: string } }) => {

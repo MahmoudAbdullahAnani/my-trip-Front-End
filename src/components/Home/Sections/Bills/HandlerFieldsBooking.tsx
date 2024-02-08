@@ -232,6 +232,7 @@ function HandlerFieldsBooking() {
                   value: startDate,
                   setValueAs: () => startDate,
                 })}
+                id="birthDate"
                 showYearDropdown
                 maxDate={new Date()}
                 showIcon
