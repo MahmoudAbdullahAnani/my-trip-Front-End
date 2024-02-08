@@ -1,9 +1,26 @@
 import { useRecoilState } from "recoil";
 import DetailsBill from "./DetailsBill";
 import { adultsData } from "../../../../data/RecoilState/FormSearchData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BtnPay } from "./Iusso";
 import { StoreCurrency } from "../../../../data/Fetching/StoreCurrency";
+import { useLocation } from "react-router-dom";
+import { DataBooking } from "../../../../data/RecoilState/Search/TicketData";
+import { RootState } from "../../../../data/store";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { URLsPayment } from "../../../../data/RecoilState/Payment/StripeURLsPayment";
+
+// interface
+interface DataCheckoutSession {
+  price: number;
+  description: string;
+  user_id: string;
+  urlSuccess: string;
+  urlCancel: string;
+  userEmail: string;
+  carrierCodeLogo: string;
+}
 
 const tex = 60.7;
 const texAddition = 0;
@@ -11,9 +28,15 @@ const texAddition = 0;
 function AirBill({
   priceTotal,
   isPageAirPay = false,
+  departure,
+  arrival,
+  carrierCodeLogo,
 }: {
+  departure?: string;
+  arrival?: string;
+  carrierCodeLogo?: string;
   priceTotal: number;
-  isPageAirPay?:boolean;
+  isPageAirPay?: boolean;
 }) {
   const [adultsDataState] = useRecoilState(adultsData);
   const [togglePrice, setTogglePrice] = useState(true);
@@ -25,6 +48,57 @@ function AirBill({
 
   const priceOfAdults = Math.round(+totalPriceEGP * +adultsDataState);
   const priceOfTotal = Math.round(+priceOfAdults + +tex + +texAddition);
+
+  const { pathname } = useLocation();
+  // Create a session Payment with Stripe, and get URLs of data
+  const [, setURLsPaymentState] = useRecoilState(URLsPayment);
+
+  const createCheckoutSession = async ({
+    price,
+    description,
+    user_id,
+    urlSuccess,
+    urlCancel,
+    userEmail,
+    carrierCodeLogo,
+  }: DataCheckoutSession) => {
+    await axios
+      .post(`https://my-trip-back-end.onrender.com/checkout-completed`, {
+        price,
+        description,
+        user_id,
+        urlSuccess,
+        urlCancel,
+        userEmail,
+        carrierCodeLogo,
+      })
+      .then(({ data }) => {
+        setURLsPaymentState({
+          PayPal: "",
+          ApplePay: "",
+          Visa: data.url,
+          MasterCard: data.url,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const [dataBookingState] = useRecoilState(DataBooking);
+  const stateUserData = useSelector((state: RootState) => state.loggedUser);
+
+  useEffect(() => {
+    if (pathname === "/airPay") {
+      createCheckoutSession({
+        price: priceOfTotal,
+        description: `${arrival} الى ${departure} رحلة من `,
+        user_id: stateUserData._id || "0",
+        urlSuccess: "https://ittrip.vercel.app/",
+        urlCancel: "https://ittrip.vercel.app/",
+        userEmail: dataBookingState.EmailBooking,
+        carrierCodeLogo: carrierCodeLogo || "",
+      });
+    }
+  }, []);
 
   return (
     <div className={`bg-[#e9e9e9] duration-500 rounded-[16px] `}>

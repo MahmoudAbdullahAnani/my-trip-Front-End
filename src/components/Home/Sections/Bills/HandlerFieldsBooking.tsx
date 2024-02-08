@@ -75,6 +75,9 @@ function HandlerFieldsBooking() {
     resolver: zodResolver(AirBookingSchema),
     mode: "onChange",
   });
+
+
+
   // SubmitHandler
   const [startDate, setStartDate] = useState<Date>(new Date());
   const onSubmit: SubmitHandler<Inputs> = ({

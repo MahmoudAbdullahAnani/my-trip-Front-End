@@ -63,7 +63,13 @@ function AirPay() {
           className={`2xl:w-[547px] xl:w-[547px] w-[347px] h-[636px] rounded-[16px] `}
         >
           {data && (
-            <AirBill isPageAirPay={true} priceTotal={+data.price.total} />
+            <AirBill
+              carrierCodeLogo={data.itineraries[0].segments[0].carrierCode}
+              departure={data.itineraries[0].segments[0].departure.iataCode}
+              arrival={data.itineraries[0].segments[1].arrival.iataCode}
+              isPageAirPay={true}
+              priceTotal={+data.price.total}
+            />
           )}
           <Iusso2 />
         </div>
