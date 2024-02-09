@@ -17,6 +17,8 @@ import AirBill from "../../components/Home/Sections/Bills/AirBill";
 import { Iusso2 } from "../../components/Home/Sections/Bills/Iusso";
 import TicketBill from "../../components/Home/Sections/Bills/TicketBill";
 import FormBookingPay from "../../components/Home/Sections/Bills/FormBookingPay";
+import { DataLoading } from "../../components/Home/Sections/Bills/DataLoading";
+import TicketLoading from "../../components/loder/TicketLoading";
 function AirPay() {
   const [ticketIdState] = useRecoilState(TicketId);
   const navigator = useNavigate();
@@ -35,6 +37,7 @@ function AirPay() {
   )[0];
 
   const [, setTicketChoseState] = useRecoilState(TicketChose);
+  const [dataLoadingState] = useRecoilState(DataLoading);
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -75,7 +78,7 @@ function AirPay() {
         </div>
         <div className={`w-[718px] rounded-[16px] `}>
           {data && <TicketBill />}
-          <FormBookingPay />
+          {!dataLoadingState ? <FormBookingPay /> : <TicketLoading />}
         </div>
       </div>
     </section>

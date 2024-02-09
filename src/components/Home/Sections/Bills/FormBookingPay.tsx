@@ -1,18 +1,57 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   iconApplePay,
-  iconMasterCard,
+  iconFawry,
   iconPayPal,
   iconVisa,
 } from "../../../../assets/icons/home";
 import { useRecoilState } from "recoil";
-import { URLsPayment } from "../../../../data/RecoilState/Payment/StripeURLsPayment";
+import {
+  URLPayment,
+  URLsPayment,
+} from "../../../../data/RecoilState/Payment/StripeURLsPayment";
+import { Flip, toast } from "react-toastify";
+import { priceOfTotalState } from "../../../../data/RecoilState/Search/TicketData";
+
+const styleLi = `max-w-[554px] cursor-pointer border border-[#656565] rounded-[8px] mx-auto  w-full`;
+const styleLabel = `flex w-full py-[18px] px-[24px] cursor-pointer`;
 
 function FormBookingPay() {
   const [togglePrice, setTogglePrice] = useState(true);
   const [URLsPaymentState] = useRecoilState(URLsPayment);
-  console.log(URLsPaymentState);
+  // console.log(URLsPaymentState);
+
+  const [, setSelectedPaymentType] = useState<string>("");
+  const [handleLinkPay, setHandleLinkPay] = useState<string>("");
+  const handleSumited = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
+  // const navigate = useNavigate();
+
+  const [URLPaymentState, setURLPaymentState] = useRecoilState(URLPayment);
+
+  const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSelectedPaymentType(e.target.value);
+
+    const handleLink =
+      e.target.value === "PayPal"
+        ? URLsPaymentState.PayPal
+        : e.target.value === "ApplePay"
+        ? URLsPaymentState.ApplePay
+        : e.target.value === "Fawry"
+        ? URLsPaymentState.fawry
+        : e.target.value === "Visa"
+        ? URLsPaymentState.Visa
+        : "";
+    // if (handleLink === "") {
+    //   return navigate("/airData");
+    // }
+    setURLPaymentState(handleLink);
+    setHandleLinkPay(handleLink);
+  };
+  const [priceOfTotal] = useRecoilState(priceOfTotalState);
 
   useEffect(() => {}, [URLsPaymentState.MasterCard]);
   return (
@@ -37,63 +76,178 @@ function FormBookingPay() {
           togglePrice ? "" : "h-[0px] hidden"
         } relative duration-500 flex flex-wrap items-end flex-col bg-[#FFF] rounded-[16px] rounded-tr-[0px]`}
       >
-        <div className={`mt-[31.68px] lg:px-[24px] px-[10px]`}>
-          {/* Content Pay BTNs */}
-          {/* PayPal */}
-          <a
-            href={URLsPaymentState.PayPal}
-            className="text-gray-900 bg-[#F7BE38] hover:bg-[#F7BE38]/90 focus:ring-4 focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mr-2 mb-2"
-          >
-            {iconPayPal}
-            Check out with PayPal
-          </a>
-          {/* Apple Pay */}
-          <a
-            href={URLsPaymentState.ApplePay}
-            className="text-white bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#050708]/40 dark:focus:ring-gray-600 mr-2 mb-2"
-          >
-            Check out with Apple Pay
-            {iconApplePay}
-          </a>
-          {/* Visa */}
-          <a
-            href={URLsPaymentState.MasterCard}
-            className="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200 mr-2 mb-2"
-          >
-            {iconVisa}
-            Pay with Visa
-          </a>
-          {/* MasterCard */}
-          <a
-            href={URLsPaymentState.MasterCard}
-            className="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 mr-2 mb-2"
-          >
-            {iconMasterCard}
-            Pay with MasterCard
-          </a>
-          <div className={`h-[120px]`}></div>
-          {/* desktop */}
-          <Link
-            to={`/`}
-            className={`roundedCornerPay sm:block hidden absolute -bottom-2 left-[50%] translate-x-[-50%] bg-[#e9e9e9] py-2 md:px-7 px-4 rounded-t-[16px]`}
-          >
-            <span
-              className={`w-[294px] h-[48px] rounded-[16px] bg-[#117C99] hover:bg-[#117c99b0] duration-200 text-[#FFF] flex justify-center relative top-0 items-center `}
-            >
-              دفع الان
-            </span>
-          </Link>
-          {/* mobile */}
-          <Link
-            to={`/`}
-            className={`sm:hidden block absolute -bottom-2 left-[50%] translate-x-[-50%] bg-[#e9e9e9] py-2 md:px-7 px-4 rounded-t-[16px]`}
-          >
-            <span
-              className={`w-[294px] h-[48px] rounded-[16px] bg-[#117C99] hover:bg-[#117c99b0] duration-200 text-[#FFF] flex justify-center relative top-0 items-center `}
-            >
-              دفع الان
-            </span>
-          </Link>
+        <div className={`mt-[31.68px] lg:px-[24px] px-[10px] w-full`}>
+          <form onSubmit={handleSumited}>
+            <ul dir="rtl" className={`flex flex-col gap-[16px]`}>
+              <li className={`${styleLi}`}>
+                <label className={`${styleLabel}`}>
+                  <input
+                    value="PayPal"
+                    className={`inputPay`}
+                    type="radio"
+                    name="typePay"
+                    onChange={handleRadioChange}
+                  />
+                  <span className={`mx-auto`}>{iconPayPal}</span>
+                </label>
+              </li>
+              <li className={`${styleLi}`}>
+                <label className={`${styleLabel}`}>
+                  <input
+                    value="ApplePay"
+                    className={`inputPay`}
+                    type="radio"
+                    name="typePay"
+                    onChange={handleRadioChange}
+                  />
+                  <span className={`mx-auto`}>{iconApplePay}</span>
+                </label>
+              </li>
+              <li className={`${styleLi}`}>
+                <label className={`${styleLabel}`}>
+                  <input
+                    value="Fawry"
+                    className={`inputPay`}
+                    type="radio"
+                    name="typePay"
+                    onChange={handleRadioChange}
+                  />
+                  <span className={`mx-auto`}>{iconFawry}</span>
+                </label>
+              </li>
+              <li className={`${styleLi}`}>
+                <label className={`${styleLabel}`}>
+                  <input
+                    value="Visa"
+                    className={`inputPay`}
+                    type="radio"
+                    name="typePay"
+                    onChange={handleRadioChange}
+                  />
+                  <span className={`mx-auto`}>{iconVisa}</span>
+                </label>
+              </li>
+            </ul>
+
+            <div className={`h-[120px]`}></div>
+            {/* desktop */}
+            {URLPaymentState === "" ? (
+              <button
+                onClick={() =>
+                  toast.warn("يجب اختيار طريقة دفع", {
+                    position: "top-right",
+                    autoClose: 5075,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Flip,
+                  })
+                }
+                className={`roundedCornerPay sm:block hidden absolute -bottom-2 left-[50%] translate-x-[-50%] bg-[#e9e9e9] py-2 md:px-7 px-4 rounded-t-[16px]`}
+              >
+                <div
+                  className={`lg:w-[506px] w-[306px] h-[86px] rounded-[16px] bg-[#117C99] hover:bg-[#117c99b0] duration-200 text-[#FFF] flex flex-col justify-center relative top-5 items-center `}
+                >
+                  <span>إكمال عملة الدفع</span>
+                  <div className={`flex items-center gap-1 justify-center `}>
+                    <span> جنية مصري </span>
+                    <div>
+                      <span className={`text-[24px]`}>
+                        {Math.floor(+priceOfTotal)}
+                      </span>
+                      <span>
+                        .{Math.round(+priceOfTotal - Math.floor(+priceOfTotal))}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            ) : (
+              <Link
+                to={handleLinkPay}
+                className={`roundedCornerPay sm:block hidden absolute -bottom-2 left-[50%] translate-x-[-50%] bg-[#e9e9e9] py-2 md:px-7 px-4 rounded-t-[16px]`}
+              >
+                <div
+                  className={`lg:w-[506px] w-[306px] h-[86px] rounded-[16px] bg-[#117C99] hover:bg-[#117c99b0] duration-200 text-[#FFF] flex flex-col justify-center relative top-5 items-center `}
+                >
+                  <span>إكمال عملة الدفع</span>
+                  <div className={`flex items-center gap-1 justify-center `}>
+                    <span> جنية مصري </span>
+                    <div>
+                      <span className={`text-[24px]`}>
+                        {Math.floor(+priceOfTotal)}
+                      </span>
+                      <span>
+                        .{Math.round(+priceOfTotal - Math.floor(+priceOfTotal))}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            )}
+
+            {/* mobile */}
+            {URLPaymentState === "" ? (
+              <button
+                onClick={() =>
+                  toast.warn("يجب اختيار طريقة دفع", {
+                    position: "top-right",
+                    autoClose: 5075,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Flip,
+                  })
+                }
+                className={`sm:hidden block absolute -bottom-2 left-[50%] translate-x-[-50%] bg-[#e9e9e9] py-2 md:px-7 px-4 rounded-t-[16px]`}
+              >
+                <div
+                  className={`lg:w-[506px] w-[306px] h-[86px] rounded-[16px] bg-[#117C99] hover:bg-[#117c99b0] duration-200 text-[#FFF] flex flex-col justify-center relative top-5 items-center `}
+                >
+                  <span>إكمال عملة الدفع</span>
+                  <div className={`flex items-center gap-1 justify-center `}>
+                    <span> جنية مصري </span>
+                    <div>
+                      <span className={`text-[24px]`}>
+                        {Math.floor(+priceOfTotal)}
+                      </span>
+                      <span>
+                        .{Math.round(+priceOfTotal - Math.floor(+priceOfTotal))}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            ) : (
+              <Link
+                to={handleLinkPay}
+                className={`sm:hidden block absolute -bottom-2 left-[50%] translate-x-[-50%] bg-[#e9e9e9] py-2 md:px-7 px-4 rounded-t-[16px]`}
+              >
+                <div
+                  className={`lg:w-[506px] w-[306px] h-[86px] rounded-[16px] bg-[#117C99] hover:bg-[#117c99b0] duration-200 text-[#FFF] flex flex-col justify-center relative top-5 items-center `}
+                >
+                  <span>إكمال عملة الدفع</span>
+                  <div className={`flex items-center gap-1 justify-center `}>
+                    <span> جنية مصري </span>
+                    <div>
+                      <span className={`text-[24px]`}>
+                        {Math.floor(+priceOfTotal)}
+                      </span>
+                      <span>
+                        .{Math.round(+priceOfTotal - Math.floor(+priceOfTotal))}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            )}
+          </form>
         </div>
       </div>
     </div>

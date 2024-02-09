@@ -4,12 +4,18 @@ import { adultsData } from "../../../../data/RecoilState/FormSearchData";
 import { useEffect, useState } from "react";
 import { BtnPay } from "./Iusso";
 import { StoreCurrency } from "../../../../data/Fetching/StoreCurrency";
-import { useLocation } from "react-router-dom";
-import { DataBooking } from "../../../../data/RecoilState/Search/TicketData";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  DataBooking,
+  priceOfTotalState,
+} from "../../../../data/RecoilState/Search/TicketData";
 import { RootState } from "../../../../data/store";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { URLsPayment } from "../../../../data/RecoilState/Payment/StripeURLsPayment";
+import { Flip, toast } from "react-toastify";
+import { DataLoading } from "./DataLoading";
+import TicketLoading from "../../../loder/TicketLoading";
 
 // interface
 interface DataCheckoutSession {
@@ -48,10 +54,14 @@ function AirBill({
 
   const priceOfAdults = Math.round(+totalPriceEGP * +adultsDataState);
   const priceOfTotal = Math.round(+priceOfAdults + +tex + +texAddition);
+  const [, setPriceOfTotal] = useRecoilState(priceOfTotalState);
 
   const { pathname } = useLocation();
   // Create a session Payment with Stripe, and get URLs of data
   const [, setURLsPaymentState] = useRecoilState(URLsPayment);
+
+  const [dataLoadingState, setDataLoadingState] = useRecoilState(DataLoading);
+  const navigate = useNavigate();
 
   const createCheckoutSession = async ({
     price,
@@ -62,6 +72,9 @@ function AirBill({
     userEmail,
     carrierCodeLogo,
   }: DataCheckoutSession) => {
+    setDataLoadingState(true);
+
+    // Stripe
     await axios
       .post(`https://my-trip-back-end.onrender.com/checkout-completed`, {
         price,
@@ -73,14 +86,31 @@ function AirBill({
         carrierCodeLogo,
       })
       .then(({ data }) => {
+        setDataLoadingState(false);
         setURLsPaymentState({
           PayPal: "",
           ApplePay: "",
           Visa: data.url,
           MasterCard: data.url,
+          fawry: "",
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setDataLoadingState(false);
+        navigate("/airData");
+        toast.warn("هناك مشكلة بالنترنت لديك", {
+          position: "top-right",
+          autoClose: 5075,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Flip,
+        });
+      });
   };
 
   const [dataBookingState] = useRecoilState(DataBooking);
@@ -88,6 +118,7 @@ function AirBill({
 
   useEffect(() => {
     if (pathname === "/airPay") {
+      setPriceOfTotal(priceOfTotal);
       createCheckoutSession({
         price: priceOfTotal,
         description: `${arrival} الى ${departure} رحلة من `,
@@ -143,7 +174,11 @@ function AirBill({
           />
         </div>
         <div className={`h-[calc(64px+80px)]`}></div>
-        <BtnPay isPageAirPay={isPageAirPay} />
+        {dataLoadingState ? (
+          <TicketLoading />
+        ) : (
+          <BtnPay isPageAirPay={isPageAirPay} />
+        )}
       </div>
     </div>
   );

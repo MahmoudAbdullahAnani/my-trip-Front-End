@@ -26,3 +26,8 @@ export const DataBooking = atom({
 });
 
 //============================================================================================= User Data For air booking ===========================================================================================
+
+export const priceOfTotalState = atom({
+  key: "priceOfTotalState", // unique ID (with respect to other atoms/selectors)
+  default: 0, // default value (aka initial value)
+});

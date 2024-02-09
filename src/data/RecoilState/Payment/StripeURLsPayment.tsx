@@ -7,5 +7,10 @@ export const URLsPayment = atom({
     ApplePay: "",
     Visa: "",
     MasterCard: "",
+    fawry: "",
   }, // default value (aka initial value)
+});
+export const URLPayment = atom({
+  key: "URLPayment", // unique ID (with respect to other atoms/selectors)
+  default: '', // default value (aka initial value)
 });
