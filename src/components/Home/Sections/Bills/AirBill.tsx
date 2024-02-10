@@ -16,10 +16,10 @@ import { Flip, toast } from "react-toastify";
 import { DataLoading } from "./DataLoading";
 import TicketLoading from "../../../loder/TicketLoading";
 import {
-  URLApplePayPayment,
+  // URLApplePayPayment,
+  // URLfawryPayment,
   URLPayPalPayment,
   URLVisaPayment,
-  URLfawryPayment,
 } from "../../../../data/RecoilState/Payment/StripeURLsPayment";
 
 // interface
@@ -64,9 +64,9 @@ function AirBill({
   const { pathname } = useLocation();
   // Create a session Payment with Stripe, and get URLs of data
   const [, setURLPayPalPaymentState] = useRecoilState(URLPayPalPayment);
-  const [, setURLApplePayPaymentState] = useRecoilState(URLApplePayPayment);
+  // const [, setURLApplePayPaymentState] = useRecoilState(URLApplePayPayment);
   const [, setURLVisaPaymentState] = useRecoilState(URLVisaPayment);
-  const [, setURLfawryPaymentState] = useRecoilState(URLfawryPayment);
+  // const [, setURLfawryPaymentState] = useRecoilState(URLfawryPayment);
   const [dataLoadingState, setDataLoadingState] = useRecoilState(DataLoading);
   const navigate = useNavigate();
 
