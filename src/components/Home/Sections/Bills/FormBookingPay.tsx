@@ -8,8 +8,11 @@ import {
 } from "../../../../assets/icons/home";
 import { useRecoilState } from "recoil";
 import {
+  URLApplePayPayment,
+  URLfawryPayment,
   URLPayment,
-  URLsPayment,
+  URLPayPalPayment,
+  URLVisaPayment,
 } from "../../../../data/RecoilState/Payment/StripeURLsPayment";
 import { Flip, toast } from "react-toastify";
 import { priceOfTotalState } from "../../../../data/RecoilState/Search/TicketData";
@@ -19,7 +22,10 @@ const styleLabel = `flex w-full py-[18px] px-[24px] cursor-pointer`;
 
 function FormBookingPay() {
   const [togglePrice, setTogglePrice] = useState(true);
-  const [URLsPaymentState] = useRecoilState(URLsPayment);
+  const [URLPayPalPaymentState] = useRecoilState(URLPayPalPayment);
+  const [URLApplePayPaymentState] = useRecoilState(URLApplePayPayment);
+  const [URLVisaPaymentState] = useRecoilState(URLVisaPayment);
+  const [URLfawryPaymentState] = useRecoilState(URLfawryPayment);
   // console.log(URLsPaymentState);
 
   const [, setSelectedPaymentType] = useState<string>("");
@@ -37,13 +43,13 @@ function FormBookingPay() {
 
     const handleLink =
       e.target.value === "PayPal"
-        ? URLsPaymentState.PayPal
+        ? URLPayPalPaymentState
         : e.target.value === "ApplePay"
-        ? URLsPaymentState.ApplePay
+        ? URLApplePayPaymentState
         : e.target.value === "Fawry"
-        ? URLsPaymentState.fawry
+        ? URLfawryPaymentState
         : e.target.value === "Visa"
-        ? URLsPaymentState.Visa
+        ? URLVisaPaymentState
         : "";
     // if (handleLink === "") {
     //   return navigate("/airData");
@@ -53,7 +59,12 @@ function FormBookingPay() {
   };
   const [priceOfTotal] = useRecoilState(priceOfTotalState);
 
-  useEffect(() => {}, [URLsPaymentState.MasterCard]);
+  useEffect(() => {}, [
+    URLPayPalPaymentState,
+    URLApplePayPaymentState,
+    URLfawryPaymentState,
+    URLVisaPaymentState,
+  ]);
   return (
     <div
       className={`bg-[#e9e9e9] duration-500 rounded-[16px] mt-[16px] lg:mb-[570px] mb-[70px]`}

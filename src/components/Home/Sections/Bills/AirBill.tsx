@@ -12,10 +12,15 @@ import {
 import { RootState } from "../../../../data/store";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { URLsPayment } from "../../../../data/RecoilState/Payment/StripeURLsPayment";
 import { Flip, toast } from "react-toastify";
 import { DataLoading } from "./DataLoading";
 import TicketLoading from "../../../loder/TicketLoading";
+import {
+  URLApplePayPayment,
+  URLPayPalPayment,
+  URLVisaPayment,
+  URLfawryPayment,
+} from "../../../../data/RecoilState/Payment/StripeURLsPayment";
 
 // interface
 interface DataCheckoutSession {
@@ -58,8 +63,10 @@ function AirBill({
 
   const { pathname } = useLocation();
   // Create a session Payment with Stripe, and get URLs of data
-  const [, setURLsPaymentState] = useRecoilState(URLsPayment);
-
+  const [, setURLPayPalPaymentState] = useRecoilState(URLPayPalPayment);
+  const [, setURLApplePayPaymentState] = useRecoilState(URLApplePayPayment);
+  const [, setURLVisaPaymentState] = useRecoilState(URLVisaPayment);
+  const [, setURLfawryPaymentState] = useRecoilState(URLfawryPayment);
   const [dataLoadingState, setDataLoadingState] = useRecoilState(DataLoading);
   const navigate = useNavigate();
 
@@ -73,10 +80,9 @@ function AirBill({
     carrierCodeLogo,
   }: DataCheckoutSession) => {
     setDataLoadingState(true);
-
-    // Stripe
+    // PayPal
     await axios
-      .post(`https://my-trip-back-end.onrender.com/checkout-completed`, {
+      .post(`https://my-trip-back-end.onrender.com/checkout-completed/paypal`, {
         price,
         description,
         user_id,
@@ -87,16 +93,41 @@ function AirBill({
       })
       .then(({ data }) => {
         setDataLoadingState(false);
-        setURLsPaymentState({
-          PayPal: "",
-          ApplePay: "",
-          Visa: data.url,
-          MasterCard: data.url,
-          fawry: "",
-        });
+        setURLPayPalPaymentState(data.links[1].href);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("err-PayPal==> ", err);
+        setDataLoadingState(false);
+        navigate("/airData");
+        toast.warn("هناك مشكلة بالنترنت لديك", {
+          position: "top-right",
+          autoClose: 5075,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Flip,
+        });
+      });
+    // Stripe
+    await axios
+      .post(`https://my-trip-back-end.onrender.com/checkout-completed/stripe`, {
+        price,
+        description,
+        user_id,
+        urlSuccess,
+        urlCancel,
+        userEmail,
+        carrierCodeLogo,
+      })
+      .then(({ data }) => {
+        setDataLoadingState(false);
+        setURLVisaPaymentState(data.url);
+      })
+      .catch((err) => {
+        console.log("err===> ", err);
         setDataLoadingState(false);
         navigate("/airData");
         toast.warn("هناك مشكلة بالنترنت لديك", {
