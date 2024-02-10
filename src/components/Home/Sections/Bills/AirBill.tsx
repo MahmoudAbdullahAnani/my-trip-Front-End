@@ -81,9 +81,19 @@ function AirBill({
   }: DataCheckoutSession) => {
     setDataLoadingState(true);
     // PayPal
+    console.log({
+      price: +totalPriceUSD,
+      description,
+      user_id,
+      urlSuccess,
+      urlCancel,
+      userEmail,
+      carrierCodeLogo,
+    });
+
     await axios
       .post(`https://my-trip-back-end.onrender.com/checkout-completed/paypal`, {
-        price:+totalPriceUSD,
+        price: Math.round(+totalPriceUSD),
         description,
         user_id,
         urlSuccess,
