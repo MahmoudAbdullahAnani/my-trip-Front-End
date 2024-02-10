@@ -83,7 +83,7 @@ function AirBill({
     // PayPal
     await axios
       .post(`https://my-trip-back-end.onrender.com/checkout-completed/paypal`, {
-        price,
+        totalPriceUSD,
         description,
         user_id,
         urlSuccess,
