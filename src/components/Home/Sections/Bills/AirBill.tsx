@@ -163,7 +163,7 @@ function AirBill({
       createCheckoutSession({
         price: priceOfTotal,
         description: `${arrival} الى ${departure} رحلة من `,
-        user_id: stateUserData._id || "0",
+        user_id: stateUserData._id || "guest",
         urlSuccess: "https://ittrip.vercel.app/",
         urlCancel: "https://ittrip.vercel.app/",
         userEmail: dataBookingState.EmailBooking,
