@@ -147,6 +147,7 @@
 * {
   box-sizing: border-box;
   font-family: "LamaSans", sans-serif;
+  scroll-behavior: smooth;
 }
 
 :not(:root):fullscreen::backdrop {
@@ -377,6 +378,9 @@ input[type="radio"] {
 }
 
 /* Start Radio buttons Checked */
+input {
+  accent-color: #117c99;
+}
 ul li .inputPay:checked {
   accent-color: #117c99;
 }

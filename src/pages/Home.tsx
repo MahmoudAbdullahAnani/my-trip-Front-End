@@ -4,16 +4,18 @@ import OffersSection from "../components/Home/Sections/Offers/OffersSection";
 import PopularDestinations from "../components/Home/Sections/PopularDestinations/PopularDestinations";
 import DestinationSection from "../components/Home/Sections/Destination/DestinationSection";
 import { useEffect } from "react";
+import AutoScroll from "../components/Home/Systems/AutoScroll";
 
 function Home() {
-    useEffect(() => {
-      window.scroll(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
     <>
       <section>
         <MoveBgHeroSection>
           <HeroSection />
+          <AutoScroll />
         </MoveBgHeroSection>
       </section>
       <OffersSection />

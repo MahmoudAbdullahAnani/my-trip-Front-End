@@ -123,7 +123,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
                 onFocus={openDateForm}
                 onBlur={closeDateForm}
                 placeholder={`تاريخ العودة`}
-                className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
+                className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752]  focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
               />
               <span
                 onClick={() => refIcon2.current?.focus()}
@@ -147,7 +147,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
               onFocus={openDateForm}
               onBlur={closeDateForm}
               placeholder={`تاريخ الذهاب`}
-              className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
+              className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
             />
             <span
               onClick={() => refIcon1.current?.focus()}
@@ -180,7 +180,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             onFocus={openDateForm}
             onBlur={closeDateForm}
             placeholder={`تاريخ الذهاب`}
-            className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
+            className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
           />
           <span
             onClick={() => refIcon1.current?.focus()}
@@ -202,7 +202,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
               onFocus={openDateForm}
               onBlur={closeDateForm}
               placeholder={`تاريخ العودة`}
-              className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
+              className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99] z-20`}
             />
             <span
               onClick={() => refIcon2.current?.focus()}

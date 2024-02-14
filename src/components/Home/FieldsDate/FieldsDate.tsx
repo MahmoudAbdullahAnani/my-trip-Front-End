@@ -84,7 +84,7 @@ function FieldsDate() {
             rangeColors={["#005A6C"]}
             months={1}
             // showMonthArrow={false}
-            className=" rounded-b-lg"
+            className=" rounded-b-lg "
           />
         </div>
       </div>
