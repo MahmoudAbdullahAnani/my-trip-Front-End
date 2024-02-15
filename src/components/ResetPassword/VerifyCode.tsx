@@ -33,7 +33,6 @@ const codeSchema = z.object({
 //   localStorage.setItem("token", token);
 // }
 function VerifyCode() {
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -125,7 +124,7 @@ function VerifyCode() {
                   type={type}
                   classes={classes}
                   register={register}
-                  error={error}
+                  error={<>{error}</>}
                   handleFocus={() => setIncorrectData("")}
                 />
               </div>

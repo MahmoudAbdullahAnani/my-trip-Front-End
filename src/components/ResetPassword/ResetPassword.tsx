@@ -149,7 +149,7 @@ function ResetPassword() {
                   type={type}
                   classes={classes}
                   register={register}
-                  error={error}
+                  error={<>{error}</>}
                   handleFocus={() => setIncorrectData("")}
                 />
               </div>

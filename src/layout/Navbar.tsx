@@ -13,6 +13,7 @@ import { iconArithmetic, iconHome, iconTicket } from "../assets/icons/home";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { TypeSystemSearch } from "../data/RecoilState/Search/TypeSystemSearch";
+import { openLoginPageState } from "../data/RecoilState/AuthStatePages/Auth";
 function Navbar() {
   // const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
@@ -23,6 +24,9 @@ function Navbar() {
   });
 
   const [typeSystemSearchState] = useRecoilState(TypeSystemSearch);
+
+  const [, setOpenPage] = useRecoilState(openLoginPageState);
+  const handleOpenPage = () => setOpenPage(true);
 
   return (
     <>
@@ -55,13 +59,14 @@ function Navbar() {
             {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
               <DialogComponent />
             ) : (
-              <Link
-                to={`/login`}
+              <button
+                onClick={handleOpenPage}
+                // to={``}
                 style={{ border: "1px solid #F9C534" }}
                 className={` text-[14px] font-[600] text-[#B6E7FB] hover:text-[#b6e7fb7d] w-[188px] h-[34px] rounded-[10px] text-center flex justify-center items-center `}
               >
                 تسجيل الدخول
-              </Link>
+              </button>
             )}
           </div>
           {/* Links */}

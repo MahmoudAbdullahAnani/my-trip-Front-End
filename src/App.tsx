@@ -7,8 +7,8 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 // Dependencies
 import { driver } from "driver.js";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Login from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup";
 import { useDispatch } from "react-redux";
 // import { RootState } from "./data/store";
 import ForgotPassword from "./components/ResetPassword/ForgotPassword";
@@ -225,10 +225,12 @@ function App() {
 
   return (
     <>
+      <Login />
+      <Signup />
       <Routes>
         <Route path="/*" element={<For04 />} />
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/verifyCode" element={<VerifyCode />} />

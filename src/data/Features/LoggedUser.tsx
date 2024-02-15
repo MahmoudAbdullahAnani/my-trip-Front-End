@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { SchemaUser } from "../../pages/Login";
+import { SchemaUser } from "../../pages/Auth/Login";
 
 // export interface CounterState {
 //   value: number;

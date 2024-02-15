@@ -34,9 +34,9 @@ const emailSchema = z.object({
 //   localStorage.setItem("token", token);
 // }
 function ForgotPassword() {
-    useEffect(() => {
-      window.scroll(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   // State Management
   const dispatch = useDispatch();
 
@@ -123,7 +123,7 @@ function ForgotPassword() {
                   type={type}
                   classes={classes}
                   register={register}
-                  error={error}
+                  error={<>{error}</>}
                   handleFocus={() => setIncorrectData("")}
                 />
               </div>
@@ -166,18 +166,8 @@ export function LinksForgotPassword({ isSignUp }: { isSignUp: boolean }) {
   }
   return (
     <div className={`flex justify-around  `}>
-      <Link
-        className={`text-sm text-red-300 hover:text-red-400`}
-        to={`/forgotPassword`}
-      >
-        Forgot Password?
-      </Link>
-      <Link
-        className={`text-sm text-red-300 hover:text-red-400`}
-        to={`/signup`}
-      >
-        Sign Up?
-      </Link>
+      <button>إنشاء حساب</button>
+      <span>انا لا امتلك حساب</span>
     </div>
   );
 }
