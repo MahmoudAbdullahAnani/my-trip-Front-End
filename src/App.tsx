@@ -227,6 +227,9 @@ function App() {
     <>
       <Login />
       <Signup />
+      <ForgotPassword />
+      <VerifyCode />
+      <ResetPassword/>
       <Routes>
         <Route path="/*" element={<For04 />} />
         <Route path="/" element={<Home />} />

@@ -6,16 +6,17 @@ import z from "zod";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { LoderBtn } from "../../components/loder/Loder";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUserLogged } from "../../data/Features/LoggedUser";
 import { reRenderData } from "../../data/RecoilState/Notifications/NotificationsData";
 import { useRecoilState } from "recoil";
 import { Modal } from "@mui/material";
 import {
+  OpenResetPasswordPage,
   openForgotPasswordPageState,
   openLoginPageState,
   openSignupPageState,
+  openVerifyPageState,
 } from "../../data/RecoilState/AuthStatePages/Auth";
 // Images
 import { iconGoogle, iconLogo, iconFacebook } from "../../assets/icons/home";
@@ -81,7 +82,15 @@ function OAuth() {
   // State Management
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
+  const [, setOpenResetPasswordPageState] = useRecoilState(
+    OpenResetPasswordPage
+  );
+  const [openPage, setOpenPage] = useRecoilState(openLoginPageState);
+  const [, setOpenSignupPage] = useRecoilState(openSignupPageState);
+  const [, setOpenForgotPasswordPageState] = useRecoilState(
+    openForgotPasswordPageState
+  );
+  const [, setOpenVerifyPageState] = useRecoilState(openVerifyPageState);
 
   const [incorrectData, setIncorrectData] = useState<string>("");
   const {
@@ -114,8 +123,13 @@ function OAuth() {
         }
       )
       .then((response) => {
-        navigate("/");
+        setOpenForgotPasswordPageState(false);
+        setOpenResetPasswordPageState(false);
+        setOpenPage(false);
+        setOpenSignupPage(false);
+        setOpenVerifyPageState(false);
         dispatch(addUserLogged(response.data?.data));
+
         setData(response.data.token);
         setReRenderDataApp(false);
       })
@@ -161,14 +175,14 @@ function OAuth() {
     },
   ];
 
-  const [openPage, setOpenPage] = useRecoilState(openLoginPageState);
-  const [, setOpenSignupPage] = useRecoilState(openSignupPageState);
-  const [, setOpenForgotPasswordPageState] = useRecoilState(
-    openForgotPasswordPageState
-  );
   // const handleOpenPage = () => setOpenPage(true);
-  const handleClosePage = () => setOpenPage(false);
-
+  const handleClosePage = () => {
+    setOpenForgotPasswordPageState(false);
+    setOpenResetPasswordPageState(false);
+    setOpenPage(false);
+    setOpenSignupPage(false);
+    setOpenVerifyPageState(false);
+  };
   return (
     // Login
     <Modal
@@ -183,7 +197,7 @@ function OAuth() {
       }}
     >
       <div
-        className={`lg:w-[90%] h-[90%] bg-[url('/public/assets/bg-model-login.png')] bg-cover flex justify-center p-[30px] gap-[24px] rounded-[26px] bg-[#FFF]`}
+        className={`lg:w-[90%] h-[90%]  bg-[url('/public/assets/bg-model-login.png')] bg-cover flex justify-center p-[30px] gap-[24px] rounded-[26px] bg-[#FFF]`}
       >
         <div
           style={{
@@ -251,7 +265,7 @@ function OAuth() {
           </div>
           {incorrectData && (
             <span
-              className={`bg-red-400 my-2 text-center rounded-md text-[#fafafa]`}
+              className={`bg-red-400 my-2 w-full block text-center rounded-md text-[#fafafa]`}
             >
               {Array.isArray(incorrectData) ? incorrectData[0] : incorrectData}
             </span>
@@ -284,9 +298,11 @@ function OAuth() {
           >
             <span
               onClick={() => {
-                setOpenPage(false);
                 setOpenForgotPasswordPageState(true);
+                setOpenResetPasswordPageState(false);
+                setOpenPage(false);
                 setOpenSignupPage(false);
+                setOpenVerifyPageState(false);
               }}
               style={{
                 textDecoration: "underline",
@@ -307,9 +323,9 @@ function OAuth() {
               </label>
             </div>
           </div>
-          <div className={`mx-auto w-full flex justify-center  mt-[26px]`}>
+          <div className={`mx-auto w-full flex justify-center mt-[26px]`}>
             <button
-              className={`lg:w-full h-[48px]  w-[70%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
+              className={`flex justify-center items-center lg:w-full h-[48px]  w-[70%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
               type="submit"
               disabled={isSubmitting}
             >
@@ -322,9 +338,11 @@ function OAuth() {
           >
             <span
               onClick={() => {
-                setOpenPage(false);
                 setOpenForgotPasswordPageState(false);
+                setOpenResetPasswordPageState(false);
+                setOpenPage(false);
                 setOpenSignupPage(true);
+                setOpenVerifyPageState(false);
               }}
               style={{
                 textDecoration: "underline",

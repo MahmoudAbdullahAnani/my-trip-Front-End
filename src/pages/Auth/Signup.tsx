@@ -6,7 +6,6 @@ import z from "zod";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { LoderBtn } from "../../components/loder/Loder";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUserLogged } from "../../data/Features/LoggedUser";
 // Login Btn
@@ -18,9 +17,11 @@ import {
   // @ts-ignore
 } from "reactjs-social-login";
 import {
+  OpenResetPasswordPage,
   openForgotPasswordPageState,
   openLoginPageState,
   openSignupPageState,
+  openVerifyPageState,
   showPassword,
 } from "../../data/RecoilState/AuthStatePages/Auth";
 import { useRecoilState } from "recoil";
@@ -51,26 +52,21 @@ interface DTOInputs {
 }
 
 // Schema Login
-const singUpSchema = z
-  .object({
-    firstName: z
-      .string()
-      .min(3, { message: "the first name very short" })
-      .max(30, { message: "the first name very long" }),
-    lastName: z.string().optional(),
-    userName: z.string().optional(),
-    password: z
-      .string()
-      .min(3, { message: "the password name very short" })
-      .max(20, { message: "the password name very long" }),
-    email: z.string().email("Invalid Email"),
-    phoneNumber: z.string().optional(),
-    confirmPassword: z.string().optional(),
-  })
-  .refine(({ password, confirmPassword }) => confirmPassword === password, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  });
+const singUpSchema = z.object({
+  firstName: z
+    .string()
+    .min(3, { message: "the first name very short" })
+    .max(30, { message: "the first name very long" }),
+  lastName: z.string().optional(),
+  userName: z.string().optional(),
+  password: z
+    .string()
+    .min(3, { message: "the password name very short" })
+    .max(20, { message: "the password name very long" }),
+  email: z.string().email("Invalid Email"),
+  phoneNumber: z.string().optional(),
+  confirmPassword: z.string().optional(),
+});
 function setData(token: string) {
   localStorage.setItem("token", token);
 }
@@ -97,8 +93,6 @@ function Signup() {
   // State Management
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-
   const [incorrectData, setIncorrectData] = useState<string>("");
   const {
     register,
@@ -111,43 +105,47 @@ function Signup() {
   });
   const onSubmit: SubmitHandler<SchemaUser> = async ({
     firstName,
-    lastName,
     email,
-    userName,
     password,
-    age,
-    phoneNumber,
   }: SchemaUser) => {
     setIncorrectData("");
-    // 1) axios post req on /signin
+
+    const lastName = firstName.split(" ")[1] || "";
+    // 1) axios post req on /signup
     await axios
       .post(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/signup`
           : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/signup`,
         {
-          firstName,
+          firstName: firstName.split(" ")[0] || "",
           lastName,
           email,
-          userName,
+          userName: `${firstName.split(" ")[0]}-${lastName}`,
           password,
-          age,
-          phoneNumber,
         }
       )
       .then((response) => {
-        navigate("/");
+        setOpenForgotPasswordPageState(false);
+        setOpenResetPasswordPageState(false);
+        setOpenPage(false);
+        setOpenSignupPage(false);
+        setOpenVerifyPageState(false);
+
+        console.log(response);
+
         dispatch(addUserLogged(response.data?.data));
         setData(response.data?.token);
       })
       .catch(({ response }) => {
+        console.log(response);
+
         setIncorrectData(response.data?.message);
       });
     reset();
   };
   // Inputs UI
-  const [toggleConfirmPassword, ] =
-    useRecoilState(showPassword);
+  const [toggleConfirmPassword] = useRecoilState(showPassword);
   const styleField =
     "text-end px-[12px] pe-[46px] w-full h-[56px] py-[20px] rounded-[16px] bg-white  placeholder:text-[16px] placeholder:font-medium placeholder:text-[#9F9D9D]";
 
@@ -299,14 +297,25 @@ function Signup() {
     //   ),
     // },
   ];
-
+  const [, setOpenResetPasswordPageState] = useRecoilState(
+    OpenResetPasswordPage
+  );
   const [, setOpenPage] = useRecoilState(openLoginPageState);
   const [openPage, setOpenSignupPage] = useRecoilState(openSignupPageState);
   const [, setOpenForgotPasswordPageState] = useRecoilState(
     openForgotPasswordPageState
   );
+  const [, setOpenVerifyPageState] = useRecoilState(openVerifyPageState);
+
   // const handleOpenPage = () => setOpenPage(true);
-  const handleClosePage = () => setOpenSignupPage(false);
+  const handleClosePage = () => {
+    setOpenForgotPasswordPageState(false);
+    setOpenResetPasswordPageState(false);
+    setOpenPage(false);
+    setOpenSignupPage(false);
+    setOpenVerifyPageState(false);
+    setOpenForgotPasswordPageState(false);
+  };
   return (
     <Modal
       open={openPage}
@@ -334,6 +343,7 @@ function Signup() {
           </div>
         </div>
         <form
+          // handleSubmit(onSubmit)
           onSubmit={handleSubmit(onSubmit)}
           className={`lg:pt-[81px] relative`}
         >
@@ -388,7 +398,7 @@ function Signup() {
           </div>
           {incorrectData && (
             <span
-              className={`bg-red-400 my-2 text-center rounded-md text-[#fafafa]`}
+              className={`bg-red-400 my-2 w-full block text-center rounded-md text-[#fafafa]`}
             >
               {Array.isArray(incorrectData) ? incorrectData[0] : incorrectData}
             </span>
@@ -431,9 +441,11 @@ function Signup() {
           >
             <span
               onClick={() => {
-                setOpenPage(false);
                 setOpenForgotPasswordPageState(true);
+                setOpenResetPasswordPageState(false);
+                setOpenPage(false);
                 setOpenSignupPage(false);
+                setOpenVerifyPageState(false);
               }}
               style={{
                 textDecoration: "underline",
@@ -454,9 +466,9 @@ function Signup() {
               </label>
             </div>
           </div>
-          <div className={`mx-auto w-full flex justify-center  mt-[26px]`}>
+          <div className={`mx-auto w-full flex justify-center mt-[26px]`}>
             <button
-              className={`lg:w-full h-[48px]  w-[70%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
+              className={`flex justify-center items-center lg:w-full h-[48px] w-[70%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
               type="submit"
               disabled={isSubmitting}
             >
@@ -469,9 +481,11 @@ function Signup() {
           >
             <span
               onClick={() => {
-                setOpenPage(true);
                 setOpenForgotPasswordPageState(false);
+                setOpenResetPasswordPageState(false);
+                setOpenPage(true);
                 setOpenSignupPage(false);
+                setOpenVerifyPageState(false);
               }}
               style={{
                 textDecoration: "underline",

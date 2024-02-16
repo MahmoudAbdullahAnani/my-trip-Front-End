@@ -10,7 +10,7 @@ export const openSignupPageState = atom({
   default: false, // default value (aka initial value)
 });
 
-// Password
+// --> Password <--
 export const showPassword = atom({
   key: "showPassword", // unique ID (with respect to other atoms/selectors)
   default: true, // default value (aka initial value)
@@ -18,5 +18,17 @@ export const showPassword = atom({
 
 export const openForgotPasswordPageState = atom({
   key: "openForgotPasswordPageState", // unique ID (with respect to other atoms/selectors)
+  default: false, // default value (aka initial value)
+});
+export const openVerifyPageState = atom({
+  key: "openVerifyPageState", // unique ID (with respect to other atoms/selectors)
+  default: false, // default value (aka initial value)
+});
+export const emailVerify = atom({
+  key: "emailVerify", // unique ID (with respect to other atoms/selectors)
+  default: '', // default value (aka initial value)
+});
+export const OpenResetPasswordPage = atom({
+  key: "OpenResetPasswordPage", // unique ID (with respect to other atoms/selectors)
   default: false, // default value (aka initial value)
 });

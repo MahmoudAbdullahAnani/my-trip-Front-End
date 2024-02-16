@@ -26,7 +26,7 @@ export const InputForm = ({
   return (
     <div className={`flex flex-col w-full`}>
       <div className={`flex items-center relative rounded-[16px]`}>
-        {type === "password" ? (
+        {type === "password" || type === "confirmPassword" ? (
           <span
             className={`absolute left-[16px] cursor-pointer`}
             onClick={() => setToggleConfirmPassword(!toggleConfirmPassword)}
