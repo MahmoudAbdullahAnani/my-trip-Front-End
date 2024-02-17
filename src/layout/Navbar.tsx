@@ -1,6 +1,5 @@
 // react-router-dom
 import { Link, useLocation } from "react-router-dom";
-import DialogComponent from "../components/DialogComponent";
 // Images
 import logo from "./../../public/assets/logo.png";
 // create context
@@ -14,6 +13,7 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { TypeSystemSearch } from "../data/RecoilState/Search/TypeSystemSearch";
 import { openLoginPageState } from "../data/RecoilState/AuthStatePages/Auth";
+import MainOAuthNavbar from "../components/ResetPassword/OAuthNavberDesktop/MainOAuthNavbar";
 function Navbar() {
   // const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
@@ -55,9 +55,10 @@ function Navbar() {
               : ""
           } `}
         >
-          <div className={`flex gap-4 pt-[32px] text-white`}>
+          {/* OAuth */}
+          <div className={`flex items-start pt-[32px] text-white`}>
             {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
-              <DialogComponent />
+              <MainOAuthNavbar />
             ) : (
               <button
                 onClick={handleOpenPage}

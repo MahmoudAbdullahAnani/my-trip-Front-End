@@ -13,6 +13,7 @@ import { useRecoilState } from "recoil";
 import { Modal } from "@mui/material";
 import {
   OpenResetPasswordPage,
+  TokenJWT,
   openForgotPasswordPageState,
   openLoginPageState,
   openSignupPageState,
@@ -85,6 +86,7 @@ function OAuth() {
   const [, setOpenResetPasswordPageState] = useRecoilState(
     OpenResetPasswordPage
   );
+  const [, setTokenJWT] = useRecoilState(TokenJWT);
   const [openPage, setOpenPage] = useRecoilState(openLoginPageState);
   const [, setOpenSignupPage] = useRecoilState(openSignupPageState);
   const [, setOpenForgotPasswordPageState] = useRecoilState(
@@ -93,6 +95,7 @@ function OAuth() {
   const [, setOpenVerifyPageState] = useRecoilState(openVerifyPageState);
 
   const [incorrectData, setIncorrectData] = useState<string>("");
+  const [rememberMe, setRememberMe] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -128,10 +131,13 @@ function OAuth() {
         setOpenPage(false);
         setOpenSignupPage(false);
         setOpenVerifyPageState(false);
+        setTokenJWT(response.data.token);
         dispatch(addUserLogged(response.data?.data));
 
-        setData(response.data.token);
         setReRenderDataApp(false);
+        if (rememberMe) {
+          return setData(response.data.token);
+        }
       })
       .catch(({ response }) => {
         setIncorrectData(response.data?.message);
@@ -315,6 +321,9 @@ function OAuth() {
               <label className={`flex items-center justify-center gap-[2px]`}>
                 <span>حفظ البيانات</span>
                 <input
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  onClick={(e) => setRememberMe(e.target.checked)}
                   style={{
                     boxShadow: "0 4px 4px rgb(0 90 108 / 30%)",
                   }}

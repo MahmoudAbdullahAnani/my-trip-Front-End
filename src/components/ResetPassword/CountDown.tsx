@@ -25,7 +25,7 @@ function CountDown() {
     }, 1000);
   }
   useEffect(() => {
-    countdown(1);
+    countdown(2);
   }, []);
 
   const [emailVerifyState] = useRecoilState(emailVerify);
@@ -59,7 +59,7 @@ function CountDown() {
       <span
         onClick={() => {
           reSendCode();
-          countdown(1);
+          countdown(2);
         }}
         className={`text-[#117C99] cursor-pointer`}
       >

@@ -18,6 +18,7 @@ import {
 } from "reactjs-social-login";
 import {
   OpenResetPasswordPage,
+  TokenJWT,
   openForgotPasswordPageState,
   openLoginPageState,
   openSignupPageState,
@@ -94,6 +95,10 @@ function Signup() {
   const dispatch = useDispatch();
 
   const [incorrectData, setIncorrectData] = useState<string>("");
+  const [rememberMe, setRememberMe] = useState<boolean>(false);
+
+  const [, setTokenJWT] = useRecoilState(TokenJWT);
+
   const {
     register,
     handleSubmit,
@@ -131,11 +136,12 @@ function Signup() {
         setOpenPage(false);
         setOpenSignupPage(false);
         setOpenVerifyPageState(false);
-
-        console.log(response);
+        setTokenJWT(response.data.token);
 
         dispatch(addUserLogged(response.data?.data));
-        setData(response.data?.token);
+        if (rememberMe) {
+          setData(response.data.token);
+        }
       })
       .catch(({ response }) => {
         console.log(response);
@@ -458,6 +464,9 @@ function Signup() {
               <label className={`flex items-center justify-center gap-[2px]`}>
                 <span>حفظ البيانات</span>
                 <input
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  onClick={(e) => setRememberMe(e.target.checked)}
                   style={{
                     boxShadow: "0 4px 4px rgb(0 90 108 / 30%)",
                   }}

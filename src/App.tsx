@@ -21,9 +21,9 @@ import isLoading from "./data/RecoilState/Loading";
 import { Loder } from "./components/loder/Loder";
 
 import {
-  allNotifications,
-  privateNotifications,
-  publicNotifications,
+  // allNotifications,
+  // privateNotifications,
+  // publicNotifications,
   reRenderData,
 } from "./data/RecoilState/Notifications/NotificationsData";
 import Home from "./pages/Home";
@@ -96,75 +96,76 @@ function RunDriver() {
 
 // App Component
 function App() {
-  const [, setAllNotifications] = useRecoilState(allNotifications);
-  const [publicNotificationsState, setPublicNotifications] =
-    useRecoilState(publicNotifications);
-  const [privateNotificationsState, setPrivateNotifications] =
-    useRecoilState(privateNotifications);
-  const [reRenderDataApp, setReRenderDataApp] = useRecoilState(reRenderData);
-  const getPublicNotifications = async () => {
-    // if get token then fetch to data me
-    const token = localStorage.getItem("token") || "";
-    await axios
-      .get(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
-          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/public/notifications`
-          : `${
-              import.meta.env.VITE_PUBLIC_API_PRODUCTION
-            }/public/notifications`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then(async ({ data }) => {
-        setPublicNotifications(data?.AllNotifications);
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.response?.data.statusCode === 401) {
-          localStorage.removeItem("token");
-        }
-      });
-    // setLoading(false);
-    return true;
-  };
-  const getPrivateNotifications = async () => {
-    // if get token then fetch to data me
-    const token = localStorage.getItem("token") || "";
-    await axios
-      .get(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
-          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/notificationsUserMe`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/notificationsUserMe`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then(async ({ data }) => {
-        // console.log(data?.Notifications);
-        setPrivateNotifications(data?.Notifications);
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.response?.data.statusCode === 401) {
-          localStorage.removeItem("token");
-        }
-      });
-    // setLoading(false);
-    return true;
-  };
-  const handleAllNotifications = () => {
-    const allNotifications = [
-      ...publicNotificationsState,
-      ...privateNotificationsState,
-    ];
-    setAllNotifications(allNotifications);
-    setReRenderDataApp(!reRenderDataApp);
-  };
+  // const [, setAllNotifications] = useRecoilState(allNotifications);
+  // const [publicNotificationsState, setPublicNotifications] =
+  //   useRecoilState(publicNotifications);
+  // const [privateNotificationsState, setPrivateNotifications] =
+  //   useRecoilState(privateNotifications);
+  // const getPublicNotifications = async () => {
+  //   // if get token then fetch to data me
+  //   const token = localStorage.getItem("token") || "";
+  //   await axios
+  //     .get(
+  //       import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+  //         ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/public/notifications`
+  //         : `${
+  //             import.meta.env.VITE_PUBLIC_API_PRODUCTION
+  //           }/public/notifications`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     )
+  //     .then(async ({ data }) => {
+  //       setPublicNotifications(data?.AllNotifications);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       if (error.response?.data.statusCode === 401) {
+  //         localStorage.removeItem("token");
+  //       }
+  //     });
+  //   // setLoading(false);
+  //   return true;
+  // };
+  // const getPrivateNotifications = async () => {
+  //   // if get token then fetch to data me
+  //   const token = localStorage.getItem("token") || "";
+  //   await axios
+  //     .get(
+  //       import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+  //         ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/notificationsUserMe`
+  //         : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/notificationsUserMe`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     )
+  //     .then(async ({ data }) => {
+  //       // console.log(data?.Notifications);
+  //       setPrivateNotifications(data?.Notifications);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       if (error.response?.data.statusCode === 401) {
+  //         localStorage.removeItem("token");
+  //       }
+  //     });
+  //   // setLoading(false);
+  //   return true;
+  // };
+  // const handleAllNotifications = () => {
+  //   const allNotifications = [
+  //     ...publicNotificationsState,
+  //     ...privateNotificationsState,
+  //   ];
+  //   setAllNotifications(allNotifications);
+  //   setReRenderDataApp(!reRenderDataApp);
+  // };
+
+  const [reRenderDataApp] = useRecoilState(reRenderData);
 
   const dispatch = useDispatch();
   const [loading, setLoading] = useRecoilState(isLoading);
@@ -189,9 +190,9 @@ function App() {
       )
       .then(async ({ data }) => {
         dispatch(addUserLogged(data));
-        await getPublicNotifications();
-        await getPrivateNotifications();
-        handleAllNotifications();
+        // await getPublicNotifications();
+        // await getPrivateNotifications();
+        // handleAllNotifications();
       })
       .catch((error) => {
         console.log(error);
@@ -229,7 +230,7 @@ function App() {
       <Signup />
       <ForgotPassword />
       <VerifyCode />
-      <ResetPassword/>
+      <ResetPassword />
       <Routes>
         <Route path="/*" element={<For04 />} />
         <Route path="/" element={<Home />} />

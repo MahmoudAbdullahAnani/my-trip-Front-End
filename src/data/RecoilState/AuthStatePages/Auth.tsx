@@ -1,5 +1,9 @@
 import { atom } from "recoil";
 
+export const TokenJWT = atom({
+  key: "TokenJWT", // unique ID (with respect to other atoms/selectors)
+  default: '', // default value (aka initial value)
+});
 export const openLoginPageState = atom({
   key: "openLoginPageState", // unique ID (with respect to other atoms/selectors)
   default: false, // default value (aka initial value)
@@ -30,5 +34,9 @@ export const emailVerify = atom({
 });
 export const OpenResetPasswordPage = atom({
   key: "OpenResetPasswordPage", // unique ID (with respect to other atoms/selectors)
+  default: false, // default value (aka initial value)
+});
+export const SignOutState = atom({
+  key: "SignOutState", // unique ID (with respect to other atoms/selectors)
   default: false, // default value (aka initial value)
 });
