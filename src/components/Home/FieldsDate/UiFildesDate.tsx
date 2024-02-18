@@ -1,13 +1,15 @@
 import { useRecoilState } from "recoil";
-import { moduleDate } from "../../../data/RecoilState/FormSearchData";
-import FieldsDate from "./FieldsDate";
 import {
   dateGo,
+  dateGoISO,
   dateReturn,
+  dateReturnISO,
   typeTravel,
 } from "../../../data/RecoilState/FormHandling";
-import { useRef, useState } from "react";
+import { useState } from "react";
+// Date
 import DatePicker from "react-datepicker";
+import { format } from "date-fns";
 
 const iconDate = (
   <svg
@@ -91,18 +93,13 @@ const iconDate = (
 );
 
 function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
-  const [, setModuleDateState] = useRecoilState(moduleDate);
   // Initial Date
-  const [dateGoState] = useRecoilState(dateGo);
-  const [dateReturnState] = useRecoilState(dateReturn);
-  const refIcon1 = useRef<HTMLInputElement>(null);
-  const refIcon2 = useRef<HTMLInputElement>(null);
-  const openDateForm = () => {
-    setModuleDateState(true);
-  };
-  const closeDateForm = () => {
-    // setModuleDateState(false);
-  };
+  const [, setDateGoState] = useRecoilState(dateGo);
+  const [, setDateReturnState] = useRecoilState(dateReturn);
+  const [dateGoStateISO, setDateGoISOState] = useRecoilState(dateGoISO);
+  const [dateReturnStateISO, setDateReturnISOState] =
+    useRecoilState(dateReturnISO);
+
   const [typeTravelRecoilState] = useRecoilState(typeTravel);
 
   const [startDate, setStartDate] = useState(null);
@@ -120,7 +117,27 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             >
               العودة
             </h4>
-            <div className={`relative `}>
+            <DatePicker
+              selected={dateReturnStateISO}
+              onChange={(date) => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                setDateGoISOState(date);
+                setDateReturnISOState(date);
+                setDateReturnState(format(date as Date, "dd/MM/yyyy"));
+              }}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate === null ? new Date() : startDate}
+              showIcon
+              icon={iconDate}
+              placeholderText={`تاريخ العودة`}
+              // popperPlacement="top"
+              dateFormat="dd/MM/yyyy"
+              className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
+            />
+            {/* <div className={`relative `}>
               <input
                 ref={refIcon2}
                 defaultValue={dateReturnState}
@@ -135,7 +152,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
               >
                 {iconDate}
               </span>
-            </div>
+            </div> */}
           </div>
         )}
         <div className={`flex flex-col gap-[6px]`}>
@@ -144,7 +161,28 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
           >
             الذهاب
           </h4>
-          <div className={`relative `}>
+          <DatePicker
+            selected={dateGoStateISO}
+            onChange={(date) => {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              setStartDate(date);
+              setDateGoISOState(date);
+              setDateGoState(format(date as Date, "dd/MM/yyyy"));
+            }}
+            selectsStart
+            minDate={new Date()}
+            maxDate={endDate}
+            startDate={startDate}
+            endDate={endDate}
+            showIcon
+            icon={iconDate}
+            placeholderText={`تاريخ الذهاب`}
+            // popperPlacement="top"
+            dateFormat="dd/MM/yyyy"
+            className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
+          />
+          {/* <div className={`relative `}>
             <input
               ref={refIcon1}
               defaultValue={dateGoState}
@@ -159,12 +197,12 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             >
               {iconDate}
             </span>
-          </div>
+          </div> */}
         </div>
-
+        {/* 
         <div className="absolute top-[calc(100%+10px)] z-50">
           <FieldsDate />
-        </div>
+        </div> */}
       </div>
     );
   }
@@ -178,10 +216,14 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
           الذهاب
         </h4>
         <DatePicker
-          selected={startDate}
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          onChange={(date) => setStartDate(date)}
+          selected={dateGoStateISO}
+          onChange={(date) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            setStartDate(date);
+            setDateGoISOState(date);
+            setDateGoState(format(date as Date, "dd/MM/yyyy"));
+          }}
           selectsStart
           minDate={new Date()}
           maxDate={endDate}
@@ -217,14 +259,18 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             العودة
           </h4>
           <DatePicker
-            selected={endDate}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            onChange={(date) => setEndDate(date)}
+            selected={dateReturnStateISO}
+            onChange={(date) => {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              setEndDate(date);
+              setDateReturnISOState(date);
+              setDateReturnState(format(date as Date, "dd/MM/yyyy"));
+            }}
             selectsEnd
             startDate={startDate}
             endDate={endDate}
-            minDate={startDate===null?new Date():startDate}
+            minDate={startDate === null ? new Date() : startDate}
             showIcon
             icon={iconDate}
             placeholderText={`تاريخ العودة`}

@@ -20,6 +20,7 @@ const toSwitchData = atom({
 });
 
 // =================================================
+/*            Date              */
 const dateGo = atom({
   key: "dateGo", // unique ID (with respect to other atoms/selectors)
   default: "" as string | number | undefined | readonly string[], // default value (aka initial value)
@@ -28,6 +29,17 @@ const dateReturn = atom({
   key: "dateReturn", // unique ID (with respect to other atoms/selectors)
   default: "" as string | number | undefined | readonly string[], // default value (aka initial value) new Date() as Date | undefined
 });
+/*   ParsISO     Date              */
+export const dateGoISO = atom({
+  key: "dateGoISO", // unique ID (with respect to other atoms/selectors)
+  default: null as Date | null | undefined, // default value (aka initial value)
+});
+export const dateReturnISO = atom({
+  key: "dateReturnISO", // unique ID (with respect to other atoms/selectors)
+  default: null as Date | null | undefined, // default value (aka initial value) new Date() as Date | undefined
+});
+/*   ParsISO     Date              */
+/*            Date              */
 
 const typeTravel = atom({
   key: "typeTravel", // unique ID (with respect to other atoms/selectors)

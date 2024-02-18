@@ -63,7 +63,7 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
   const [, setOriginSearchState] = useRecoilState(originSearch);
   const [, setDestinationSearchState] = useRecoilState(destinationSearch);
   const refFocus = useRef(null);
-  console.log(refFocus);
+  // console.log(refFocus);
 
   return (
     <div className="relative no-scrollbar sm:w-fit w-full">
@@ -195,7 +195,8 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
                       );
                       setOriginSearchState(
                         (e.target as HTMLInputElement)?.textContent?.slice(
-                          -3
+                          -4,
+                          -1
                         ) ?? ""
                       );
                     } else {
@@ -204,7 +205,8 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
                       );
                       setDestinationSearchState(
                         (e.target as HTMLInputElement)?.textContent?.slice(
-                          -3
+                          -4,
+                          -1
                         ) ?? ""
                       );
                     }
