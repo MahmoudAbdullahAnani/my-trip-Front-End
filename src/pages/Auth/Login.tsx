@@ -18,6 +18,7 @@ import {
   openLoginPageState,
   openSignupPageState,
   openVerifyPageState,
+  showPassword,
 } from "../../data/RecoilState/AuthStatePages/Auth";
 // Images
 import { iconGoogle, iconLogo, iconFacebook } from "../../assets/icons/home";
@@ -142,9 +143,10 @@ function OAuth() {
       .catch(({ response }) => {
         setIncorrectData(response.data?.message);
       });
-    reset();
+    reset({ password: "" });
   };
   // Inputs UI
+  const [toggleConfirmPassword] = useRecoilState(showPassword);
 
   const LoginInputs = [
     {
@@ -164,7 +166,7 @@ function OAuth() {
     },
     {
       // rgb(0 90 108 / 30%)
-      type: "password",
+      type: toggleConfirmPassword ? "password" : "text",
       placeholder: "أدخل كلمة المرور",
       classes:
         "text-end px-[12px] w-full  h-[56px] py-[20px] shadow-md  rounded-[16px] bg-white  placeholder:text-[16px] placeholder:font-medium placeholder:text-[#9F9D9D]",

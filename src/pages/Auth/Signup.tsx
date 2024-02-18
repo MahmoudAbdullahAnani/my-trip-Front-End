@@ -142,13 +142,14 @@ function Signup() {
         if (rememberMe) {
           setData(response.data.token);
         }
+        reset();
       })
       .catch(({ response }) => {
         console.log(response);
+        reset({ firstName: "", email: "" });
 
         setIncorrectData(response.data?.message);
       });
-    reset();
   };
   // Inputs UI
   const [toggleConfirmPassword] = useRecoilState(showPassword);
@@ -351,7 +352,7 @@ function Signup() {
         <form
           // handleSubmit(onSubmit)
           onSubmit={handleSubmit(onSubmit)}
-          className={`lg:pt-[81px] relative`}
+          className={`lg:pt-[21px] relative`}
         >
           <div className="flex lg:justify-end justify-center w-full">
             <h2

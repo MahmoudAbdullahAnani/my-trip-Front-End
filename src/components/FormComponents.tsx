@@ -1,6 +1,7 @@
 import { UseFormRegisterReturn } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { showPassword } from "../data/RecoilState/AuthStatePages/Auth";
+import { iconShowPasswordNot, iconShowPassword } from "../assets/icons/home";
 interface InputInterface {
   placeholder: string;
   type?: string;
@@ -18,7 +19,7 @@ export const InputForm = ({
   register,
   error,
   mainIcon,
-  iconShowPassword,
+
   handleFocus,
 }: InputInterface) => {
   const [toggleConfirmPassword, setToggleConfirmPassword] =
@@ -26,19 +27,12 @@ export const InputForm = ({
   return (
     <div className={`flex flex-col w-full`}>
       <div className={`flex items-center relative rounded-[16px]`}>
-        {type === "password" || type === "confirmPassword" ? (
+        {placeholder === "أدخل كلمة المرور" && (
           <span
             className={`absolute left-[16px] cursor-pointer`}
             onClick={() => setToggleConfirmPassword(!toggleConfirmPassword)}
           >
-            {iconShowPassword}
-          </span>
-        ) : (
-          <span
-            className={`absolute left-[16px] cursor-pointer`}
-            onClick={() => setToggleConfirmPassword(!toggleConfirmPassword)}
-          >
-            {iconShowPassword}
+            {toggleConfirmPassword ? iconShowPasswordNot : iconShowPassword}
           </span>
         )}
         <input
