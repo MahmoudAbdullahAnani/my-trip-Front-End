@@ -471,6 +471,7 @@ function Signup() {
                   style={{
                     boxShadow: "0 4px 4px rgb(0 90 108 / 30%)",
                   }}
+                  className={`border-0 outline-none w-[24px] h-[24px] rounded-[5px] ms-[5px]`}
                   type="checkbox"
                 />
               </label>

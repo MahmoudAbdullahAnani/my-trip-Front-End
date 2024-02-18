@@ -27,14 +27,16 @@ export const InputForm = ({
   return (
     <div className={`flex flex-col w-full`}>
       <div className={`flex items-center relative rounded-[16px]`}>
-        {placeholder === "أدخل كلمة المرور" && (
+        {placeholder === "أدخل كلمة المرور" ||
+        placeholder === "تأكيد كلمة المرور" ||
+        placeholder === "أدخل كلمة المرور الجديدة" ? (
           <span
             className={`absolute left-[16px] cursor-pointer`}
             onClick={() => setToggleConfirmPassword(!toggleConfirmPassword)}
           >
             {toggleConfirmPassword ? iconShowPasswordNot : iconShowPassword}
           </span>
-        )}
+        ) : null}
         <input
           style={{
             boxShadow: "0 4px 4px rgb(0 90 108 / 30%)",

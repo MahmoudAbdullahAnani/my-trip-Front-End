@@ -23,7 +23,7 @@ const source = CancelToken.source();
 function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
   const [people, setPeople] = useState([]);
   const getData = async (route: string, query: string) => {
-    console.log("loading Here.....");
+    // console.log("loading Here.....");
 
     try {
       const res = await axios.get(
@@ -32,7 +32,7 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
           cancelToken: source.token,
         }
       );
-      console.log("Data==> ", res.data.data);
+      // console.log("Data==> ", res.data.data);
       setPeople(res.data.data);
       return res.data;
     } catch (error) {
@@ -63,6 +63,8 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
   const [, setOriginSearchState] = useRecoilState(originSearch);
   const [, setDestinationSearchState] = useRecoilState(destinationSearch);
   const refFocus = useRef(null);
+  console.log(refFocus);
+
   return (
     <div className="relative no-scrollbar sm:w-fit w-full">
       <Combobox value={selectedPerson} onChange={setSelectedPerson}>
@@ -80,11 +82,10 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
               // setValue(event.target.value);
               setQuery(event.target.value);
             }}
-            className={`bg-[#FFF]  w-full shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 sm:w-[188px] h-[48px] rounded-[8px] sm:text-center sm:px-0 p-[10px] focus-visible:outline-none text-[#117C99] text-[14px] placeholder:text-[14px] font-[500] placeholder:font-[500]`}
+            className={`bg-[#FFF] w-full z-50 shadow-lg focus:border border-[#117C99] focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 sm:w-[188px] h-[48px] rounded-[8px] sm:text-center sm:px-0 p-[10px] focus-visible:outline-none text-[#117C99] text-[14px] placeholder:text-[14px] font-[500] placeholder:font-[500]`}
           />
           {typeInput === "from" ? (
             <>
-              {" "}
               {fromSwitchDataState && (
                 <div
                   className={`absolute top-0 flex justify-center items-center left-0 bg-[#FFF]  sm:w-[188px] w-full h-[48px] rounded-[8px]`}
@@ -122,7 +123,6 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
             </>
           ) : (
             <>
-              {" "}
               {toSwitchDataState && (
                 <div
                   className={`absolute top-0 flex justify-center items-center left-0 bg-[#FFF]  sm:w-[188px] w-full h-[48px] rounded-[8px]`}
@@ -171,51 +171,60 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
             )}
           </div>
         </div>
-
         <Combobox.Options
-          className={`bg-red-900 lg:w-[400px] max-h-[200px]  overflow-y-scroll px-3 no-scrollbar absolute lg:${
+          className={`bg-[#FFFFFF] rounded-lg pt-5 no-scrollbar border border-[#117C99] border-x-0 border-b-0 z-30 max-h-[200px] overflow-y-scroll px-3 no-scrollbar absolute lg:${
             typeInput === "from" ? "left" : "left"
-          }-0  top-[100%] z-40 flex flex-col gap-3 `}
+          }-0  top-[88%] z-40 flex flex-col gap-3 `}
         >
-          {filteredPeople.map(
-            (person: {
-              address: { cityName: string; countryCode: string };
-              iataCode: string;
-            }) => (
-              <Combobox.Option
-                dir="ltr"
-                key={`${person.address.cityName} --- ${Math.random()}`}
-                value={person}
-                onClick={(e) => {
-                  if (typeInput === "from") {
-                    setFromSwitchDataState(
-                      (e.target as HTMLInputElement)?.textContent ?? ""
-                    );
-                    setOriginSearchState(
-                      (e.target as HTMLInputElement)?.textContent?.slice(-3) ??
-                        ""
-                    );
-                  } else {
-                    setToSwitchDataState(
-                      (e.target as HTMLInputElement)?.textContent ?? ""
-                    );
-                    setDestinationSearchState(
-                      (e.target as HTMLInputElement)?.textContent?.slice(-3) ??
-                        ""
-                    );
-                  }
-                }}
-                className={`flex justify-between cursor-pointer gap-2 whitespace-nowrap `}
-              >
-                <span>
-                  {person.address.cityName},{person.iataCode}
-                </span>
-                <img
+          {filteredPeople.length <= 0 ? (
+            <span className={`w-full sm:w-[188px] `}>لا يوجد نتائج...</span>
+          ) : (
+            filteredPeople.map(
+              (person: {
+                address: { cityName: string; countryCode: string };
+                iataCode: string;
+              }) => (
+                <Combobox.Option
+                  dir="ltr"
+                  key={`${person.address.cityName} --- ${Math.random()}`}
+                  value={person}
+                  onClick={(e) => {
+                    if (typeInput === "from") {
+                      setFromSwitchDataState(
+                        (e.target as HTMLInputElement)?.textContent ?? ""
+                      );
+                      setOriginSearchState(
+                        (e.target as HTMLInputElement)?.textContent?.slice(
+                          -3
+                        ) ?? ""
+                      );
+                    } else {
+                      setToSwitchDataState(
+                        (e.target as HTMLInputElement)?.textContent ?? ""
+                      );
+                      setDestinationSearchState(
+                        (e.target as HTMLInputElement)?.textContent?.slice(
+                          -3
+                        ) ?? ""
+                      );
+                    }
+                  }}
+                  className={`flex justify-between cursor-pointer gap-2 whitespace-nowrap `}
+                >
+                  <span>
+                    {`${person.address.cityName[0]}${person.address.cityName
+                      .slice(1)
+                      .toLowerCase()}`}
+                    ,{` ${person.address.countryCode}`},
+                    {` (${person.iataCode})`}
+                  </span>
+                  {/* <img
                   width={24}
                   height={24}
                   src={`https://flagsapi.com/${person.address.countryCode}/flat/64.png`}
-                />
-              </Combobox.Option>
+                /> */}
+                </Combobox.Option>
+              )
             )
           )}
         </Combobox.Options>

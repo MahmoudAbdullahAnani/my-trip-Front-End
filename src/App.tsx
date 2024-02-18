@@ -226,19 +226,16 @@ function App() {
 
   return (
     <>
+      {/* OAuth */}
       <Login />
       <Signup />
       <ForgotPassword />
       <VerifyCode />
       <ResetPassword />
+
       <Routes>
         <Route path="/*" element={<For04 />} />
         <Route path="/" element={<Home />} />
-        {/* <Route path="/login" element={<Login />} /> */}
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/verifyCode" element={<VerifyCode />} />
-        <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="/search" element={<Search />} />
         <Route path="/airData" element={<AirData />} />
         <Route path="/airPay" element={<AirPay />} />
@@ -248,3 +245,13 @@ function App() {
 }
 
 export default App;
+
+/*
+<Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+<Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/verifyCode" element={<VerifyCode />} />
+        <Route path="/resetPassword" element={<ResetPassword />} />
+
+*/
