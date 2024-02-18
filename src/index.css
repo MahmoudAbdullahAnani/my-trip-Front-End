@@ -257,6 +257,12 @@
 
   background-color: #005a6c !important;
 }
+.react-datepicker-popper {
+  z-index: 999 !important;
+}
+.react-datepicker__input-container {
+  direction: ltr;
+}
 /* End Css Date */
 
 /* Start Css Autocomplete */

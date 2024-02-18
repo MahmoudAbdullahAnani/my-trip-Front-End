@@ -8,7 +8,7 @@ function AutoScroll() {
         background: "rgb(17 124 153 / 30%)",
         backdropFilter: "blur(10px)",
       }}
-      className={`h-[94px] w-[105px] whitespace-nowrap relative top-[calc(50px+110px)] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200  hover:bg-opacity-[.90] hidden lg:flex flex-col p-[10px] gap-[10px] text-[#FFFFFF] text-[16px] font-bold justify-center items-center rounded-[16px]`}
+      className={`h-[94px] w-[105px] whitespace-nowrap z-[-1] relative top-[calc(50px+110px)] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200  hover:bg-opacity-[.90] hidden lg:flex flex-col p-[10px] gap-[10px] text-[#FFFFFF] text-[16px] font-bold justify-center items-center rounded-[16px]`}
     >
       <h4>تمرير لاسفل</h4>
       <div>

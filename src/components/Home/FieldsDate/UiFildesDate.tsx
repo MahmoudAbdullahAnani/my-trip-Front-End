@@ -6,7 +6,8 @@ import {
   dateReturn,
   typeTravel,
 } from "../../../data/RecoilState/FormHandling";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import DatePicker from "react-datepicker";
 
 const iconDate = (
   <svg
@@ -104,6 +105,9 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
   };
   const [typeTravelRecoilState] = useRecoilState(typeTravel);
 
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
   if (isSearch) {
     return (
       <div
@@ -167,13 +171,30 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
 
   return (
     <div
-      className={`flex sm:gap-[24px]  gap-[10px] sm:justify-normal justify-center lg:flex-nowrap flex-wrap relative`}
+      className={`flex sm:gap-[24px]  gap-[10px] sm:justify-normal justify-center lg:flex-nowrap flex-wrap `}
     >
       <div className={`flex flex-col gap-[6px]`}>
         <h4 className={`text-[#000] text-[20px] font-[500] hidden sm:block`}>
           الذهاب
         </h4>
-        <div className={`relative `}>
+        <DatePicker
+          selected={startDate}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          onChange={(date) => setStartDate(date)}
+          selectsStart
+          minDate={new Date()}
+          maxDate={endDate}
+          startDate={startDate}
+          endDate={endDate}
+          showIcon
+          icon={iconDate}
+          placeholderText={`تاريخ الذهاب`}
+          // popperPlacement="top"
+          dateFormat="dd/MM/yyyy"
+          className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
+        />
+        {/* <div className={`relative `}>
           <input
             ref={refIcon1}
             defaultValue={dateGoState}
@@ -188,14 +209,30 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
           >
             {iconDate}
           </span>
-        </div>
+        </div> */}
       </div>
       {typeTravelRecoilState === "roundTrip" && (
         <div className={`flex flex-col gap-[6px]`}>
           <h4 className={`text-[#000] text-[20px] font-[500] hidden sm:block `}>
             العودة
           </h4>
-          <div className={`relative `}>
+          <DatePicker
+            selected={endDate}
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            onChange={(date) => setEndDate(date)}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate===null?new Date():startDate}
+            showIcon
+            icon={iconDate}
+            placeholderText={`تاريخ العودة`}
+            // popperPlacement="top"
+            dateFormat="dd/MM/yyyy"
+            className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
+          />
+          {/* <div className={`relative `}>
             <input
               ref={refIcon2}
               defaultValue={dateReturnState}
@@ -210,12 +247,12 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             >
               {iconDate}
             </span>
-          </div>
+          </div> */}
         </div>
       )}
-      <div className="absolute top-[calc(100%+10px)] z-50">
+      {/* <div className="absolute top-[calc(100%+10px)] z-50">
         <FieldsDate />
-      </div>
+      </div> */}
     </div>
   );
 }
