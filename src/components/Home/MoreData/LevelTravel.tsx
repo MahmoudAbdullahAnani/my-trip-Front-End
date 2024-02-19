@@ -1,6 +1,5 @@
 import * as React from "react";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import { useRecoilState } from "recoil";
 import {
   adultsData,
@@ -8,6 +7,12 @@ import {
   levelTravelData,
   youthsData,
 } from "../../../data/RecoilState/FormSearchData";
+import {
+  iconAd,
+  iconAdd,
+  iconChelderin,
+  iconDec,
+} from "../../../assets/icons/home";
 
 const iconData = (
   <svg
@@ -204,118 +209,162 @@ function LevelTravel() {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem>
-            <div className={`w-[179px] mt-5 flex justify-between `}>
-              <div className={`flex gap-2`}>
-                <span
-                  className={`border rounded-md px-2 `}
-                  onClick={() =>
-                    incrementAndDecrementData(
-                      "adults",
-                      adultsDataState,
-                      "increment"
-                    )
-                  }
-                >
-                  +
-                </span>
-                <span>{adultsDataState}</span>
-                <span
-                  className={`border rounded-md px-2 ${
-                    adultsDataState < 1 && "opacity-30"
-                  }`}
-                  onClick={() =>
-                    incrementAndDecrementData(
-                      "adults",
-                      adultsDataState,
-                      "decrement"
-                    )
-                  }
-                >
-                  -
-                </span>
+          {/* <MenuItem> */}
+          <div className={`w-full mt-5 px-[21px]  flex justify-between  `}>
+            <div
+              className={` border-2 border-[#909090] flex  px-[14px] py-[10px] w-[257px] h-[44px] rounded-[8px]  justify-between`}
+            >
+              <button
+                className={` text-[#000000] rounded-md px-2 `}
+                onClick={() =>
+                  incrementAndDecrementData(
+                    "adults",
+                    adultsDataState,
+                    "increment"
+                  )
+                }
+              >
+                {iconAdd}
+              </button>
+              <div className={`flex gap-[27px]`}>
+                <div>
+                  <div
+                    className={`flex text-[#117C99] text-[14px] gap-[2px] font-medium`}
+                  >
+                    <span>مسافر</span>
+                    <span dir="" className={``}>
+                      {adultsDataState}
+                    </span>
+                  </div>
+                </div>
+                <span>{iconAd}</span>
               </div>
-              <span className={``}>بالغون</span>
+              <button
+                className={` text-[#000000] rounded-md px-2 ${
+                  adultsDataState < 1 && "opacity-30"
+                }`}
+                onClick={() =>
+                  incrementAndDecrementData(
+                    "adults",
+                    adultsDataState,
+                    "decrement"
+                  )
+                }
+              >
+                {iconDec}
+              </button>
             </div>
-          </MenuItem>
-          <MenuItem>
-            <div className={`w-[200px] mt-5 flex justify-between `}>
-              <div className={`flex gap-2`}>
-                <span
-                  className={`border rounded-md px-2 `}
-                  onClick={() =>
-                    incrementAndDecrementData(
-                      "youths",
-                      youthsDataState,
-                      "increment"
-                    )
-                  }
-                >
-                  +
-                </span>
-                <span>{youthsDataState}</span>
-                <span
-                  className={`border rounded-md px-2 ${
-                    youthsDataState < 1 && "opacity-30"
-                  }`}
-                  onClick={() =>
-                    incrementAndDecrementData(
-                      "youths",
-                      youthsDataState,
-                      "decrement"
-                    )
-                  }
-                >
-                  -
-                </span>
+            {/* <span className={``}>بالغون</span> */}
+          </div>
+          {/* </MenuItem> */}
+          {/* <MenuItem> */}
+          <div className={`w-full mt-5 px-[21px]  flex justify-between  `}>
+            <div
+              className={` border-2 border-[#909090] flex  px-[14px] py-[10px] w-[257px] h-[44px] rounded-[8px]  justify-between`}
+            >
+              <button
+                className={` text-[#000000] rounded-md px-2 `}
+                onClick={() =>
+                  incrementAndDecrementData(
+                    "youths",
+                    youthsDataState,
+                    "increment"
+                  )
+                }
+              >
+                {iconAdd}
+              </button>
+              <div className={`flex gap-[27px]`}>
+                <div>
+                  <div
+                    className={`flex text-[#117C99] text-[14px] gap-[2px] font-medium`}
+                  >
+                    <span>طفل</span>
+                    <span dir="" className={``}>
+                      {youthsDataState}
+                    </span>
+                  </div>
+                </div>
+                <span>{iconChelderin}</span>
               </div>
-              <span>
-                شباب
-                <span className={`text-[12px]`}> اكبر من 12-17</span>
-              </span>
+              <button
+                className={`text-[#000000] rounded-md px-2 ${
+                  youthsDataState < 1 && "opacity-30"
+                }`}
+                onClick={() =>
+                  incrementAndDecrementData(
+                    "youths",
+                    youthsDataState,
+                    "decrement"
+                  )
+                }
+              >
+                {iconDec}
+              </button>
             </div>
-          </MenuItem>
-          <MenuItem>
-            <div className={`w-[200px] mt-5 flex justify-between `}>
-              <div className={`flex gap-2`}>
-                <span
-                  className={`border rounded-md px-2 `}
-                  onClick={() =>
-                    incrementAndDecrementData(
-                      "children",
-                      childrenDataState,
-                      "increment"
-                    )
-                  }
-                >
-                  +
-                </span>
-                <span>{childrenDataState}</span>
-                <span
-                  className={`border rounded-md px-2 ${
-                    childrenDataState < 1 && "opacity-30"
-                  }`}
-                  onClick={() =>
-                    incrementAndDecrementData(
-                      "children",
-                      childrenDataState,
-                      "decrement"
-                    )
-                  }
-                >
-                  -
-                </span>
+            {/* <span>
+              شباب
+              <span className={`text-[12px]`}> اكبر من 12-17</span>
+            </span> */}
+          </div>
+          {/* </MenuItem> */}
+          {/* <MenuItem> */}
+          <div className={`w-full mt-5 px-[21px]  flex justify-between  `}>
+            <div
+              className={` border-2 border-[#909090] flex  px-[14px] py-[10px] w-[257px] h-[44px] rounded-[8px]  justify-between`}
+            >
+              <button
+                className={` text-[#000000] rounded-md px-2 `}
+                onClick={() =>
+                  incrementAndDecrementData(
+                    "children",
+                    childrenDataState,
+                    "increment"
+                  )
+                }
+              >
+                {iconAdd}
+              </button>
+              <div className={`flex gap-[27px]`}>
+                <div>
+                  <div
+                    className={`flex text-[#117C99] text-[14px] gap-[2px] font-medium`}
+                  >
+                    <span>رضيع</span>
+                    <span dir="" className={``}>
+                      {childrenDataState}
+                    </span>
+                  </div>
+                </div>
+                <span>{iconChelderin}</span>
               </div>
-              <span>
-                رضيع
-                <span className={`text-[12px]`}> اكبر من 12-17</span>
-              </span>
+              <button
+                className={`text-[#000000] rounded-md px-2 ${
+                  childrenDataState < 1 && "opacity-30"
+                }`}
+                onClick={() =>
+                  incrementAndDecrementData(
+                    "children",
+                    childrenDataState,
+                    "decrement"
+                  )
+                }
+              >
+                {iconDec}
+              </button>
             </div>
-          </MenuItem>
-          <hr className={`my-2 h-1`} />
-          <div className={`flex items-center justify-between mx-4`}>
+            {/* <span>
+              رضيع
+              <span className={`text-[12px]`}> اكبر من 12-17</span>
+            </span> */}
+          </div>
+          {/* </MenuItem> */}
+          <hr className={`my-2 w-[90%] mx-auto bg-[#9F9D9D] h-[1px]`} />
+          <div
+            className={`flex flex-col-reverse mb-[13px] mx-[20px] gap-[13px] items-end justify-end`}
+          >
             <select
-              className={`p-2 rounded-md border`}
+              className={`p-2 rounded-[8px] text-[#117C99] border w-[257px] h-[44px] px-[14px]`}
               dir="rtl"
               onChange={handleChangeLevelTravelData}
               name="levelTravel"
@@ -325,7 +374,12 @@ function LevelTravel() {
               <option value="tourism">سياحية</option>
               <option value="business">رجال اعمال</option>
             </select>
-            <label htmlFor="levelTravel">الدرجة</label>
+            <label
+              htmlFor="levelTravel"
+              className={`text-[14px] font-medium text-[#231F20]`}
+            >
+              الدرجة
+            </label>
           </div>
         </Menu>
       </div>

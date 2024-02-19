@@ -246,12 +246,3 @@ function App() {
 
 export default App;
 
-/*
-<Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-
-<Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/verifyCode" element={<VerifyCode />} />
-        <Route path="/resetPassword" element={<ResetPassword />} />
-
-*/
