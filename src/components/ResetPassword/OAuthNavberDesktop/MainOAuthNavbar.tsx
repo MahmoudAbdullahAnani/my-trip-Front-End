@@ -4,6 +4,7 @@ import { RootState } from "../../../data/store";
 import { useState } from "react";
 import { iconArrowDown, iconArrowTop } from "../../../assets/icons/home";
 import NotificationComponent from "../../Home/Systems/Notification/NotificationComponent";
+import { Link } from "react-router-dom";
 
 function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
@@ -49,12 +50,13 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
               aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
             >
               <li>
-                <a
-                  href="#"
+                <Link
+                  to={`/profile`}
+                  onClick={() => setToggle(!toggle)}
                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
-                  Dashboard
-                </a>
+                  Profile
+                </Link>
               </li>
               <li>
                 <a

@@ -71,6 +71,11 @@ export interface SchemaUser {
   active?: boolean;
   verificationCode?: string;
   avatar?: string;
+
+  passportNumber?: "";
+  country?: "";
+  nationality?: "";
+  gender?: "";
 }
 function setData(token: string) {
   localStorage.setItem("token", token);

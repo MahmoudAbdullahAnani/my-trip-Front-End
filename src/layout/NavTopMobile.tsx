@@ -19,6 +19,7 @@ import {
 } from "../data/RecoilState/AuthStatePages/Auth";
 import { useRecoilState } from "recoil";
 import DialogComponent from "../components/ResetPassword/OAuthNavberDesktop/DialogComponent";
+import { Link } from "react-router-dom";
 function NavTopMobile() {
   // const [allNotificationsState] = useRecoilState(allNotifications);
   // console.log("allNotificationsState===> ", allNotificationsState);
@@ -99,12 +100,13 @@ function NavTopMobile() {
                 aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
               >
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to={`/profile`}
+                    onClick={() => console.log("click")}
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
-                    Dashboard
-                  </a>
+                    profile
+                  </Link>
                 </li>
                 <li>
                   <a

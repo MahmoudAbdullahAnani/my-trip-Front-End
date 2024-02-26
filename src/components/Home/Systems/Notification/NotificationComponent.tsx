@@ -134,8 +134,8 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
   useEffect(() => {
     getPublicNotifications();
     getPrivateNotifications();
-  }, [publicNotifications, privateNotifications, reRenderComponent]);
-
+  }, []);
+// publicNotifications, privateNotifications, reRenderComponent
   return (
     <div>
       {toggle && (

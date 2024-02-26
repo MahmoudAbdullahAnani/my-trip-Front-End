@@ -17,8 +17,9 @@ import Modal from "@mui/material/Modal";
 interface ComponentInterface {
   stylesBtn?: string;
   isMobile?: boolean;
+  iconOut?: JSX.Element;
 }
-function DialogComponent({ stylesBtn, isMobile }: ComponentInterface) {
+function DialogComponent({ stylesBtn, isMobile, iconOut }: ComponentInterface) {
   const [, setToggle] = useRecoilState(sidBar);
   const dispatch = useDispatch();
 
@@ -80,7 +81,8 @@ function DialogComponent({ stylesBtn, isMobile }: ComponentInterface) {
   return (
     <React.Fragment>
       <button onClick={handleClickOpen} className={stylesBtn}>
-        تسجيل خروج
+        <span>{iconOut}</span>
+        <span>تسجيل خروج</span>
       </button>
       <Dialog
         open={open}

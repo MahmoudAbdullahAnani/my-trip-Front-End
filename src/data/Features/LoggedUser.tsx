@@ -17,6 +17,11 @@ const initialState: SchemaUser = {
   lastName: "",
   role: "",
   avatar: "",
+
+  passportNumber: "",
+  country: "",
+  nationality: "",
+  gender: "",
 };
 
 export const isLoggedUser = createSlice({
@@ -38,6 +43,11 @@ export const isLoggedUser = createSlice({
       state.lastName = "";
       state.role = "";
       state.avatar = "";
+
+      state.passportNumber = "";
+      state.country = "";
+      state.nationality = "";
+      state.gender = "";
       return state;
     },
   },

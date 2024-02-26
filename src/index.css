@@ -486,7 +486,11 @@ input[type="radio"] {
   display: flex !important;
   flex-direction: row-reverse !important;
 }
-
+.react-datepicker-wrapper,
+.react-datepicker-wrapper input {
+  width: 100% !important;
+  height: 48px;
+}
 /* Start Radio buttons Checked */
 input {
   accent-color: #117c99;

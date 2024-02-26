@@ -4,7 +4,7 @@ import { z } from "zod";
 import { useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import { iconDate } from "../../../../assets/icons/home";
-import { country } from "../../../../data/Countrys";
+import { countrys } from "../../../../data/Countrys";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 // Handle Date
@@ -38,7 +38,8 @@ const AirBookingSchema = z
     }),
     passportNumber: z
       .string()
-      .length(8, { message: "الرجاء إدخال رقم جواز سفر صالح" })
+      .min(6, { message: "الرجاء إدخال رقم جواز سفر صالح" })
+      .max(15, { message: "الرجاء إدخال رقم جواز سفر صالح" })
       .regex(/^[A-Za-z0-9]+$/, {
         message: "الرجاء إدخال رقم جواز سفر صالح",
       }),
@@ -75,8 +76,6 @@ function HandlerFieldsBooking() {
     resolver: zodResolver(AirBookingSchema),
     mode: "onChange",
   });
-
-
 
   // SubmitHandler
   const [startDate, setStartDate] = useState<Date>(new Date());
@@ -299,7 +298,7 @@ function HandlerFieldsBooking() {
                   {...register("nationality")}
                 >
                   <option value={""}>اختر</option>
-                  {country.map(({ name, code }) => (
+                  {countrys.map(({ name, code }) => (
                     <option key={code} value={code}>
                       {name}
                     </option>
@@ -323,7 +322,7 @@ function HandlerFieldsBooking() {
                   {...register("country")}
                 >
                   <option value={""}>اختر</option>
-                  {country.map(({ name, code }) => (
+                  {countrys.map(({ name, code }) => (
                     <option key={code} value={code}>
                       {name}
                     </option>
