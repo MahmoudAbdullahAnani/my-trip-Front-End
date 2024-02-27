@@ -33,6 +33,7 @@ import {
 } from "reactjs-social-login";
 import BtnLogin from "../../components/BtnAuth/BtnLogin";
 import OrLogin from "../../components/OrLogin";
+import { toast } from "react-toastify";
 // interfaces
 export interface Inputs {
   email: string;
@@ -132,6 +133,22 @@ function OAuth() {
         }
       )
       .then((response) => {
+        // console.log({ data: response.data?.data });
+        if (
+          !response.data?.data.verificationAccountCode ||
+          response.data?.data.verificationAccountCode !== "done"
+        ) {
+          return toast.error("عليك تأكيد الحساب ", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
         setOpenForgotPasswordPageState(false);
         setOpenResetPasswordPageState(false);
         setOpenPage(false);

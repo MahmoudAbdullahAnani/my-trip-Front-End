@@ -131,6 +131,10 @@ function Signup() {
         }
       )
       .then((response) => {
+        console.log({ data: response.data });
+        if (response?.data.data.token === "varification") {
+          // user have an account but need to verify
+        }
         setOpenForgotPasswordPageState(false);
         setOpenResetPasswordPageState(false);
         setOpenPage(false);
