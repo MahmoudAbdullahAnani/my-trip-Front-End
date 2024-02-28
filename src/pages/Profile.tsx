@@ -22,7 +22,7 @@ function Profile() {
       className={`lg:mt-[80px] lg:mb-[300px] mb-[200px] p-0 lg:px-[96px] px-[16px] flex flex-col gap-[24px]`}
       dir="rtl"
     >
-      <h1 className={`text-[32px] font-medium text-[#000]`}>
+      <h1 className={`text-[32px] font-bold text-[#000]`}>
         إعدادات المستخدم
       </h1>
       <div className={`flex flex-wrap gap-[24px] items-start justify-start`}>

@@ -23,6 +23,7 @@ function UpdateInformation() {
     country,
     // gender,
   } = useSelector((state: RootState) => state.loggedUser);
+  const handleAge = age || 0;
   return (
     <div className={`flex justify-between mt-[24px]`}>
       <div
@@ -41,7 +42,7 @@ function UpdateInformation() {
         <UpdateBarthDay
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          data={{ age }}
+          data={{ age: handleAge }}
           topTitleStyle={topTitleStyle}
           titleStyle={titleStyle}
           iconStyle={iconStyle}

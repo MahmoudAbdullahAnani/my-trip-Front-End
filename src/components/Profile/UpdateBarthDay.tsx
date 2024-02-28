@@ -23,8 +23,12 @@ function UpdateBarthDay({
   const birthDate = subYears(new Date(), age);
 
   // Handle Name
+  const currentYear = new Date().getFullYear();
+
   const [barthDayChanges, setBarthDayChanges] = useState(true);
-  const [barthDayBeforeChange, setBarthDayBeforeChange] = useState(birthDate);
+  const [barthDayBeforeChange, setBarthDayBeforeChange] = useState(
+    `${birthDate}` === `${currentYear}` ? birthDate : null
+  );
   const [reRenderDataApp, setReRenderDataApp] = useRecoilState(reRenderData);
 
   const [errorBarthDay, setErrorBarthDay] = useState("");
