@@ -85,7 +85,8 @@ function VarificationAccount() {
         setOpenPage(false);
         setOpenSignupPage(false);
         setOpenVerifyPageState(false);
-        setOpenVerifyAccountPageState(true);
+        setOpenVerifyAccountPageState(false);
+        // console.log("res Data==> ", response.data);
 
         setTokenJWT(response.data.token);
 
