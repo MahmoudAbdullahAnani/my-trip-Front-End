@@ -6,8 +6,8 @@ import z from "zod";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { LoderBtn } from "../../components/loder/Loder";
-import { useDispatch } from "react-redux";
-import { addUserLogged } from "../../data/Features/LoggedUser";
+// import { useDispatch } from "react-redux";
+// import { addUserLogged } from "../../data/Features/LoggedUser";
 // Login Btn
 import {
   LoginSocialFacebook,
@@ -17,8 +17,12 @@ import {
   // @ts-ignore
 } from "reactjs-social-login";
 import {
+  EmailVerifyState,
   OpenResetPasswordPage,
+  OpenVerifyAccountPageState,
+  RememberMeState,
   TokenJWT,
+  UserNameVerifyState,
   openForgotPasswordPageState,
   openLoginPageState,
   openSignupPageState,
@@ -68,9 +72,9 @@ const singUpSchema = z.object({
   phoneNumber: z.string().optional(),
   confirmPassword: z.string().optional(),
 });
-function setData(token: string) {
-  localStorage.setItem("token", token);
-}
+// function setData(token: string) {
+//   localStorage.setItem("token", token);
+// }
 // Set Data In window
 interface SchemaUser {
   password?: string;
@@ -92,12 +96,19 @@ function Signup() {
     window.scroll(0, 0);
   }, []);
   // State Management
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [incorrectData, setIncorrectData] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
 
-  const [, setTokenJWT] = useRecoilState(TokenJWT);
+  const [,] = useRecoilState(TokenJWT);
+
+  const [, setOpenVerifyAccountPageState] = useRecoilState(
+    OpenVerifyAccountPageState
+  );
+  const [, setEmailVerifyState] = useRecoilState(EmailVerifyState);
+  const [, setUserNameVerifyState] = useRecoilState(UserNameVerifyState);
+  const [, setRememberMeState] = useRecoilState(RememberMeState);
 
   const {
     register,
@@ -114,7 +125,7 @@ function Signup() {
     password,
   }: SchemaUser) => {
     setIncorrectData("");
-
+    const emailData = email;
     const lastName = firstName.split(" ")[1] || "";
     // 1) axios post req on /signup
     await axios
@@ -134,17 +145,29 @@ function Signup() {
         console.log({ data: response.data });
         if (response?.data.data.token === "varification") {
           // user have an account but need to verify
+          setEmailVerifyState(`${emailData}`);
+          setUserNameVerifyState(`${firstName.split(" ")[0]}-${lastName}`);
+          setOpenForgotPasswordPageState(false);
+          setOpenResetPasswordPageState(false);
+          setOpenPage(false);
+          setOpenSignupPage(false);
+          setOpenVerifyPageState(false);
+          return setOpenVerifyAccountPageState(true);
         }
+        setEmailVerifyState(`${response?.data.data.email}`);
+        setUserNameVerifyState(`${response?.data.data.userName}`);
         setOpenForgotPasswordPageState(false);
         setOpenResetPasswordPageState(false);
         setOpenPage(false);
         setOpenSignupPage(false);
         setOpenVerifyPageState(false);
-        setTokenJWT(response.data.token);
+        setOpenVerifyAccountPageState(true);
 
-        dispatch(addUserLogged(response.data?.data));
+        // setTokenJWT(response.data.token);
+
+        // dispatch(addUserLogged(response.data?.data));
         if (rememberMe) {
-          setData(response.data.token);
+          setRememberMeState(true);
         }
         reset();
       })

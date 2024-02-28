@@ -32,6 +32,7 @@ import For04 from "./pages/For04";
 import AirData from "./pages/Air/AirData";
 import AirPay from "./pages/Air/AirPay";
 import Profile from "./pages/Profile";
+import VarificationAccount from "./pages/Auth/VarificationAccount";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -230,6 +231,7 @@ function App() {
       {/* OAuth */}
       <Login />
       <Signup />
+      <VarificationAccount />
       <ForgotPassword />
       <VerifyCode />
       <ResetPassword />
