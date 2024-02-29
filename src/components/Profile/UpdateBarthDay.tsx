@@ -20,20 +20,22 @@ function UpdateBarthDay({
   iconStyle,
 }: TypeComponent) {
   const { age } = data;
+
   const birthDate = subYears(new Date(), age);
 
   // Handle Name
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
 
   const [barthDayChanges, setBarthDayChanges] = useState(true);
   const [barthDayBeforeChange, setBarthDayBeforeChange] = useState(
-    `${birthDate}` === `${currentYear}` ? birthDate : null
+    age !== 0 ? birthDate : null
   );
+  // console.log({ barthDayBeforeChange });
   const [reRenderDataApp, setReRenderDataApp] = useRecoilState(reRenderData);
 
   const [errorBarthDay, setErrorBarthDay] = useState("");
 
-  const updateBarthDay = async () => {
+  const updateBarthDayData = async (age: number) => {
     const token = localStorage.getItem("token") || "";
 
     await axios
@@ -90,6 +92,7 @@ function UpdateBarthDay({
         </div>
         <button
           onClick={() => {
+            setErrorBarthDay("");
             if (barthDayChanges) {
               return setBarthDayChanges(false);
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -109,7 +112,7 @@ function UpdateBarthDay({
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             setBarthDayChanges(true);
-            return updateBarthDay();
+            return updateBarthDayData(age);
           }}
           className="rounded-[16px] w-[48px] h-[48px] bg-[#ffffff99] hover:bg-[#ffffff2c] duration-200"
         >

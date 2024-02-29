@@ -5,6 +5,7 @@ import UpdateName from "./UpdateName";
 import UpdateBarthDay from "./UpdateBarthDay";
 import PassportNumber from "./PassportNumber";
 import CountryAndNationality from "./CountryAndNationality";
+import Gender from "./Gender";
 
 const topTitleStyle = "text-[#231F20] text-[20px] font-bold mb-[10px]";
 const titleStyle = "text-[#231F20] text-[16px] font-medium mb-[16px]";
@@ -21,7 +22,7 @@ function UpdateInformation() {
     passportNumber,
     nationality,
     country,
-    // gender,
+    gender,
   } = useSelector((state: RootState) => state.loggedUser);
   const handleAge = age || 0;
   return (
@@ -59,6 +60,12 @@ function UpdateInformation() {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           data={{ nationality, country }}
+          topTitleStyle={topTitleStyle}
+          titleStyle={titleStyle}
+          iconStyle={iconStyle}
+        />
+        <Gender
+          data={{ gender: gender || "" }}
           topTitleStyle={topTitleStyle}
           titleStyle={titleStyle}
           iconStyle={iconStyle}

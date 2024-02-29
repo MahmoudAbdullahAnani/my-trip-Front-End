@@ -32,8 +32,12 @@ function CountryAndNationality({ data, iconStyle }: TypeComponent) {
   const countrysFilter = countrys.filter(({ code }) => code !== country);
   const countrysIsChoose = countrys.find(({ code }) => code === country);
   // Handle Nationality
-  const nationalityFilter = countrys.filter(({ code }) => code !== country);
-  const nationalityIsChoose = countrys.find(({ code }) => code === country);
+  const nationalityFilter = countrys.filter(
+    ({ code }) => code !== nationality || ""
+  );
+  const nationalityIsChoose = countrys.find(
+    ({ code }) => code === nationality || ""
+  );
 
   const [reRenderDataApp, setReRenderDataApp] = useRecoilState(reRenderData);
 
@@ -57,8 +61,8 @@ function CountryAndNationality({ data, iconStyle }: TypeComponent) {
       .then(() => setReRenderDataApp(!reRenderDataApp))
       .catch((err) => console.log("Country And Passport===> ", err));
   };
-  const [errorNationality] = useState("");
-  const [errorCountry] = useState("");
+  const [errorNationality, setErrorNationality] = useState("");
+  const [errorCountry, setErrorCountry] = useState("");
 
   const [toggleSave, setToggleSave] = useState(true);
   return (
@@ -79,7 +83,7 @@ function CountryAndNationality({ data, iconStyle }: TypeComponent) {
               className={`max-w-[212px] h-[42px] px-[12px] py-[9px] rounded-[8px]`}
               onChange={(e) => setNationalityBeforeChange(e.target.value)}
             >
-              <option value={nationalityIsChoose?.code || ""}>
+              <option value={nationalityIsChoose?.code || ""} disabled>
                 {nationalityIsChoose?.name || "اختر"}
               </option>
               {nationalityFilter.map(({ name, code }) => (
@@ -120,6 +124,8 @@ function CountryAndNationality({ data, iconStyle }: TypeComponent) {
         </div>
         <button
           onClick={() => {
+            setErrorNationality("");
+            setErrorCountry("");
             setToggleSave(!toggleSave);
             if (nationalityNumberChanges || countryChanges) {
               setNationalityNumberChange(false);

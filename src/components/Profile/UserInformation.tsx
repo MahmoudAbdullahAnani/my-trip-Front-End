@@ -3,7 +3,7 @@ import { RootState } from "../../data/store";
 import { iconBarthDay, iconGender } from "../../assets/icons/home";
 
 function UserInformation() {
-  const { avatar, age, email, firstName, lastName } = useSelector(
+  const { avatar, age, email, gender, firstName, lastName } = useSelector(
     (state: RootState) => state.loggedUser
   );
 
@@ -16,20 +16,20 @@ function UserInformation() {
           مرحباً بك {firstName} {lastName}
         </h2>
         <h5 className={`text-[#117C99] text-[16px] font-medium`}>{email}</h5>
-        <div>
+        <div className="flex flex-row-reverse gap-[26px]">
           {/* BarthDay */}
           <div
             className={`flex justify-center items-center text-[#117C99] text-[16px] font-medium`}
           >
-            {age && <span>{age}</span>}
+            {age && age > 0 ? <span>{age}</span> : null}
             <span>{iconBarthDay}</span>
           </div>
           {/* Gender */}
           <div
-            className={` hidden justify-center items-center text-[#117C99] text-[16px] font-medium`}
+            className={` flex justify-center items-center text-[#117C99] text-[16px] font-medium`}
           >
-            <span></span>
-            <span>{iconGender}</span>
+            {gender && <span>{gender}</span>}
+            {gender && <span>{iconGender}</span>}
           </div>
         </div>
       </div>
