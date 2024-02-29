@@ -6,7 +6,7 @@ import { SchemaUser } from "../../pages/Auth/Login";
 //   value: number;
 // }
 
-const initialState: SchemaUser = {
+const initialState = {
   password: "",
   age: 0,
   email: "",
@@ -29,6 +29,8 @@ export const isLoggedUser = createSlice({
   initialState,
   reducers: {
     addUserLogged: (state, action: PayloadAction<SchemaUser>) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       state = action.payload;
       return state;
     },

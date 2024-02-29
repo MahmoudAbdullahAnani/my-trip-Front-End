@@ -2201,3 +2201,34 @@ export const iconPenEdit = (
     />
   </svg>
 );
+export const iconDelete = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="22"
+    viewBox="0 0 20 22"
+    fill="none"
+  >
+    <path
+      d="M6 5V3C6 2 7 1 8 1H12C13 1 14 2 14 3V5"
+      stroke="#CD1E3F"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M1 5H19"
+      stroke="#CD1E3F"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M17 5V19C17 20 16 21 15 21H5C4 21 3 20 3 19V5"
+      stroke="#CD1E3F"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);

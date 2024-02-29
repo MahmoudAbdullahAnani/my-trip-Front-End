@@ -1,20 +1,21 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../data/store";
+import { RootState } from "../../data/store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ControllerProfile from "../components/Profile/ControllerProfile";
-import DialogComponent from "../components/ResetPassword/OAuthNavberDesktop/DialogComponent";
-import { iconSignout } from "../assets/icons/home";
-import UserInformation from "../components/Profile/UserInformation";
-import UpdateInformation from "../components/Profile/UpdateInformation";
+import ControllerProfile from "../../components/Profile/ControllerProfile";
+import DialogComponent from "../../components/ResetPassword/OAuthNavberDesktop/DialogComponent";
+import { iconSignout } from "../../assets/icons/home";
+import UserInformation from "../../components/Profile/UserInformation";
+import UpdateInformation from "../../components/Profile/UpdateInformation";
 
 function Profile() {
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
   // console.log(stateUserData);
   const navigator = useNavigate();
+
   useEffect(() => {
     if (stateUserData._id === "") {
-      navigator("/");
+      return navigator("/");
     }
   }, []);
   return (
@@ -22,9 +23,7 @@ function Profile() {
       className={`lg:mt-[80px] lg:mb-[300px] mb-[200px] p-0 lg:px-[96px] px-[16px] flex flex-col gap-[24px]`}
       dir="rtl"
     >
-      <h1 className={`text-[32px] font-bold text-[#000]`}>
-        إعدادات المستخدم
-      </h1>
+      <h1 className={`text-[32px] font-bold text-[#000]`}>إعدادات المستخدم</h1>
       <div className={`flex flex-wrap gap-[24px] items-start justify-start`}>
         {/* side bar */}
         <div

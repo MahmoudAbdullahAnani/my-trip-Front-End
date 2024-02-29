@@ -31,8 +31,9 @@ import Search from "./pages/Air/Search";
 import For04 from "./pages/For04";
 import AirData from "./pages/Air/AirData";
 import AirPay from "./pages/Air/AirPay";
-import Profile from "./pages/Profile";
+import Profile from "./pages/Profile/Profile";
 import VarificationAccount from "./pages/Auth/VarificationAccount";
+import Friends from "./pages/Profile/Friends";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -243,7 +244,7 @@ function App() {
         <Route path="/airData" element={<AirData />} />
         <Route path="/airPay" element={<AirPay />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/profile/friends" element={<Profile />} />
+        <Route path="/profile/friends" element={<Friends />} />
         <Route path="/profile/trips" element={<Profile />} />
       </Routes>
     </>
