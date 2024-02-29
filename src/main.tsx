@@ -13,22 +13,21 @@ import { RecoilRoot } from "recoil";
 
 import "react-toastify/dist/ReactToastify.css";
 
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
 
 import "react-datepicker/dist/react-datepicker.css";
 
-  import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
-  import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import Footer from "./layout/Footer.js";
-
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

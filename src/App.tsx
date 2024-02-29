@@ -34,6 +34,7 @@ import AirPay from "./pages/Air/AirPay";
 import Profile from "./pages/Profile/Profile";
 import VarificationAccount from "./pages/Auth/VarificationAccount";
 import Friends from "./pages/Profile/Friends";
+import { SearchFriendsState } from "./data/RecoilState/Profile/Friends";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -216,6 +217,7 @@ function App() {
     oncData();
   }, [reRenderDataApp]);
   // const [dataSearchState] = useRecoilState(dateSearch);
+  const [searchFriends, setSearchfriends] = useRecoilState(SearchFriendsState);
 
   if (loading) {
     return (
@@ -229,6 +231,13 @@ function App() {
 
   return (
     <>
+      {searchFriends.count > 0 && (
+        <div
+          onClick={() => setSearchfriends({ friends: [], count: 0 })}
+          className="absolute w-full h-[100vw] bg-[#00000070]"
+        ></div>
+      )}
+
       {/* OAuth */}
       <Login />
       <Signup />

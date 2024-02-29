@@ -8,3 +8,10 @@ export const ReRebderingFriendsState = atom({
   key: "ReRebderingFriendsState", // unique ID (with respect to other atoms/selectors)
   default: true, // default value (aka initial value)
 });
+export const SearchFriendsState = atom({
+  key: "SearchFriendsState", // unique ID (with respect to other atoms/selectors)
+  default: {
+    count: 0,
+    friends: [],
+  }, // default value (aka initial value)
+});
