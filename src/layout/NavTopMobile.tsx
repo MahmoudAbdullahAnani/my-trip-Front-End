@@ -103,26 +103,26 @@ function NavTopMobile() {
                   <Link
                     to={`/profile`}
                     // onClick={() => console.log("click")}
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
-                    profile
+                    حسابي التعريفي
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  <Link
+                    to={`/profile/friends`}
+                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
-                    Settings
-                  </a>
+                    الأصدقاء
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  <Link
+                    to={`/profile/trips`}
+                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
-                    Earnings
-                  </a>
+                    رحلتي
+                  </Link>
                 </li>
               </ul>
               <button
