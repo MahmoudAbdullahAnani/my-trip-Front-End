@@ -54,7 +54,8 @@ function Navbar() {
             pathname === "/airData" ||
             pathname === "/airPay" ||
             pathname === "/profile/friends" ||
-            pathname === "/profile"
+            pathname === "/profile" ||
+            pathname === "/profile/trips"
               ? "bg-[#FFF] border border-x-0 border-t-0 shadow-sm shadow-[#656565]"
               : ""
           } `}
@@ -107,6 +108,7 @@ function Navbar() {
                     pathname !== "/airData" &&
                     pathname !== "/airPay" &&
                     pathname !== "/profile/friends" &&
+                    pathname !== "/profile/trips" &&
                     pathname !== "/profile"
                       ? href === pathname
                         ? "text-[#117C99]"
