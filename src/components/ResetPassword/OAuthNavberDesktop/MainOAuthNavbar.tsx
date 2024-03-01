@@ -63,6 +63,7 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
               </li>
               <li>
                 <Link
+                  onClick={() => setToggle(!toggle)}
                   to={`/profile/friends`}
                   className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
@@ -71,6 +72,7 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
               </li>
               <li>
                 <Link
+                  onClick={() => setToggle(!toggle)}
                   to={"/profile/trips"}
                   className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >

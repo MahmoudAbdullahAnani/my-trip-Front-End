@@ -102,7 +102,7 @@ function NavTopMobile() {
                 <li>
                   <Link
                     to={`/profile`}
-                    // onClick={() => console.log("click")}
+                    onClick={() => setToggle(!toggle)}
                     className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     حسابي التعريفي
@@ -110,6 +110,7 @@ function NavTopMobile() {
                 </li>
                 <li>
                   <Link
+                    onClick={() => setToggle(!toggle)}
                     to={`/profile/friends`}
                     className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
@@ -118,6 +119,7 @@ function NavTopMobile() {
                 </li>
                 <li>
                   <Link
+                    onClick={() => setToggle(!toggle)}
                     to={`/profile/trips`}
                     className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
