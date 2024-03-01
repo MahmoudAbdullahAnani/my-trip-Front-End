@@ -21,18 +21,18 @@ import {
   showPassword,
 } from "../../data/RecoilState/AuthStatePages/Auth";
 // Images
-import { iconGoogle, iconLogo, iconFacebook } from "../../assets/icons/home";
+import { iconLogo } from "../../assets/icons/home";
 import downLogo from "/public/assets/downLogo.png";
 // Login Btn
-import {
-  LoginSocialFacebook,
-  LoginSocialGoogle,
-  IResolveParams,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-} from "reactjs-social-login";
-import BtnLogin from "../../components/BtnAuth/BtnLogin";
-import OrLogin from "../../components/OrLogin";
+// import {
+//   LoginSocialFacebook,
+//   LoginSocialGoogle,
+//   IResolveParams,
+//   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//   // @ts-ignore
+// } from "reactjs-social-login";
+// import BtnLogin from "../../components/BtnAuth/BtnLogin";
+// import OrLogin from "../../components/OrLogin";
 import { toast } from "react-toastify";
 // interfaces
 export interface Inputs {
@@ -227,7 +227,7 @@ function OAuth() {
       }}
     >
       <div
-        className={`lg:w-[90%] h-[90%]  bg-[url('/public/assets/bg-model-login.png')] bg-cover flex justify-center p-[30px] gap-[24px] rounded-[26px] bg-[#FFF]`}
+        className={`w-[90%] h-[90%] bg-[url('/public/assets/bg-model-login.png')] bg-cover flex justify-center p-[30px] gap-[24px] rounded-[26px] bg-[#FFF]`}
       >
         <div
           style={{
@@ -242,16 +242,16 @@ function OAuth() {
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className={`lg:pt-[81px] relative`}
+          className={`lg:pt-[81px] relative w-full`}
         >
-          <div className="flex lg:justify-end justify-center w-full">
+          <div className="flex lg:justify-end justify-center w-full mb-[10px]">
             <h2
               className={`text-[24px] font-semibold lg:text-end text-center text-[#231F20]`}
             >
               تسجيل الدخول
             </h2>
           </div>
-          <div
+          {/* <div
             className={`flex flex-col lg:flex-row flex-wrap gap-[24px] mt-[37px] justify-end items-center`}
           >
             <LoginSocialFacebook
@@ -271,7 +271,6 @@ function OAuth() {
             >
               <BtnLogin title={`google`} icon={iconGoogle} />
             </LoginSocialFacebook>
-            {/* By Google */}
             <LoginSocialGoogle
               style={{
                 boxShadow: "0 4px 4px rgb(0 90 108 / 30%)",
@@ -289,10 +288,10 @@ function OAuth() {
             >
               <BtnLogin title={`facebook`} icon={iconFacebook} />
             </LoginSocialGoogle>
-          </div>
-          <div className={`my-[20px]`}>
+          </div> */}
+          {/* <div className={`my-[20px]`}>
             <OrLogin />
-          </div>
+          </div> */}
           {incorrectData && (
             <span
               className={`bg-red-400 my-2 w-full block text-center rounded-md text-[#fafafa]`}
@@ -301,7 +300,7 @@ function OAuth() {
             </span>
           )}
           <div
-            className={`flex flex-col lg:w-[506px] w-[70%] mx-auto gap-[6px]`}
+            className={`flex flex-col lg:w-[506px]  w-[100%] mx-auto gap-[6px]`}
           >
             {LoginInputs.map(
               ({ placeholder, type, classes, register, error }: DTOInputs) => {
@@ -359,7 +358,7 @@ function OAuth() {
           </div>
           <div className={`mx-auto w-full flex justify-center mt-[26px]`}>
             <button
-              className={`flex justify-center items-center lg:w-full h-[48px]  w-[70%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
+              className={`flex justify-center items-center lg:w-full h-[48px] w-[100%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
               type="submit"
               disabled={isSubmitting}
             >

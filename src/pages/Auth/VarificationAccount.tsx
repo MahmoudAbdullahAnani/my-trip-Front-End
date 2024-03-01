@@ -16,7 +16,7 @@ import {
 import { useRecoilState } from "recoil";
 import { iconLogo } from "../../assets/icons/home";
 import downLogo from "/public/assets/downLogo.png";
-import OrLogin from "../../components/OrLogin";
+// import OrLogin from "../../components/OrLogin";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUserLogged } from "../../data/Features/LoggedUser";
@@ -109,14 +109,14 @@ function VarificationAccount() {
       onClose={handleClosePage}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
-      className={`absolute top-[50%] left-[50%] flex justify-center items-center w-[100%] `}
+      className={`absolute top-[50%] left-[50%] flex justify-center items-start w-[100%] `}
       style={{
         fill: "rgb(182 231 251 / 30%)",
         backdropFilter: "blur(3px)",
       }}
     >
       <div
-        className={`lg:w-[90%] h-[50%] bg-[url('/public/assets/bg-model-login.png')] bg-cover flex justify-center p-[30px] gap-[24px] rounded-[26px] bg-[#FFF]`}
+        className={`lg:w-[90%] mt-[50px] h-[80%] bg-[url('/public/assets/bg-model-login.png')] bg-cover flex justify-center p-[30px] gap-[24px] rounded-[26px] bg-[#FFF]`}
       >
         <div
           style={{
@@ -131,7 +131,7 @@ function VarificationAccount() {
         </div>
         <div
           // handleSubmit(onSubmit)
-          className={`lg:pt-[21px] relative`}
+          className={`lg:pt-[21px] relative `}
         >
           <div className="flex lg:justify-end justify-center w-full">
             <h2
@@ -141,9 +141,9 @@ function VarificationAccount() {
             </h2>
           </div>
 
-          <div className={`my-[20px]`}>
+          {/* <div className={`my-[20px]`}>
             <OrLogin />
-          </div>
+          </div> */}
           {incorrectData && (
             <span
               className={`bg-red-400 my-2 w-full block text-center rounded-md text-[#fafafa]`}
@@ -152,7 +152,7 @@ function VarificationAccount() {
             </span>
           )}
           <div
-            className={`flex flex-col lg:w-[506px] w-[70%] mx-auto gap-[6px]`}
+            className={`flex flex-col lg:w-[506px] w-[100%] mx-auto gap-[6px]`}
           >
             <input
               type="text"
@@ -166,7 +166,7 @@ function VarificationAccount() {
 
           <div className={`mx-auto w-full flex justify-center mt-[26px]`}>
             <button
-              className={`flex justify-center items-center lg:w-full h-[48px] w-[70%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
+              className={`flex justify-center items-center lg:w-full h-[48px] w-[100%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
               type="submit"
               disabled={loadingVerify}
               onClick={() => {

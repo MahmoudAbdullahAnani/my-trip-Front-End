@@ -9,13 +9,13 @@ import { LoderBtn } from "../../components/loder/Loder";
 // import { useDispatch } from "react-redux";
 // import { addUserLogged } from "../../data/Features/LoggedUser";
 // Login Btn
-import {
-  LoginSocialFacebook,
-  LoginSocialGoogle,
-  IResolveParams,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-} from "reactjs-social-login";
+// import {
+//   LoginSocialFacebook,
+//   LoginSocialGoogle,
+//   IResolveParams,
+//   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//   // @ts-ignore
+// } from "reactjs-social-login";
 import {
   EmailVerifyState,
   OpenResetPasswordPage,
@@ -34,16 +34,16 @@ import { Modal } from "@mui/material";
 // Images
 import {
   iconEmail,
-  iconFacebook,
-  iconGoogle,
+  // iconFacebook,
+  // iconGoogle,
   iconLogo,
   iconPassword,
   iconShowPassword,
   iconUserMain,
 } from "../../assets/icons/home";
 import downLogo from "/public/assets/downLogo.png";
-import BtnLogin from "../../components/BtnAuth/BtnLogin";
-import OrLogin from "../../components/OrLogin";
+// import BtnLogin from "../../components/BtnAuth/BtnLogin";
+// import OrLogin from "../../components/OrLogin";
 
 interface DTOInputs {
   placeholder: string;
@@ -142,7 +142,7 @@ function Signup() {
         }
       )
       .then((response) => {
-        console.log({ data: response.data });
+        // console.log({ data: response.data });
         if (response?.data.data.token === "varification") {
           // user have an account but need to verify
           setEmailVerifyState(`${emailData}`);
@@ -363,7 +363,7 @@ function Signup() {
       }}
     >
       <div
-        className={`lg:w-[90%] h-[90%] bg-[url('/public/assets/bg-model-login.png')] bg-cover flex justify-center p-[30px] gap-[24px] rounded-[26px] bg-[#FFF]`}
+        className={`w-[90%] h-[90%] bg-[url('/public/assets/bg-model-login.png')] bg-cover flex justify-center p-[30px] gap-[24px] rounded-[26px] bg-[#FFF]`}
       >
         <div
           style={{
@@ -379,16 +379,16 @@ function Signup() {
         <form
           // handleSubmit(onSubmit)
           onSubmit={handleSubmit(onSubmit)}
-          className={`lg:pt-[21px] relative`}
+          className={`lg:pt-[21px] relative w-full `}
         >
-          <div className="flex lg:justify-end justify-center w-full">
+          <div className="flex lg:justify-end justify-center w-full mb-[10px]">
             <h2
               className={`text-[24px] font-semibold lg:text-end text-center text-[#231F20]`}
             >
               تسجيل الدخول
             </h2>
           </div>
-          <div
+          {/* <div
             className={`flex flex-col lg:flex-row flex-wrap gap-[24px] mt-[37px] justify-end items-center`}
           >
             <LoginSocialGoogle
@@ -408,7 +408,6 @@ function Signup() {
             >
               <BtnLogin title={`google`} icon={iconGoogle} />
             </LoginSocialGoogle>
-            {/* By Google */}
             <LoginSocialFacebook
               style={{
                 boxShadow: "0 4px 4px rgb(0 90 108 / 30%)",
@@ -426,10 +425,10 @@ function Signup() {
             >
               <BtnLogin title={`facebook`} icon={iconFacebook} />
             </LoginSocialFacebook>
-          </div>
-          <div className={`my-[20px]`}>
+          </div> */}
+          {/* <div className={`my-[20px]`}>
             <OrLogin />
-          </div>
+          </div> */}
           {incorrectData && (
             <span
               className={`bg-red-400 my-2 w-full block text-center rounded-md text-[#fafafa]`}
@@ -438,7 +437,7 @@ function Signup() {
             </span>
           )}
           <div
-            className={`flex flex-col lg:w-[506px] w-[70%] mx-auto gap-[6px]`}
+            className={`flex flex-col lg:w-[506px] w-[100%] mx-auto gap-[6px]`}
           >
             {LoginInputs.map(
               ({
@@ -471,9 +470,27 @@ function Signup() {
             )}
           </div>
           <div
-            className={`flex lg:flex-row flex-col gap-[5px] lg:gap-0 items-center justify-between my-[18px]`}
+            className={`flex lg:flex-row flex-col gap-[5px] lg:gap-0 items-center justify-between lg:my-[18px]`}
           >
-            <span
+            <div className={``}>
+              <span>انا امتلك حساب </span>
+              <span
+                onClick={() => {
+                  setOpenForgotPasswordPageState(false);
+                  setOpenResetPasswordPageState(false);
+                  setOpenPage(true);
+                  setOpenSignupPage(false);
+                  setOpenVerifyPageState(false);
+                }}
+                style={{
+                  textDecoration: "underline",
+                }}
+                className={`text-[#31B2E1] cursor-pointer`}
+              >
+                تسجيل الدخول
+              </span>
+            </div>
+            {/* <span
               onClick={() => {
                 setOpenForgotPasswordPageState(true);
                 setOpenResetPasswordPageState(false);
@@ -487,7 +504,7 @@ function Signup() {
               className={`text-[#31B2E1] cursor-pointer`}
             >
               هل نسيت كلمة المرور
-            </span>
+            </span> */}
             <div className={``}>
               <label className={`flex items-center justify-center gap-[2px]`}>
                 <span>حفظ البيانات</span>
@@ -506,7 +523,7 @@ function Signup() {
           </div>
           <div className={`mx-auto w-full flex justify-center mt-[26px]`}>
             <button
-              className={`flex justify-center items-center lg:w-full h-[48px] w-[70%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
+              className={`flex justify-center items-center lg:w-full h-[48px] w-[100%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
               type="submit"
               disabled={isSubmitting}
             >
@@ -515,7 +532,7 @@ function Signup() {
           </div>
 
           <div
-            className={`flex mt-[44px] gap-[2px] justify-center absolute bottom-0 w-full`}
+            className={`lg:flex hidden mt-[44px] gap-[2px] justify-center absolute bottom-0 w-full`}
           >
             <span
               onClick={() => {
