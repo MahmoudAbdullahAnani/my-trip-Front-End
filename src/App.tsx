@@ -235,7 +235,7 @@ function App() {
       {searchFriends.count > 0 && (
         <div
           onClick={() => setSearchfriends({ friends: [], count: 0 })}
-          className="absolute w-full h-[100vw] bg-[#00000070]"
+          className={`absolute h-[${document.body.scrollHeight}px] h-[100vh] w-full  bg-[#00000070]`}
         ></div>
       )}
 
