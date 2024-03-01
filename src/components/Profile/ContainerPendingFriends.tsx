@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import {
-  Friends,
+  PendingFriends,
   ReRebderingFriendsState,
 } from "../../data/RecoilState/Profile/Friends";
 import notFoundUsers from "/public/assets/profile/notFoundUsers.png";
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { reRenderData } from "../../data/RecoilState/Notifications/NotificationsData";
 import axios from "axios";
 import TicketLoading from "../loder/TicketLoading";
-import CardFriend from "./CardFriend";
+import CardPendingFriend from "./CardPendingFriend";
 
 export interface IFriends {
   _id: string;
@@ -26,9 +26,10 @@ export interface IFriends {
   }[];
   avatar?: string;
 }
-function ContainerFriends() {
-  const [friendsState, setFriendsState] = useRecoilState(Friends);
-  // console.log(friendsState);
+function ContainerPendingFriends() {
+  const [pendingFriendsState, setPendingFriendsState] =
+    useRecoilState(PendingFriends);
+  // console.log(pendingFriendsState);
 
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
   // console.log(stateUserData);
@@ -44,8 +45,8 @@ function ContainerFriends() {
     await axios
       .get(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
-          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/friends`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/friends`,
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/pending-friends`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/pending-friends`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -55,7 +56,7 @@ function ContainerFriends() {
       .then((res) => {
         setLoading(false);
         // console.log("friends ==>", res.data);
-        setFriendsState(res?.data.friends);
+        setPendingFriendsState(res?.data.pendingFriends);
         setReRenderDataApp(!reRenderDataApp);
       })
       .catch((err) => {
@@ -80,11 +81,11 @@ function ContainerFriends() {
     );
   }
 
-  if (friendsState.length <= 0) {
+  if (pendingFriendsState.length <= 0) {
     return (
       <div className={`flex flex-col gap-[20px] mt-[80px]`}>
         <h2 className={`text-[#000000] text-[32px] font-bold text-center`}>
-          لا يوجد اصدقاء حالياً
+          لا يوجد طلبات صداقة حالياً
         </h2>
         <div className={`flex justify-center items-center`}>
           <img
@@ -99,44 +100,11 @@ function ContainerFriends() {
   }
   return (
     <div className={`grid grid-cols-1 gap-[40px] lg:grid-cols-3`}>
-      {friendsState.map((items: IFriends) => (
-        <CardFriend key={`${items._id}-${Math.random()}`} {...items} />
+      {pendingFriendsState.map((items: IFriends) => (
+        <CardPendingFriend key={`${items._id}-${Math.random()}`} {...items} />
       ))}
     </div>
   );
 }
 
-export default ContainerFriends;
-
-// const fakeData = [
-//   {
-//     _id: "65df5e06afc6eef670a5bac1",
-//     firstName: "Mahmoud",
-//     friends: ["65e0a759215f70aa10f3ba26"],
-//     lastName: "A",
-//   },
-//   {
-//     _id: "65df5e06afc6eef670a5bqc1",
-//     firstName: "Mahmoud",
-//     friends: ["65e0a759215f70aa10f3ba26"],
-//     lastName: "A",
-//   },
-//   {
-//     _id: "65df5e06afc6eef670a5bar1",
-//     firstName: "Mahmoud",
-//     friends: ["65e0a759215f70aa10f3ba26"],
-//     lastName: "A",
-//   },
-//   {
-//     _id: "65df5e06afc6eef670a5bsc1",
-//     firstName: "Mahmoud",
-//     friends: ["65e0a759215f70aa10f3ba26"],
-//     lastName: "A",
-//   },
-//   {
-//     _id: "65df5e06afc6eef670a5bax1",
-//     firstName: "Mahmoud",
-//     friends: ["65e0a759215f70aa10f3ba26"],
-//     lastName: "A",
-//   },
-// ];
+export default ContainerPendingFriends;

@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../data/store";
 import axios from "axios";
-import { SearchFriendsState } from "../../data/RecoilState/Profile/Friends";
+import {
+  Friends,
+  ReRebderingFriendsState,
+  SearchFriendsState,
+} from "../../data/RecoilState/Profile/Friends";
 import { useRecoilState } from "recoil";
 import { reRenderData } from "../../data/RecoilState/Notifications/NotificationsData";
 
@@ -19,6 +23,10 @@ function SearchUserFriend() {
   }, []);
   const [searchFriends, setSearchfriends] = useRecoilState(SearchFriendsState);
   const [valueSearch, setValueSearch] = useState("");
+
+  const [friendsState] = useRecoilState(Friends);
+  // console.log(friendsState);
+
   const searchFriend = async (keyword: string) => {
     const token = localStorage.getItem("token") || "";
     if (keyword === "") {
@@ -38,7 +46,16 @@ function SearchUserFriend() {
         }
       )
       .then(({ data }) => {
-        setSearchfriends({ friends: data.data, count: data.count });
+        const IDsFriends = friendsState.map(({ _id }: { _id: string }) => _id);
+        const filterFriends = data.data.filter(
+          ({ _id }: { _id: string }) =>
+            _id !== stateUserData._id && !IDsFriends.includes(_id)
+        );
+
+        setSearchfriends({
+          friends: filterFriends,
+          count: filterFriends.length,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -46,6 +63,9 @@ function SearchUserFriend() {
   };
 
   const [reRenderDataApp, setReRenderDataApp] = useRecoilState(reRenderData);
+  const [reRebderingFriends, setReRebderingFriends] = useRecoilState(
+    ReRebderingFriendsState
+  );
 
   const addToFriend = async (_id: string) => {
     const token = localStorage.getItem("token") || "";
@@ -66,6 +86,7 @@ function SearchUserFriend() {
         }
       )
       .then(() => {
+        setReRebderingFriends(!reRebderingFriends);
         setValueSearch("");
         setSearchfriends({ friends: [], count: 0 });
         setReRenderDataApp(!reRenderDataApp);
@@ -74,12 +95,14 @@ function SearchUserFriend() {
         console.log("SearchUserFriend ==> ", error);
       });
   };
+  const inputRef = useRef(null);
   return (
     <div className={``}>
       <div className={`flex gap-[10px]`}>
         <div className={`w-full max-w-[548px] relative`}>
           <div className={`w-full max-w-[548px] relative`}>
             <input
+              ref={inputRef}
               type="text"
               className={`w-full max-w-[548px] focus-visible:shadow-lg shadow-[#005a6c4d] rounded-[16px] focus-visible:outline-[#117c99b8] text-start ${
                 searchFriends.count > 0 ? "rounded-b-none" : ""
@@ -101,7 +124,18 @@ function SearchUserFriend() {
               {searchFriends.count}
             </span>
           </div>
-          <div className={`w-full rounded-b-lg bg-white  `}>
+          <div className={`w-full rounded-b-lg bg-white`}>
+            {searchFriends.count === 0 &&
+            valueSearch !== "" &&
+            document.activeElement === inputRef.current ? (
+              <div>
+                <p
+                  className={`text-center text-[#333333] text-[16px] font-medium p-5 relative button-5`}
+                >
+                  لا يوجد نتائج
+                </p>
+              </div>
+            ) : null}
             {searchFriends.friends.map(
               ({ _id, avatar, firstName, lastName }) => (
                 <div

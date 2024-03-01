@@ -40,7 +40,9 @@ function Navbar() {
           className={`lg:flex justify-between ${
             pathname !== "/search" &&
             pathname !== "/airData" &&
-            pathname !== "/airPay"
+            pathname !== "/airPay" &&
+            pathname !== "/profile/friends" &&
+            pathname !== "/profile"
               ? "fixed"
               : ""
           } top-0 w-full  p-0 px-[96px] ${
@@ -50,7 +52,9 @@ function Navbar() {
           }  ${
             pathname === "/search" ||
             pathname === "/airData" ||
-            pathname === "/airPay"
+            pathname === "/airPay" ||
+            pathname === "/profile/friends" ||
+            pathname === "/profile"
               ? "bg-[#FFF] border border-x-0 border-t-0 shadow-sm shadow-[#656565]"
               : ""
           } `}
@@ -101,7 +105,9 @@ function Navbar() {
                   className={`text-[18px] font-[600] whitespace-nowrap  ${
                     pathname !== "/search" &&
                     pathname !== "/airData" &&
-                    pathname !== "/airPay"
+                    pathname !== "/airPay" &&
+                    pathname !== "/profile/friends" &&
+                    pathname !== "/profile"
                       ? href === pathname
                         ? "text-[#117C99]"
                         : "text-[#FFF]"

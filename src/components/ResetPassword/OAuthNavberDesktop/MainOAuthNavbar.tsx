@@ -4,11 +4,12 @@ import { RootState } from "../../../data/store";
 import { useState } from "react";
 import { iconArrowDown, iconArrowTop } from "../../../assets/icons/home";
 import NotificationComponent from "../../Home/Systems/Notification/NotificationComponent";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
   const [toggle, setToggle] = useState(false);
+  const { pathname} = useLocation()
   return (
     <>
       <div className={``}>
@@ -26,7 +27,9 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
             onClick={() => setToggle(!toggle)}
             id="dropdownAvatarNameButton"
             data-dropdown-toggle="dropdownAvatarName"
-            className="flex items-center gap-1 text-sm pe-1 z-50 absolute font-medium rounded-full hover:text-blue-600 md:me-0 text-white"
+            className={`flex items-center gap-1 text-sm pe-1 z-50 absolute font-medium rounded-full hover:text-blue-600 md:me-0 ${
+              pathname !== "/" ? "text-[#117C99]" : "text-white"
+            } `}
             type="button"
           >
             {/* {iconUser} */}

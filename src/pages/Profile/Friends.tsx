@@ -1,5 +1,6 @@
 import { iconSignout } from "../../assets/icons/home";
 import ContainerFriends from "../../components/Profile/ContainerFriends";
+import ContainerPendingFriends from "../../components/Profile/ContainerPendingFriends";
 import ControllerProfile from "../../components/Profile/ControllerProfile";
 import SearchUserFriend from "../../components/Profile/SearchUserFriend";
 import DialogComponent from "../../components/ResetPassword/OAuthNavberDesktop/DialogComponent";
@@ -28,12 +29,25 @@ function Friends() {
           />
         </div>
         {/* content */}
-        <div className={`ll:w-[calc(100%-250px)] w-[100%] flex flex-col gap-[20px]`}>
+        <div
+          className={`ll:w-[calc(100%-250px)] w-[100%] flex flex-col gap-[20px]`}
+        >
           <div className={`w-full max-w-[848px] `}>
             <SearchUserFriend />
           </div>
           <div>
-            <ContainerFriends />
+            <div>
+              <h2 className="text-[32px] font-bold text-[#000] mb-[24px]">
+                الاصدقاء
+              </h2>
+              <ContainerFriends />
+            </div>
+            <div className="mt-[24px]">
+              <h2 className="text-[32px] font-bold text-[#000] mb-[24px]">
+                طلبات الصداقة
+              </h2>
+              <ContainerPendingFriends />
+            </div>
           </div>
         </div>
       </div>
