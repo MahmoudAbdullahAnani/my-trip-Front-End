@@ -503,3 +503,11 @@ ul li:has(.inputPay:checked) {
   box-shadow: 0 4px 4px rgb(0 90 108 / 30%);
 }
 /* End Radio buttons Checked */
+
+.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  border-radius: 16px !important;
+  -webkit-border-radius: 16px !important;
+  -moz-border-radius: 16px !important;
+  -ms-border-radius: 16px !important;
+  -o-border-radius: 16px !important;
+}

@@ -59,7 +59,7 @@ function NavTopMobile() {
         {toggle && (
           <div
             onClick={() => setToggle(!toggle)}
-            className={`bg-[#00000059] overflow-hidden w-[100vw] h-[100vh] absolute left-0 top-0 z-30`}
+            className={`bg-[#00000059] overflow-hidden w-full h-[100vh] absolute left-0 top-0 z-30`}
           ></div>
         )}
         {stateUserData._id === "" ? (
@@ -90,7 +90,7 @@ function NavTopMobile() {
               id="dropdownAvatarName"
               className={`${
                 toggle ? "block" : "hidden"
-              } z-50 top-[30px] -left-10 absolute bg-white divide-y rounded-lg shadow`}
+              } z-50 top-[30px] -left-36 lg:-left-10  absolute bg-white divide-y rounded-lg shadow`}
             >
               <div className="px-4 py-3 text-sm text-gray-900 ">
                 <div className="truncate">{stateUserData.email}</div>
@@ -102,7 +102,7 @@ function NavTopMobile() {
                 <li>
                   <Link
                     to={`/profile`}
-                    onClick={() => console.log("click")}
+                    // onClick={() => console.log("click")}
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     profile
