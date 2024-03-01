@@ -76,6 +76,9 @@ function CountryAndNationality({ data, iconStyle }: TypeComponent) {
               الجنسية
             </h5>
             <select
+              style={{
+                boxShadow: "0 4px 4px #005a6c4d",
+              }}
               disabled={nationalityNumberChanges}
               ref={nationalityRef}
               dir="rtl"
@@ -101,6 +104,9 @@ function CountryAndNationality({ data, iconStyle }: TypeComponent) {
           <div className="w-full max-w-[448px] flex flex-col gap-[5px]">
             <h5 className={`text-[#000000] text-[16px] font-medium`}>الدولة</h5>
             <select
+              style={{
+                boxShadow: "0 4px 4px #005a6c4d",
+              }}
               disabled={countryChanges}
               ref={countryRef}
               dir="rtl"

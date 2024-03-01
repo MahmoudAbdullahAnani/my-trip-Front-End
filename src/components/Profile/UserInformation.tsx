@@ -9,9 +9,9 @@ function UserInformation() {
 
   return (
     <div
-      className={`w-full h-[250px] bg-cover bg-no-repeat object-fill bg-[url('/public/assets/profile/bg-user-information.png')] flex  gap-[24px] items-start justify-end sm:px-[32px] sm:py-[36px] `}
+      className={`w-full h-[250px] bg-cover bg-no-repeat object-fill bg-[url('/public/assets/profile/bg-user-information.png')] flex p-[10px] gap-[14px] sm:gap-[24px] items-start justify-end sm:px-[32px] sm:py-[36px] `}
     >
-      <div className={`flex flex-col justify-start items-end gap-[18px]`}>
+      <div className={`flex flex-col justify-start items-end gap-[18px] `}>
         <h2 className={`text-[#117C99] text-[16px] font-bold `} dir="rtl">
           مرحباً بك {firstName} {lastName}
         </h2>
@@ -36,7 +36,10 @@ function UserInformation() {
       <div className="mt-[50px]">
         <img
           className={`w-[71px] h-[81px] rounded-[8px] `}
-          src={avatar}
+          src={
+            avatar ||
+            "https://media.licdn.com/dms/image/D4D03AQHzjiCnOspqrg/profile-displayphoto-shrink_200_200/0/1703883364099?e=1714608000&v=beta&t=d8izU1BFQ91iHgqrzE_YUzT9lCVE1ADtI4f8TF1F93A"
+          }
           alt={`${firstName}-${lastName}`}
         />
       </div>

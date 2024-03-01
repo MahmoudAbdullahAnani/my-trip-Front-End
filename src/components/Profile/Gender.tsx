@@ -47,12 +47,15 @@ function Gender({ data, iconStyle }: TypeComponent) {
   return (
     <div className={`w-full mt-[24px]`} dir="rtl">
       <div
-        className={`flex sm:flex-nowrap flex-wrap items-end justify-start gap-[10px] w-full`}
+        className={`flex flex-nowrap items-end justify-start gap-[10px] w-full`}
       >
         <div className="w-full max-w-[448px] ">
           <div className="w-full  flex flex-col gap-[5px]">
-            <h5 className={`text-[#000000] text-[16px] font-medium`}>الدولة</h5>
+            <h5 className={`text-[#000000] text-[16px] font-medium`}>النوع</h5>
             <select
+              style={{
+                boxShadow: "0 4px 4px #005a6c4d",
+              }}
               disabled={toggleSave}
               ref={genderRef}
               dir="rtl"

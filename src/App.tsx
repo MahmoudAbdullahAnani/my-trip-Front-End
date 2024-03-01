@@ -35,6 +35,7 @@ import Profile from "./pages/Profile/Profile";
 import VarificationAccount from "./pages/Auth/VarificationAccount";
 import Friends from "./pages/Profile/Friends";
 import { SearchFriendsState } from "./data/RecoilState/Profile/Friends";
+import TripProfile from "./pages/Profile/TripProfile";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -254,7 +255,7 @@ function App() {
         <Route path="/airPay" element={<AirPay />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/friends" element={<Friends />} />
-        <Route path="/profile/trips" element={<Profile />} />
+        <Route path="/profile/trips" element={<TripProfile />} />
       </Routes>
     </>
   );
