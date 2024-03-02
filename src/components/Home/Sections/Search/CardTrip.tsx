@@ -136,7 +136,7 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
             durationM={durationM}
             departureDateGo={itineraries[0].segments[0].departure.at}
             arrivalDateReturn={itineraries[0].segments[1].arrival.at}
-            isStope={itineraries[0].segments[0].numberOfStops}
+            isStope={itineraries[0].segments[0]?.numberOfStops || 0}
             price={+totalPriceEGP}
           />
         ) : (
@@ -144,13 +144,13 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
           <Ticket
             ticketId={id}
             d1Terminal={itineraries[0].segments[0].departure.terminal || ""}
-            a1Terminal={itineraries[0].segments[1].arrival.terminal || ""}
+            a1Terminal={itineraries[0].segments[1]?.arrival.terminal || ""}
             d2Terminal={itineraries[1].segments[0].departure.terminal || ""}
-            a2Terminal={itineraries[1].segments[1].arrival.terminal || ""}
+            a2Terminal={itineraries[1].segments[1]?.arrival.terminal || ""}
             degree={degree}
             daysDifference={daysDifference}
-            aircraftCode={outboundAircraft[0].aircraftCode}
-            carrierCode={outboundAircraft[0].carrierCode}
+            aircraftCode={outboundAircraft[0].aircraftCode || ""}
+            carrierCode={outboundAircraft[0].carrierCode || ""}
             flightNumber={outboundAircraft[0].flightNumber}
             departureIataCode={departureIataCode}
             arrivalIataCodeReturnRound={arrivalIataCodeReturnRound}
@@ -158,14 +158,14 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
             durationM={durationM}
             durationReturnH={durationReturnH}
             durationReturnM={durationReturnM}
-            isStope1={itineraries[0].segments[0].numberOfStops}
-            isStope2={itineraries[1].segments[1].numberOfStops}
+            isStope1={itineraries[0].segments[0]?.numberOfStops || 0}
+            isStope2={itineraries[1].segments[1]?.numberOfStops || 0}
             //travel 1
-            departureDateGo1={itineraries[0].segments[0].departure.at}
-            arrivalDateReturn1={itineraries[0].segments[1].arrival.at}
+            departureDateGo1={itineraries[0].segments[0]?.departure.at || ""}
+            arrivalDateReturn1={itineraries[0].segments[1]?.arrival.at || ""}
             //travel 2
-            departureDateGo2={itineraries[1].segments[0].departure.at}
-            arrivalDateReturn2={itineraries[1].segments[1].arrival.at}
+            departureDateGo2={itineraries[1].segments[0]?.departure.at || ""}
+            arrivalDateReturn2={itineraries[1].segments[1]?.arrival.at || ""}
             //
             aircraftCodeReturn={dataAirReturn[0].aircraftCode}
             carrierCodeReturn={dataAirReturn[0].carrierCode}
@@ -218,9 +218,9 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
           <Ticket
             ticketId={id}
             d1Terminal={itineraries[0].segments[0].departure.terminal || ""}
-            a1Terminal={itineraries[0].segments[1].arrival.terminal || ""}
+            a1Terminal={itineraries[0].segments[1]?.arrival.terminal || ""}
             d2Terminal={itineraries[1].segments[0].departure.terminal || ""}
-            a2Terminal={itineraries[1].segments[1].arrival.terminal || ""}
+            a2Terminal={itineraries[1].segments[1]?.arrival.terminal || ""}
             degree={degree}
             isMobile={true}
             daysDifference={daysDifference}

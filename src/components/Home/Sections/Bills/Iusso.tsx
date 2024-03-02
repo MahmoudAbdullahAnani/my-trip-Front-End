@@ -139,7 +139,7 @@ function BtnPay({ isPageAirPay = false }: { isPageAirPay: boolean }) {
     );
   }
   return (
-    <>
+    <div className="hidden">
       {/* desktop */}
       <div
         className={`roundedCornerPay sm:block hidden absolute -bottom-2 left-[50%] translate-x-[-50%] bg-[#e9e9e9] py-2 md:px-7 px-4 rounded-t-[16px]`}
@@ -162,7 +162,7 @@ function BtnPay({ isPageAirPay = false }: { isPageAirPay: boolean }) {
           إكمال عملة الدفع
         </button>
       </div>
-    </>
+    </div>
   );
 }
 export { Iusso2, BtnPay };

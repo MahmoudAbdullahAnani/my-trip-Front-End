@@ -49,6 +49,13 @@ function AirPay() {
     }
   }, []);
 
+  // Handle Time Range
+  const durationH = data.itineraries[0].duration.split("PT")[1].split("H")[0];
+  const durationM = data.itineraries[0].duration
+    .split("PT")[1]
+    .split("H")[1]
+    .split("M")[0];
+
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -74,6 +81,9 @@ function AirPay() {
               priceTotal={+data.price.total}
               timeGo={data.itineraries[0].segments[0].departure.at}
               timeSet={data.itineraries[0].segments[1].arrival.at}
+              durationH={durationH}
+              durationM={durationM}
+              isStope={data.itineraries[0].segments[0].numberOfStops||0}
             />
           )}
           <Iusso2 />

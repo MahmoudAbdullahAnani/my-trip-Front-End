@@ -33,6 +33,9 @@ interface DataCheckoutSession {
   carrierCodeLogo: string;
   timeGo: string;
   timeSet: string;
+  durationH?: string;
+  durationM?: string;
+  isStope?: number;
 }
 
 const tex = 60.7;
@@ -46,6 +49,9 @@ function AirBill({
   carrierCodeLogo,
   timeGo,
   timeSet,
+  durationH,
+  durationM,
+  isStope,
 }: {
   departure?: string;
   arrival?: string;
@@ -54,6 +60,9 @@ function AirBill({
   isPageAirPay?: boolean;
   timeGo?: string;
   timeSet?: string;
+  durationH?: string;
+  durationM?: string;
+  isStope?: number;
 }) {
   const [adultsDataState] = useRecoilState(adultsData);
   const [togglePrice, setTogglePrice] = useState(true);
@@ -86,6 +95,9 @@ function AirBill({
     carrierCodeLogo,
     timeGo,
     timeSet,
+    durationH,
+    durationM,
+    isStope,
   }: DataCheckoutSession) => {
     setDataLoadingState(true);
     // PayPal
@@ -119,7 +131,7 @@ function AirBill({
         console.log("err-PayPal==> ", err);
         setDataLoadingState(false);
         navigate("/airData");
-        toast.warn("هناك مشكلة بالنترنت لديك", {
+        toast.warn("هناك مشكلة بالانترنت لديك", {
           position: "top-right",
           autoClose: 5075,
           hideProgressBar: false,
@@ -143,6 +155,9 @@ function AirBill({
         carrierCodeLogo,
         timeGo,
         timeSet,
+        durationH,
+        durationM,
+        isStope,
       })
       .then(({ data }) => {
         setDataLoadingState(false);
@@ -152,7 +167,7 @@ function AirBill({
         console.log("err===> ", err);
         setDataLoadingState(false);
         navigate("/airData");
-        toast.warn("هناك مشكلة بالنترنت لديك", {
+        toast.warn("هناك مشكلة بالانترنت لديك", {
           position: "top-right",
           autoClose: 5075,
           hideProgressBar: false,
@@ -182,6 +197,9 @@ function AirBill({
         carrierCodeLogo: carrierCodeLogo || "",
         timeGo: timeGo || "",
         timeSet: timeSet || "",
+        durationH: durationH || "",
+        durationM: durationM || "",
+        isStope: isStope || 0,
       });
     }
   }, []);
