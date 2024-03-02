@@ -122,6 +122,11 @@ function AirBill({
         urlCancel,
         userEmail,
         carrierCodeLogo,
+        timeGo,
+        timeSet,
+        durationH,
+        durationM,
+        isStope,
       })
       .then(({ data }) => {
         setDataLoadingState(false);
