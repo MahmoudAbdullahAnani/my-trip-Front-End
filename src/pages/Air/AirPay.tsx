@@ -72,6 +72,8 @@ function AirPay() {
               arrival={data.itineraries[0].segments[1].arrival.iataCode}
               isPageAirPay={true}
               priceTotal={+data.price.total}
+              timeGo={data.itineraries[0].segments[0].departure.at}
+              timeSet={data.itineraries[0].segments[1].arrival.at}
             />
           )}
           <Iusso2 />

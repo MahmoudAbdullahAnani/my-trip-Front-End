@@ -31,6 +31,8 @@ interface DataCheckoutSession {
   urlCancel: string;
   userEmail: string;
   carrierCodeLogo: string;
+  timeGo: string;
+  timeSet: string;
 }
 
 const tex = 60.7;
@@ -42,12 +44,16 @@ function AirBill({
   departure,
   arrival,
   carrierCodeLogo,
+  timeGo,
+  timeSet,
 }: {
   departure?: string;
   arrival?: string;
   carrierCodeLogo?: string;
   priceTotal: number;
   isPageAirPay?: boolean;
+  timeGo?: string;
+  timeSet?: string;
 }) {
   const [adultsDataState] = useRecoilState(adultsData);
   const [togglePrice, setTogglePrice] = useState(true);
@@ -78,18 +84,22 @@ function AirBill({
     urlCancel,
     userEmail,
     carrierCodeLogo,
+    timeGo,
+    timeSet,
   }: DataCheckoutSession) => {
     setDataLoadingState(true);
     // PayPal
-    console.log({
-      price: +totalPriceUSD,
-      description,
-      user_id,
-      urlSuccess,
-      urlCancel,
-      userEmail,
-      carrierCodeLogo,
-    });
+    // console.log({
+    //   price: +totalPriceUSD,
+    //   description,
+    //   user_id,
+    //   urlSuccess,
+    //   urlCancel,
+    //   userEmail,
+    //   carrierCodeLogo,
+    //   timeGo,
+    //   timeSet,
+    // });
 
     await axios
       .post(`https://my-trip-back-end.onrender.com/checkout-completed/paypal`, {
@@ -131,6 +141,8 @@ function AirBill({
         urlCancel,
         userEmail,
         carrierCodeLogo,
+        timeGo,
+        timeSet,
       })
       .then(({ data }) => {
         setDataLoadingState(false);
@@ -168,6 +180,8 @@ function AirBill({
         urlCancel: "https://ittrip.vercel.app/",
         userEmail: dataBookingState.EmailBooking,
         carrierCodeLogo: carrierCodeLogo || "",
+        timeGo: timeGo || "",
+        timeSet: timeSet || "",
       });
     }
   }, []);
