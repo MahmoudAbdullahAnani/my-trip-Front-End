@@ -2232,3 +2232,55 @@ export const iconDelete = (
     />
   </svg>
 );
+export const iconLang = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M5 8L11 14"
+      stroke="#117C99"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M4 14L10 8L12 5"
+      stroke="#117C99"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M2 5H14"
+      stroke="#117C99"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M7 2H8"
+      stroke="#117C99"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M22 22L17 12L12 22"
+      stroke="#117C99"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M14 18H20"
+      stroke="#117C99"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { iconArrowDown, iconArrowTop } from "../../../assets/icons/home";
 import NotificationComponent from "../../Home/Systems/Notification/NotificationComponent";
 import { Link, useLocation } from "react-router-dom";
+import LangBtn from "../../LangBtn";
 
 function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
@@ -78,6 +79,9 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
                 >
                   رحلتي
                 </Link>
+              </li>
+              <li>
+                <LangBtn />
               </li>
             </ul>
             <div className="py-2">
