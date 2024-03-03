@@ -49,7 +49,6 @@ function Gender({ data, iconStyle }: TypeComponent) {
   // handle lang
   const { t, i18n } = useTranslation();
 
-  
   return (
     <div
       className={`w-full mt-[24px]`}
@@ -78,12 +77,12 @@ function Gender({ data, iconStyle }: TypeComponent) {
                 {gender === "male"
                   ? t("ذكر")
                   : gender === "female"
-                  ? t("أنثى")
+                  ? t("انثي")
                   : t("اختر")}
               </option>
               {gender !== "male" && <option value={"male"}>{t("ذكر")}</option>}
               {gender !== "female" && (
-                <option value={"female"}>{t("أنثى")}</option>
+                <option value={"female"}>{t("انثي")}</option>
               )}
             </select>
             {errorGender && (
