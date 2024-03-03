@@ -134,8 +134,14 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
             arrivalIataCodeReturn={arrivalIataCodeReturn}
             durationH={durationH}
             durationM={durationM}
-            departureDateGo={itineraries[0].segments[0]?.departure.at || ""}
-            arrivalDateReturn={itineraries[0].segments[1]?.arrival.at || ""}
+            departureDateGo={
+              itineraries[0].segments[0]?.departure.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
+            arrivalDateReturn={
+              itineraries[0].segments[1]?.arrival.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
             isStope={itineraries[0].segments[0]?.numberOfStops || 0}
             price={+totalPriceEGP}
           />
@@ -161,11 +167,22 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
             isStope1={itineraries[0].segments[0]?.numberOfStops || 0}
             isStope2={itineraries[1].segments[1]?.numberOfStops || 0}
             //travel 1
-            departureDateGo1={itineraries[0].segments[0]?.departure.at || ""}
-            arrivalDateReturn1={itineraries[0].segments[1]?.arrival.at || ""}
+            departureDateGo1={
+              itineraries[0].segments[0]?.departure.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
+            arrivalDateReturn1={
+              itineraries[0].segments[1]?.arrival.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
             //travel 2
-            departureDateGo2={itineraries[1].segments[0]?.departure.at || ""}
-            arrivalDateReturn2={itineraries[1].segments[1]?.arrival.at || ""}
+            departureDateGo2={
+              itineraries[1].segments[0]?.departure.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
+            arrivalDateReturn2={
+              itineraries[1].segments[1]?.arrival.at || "2022-05-01T00:00:00.000Z"
+            }
             //
             aircraftCodeReturn={dataAirReturn[0]?.aircraftCode || ""}
             carrierCodeReturn={dataAirReturn[0]?.carrierCode || ""}
@@ -208,8 +225,14 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
             arrivalIataCodeReturn={arrivalIataCodeReturn}
             durationH={durationH}
             durationM={durationM}
-            departureDateGo={itineraries[0].segments[0]?.departure.at || ""}
-            arrivalDateReturn={itineraries[0].segments[1]?.arrival.at || ""}
+            departureDateGo={
+              itineraries[0].segments[0]?.departure.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
+            arrivalDateReturn={
+              itineraries[0].segments[1]?.arrival.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
             isStope={itineraries[0].segments[0]?.numberOfStops || 0}
             price={+totalPriceEGP}
           />
@@ -236,11 +259,23 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
             isStope1={itineraries[0].segments[0]?.numberOfStops || 0}
             isStope2={itineraries[1].segments[1]?.numberOfStops || 0}
             //travel 1
-            departureDateGo1={itineraries[0].segments[0]?.departure.at || ""}
-            arrivalDateReturn1={itineraries[0].segments[1]?.arrival.at || ""}
+            departureDateGo1={
+              itineraries[0].segments[0]?.departure.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
+            arrivalDateReturn1={
+              itineraries[0].segments[1]?.arrival.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
             //travel 2
-            departureDateGo2={itineraries[1].segments[0]?.departure.at || ""}
-            arrivalDateReturn2={itineraries[1].segments[1]?.arrival.at || ""}
+            departureDateGo2={
+              itineraries[1].segments[0]?.departure.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
+            arrivalDateReturn2={
+              itineraries[1].segments[1]?.arrival.at ||
+              "2022-05-01T00:00:00.000Z"
+            }
             //
             aircraftCodeReturn={dataAirReturn[0]?.aircraftCode || ""}
             carrierCodeReturn={dataAirReturn[0]?.carrierCode || ""}

@@ -53,8 +53,8 @@ function TicketOneWay({
   arrivalIataCodeReturn,
   durationM,
   durationH,
-  departureDateGo,
-  arrivalDateReturn,
+  departureDateGo = "2022-05-01T00:00:00.000Z",
+  arrivalDateReturn = "2022-05-01T00:00:00.000Z",
   isStope,
   price,
 }: DataOfTicketOneWayComponent) {
