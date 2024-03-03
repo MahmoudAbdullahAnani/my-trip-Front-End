@@ -130,6 +130,8 @@ function AirBill({
       })
       .then(({ data }) => {
         setDataLoadingState(false);
+        // console.log(data);
+
         setURLPayPalPaymentState(data.links[1].href);
       })
       .catch((err) => {

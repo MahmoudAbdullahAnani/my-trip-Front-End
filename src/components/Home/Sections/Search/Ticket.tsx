@@ -87,7 +87,7 @@ function Ticket({
   // Handle Time
   const timeTicket1Go = format(parseGo1, "h:mm a");
   const timeTicket1Return = format(parseReturn1, "h:mm a");
-  console.log({ parseReturn1 });
+  // console.log({ parseReturn1 });
 
   // Handle Date
   const dateTicket1Go = format(parseGo1, "MMM, yyyy");

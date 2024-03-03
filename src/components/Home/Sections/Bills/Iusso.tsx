@@ -37,7 +37,7 @@ function Iusso2() {
 function BtnPay({ isPageAirPay = false }: { isPageAirPay: boolean }) {
   const [URLPaymentState] = useRecoilState(URLPayment);
   // const [RerenderingUrlState] = useRecoilState(RerenderingUrl);
-  console.log(URLPaymentState);
+  // console.log(URLPaymentState);
 
   useEffect(() => {}, [URLPaymentState]);
   //====================================================== User Data For air booking ===========================================================================================
