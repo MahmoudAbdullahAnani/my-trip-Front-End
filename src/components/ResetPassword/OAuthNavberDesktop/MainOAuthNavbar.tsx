@@ -23,7 +23,7 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
       {toggle && (
         <div
           onClick={() => setToggle(!toggle)}
-          className={`bg-[#00000059] overflow-hidden w-[100vw] h-[100vw] absolute left-0 top-0 z-30`}
+          className={`bg-[#00000059] overflow-hidden w-[100%] h-[100vw] absolute left-0 top-0 z-30`}
         ></div>
       )}
       {!isMobile && (

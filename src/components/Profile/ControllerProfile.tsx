@@ -8,6 +8,7 @@ import {
   iconProfileArrowActive,
   iconProfileArrow,
 } from "../../assets/icons/home";
+import { useTranslation } from "react-i18next";
 
 const data = [
   {
@@ -34,6 +35,9 @@ const data = [
 ];
 function ControllerProfile() {
   const { pathname } = useLocation();
+  // handle lang
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       {data.map(({ icon, iconActive, id, title, to }) => {
@@ -42,16 +46,26 @@ function ControllerProfile() {
             to={to}
             key={id}
             className={`flex gap-[8px] h-[40px] w-full items-center justify-center border border-x-0 border-t-0 border-[#DDDDDD]`}
+            dir={i18n.language !== "ar" ? "ltr" : "rtl"}
           >
             {pathname !== to ? icon : iconActive}
             <h3
-              className={`text-[16px] font-${
+              className={`text-[16px]  font-${
                 pathname === to ? "bold" : "medium"
               }  text-[${pathname === to ? "#117C99" : "#231F20"}]`}
+              // dir="ltr"
             >
-              {title}
+              {t(title)}
             </h3>
-            {pathname === to ? iconProfileArrowActive : iconProfileArrow}
+            {pathname === to ? (
+              <span className={`${i18n.language === "en" ? "rotate-180" : ""}`}>
+                {iconProfileArrowActive}
+              </span>
+            ) : (
+              <span className={`${i18n.language === "en" ? "rotate-180" : ""}`}>
+                {iconProfileArrow}
+              </span>
+            )}
           </Link>
         );
       })}

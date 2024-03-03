@@ -10,6 +10,7 @@ import {
 } from "../../data/RecoilState/Profile/Friends";
 import { useRecoilState } from "recoil";
 import { reRenderData } from "../../data/RecoilState/Notifications/NotificationsData";
+import { useTranslation } from "react-i18next";
 
 function SearchUserFriend() {
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
@@ -96,6 +97,10 @@ function SearchUserFriend() {
       });
   };
   const inputRef = useRef(null);
+
+  // handle lang
+  const { t, i18n } = useTranslation();
+
   return (
     <div className={``}>
       <div className={`flex gap-[10px]`}>
@@ -107,7 +112,7 @@ function SearchUserFriend() {
               className={`w-full max-w-[548px] focus-visible:shadow-lg shadow-[#005a6c4d] rounded-[16px] focus-visible:outline-[#117c99b8] text-start ${
                 searchFriends.count > 0 ? "rounded-b-none" : ""
               }  text-[#333333] text-[16px] font-medium p-[12px]`}
-              placeholder="اضافة صديق"
+              placeholder={t("اضافة صديق")}
               onChange={(e) => {
                 setValueSearch(e.target.value);
                 searchFriend(e.target.value);
@@ -119,7 +124,9 @@ function SearchUserFriend() {
                 searchFriends.count > 99
                   ? "h-[50px] w-[50px]"
                   : "h-[30px] w-[30px]"
-              }  border border-[#117C99] flex justify-center items-center rounded-[50%] top-[50%] left-5 translate-x-[-50%] translate-y-[-50%]`}
+              }  border border-[#117C99] flex justify-center items-center rounded-[50%] top-[50%] ${
+                i18n.language === "ar" ? "left-5" : "right-5"
+              } translate-x-[-50%] translate-y-[-50%]`}
             >
               {searchFriends.count}
             </span>
@@ -132,7 +139,7 @@ function SearchUserFriend() {
                 <p
                   className={`text-center text-[#333333] text-[16px] font-medium p-5 relative button-5`}
                 >
-                  لا يوجد نتائج
+                  {t("لا يوجد نتائج")}
                 </p>
               </div>
             ) : null}
@@ -166,7 +173,7 @@ function SearchUserFriend() {
                       className={`text-white h-[48px] w-[48px] flex justify-center items-center rounded-[16px] bg-[#117c99b8] hover:bg-[#117c99e0]`}
                       onClick={() => addToFriend(_id)}
                     >
-                      add
+                      {t("اضافة")}
                     </button>
                   </div>
                 </div>

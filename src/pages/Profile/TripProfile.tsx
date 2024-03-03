@@ -2,14 +2,17 @@ import axios from "axios";
 import HeaderProfile from "../../components/Profile/HeaderProfile";
 
 import TopHeader from "../../components/Profile/TopHeader";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../data/store";
 import { useEffect, useState } from "react";
 import Pagination from "@mui/material/Pagination";
 import CartOrder from "../../components/Profile/CartOrder";
 import TicketLoading from "../../components/loder/TicketLoading";
+import { useTranslation } from "react-i18next";
 
+import notFoundTrip from "/public/assets/profile/notFoundTrip.png";
+import { iconBlush } from "../../assets/icons/home";
 interface Data {
   __v?: number;
   user_id: string;
@@ -104,10 +107,14 @@ function TripProfile() {
     });
   }
 
+  // handle lang
+  const { t, i18n } = useTranslation();
+  // dataOrders.data.length<=0
+
   return (
     <div
       className={`lg:mt-[80px] lg:mb-[300px] mb-[200px] p-0 lg:px-[96px] px-[16px] flex flex-col gap-[24px] `}
-      dir="rtl"
+      dir={i18n.language == "ar" ? "rtl" : "ltr"}
     >
       <TopHeader />
       <div className={`flex flex-wrap gap-[24px] items-start justify-start`}>
@@ -122,6 +129,28 @@ function TripProfile() {
             {loading ? (
               <div className={`my-[50px]`}>
                 <TicketLoading />
+              </div>
+            ) : // dataOrders.data.length <= 0
+            dataOrders.data.length <= 0 ? (
+              <div
+                className={`w-full flex items-center flex-col gap-[90px]`}
+              >
+                <h2 className="text-[32px] font-bold text-[#000] mb-[24px]">
+                  {t("لا يوجد رحلة حالياً")}
+                </h2>
+                <img
+                  src={notFoundTrip}
+                  width={100}
+                  height={100}
+                  className={`h-[267px] w-[368px]`}
+                />
+                <Link
+                  to={"/"}
+                  className={`text-[24px] font-bold flex gap-[10px] items-center justify-center w-[236px] h-[48px] bg-[#117C99] hover:bg-[#117c99a2] duration-200 text-white rounded-[16px] `}
+                >
+                  <span>{t("إضافة رحلة")}</span>
+                  <span>{iconBlush}</span>
+                </Link>
               </div>
             ) : (
               dataOrders.data

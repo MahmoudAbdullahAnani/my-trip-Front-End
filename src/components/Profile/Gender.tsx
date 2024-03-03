@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { reRenderData } from "../../data/RecoilState/Notifications/NotificationsData";
+import { useTranslation } from "react-i18next";
 
 interface TypeComponent {
   data: {
@@ -44,34 +45,46 @@ function Gender({ data, iconStyle }: TypeComponent) {
         console.log("Gender ===> ", err);
       });
   };
+
+  // handle lang
+  const { t, i18n } = useTranslation();
+
+  
   return (
-    <div className={`w-full mt-[24px]`} dir="rtl">
+    <div
+      className={`w-full mt-[24px]`}
+      dir={i18n.language === "ar" ? "rtl" : "ltr"}
+    >
       <div
         className={`flex flex-nowrap items-end justify-start gap-[10px] w-full`}
       >
         <div className="w-full max-w-[448px] ">
           <div className="w-full  flex flex-col gap-[5px]">
-            <h5 className={`text-[#000000] text-[16px] font-medium`}>النوع</h5>
+            <h5 className={`text-[#000000] text-[16px] font-medium`}>
+              {t("النوع")}
+            </h5>
             <select
               style={{
                 boxShadow: "0 4px 4px #005a6c4d",
               }}
               disabled={toggleSave}
               ref={genderRef}
-              dir="rtl"
+              dir={i18n.language === "ar" ? "rtl" : "ltr"}
               id="nationality"
               className={` h-[42px] px-[12px] py-[9px] rounded-[8px]`}
               onChange={(e) => setGenderChange(e.target.value)}
             >
               <option value={gender || ""}>
                 {gender === "male"
-                  ? "ذكر"
+                  ? t("ذكر")
                   : gender === "female"
-                  ? "أنثى"
-                  : "اختر"}
+                  ? t("أنثى")
+                  : t("اختر")}
               </option>
-              {gender !== "male" && <option value={"male"}>ذكر</option>}
-              {gender !== "female" && <option value={"female"}>أنثى</option>}
+              {gender !== "male" && <option value={"male"}>{t("ذكر")}</option>}
+              {gender !== "female" && (
+                <option value={"female"}>{t("أنثى")}</option>
+              )}
             </select>
             {errorGender && (
               <span className={`text-red-500 text-[12px]`}>{errorGender}</span>
@@ -92,7 +105,7 @@ function Gender({ data, iconStyle }: TypeComponent) {
           className="rounded-[16px] w-[48px] h-[48px] bg-[#ffffff99] hover:bg-[#ffffff2c] duration-200"
         >
           {/* passportBeforeChange === `${firstName} ${lastName}` || */}
-          {toggleSave ? iconStyle : "حفظ"}
+          {toggleSave ? iconStyle : t("حفظ")}
         </button>
       </div>
     </div>

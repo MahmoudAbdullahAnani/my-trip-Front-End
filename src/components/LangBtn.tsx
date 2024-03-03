@@ -14,7 +14,7 @@ function LangBtn() {
       className="text-center relative flex justify-center gap-[9px] px-[10px] py-[5px] border-white w-full rounded-[8px] hover:bg-white hover:text-black"
     >
       <span>{toggleOptions ? iconArrowTop : iconArrowDown}</span>
-      <span className={``}>{toggleLang ? "English" : "عربي"}</span>
+      <span className={``}>{localStorage.getItem("lang")==="en" ? "English" : "عربي"}</span>
       <span>{iconLang}</span>
       <div
         className={`${
@@ -25,6 +25,7 @@ function LangBtn() {
           <span
             onClick={() => {
               setToggleLang(!toggleLang);
+              localStorage.setItem("lang", "ar");
               i18n.changeLanguage("ar");
             }}
             className={`cursor-pointer hover:bg-slate-500 w-full px-[10px] py-[10px] rounded-[8px]`}
@@ -36,6 +37,7 @@ function LangBtn() {
           <span
             onClick={() => {
               setToggleLang(!toggleLang);
+              localStorage.setItem("lang", "en");
               i18n.changeLanguage("en");
             }}
             className={`cursor-pointer hover:bg-slate-500 w-full px-[10px] py-[10px] rounded-[8px]`}

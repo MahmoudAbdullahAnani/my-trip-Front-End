@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { reRenderData } from "../../data/RecoilState/Notifications/NotificationsData";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 interface TypeComponent {
   data: {
@@ -49,11 +50,16 @@ function PassportNumber({
       });
   };
   const [errorPassport, setErrorPassport] = useState("");
+
+  // handle lang
+  const { t, i18n } = useTranslation();
+
   return (
-    <div className={`w-full `} dir="rtl">
-      <h2 className={topTitleStyle}>بيانات جواز السفر</h2>
+    <div className={`w-full `} dir={i18n.language === "ar" ? "rtl" : "ltr"}>
+      <h2 className={topTitleStyle}>{t("بيانات جواز السفر")}</h2>
       <h5 className={titleStyle}>
-        يرجي التأكد من بيانات جواز السفر جيداً <br /> رقم جواز السفر
+        {t("يرجي التأكد من بيانات جواز السفر جيداً")} <br />{" "}
+        {t("رقم جواز السفر")}
       </h5>
       <div className={`flex items-start justify-start gap-[10px] w-full`}>
         <div className="w-full max-w-[448px] flex flex-col gap-[5px]">
@@ -66,6 +72,7 @@ function PassportNumber({
               setErrorPassport("");
               setPassportBeforeChange(e.target.value);
             }}
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
             type="text"
             disabled={passportNumberChanges}
             defaultValue={`${passportNumber ? passportNumber : ""}`}
@@ -91,7 +98,7 @@ function PassportNumber({
               passportBeforeChange.length < 6 ||
               passportBeforeChange.length > 15
             ) {
-              return setErrorPassport("يجب ادخال رقم جواز السفر بشكل صحيح");
+              return setErrorPassport(t("يجب ادخال رقم جواز السفر بشكل صحيح"));
             }
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
@@ -102,7 +109,7 @@ function PassportNumber({
           className="rounded-[16px] w-[48px] h-[48px] bg-[#ffffff99] hover:bg-[#ffffff2c] duration-200"
         >
           {/* passportBeforeChange === `${firstName} ${lastName}` || */}
-          {passportNumberChanges ? iconStyle : "حفظ"}
+          {passportNumberChanges ? iconStyle : t("حفظ")}
         </button>
       </div>
     </div>

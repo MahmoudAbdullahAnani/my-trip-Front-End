@@ -1,19 +1,25 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../data/store";
 import { iconBarthDay, iconGender } from "../../assets/icons/home";
+import { useTranslation } from "react-i18next";
 
 function UserInformation() {
   const { avatar, age, email, gender, firstName, lastName } = useSelector(
     (state: RootState) => state.loggedUser
   );
 
+  // handle lang
+  const { t } = useTranslation();
+
   return (
     <div
       className={`w-full h-[250px] bg-cover bg-no-repeat object-fill bg-[url('/public/assets/profile/bg-user-information.png')] flex p-[10px] gap-[14px] sm:gap-[24px] items-start justify-end sm:px-[32px] sm:py-[36px] `}
+      // dir={i18n.language === "ar" ? "rtl" : "ltr"}
+      dir="ltr"
     >
       <div className={`flex flex-col justify-start items-end gap-[18px] `}>
         <h2 className={`text-[#117C99] text-[16px] font-bold `} dir="rtl">
-          مرحباً بك {firstName} {lastName}
+          {t("مرحباً بك")} {firstName} {lastName}
         </h2>
         <h5 className={`text-[#117C99] text-[16px] font-medium`}>{email}</h5>
         <div className="flex flex-row-reverse gap-[26px]">
@@ -28,7 +34,7 @@ function UserInformation() {
           <div
             className={` flex justify-center items-center text-[#117C99] text-[16px] font-medium`}
           >
-            {gender && <span>{gender}</span>}
+            {gender && <span>{t(gender)}</span>}
             {gender && <span>{iconGender}</span>}
           </div>
         </div>

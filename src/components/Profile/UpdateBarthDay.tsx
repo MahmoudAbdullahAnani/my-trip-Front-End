@@ -5,6 +5,7 @@ import axios from "axios";
 import { iconDate } from "../../assets/icons/home";
 import { reRenderData } from "../../data/RecoilState/Notifications/NotificationsData";
 import { useRecoilState } from "recoil";
+import { useTranslation } from "react-i18next";
 interface TypeComponent {
   data: {
     age: number;
@@ -58,10 +59,16 @@ function UpdateBarthDay({
       });
   };
 
+  // handle lang
+  const { t, i18n } = useTranslation();
+
   return (
-    <div className={`w-full my-[16px]`} dir="rtl">
-      <h2 className={topTitleStyle}>التاريخ</h2>
-      <h5 className={titleStyle}>يرجي إدخال تاريخ ميلادك</h5>
+    <div
+      className={`w-full my-[16px]`}
+      dir={i18n.language === "ar" ? "rtl" : "ltr"}
+    >
+      <h2 className={topTitleStyle}>{t("التاريخ")}</h2>
+      <h5 className={titleStyle}>{t("يرجي إدخال تاريخ ميلادك")}</h5>
       <div className={`flex items-start justify-start gap-[10px]  w-full`}>
         <div className="rounded-[16px] w-full max-w-[448px]">
           <div
@@ -81,7 +88,7 @@ function UpdateBarthDay({
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               onChange={(date) => setBarthDayBeforeChange(date)}
-              placeholderText="ادخل تاريخ ميلادك"
+              placeholderText={t("ادخل تاريخ ميلادك")}
               showIcon
               icon={iconDate}
             />
@@ -107,7 +114,7 @@ function UpdateBarthDay({
             const age = differenceInYears(new Date(), birthDate);
 
             if (age < 12) {
-              return setErrorBarthDay("عذرا هذا التاريخ غير صالح");
+              return setErrorBarthDay(t("عذرا هذا التاريخ غير صالح"));
             }
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore

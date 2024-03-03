@@ -12,6 +12,7 @@ import { reRenderData } from "../../data/RecoilState/Notifications/Notifications
 import axios from "axios";
 import TicketLoading from "../loder/TicketLoading";
 import CardPendingFriend from "./CardPendingFriend";
+import { useTranslation } from "react-i18next";
 
 export interface IFriends {
   _id: string;
@@ -73,6 +74,12 @@ function ContainerPendingFriends() {
     getFriends();
   }, [reRebderingFriends]);
 
+
+
+    // handle lang
+  const { t } = useTranslation();
+
+
   if (loading) {
     return (
       <div className={`my-[50px]`}>
@@ -85,7 +92,7 @@ function ContainerPendingFriends() {
     return (
       <div className={`flex flex-col gap-[20px] mt-[80px]`}>
         <h2 className={`text-[#000000] text-[32px] font-bold text-center`}>
-          لا يوجد طلبات صداقة حالياً
+          {t("لا يوجد طلبات صداقة حالياً")}
         </h2>
         <div className={`flex justify-center items-center`}>
           <img

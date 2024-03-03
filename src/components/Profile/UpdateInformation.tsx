@@ -30,7 +30,7 @@ function UpdateInformation() {
       <div
         className={`w-full sm:block hidden max-w-[413px] bg-no-repeat bg-auto bg-[url('/public/assets/profile/catSemLoago.png')]`}
       ></div>
-      <div className={`w-full flex flex-col`}>
+      <div className={`w-full flex flex-col`} >
         {/* Name */}
         <UpdateName
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment

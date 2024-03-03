@@ -6,6 +6,7 @@ import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import ControllerProfile from "../../components/Profile/ControllerProfile";
 import DialogComponent from "../ResetPassword/OAuthNavberDesktop/DialogComponent";
 import { iconSignout } from "../../assets/icons/home";
+import { useTranslation } from "react-i18next";
 function TopHeader() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -15,9 +16,12 @@ function TopHeader() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  // handle lang
+  const { t } = useTranslation();
+
   return (
     <div className={`flex items-center gap-[14px]`}>
-      <h1 className={`text-[32px] font-bold text-[#000]`}>إعدادات المستخدم</h1>
+      <h1 className={`text-[32px] font-bold text-[#000]`}>{t("إعدادات المستخدم")}</h1>
       <div className="block ll:hidden">
         <Button
           id="basic-button"
