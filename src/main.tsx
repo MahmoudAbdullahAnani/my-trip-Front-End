@@ -28,6 +28,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import Footer from "./layout/Footer.js";
+import "./i18n.js";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

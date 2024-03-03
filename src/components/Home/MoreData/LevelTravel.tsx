@@ -13,6 +13,7 @@ import {
   iconChelderin,
   iconDec,
 } from "../../../assets/icons/home";
+import { useTranslation } from "react-i18next";
 
 const iconData = (
   <svg
@@ -134,12 +135,18 @@ function LevelTravel() {
     setLevelTravelData(e.target.value);
   }
 
+  // Lang
+  const { t, i18n } = useTranslation();
+
   return (
     <div className={``}>
       <div className={`flex flex-col gap-[6px]  `}>
         {/* Input Origin Air */}
-        <h4 className={`text-[#000] text-[20px] font-[500] hidden sm:block`}>
-          المسافرين & الدرجة
+        <h4
+          className={`text-[#000] text-[20px] font-[500] hidden sm:block`}
+          dir={i18n.language === "ar" ? "rtl" : "ltr"}
+        >
+          {t("المسافرين & الدرجة")}
         </h4>
         <div
           id="basic-button"
@@ -152,10 +159,13 @@ function LevelTravel() {
           } shadow-[#58a8f752] text-[#117C99] sm:w-[212px] w-[156px] h-[48px] rounded-lg bg-[#FFF] flex justify-start items-center px-[15px] cursor-pointer `}
         >
           {iconData}
-          <div className={`flex gap-[5px]`}>
+          <div
+            className={`flex gap-[5px]`}
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
+          >
             <div className={`ms-[13px]`}>
               <span>{adultsDataState} </span>
-              <span>بالغ</span>
+              <span>{t("بالغ")}</span>
             </div>
             {/* {youthsDataState > 0 && (
               <>
@@ -180,7 +190,7 @@ function LevelTravel() {
                 <span className="sm:block hidden">&</span>
                 <div className={`sm:block hidden`}>
                   <span>
-                    {handleTranslationLevelTravelData(levelTravelDataState)}
+                    {t(handleTranslationLevelTravelData(levelTravelDataState))}
                   </span>
                 </div>
               </>
@@ -230,8 +240,9 @@ function LevelTravel() {
                 <div>
                   <div
                     className={`flex text-[#117C99] text-[14px] gap-[2px] font-medium`}
+                    dir={i18n.language !== "ar" ? "rtl" : "ltr"}
                   >
-                    <span>مسافر</span>
+                    <span>{t("مسافر")}</span>
                     <span dir="" className={``}>
                       {adultsDataState}
                     </span>
@@ -278,8 +289,9 @@ function LevelTravel() {
                 <div>
                   <div
                     className={`flex text-[#117C99] text-[14px] gap-[2px] font-medium`}
+                    dir={i18n.language !== "ar" ? "rtl" : "ltr"}
                   >
-                    <span>طفل</span>
+                    <span>{t("طفل")}</span>
                     <span dir="" className={``}>
                       {youthsDataState}
                     </span>
@@ -329,8 +341,9 @@ function LevelTravel() {
                 <div>
                   <div
                     className={`flex text-[#117C99] text-[14px] gap-[2px] font-medium`}
+                    dir={i18n.language !== "ar" ? "rtl" : "ltr"}
                   >
-                    <span>رضيع</span>
+                    <span>{t("رضيع")}</span>
                     <span dir="" className={``}>
                       {childrenDataState}
                     </span>
@@ -361,24 +374,25 @@ function LevelTravel() {
           {/* </MenuItem> */}
           <hr className={`my-2 w-[90%] mx-auto bg-[#9F9D9D] h-[1px]`} />
           <div
+            dir={i18n.language !== "ar" ? "rtl" : "ltr"}
             className={`flex flex-col-reverse mb-[13px] mx-[20px] gap-[13px] items-end justify-end`}
           >
             <select
               className={`p-2 rounded-[8px] text-[#117C99] border w-[257px] h-[44px] px-[14px]`}
-              dir="rtl"
+              dir={i18n.language === "ar" ? "rtl" : "ltr"}
               onChange={handleChangeLevelTravelData}
               name="levelTravel"
               id="levelTravel"
             >
-              <option value="economy">اقتصادية</option>
-              <option value="tourism">سياحية</option>
-              <option value="business">رجال اعمال</option>
+              <option value="economy">{t("اقتصادية")}</option>
+              <option value="tourism">{t("سياحية")}</option>
+              <option value="business">{t("رجال اعمال")}</option>
             </select>
             <label
               htmlFor="levelTravel"
               className={`text-[14px] font-medium text-[#231F20]`}
             >
-              الدرجة
+              {t("الدرجة")}
             </label>
           </div>
         </Menu>

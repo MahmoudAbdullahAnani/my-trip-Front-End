@@ -17,6 +17,7 @@ import DetailsAirPort from "./DetailsTicket/DetailsAirPort";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TicketId } from "../../../../data/RecoilState/Search/TicketData";
+import { useTranslation } from "react-i18next";
 interface TicketData {
   isMobile?: boolean;
   daysDifference: number;
@@ -149,6 +150,9 @@ function Ticket({
     setTicketIdState(ticketId);
   };
 
+  // Lang
+  const { t } = useTranslation();
+
   // Mobile
   if (isMobile) {
     return (
@@ -170,7 +174,7 @@ function Ticket({
                     view !== "go" ? "bg-[#006c4b]" : "bg-[#006c4c95]"
                   } flex-1 px-2 rounded-lg hover:bg-[#006c4ca4] py-2`}
                 >
-                  رحلة الذهاب{" "}
+                  {t("رحلة الذهاب")}
                 </button>
                 <button
                   onClick={() => setView("return")}
@@ -178,7 +182,7 @@ function Ticket({
                     view !== "return" ? "bg-[#006c4b]" : "bg-[#006c4c95]"
                   } flex-1 px-2 rounded-lg hover:bg-[#006c4ca4] py-2`}
                 >
-                  رحلة العودة
+                  {t("رحلة العودة")}
                 </button>
               </div>
             </div>

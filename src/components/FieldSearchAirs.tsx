@@ -7,6 +7,7 @@ import {
   originSearch,
 } from "../data/RecoilState/FormHandling";
 import { Autocomplete, TextField } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 
@@ -39,13 +40,21 @@ function FieldSearchAirs() {
   // console.log("origin", origin);
   // console.log("destination", destination);
 
+  // Lang
+  const { t , i18n} = useTranslation();
+
   return (
     <div
       className={`flex sm:gap-[24px] gap-[10px] sm:justify-normal justify-center  lg:flex-nowrap flex-wrap`}
     >
       <div className={`peartAutocomplete flex flex-col gap-[6px]`}>
         {/* Input Origin Air */}
-        <h4 className={`text-[#000] text-[20px] font-[500] `}>المغادرة من</h4>
+        <h4
+          className={`text-[#000] text-[20px] font-[500] `}
+          dir={i18n.language !== "ar" ? "rtl" : "ltr"}
+        >
+          {t("المغادرة من")}
+        </h4>
         <Autocomplete
           freeSolo
           disablePortal
@@ -62,7 +71,7 @@ function FieldSearchAirs() {
             <TextField
               {...params}
               className={`outline-none `}
-              placeholder="المغادرة من..."
+              placeholder={t("المغادرة من...")}
               onChange={async (e) => {
                 const dateSearch = await getData(
                   "airportSearch",

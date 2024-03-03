@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 import { dateReturn, typeTravel } from "../../../data/RecoilState/FormHandling";
 import NavTopMobile from "../../../layout/NavTopMobile";
+import { useTranslation } from "react-i18next";
 
 function TypeTravelComponentMobile() {
   // ذهاب فقط ===> true
@@ -8,6 +9,8 @@ function TypeTravelComponentMobile() {
 
   const [, setReturnDate] = useRecoilState(dateReturn);
 
+  // Lang
+  const { t } = useTranslation();
   return (
     <>
       <NavTopMobile />
@@ -31,7 +34,7 @@ function TypeTravelComponentMobile() {
               : "font-[400] text-[#333] "
           }   flex-1 text-center rounded-[60px] flex items-center justify-center cursor-pointer text-[16px] p-[10px] lg:whitespace-nowrap `}
         >
-          <h5>وجهات متعددة</h5>
+          <h5>{t("وجهات متعددة")}</h5>
         </div>
 
         <div
@@ -45,7 +48,7 @@ function TypeTravelComponentMobile() {
               : "font-[400] text-[#333]"
           } flex-1 text-center rounded-[60px] flex items-center justify-center cursor-pointer text-[16px] p-[10px] lg:whitespace-nowrap `}
         >
-          <h5>ذهاب وعودة</h5>
+          <h5>{t("ذهاب وعودة")}</h5>
         </div>
 
         <div
@@ -59,7 +62,7 @@ function TypeTravelComponentMobile() {
               : "font-[400]  text-[#333]"
           }  flex-1 text-center rounded-[60px] flex items-center justify-center cursor-pointer text-[16px] p-[10px] lg:whitespace-nowrap`}
         >
-          <h5>ذهاب فقط</h5>
+          <h5>{t("ذهاب فقط")}</h5>
         </div>
       </div>
     </>

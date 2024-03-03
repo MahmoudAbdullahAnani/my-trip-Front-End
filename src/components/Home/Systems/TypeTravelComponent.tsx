@@ -1,10 +1,15 @@
 import { useRecoilState } from "recoil";
 import { typeTravel } from "../../../data/RecoilState/FormHandling";
+import { useTranslation } from "react-i18next";
 
 function TypeTravelComponent() {
   const [typeTravelState, setTypeTravelRecoilState] =
     useRecoilState(typeTravel);
   // const [typeTravelState, setTypeTravel] = useState("roundTrip");
+
+  // Lang
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="lg:block hidden">
@@ -26,7 +31,7 @@ function TypeTravelComponent() {
               htmlFor="roundTrip"
               className={`radio-label text-[14px] font-[400] text-[#000] cursor-pointer whitespace-nowrap`}
             >
-              ذهاب وعودة
+              {t("ذهاب وعودة")}
             </label>
           </div>
           <div className={`flex gap-[12px]`}>
@@ -44,7 +49,7 @@ function TypeTravelComponent() {
               htmlFor="oneWay"
               className="radio-label text-[14px] font-[400] text-[#000] cursor-pointer whitespace-nowrap"
             >
-              ذهاب فقط
+              {t("ذهاب فقط")}
             </label>
           </div>
           <div className={`flex gap-[12px]`}>
@@ -60,7 +65,7 @@ function TypeTravelComponent() {
               htmlFor="hyper"
               className="radio-label text-[14px] font-[400] text-[#000] cursor-pointer whitespace-nowrap"
             >
-              وجهات متعددة
+              {t("وجهات متعددة")}
             </label>
           </div>
         </form>

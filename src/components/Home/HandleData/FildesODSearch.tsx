@@ -16,6 +16,7 @@ import {
   originSearch,
   toSwitchData,
 } from "../../../data/RecoilState/FormHandling";
+import { useTranslation } from "react-i18next";
 
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
@@ -65,6 +66,9 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
   const refFocus = useRef(null);
   // console.log(refFocus);
 
+  // Lang
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="relative no-scrollbar sm:w-fit w-full">
       <Combobox value={selectedPerson} onChange={setSelectedPerson}>
@@ -74,8 +78,10 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
         >
           <Combobox.Input
             ref={refFocus}
-            dir="rtl"
-            placeholder={typeInput === "from" ? "المغادرة من..." : "الوجهة..."}
+            dir={i18n.language !== "ar" ? "rtl" : "ltr"}
+            placeholder={
+              typeInput === "from" ? t("...المغادرة من") : t("...الوجهة")
+            }
             type={"text"}
             onChange={async (event) => {
               await getData("airportSearch", `term=${event.target.value}`);
@@ -177,7 +183,12 @@ function FildesODSearch({ typeInput = "from" }: { typeInput: string }) {
           }-0  top-[88%] z-40 flex flex-col gap-3 `}
         >
           {filteredPeople.length <= 0 ? (
-            <span className={`w-full sm:w-[188px] `}>لا يوجد نتائج...</span>
+            <span
+              className={`w-full sm:w-[188px] `}
+              dir={i18n.language === "ar" ? "rtl" : "ltr"}
+            >
+              {t("لا يوجد نتائج...")}
+            </span>
           ) : (
             filteredPeople.map(
               (person: {

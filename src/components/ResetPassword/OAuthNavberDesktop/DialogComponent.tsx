@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { userLoggedOut } from "../../../data/Features/LoggedUser";
 import { SignOutState } from "../../../data/RecoilState/AuthStatePages/Auth";
 import Modal from "@mui/material/Modal";
+import { useTranslation } from "react-i18next";
 
 interface ComponentInterface {
   stylesBtn?: string;
@@ -55,12 +56,15 @@ function DialogComponent({ stylesBtn, isMobile, iconOut }: ComponentInterface) {
     navigate("/");
   };
 
+  // Lang
+  const { t, i18n } = useTranslation();
+
   if (isMobile) {
     return (
       <div className={`${pathname === "/" && "hidden"}`}>
         <button onClick={handleMobilClickOpen} className={stylesBtn}>
           <span>{iconOut}</span>
-          <span>تسجيل خروج</span>
+          <span>{t("تسجيل خروج")}</span>
         </button>
         <Modal
           open={signOutState}
@@ -72,15 +76,16 @@ function DialogComponent({ stylesBtn, isMobile, iconOut }: ComponentInterface) {
           <div
             className={`flex flex-col absolute top-[30%] bg-white rounded-[16px] w-[90%] mx-auto left-[50%] translate-x-[-50%] p-5 text-end items-end`}
           >
-            <h2 className={`text-[#000] text-lg`}>هل تريد حقا تسجيل الخروج؟</h2>
+            <h2 className={`text-[#000] text-lg`}>
+              {t("هل تريد حقا تسجيل الخروج؟")}
+            </h2>
             <h4 className={`text-[#00000acb] text-sm`}>
-              {" "}
-              .بمجرد تسجيل الخروج، سيتم إعادة توجيهك إلى الصفحة الرئيسية
+              {t(".بمجرد تسجيل الخروج، سيتم إعادة توجيهك إلى الصفحة الرئيسية")}
             </h4>
             <div className={`flex gap-5`}>
-              <Button onClick={handleNot}>أنا لا أريد</Button>
+              <Button onClick={handleNot}>{t("أنا لا أريد")}</Button>
               <Button onClick={handleYes} autoFocus>
-                نعم
+                {t("نعم")}
               </Button>
             </div>
           </div>
@@ -92,7 +97,7 @@ function DialogComponent({ stylesBtn, isMobile, iconOut }: ComponentInterface) {
     <React.Fragment>
       <button onClick={handleClickOpen} className={stylesBtn}>
         <span>{iconOut}</span>
-        <span>تسجيل خروج</span>
+        <span>{t("تسجيل خروج")}</span>
       </button>
       <Dialog
         open={open}
@@ -100,18 +105,21 @@ function DialogComponent({ stylesBtn, isMobile, iconOut }: ComponentInterface) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle dir="rtl" id="alert-dialog-title">
-          {"هل تريد حقا تسجيل الخروج؟؟"}
+        <DialogTitle
+          dir={i18n.language === "ar" ? "rtl" : "ltr"}
+          id="alert-dialog-title"
+        >
+          {t("هل تريد حقا تسجيل الخروج؟")}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            .بمجرد تسجيل الخروج، سيتم إعادة توجيهك إلى الصفحة الرئيسية
+            {t(".بمجرد تسجيل الخروج، سيتم إعادة توجيهك إلى الصفحة الرئيسية")}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleNot}>أنا لا أريد</Button>
+          <Button onClick={handleNot}>{t("أنا لا أريد")}</Button>
           <Button onClick={handleYes} autoFocus>
-            نعم
+            {t("نعم")}
           </Button>
         </DialogActions>
       </Dialog>

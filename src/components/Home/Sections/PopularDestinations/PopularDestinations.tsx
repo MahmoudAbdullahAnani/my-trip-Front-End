@@ -7,6 +7,7 @@ import { Mousewheel, Pagination, Keyboard } from "swiper/modules";
 import { useRef } from "react";
 import SwiperType from "swiper";
 import { iconLeftSwiper, iconRightSwiper } from "../../../../assets/icons/home";
+import { useTranslation } from "react-i18next";
 
 const data = [
   {
@@ -63,12 +64,23 @@ const data = [
 function PopularDestinations() {
   // console.log(window.innerWidth);
   const swiperRef = useRef<SwiperType | null>(null);
+
+  // Lang
+  const { t, i18n } = useTranslation();
+
   return (
     <section
-      className={`flex flex-col gap-[34px] mt-[107px] lg:pe-[96px] pe-[16px] `}
+      className={`flex flex-col gap-[34px] mt-[107px] ${
+        i18n.language === "ar"
+          ? "lg:pe-[96px] pe-[16px]"
+          : "lg:ps-[96px] ps-[16px]"
+      }  `}
     >
-      <h2 dir="rtl" className={`text-[#000] text-[24px] font-[700] `}>
-        الوجهات الرائجة
+      <h2
+        dir={i18n.language === "ar" ? "rtl" : "ltr"}
+        className={`text-[#000] text-[24px] font-[700] `}
+      >
+        {t("الوجهات الرائجة")}
       </h2>
       <Swiper
         onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -82,7 +94,7 @@ function PopularDestinations() {
         //   distance: 50, // تحديد مسافة البجنيشن هنا
         // }}
         // modules={[Pagination]}
-        dir="rtl"
+        dir={i18n.language === "ar" ? "rtl" : "ltr"}
         className={`mySwiper relative w-full md:h-[337px] sm:h-[200px] `}
         // navigation={true}
         // modules={[Navigation]}

@@ -10,6 +10,7 @@ import { useState } from "react";
 // Date
 import DatePicker from "react-datepicker";
 import { format } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 const iconDate = (
   <svg
@@ -105,17 +106,23 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  // Lang
+  const { t, i18n } = useTranslation();
+
   if (isSearch) {
     return (
       <div
         className={`flex sm:gap-[24px]  gap-[10px] sm:justify-normal justify-center lg:flex-nowrap flex-wrap relative`}
       >
         {typeTravelRecoilState === "roundTrip" && (
-          <div className={`flex flex-col gap-[6px]`}>
+          <div
+            className={`flex flex-col gap-[6px]`}
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
+          >
             <h4
               className={`text-[#000] text-[20px] text-end font-[500] hidden sm:block `}
             >
-              العودة
+              {t("العودة")}
             </h4>
             <DatePicker
               selected={dateReturnStateISO}
@@ -132,7 +139,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
               minDate={startDate === null ? new Date() : startDate}
               showIcon
               icon={iconDate}
-              placeholderText={`تاريخ العودة`}
+              placeholderText={t("تاريخ العودة")}
               // popperPlacement="top"
               dateFormat="dd/MM/yyyy"
               className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
@@ -155,11 +162,14 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             </div> */}
           </div>
         )}
-        <div className={`flex flex-col gap-[6px]`}>
+        <div
+          className={`flex flex-col gap-[6px]`}
+          dir={i18n.language === "ar" ? "rtl" : "ltr"}
+        >
           <h4
             className={`text-[#000] text-end text-[20px] font-[500] hidden sm:block`}
           >
-            الذهاب
+            {t("الذهاب")}
           </h4>
           <DatePicker
             selected={dateGoStateISO}
@@ -177,7 +187,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             endDate={endDate}
             showIcon
             icon={iconDate}
-            placeholderText={`تاريخ الذهاب`}
+            placeholderText={t("تاريخ الذهاب")}
             // popperPlacement="top"
             dateFormat="dd/MM/yyyy"
             className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
@@ -211,9 +221,12 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
     <div
       className={`flex sm:gap-[24px]  gap-[10px] sm:justify-normal justify-center lg:flex-nowrap flex-wrap `}
     >
-      <div className={`flex flex-col gap-[6px]`}>
+      <div
+        className={`flex flex-col gap-[6px]`}
+        dir={i18n.language === "ar" ? "rtl" : "ltr"}
+      >
         <h4 className={`text-[#000] text-[20px] font-[500] hidden sm:block`}>
-          الذهاب
+          {t("الذهاب")}
         </h4>
         <DatePicker
           selected={dateGoStateISO}
@@ -231,7 +244,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
           endDate={endDate}
           showIcon
           icon={iconDate}
-          placeholderText={`تاريخ الذهاب`}
+          placeholderText={t("تاريخ الذهاب")}
           // popperPlacement="top"
           dateFormat="dd/MM/yyyy"
           className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
@@ -254,9 +267,12 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
         </div> */}
       </div>
       {typeTravelRecoilState === "roundTrip" && (
-        <div className={`flex flex-col gap-[6px]`}>
+        <div
+          className={`flex flex-col gap-[6px]`}
+          dir={i18n.language === "ar" ? "rtl" : "ltr"}
+        >
           <h4 className={`text-[#000] text-[20px] font-[500] hidden sm:block `}>
-            العودة
+            {t("العودة")}
           </h4>
           <DatePicker
             selected={dateReturnStateISO}
@@ -273,7 +289,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             minDate={startDate === null ? new Date() : startDate}
             showIcon
             icon={iconDate}
-            placeholderText={`تاريخ العودة`}
+            placeholderText={t("تاريخ العودة")}
             // popperPlacement="top"
             dateFormat="dd/MM/yyyy"
             className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}

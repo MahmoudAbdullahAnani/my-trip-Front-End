@@ -14,6 +14,7 @@ import { useRecoilState } from "recoil";
 import { TypeSystemSearch } from "../data/RecoilState/Search/TypeSystemSearch";
 import { openLoginPageState } from "../data/RecoilState/AuthStatePages/Auth";
 import MainOAuthNavbar from "../components/ResetPassword/OAuthNavberDesktop/MainOAuthNavbar";
+import { useTranslation } from "react-i18next";
 function Navbar() {
   // const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
@@ -27,6 +28,9 @@ function Navbar() {
 
   const [, setOpenPage] = useRecoilState(openLoginPageState);
   const handleOpenPage = () => setOpenPage(true);
+
+  // Lang
+  const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -71,12 +75,12 @@ function Navbar() {
                 style={{ border: "1px solid #F9C534" }}
                 className={` text-[14px] font-[600] text-[#B6E7FB] hover:text-[#b6e7fb7d] w-[188px] h-[34px] rounded-[10px] text-center flex justify-center items-center `}
               >
-                تسجيل الدخول
+                {t("تسجيل الدخول")}
               </button>
             )}
           </div>
           {/* Links */}
-          <div className={`flex  lg:gap-[28px] pt-[32px] gap-[40px]  `}>
+          <div className={`flex  lg:gap-[28px] pt-[32px] gap-[40px]`} dir={i18n.language !== "ar" ? "rtl" : "ltr"}>
             {[
               {
                 id: 4,
@@ -123,7 +127,7 @@ function Navbar() {
                       : "text-[#656565]"
                   } hover:text-[#117C99]  duration-200 `}
                 >
-                  {title}
+                  {t(title)}
                 </Link>
               </div>
             ))}

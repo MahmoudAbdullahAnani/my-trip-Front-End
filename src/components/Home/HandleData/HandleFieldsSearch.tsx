@@ -1,7 +1,11 @@
+import { useTranslation } from "react-i18next";
 import FildesODSearch from "./FildesODSearch";
 import IconSwitchData from "./IconSwitchData";
 
 function HandleFieldsSearch({ isSearch = false }: { isSearch: boolean }) {
+  // Lang
+  const { t, i18n } = useTranslation();
+
   if (isSearch) {
     return (
       <div
@@ -10,8 +14,10 @@ function HandleFieldsSearch({ isSearch = false }: { isSearch: boolean }) {
         <div
           className={`flex flex-col gap-[6.15px] justify-start items-end sm:w-fit w-full`}
         >
-          <h4 className={`text-[#000]  text-[20px] font-[500] hidden sm:block `}>
-            الوجهة{" "}
+          <h4
+            className={`text-[#000]  text-[20px] font-[500] hidden sm:block `}
+          >
+            {t("الوجهة")}
           </h4>
 
           <FildesODSearch typeInput="to" />
@@ -20,8 +26,10 @@ function HandleFieldsSearch({ isSearch = false }: { isSearch: boolean }) {
         <div
           className={`flex flex-col gap-[6.15px] justify-start items-end sm:w-fit w-full`}
         >
-          <h4 className={`text-[#000]  text-[20px] font-[500]  hidden sm:block`}>
-            المغادرة من
+          <h4
+            className={`text-[#000]  text-[20px] font-[500]  hidden sm:block`}
+          >
+            {t("المغادرة من")}
           </h4>
 
           <FildesODSearch typeInput="from" />
@@ -35,9 +43,10 @@ function HandleFieldsSearch({ isSearch = false }: { isSearch: boolean }) {
     >
       <div
         className={`flex flex-col gap-[6.15px] justify-start items-start sm:w-fit w-full`}
+        dir={i18n.language === "ar" ? "rtl" : "ltr"}
       >
         <h4 className={`text-[#000] text-[20px] font-[500]  hidden sm:block`}>
-          المغادرة من
+          {t("المغادرة من")}
         </h4>
 
         <FildesODSearch typeInput="from" />
@@ -45,9 +54,10 @@ function HandleFieldsSearch({ isSearch = false }: { isSearch: boolean }) {
       <IconSwitchData />
       <div
         className={`flex flex-col gap-[6.15px] justify-start items-start sm:w-fit w-full`}
+        dir={i18n.language === "ar" ? "rtl" : "ltr"}
       >
         <h4 className={`text-[#000] text-[20px] font-[500] hidden sm:block `}>
-          الوجهة{" "}
+          {t("الوجهة")}
         </h4>
 
         <FildesODSearch typeInput="to" />

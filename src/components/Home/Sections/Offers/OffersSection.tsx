@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import OfferCard from "./OfferCard";
 
 // Data
@@ -99,12 +100,15 @@ const OffersData = [
   }
 ];
 function OffersSection() {
+  // Lang
+  const { t, i18n } = useTranslation();
+
   return (
     <section
       className={`flex flex-col gap-[34px] px-[16px] lg:px-[96px] mt-[100px]`}
     >
-      <h2 dir="rtl" className={`text-[#000] text-[24px] font-[700] `}>
-        عروض
+      <h2 dir={i18n.language === "ar" ? "rtl" : "ltr"} className={`text-[#000] text-[24px] font-[700] `} >
+        {t("عروض")}
       </h2>
       <div
         className={`grid gap-[16px]  2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 justify-center items-center`}

@@ -21,6 +21,7 @@ import {
   URLPayPalPayment,
   URLVisaPayment,
 } from "../../../../data/RecoilState/Payment/StripeURLsPayment";
+import { useTranslation } from "react-i18next";
 
 // interface
 interface DataCheckoutSession {
@@ -211,6 +212,9 @@ function AirBill({
     }
   }, []);
 
+  // Lang
+  const { t, i18n } = useTranslation();
+
   return (
     <div className={`bg-[#e9e9e9] duration-500 rounded-[16px] `}>
       <button
@@ -221,7 +225,7 @@ function AirBill({
             : "rounded-[16px]"
         }  text-center text-[24px] h-[49px] flex justify-center items-center font-bold bg-[#FFF]  hover:bg-[#ffffff86] duration-500 w-[215px]`}
       >
-        ملخص السعر
+        {t("ملخص السعر")}
       </button>
       <div
         style={{
@@ -231,25 +235,28 @@ function AirBill({
           togglePrice ? "" : "h-[0px] hidden"
         } relative duration-500 ps-[39px] pe-[24px] xl:w-[547px] w-[347px] flex flex-col bg-[#FFF] rounded-[16px] rounded-tr-[0px]`}
       >
-        <div className={`flex flex-col gap-[26px] pt-[129px] `}>
+        <div
+          className={`flex flex-col gap-[26px] pt-[129px] `}
+          dir={i18n.language === "ar" ? "rtl" : "ltr"}
+        >
           <DetailsBill
-            title={`مسافر${adultsDataState}:بالغ`}
+            title={`${t("مسافر")}${adultsDataState}:${t("بالغ")}`}
             content={{
               price: `${priceOfAdults}`,
             }}
           />
           <div className={`flex flex-col gap-[10px]`}>
-            <DetailsBill title={`رسوم اخرى`} content={{ price: `${tex}` }} />
+            <DetailsBill title={t(`رسوم اخرى`)} content={{ price: `${tex}` }} />
             <DetailsBill
-              title={`ضريبة القيمة المضافة %0`}
+              title={t("ضريبة القيمة المضافة %0")}
               content={{ price: `${texAddition}` }}
             />
           </div>
         </div>
         <hr className={`h-[2px] bg-[#4F4F4F] my-[47px]`} />
-        <div>
+        <div dir={i18n.language === "ar" ? "rtl" : "ltr"}>
           <DetailsBill
-            title={`إجمالي السعر`}
+            title={t("إجمالي السعر")}
             content={{ price: `${priceOfTotal}` }}
           />
         </div>

@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
 import { typeSystem } from "../../../data/RecoilState/FormHandling";
+import { useTranslation } from "react-i18next";
 
 const dataSystems = [
   {
@@ -263,7 +264,7 @@ const dataSystems = [
     ),
   },
   {
-    title: "الطياران",
+    title: "الطيران",
 
     name: "air",
     iconActive: (
@@ -305,6 +306,10 @@ const dataSystems = [
 
 function ControlSystems() {
   const [typeSystemState, setTypeSystemState] = useRecoilState(typeSystem);
+
+  // Lang
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <div className={`lg:flex hidden justify-end gap-[24px]  `}>
@@ -323,8 +328,9 @@ function ControlSystems() {
                 ? "text-[#117C99] text-[20px] h-[calc(48px+6px)]  font-[700] rounded-[17px] rounded-b-[0px] border border-[#FFF] border-1 border-b-0"
                 : "text-[#4F4F4F] text-[14px] h-[calc(48px)] font-[600] rounded-[17px] border border-[#FFF] border-1"
             } text-center gap-[10px] w-[146px] bg-[#b6e7fb29] hover:bg-[#b6e7fb48] hover:text-[#117C99]  cursor-pointer flex justify-center items-center `}
+            dir={i18n.language !== "ar" ? "rtl" : "ltr"}
           >
-            {title}
+            {t(title)}
             {typeSystemState === name ? <>{iconActive} </> : <>{icon}</>}
           </div>
         ))}

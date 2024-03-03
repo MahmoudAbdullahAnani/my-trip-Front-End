@@ -20,6 +20,8 @@ import {
 import { useRecoilState } from "recoil";
 import DialogComponent from "../components/ResetPassword/OAuthNavberDesktop/DialogComponent";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import LangBtn from "../components/LangBtn";
 function NavTopMobile() {
   // const [allNotificationsState] = useRecoilState(allNotifications);
   // console.log("allNotificationsState===> ", allNotificationsState);
@@ -39,6 +41,10 @@ function NavTopMobile() {
       setToggle(false);
     }
   }, [openModel]);
+
+  // Lang
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <div className={`lg:hidden flex justify-between  mt-[calc(25px+54px)]`}>
@@ -50,7 +56,7 @@ function NavTopMobile() {
             style={{ border: "1px solid #F9C534" }}
             className={` text-[14px] font-[600] text-[#B6E7FB] hover:text-[#b6e7fb7d] w-[188px] h-[34px] rounded-[10px] text-center flex justify-center items-center `}
           >
-            تسجيل الدخول
+            {t("تسجيل الدخول")}
           </button>
         ) : (
           <MainOAuthNavbar isMobile={true} />
@@ -91,6 +97,7 @@ function NavTopMobile() {
               className={`${
                 toggle ? "block" : "hidden"
               } z-50 top-[30px] -left-36 lg:-left-10  absolute bg-white divide-y rounded-lg shadow`}
+              dir={i18n.language !== "ar" ? "rtl" : "ltr"}
             >
               <div className="px-4 py-3 text-sm text-gray-900 ">
                 <div className="truncate">{stateUserData.email}</div>
@@ -105,7 +112,7 @@ function NavTopMobile() {
                     onClick={() => setToggle(!toggle)}
                     className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
-                    حسابي التعريفي
+                    {t("حسابي التعريفي")}
                   </Link>
                 </li>
                 <li>
@@ -114,7 +121,7 @@ function NavTopMobile() {
                     to={`/profile/friends`}
                     className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
-                    الأصدقاء
+                    {t("الأصدقاء")}
                   </Link>
                 </li>
                 <li>
@@ -123,15 +130,18 @@ function NavTopMobile() {
                     to={`/profile/trips`}
                     className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
-                    رحلتي
+                    {t("رحلتي")}
                   </Link>
+                </li>
+                <li>
+                  <LangBtn />
                 </li>
               </ul>
               <button
                 onClick={handleOpen}
                 className={`w-full text-center p-2 hover:text-red-400`}
               >
-                تسجيل الخروج
+                {t("تسجيل الخروج")}
               </button>
             </div>
           </div>
