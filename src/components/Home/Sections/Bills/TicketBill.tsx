@@ -70,8 +70,8 @@ function TicketBill() {
         </div>
         <div className={`flex flex-col items-end justify-end gap-[16px] `}>
           <h1 className={`text-[#005A6C] text-[30px] font-bold `}>
-            {itineraries[0].segments[1].arrival.iataCode} الي{" "}
-            {itineraries[0].segments[0].departure.iataCode}
+            {itineraries[0].segments[1]?.arrival.iataCode || ""} الي{" "}
+            {itineraries[0].segments[0]?.departure.iataCode || ""}
           </h1>
           <div className={`flex gap-[11px] `}>
             {itineraries[0].segments[0].numberOfStops === 0 && (
