@@ -131,7 +131,7 @@ function VarificationAccount() {
         </div>
         <div
           // handleSubmit(onSubmit)
-          className={`lg:pt-[21px] relative `}
+          className={`lg:pt-[21px] relative lg:w-[45%] w-full`}
         >
           <div className="flex lg:justify-end justify-center w-full">
             <h2

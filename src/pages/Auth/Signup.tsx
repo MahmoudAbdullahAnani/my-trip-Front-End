@@ -369,7 +369,7 @@ function Signup() {
           style={{
             boxShadow: "0 4px 4px rgb(0 0 0 / 25%)",
           }}
-          className={`w-[55%] ps-[69px] pe-[82px] pb-[172px] pt-[55px] lg:flex flex-col items-center gap-[45px] hidden bg-[#FFF] rounded-[16px]`}
+          className={`w-[55%]  ps-[69px] pe-[82px] pb-[172px] pt-[55px] lg:flex flex-col items-center gap-[45px] hidden bg-[#FFF] rounded-[16px]`}
         >
           <div>{iconLogo}</div>
           <div>
@@ -379,7 +379,7 @@ function Signup() {
         <form
           // handleSubmit(onSubmit)
           onSubmit={handleSubmit(onSubmit)}
-          className={`lg:pt-[21px] relative w-full `}
+          className={`lg:pt-[21px] relative lg:w-[45%] w-full `}
         >
           <div className="flex lg:justify-end justify-center w-full mb-[10px]">
             <h2
