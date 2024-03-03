@@ -74,16 +74,20 @@ function AirPay() {
         >
           {data && (
             <AirBill
-              carrierCodeLogo={data.itineraries[0].segments[0].carrierCode}
-              departure={data.itineraries[0].segments[0].departure.iataCode}
-              arrival={data.itineraries[0].segments[1].arrival.iataCode}
+              carrierCodeLogo={
+                data.itineraries[0].segments[0]?.carrierCode || ""
+              }
+              departure={
+                data.itineraries[0].segments[0]?.departure.iataCode || ""
+              }
+              arrival={data.itineraries[0].segments[1]?.arrival.iataCode || ""}
               isPageAirPay={true}
               priceTotal={+data.price.total}
-              timeGo={data.itineraries[0].segments[0].departure.at}
-              timeSet={data.itineraries[0].segments[1].arrival.at}
+              timeGo={data.itineraries[0].segments[0]?.departure.at || ""}
+              timeSet={data.itineraries[0].segments[1]?.arrival.at || ""}
               durationH={durationH}
               durationM={durationM}
-              isStope={data.itineraries[0].segments[0].numberOfStops||0}
+              isStope={data.itineraries[0].segments[0].numberOfStops || 0}
             />
           )}
           <Iusso2 />
