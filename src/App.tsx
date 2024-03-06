@@ -182,6 +182,7 @@ function App() {
     }
     // if get token then fetch to data me
     const token = localStorage.getItem("token") || "";
+    let id = "";
     await axios
       .get(
         import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
@@ -194,6 +195,7 @@ function App() {
         }
       )
       .then(async ({ data }) => {
+        id = data._id;
         dispatch(addUserLogged(data));
         // await getPublicNotifications();
         // await getPrivateNotifications();
@@ -206,16 +208,44 @@ function App() {
         }
       });
     setLoading(false);
+    return id;
+  };
+  const sendCatchData = async (id: string) => {
+    await axios
+      .post(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/catch-data`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/catch-data`,
+        {
+          openWebsite: {
+            user_id: id === "undefined" ? "guest" : id,
+            isGuest: id === "undefined" ? true : false,
+          },
+        }
+      )
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
+      });
     return true;
   };
+
   // const stateUserData = useSelector((state: RootState) => state.loggedUser);
   // console.log(stateUserData);
 
   // const [count, setCount] = useState(0)
 
   useEffect(() => {
-    RunDriver();
-    oncData();
+    const fetchData = async () => {
+      await RunDriver();
+      const id = await oncData();
+      sendCatchData(`${id}`);
+    };
+
+    fetchData();
   }, [reRenderDataApp]);
   // const [dataSearchState] = useRecoilState(dateSearch);
   const [searchFriends, setSearchfriends] = useRecoilState(SearchFriendsState);
