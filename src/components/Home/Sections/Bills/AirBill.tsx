@@ -189,11 +189,49 @@ function AirBill({
       });
   };
 
+  // handle catch data
+  const sendCatchData = async () => {
+    const CompanyLogo = `https://assets.duffel.com/img/airlines/for-light-background/full-color-lockup/${carrierCodeLogo}.svg`;
+    const chooseTicket = {
+      CompanyLogo,
+      isStope: isStope || 0,
+      durationH,
+      durationM,
+      price: totalPriceUSD,
+      timeGo,
+      timeSet,
+    };
+
+    const sessionId = localStorage.getItem("sessionId");
+    await axios
+      .patch(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${
+              import.meta.env.VITE_PUBLIC_API_LOCAL
+            }/catch-data/ticket/${sessionId}`
+          : `${
+              import.meta.env.VITE_PUBLIC_API_PRODUCTION
+            }/catch-data/ticket/${sessionId}`,
+        {
+          chooseTicket: { ...chooseTicket },
+        }
+      )
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
+      });
+    return true;
+  };
+
   const [dataBookingState] = useRecoilState(DataBooking);
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
 
   useEffect(() => {
     if (pathname === "/airPay") {
+      sendCatchData();
       setPriceOfTotal(priceOfTotal);
       createCheckoutSession({
         price: priceOfTotal,

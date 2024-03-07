@@ -16,6 +16,7 @@ function CheckOutTicket({
 }) {
   const [, setTicketIdState] = useRecoilState(TicketId);
   const navigator = useNavigate();
+
   const ChoseTicket = () => {
     navigator("/airData");
     setTicketIdState(ticketId);

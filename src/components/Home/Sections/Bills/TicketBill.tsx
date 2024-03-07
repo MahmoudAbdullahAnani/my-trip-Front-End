@@ -19,6 +19,7 @@ import {
 } from "../../../../data/RecoilState/Search/MainData";
 import { FlightOffer } from "../../../../interface/MainData";
 import { useState } from "react";
+
 function TicketBill() {
   const [ticketIdState] = useRecoilState(TicketId);
 
@@ -49,6 +50,7 @@ function TicketBill() {
     .split("H")[1]
     .split("M")[0];
   const [toggleDetailsData, setToggleDetailsData] = useState(false);
+
   return (
     <div
       style={{

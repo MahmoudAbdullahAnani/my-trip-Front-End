@@ -4,6 +4,8 @@ import {
   dateReturn,
   destinationSearch,
   originSearch,
+  typeSystem,
+  typeTravel,
 } from "../../../data/RecoilState/FormHandling";
 import {
   adultsData,
@@ -16,6 +18,9 @@ import { Link } from "react-router-dom";
 import { ReSearch } from "../../../data/RecoilState/Search/TypeSystemSearch";
 import { LoadingDataSearch } from "../../../data/RecoilState/Search/MainData";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
+// import { useSelector } from "react-redux";
+// import { RootState } from "../../../data/store";
 
 function BtnSearch() {
   const [locationFrom] = useRecoilState(originSearch);
@@ -29,7 +34,49 @@ function BtnSearch() {
   const [reSearchState, setReSearch] = useRecoilState(ReSearch);
   const [, setLoading] = useRecoilState(LoadingDataSearch);
 
-  const handleSearchData = () => {
+  // handle catch data
+  // const stateUserData = useSelector((state: RootState) => state.loggedUser);
+  const [typeSearch] = useRecoilState(typeTravel);
+  const [systemSearch] = useRecoilState(typeSystem);
+
+  // roundTrip, oneWay, hyper
+  const sendCatchData = async () => {
+    const searchData = {
+      systemSearch: systemSearch,
+      typeSearch: typeSearch,
+      fromLocation: locationFrom,
+      toLocation: destinationSearchState,
+      fromDate: dateGoState,
+      toDate: typeSearch !== "oneWay" ? dateReturnState : "",
+      numberAdults: adultsDataState,
+      numberChild: childrenDataState,
+      numberInfant: youthsDataState,
+      typeClass: levelTravelDataState,
+    };
+
+    const sessionId = localStorage.getItem("sessionId");
+    await axios
+      .patch(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/catch-data/search/${sessionId}`
+          : `${
+              import.meta.env.VITE_PUBLIC_API_PRODUCTION
+            }/catch-data/search/${sessionId}`,
+        {
+          search: { ...searchData },
+        }
+      )
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
+      });
+    return true;
+  };
+
+  const handleSearchData = async () => {
     if (!locationFrom || !destinationSearchState) {
       return toast.warn(" يجب اختيار اماكن الذهاب و العودة ", {
         position: "top-right",
@@ -56,18 +103,20 @@ function BtnSearch() {
         transition: Flip,
       });
     }
+
     setReSearch(!reSearchState);
     setLoading(true);
-    console.log({
-      locationFrom,
-      destinationSearchState,
-      dateGoState,
-      dateReturnState,
-      levelTravelDataState,
-      childrenDataState,
-      youthsDataState,
-      adultsDataState,
-    });
+    // console.log({
+    //   locationFrom,
+    //   destinationSearchState,
+    //   dateGoState,
+    //   dateReturnState,
+    //   levelTravelDataState,
+    //   childrenDataState,
+    //   youthsDataState,
+    //   adultsDataState,
+    // });
+    await sendCatchData();
   };
 
   // Lang
@@ -79,6 +128,7 @@ function BtnSearch() {
       to={`${
         !locationFrom || !destinationSearch || !dateGoState ? "/" : "/search"
       }`}
+      // to={"/"}
     >
       <button
         style={{ boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" }}
