@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../data/store";
 import { iconBarthDay, iconGender } from "../../assets/icons/home";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import axios from "axios";
 
 function UserInformation() {
   const { avatar, age, email, gender, firstName, lastName } = useSelector(
@@ -10,6 +12,48 @@ function UserInformation() {
 
   // handle lang
   const { t } = useTranslation();
+  console.log(email);
+
+  const [file, setFile] = useState(avatar);
+
+  // handle upload avatar
+  const uploadImage = async (fileUpload: unknown) => {
+    const token = localStorage.getItem("token") || "";
+    await axios
+      .post(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/upload`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/upload`,
+        {
+          file: fileUpload,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
+      });
+    return true;
+  };
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  async function handleChange(e) {
+    console.log(e.target.files);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    setFile(URL.createObjectURL(e.target.files[0]));
+    await uploadImage(e.target.files[0]);
+  }
 
   return (
     <div
@@ -39,15 +83,27 @@ function UserInformation() {
           </div>
         </div>
       </div>
-      <div className="mt-[50px]">
-        <img
-          className={`w-[71px] h-[81px] rounded-[8px] `}
-          src={
-            avatar ||
-            "https://media.licdn.com/dms/image/D4D03AQHzjiCnOspqrg/profile-displayphoto-shrink_200_200/0/1703883364099?e=1714608000&v=beta&t=d8izU1BFQ91iHgqrzE_YUzT9lCVE1ADtI4f8TF1F93A"
-          }
-          alt={`${firstName}-${lastName}`}
-        />
+      <div className="mt-[50px] w-[80px] h-[80px]">
+        <label className={`cursor-pointer `}>
+          <img
+            src={
+              avatar ||
+              file ||
+              "https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
+            }
+            alt={`${firstName}-${lastName}`}
+            className={`object-contain rounded-[8px]`}
+          />
+          {/* <div className={`text-[#117C99] text-[12px] text-center pt-[1px] relative w-[80px] rounded-b-[8px] bg-slate-200 font-medium`}>{t("اختر صورة")}</div> */}
+          <input
+            onChange={handleChange}
+            className="hidden"
+            type="file"
+            id="avatar"
+            name="avatar"
+            accept=".jpg, .jpeg, .png"
+          />
+        </label>
       </div>
     </div>
   );
