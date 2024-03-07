@@ -12,7 +12,6 @@ function UserInformation() {
 
   // handle lang
   const { t } = useTranslation();
-  console.log(email);
 
   const [file, setFile] = useState(avatar);
 
@@ -34,9 +33,7 @@ function UserInformation() {
           },
         }
       )
-      .then((res) => {
-        console.log(res);
-      })
+      .then(() => {})
       .catch((error) => {
         console.log(error);
         // if (error.response?.data.statusCode === 401) {
