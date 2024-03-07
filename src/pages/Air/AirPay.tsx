@@ -41,7 +41,7 @@ function AirPay() {
 
   useEffect(() => {
     window.scroll(0, 0);
-    if (!ticketIdState) {
+    if (!ticketIdState || !data || data.itineraries.length <= 0) {
       return navigator("/search");
     }
     if (data) {
@@ -50,11 +50,15 @@ function AirPay() {
   }, []);
 
   // Handle Time Range
-  const durationH = data.itineraries[0].duration.split("PT")[1].split("H")[0];
-  const durationM = data.itineraries[0].duration
-    .split("PT")[1]
-    .split("H")[1]
-    .split("M")[0];
+  let durationH = "";
+  let durationM = "";
+  if (data?.itineraries.length || 0 >= 1) {
+    durationH = data.itineraries[0].duration.split("PT")[1].split("H")[0];
+    durationM = data.itineraries[0].duration
+      .split("PT")[1]
+      .split("H")[1]
+      .split("M")[0];
+  }
 
   useEffect(() => {
     window.scroll(0, 0);
