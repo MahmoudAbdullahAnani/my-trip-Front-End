@@ -19,7 +19,7 @@ import {
 } from "../data/RecoilState/AuthStatePages/Auth";
 import { useRecoilState } from "recoil";
 import DialogComponent from "../components/ResetPassword/OAuthNavberDesktop/DialogComponent";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LangBtn from "../components/LangBtn";
 function NavTopMobile() {
@@ -44,23 +44,49 @@ function NavTopMobile() {
 
   // Lang
   const { t, i18n } = useTranslation();
-
+  const { pathname } = useLocation();
   return (
     <>
       <div className={`lg:hidden flex justify-between  mt-[calc(25px+54px)]`}>
         {/* Icon Notifications */}
         {stateUserData._id === "" ? (
-          <button
-            onClick={handleOpenPage}
-            // to={``}
-            style={{ border: "1px solid #F9C534" }}
-            className={` text-[14px] font-[600] text-[#B6E7FB] hover:text-[#b6e7fb7d] w-[188px] h-[34px] rounded-[10px] text-center flex justify-center items-center `}
+          <div
+            className={`flex flex-col gap-[15px] relative bottom-[10px] w-[150px]`}
           >
-            {t("تسجيل الدخول")}
-          </button>
+            <button
+              onClick={handleOpenPage}
+              // to={``}
+              style={{ border: "1px solid #F9C534" }}
+              className={` text-[14px] font-[600] text-[#B6E7FB] hover:text-[#b6e7fb7d] w-full h-[34px] rounded-[10px] text-center flex justify-center items-center `}
+            >
+              {t("تسجيل الدخول")}
+            </button>
+            <div
+              className={`${
+                localStorage.getItem("token") ? "lg:ms-[184px]" : "lg:ms-[84px]"
+              }  border  ${
+                pathname === "/" ? "border-[#FFFFFF]" : "border-[#2e8ca5]"
+              } rounded-[8px] relative bottom-[5px] w-full`}
+            >
+              <LangBtn />
+            </div>
+          </div>
         ) : (
-          <MainOAuthNavbar isMobile={true} />
+          <>
+            <MainOAuthNavbar isMobile={true} />
+          </>
         )}
+        <div
+          className={`${
+            localStorage.getItem("token") ? "lg:ms-[184px]" : "lg:ms-[84px]"
+          }  border  ${
+            pathname === "/" ? "border-[#FFFFFF]" : "border-[#2e8ca5]"
+          } rounded-[8px] ${
+            stateUserData._id === "" && "hidden"
+          } relative bottom-[5px] me-auto max-w-[150px] h-fit`}
+        >
+          <LangBtn />
+        </div>
         {/* Icon User */}
         {toggle && (
           <div
@@ -69,13 +95,13 @@ function NavTopMobile() {
           ></div>
         )}
         {stateUserData._id === "" ? (
-          <>
+          <div className={`flex justify-center gap-[10px]`}>
             <h4 className={`flex gap-[8px] text-[17px] font-[400]`}>
               <span>{iconHi}</span>
               <span>مرحبا بك</span>
             </h4>
             <div className={`rounded-full`}>{iconUser}</div>
-          </>
+          </div>
         ) : (
           <div className="relative">
             <button
@@ -133,9 +159,9 @@ function NavTopMobile() {
                     {t("رحلتي")}
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <LangBtn />
-                </li>
+                </li> */}
               </ul>
               <button
                 onClick={handleOpen}

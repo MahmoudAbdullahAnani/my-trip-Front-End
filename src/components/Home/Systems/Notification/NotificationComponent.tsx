@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { TokenJWT } from "../../../../data/RecoilState/AuthStatePages/Auth";
 import { LoderBtn } from "../../../loder/Loder";
+import { useTranslation } from "react-i18next";
 
 function handleDate(dateString: Date) {
   const date = new Date(dateString);
@@ -17,6 +18,37 @@ function handleDate(dateString: Date) {
   const years = date.getFullYear();
   return `${days}/${months}/${years}`;
 }
+
+export const arabic_letters = [
+  "ا",
+  "ب",
+  "ت",
+  "ث",
+  "ج",
+  "ح",
+  "خ",
+  "د",
+  "ذ",
+  "ر",
+  "ز",
+  "س",
+  "ش",
+  "ص",
+  "ض",
+  "ط",
+  "ظ",
+  "ع",
+  "غ",
+  "ف",
+  "ق",
+  "ك",
+  "ل",
+  "م",
+  "ن",
+  "ه",
+  "و",
+  "ي",
+];
 
 function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
   const [toggle, setToggle] = useState(false);
@@ -56,14 +88,15 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
       })
       .catch((error) => {
         console.log(error);
-        if (error.response?.data.statusCode === 401) {
-          localStorage.removeItem("token");
-        }
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
       });
     // setLoading(false);
     return true;
   };
   const getPrivateNotifications = async () => {
+    
     // if get token then fetch to data me
     await axios
       .get(
@@ -94,9 +127,9 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
       })
       .catch((error) => {
         console.log(error);
-        if (error.response?.data.statusCode === 401) {
-          localStorage.removeItem("token");
-        }
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
       });
     // setLoading(false);
     return true;
@@ -134,8 +167,15 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
   useEffect(() => {
     getPublicNotifications();
     getPrivateNotifications();
+    // if (localStorage.getItem("token")) {
+    // }
   }, []);
-// publicNotifications, privateNotifications, reRenderComponent
+  // publicNotifications, privateNotifications, reRenderComponent
+
+  // handle lang
+
+  const { t, i18n } = useTranslation();
+
   return (
     <div>
       {toggle && (
@@ -150,7 +190,14 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
             {publicNotifications.length + privateNotifications.length}
           </span>
         </div>
-        <div className="p-2">{iconNotificationDesktop}</div>
+        <div
+          style={{
+            background: "rgb(182 231 251 / 30%)",
+          }}
+          className={`p-2 w-[48px] h-[48px] rounded-full flex justify-center items-center border border-white me-2`}
+        >
+          <span>{iconNotificationDesktop}</span>
+        </div>
       </button>
       <div
         id="dropdownAvatarName"
@@ -164,8 +211,20 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
         <ul
           className="py-2 px-2 flex flex-col gap-2 text-sm text-gray-700"
           aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
+          dir={
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            arabic_letters.includes(publicNotifications[0]?.title[0] || "")
+              ? "rtl"
+              : "ltr"
+          }
         >
-          <h2 className={`text-end`}>الاشعارات العامة</h2>
+          <h2
+            dir={i18n.language !== "ar" ? "rtl" : "ltr"}
+            className={`text-end`}
+          >
+            {t("الاشعارات العامة")}
+          </h2>
           {/* title, content, timestamps, */}
           {publicNotifications.length >= 1 ? (
             publicNotifications.map(({ _id, title, content, exDate }) => {
@@ -190,11 +249,19 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
               );
             })
           ) : (
-            <h5 className={`text-center text-slate-500 text-[12px]`}>
-              لا توجد اشعارات حتي الان
+            <h5
+              dir={i18n.language !== "ar" ? "rtl" : "ltr"}
+              className={`text-center text-slate-500 text-[12px]`}
+            >
+              {t("لا توجد اشعارات حتي الان")}
             </h5>
           )}
-          <h2 className={`text-end`}>الاشعارات الخاصة</h2>
+          <h2
+            dir={i18n.language !== "ar" ? "rtl" : "ltr"}
+            className={`text-end`}
+          >
+            {t("الاشعارات الخاصة")}
+          </h2>
           {privateNotifications.length >= 1 ? (
             loading ? (
               <div className={`w-full flex justify-center items-center`}>
@@ -233,8 +300,11 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
               })
             )
           ) : (
-            <h5 className={`text-center text-slate-500 text-[12px]`}>
-              لا توجد اشعارات حتي الان
+            <h5
+              dir={i18n.language !== "ar" ? "rtl" : "ltr"}
+              className={`text-center text-slate-500 text-[12px]`}
+            >
+              {t("لا توجد اشعارات حتي الان")}
             </h5>
           )}
         </ul>

@@ -1847,11 +1847,25 @@ export const iconBackLogin = (
 export const iconNotificationDesktop = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    fill="currentColor"
-    className="text-gray-600 w-6 h-6"
-    viewBox="0 0 16 16"
+    width="20"
+    height="22"
+    viewBox="0 0 20 22"
+    fill="none"
   >
-    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
+    <path
+      d="M4 6.99731C4 5.40602 4.63214 3.87989 5.75736 2.75467C6.88258 1.62946 8.4087 0.997314 10 0.997314C11.5913 0.997314 13.1174 1.62946 14.2426 2.75467C15.3679 3.87989 16 5.40602 16 6.99731C16 13.9973 19 15.9973 19 15.9973H1C1 15.9973 4 13.9973 4 6.99731Z"
+      stroke="#005A6C"
+      strokeWidth="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M8.30005 19.9973C8.46743 20.3018 8.7135 20.5557 9.01254 20.7325C9.31158 20.9094 9.65263 21.0026 10 21.0026C10.3475 21.0026 10.6885 20.9094 10.9876 20.7325C11.2866 20.5557 11.5327 20.3018 11.7 19.9973"
+      stroke="#005A6C"
+      strokeWidth="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
   </svg>
 );
 export const iconNotificationDesktopExit = (
@@ -2243,42 +2257,42 @@ export const iconLang = (
     <path
       d="M5 8L11 14"
       stroke="#117C99"
-      stroke-width="2"
+      strokeWidth="2"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M4 14L10 8L12 5"
       stroke="#117C99"
-      stroke-width="2"
+      strokeWidth="2"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M2 5H14"
       stroke="#117C99"
-      stroke-width="2"
+      strokeWidth="2"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M7 2H8"
       stroke="#117C99"
-      stroke-width="2"
+      strokeWidth="2"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M22 22L17 12L12 22"
       stroke="#117C99"
-      stroke-width="2"
+      strokeWidth="2"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M14 18H20"
       stroke="#117C99"
-      stroke-width="2"
+      strokeWidth="2"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
@@ -2295,21 +2309,21 @@ export const iconBlush = (
     <path
       d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
       stroke="white"
-      stroke-width="2"
+      strokeWidth="2"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M8 12H16"
       stroke="white"
-      stroke-width="2"
+      strokeWidth="2"
       stroke-linecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M12 8V16"
       stroke="white"
-      stroke-width="2"
+      strokeWidth="2"
       stroke-linecap="round"
       stroke-linejoin="round"
     />

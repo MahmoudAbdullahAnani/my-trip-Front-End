@@ -5,7 +5,7 @@ import { useState } from "react";
 import { iconArrowDown, iconArrowTop } from "../../../assets/icons/home";
 import NotificationComponent from "../../Home/Systems/Notification/NotificationComponent";
 import { Link, useLocation } from "react-router-dom";
-import LangBtn from "../../LangBtn";
+// import LangBtn from "../../LangBtn";
 import { useTranslation } from "react-i18next";
 
 function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
@@ -16,7 +16,7 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
   // Lang
   const { t, i18n } = useTranslation();
   return (
-    <>
+    <div className={`flex justify-between `}>
       <div className={``}>
         <NotificationComponent isMobile={isMobile} />
       </div>
@@ -85,9 +85,9 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
                   {t("رحلتي")}
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <LangBtn />
-              </li>
+              </li> */}
             </ul>
             <div className="py-2">
               <DialogComponent
@@ -97,7 +97,7 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

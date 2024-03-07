@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { iconArrowDown, iconArrowTop, iconLang } from "../assets/icons/home";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 function LangBtn() {
   const [toggleLang, setToggleLang] = useState(false);
@@ -8,18 +9,21 @@ function LangBtn() {
 
   const { i18n } = useTranslation();
 
+  const { pathname } = useLocation();
   return (
     <button
       onClick={() => setToggleOptions(!toggleOptions)}
-      className="text-center relative flex justify-center gap-[9px] px-[10px] py-[5px] border-white w-full rounded-[8px] hover:bg-white hover:text-black"
+      className="text-center relative flex justify-center gap-[9px] px-[10px] py-[5px] "
     >
       <span>{toggleOptions ? iconArrowTop : iconArrowDown}</span>
-      <span className={``}>{localStorage.getItem("lang")==="en" ? "English" : "عربي"}</span>
+      <span className={`${pathname !== "/" ? "text-[#2e8ca5]" : "text-white"}`}>
+        {localStorage.getItem("lang") === "en" ? "English" : "عربي"}
+      </span>
       <span>{iconLang}</span>
       <div
         className={`${
           toggleOptions ? "flex" : "hidden"
-        } absolute top-10 bg-slate-400  flex-col  rounded-[8px] w-full`}
+        } absolute top-[35px] bg-slate-400  flex-col  rounded-b-[8px] w-full`}
       >
         {i18n.language !== "ar" && (
           <span
@@ -28,7 +32,7 @@ function LangBtn() {
               localStorage.setItem("lang", "ar");
               i18n.changeLanguage("ar");
             }}
-            className={`cursor-pointer hover:bg-slate-500 w-full px-[10px] py-[10px] rounded-[8px]`}
+            className={`cursor-pointer hover:bg-slate-500 w-full px-[10px] py-[10px] rounded-b-[8px]`}
           >
             عربي
           </span>
@@ -40,7 +44,7 @@ function LangBtn() {
               localStorage.setItem("lang", "en");
               i18n.changeLanguage("en");
             }}
-            className={`cursor-pointer hover:bg-slate-500 w-full px-[10px] py-[10px] rounded-[8px]`}
+            className={`cursor-pointer hover:bg-slate-500 w-full px-[10px] py-[10px] rounded-b-[8px]`}
           >
             English
           </span>

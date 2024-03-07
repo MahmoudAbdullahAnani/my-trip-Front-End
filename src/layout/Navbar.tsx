@@ -15,6 +15,7 @@ import { TypeSystemSearch } from "../data/RecoilState/Search/TypeSystemSearch";
 import { openLoginPageState } from "../data/RecoilState/AuthStatePages/Auth";
 import MainOAuthNavbar from "../components/ResetPassword/OAuthNavberDesktop/MainOAuthNavbar";
 import { useTranslation } from "react-i18next";
+import LangBtn from "../components/LangBtn";
 function Navbar() {
   // const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
@@ -41,7 +42,7 @@ function Navbar() {
         }  w-full top-[-1px]  z-50 `}
       >
         <div
-          className={`lg:flex justify-between ${
+          className={`lg:flex justify-  ${
             pathname !== "/search" &&
             pathname !== "/airData" &&
             pathname !== "/airPay" &&
@@ -52,7 +53,7 @@ function Navbar() {
           } top-0 w-full  p-0 px-[96px] ${
             pathname !== "/search" && scrollY > innerHeight
               ? "backdrop-blur-md"
-              : null
+              : ""
           }  ${
             pathname === "/search" ||
             pathname === "/airData" ||
@@ -69,18 +70,32 @@ function Navbar() {
             {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
               <MainOAuthNavbar />
             ) : (
-              <button
-                onClick={handleOpenPage}
-                // to={``}
-                style={{ border: "1px solid #F9C534" }}
-                className={` text-[14px] font-[600] text-[#B6E7FB] hover:text-[#b6e7fb7d] w-[188px] h-[34px] rounded-[10px] text-center flex justify-center items-center `}
-              >
-                {t("تسجيل الدخول")}
-              </button>
+              <>
+                <button
+                  onClick={handleOpenPage}
+                  // to={``}
+                  style={{ border: "1px solid #F9C534" }}
+                  className={` text-[14px] font-[600] text-[#B6E7FB] hover:text-[#b6e7fb7d] w-[188px] h-[34px] rounded-[10px] text-center flex justify-center items-center `}
+                >
+                  {t("تسجيل الدخول")}
+                </button>
+              </>
             )}
+            <div
+              className={`${
+                localStorage.getItem("token") ? "lg:ms-[184px]" : "lg:ms-[84px]"
+              }  border  ${
+                pathname === "/" ? "border-[#FFFFFF]" : "border-[]"
+              } rounded-[8px] relative bottom-[5px]`}
+            >
+              <LangBtn />
+            </div>
           </div>
           {/* Links */}
-          <div className={`flex  lg:gap-[28px] pt-[32px] gap-[40px]`} dir={i18n.language !== "ar" ? "rtl" : "ltr"}>
+          <div
+            className={`flex mx-auto lg:gap-[28px] pt-[32px] gap-[40px]`}
+            dir={i18n.language !== "ar" ? "rtl" : "ltr"}
+          >
             {[
               {
                 id: 4,
@@ -133,7 +148,7 @@ function Navbar() {
             ))}
           </div>
           {/* Logo */}
-          <Link to={`/`}>
+          <Link className={`ms-auto`} to={`/`}>
             <img
               width={100}
               height={100}
