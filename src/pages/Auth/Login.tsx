@@ -159,7 +159,10 @@ function OAuth() {
 
         setReRenderDataApp(false);
         if (rememberMe) {
-          return setData(response.data.token);
+          // console.log("rememberMe...");
+          setData(response.data.token);
+
+          return true;
         }
       })
       .catch(({ response }) => {
