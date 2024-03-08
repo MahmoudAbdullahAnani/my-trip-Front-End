@@ -209,13 +209,13 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
         id="dropdownAvatarName"
         className={`${toggle ? "block" : "hidden"} z-50  ${
           isMobile ? "top-[110px]" : "top-[60px]"
-        } absolute bg-white divide-y rounded-lg shadow`}
+        } absolute bg-white divide-y rounded-lg shadow left-0`}
       >
         <div className="px-4 py-3 text-sm text-gray-900 ">
           <div className="truncate">{}</div>
         </div>
         <ul
-          className="py-2 px-2 flex flex-col gap-2 text-sm text-gray-700"
+          className={`overflow-y-scroll lg:max-h-[600px] max-h-[300px] py-2 px-2 flex flex-col gap-2 text-sm text-gray-700`}
           aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
           dir={
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
