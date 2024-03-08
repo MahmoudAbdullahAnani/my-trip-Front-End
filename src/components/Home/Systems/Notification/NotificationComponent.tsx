@@ -180,7 +180,6 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
 
   const bodyHight = document.body.scrollHeight;
   const [pendingFriendsState] = useRecoilState(PendingFriends);
-  console.log(pendingFriendsState);
 
   return (
     <div>
@@ -322,7 +321,7 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
               {t("طلبات الصداقة")}
             </h2>
           )}
-          {privateNotifications.length >= 1 ? (
+          {pendingFriendsState.length >= 1 ? (
             loading ? (
               <div className={`w-full flex justify-center items-center`}>
                 <LoderBtn />
