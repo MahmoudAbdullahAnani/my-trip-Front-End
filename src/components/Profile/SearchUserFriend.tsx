@@ -153,7 +153,7 @@ function SearchUserFriend() {
                     <img
                       src={
                         avatar ||
-                        "https://media.licdn.com/dms/image/D4D03AQHzjiCnOspqrg/profile-displayphoto-shrink_200_200/0/1703883364099?e=1714608000&v=beta&t=d8izU1BFQ91iHgqrzE_YUzT9lCVE1ADtI4f8TF1F93A"
+                        "https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
                       }
                       className={`rounded-[50%]`}
                       width={100}
