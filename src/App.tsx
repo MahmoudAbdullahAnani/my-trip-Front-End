@@ -34,7 +34,10 @@ import AirPay from "./pages/Air/AirPay";
 import Profile from "./pages/Profile/Profile";
 import VarificationAccount from "./pages/Auth/VarificationAccount";
 import Friends from "./pages/Profile/Friends";
-import { SearchFriendsState } from "./data/RecoilState/Profile/Friends";
+import {
+  PendingFriends,
+  SearchFriendsState,
+} from "./data/RecoilState/Profile/Friends";
 import TripProfile from "./pages/Profile/TripProfile";
 // import NavTopMobile from "./layout/NavTopMobile";
 
@@ -239,11 +242,35 @@ function App() {
   // console.log(stateUserData);
 
   // const [count, setCount] = useState(0)
-
+  const [, setPendingFriendsState] = useRecoilState(PendingFriends);
+  const getFriends = async () => {
+    const token = localStorage.getItem("token") || "";
+    await axios
+      .get(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/pending-friends`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/pending-friends`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        // console.log("friends ==>", res.data);
+        setPendingFriendsState(res?.data.pendingFriends);
+        // setReRenderDataApp(!reRenderDataApp);
+      })
+      .catch((err) => {
+        // setErrorGender(err);
+        console.log("PendingFriends ===> ", err);
+      });
+  };
   useEffect(() => {
     const fetchData = async () => {
       await RunDriver();
       const id = await oncData();
+      getFriends();
       sendCatchData(`${id}`);
     };
 

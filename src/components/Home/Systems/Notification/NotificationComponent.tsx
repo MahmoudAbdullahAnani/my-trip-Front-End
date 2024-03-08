@@ -10,6 +10,9 @@ import axios from "axios";
 import { TokenJWT } from "../../../../data/RecoilState/AuthStatePages/Auth";
 import { LoderBtn } from "../../../loder/Loder";
 import { useTranslation } from "react-i18next";
+import { PendingFriends } from "../../../../data/RecoilState/Profile/Friends";
+import { IFriends } from "../../../Profile/ContainerFriends";
+import CardPendingFriend from "../../../Profile/CardPendingFriend";
 
 function handleDate(dateString: Date) {
   const date = new Date(dateString);
@@ -96,7 +99,6 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
     return true;
   };
   const getPrivateNotifications = async () => {
-    
     // if get token then fetch to data me
     await axios
       .get(
@@ -176,12 +178,17 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
 
   const { t, i18n } = useTranslation();
 
+  const bodyHight = document.body.scrollHeight;
+  const [pendingFriendsState] = useRecoilState(PendingFriends);
+  console.log(pendingFriendsState);
+
   return (
     <div>
       {toggle && (
         <div
           onClick={() => setToggle(!toggle)}
-          className="bg-[#00000059] w-[100vw] h-[100vh] absolute left-0 top-0 z-30"
+          style={{ height: `${bodyHight}px` }}
+          className={`bg-[#00000059] w-[100%] h-[${bodyHight}px] absolute left-0 top-0 z-30`}
         ></div>
       )}
       <button onClick={() => setToggle(!toggle)} className="relative bottom-2">
@@ -219,43 +226,6 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
               : "ltr"
           }
         >
-          <h2
-            dir={i18n.language !== "ar" ? "rtl" : "ltr"}
-            className={`text-end`}
-          >
-            {t("الاشعارات العامة")}
-          </h2>
-          {/* title, content, timestamps, */}
-          {publicNotifications.length >= 1 ? (
-            publicNotifications.map(({ _id, title, content, exDate }) => {
-              return (
-                <li key={_id}>
-                  <div className="shadow-lg rounded-lg bg-white mx-auto p-4 notification-box">
-                    <div className="text-sm pb-2">
-                      <div className={`flex flex-col `}>
-                        <div className={`text-start`}>
-                          <span>{title}</span>
-                        </div>
-                        <span className={`text-slate-400  text-[10px] `}>
-                          {handleDate(exDate)}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="text-sm text-gray-600 tracking-tight ">
-                      {content}
-                    </div>
-                  </div>
-                </li>
-              );
-            })
-          ) : (
-            <h5
-              dir={i18n.language !== "ar" ? "rtl" : "ltr"}
-              className={`text-center text-slate-500 text-[12px]`}
-            >
-              {t("لا توجد اشعارات حتي الان")}
-            </h5>
-          )}
           <h2
             dir={i18n.language !== "ar" ? "rtl" : "ltr"}
             className={`text-end`}
@@ -306,6 +276,67 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
             >
               {t("لا توجد اشعارات حتي الان")}
             </h5>
+          )}
+          <h2
+            dir={i18n.language !== "ar" ? "rtl" : "ltr"}
+            className={`text-end`}
+          >
+            {t("الاشعارات العامة")}
+          </h2>
+          {/* title, content, timestamps, */}
+          {publicNotifications.length >= 1 ? (
+            publicNotifications.map(({ _id, title, content, exDate }) => {
+              return (
+                <li key={_id}>
+                  <div className="shadow-lg rounded-lg bg-white mx-auto p-4 notification-box">
+                    <div className="text-sm pb-2">
+                      <div className={`flex flex-col `}>
+                        <div className={`text-start`}>
+                          <span>{title}</span>
+                        </div>
+                        <span className={`text-slate-400  text-[10px] `}>
+                          {handleDate(exDate)}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="text-sm text-gray-600 tracking-tight ">
+                      {content}
+                    </div>
+                  </div>
+                </li>
+              );
+            })
+          ) : (
+            <h5
+              dir={i18n.language !== "ar" ? "rtl" : "ltr"}
+              className={`text-center text-slate-500 text-[12px]`}
+            >
+              {t("لا توجد اشعارات حتي الان")}
+            </h5>
+          )}
+          {pendingFriendsState.length >= 1 && (
+            <h2
+              dir={i18n.language !== "ar" ? "rtl" : "ltr"}
+              className={`text-end`}
+            >
+              {t("طلبات الصداقة")}
+            </h2>
+          )}
+          {privateNotifications.length >= 1 ? (
+            loading ? (
+              <div className={`w-full flex justify-center items-center`}>
+                <LoderBtn />
+              </div>
+            ) : (
+              pendingFriendsState.map((items: IFriends) => (
+                <CardPendingFriend
+                  key={`${items._id}-${Math.random()}`}
+                  {...items}
+                />
+              ))
+            )
+          ) : (
+            <></>
           )}
         </ul>
       </div>
