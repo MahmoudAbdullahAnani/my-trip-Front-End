@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import ContainerFriends from "../../components/Profile/ContainerFriends";
-import ContainerPendingFriends from "../../components/Profile/ContainerPendingFriends";
+// import ContainerPendingFriends from "../../components/Profile/ContainerPendingFriends";
 import HeaderProfile from "../../components/Profile/HeaderProfile";
 import SearchUserFriend from "../../components/Profile/SearchUserFriend";
 
@@ -8,7 +8,7 @@ import TopHeader from "../../components/Profile/TopHeader";
 
 function Friends() {
   // handle lang
-  const { t,i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div
@@ -33,12 +33,12 @@ function Friends() {
               </h2>
               <ContainerFriends />
             </div>
-            <div className="mt-[24px]">
+            {/* <div className="mt-[24px]">
               <h2 className="text-[32px] font-bold text-[#000] mb-[24px]">
                 {t("طلبات الصداقة")}
               </h2>
               <ContainerPendingFriends />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
