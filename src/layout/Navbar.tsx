@@ -66,9 +66,11 @@ function Navbar() {
           } `}
         >
           {/* OAuth */}
-          <div className={`flex items-start pt-[32px] text-white`}>
+          <div className={`flex items-center pt-[32px] text-white`}>
             {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
-              <MainOAuthNavbar />
+              <div className={``}>
+                <MainOAuthNavbar />
+              </div>
             ) : (
               <>
                 <button
@@ -83,7 +85,7 @@ function Navbar() {
             )}
             <div
               className={`${
-                localStorage.getItem("token") ? "lg:ms-[184px]" : "lg:ms-[84px]"
+                localStorage.getItem("token") ? "lg:ms-[55px]" : "lg:ms-[84px]"
               }  border  ${
                 pathname === "/" ? "border-[#FFFFFF]" : "border-[]"
               } rounded-[8px] relative bottom-[5px]`}

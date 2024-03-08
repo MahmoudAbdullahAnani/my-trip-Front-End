@@ -7,7 +7,10 @@ import {
 } from "../../../../assets/icons/home";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { TokenJWT } from "../../../../data/RecoilState/AuthStatePages/Auth";
+import {
+  TokenJWT,
+  HolderNotifications,
+} from "../../../../data/RecoilState/AuthStatePages/Auth";
 import { LoderBtn } from "../../../loder/Loder";
 import { useTranslation } from "react-i18next";
 import { PendingFriends } from "../../../../data/RecoilState/Profile/Friends";
@@ -54,7 +57,7 @@ export const arabic_letters = [
 ];
 
 function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useRecoilState(HolderNotifications);
 
   const [loading, setLoading] = useState(false);
   const [reRenderComponent, setReRenderComponent] = useState(true);
@@ -178,38 +181,22 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
 
   const { t, i18n } = useTranslation();
 
-  const bodyHight = document.body.scrollHeight;
   const [pendingFriendsState] = useRecoilState(PendingFriends);
 
   return (
-    <div>
-      {toggle && (
+    <>
+      {/* {toggle && (
         <div
           onClick={() => setToggle(!toggle)}
           style={{ height: `${bodyHight}px` }}
           className={`bg-[#00000059] w-[100%] h-[${bodyHight}px] absolute left-0 top-0 z-30`}
         ></div>
-      )}
-      <button onClick={() => setToggle(!toggle)} className="relative bottom-2">
-        <div className="absolute left-0 top-0 bg-red-500 rounded-full">
-          <span className="text-[12px] text-white p-1">
-            {publicNotifications.length + privateNotifications.length}
-          </span>
-        </div>
-        <div
-          style={{
-            background: "rgb(182 231 251 / 30%)",
-          }}
-          className={`p-2 w-[48px] h-[48px] rounded-full flex justify-center items-center border border-white me-2`}
-        >
-          <span>{iconNotificationDesktop}</span>
-        </div>
-      </button>
+      )} */}
       <div
         id="dropdownAvatarName"
-        className={`${toggle ? "block" : "hidden"} z-50  ${
-          isMobile ? "top-[110px]" : "top-[60px]"
-        } absolute bg-white divide-y rounded-lg shadow lg:left-10 left-0`}
+        className={`${toggle ? "block" : "hidden"}  ${
+          isMobile ? "top-[65px]" : "top-[60px]"
+        } absolute bg-white divide-y rounded-lg shadow lg:left-10 z-30 left-0 w-[60vh]`}
       >
         <div className="px-4 py-3 text-sm text-gray-900 ">
           <div className="truncate">{}</div>
@@ -339,7 +326,27 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
           )}
         </ul>
       </div>
-    </div>
+      <button onClick={() => setToggle(!toggle)} className="relative">
+        <div className="absolute right-0 top-0 bg-red-500 rounded-full">
+          <span className="text-[12px] text-white p-1">
+            {publicNotifications.length + privateNotifications.length}
+          </span>
+        </div>
+        <div
+          style={
+            {
+              // background: "rgb(182 231 251 / 30%)",
+            }
+          }
+          className={`bg-[#e9f7fd] w-[48px] h-[48px] rounded-full flex justify-center items-center`}
+        >
+          <span>{iconNotificationDesktop}</span>
+        </div>
+      </button>
+      {/* <div className=""> */}
+
+      {/* </div> */}
+    </>
   );
 }
 
