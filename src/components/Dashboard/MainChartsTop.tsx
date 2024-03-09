@@ -110,7 +110,6 @@ function MainChartsTop({
   };
   const dataChart = countUsersOnMonths(cashData.data);
   // Handle Data Cashing
-  //   console.log(cashData.count);
   const dataTrips = {
     labels: [
       "January",
@@ -173,7 +172,7 @@ function MainChartsTop({
         </h2>
         <Chart type="doughnut" data={dataUsers} options={optionsUsers} />
       </div>
-      <div className="bg-white p-4 rounded-md  shadow-md col-span-2">
+      <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
         <h2 className="text-lg font-semibold mb-4">Trips</h2>
         <Chart
           type="bar"
@@ -190,7 +189,7 @@ function MainChartsTop({
           // }}
         />
       </div>
-      <div className="bg-white p-4 rounded-md  shadow-md col-span-2">
+      <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
         <h2 className="text-lg font-semibold mb-4">Trips</h2>
         <Chart
           type="bar"
