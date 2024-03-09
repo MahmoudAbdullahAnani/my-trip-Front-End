@@ -7,6 +7,8 @@ import { useTranslation } from "react-i18next";
 import DashboardTrips from "./Air/DashboardTrips";
 import DashboardHotels from "./Hotels/DashboardHotels";
 import DashboardCars from "./Cars/DashboardCars";
+import axios from "axios";
+import MainChartsTop from "../components/Dashboard/MainChartsTop";
 
 function Dashboard() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -21,6 +23,73 @@ function Dashboard() {
   const { t, i18n } = useTranslation();
 
   const [typeDashboardView, setTypeDashboardView] = React.useState("trips");
+
+  const [allUsers, setAllUsers] = React.useState([]);
+  const [allUsersActive, setAllUsersActive] = React.useState([]);
+  const [allUsersUnActive, setAllUsersUnActive] = React.useState([]);
+
+  // Cash-Data
+  const [cashData, setCashData] = React.useState({ data: [], count: 0 });
+
+  const getAllUsers = async () => {
+    const token = localStorage.getItem("token") || "";
+    await axios
+      .get(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/users`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/users`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(({ data }) => {
+        setAllUsers(data);
+        const usersActive = data.filter(
+          ({ active = true }: { active: boolean }) => active === true
+        );
+        setAllUsersActive(usersActive);
+        const usersUnActive = data.filter(
+          ({ active = true }: { active: boolean }) => active === false
+        );
+        setAllUsersUnActive(usersUnActive);
+      })
+      .catch((error) => {
+        console.log(error);
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
+      });
+  };
+  const getCatchData = async () => {
+    const token = localStorage.getItem("token") || "";
+    await axios
+      .get(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/catch-data`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/catch-data`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(({ data }) => {
+        setCashData(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
+      });
+  };
+
+  React.useEffect(() => {
+    getAllUsers();
+    getCatchData();
+  }, []);
 
   return (
     <div className={`lg:mt-[100px] px-[96px] `}>
@@ -95,10 +164,19 @@ function Dashboard() {
           </Menu>
         </div>
       </div>
-
-      {typeDashboardView === "trips" && <DashboardTrips />}
-      {typeDashboardView === "hotels" && <DashboardHotels />}
-      {typeDashboardView === "cars" && <DashboardCars />}
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8">
+        <MainChartsTop
+          allUsers={allUsers}
+          allUsersActive={allUsersActive}
+          allUsersUnActive={allUsersUnActive}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          cashData={cashData}
+        />
+        {typeDashboardView === "trips" && <DashboardTrips />}
+        {typeDashboardView === "hotels" && <DashboardHotels />}
+        {typeDashboardView === "cars" && <DashboardCars />}
+      </div>
     </div>
   );
 }

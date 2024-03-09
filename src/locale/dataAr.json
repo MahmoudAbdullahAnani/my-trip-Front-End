@@ -1,10 +1,22 @@
 {
+  "Total Users": "اجمالي المستخدمين",
+  "Active Users": "اجمالي النشطين",
+  "Inactive Users": "اجمالي الغير النشطين",
+  "Users": "المستخدمين",
+  "Entries every month": "عمليات الدخول في كل شهر",
+
+
+
+
+
+
+
+
+
+
   "trips": "طيران",
   "hotels": "فنادق",
   "cars": "سيارات",
-
-
-
   "Dashboard": "لوحة التحكم",
   "Public Notifications": "الاشعارات العامة",
   "Private Notifications": "الاشعارات الخاصة",

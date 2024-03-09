@@ -1,19 +1,16 @@
 import { Chart } from "react-chartjs-2";
 
+/*
+  allUsers,
+  allUsersActive,
+  allUsersUnActive,
+}: {
+  allUsers: SchemaUser[];
+  allUsersActive: SchemaUser[];
+  allUsersUnActive: SchemaUser[];
+}
+*/
 function DashboardTrips() {
-  const dataUsers = {
-    labels: ["Active Users", "Inactive Users"],
-    datasets: [
-      {
-        data: [15, 5],
-        backgroundColor: ["#36A2EB", "#FF6384"],
-      },
-    ],
-  };
-
-  const optionsUsers = {
-    cutout: "20%",
-  };
   const dataTrips = {
     labels: ["January", "February", "March", "April", "May", "June"],
     datasets: [
@@ -83,11 +80,26 @@ function DashboardTrips() {
     ],
   };
 
+  const dataRevenue = {
+    datasets: [
+      {
+        label: "Dataset 1",
+        data: [
+          { x: 10, y: 20, r: 15 },
+          { x: 15, y: 25, r: 25 },
+          { x: 20, y: 30, r: 10 },
+          { x: 25, y: 35, r: 20 },
+        ],
+        backgroundColor: "#FFCE56",
+      },
+    ],
+  };
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8">
+    <>
       <div className="bg-white p-4 rounded-md shadow-md">
-        <h2 className="text-lg font-semibold mb-4">Users</h2>
-        <Chart type="doughnut" data={dataUsers} options={optionsUsers} />
+        <h2 className="text-lg font-semibold mb-4">line</h2>
+        <Chart type="bubble" data={dataRevenue} />
       </div>
 
       <div className="bg-white p-4 rounded-md shadow-md">
@@ -124,7 +136,7 @@ function DashboardTrips() {
           // options={{ maintainAspectRatio: true }}
         />
       </div>
-    </div>
+    </>
   );
 }
 

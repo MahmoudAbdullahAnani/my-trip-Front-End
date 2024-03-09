@@ -1,4 +1,12 @@
 {
+    "اجمالي المستخدمين": "Total Users",
+    "اجمالي النشطين": "Active Users",
+    "اجمالي الغير النشطين": "Inactive Users",
+"المستخدمين":"Users",
+  "عمليات الدخول في كل شهر":"Entries every month",
+
+
+    
     "طيران": "trips",
     "فنادق": "hotels",
     "سيارات": "cars",
