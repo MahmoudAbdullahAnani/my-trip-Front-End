@@ -26,9 +26,9 @@ function Dashboard() {
     <div className={`lg:mt-[100px] px-[96px] `}>
       <div
         dir={i18n.language === "ar" ? "rtl" : "ltr"}
-        className={`flex items-center gap-[14px]`}
+        className={`flex items-center `}
       >
-        <h1 className={`text-[32px] font-bold text-[#000]`}>
+        <h1 className={`whitespace-nowrap text-[32px] font-bold text-[#000]`}>
           {t("لوحة التحكم")}
           <span className={`text-[16px] `}>{` ${t(typeDashboardView)}`}</span>
         </h1>
