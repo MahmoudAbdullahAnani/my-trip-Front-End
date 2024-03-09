@@ -1,4 +1,10 @@
 {
+  "trips": "طيران",
+  "hotels": "فنادق",
+  "cars": "سيارات",
+
+
+
   "Dashboard": "لوحة التحكم",
   "Public Notifications": "الاشعارات العامة",
   "Private Notifications": "الاشعارات الخاصة",

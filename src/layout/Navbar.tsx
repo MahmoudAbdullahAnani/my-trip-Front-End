@@ -168,7 +168,7 @@ function Navbar() {
         style={{
           boxShadow: "0px 1px 10px 0px rgba(0, 90, 108, 0.30)",
         }}
-        className={`lg:hidden items-center h-[80px] fixed w-full bottom-0 z-50 flex gap-[57px] justify-between bg-[#FFF] ps-[26px] pe-[16px]`}
+        className={`lg:hidden items-center h-[80px] fixed w-full bottom-0 z-50 flex  justify-between bg-[#FFF] ps-[26px] pe-[16px]`}
       >
         {[
           {

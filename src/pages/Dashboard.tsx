@@ -30,7 +30,7 @@ function Dashboard() {
       >
         <h1 className={`text-[32px] font-bold text-[#000]`}>
           {t("لوحة التحكم")}
-          <span className={`text-[16px] `}>{` ${typeDashboardView}`}</span>
+          <span className={`text-[16px] `}>{` ${t(typeDashboardView)}`}</span>
         </h1>
         <div className="">
           <Button
