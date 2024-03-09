@@ -172,6 +172,12 @@ function Navbar() {
       >
         {[
           {
+            id: 4,
+            title: "لوحة التحكم",
+            route: "/dashboard",
+            icon: iconArithmetic,
+          },
+          {
             id: 3,
             title: "حسابي",
             route: "/arithmetic",
@@ -186,7 +192,9 @@ function Navbar() {
             // }}
             className={`flex justify-center ${
               pathname === route && "bg-[#005A6C4D]"
-            } items-center gap-[2px] h-[48px] rounded-[16px] duration-300 px-[10px] py-[16px] text-center`}
+            } items-center gap-[2px] h-[48px] rounded-[16px] duration-300 px-[10px] py-[16px] text-center ${
+              stateUserData.role !== "user" && "hidden"
+            }`}
             to={`${route}`}
             key={`${id}----${Math.random()}`}
           >

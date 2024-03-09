@@ -9,7 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import { driver } from "driver.js";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { RootState } from "./data/store";
 import ForgotPassword from "./components/ResetPassword/ForgotPassword";
 import VerifyCode from "./components/ResetPassword/VerifyCode";
@@ -39,6 +39,8 @@ import {
   SearchFriendsState,
 } from "./data/RecoilState/Profile/Friends";
 import TripProfile from "./pages/Profile/TripProfile";
+import Dashboard from "./pages/Dashboard";
+import { RootState } from "./data/store";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -238,7 +240,7 @@ function App() {
     return true;
   };
 
-  // const stateUserData = useSelector((state: RootState) => state.loggedUser);
+  const stateUserData = useSelector((state: RootState) => state.loggedUser);
   // console.log(stateUserData);
 
   // const [count, setCount] = useState(0)
@@ -298,8 +300,6 @@ function App() {
         ></div>
       )}
 
-
-
       {/* OAuth */}
       <Login />
       <Signup />
@@ -311,6 +311,9 @@ function App() {
       <Routes>
         <Route path="/*" element={<For04 />} />
         <Route path="/" element={<Home />} />
+        {stateUserData.role !== "user" && (
+          <Route path="/dashboard" element={<Dashboard />} />
+        )}
         <Route path="/search" element={<Search />} />
         <Route path="/airData" element={<AirData />} />
         <Route path="/airPay" element={<AirPay />} />

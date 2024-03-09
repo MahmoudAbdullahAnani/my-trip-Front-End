@@ -30,6 +30,10 @@ import "swiper/css/scrollbar";
 import Footer from "./layout/Footer.js";
 import "./i18n.js";
 
+import "chart.js/auto";
+// import "react-chartjs-2/dist/react-chartjs-2.css";
+
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>

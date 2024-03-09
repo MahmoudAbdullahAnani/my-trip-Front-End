@@ -97,6 +97,17 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
                   {t("رحلتي")}
                 </Link>
               </li>
+              {stateUserData.role !== "user" && (
+                <li>
+                  <Link
+                    onClick={() => setToggle(!toggle)}
+                    to={"/dashboard"}
+                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    {t("لوحة التحكم")}
+                  </Link>
+                </li>
+              )}
               {/* <li>
                 <LangBtn />
               </li> */}

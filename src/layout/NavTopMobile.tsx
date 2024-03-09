@@ -160,9 +160,6 @@ function NavTopMobile() {
                     {t("رحلتي")}
                   </Link>
                 </li>
-                {/* <li>
-                  <LangBtn />
-                </li> */}
               </ul>
               <button
                 onClick={handleOpen}

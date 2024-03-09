@@ -196,7 +196,7 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
         id="dropdownAvatarName"
         className={`${toggle ? "block" : "hidden"}  ${
           isMobile ? "top-[65px]" : "top-[60px]"
-        } absolute bg-white divide-y rounded-lg shadow lg:left-10 z-30 left-0 w-[50vh] lg:w-[60vh]`}
+        } absolute bg-white divide-y rounded-lg shadow lg:left-10 z-30 left-0 w-[300px] lg:w-[60vh]`}
       >
         <div className="px-4 py-3 text-sm text-gray-900 ">
           <div className="truncate">{}</div>
