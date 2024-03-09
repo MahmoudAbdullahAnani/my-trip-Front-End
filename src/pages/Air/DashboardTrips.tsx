@@ -43,15 +43,21 @@ function DashboardTrips() {
       },
     },
   };
- const dataExpenses = {
-   labels: ["Food", "Rent", "Utilities", "Entertainment", "Others"],
-   datasets: [
-     {
-       data: [300, 800, 200, 150, 100],
-       backgroundColor: ["#FFCE56", "#36A2EB", "#FF6384", "#4BC0C0", "#9966FF"],
-     },
-   ],
- };
+  const dataExpenses = {
+    labels: ["Food", "Rent", "Utilities", "Entertainment", "Others"],
+    datasets: [
+      {
+        data: [300, 800, 200, 150, 100],
+        backgroundColor: [
+          "#FFCE56",
+          "#36A2EB",
+          "#FF6384",
+          "#4BC0C0",
+          "#9966FF",
+        ],
+      },
+    ],
+  };
   const dataComparison = {
     datasets: [
       {
@@ -77,19 +83,6 @@ function DashboardTrips() {
     ],
   };
 
-  const optionsComparison = {
-    scales: {
-      x: {
-        type: "linear",
-        position: "bottom",
-      },
-      y: {
-        type: "linear",
-        position: "left",
-      },
-    },
-  };
-
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8">
       <div className="bg-white p-4 rounded-md shadow-md">
@@ -102,7 +95,7 @@ function DashboardTrips() {
         <Chart
           type="scatter"
           data={dataComparison}
-          options={optionsComparison}
+          // options={optionsComparison}
         />
       </div>
 
