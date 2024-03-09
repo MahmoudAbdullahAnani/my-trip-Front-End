@@ -82,6 +82,7 @@ function countUsersOnMonths(data: []) {
   };
 }
 
+
 function MainChartsTop({
   allUsers,
   allUsersActive,
@@ -160,7 +161,7 @@ function MainChartsTop({
       },
     ],
   };
-
+ 
   return (
     <>
       <div className="bg-white p-4 rounded-md shadow-md">
@@ -189,23 +190,8 @@ function MainChartsTop({
           // }}
         />
       </div>
-      <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
-        <h2 className="text-lg font-semibold mb-4">Trips</h2>
-        <Chart
-          type="bar"
-          data={dataTrips}
-          // height={100}
-          className=" "
-          // options={{
-          //   scales: {
-          //     y: {
-          //       suggestedMin: 1,
-          //       suggestedMax: 600,
-          //     },
-          //   },
-          // }}
-        />
-      </div>
+     
+      
     </>
   );
 }

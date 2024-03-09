@@ -92,7 +92,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className={`lg:mt-[100px] lg:px-[96px] px-[10px] `}>
+    <div className={`lg:my-[100px] lg:px-[96px] px-[10px] `}>
       <div
         dir={i18n.language === "ar" ? "rtl" : "ltr"}
         className={`flex items-center `}
@@ -164,7 +164,7 @@ function Dashboard() {
           </Menu>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 mt-[20px]">
         <MainChartsTop
           allUsers={allUsers}
           allUsersActive={allUsersActive}
@@ -173,7 +173,13 @@ function Dashboard() {
           // @ts-ignore
           cashData={cashData}
         />
-        {typeDashboardView === "trips" && <DashboardTrips />}
+        {typeDashboardView === "trips" && (
+          <DashboardTrips
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            cashData={cashData}
+          />
+        )}
         {typeDashboardView === "hotels" && <DashboardHotels />}
         {typeDashboardView === "cars" && <DashboardCars />}
       </div>
