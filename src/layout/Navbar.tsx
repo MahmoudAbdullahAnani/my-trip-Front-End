@@ -46,6 +46,7 @@ function Navbar() {
             pathname !== "/search" &&
             pathname !== "/airData" &&
             pathname !== "/airPay" &&
+            pathname !== "/dashboard" &&
             pathname !== "/profile/friends" &&
             pathname !== "/profile"
               ? "fixed"
@@ -60,6 +61,7 @@ function Navbar() {
             pathname === "/airPay" ||
             pathname === "/profile/friends" ||
             pathname === "/profile" ||
+            pathname === "/dashboard" ||
             pathname === "/profile/trips"
               ? "bg-[#FFF] border border-x-0 border-t-0 shadow-sm shadow-[#656565]"
               : ""
@@ -125,6 +127,7 @@ function Navbar() {
                   to={href}
                   id={driver}
                   className={`text-[18px] font-[600] whitespace-nowrap  ${
+                    pathname !== "/dashboard" &&
                     pathname !== "/search" &&
                     pathname !== "/airData" &&
                     pathname !== "/airPay" &&
@@ -193,7 +196,7 @@ function Navbar() {
             className={`flex justify-center ${
               pathname === route && "bg-[#005A6C4D]"
             } items-center gap-[2px] h-[48px] rounded-[16px] duration-300 px-[10px] py-[16px] text-center ${
-              stateUserData.role === "user"&&id===4 && "hidden"
+              stateUserData.role === "user" && id === 4 && "hidden"
             }`}
             to={`${route}`}
             key={`${id}----${Math.random()}`}

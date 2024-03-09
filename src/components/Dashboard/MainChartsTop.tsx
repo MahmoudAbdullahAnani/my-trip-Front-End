@@ -1,18 +1,22 @@
 import { useTranslation } from "react-i18next";
 import { SchemaUser } from "../../pages/Auth/Login";
 import { Chart } from "react-chartjs-2";
-
-/*
- {
-      openWebsite: { user_id: '65e18dcd097330f55e64a8e6', isGuest: false },
-      _id: '65eaf8d95dffd96c107fcf99',
-      search: [],
-      chooseTicket: [],
-      createdAt: '2024-03-08T11:39:05.577Z',
-      updatedAt: '2024-03-08T11:39:05.577Z',
-      __v: 0
-    }
-*/
+import { useRecoilState } from "recoil";
+import axios from "axios";
+import { TokenJWT } from "../../data/RecoilState/AuthStatePages/Auth";
+import { useEffect, useState } from "react";
+import { arabic_letters } from "../Home/Systems/Notification/NotificationComponent";
+import DeleteIcon from "@mui/icons-material/Delete";
+import UpdateIcon from "@mui/icons-material/Update";
+import { Bounce, toast } from "react-toastify";
+import UpdatePublicNotification from "./UpdatePublicNotification";
+import {
+  ReRenderNotificationData,
+  UpdatePublicNotificationContentData,
+  UpdatePublicNotificationExDateData,
+  UpdatePublicNotificationTitleData,
+  UpdatePublicNotification_idData,
+} from "../../data/RecoilState/Notifications/NotificationsData";
 function countUsersOnMonths(data: []) {
   let countJanuary = 0;
   let countFebruary = 0;
@@ -82,8 +86,8 @@ function countUsersOnMonths(data: []) {
   };
 }
 
-
 function MainChartsTop({
+  children,
   allUsers,
   allUsersActive,
   allUsersUnActive,
@@ -93,10 +97,14 @@ function MainChartsTop({
   allUsersActive: SchemaUser[];
   allUsersUnActive: SchemaUser[];
   cashData: { data: []; count: number };
+  children: React.ReactNode;
 }) {
   // Lang
   const { t, i18n } = useTranslation();
 
+  const [reRenderComponent, setReRenderComponent] = useRecoilState(
+    ReRenderNotificationData
+  );
   const dataUsers = {
     labels: [t("Total Users"), t("Active Users"), t("Inactive Users")],
     datasets: [
@@ -161,7 +169,114 @@ function MainChartsTop({
       },
     ],
   };
- 
+  // Handle Notifications
+  const [publicNotifications, setPublicNotifications] = useState([]);
+  const [tokenJWT] = useRecoilState(TokenJWT);
+
+  const token = localStorage.getItem("token") || tokenJWT || "";
+
+  const getPublicNotifications = async () => {
+    // if get token then fetch to data me
+    await axios
+      .get(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/public/notifications`
+          : `${
+              import.meta.env.VITE_PUBLIC_API_PRODUCTION
+            }/public/notifications`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(async ({ data }) => {
+        setPublicNotifications(
+          data?.AllNotifications.filter(
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            ({ exDate }: { exDate: string }) =>
+              exDate !== "" && exDate > new Date().toISOString()
+          )
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
+      });
+    // setLoading(false);
+    return true;
+  };
+
+  const deletePublicNotification = async (_id: string) => {
+    // if get token then fetch to data me
+    await axios
+      .delete(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${
+              import.meta.env.VITE_PUBLIC_API_LOCAL
+            }/public/notifications/${_id}`
+          : `${
+              import.meta.env.VITE_PUBLIC_API_PRODUCTION
+            }/public/notifications/${_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(async () => {
+        setReRenderComponent(!reRenderComponent);
+        toast.success(t("تم الحذف"), {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
+      });
+    // setLoading(false);
+    return true;
+  };
+  const [, setUpdatePublicNotificationTitle] = useRecoilState(
+    UpdatePublicNotificationTitleData
+  );
+  const [, setUpdatePublicNotificationContent] = useRecoilState(
+    UpdatePublicNotificationContentData
+  );
+  const [, setUpdatePublicNotificationExDate] = useRecoilState(
+    UpdatePublicNotificationExDateData
+  );
+  const [, UpdatePublicNotification_id] = useRecoilState(
+    UpdatePublicNotification_idData
+  );
+  const updatePublicNotification = (
+    _id: string,
+    title: string,
+    content: string,
+    exDate: Date
+  ) => {
+    setUpdatePublicNotificationTitle(title);
+    setUpdatePublicNotificationContent(content);
+    UpdatePublicNotification_id(_id);
+    setUpdatePublicNotificationExDate(new Date(exDate));
+  };
+  useEffect(() => {
+    getPublicNotifications();
+  }, [reRenderComponent]);
+
   return (
     <>
       <div className="bg-white p-4 rounded-md shadow-md">
@@ -174,7 +289,12 @@ function MainChartsTop({
         <Chart type="doughnut" data={dataUsers} options={optionsUsers} />
       </div>
       <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
-        <h2 className="text-lg font-semibold mb-4">Trips</h2>
+        <h2
+          dir={i18n.language === "ar" ? "rtl" : "ltr"}
+          className="text-lg font-semibold mb-4"
+        >
+          {t("الدخول الي النظام")}
+        </h2>
         <Chart
           type="bar"
           data={dataTrips}
@@ -190,8 +310,82 @@ function MainChartsTop({
           // }}
         />
       </div>
-     
-      
+      {children}
+      <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
+        <h2
+          dir={i18n.language === "ar" ? "rtl" : "ltr"}
+          className="text-lg font-semibold mb-4"
+        >
+          {t("Public Notifications")}
+        </h2>
+        <div
+          dir={
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            arabic_letters.includes(publicNotifications[0]?.title[0] || "")
+              ? "rtl"
+              : "ltr"
+          }
+          className={`flex lg:flex-row flex-col gap-[15px]`}
+        >
+          <div className={`w-[60%] block lg:hidden`}>
+            <UpdatePublicNotification />
+          </div>
+
+          <div className={`flex flex-col gap-[15px]`}>
+            {publicNotifications?.map(
+              ({ _id, title, content, exDate, createdAt }) => {
+                const exDateFormat = new Date(exDate).toLocaleDateString(
+                  "en-GB"
+                );
+                return (
+                  <div key={`${_id}--${Math.random()}--${createdAt}`}>
+                    <div className={`flex items-center `}>
+                      <h3 className={"font-bold text-[20px]"}>{title}</h3>
+                      <div className={`flex items-center`}>
+                        <button
+                          className={`text-red-500 hover:bg-red-100 p-2 rounded-lg`}
+                          onClick={() => deletePublicNotification(_id)}
+                        >
+                          <DeleteIcon />
+                        </button>
+                        <button
+                          className={`text-blue-500 hover:bg-blue-100 p-2 rounded-lg`}
+                          onClick={() =>
+                            updatePublicNotification(
+                              _id,
+                              title,
+                              content,
+                              exDate
+                            )
+                          }
+                        >
+                          <UpdateIcon />
+                        </button>
+                        <span>
+                          {t("تنتهي في ")} {exDateFormat}
+                        </span>
+                      </div>
+                    </div>
+                    <h6>{content}</h6>
+                  </div>
+                );
+              }
+            )}
+          </div>
+          <div className={`w-[60%] lg:block hidden`}>
+            <UpdatePublicNotification />
+          </div>
+        </div>
+      </div>
+      <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
+        <h2
+          dir={i18n.language === "ar" ? "rtl" : "ltr"}
+          className="text-lg font-semibold mb-4"
+        >
+          {t("Private Notifications")}
+        </h2>
+      </div>
     </>
   );
 }

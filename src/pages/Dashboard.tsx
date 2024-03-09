@@ -92,7 +92,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className={`lg:my-[100px] lg:px-[96px] px-[10px] `}>
+    <div className={`lg:my-[20px] lg:px-[96px] px-[10px] `}>
       <div
         dir={i18n.language === "ar" ? "rtl" : "ltr"}
         className={`flex items-center `}
@@ -172,16 +172,17 @@ function Dashboard() {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           cashData={cashData}
-        />
-        {typeDashboardView === "trips" && (
-          <DashboardTrips
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            cashData={cashData}
-          />
-        )}
-        {typeDashboardView === "hotels" && <DashboardHotels />}
-        {typeDashboardView === "cars" && <DashboardCars />}
+        >
+          {typeDashboardView === "trips" && (
+            <DashboardTrips
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              cashData={cashData}
+            />
+          )}
+          {typeDashboardView === "hotels" && <DashboardHotels />}
+          {typeDashboardView === "cars" && <DashboardCars />}
+        </MainChartsTop>
       </div>
     </div>
   );

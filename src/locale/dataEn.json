@@ -1,4 +1,13 @@
 {
+  "هذا الاشعار موجود بالفعل": "notification already exist",
+  "إنشاء إشعار": "Create Notification",
+  "تاريخ الانتهاء هذا الاشعار": "The expiration date of this notice",
+  "تم الحذف": "Deleted successfully",
+  "تم التعديل": "Modified successfully",
+  "تحديث": "Update",
+  "محتوى الموضوع": "content",
+  "عنوان الموضوع": "Subject",
+  "الدخول الي النظام": "Login to the system",
   "بحث عن رحلات": "Search for flights",
   "اختيار تذكرة": "Choose a ticket",
   "اجمالي المستخدمين": "Total Users",
