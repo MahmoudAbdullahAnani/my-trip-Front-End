@@ -1856,14 +1856,14 @@ export const iconNotificationDesktop = (
       d="M4 6.99731C4 5.40602 4.63214 3.87989 5.75736 2.75467C6.88258 1.62946 8.4087 0.997314 10 0.997314C11.5913 0.997314 13.1174 1.62946 14.2426 2.75467C15.3679 3.87989 16 5.40602 16 6.99731C16 13.9973 19 15.9973 19 15.9973H1C1 15.9973 4 13.9973 4 6.99731Z"
       stroke="#005A6C"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M8.30005 19.9973C8.46743 20.3018 8.7135 20.5557 9.01254 20.7325C9.31158 20.9094 9.65263 21.0026 10 21.0026C10.3475 21.0026 10.6885 20.9094 10.9876 20.7325C11.2866 20.5557 11.5327 20.3018 11.7 19.9973"
       stroke="#005A6C"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
   </svg>
@@ -2258,42 +2258,42 @@ export const iconLang = (
       d="M5 8L11 14"
       stroke="#117C99"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M4 14L10 8L12 5"
       stroke="#117C99"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M2 5H14"
       stroke="#117C99"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M7 2H8"
       stroke="#117C99"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M22 22L17 12L12 22"
       stroke="#117C99"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M14 18H20"
       stroke="#117C99"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
   </svg>
@@ -2310,21 +2310,21 @@ export const iconBlush = (
       d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
       stroke="white"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M8 12H16"
       stroke="white"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
     <path
       d="M12 8V16"
       stroke="white"
       strokeWidth="2"
-      stroke-linecap="round"
+      strokeLinecap="round"
       stroke-linejoin="round"
     />
   </svg>

@@ -37,6 +37,7 @@ import Friends from "./pages/Profile/Friends";
 import {
   PendingFriends,
   SearchFriendsState,
+  SearchUsers,
 } from "./data/RecoilState/Profile/Friends";
 import TripProfile from "./pages/Profile/TripProfile";
 import Dashboard from "./pages/Dashboard";
@@ -280,6 +281,7 @@ function App() {
   }, [reRenderDataApp]);
   // const [dataSearchState] = useRecoilState(dateSearch);
   const [searchFriends, setSearchfriends] = useRecoilState(SearchFriendsState);
+  const [searchUsersState, setSearchUsersState] = useRecoilState(SearchUsers);
 
   if (loading) {
     return (
@@ -296,7 +298,15 @@ function App() {
       {searchFriends.count > 0 && (
         <div
           onClick={() => setSearchfriends({ friends: [], count: 0 })}
-          className={`absolute h-[${document.body.scrollHeight}px] h-[1000vh] w-full bg-[#00000070]`}
+          style={{ height: `${document.body.scrollHeight}px` }}
+          className={`absolute w-full bg-[#00000070]`}
+        ></div>
+      )}
+      {searchUsersState.length > 0 && (
+        <div
+          onClick={() => setSearchUsersState([])}
+          style={{ height: `${document.body.scrollHeight - 100}px` }}
+          className={`absolute w-full bg-[#00000070]`}
         ></div>
       )}
 

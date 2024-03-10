@@ -53,18 +53,18 @@ function NavTopMobile() {
 
   return (
     <>
+    {toggleNotification && (
+      <div
+        onClick={() => setToggleNotification(!toggleNotification)}
+        style={{ height: `${bodyHight}px` }}
+        className={`bg-[#00000059] overflow-hidden w-full h-[100%] absolute left-0 top-0 z-30`}
+      ></div>
+    )}
       <div className={`lg:hidden flex justify-between  mt-[calc(25px+54px)]`}>
         {/* Icon User */}
         {toggle && (
           <div
             onClick={() => setToggle(!toggle)}
-            style={{ height: `${bodyHight}px` }}
-            className={`bg-[#00000059] overflow-hidden w-full h-[100vh] absolute left-0 top-0 z-30`}
-          ></div>
-        )}
-        {toggleNotification && (
-          <div
-            onClick={() => setToggleNotification(!toggleNotification)}
             style={{ height: `${bodyHight}px` }}
             className={`bg-[#00000059] overflow-hidden w-full h-[100vh] absolute left-0 top-0 z-30`}
           ></div>

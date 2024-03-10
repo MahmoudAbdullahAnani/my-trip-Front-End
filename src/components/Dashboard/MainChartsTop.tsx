@@ -11,12 +11,15 @@ import UpdateIcon from "@mui/icons-material/Update";
 import { Bounce, toast } from "react-toastify";
 import UpdatePublicNotification from "./UpdatePublicNotification";
 import {
+  DataOfUserSearchPrivateNotifications,
   ReRenderNotificationData,
   UpdatePublicNotificationContentData,
   UpdatePublicNotificationExDateData,
   UpdatePublicNotificationTitleData,
   UpdatePublicNotification_idData,
 } from "../../data/RecoilState/Notifications/NotificationsData";
+import UpdatePrivateNotification from "./UpdatePrivateNotification";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 function countUsersOnMonths(data: []) {
   let countJanuary = 0;
   let countFebruary = 0;
@@ -273,6 +276,11 @@ function MainChartsTop({
     UpdatePublicNotification_id(_id);
     setUpdatePublicNotificationExDate(new Date(exDate));
   };
+
+  const [
+    dataOfUserSearchPrivateNotificationsState,
+    setDataOfUserSearchPrivateNotificationsState,
+  ] = useRecoilState(DataOfUserSearchPrivateNotifications);
   useEffect(() => {
     getPublicNotifications();
   }, [reRenderComponent]);
@@ -379,12 +387,36 @@ function MainChartsTop({
         </div>
       </div>
       <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
-        <h2
+        <div
           dir={i18n.language === "ar" ? "rtl" : "ltr"}
-          className="text-lg font-semibold mb-4"
+          className={`flex items-center mb-4 gap-2`}
         >
-          {t("Private Notifications")}
-        </h2>
+          <h2
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
+            className="text-lg font-semibold "
+          >
+            {t("Private Notifications")}
+          </h2>
+          {dataOfUserSearchPrivateNotificationsState._id !== "" && (
+            <button
+              onClick={() =>
+                setDataOfUserSearchPrivateNotificationsState({
+                  _id: "",
+                  avatar: "",
+                  firstName: "",
+                  lastName: "",
+                  email: "",
+                  age: 0,
+                  notification: [],
+                })
+              }
+              className={`text-red-500 hover:bg-red-100 p-2 rounded-lg`}
+            >
+              <RemoveCircleOutlineIcon />
+            </button>
+          )}
+        </div>
+        <UpdatePrivateNotification />
       </div>
     </>
   );

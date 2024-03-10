@@ -66,7 +66,7 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
   const [tokenJWT] = useRecoilState(TokenJWT);
 
   const token = localStorage.getItem("token") || tokenJWT || "";
-
+  const [reRenderThisComponent, setTeRenderThisComponent] = useState(true);
   const getPublicNotifications = async () => {
     // if get token then fetch to data me
     await axios
@@ -141,7 +141,6 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
   };
 
   const setIsSee = async (_id: string) => {
-    console.log("loading isSee...");
     setLoading(true);
     await axios
       .patch(
@@ -158,8 +157,8 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
         }
       )
       .then(() => {
-        console.log("loading isSee OK");
         setLoading(false);
+        setTeRenderThisComponent(!reRenderThisComponent);
         setReRenderComponent(!reRenderComponent);
       })
       .catch((error) => {
@@ -174,7 +173,7 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
     getPrivateNotifications();
     // if (localStorage.getItem("token")) {
     // }
-  }, []);
+  }, [reRenderThisComponent]);
   // publicNotifications, privateNotifications, reRenderComponent
 
   // handle lang
@@ -235,7 +234,6 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
                             <button
                               onClick={() => {
                                 setIsSee(_id);
-                                setReRenderComponent(!reRenderComponent);
                               }}
                               className="float-right rounded-full"
                             >

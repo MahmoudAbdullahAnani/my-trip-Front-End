@@ -92,7 +92,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className={`lg:my-[20px] lg:px-[96px] px-[10px] `}>
+    <div className={`my-[20px] lg:px-[96px] px-[10px] `}>
       <div
         dir={i18n.language === "ar" ? "rtl" : "ltr"}
         className={`flex items-center `}

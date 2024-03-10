@@ -30,7 +30,7 @@ const UpdatePublicNotificationContentData = atom({
 });
 const UpdatePublicNotificationExDateData = atom({
   key: "UpdatePublicNotificationExDateData", // unique ID (with respect to other atoms/selectors)
-  default: new Date() , // default value (aka initial value)
+  default: new Date(), // default value (aka initial value)
 });
 const UpdatePublicNotification_idData = atom({
   key: "UpdatePublicNotification_idData", // unique ID (with respect to other atoms/selectors)
@@ -47,3 +47,30 @@ export {
   UpdatePublicNotification_idData,
   ReRenderNotificationData,
 };
+
+export const DataOfUserSearchPrivateNotifications = atom({
+  key: "DataOfUserSearchPrivateNotifications", // unique ID (with respect to other atoms/selectors)
+  default: {
+    _id: "",
+    avatar: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    age: 0,
+    notification: [],
+  }, // default value (aka initial value)
+});
+
+export const UpdatePrivateNotificationTitleData = atom({
+  key: "UpdatePublicNotificationTitleData", // unique ID (with respect to other atoms/selectors)
+  default: "", // default value (aka initial value)
+});
+export const UpdatePrivateNotificationContentData = atom({
+  key: "UpdatePrivateNotificationContentData", // unique ID (with respect to other atoms/selectors)
+  default: "", // default value (aka initial value)
+});
+
+export const UpdatePrivateNotification_idDataComponent = atom({
+  key: "UpdatePrivateNotification_idDataComponent", // unique ID (with respect to other atoms/selectors)
+  default: "", // default value (aka initial value)
+});

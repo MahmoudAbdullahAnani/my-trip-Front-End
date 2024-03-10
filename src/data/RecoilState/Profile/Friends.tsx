@@ -15,6 +15,10 @@ export const SearchFriendsState = atom({
     friends: [],
   }, // default value (aka initial value)
 });
+export const SearchUsers = atom({
+  key: "SearchUsers", // unique ID (with respect to other atoms/selectors)
+  default: [],
+});
 
 // Pending
 export const PendingFriends = atom({

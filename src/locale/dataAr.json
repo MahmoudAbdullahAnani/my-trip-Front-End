@@ -1,4 +1,6 @@
 {
+  "You must choose a user first": "يجب عليك اختيار مستخدم اولا",
+  "Create Private Notification": "إنشاء إشعار خاص",
   "Total Users": "اجمالي المستخدمين",
   "Active Users": "اجمالي النشطين",
   "Inactive Users": "اجمالي الغير النشطين",
@@ -10,22 +12,12 @@
   "notification already exist": "هذا الاشعار موجود بالفعل",
   "Create Notification": "إنشاء إشعار",
   "The expiration date of this notice": "تاريخ الانتهاء هذا الاشعار",
-  "Deleted successfully":"تم الحذف",
+  "Deleted successfully": "تم الحذف",
   "Modified successfully": "تم التعديل",
   "Login to the system": "الدخول الي النظام",
   "Entries every month": "عمليات الدخول في كل شهر",
-  
   "Search for flights": "عمليات البحث",
   "Choose a ticket": "اختيار تذكرة",
-
-
-
-
-
-
-
-
-
   "trips": "طيران",
   "hotels": "فنادق",
   "cars": "سيارات",
