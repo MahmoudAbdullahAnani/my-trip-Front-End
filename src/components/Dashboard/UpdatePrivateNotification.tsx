@@ -100,10 +100,12 @@ function UpdatePrivateNotification() {
     setUpdatePrivateNotification_idDataComponent(_id);
   };
   return (
-    <div  dir={i18n.language === "ar" ? "rtl" : "lrt"}>
+    <div dir={i18n.language === "ar" ? "rtl" : "lrt"}>
       <SearchForUserPrivateNotifications />
       {_id !== "" && (
-        <div className={`flex items-center justify-start gap-2 mt-2`}>
+        <div
+          className={`flex flex-wrap justify-center my-2 items-center lg:justify-start gap-2 mt-2`}
+        >
           <div>
             <img
               width={100}
@@ -129,7 +131,7 @@ function UpdatePrivateNotification() {
         </div>
       )}
 
-      <div className={`flex justify-between`}>
+      <div className={`flex flex-wrap justify-center lg:justify-between`}>
         <div className={`flex flex-col gap-5 mt-2`}>
           {notification &&
             notification.map(({ isSee, title, content, date, _id }) => {
