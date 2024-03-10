@@ -42,6 +42,7 @@ import {
 import TripProfile from "./pages/Profile/TripProfile";
 import Dashboard from "./pages/Dashboard";
 import { RootState } from "./data/store";
+import { HolderNotifications } from "./data/RecoilState/AuthStatePages/Auth";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -282,6 +283,8 @@ function App() {
   // const [dataSearchState] = useRecoilState(dateSearch);
   const [searchFriends, setSearchfriends] = useRecoilState(SearchFriendsState);
   const [searchUsersState, setSearchUsersState] = useRecoilState(SearchUsers);
+  const [toggleHolderNotifications, setHolderNotificationsToggle] =
+    useRecoilState(HolderNotifications);
 
   if (loading) {
     return (
@@ -305,6 +308,13 @@ function App() {
       {searchUsersState.length > 0 && (
         <div
           onClick={() => setSearchUsersState([])}
+          style={{ height: `${document.body.scrollHeight - 100}px` }}
+          className={`absolute w-full bg-[#00000070]`}
+        ></div>
+      )}
+      {toggleHolderNotifications && (
+        <div
+          onClick={() => setHolderNotificationsToggle(false)}
           style={{ height: `${document.body.scrollHeight - 100}px` }}
           className={`absolute w-full bg-[#00000070]`}
         ></div>
