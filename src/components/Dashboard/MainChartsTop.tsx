@@ -334,7 +334,7 @@ function MainChartsTop({
               ? "rtl"
               : "ltr"
           }
-          className={`flex lg:flex-row flex-col gap-[15px]`}
+          className={`flex lg:flex-row flex-col gap-[15px] items-center lg:items-start`}
         >
           <div className={`w-[60%] block lg:hidden`}>
             <UpdatePublicNotification />
