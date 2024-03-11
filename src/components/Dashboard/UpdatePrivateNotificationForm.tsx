@@ -14,10 +14,12 @@ import { getNewNotifications } from "./CreatePrivateNotificationForm";
 import { useState } from "react";
 
 function UpdatePrivateNotificationForm() {
-  const [UpdatePublicNotificationTitle, setUpdatePrivateNotificationTitle] =
+  const [UpdatePrivateNotificationTitle, setUpdatePrivateNotificationTitle] =
     useRecoilState(UpdatePrivateNotificationTitleData);
-  const [UpdatePublicNotificationContent, setUpdatePrivateNotificationContent] =
-    useRecoilState(UpdatePrivateNotificationContentData);
+  const [
+    UpdatePrivateNotificationContent,
+    setUpdatePrivateNotificationContent,
+  ] = useRecoilState(UpdatePrivateNotificationContentData);
 
   const [UpdatePrivateNotification_id, serUpdatePrivateNotification_id] =
     useRecoilState(UpdatePrivateNotification_idDataComponent);
@@ -37,14 +39,14 @@ function UpdatePrivateNotificationForm() {
       return setMainError("يجب عليك اختيار مستخدم اولا");
     }
     if (
-      UpdatePublicNotificationTitle === "" ||
-      UpdatePublicNotificationTitle.length <= 2
+      UpdatePrivateNotificationTitle === "" ||
+      UpdatePrivateNotificationTitle.length <= 2
     ) {
       return setTitleError("يجب عليك ادخال عنوان الموضوع");
     }
     if (
-      UpdatePublicNotificationContent === "" ||
-      UpdatePublicNotificationContent.length <= 2
+      UpdatePrivateNotificationContent === "" ||
+      UpdatePrivateNotificationContent.length <= 2
     ) {
       return setContentError("يجب عليك ادخال محتوي الموضوع");
     }
@@ -58,8 +60,8 @@ function UpdatePrivateNotificationForm() {
               import.meta.env.VITE_PUBLIC_API_PRODUCTION
             }/notifications/${_id}/${UpdatePrivateNotification_id}`,
         {
-          title: UpdatePublicNotificationTitle,
-          content: UpdatePublicNotificationContent,
+          title: UpdatePrivateNotificationTitle,
+          content: UpdatePrivateNotificationContent,
         },
         {
           headers: {
@@ -129,7 +131,7 @@ function UpdatePrivateNotificationForm() {
           <input
             disabled={!UpdatePrivateNotification_id}
             type="text"
-            value={UpdatePublicNotificationTitle}
+            value={UpdatePrivateNotificationTitle}
             placeholder={t("عنوان الموضوع")}
             onChange={(e) => {
               setTitleError("");
@@ -143,8 +145,8 @@ function UpdatePrivateNotificationForm() {
           <p className={`text-[#ff0000] text-[14px]`}>{t(titleError)}</p>
         )}
         <TextareaAutosize
-          disabled={!UpdatePublicNotificationTitle}
-          value={UpdatePublicNotificationContent}
+          disabled={!UpdatePrivateNotificationTitle}
+          value={UpdatePrivateNotificationContent}
           color="neutral"
           minRows={3}
           // maxRows={2}

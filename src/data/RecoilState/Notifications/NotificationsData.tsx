@@ -62,7 +62,7 @@ export const DataOfUserSearchPrivateNotifications = atom({
 });
 
 export const UpdatePrivateNotificationTitleData = atom({
-  key: "UpdatePublicNotificationTitleData", // unique ID (with respect to other atoms/selectors)
+  key: "UpdatePrivateNotificationTitleData", // unique ID (with respect to other atoms/selectors)
   default: "", // default value (aka initial value)
 });
 export const UpdatePrivateNotificationContentData = atom({

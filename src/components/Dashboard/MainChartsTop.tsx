@@ -256,6 +256,7 @@ function MainChartsTop({
   const [, setUpdatePublicNotificationTitle] = useRecoilState(
     UpdatePublicNotificationTitleData
   );
+
   const [, setUpdatePublicNotificationContent] = useRecoilState(
     UpdatePublicNotificationContentData
   );
