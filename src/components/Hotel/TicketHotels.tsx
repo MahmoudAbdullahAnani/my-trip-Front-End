@@ -16,12 +16,12 @@ interface HotelData {
   lastUpdate: string;
 }
 import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { capitalizeFirstLetter } from "../../pages/Hotels/SearchHotels";
 
 function TicketHotels(data: HotelData) {
   const { t, i18n } = useTranslation();
-  const center = [data.geoCode.latitude, data.geoCode.longitude];
+  // const center = [data.geoCode.latitude, data.geoCode.longitude];
   const nameHotel = data.name.toLowerCase();
   return (
     <div
@@ -29,7 +29,7 @@ function TicketHotels(data: HotelData) {
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
     >
       <div>
-        <MapContainer
+        {/* <MapContainer
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           center={center}
@@ -40,14 +40,14 @@ function TicketHotels(data: HotelData) {
           <Marker position={[data.geoCode.latitude, data.geoCode.longitude]}>
             <Popup>{data.name}</Popup>
           </Marker>
-        </MapContainer>
-        {/* <iframe
+        </MapContainer> */}
+        <iframe
           style={{ border: "0" }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           src={`https://maps.google.com/maps?q=${data.geoCode.latitude},${data.geoCode.longitude}&output=embed`}
-        ></iframe> */}
+        ></iframe>
       </div>
       <div
         className={`flex flex-col items-${
