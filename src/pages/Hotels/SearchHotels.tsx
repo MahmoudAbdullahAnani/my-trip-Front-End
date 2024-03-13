@@ -36,7 +36,6 @@ function SearchHotels() {
   console.log({
     locationFrom,
     dateGoState,
-    //
     dateReturnState,
     childrenDataState,
     adultsDataState,
