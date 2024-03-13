@@ -21,7 +21,7 @@ import { capitalizeFirstLetter } from "../../pages/Hotels/SearchHotels";
 
 function TicketHotels(data: HotelData) {
   const { t, i18n } = useTranslation();
-  // const center = [data.geoCode.latitude, data.geoCode.longitude];
+  const center = [data.geoCode.latitude, data.geoCode.longitude];
   const nameHotel = data.name.toLowerCase();
   return (
     <div
