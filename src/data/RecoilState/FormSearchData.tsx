@@ -8,7 +8,7 @@ const adultsData = atom({
 // rateing
 export const Rateing = atom({
   key: "Rateing",
-  default: 4,
+  default: 0,
 });
 
 // Youths

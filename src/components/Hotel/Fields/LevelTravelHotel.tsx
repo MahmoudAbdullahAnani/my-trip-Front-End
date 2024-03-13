@@ -208,7 +208,7 @@ function LevelTravelHotel() {
                       {typeSystemState === "air"
                         ? t("مسافر")
                         : typeSystemState === "hotel"
-                        ? "نازل"
+                        ? t("نازل")
                         : ""}
                     </span>
                     <span dir="" className={``}>
