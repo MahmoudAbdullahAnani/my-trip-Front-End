@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 
 import notFoundTrip from "/public/assets/profile/notFoundTrip.png";
 import { iconBlush } from "../../assets/icons/home";
+import { Bounce, toast } from "react-toastify";
 interface Data {
   __v?: number;
   user_id: string;
@@ -79,6 +80,17 @@ function TripProfile() {
       })
       .catch((error) => {
         console.log(error);
+        toast.error(t(error.response?.data.message), {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       });
   };
 
@@ -132,9 +144,7 @@ function TripProfile() {
               </div>
             ) : // dataOrders.data.length <= 0
             dataOrders.data.length <= 0 ? (
-              <div
-                className={`w-full flex items-center flex-col gap-[90px]`}
-              >
+              <div className={`w-full flex items-center flex-col gap-[90px]`}>
                 <h2 className="text-[32px] font-bold text-[#000] mb-[24px]">
                   {t("لا يوجد رحلة حالياً")}
                 </h2>

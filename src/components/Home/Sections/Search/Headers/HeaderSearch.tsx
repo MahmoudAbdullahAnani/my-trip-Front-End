@@ -3,9 +3,14 @@ import UiFildesDate from "../../../FieldsDate/UiFildesDate";
 import HandleFieldsSearch from "../../../HandleData/HandleFieldsSearch";
 import BtnSearch from "../../../Systems/BtnSearch";
 import HeaderMobile from "./HeaderMobile";
+import BtnSearchHotel from "../../../../Hotel/BtnSearchHotel";
+import { typeSystem } from "../../../../../data/RecoilState/FormHandling";
+import { useRecoilState } from "recoil";
 
 function HeaderSearch() {
   const { pathname } = useLocation();
+  const [typeSystemState] = useRecoilState(typeSystem);
+
   return (
     <>
       {/* Header Mobile */}
@@ -23,7 +28,8 @@ function HeaderSearch() {
             className={`flex flex-wrap  gap-[24px] justify-center items-center `}
           >
             <div className={`relative top-[14px]`}>
-              <BtnSearch />
+              {typeSystemState === "air" && <BtnSearch />}
+              {typeSystemState === "hotel" && <BtnSearchHotel />}
             </div>
             <UiFildesDate isSearch={true} />
             <HandleFieldsSearch isSearch={true} />

@@ -5,11 +5,17 @@ import PopularDestinations from "../components/Home/Sections/PopularDestinations
 import DestinationSection from "../components/Home/Sections/Destination/DestinationSection";
 import { useEffect } from "react";
 import AutoScroll from "../components/Home/Systems/AutoScroll";
+import { typeSystem } from "../data/RecoilState/FormHandling";
+import { useRecoilState } from "recoil";
 
 function Home() {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
+  const [,setTypeSystemState] = useRecoilState(typeSystem);
+useEffect(()=>{
+  setTypeSystemState("air");
+},[])
   return (
     <>
       <section>

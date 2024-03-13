@@ -64,7 +64,7 @@ function DialogComponent({ stylesBtn, isMobile, iconOut }: ComponentInterface) {
       <div className={`${pathname === "/" && "hidden"}`}>
         <button onClick={handleMobilClickOpen} className={stylesBtn}>
           <span>{iconOut}</span>
-          <span>{t("تسجيل خروج")}</span>
+          {/* <span>{t("تسجيل خروج")}</span> */}
         </button>
         <Modal
           open={signOutState}

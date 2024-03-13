@@ -186,7 +186,7 @@ function Navbar() {
             route: "/arithmetic",
             icon: iconArithmetic,
           },
-          { id: 2, title: "التذكرة", route: "/ticket", icon: iconTicket },
+          { id: 2, title: "التذكرة", route: "/hotel", icon: iconTicket },
           { id: 1, title: "الرئيسية", route: "/", icon: iconHome },
         ].map(({ icon, route, title, id }) => (
           <Link

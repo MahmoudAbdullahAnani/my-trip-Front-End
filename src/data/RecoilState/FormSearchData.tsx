@@ -5,6 +5,11 @@ const adultsData = atom({
   key: "adults",
   default: 1,
 });
+// rateing
+export const Rateing = atom({
+  key: "Rateing",
+  default: 4,
+});
 
 // Youths
 const youthsData = atom({
@@ -22,18 +27,11 @@ const levelTravelData = atom({
   default: "economy",
 });
 
-
-
 // //  UI
 // Open Module Date
 const moduleDate = atom({
   key: "moduleDate",
   default: false,
 });
-
-
-
-
-
 
 export { adultsData, youthsData, childrenData, levelTravelData, moduleDate };

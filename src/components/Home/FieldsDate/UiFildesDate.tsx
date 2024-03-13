@@ -4,6 +4,7 @@ import {
   dateGoISO,
   dateReturn,
   dateReturnISO,
+  typeSystem,
   typeTravel,
 } from "../../../data/RecoilState/FormHandling";
 import { useState } from "react";
@@ -102,6 +103,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
     useRecoilState(dateReturnISO);
 
   const [typeTravelRecoilState] = useRecoilState(typeTravel);
+  const [typeSystemState] = useRecoilState(typeSystem);
 
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -122,7 +124,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             <h4
               className={`text-[#000] text-[20px] text-end font-[500] hidden sm:block `}
             >
-              {t("العودة")}
+              {typeSystemState === "hotel" ? t("الخروج") : t("العودة")}
             </h4>
             <DatePicker
               selected={dateReturnStateISO}
@@ -139,7 +141,11 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
               minDate={startDate === null ? new Date() : startDate}
               showIcon
               icon={iconDate}
-              placeholderText={t("تاريخ العودة")}
+              placeholderText={
+                typeSystemState === "hotel"
+                  ? t("تاريخ الخروج")
+                  : t("تاريخ العودة")
+              }
               // popperPlacement="top"
               dateFormat="dd/MM/yyyy"
               className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
@@ -169,7 +175,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
           <h4
             className={`text-[#000] text-end text-[20px] font-[500] hidden sm:block`}
           >
-            {t("الذهاب")}
+            {typeSystemState === "hotel" ? t("تاريخ الدخول") : t("الذهاب")}
           </h4>
           <DatePicker
             selected={dateGoStateISO}
@@ -187,7 +193,11 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             endDate={endDate}
             showIcon
             icon={iconDate}
-            placeholderText={t("تاريخ الذهاب")}
+            placeholderText={
+              typeSystemState === "hotel"
+                ? t("تاريخ الدخول")
+                : t("تاريخ الذهاب")
+            }
             // popperPlacement="top"
             dateFormat="dd/MM/yyyy"
             className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
@@ -226,7 +236,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
         dir={i18n.language === "ar" ? "rtl" : "ltr"}
       >
         <h4 className={`text-[#000] text-[20px] font-[500] hidden sm:block`}>
-          {t("الذهاب")}
+          {typeSystemState === "hotel" ? t("الدخول") : t("الذهاب")}
         </h4>
         <DatePicker
           selected={dateGoStateISO}
@@ -244,7 +254,9 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
           endDate={endDate}
           showIcon
           icon={iconDate}
-          placeholderText={t("تاريخ الذهاب")}
+          placeholderText={
+            typeSystemState === "hotel" ? t("تاريخ الدخول") : t("تاريخ الذهاب")
+          }
           // popperPlacement="top"
           dateFormat="dd/MM/yyyy"
           className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
@@ -272,7 +284,7 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
           dir={i18n.language === "ar" ? "rtl" : "ltr"}
         >
           <h4 className={`text-[#000] text-[20px] font-[500] hidden sm:block `}>
-            {t("العودة")}
+            {typeSystemState === "hotel" ? t(" الخروج") : t("العودة")}
           </h4>
           <DatePicker
             selected={dateReturnStateISO}
@@ -289,7 +301,11 @@ function UiFildesDate({ isSearch = true }: { isSearch: boolean }) {
             minDate={startDate === null ? new Date() : startDate}
             showIcon
             icon={iconDate}
-            placeholderText={t("تاريخ العودة")}
+            placeholderText={
+              typeSystemState === "hotel"
+                ? t("تاريخ الخروج")
+                : t("تاريخ العودة")
+            }
             // popperPlacement="top"
             dateFormat="dd/MM/yyyy"
             className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}

@@ -1,11 +1,16 @@
 // import { useRecoilState } from "recoil";
 // import { typeSystem } from "../../data/RecoilState/FormHandling";
+import { useRecoilState } from "recoil";
+import { typeSystem } from "../../../data/RecoilState/FormHandling";
 import BtnSearch from "./BtnSearch";
 import ControlSystems from "./ControlSystems";
+import BtnSearchHotel from "../../Hotel/BtnSearchHotel";
 type Props = {
   children: string | JSX.Element | JSX.Element[];
 };
 function FormModule({ children }: Props) {
+  const [typeSystemState] = useRecoilState(typeSystem);
+
   // const [TypeSystemState] = useRecoilState(typeSystem);
   return (
     <div className={`flex flex-col `}>
@@ -29,7 +34,9 @@ function FormModule({ children }: Props) {
         {/* Get Travels*/}
         <div className={`absolute left-[30%] z-[-1]`}>
           <div className={`w-[120%] h-[1px] relative right-4 bg-[#FFF]`}></div>
-          <BtnSearch />
+
+          {typeSystemState === "air" && <BtnSearch />}
+          {typeSystemState === "hotel" && <BtnSearchHotel />}
         </div>
         <div
           style={{

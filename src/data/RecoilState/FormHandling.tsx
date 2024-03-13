@@ -56,7 +56,7 @@ const dateSearchDestination = atom({
 
 const typeSystem = atom({
   key: "typeSystem", // unique ID (with respect to other atoms/selectors)
-  default: "air", // default value (aka initial value)
+  default: "air", // air, hotel, car default value (aka initial value)
 });
 
 export {

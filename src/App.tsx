@@ -43,6 +43,8 @@ import TripProfile from "./pages/Profile/TripProfile";
 import Dashboard from "./pages/Dashboard";
 import { RootState } from "./data/store";
 import { HolderNotifications } from "./data/RecoilState/AuthStatePages/Auth";
+import Hotels from "./pages/Hotels/Hotels";
+import SearchHotels from "./pages/Hotels/SearchHotels";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -329,14 +331,22 @@ function App() {
       <ResetPassword />
 
       <Routes>
+        {/* Main */}
         <Route path="/*" element={<For04 />} />
         <Route path="/" element={<Home />} />
         {stateUserData.role !== "user" && (
           <Route path="/dashboard" element={<Dashboard />} />
         )}
+
+        {/* Air */}
         <Route path="/search" element={<Search />} />
         <Route path="/airData" element={<AirData />} />
         <Route path="/airPay" element={<AirPay />} />
+
+        {/* Hotels */}
+        <Route path="/hotel" element={<Hotels />} />
+        <Route path="/search/hotel" element={<SearchHotels />} />
+
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/friends" element={<Friends />} />
         <Route path="/profile/trips" element={<TripProfile />} />

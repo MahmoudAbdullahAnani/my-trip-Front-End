@@ -1,4 +1,6 @@
 {
+  "وجهتك": "Your destination",
+  "غير مصرح لك": "Unauthorized",
   "يجب عليك اختيار مستخدم اولا": "You must choose a user first",
   "إنشاء إشعار خاص": "Create Private Notification",
   "هذا الاشعار موجود بالفعل": "notification already exist",
