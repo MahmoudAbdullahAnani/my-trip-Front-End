@@ -25,7 +25,7 @@ function TicketHotels(data: HotelData) {
   const nameHotel = data.name.toLowerCase();
   return (
     <div
-      className={`mx-auto w-full p-3 flex bg-white border cursor-pointer hover:shadow-md shadow-[#D9D9D9] duration-300 rounded-lg overflow-hidden`}
+      className={`mx-auto w-full p-3 flex lg:flex-row flex-col lg:items-start items-end justify-between gap-5 bg-white border cursor-pointer hover:shadow-md shadow-[#D9D9D9] duration-300 rounded-lg overflow-hidden`}
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
     >
       <div>
@@ -46,6 +46,9 @@ function TicketHotels(data: HotelData) {
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
+          // width={"100%"}
+          // height={"100%"}
+          className={`rounded-lg`}
           src={`https://maps.google.com/maps?q=${data.geoCode.latitude},${data.geoCode.longitude}&output=embed`}
         ></iframe>
       </div>
