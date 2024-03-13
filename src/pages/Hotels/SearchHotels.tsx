@@ -45,92 +45,92 @@ function SearchHotels() {
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  // const getHotelsDataSearch = async () => {
-  //   if (!locationFrom) {
-  //     return navigate("/");
-  //   }
-  //   setLoading(true);
-  //   const cityCode = `cityCode=${locationFrom}`;
-  //   // In
-  //   // const storeDateGoY = `${dateGoState}`.split("/")[2];
-  //   // const storeDateGoMonth = `${dateGoState}`.split("/")[1];
-  //   // const storeDateGoDay = `${dateGoState}`.split("/")[0];
-  //   // Out
-  //   // const storeDateOutY = `${dateGoState}`.split("/")[2];
-  //   // const storeDateOutMonth = `${dateGoState}`.split("/")[1];
-  //   // const storeDateOutDay = `${dateGoState}`.split("/")[0];
+  const getHotelsDataSearch = async () => {
+    if (!locationFrom) {
+      return navigate("/");
+    }
+    setLoading(true);
+    const cityCode = `cityCode=${locationFrom}`;
+    // In
+    // const storeDateGoY = `${dateGoState}`.split("/")[2];
+    // const storeDateGoMonth = `${dateGoState}`.split("/")[1];
+    // const storeDateGoDay = `${dateGoState}`.split("/")[0];
+    // Out
+    // const storeDateOutY = `${dateGoState}`.split("/")[2];
+    // const storeDateOutMonth = `${dateGoState}`.split("/")[1];
+    // const storeDateOutDay = `${dateGoState}`.split("/")[0];
 
-  //   // const checkInDate = `checkInDate=${storeDateGoY}-${storeDateGoMonth}-${storeDateGoDay}`;
-  //   // const checkOutDate = `checkOutDate=${storeDateOutY}-${storeDateOutMonth}-${storeDateOutDay}`;
-  //   // const rate = `rate=${RateingState}`;
-  //   // const adults = `adults=${adultsDataState}`;
-  //   // const children = `children=${childrenDataState}`;
+    // const checkInDate = `checkInDate=${storeDateGoY}-${storeDateGoMonth}-${storeDateGoDay}`;
+    // const checkOutDate = `checkOutDate=${storeDateOutY}-${storeDateOutMonth}-${storeDateOutDay}`;
+    // const rate = `rate=${RateingState}`;
+    // const adults = `adults=${adultsDataState}`;
+    // const children = `children=${childrenDataState}`;
 
-  //   let dataOfQuery = `${cityCode}`;
-  //   // if (dateReturnState) {
-  //   //   dataOfQuery += `&${checkOutDate}`;
-  //   // }
-  //   const ratings =
-  //     RateingState === 0
-  //       ? ""
-  //       : RateingState === 1
-  //       ? "1"
-  //       : RateingState === 2
-  //       ? "1,2"
-  //       : RateingState === 3
-  //       ? "1,2,3"
-  //       : RateingState === 4
-  //       ? "1,2,3,4"
-  //       : RateingState === 5
-  //       ? "1,2,3,4,5"
-  //       : "";
+    let dataOfQuery = `${cityCode}`;
+    // if (dateReturnState) {
+    //   dataOfQuery += `&${checkOutDate}`;
+    // }
+    const ratings =
+      RateingState === 0
+        ? ""
+        : RateingState === 1
+        ? "1"
+        : RateingState === 2
+        ? "1,2"
+        : RateingState === 3
+        ? "1,2,3"
+        : RateingState === 4
+        ? "1,2,3,4"
+        : RateingState === 5
+        ? "1,2,3,4,5"
+        : "";
 
-  //   if (RateingState !== 0) {
-  //     dataOfQuery += `&ratings=${ratings}`;
-  //   }
-  //   // if (adultsDataState) {
-  //   //   dataOfQuery += `&${adults}`;
-  //   // }
-  //   // if (childrenDataState) {
-  //   //   dataOfQuery += `&${children}`;
-  //   // }
-  //   // console.log({ dataOfQuery });
+    if (RateingState !== 0) {
+      dataOfQuery += `&ratings=${ratings}`;
+    }
+    // if (adultsDataState) {
+    //   dataOfQuery += `&${adults}`;
+    // }
+    // if (childrenDataState) {
+    //   dataOfQuery += `&${children}`;
+    // }
+    // console.log({ dataOfQuery });
 
-  //   const token = await getTokenForAmadeus();
-  //   await axios
-  //     .get(
-  //       `${
-  //         import.meta.env.VITE_PUBLIC_API
-  //       }/reference-data/locations/hotels/by-city?${dataOfQuery}`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     )
-  //     .then(({ data }) => {
-  //       setLoading(false);
+    const token = await getTokenForAmadeus();
+    await axios
+      .get(
+        `${
+          import.meta.env.VITE_PUBLIC_API
+        }/reference-data/locations/hotels/by-city?${dataOfQuery}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(({ data }) => {
+        setLoading(false);
 
-  //       // console.log(data);
-  //       setTicketsHotels(data.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("search Hotels ===> ", err);
-  //       toast.error(err.response.data.errors[0]?.title || "Error", {
-  //         position: "top-right",
-  //         autoClose: 5000,
-  //         hideProgressBar: false,
-  //         closeOnClick: true,
-  //         pauseOnHover: true,
-  //         draggable: true,
-  //         progress: undefined,
-  //         theme: "light",
-  //       });
-  //     });
-  // };
+        // console.log(data);
+        setTicketsHotels(data.data);
+      })
+      .catch((err) => {
+        console.log("search Hotels ===> ", err);
+        toast.error(err.response.data.errors[0]?.title || "Error", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
+  };
 
   useEffect(() => {
-    // getHotelsDataSearch();
+    getHotelsDataSearch();
   }, []);
 
   if (loading) {
