@@ -23,7 +23,7 @@ function TicketsHotelsMapped() {
     });
   }
   return (
-    <div className={`my-8 px-[16px] lg:px-[96px] mt-[100px]`}>
+    <div className={`my-8 px-[16px] lg:px-[96px]`}>
       <div
         className={`grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-4 `}
       >

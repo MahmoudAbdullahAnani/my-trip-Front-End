@@ -48,6 +48,7 @@ function Navbar() {
             pathname !== "/airPay" &&
             pathname !== "/dashboard" &&
             pathname !== "/profile/friends" &&
+            pathname !== "/search/hotel" &&
             pathname !== "/profile"
               ? "fixed"
               : ""
@@ -62,6 +63,7 @@ function Navbar() {
             pathname === "/profile/friends" ||
             pathname === "/profile" ||
             pathname === "/dashboard" ||
+            pathname === "/search/hotel" ||
             pathname === "/profile/trips"
               ? "bg-[#FFF] border border-x-0 border-t-0 shadow-sm shadow-[#656565]"
               : ""
@@ -133,6 +135,7 @@ function Navbar() {
                     pathname !== "/airPay" &&
                     pathname !== "/profile/friends" &&
                     pathname !== "/profile/trips" &&
+                    pathname !== "/search/hotel" &&
                     pathname !== "/profile"
                       ? href === pathname
                         ? "text-[#117C99]"
