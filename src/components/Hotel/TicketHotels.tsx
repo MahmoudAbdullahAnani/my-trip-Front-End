@@ -18,42 +18,27 @@ interface HotelData {
 import "leaflet/dist/leaflet.css";
 // import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { capitalizeFirstLetter } from "../../pages/Hotels/SearchHotels";
-
+import SimpleMap from "./SimpleMap";
+import { format } from "date-fns";
 function TicketHotels(data: HotelData) {
   const { t, i18n } = useTranslation();
   // const center = [data.geoCode.latitude, data.geoCode.longitude];
   const nameHotel = data.name.toLowerCase();
+  const date = format(new Date(data.lastUpdate), "dd/MM/yyyy");
   return (
     <div
       className={`mx-auto w-full p-3 flex lg:flex-row flex-col lg:items-start items-end justify-between gap-5 bg-white border cursor-pointer hover:shadow-md shadow-[#D9D9D9] duration-300 rounded-lg overflow-hidden`}
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
     >
-      <div>
-        {/* <MapContainer
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          center={center}
-          zoom={13}
-          style={{ height: "100", width: "100%" }}
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <Marker position={[data.geoCode.latitude, data.geoCode.longitude]}>
-            <Popup>{data.name}</Popup>
-          </Marker>
-        </MapContainer> */}
-        <iframe
-          style={{ border: "0" }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          // width={"100%"}
-          // height={"100%"}
-          className={`rounded-lg`}
-          src={`https://maps.google.com/maps?q=${data.geoCode.latitude},${data.geoCode.longitude}&output=embed`}
-        ></iframe>
+      <div className={`w-full  rounded-lg overflow-hidden`}>
+        <SimpleMap
+          latitude={data.geoCode.latitude}
+          longitude={data.geoCode.longitude}
+          className={`h-[300px] lg:h-[200px] rounded-lg border-none outline-none`}
+        />
       </div>
       <div
-        className={`flex flex-col items-${
+        className={`w-[400px] flex flex-col items-${
           i18n.language === "ar" ? "end" : "start"
         } justify-center`}
       >
@@ -76,7 +61,7 @@ function TicketHotels(data: HotelData) {
           className={`flex items-center justify-center gap-2`}
         >
           <p>{t("اخر تحديث")}</p>
-          <p>{data.lastUpdate}</p>
+          <p>{date}</p>
         </div>
         <div
           dir={i18n.language === "ar" ? "rtl" : "ltr"}

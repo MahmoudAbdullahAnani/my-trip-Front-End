@@ -148,7 +148,7 @@ function SearchHotels() {
 
   return (
     <section className={``}>
-      <div className={`py-`}>{/* <HeaderSearch /> */}</div>
+      <div className={``}>{/* <HeaderSearch /> */}</div>
       <TicketsHotelsMapped />
     </section>
   );
