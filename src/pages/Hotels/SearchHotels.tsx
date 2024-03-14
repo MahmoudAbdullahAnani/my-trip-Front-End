@@ -8,6 +8,7 @@ import {
   dateGo,
   dateReturn,
   originSearch,
+  typeSystem,
 } from "../../data/RecoilState/FormHandling";
 // import { getTokenForAmadeus } from "../../Keys/GetTokenForAmadeus";
 import { useEffect, useState } from "react";
@@ -52,6 +53,8 @@ export function capitalizeFirstLetter(str: string) {
 //   return res;
 // }
 function SearchHotels() {
+  const [, setTypeSystemState] = useRecoilState(typeSystem);
+
   const [locationFrom] = useRecoilState(originSearch);
   const [dateGoState] = useRecoilState(dateGo);
   const [dateReturnState] = useRecoilState(dateReturn);
@@ -213,6 +216,7 @@ function SearchHotels() {
   useEffect(() => {
     // getHotelsDataSearch();
     // getHotelsData();
+    setTypeSystemState("hotel");
   }, []);
 
   if (loading) {

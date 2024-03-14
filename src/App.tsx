@@ -273,7 +273,6 @@ function App() {
       });
   };
   useEffect(() => {
-   
     const fetchData = async () => {
       await RunDriver();
       const id = await oncData();

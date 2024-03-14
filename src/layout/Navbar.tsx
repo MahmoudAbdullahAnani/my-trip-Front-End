@@ -11,11 +11,12 @@ import { RootState } from "../data/store";
 import { iconArithmetic, iconHome, iconTicket } from "../assets/icons/home";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { TypeSystemSearch } from "../data/RecoilState/Search/TypeSystemSearch";
+// import { TypeSystemSearch } from "../data/RecoilState/Search/TypeSystemSearch";
 import { openLoginPageState } from "../data/RecoilState/AuthStatePages/Auth";
 import MainOAuthNavbar from "../components/ResetPassword/OAuthNavberDesktop/MainOAuthNavbar";
 import { useTranslation } from "react-i18next";
 import LangBtn from "../components/LangBtn";
+// import { typeSystem } from "../data/RecoilState/FormHandling";
 function Navbar() {
   // const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
@@ -25,7 +26,8 @@ function Navbar() {
     setScrollY(window.scrollY);
   });
 
-  const [typeSystemSearchState] = useRecoilState(TypeSystemSearch);
+  // const [typeSystemSearchState] = useRecoilState(TypeSystemSearch);
+  // const [typeSystemState] = useRecoilState(typeSystem);
 
   const [, setOpenPage] = useRecoilState(openLoginPageState);
   const handleOpenPage = () => setOpenPage(true);
@@ -113,41 +115,33 @@ function Navbar() {
                 id: 3,
                 title: "توصيل",
                 href: "/contactUs",
+                stateName: "car",
+
                 driver: "intro-element-3",
               },
               {
                 id: 2,
                 title: "فنادق",
                 href: "/hotel",
+                stateName: "hotel",
                 driver: "intro-element-2",
               },
-
-              { id: 1, title: "طيران", href: "/", driver: "intro-element-1" },
+              {
+                id: 1,
+                title: "طيران",
+                href: "/",
+                stateName: "air",
+                driver: "intro-element-1",
+              },
             ].map(({ driver, id, title, href }) => (
               <div key={id + Math.random()}>
                 <Link
                   to={href}
                   id={driver}
-                  className={`text-[18px] font-[600] whitespace-nowrap  ${
-                    pathname !== "/dashboard" &&
-                    pathname !== "/search" &&
-                    pathname !== "/airData" &&
-                    pathname !== "/airPay" &&
-                    pathname !== "/profile/friends" &&
-                    pathname !== "/profile/trips" &&
-                    pathname !== "/search/hotel" &&
-                    pathname !== "/profile"
-                      ? href === pathname
-                        ? "text-[#117C99]"
-                        : "text-[#FFF]"
-                      : typeSystemSearchState === "airline" && title === "طيران"
-                      ? "text-[#117C99]"
-                      : typeSystemSearchState === "hotels" && title === "فنادق"
-                      ? "text-[#117C99]"
-                      : typeSystemSearchState === "delivery" &&
-                        title === "توصيل"
-                      ? "text-[#117C99]"
-                      : "text-[#656565]"
+                  className={`text-[18px] font-[600] whitespace-nowrap ${
+                    pathname !== "/" && pathname !== "/hotel"
+                      ? "text-[#117c99b3]"
+                      : "text-[#FFF]"
                   } hover:text-[#117C99]  duration-200 `}
                 >
                   {t(title)}
@@ -155,6 +149,7 @@ function Navbar() {
               </div>
             ))}
           </div>
+
           {/* Logo */}
           <Link className={`ms-auto`} to={`/`}>
             <img
@@ -218,3 +213,27 @@ function Navbar() {
 }
 
 export default Navbar;
+
+/*
+
+${
+                    pathname !== "/dashboard" &&
+                    pathname !== "/search" &&
+                    pathname !== "/airData" &&
+                    pathname !== "/airPay" &&
+                    pathname !== "/profile/friends" &&
+                    pathname !== "/profile/trips" &&
+                    pathname !== "/profile"
+                      ? href === pathname
+                        ? "text-[#117C99]"
+                        : "text-[#FFF]"
+                      : typeSystemSearchState === "airline" && title === "طيران"
+                      ? "text-[#117C99]"
+                      : typeSystemSearchState === "hotels" && title === "فنادق"
+                      ? "text-[#117C99]"
+                      : typeSystemSearchState === "delivery" &&
+                        title === "توصيل"
+                      ? "text-[#117C99]"
+                      : "text-[#656565]"
+                  }
+*/
