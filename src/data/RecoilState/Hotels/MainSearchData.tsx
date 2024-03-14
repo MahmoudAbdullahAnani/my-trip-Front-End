@@ -1,7614 +1,4460 @@
 import { atom } from "recoil";
 
-// Main Data
+export const ChooseCityNameHotel = atom({
+  key: "ChooseCityNameHotel", // unique ID (with respect to other atoms/selectors)
+  default: "", // default value (aka initial value)
+});
+export const ChooseHotelIDs = atom({
+  key: "ChooseHotelIDs", // unique ID (with respect to other atoms/selectors)
+  default: "", // default value (aka initial value)
+});
+// Main Data SerpAPI
+export const SerpAPIHotels = atom({
+  key: "SerpAPIHotels",
+  default: [
+    {
+      type: "hotel",
+      name: "شتيجنبرجر",
+      description:
+        "غرف وأجنحة بسيطة في فندق أنيق يضمّ بارَين وحوض سباحة خارجيًا وإطلالات على النهر",
+      link: "https://www.steigenberger.com/en/hotels/all-hotels/egypt/cairo/steigenberger-el-tahrir-cairo",
+      gps_coordinates: {
+        latitude: 30.046728500000004,
+        longitude: 31.235258999999996,
+      },
+      check_in_time: "2:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏6,025 ج.م.‏",
+        extracted_lowest: 6025,
+        before_taxes_fees: "‏4,672 ج.م.‏",
+        extracted_before_taxes_fees: 4672,
+      },
+      total_rate: {
+        lowest: "‏6,025 ج.م.‏",
+        extracted_lowest: 6025,
+        before_taxes_fees: "‏4,672 ج.م.‏",
+        extracted_before_taxes_fees: 4672,
+      },
+      deal: "17% أقل من المعتاد",
+      deal_description: "Deal",
+      nearby_places: [
+        {
+          name: "المتحف المصري بالقاهرة",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "3 د",
+            },
+          ],
+        },
+        {
+          name: "QNB - Champollion Rd",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "3 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "30 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 17 د",
+            },
+          ],
+        },
+        {
+          name: "مطعم علي بابا",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "3 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: " فندق 4 نجوم",
+      extracted_hotel_class: 4,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPeU-HvX6IEyi2pJEM-r4HxrOLNHHTVoErm1Rts=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPeU-HvX6IEyi2pJEM-r4HxrOLNHHTVoErm1Rts=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOcGHFv3Oic8kTKm_DZWLOReul6tvu4-jGxGjXm=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOcGHFv3Oic8kTKm_DZWLOReul6tvu4-jGxGjXm=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPlrpfLAVN3e2SXqhUrDHH6f1D2jkW83yY9gg8v=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPlrpfLAVN3e2SXqhUrDHH6f1D2jkW83yY9gg8v=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNpLOaf2jm1-pWV7aTKikHe9-k0kEkoSmpUxoSI=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNpLOaf2jm1-pWV7aTKikHe9-k0kEkoSmpUxoSI=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/yxeqZuT1Rc10vljTIOXyf5lFxm63Xs9cH7omrPSpqMJleQa2rxZBDpbvx3kUELNKC06C7JRgB6y2AENfTFF6dbF3ZRiKnuLJ8BXCitDfDalCof_pl9Ot-JrqBiHQWUEzUV29S_uYlFZmPXt01JoqzsBItqXR18o=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/57/571161/571161a_hb_a_004.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOUOpK_kjtMQrRudIkvN3iL3RQh7NTpWoCT-Ruc=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOUOpK_kjtMQrRudIkvN3iL3RQh7NTpWoCT-Ruc=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMdf3leBHq7MgSF3ndVkzOm-vatKONclP0DHMJR=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMdf3leBHq7MgSF3ndVkzOm-vatKONclP0DHMJR=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMs2qaarLk5zTmLl46pSratgaeVEhr_7Ueda0bH=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMs2qaarLk5zTmLl46pSratgaeVEhr_7Ueda0bH=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOwHU9ij87rFKatrL3ELq0g6xCYXVrNxuiP1ynL=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOwHU9ij87rFKatrL3ELq0g6xCYXVrNxuiP1ynL=s10000",
+        },
+      ],
+      overall_rating: 4.7,
+      reviews: 15240,
+      ratings: [
+        {
+          stars: 5,
+          count: 12325,
+        },
+        {
+          stars: 4,
+          count: 1949,
+        },
+        {
+          stars: 3,
+          count: 552,
+        },
+        {
+          stars: 2,
+          count: 157,
+        },
+        {
+          stars: 1,
+          count: 257,
+        },
+      ],
+      location_rating: 4.7,
+      reviews_breakdown: [
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 3681,
+          positive: 3455,
+          negative: 147,
+          neutral: 79,
+        },
+        {
+          name: "المطاعم",
+          description: "Food and Beverage",
+          total_mentioned: 925,
+          positive: 834,
+          negative: 55,
+          neutral: 36,
+        },
+        {
+          name: "الفطور",
+          description: "Breakfast",
+          total_mentioned: 1261,
+          positive: 1199,
+          negative: 32,
+          neutral: 30,
+        },
+        {
+          name: "مطعم",
+          description: "Restaurant",
+          total_mentioned: 620,
+          positive: 594,
+          negative: 4,
+          neutral: 22,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 2234,
+          positive: 2021,
+          negative: 132,
+          neutral: 81,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 1329,
+          positive: 1214,
+          negative: 34,
+          neutral: 81,
+        },
+      ],
+      amenities: [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Outdoor pool",
+        "Air conditioning",
+        "Fitness centre",
+        "Bar",
+        "Restaurant",
+        "Room service",
+        "Full-service laundry",
+        "Accessible",
+        "Child-friendly",
+      ],
+      property_token: "ChoIvcq-2vyWnLelARoNL2cvMTFieWN6cmQ1ZxAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChoIvcq-2vyWnLelARoNL2cvMTFieWN6cmQ1ZxAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "هيلتون رمسيس",
+      description:
+        "يعمل جهاز تكيّيف وجهاز تدفئة على ضمان مناخ داخلي مريح في الغرف. تعدّ الشرفة جزءاً من المواصفات القياسية لمعظم …",
+      link: "https://www.hilton.com/en/hotels/cairhtw-ramses-hilton/?SEO_id=GMB-EMEA-TW-CAIRHTW",
+      gps_coordinates: {
+        latitude: 30.050365,
+        longitude: 31.2320411,
+      },
+      check_in_time: "3:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏6,472 ج.م.‏",
+        extracted_lowest: 6472,
+        before_taxes_fees: "‏5,018 ج.م.‏",
+        extracted_before_taxes_fees: 5018,
+      },
+      total_rate: {
+        lowest: "‏6,472 ج.م.‏",
+        extracted_lowest: 6472,
+        before_taxes_fees: "‏5,018 ج.م.‏",
+        extracted_before_taxes_fees: 5018,
+      },
+      nearby_places: [
+        {
+          name: "المتحف المصري بالقاهرة",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "6 د",
+            },
+          ],
+        },
+        {
+          name: "Hilton Ramses",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "32 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 29 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: "فندق 5 نجوم",
+      extracted_hotel_class: 5,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOHx-fKhQla4BAF5LMz7yL4AUp5ZMIRDCo1Pa7A=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOHx-fKhQla4BAF5LMz7yL4AUp5ZMIRDCo1Pa7A=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMUA3OoTbVB6_XxZO1WaEuC2Gof6T7rHI2cFgtv=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMUA3OoTbVB6_XxZO1WaEuC2Gof6T7rHI2cFgtv=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipO1Q6MQeovCH5hVqoapise9W5zQZEgmI00kRG2c=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipO1Q6MQeovCH5hVqoapise9W5zQZEgmI00kRG2c=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNfDfpfjzGXJ7wWmSY6zzxHNCuohXgTb6C5C9gC=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNfDfpfjzGXJ7wWmSY6zzxHNCuohXgTb6C5C9gC=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOsqcEIqPZhbTxRiKp1T0V6rhNleicnhxAFxQ0k=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOsqcEIqPZhbTxRiKp1T0V6rhNleicnhxAFxQ0k=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMgkNNSF-c7B9QWHznHqv3Ar2r0O7JFXmICnMXv=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMgkNNSF-c7B9QWHznHqv3Ar2r0O7JFXmICnMXv=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNyeuX_Ddwbo_tCLnkNw8pZaTbHNIMaU1UGNm1i=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNyeuX_Ddwbo_tCLnkNw8pZaTbHNIMaU1UGNm1i=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNPM00p6HYNduaYNPzxPTAJLkT-O2mN8hE3yWgV=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNPM00p6HYNduaYNPzxPTAJLkT-O2mN8hE3yWgV=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNVkKkUGvQax-L_Z6LPlnsC7O7vuhEffKNlxcNS=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNVkKkUGvQax-L_Z6LPlnsC7O7vuhEffKNlxcNS=s10000",
+        },
+      ],
+      overall_rating: 4.2,
+      reviews: 25083,
+      ratings: [
+        {
+          stars: 5,
+          count: 14757,
+        },
+        {
+          stars: 4,
+          count: 4895,
+        },
+        {
+          stars: 3,
+          count: 2674,
+        },
+        {
+          stars: 2,
+          count: 930,
+        },
+        {
+          stars: 1,
+          count: 1827,
+        },
+      ],
+      location_rating: 4.6,
+      reviews_breakdown: [
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 2440,
+          positive: 1468,
+          negative: 726,
+          neutral: 246,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 1903,
+          positive: 1153,
+          negative: 604,
+          neutral: 146,
+        },
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 841,
+          positive: 377,
+          negative: 365,
+          neutral: 99,
+        },
+        {
+          name: "المطاعم",
+          description: "Food and Beverage",
+          total_mentioned: 487,
+          positive: 352,
+          negative: 96,
+          neutral: 39,
+        },
+        {
+          name: "الفطور",
+          description: "Breakfast",
+          total_mentioned: 607,
+          positive: 464,
+          negative: 92,
+          neutral: 51,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 1095,
+          positive: 780,
+          negative: 155,
+          neutral: 160,
+        },
+      ],
+      amenities: [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Outdoor pool",
+        "Air conditioning",
+        "Fitness centre",
+        "Bar",
+        "Restaurant",
+        "Room service",
+        "Kitchen in rooms",
+        "Full-service laundry",
+        "Accessible",
+        "Business centre",
+        "Child-friendly",
+      ],
+      property_token: "ChgI4Zu50OT07OrxARoLL2cvMXRmM2t4amsQAQ",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChgI4Zu50OT07OrxARoLL2cvMXRmM2t4amsQAQ&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "Golden palace Hotel",
+      description:
+        "يمتلك هذا الفندق مصعد وقسم استقبال. من ضمن تجهيزات مكان الإقامة هناك حفظ أمتعة وخزينة. يتسنى للضيوف من خلال …",
+      link: "https://goldenpalacehotel2019.business.site/?utm_source=gmb&utm_medium=referral",
+      gps_coordinates: {
+        latitude: 30.0516857,
+        longitude: 31.240861700000004,
+      },
+      check_in_time: "2:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏1,662 ج.م.‏",
+        extracted_lowest: 1662,
+        before_taxes_fees: "‏1,445 ج.م.‏",
+        extracted_before_taxes_fees: 1445,
+      },
+      total_rate: {
+        lowest: "‏1,662 ج.م.‏",
+        extracted_lowest: 1662,
+        before_taxes_fees: "‏1,445 ج.م.‏",
+        extracted_before_taxes_fees: 1445,
+      },
+      nearby_places: [
+        {
+          name: "برج القاهرة",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "8 د",
+            },
+          ],
+        },
+        {
+          name: "Talaat Harb Mall (Downtown)",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "2 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "27 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 2 د",
+            },
+          ],
+        },
+        {
+          name: "سندوتشات الاشوال",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+      ],
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipM9Uffu55BZHy6aGAMEQnmodGQnpVx8nET5S1wW=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipM9Uffu55BZHy6aGAMEQnmodGQnpVx8nET5S1wW=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipO7IdwR4hTLX25GpUw8bpv6TUSpJDqhcwRL7Oye=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipO7IdwR4hTLX25GpUw8bpv6TUSpJDqhcwRL7Oye=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipORiQOYzgqF1q961gzUX6phpIkEUhbC9Zk7Gy7f=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipORiQOYzgqF1q961gzUX6phpIkEUhbC9Zk7Gy7f=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipN2ZVnjs3h53HnVOqRPeUVI7urDbRMGQ9pHdSDl=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipN2ZVnjs3h53HnVOqRPeUVI7urDbRMGQ9pHdSDl=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOqFsl_Soyi2npqj2wLYJeZPydZNk-ve7fhw5Kn=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOqFsl_Soyi2npqj2wLYJeZPydZNk-ve7fhw5Kn=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNo0ccX9PNzG-3Jx3Q5d_LLNOrVcU8r2i5ixR-C=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNo0ccX9PNzG-3Jx3Q5d_LLNOrVcU8r2i5ixR-C=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/KoLWP2WdExYbqUumOKNGmeT98om9hzAjR6OjetX7WChXHY2UgBuP0eXE8jH7QUatnIl7zKdXmjvncjTYPcRFa4wW39ffaw3d6jwiO1hoTo4VT31DUP8OVAQNbL05r45cT3fgk76K-XhMz0nPieO5itiu6QJ4dQ=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/content/db/0b/db0bb86a0686bc80c1763eb312b084d03031946a.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/qGxczvFDANZNK52bah6zh1kV3VPhrvGEmEMEFHKYOMdxoL9rgz-HpO6_6-7lwHoKBGV8vhxSXhBvtlzA6cgnYb2T3sbwhlZOpL58aAtO5MMt4Czsax0okAGJh1auFBmtmxKKF2Dci54PSEBFRoyLENIgYkYJaQ=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/content/ee/d2/eed2d8a808dbcf5f45f3689fa0c7af774f726fe6.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/PTAAoS06X-7WH7ogC6KorGBrAso38cXqmbbEAPeFmMoQk3tKP0NeMlPHI1kO4sf5ZP5Gi-OP7aH8T0T0Qwn7IIegkMlYOuNtp-rRJNSl-ZNpcqY1gJE-ziUdLtsWi6QNzLROx1Kk1qWtp5ouWiZwmoA1P13tGvg=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/66/a4/b2/caption.jpg",
+        },
+      ],
+      overall_rating: 4.5,
+      reviews: 518,
+      ratings: [
+        {
+          stars: 5,
+          count: 410,
+        },
+        {
+          stars: 4,
+          count: 39,
+        },
+        {
+          stars: 3,
+          count: 27,
+        },
+        {
+          stars: 2,
+          count: 12,
+        },
+        {
+          stars: 1,
+          count: 30,
+        },
+      ],
+      location_rating: 4.7,
+      reviews_breakdown: [
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 169,
+          positive: 160,
+          negative: 5,
+          neutral: 4,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 118,
+          positive: 109,
+          negative: 7,
+          neutral: 2,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 161,
+          positive: 136,
+          negative: 19,
+          neutral: 6,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 100,
+          positive: 89,
+          negative: 5,
+          neutral: 6,
+        },
+        {
+          name: "الأجواء",
+          description: "Atmosphere",
+          total_mentioned: 55,
+          positive: 55,
+          negative: 0,
+          neutral: 0,
+        },
+        {
+          name: "الفطور",
+          description: "Breakfast",
+          total_mentioned: 33,
+          positive: 24,
+          negative: 6,
+          neutral: 3,
+        },
+      ],
+      amenities: [
+        "Free breakfast",
+        "Free Wi-Fi",
+        "Air conditioning",
+        "Restaurant",
+        "Full-service laundry",
+      ],
+      property_token: "ChoIqLbY1MuRnuqmARoNL2cvMTFqMGIwenFxdBAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChoIqLbY1MuRnuqmARoNL2cvMTFqMGIwenFxdBAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "نيو جاردن بالاس هوتيل",
+      description:
+        "يسعد طاقم الموظفين المضياف عند قسم الاستقبال المساعدة لدى وجود أي استفسار. يشمل العرض مختلف الخدمات والتجهيزات …",
+      link: "http://www.hostelworld.com/hosteldetails.php/New-Garden-Palace-Hotel/Cairo/34140?affiliate=wendatravel",
+      gps_coordinates: {
+        latitude: 30.035350899999997,
+        longitude: 31.233401599999997,
+      },
+      check_in_time: "12:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏989 ج.م.‏",
+        extracted_lowest: 989,
+        before_taxes_fees: "‏860 ج.م.‏",
+        extracted_before_taxes_fees: 860,
+      },
+      total_rate: {
+        lowest: "‏989 ج.م.‏",
+        extracted_lowest: 989,
+        before_taxes_fees: "‏860 ج.م.‏",
+        extracted_before_taxes_fees: 860,
+      },
+      nearby_places: [
+        {
+          name: "المتحف المصري بالقاهرة",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "6 د",
+            },
+          ],
+        },
+        {
+          name: "Roz Al Youssef Magazine (Garden City)",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "2 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "34 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 24 د",
+            },
+          ],
+        },
+        {
+          name: "مطعم السلطان فول و فلافل",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "2 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: "فندق 3 نجوم",
+      extracted_hotel_class: 3,
+      images: [
+        {
+          thumbnail:
+            "https://lh6.googleusercontent.com/proxy/9xEgXl11LkCoruHbjn4ON4vADBD6rZSWGiP9i1FcpWZ7Qq01RRW0OfN4l4CL7tiLLVluTymEvgwW0rLdzeN2yTA2xb34ayY9PHurpWXbev4FZMqF-YMXlfTNOyddgcJiOgCBmdeQ3C95gbIwKORw2tCEm1SvK_w=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/dd/42/35/photo2jpg.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/54Ds2KEmPhKuUm8ESckaoLS2uc0OVG1V4E2ry1zJUna4g_JoY2_pQEUwaki-SWLn9k7uFpeq_RfD34eJtC7G-SEz8nPBcbbi5uFIaX2_P6UPnmRaiZf6o580EeqqxfCjXuzrSS32ApEfVqB-lRG4EpWX-x98OeY=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/content/84/02/8402f4afdd65098f30e8c12177aaaccb0eb79234.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/OmqgemaEtszR2yCzchNdF9jIfGrvYf9DIN5lov-2Wi7TKl0V8mn5Agwp943_r4jFQLvJlH_xy63h819vONaPtvt5mLxNWctnTdEzPOSyf5r8DR262D0J2GaA0KHXaiQUALnvadIgBEoJoejKQ4YRr2OoqMpH4xQ=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/dd/25/3a/you-should-not-miss-this.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPYgmQVf2wDRSRkg0PF27441AVeAdUqr6MGQE3_=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPYgmQVf2wDRSRkg0PF27441AVeAdUqr6MGQE3_=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/LLPkNuxG__BXTAMJGAjB-Fiqbjizn6f67m0EBCTTveGpr_enFk8YNjeWMkgo5JliiQ8lXEe06jTcQpEEgbLkQDGWoDYJoKym2o8ra_ZAewa87jv-DJhv7Jse04xO3RL95E2_Z1_1sYoIISD0_XTjEsyPDEEZKAY=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/content/b3/59/b35975420f49d0ce4aa0d2529a9d16fea4bfd541.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh6.googleusercontent.com/proxy/JeBycUH4SSb0WuK2m_GenZHs9kQ2IKn5Tkk__z8jwklS8xGcLZS9s-VZKkkIxL7mm8WSkQN7GPXE8VTYH9xRlK-hK_9cXjWDAu9j1OIBDuvVJLeeEVHEOv7BVtW4LnBLobq0PLrEQAup04jEHZKWtCqRiSW53w=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/dd/42/38/photo5jpg.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/fZX_9uu6GGzev-rCCOG3zStvvoS3LSlVpDi2wmIZQk8BNaS5D-ZaS3wbBqHCYh7sUG6h_uexXnv6IFnSwShUshxe03LNU0d-Ep8VnolC2lGiwfeK-b_hdr_Hs6crMFAkDUpfiB3S7B50meCoNnW8x6HrE2AsPw=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/dd/42/36/photo3jpg.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPvnPCXsTPtbcbUWtmO2pQXZ-WK9o-mDo10f23s=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPvnPCXsTPtbcbUWtmO2pQXZ-WK9o-mDo10f23s=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipP8a4p35ve3Gvwmz8D0G_olLsxqBJ_osuGtN6c=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipP8a4p35ve3Gvwmz8D0G_olLsxqBJ_osuGtN6c=s10000",
+        },
+      ],
+      overall_rating: 4.4,
+      reviews: 3798,
+      ratings: [
+        {
+          stars: 5,
+          count: 3130,
+        },
+        {
+          stars: 4,
+          count: 65,
+        },
+        {
+          stars: 3,
+          count: 112,
+        },
+        {
+          stars: 2,
+          count: 87,
+        },
+        {
+          stars: 1,
+          count: 404,
+        },
+      ],
+      location_rating: 4,
+      reviews_breakdown: [
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 238,
+          positive: 131,
+          negative: 101,
+          neutral: 6,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 181,
+          positive: 79,
+          negative: 90,
+          neutral: 12,
+        },
+        {
+          name: "حمّام",
+          description: "Bathroom and toiletries",
+          total_mentioned: 52,
+          positive: 0,
+          negative: 48,
+          neutral: 4,
+        },
+        {
+          name: "تلفزيون",
+          description: "Room entertainment",
+          total_mentioned: 20,
+          positive: 0,
+          negative: 20,
+          neutral: 0,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 92,
+          positive: 11,
+          negative: 79,
+          neutral: 2,
+        },
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 48,
+          positive: 7,
+          negative: 39,
+          neutral: 2,
+        },
+      ],
+      amenities: [
+        "Free Wi-Fi",
+        "Air conditioning",
+        "Restaurant",
+        "Full-service laundry",
+        "Child-friendly",
+      ],
+      property_token: "ChcIwsK488PF5qZFGgsvZy8xdGx3NmNiNRAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChcIwsK488PF5qZFGgsvZy8xdGx3NmNiNRAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "Nile View Inn",
+      link: "https://www.nileviewinn.com/",
+      gps_coordinates: {
+        latitude: 30.0180679,
+        longitude: 31.223239499999995,
+      },
+      check_in_time: "2:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏950 ج.م.‏",
+        extracted_lowest: 950,
+        before_taxes_fees: "‏950 ج.م.‏",
+        extracted_before_taxes_fees: 950,
+      },
+      total_rate: {
+        lowest: "‏950 ج.م.‏",
+        extracted_lowest: 950,
+        before_taxes_fees: "‏950 ج.م.‏",
+        extracted_before_taxes_fees: 950,
+      },
+      nearby_places: [
+        {
+          name: "الكنيسة المعلقة",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "8 د",
+            },
+          ],
+        },
+        {
+          name: "Al Rawda Square (Al Manial)",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "4 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "36 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 39 د",
+            },
+          ],
+        },
+        {
+          name: "اطلانتيس",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "2 د",
+            },
+          ],
+        },
+      ],
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNpWfIk-paTlUJLnWODi-PhbakJs1XOOjIKVSWh=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNpWfIk-paTlUJLnWODi-PhbakJs1XOOjIKVSWh=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOBsz0qj5TVj3NiQucJDD082cECwBlnr4aAA0kG=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOBsz0qj5TVj3NiQucJDD082cECwBlnr4aAA0kG=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMJyAy3lE63c9tWnCimwim5pBRqlEZRcbx894ec=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMJyAy3lE63c9tWnCimwim5pBRqlEZRcbx894ec=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMC8Pmx4RM7nZiyBcQqjoUjywGitoToGA0fb5iK=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMC8Pmx4RM7nZiyBcQqjoUjywGitoToGA0fb5iK=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipM4LdNZwV_li28DoJN77kwvEqS0N02Rvh_6PL97=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipM4LdNZwV_li28DoJN77kwvEqS0N02Rvh_6PL97=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPxq4_P0CE3yYjigLZ6RMuCqJZ3DT5oDhxBkgw=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPxq4_P0CE3yYjigLZ6RMuCqJZ3DT5oDhxBkgw=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPHsRatstkHCYRqtnWOB7CW4bd-DZ4CLskFEouq=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPHsRatstkHCYRqtnWOB7CW4bd-DZ4CLskFEouq=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMD85pYuB3vzga1wTdpCkytpoHdNsEOsydYre_d=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMD85pYuB3vzga1wTdpCkytpoHdNsEOsydYre_d=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipP9oEeVRChm-qDe__P8EevxNF3OxyYH350c7ghV=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipP9oEeVRChm-qDe__P8EevxNF3OxyYH350c7ghV=s10000",
+        },
+      ],
+      overall_rating: 4.6,
+      reviews: 451,
+      ratings: [
+        {
+          stars: 5,
+          count: 365,
+        },
+        {
+          stars: 4,
+          count: 37,
+        },
+        {
+          stars: 3,
+          count: 19,
+        },
+        {
+          stars: 2,
+          count: 7,
+        },
+        {
+          stars: 1,
+          count: 23,
+        },
+      ],
+      location_rating: 4.1,
+      reviews_breakdown: [
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 33,
+          positive: 27,
+          negative: 2,
+          neutral: 4,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 48,
+          positive: 42,
+          negative: 5,
+          neutral: 1,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 63,
+          positive: 47,
+          negative: 10,
+          neutral: 6,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 61,
+          positive: 54,
+          negative: 5,
+          neutral: 2,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 38,
+          positive: 32,
+          negative: 2,
+          neutral: 4,
+        },
+        {
+          name: "الفطور",
+          description: "Breakfast",
+          total_mentioned: 21,
+          positive: 14,
+          negative: 5,
+          neutral: 2,
+        },
+      ],
+      amenities: [
+        "Free Wi-Fi",
+        "Restaurant",
+        "Room service",
+        "Full-service laundry",
+        "Accessible",
+      ],
+      property_token: "ChoIkbKP3aHqtcyVARoNL2cvMTFwcTQzMDcxehAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChoIkbKP3aHqtcyVARoNL2cvMTFwcTQzMDcxehAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "Holiday Express Hotel",
+      description:
+        "فندق بسيط يتميّز بغرف وأجنحة مريحة ويضم مطعمًا معاصرًا وصالة للشيشة وناديًا رياضيًا",
+      link: "http://www.holidaysexpresshotel.com/",
+      gps_coordinates: {
+        latitude: 30.0591197,
+        longitude: 31.2075497,
+      },
+      check_in_time: "2:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏1,930 ج.م.‏",
+        extracted_lowest: 1930,
+        before_taxes_fees: "‏1,497 ج.م.‏",
+        extracted_before_taxes_fees: 1497,
+      },
+      total_rate: {
+        lowest: "‏1,930 ج.م.‏",
+        extracted_lowest: 1930,
+        before_taxes_fees: "‏1,497 ج.م.‏",
+        extracted_before_taxes_fees: 1497,
+      },
+      deal: "27% أقل من المعتاد",
+      deal_description: "Great Deal",
+      nearby_places: [
+        {
+          name: "المتحف المصري بالقاهرة",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "9 د",
+            },
+          ],
+        },
+        {
+          name: "Sphinx Square",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "2 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "36 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 32 د",
+            },
+          ],
+        },
+        {
+          name: "بهية المهندسين",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: " فندق 4 نجوم",
+      extracted_hotel_class: 4,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNdPjHlkAbGe4qoh5JFpWFIDOFTLCQ9deAM4Px3=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNdPjHlkAbGe4qoh5JFpWFIDOFTLCQ9deAM4Px3=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMF4crA--LTAF_SuZYQlQx1WHoaiv4gnp4WmJDh=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMF4crA--LTAF_SuZYQlQx1WHoaiv4gnp4WmJDh=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/nU44iIjSWvYJCBDW-gkIJst0qpRx2D2L2QUZMbsUMr6rKwJbvNCHfGyy3MDHDAs9IviXXrHRLMLSTVlDR8l4-ESh2Ml6tQY4MfKM5xUTzyKG3Jjty2zAo7aShlGIrw4PZDUZdV8a8ZoG8GbbY0G1cyNpbXNtRw=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/18/185360/185360a_hb_ro_019.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/GPHIjBxCXP2QM2MuGsLr0zecbM9IEprif8Oo8HChGQlRvxYLgYqDYT_Vyn_wlfW5wk5l4eqGXbvo6npFKticr0o_rph1q6joD9_AAWvFH35AMqSWaMYfOYwmgUBGZRM38XeciPpo_GucENyvIxB_lskSMS4KDw8=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/18/185360/185360a_hb_ro_020.JPG",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNFmlPlMYy59O7-Y0VHMOcmt_21Qttn13bV7bFB=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNFmlPlMYy59O7-Y0VHMOcmt_21Qttn13bV7bFB=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipP6WLweAx2bsrEARctJ2OsNxVgQaAtSJiGiadvl=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipP6WLweAx2bsrEARctJ2OsNxVgQaAtSJiGiadvl=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/1W9x-goarKiYyXwauvBAsAKhlu7IytMRSGzSz26JEFqCu_9u8EenoUk3FDK1V_kA3YnyLh3FilydgS2GsBorpa2LvfvnR3B38VqtAqN60t8G3LGDSNEJ52v1LUEPpSHv3T_mQ8dxteCiijANCDiIJEhlypQBbA=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/content/8d/de/8dde6912574b0406faef7536b4a365106af085db.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/ecren9zfphUqJ_3Uhe_SR-C-WlNX-_DswMaP4Ce4sVcmbn-ZxvPPImJDM0cdAxsqK_-PDs4frR3MEqU5kTx274OOYIvLSIAsW1oQyYS1q_yVNhVJHqoTR1eB9afNz078Prhk9N3Xo9jjwiYhgUTx6UkLDcMSog=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/13/1c/aa/restaurant-cafe.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/xAzNF429lbYQsd4VdV8Sa0bi45EHBqAdypOo3dLOWB8M4ioo_3Wj4RwCJnY0_ZWwA4dtUnFVdKOnlBDHy42powff2chl0ar44egiAyJlf_64bOtTNVeWbhdGYjCTc-2dNzCO0YQfo4Ba5b-eu_YSyzciKLvQFFw=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/content/aa/a2/aaa279ede146aeb059ad4fbe088555e23dce64a9.jpeg",
+        },
+      ],
+      overall_rating: 3.2,
+      reviews: 1054,
+      ratings: [
+        {
+          stars: 5,
+          count: 321,
+        },
+        {
+          stars: 4,
+          count: 136,
+        },
+        {
+          stars: 3,
+          count: 229,
+        },
+        {
+          stars: 2,
+          count: 117,
+        },
+        {
+          stars: 1,
+          count: 251,
+        },
+      ],
+      location_rating: 3.2,
+      reviews_breakdown: [
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 131,
+          positive: 43,
+          negative: 74,
+          neutral: 14,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 78,
+          positive: 10,
+          negative: 63,
+          neutral: 5,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 118,
+          positive: 36,
+          negative: 73,
+          neutral: 9,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 59,
+          positive: 34,
+          negative: 17,
+          neutral: 8,
+        },
+        {
+          name: "حمّام",
+          description: "Bathroom and toiletries",
+          total_mentioned: 21,
+          positive: 0,
+          negative: 19,
+          neutral: 2,
+        },
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 38,
+          positive: 3,
+          negative: 35,
+          neutral: 0,
+        },
+      ],
+      amenities: [
+        "Breakfast",
+        "Free Wi-Fi",
+        "Parking",
+        "Air conditioning",
+        "Spa",
+        "Bar",
+        "Restaurant",
+        "Room service",
+        "Airport shuttle",
+        "Full-service laundry",
+        "Accessible",
+      ],
+      property_token: "ChgIvZWo2dyIwq7-ARoLL2cvMXRnXzB6dGwQAQ",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChgIvZWo2dyIwq7-ARoLL2cvMXRnXzB6dGwQAQ&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "فندق تريومف",
+      description:
+        "فندق أنيق يتميز بغرف دافئة تطل على المدينة مع مطعمَين ومخبز متاح على مدار الساعة طيلة أيام الأسبوع ونادٍ رياضي",
+      link: "https://triumphhotel.com/plaza-home/",
+      gps_coordinates: {
+        latitude: 30.086216599999997,
+        longitude: 31.3058207,
+      },
+      check_in_time: "2:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏2,471 ج.م.‏",
+        extracted_lowest: 2471,
+        before_taxes_fees: "‏2,072 ج.م.‏",
+        extracted_before_taxes_fees: 2072,
+      },
+      total_rate: {
+        lowest: "‏2,471 ج.م.‏",
+        extracted_lowest: 2471,
+        before_taxes_fees: "‏2,072 ج.م.‏",
+        extracted_before_taxes_fees: 2072,
+      },
+      nearby_places: [
+        {
+          name: "Triumph Hotel",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "2 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "20 د",
+            },
+            {
+              type: "Public transport",
+              duration: "52 د",
+            },
+          ],
+        },
+        {
+          name: "دجاج كنتاكي",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "7 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: " فندق 4 نجوم",
+      extracted_hotel_class: 4,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPG4RrUNQMXwWTMm90kW4qDU0r5cRJsNIEC6jn_=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPG4RrUNQMXwWTMm90kW4qDU0r5cRJsNIEC6jn_=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMOTuizTj_GBv8lqaJG0EaNYiD60RBxDYBtrAAq=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMOTuizTj_GBv8lqaJG0EaNYiD60RBxDYBtrAAq=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOiXs5fLUbw_i7D5zonZ4pUFn3biys-1nsFRQWs=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOiXs5fLUbw_i7D5zonZ4pUFn3biys-1nsFRQWs=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/2rYOColzd3nUk4W-JamyJtQPhsLMPVvXNTSISqgdO_avApVTM5hFeGF_KFx8CwpKvMXBNhXUUP9lBbhtGKZqAJSwKeyXEdvLbYrObw507JXhR7SQI6AyKOJMBbZ9fu4hX6CNlze2Z45FZIv99fOz93sdbMGydA=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://i.giatamedia.com/m.php?m=AQABAAAAla4KAANLpQUFAEaiyl2OYHZrxoRY8buEp_Y",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPebQh3K-O4MZCig_TsGPWEn7p71McZIjYC-9NX=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPebQh3K-O4MZCig_TsGPWEn7p71McZIjYC-9NX=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/9TOowH_I4HehOjQN6TpIAvIu_3gOz8wLYL4KZ096iPlvxDrqM95bro0_JznGznIBV5qug9oqKbSLDaPf1oJWGI0Bj_BCYpLb5S7xj5ntW33Sij3bb4j9IZYWjsvGpyDj1n7VMYnyIZqSkSSsO2HGoKSysXFB37s=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://i.giatamedia.com/m.php?m=AQABAAAAla4KAD9BxQUFAK_7Rw1iShQODPrtjlNWaMM",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPsoVwK2rS2QNTqlTDwwD8Budg4t_pIqXtl62lk=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPsoVwK2rS2QNTqlTDwwD8Budg4t_pIqXtl62lk=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/j5lJo9TnzJXFN7CuaAQhlRYCnY5fWyqi2maHHKn7FQDcnzIJ5WhRnLk4fKCo6ZpLCdAQM1LhKAwin1FwD5oZU9FZT5rQObB216OhK_e-uDttDmBr18Q_b5vl-DHsmQus3-UfkwK69x-LsSWmfwMoYzjVfFak_MI=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://i.giatamedia.com/m.php?m=AQABAAAAla4KAB1LpQUFALqGRvmA4vKy7OUh2nYI-6M",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/wu59evniDTQzNYTfKAOtM7n0QVosRKnb-wBa0xJ8o0WCvfAOnerNxCwWn4oWRclXPVgqwfK3H8EAiP4Apzl59o5MDRvK5M0twmF2C7cZibtd_pgNEvkbjGQOjp1dnjrFH0mAlyqoiz1uR_ZN3cFe8aGEkIz9hZ8=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://i.giatamedia.com/m.php?m=AQABAAAAla4KABtLpQUFABcrWnu0W0sWd52kn1ZJGRI",
+        },
+      ],
+      overall_rating: 4.2,
+      reviews: 6972,
+      ratings: [
+        {
+          stars: 5,
+          count: 3838,
+        },
+        {
+          stars: 4,
+          count: 1687,
+        },
+        {
+          stars: 3,
+          count: 864,
+        },
+        {
+          stars: 2,
+          count: 227,
+        },
+        {
+          stars: 1,
+          count: 356,
+        },
+      ],
+      location_rating: 3.2,
+      reviews_breakdown: [
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 528,
+          positive: 431,
+          negative: 60,
+          neutral: 37,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 448,
+          positive: 341,
+          negative: 77,
+          neutral: 30,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 160,
+          positive: 130,
+          negative: 12,
+          neutral: 18,
+        },
+        {
+          name: "تكييف الهواء",
+          description: "Air conditioning",
+          total_mentioned: 13,
+          positive: 3,
+          negative: 10,
+          neutral: 0,
+        },
+        {
+          name: "حمّام",
+          description: "Bathroom and toiletries",
+          total_mentioned: 30,
+          positive: 5,
+          negative: 18,
+          neutral: 7,
+        },
+        {
+          name: "مرافِق النوم",
+          description: "Sleep",
+          total_mentioned: 36,
+          positive: 10,
+          negative: 22,
+          neutral: 4,
+        },
+      ],
+      amenities: [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Air conditioning",
+        "Fitness centre",
+        "Spa",
+        "Restaurant",
+        "Room service",
+        "Full-service laundry",
+        "Accessible",
+        "Child-friendly",
+      ],
+      property_token: "ChcI6fikx7SjvfwUGgsvZy8xdGZkdnZmbRAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChcI6fikx7SjvfwUGgsvZy8xdGZkdnZmbRAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "New Royal Grand Hotel Cairo",
+      description:
+        "فندق بسيط يقع في مبنى أنيق من القرن التاسع عشر ويضمّ غرفًا متواضعة كما يقدّم وجبة فطور",
+      link: "http://www.newcairohotelgrandroyal.com/",
+      gps_coordinates: {
+        latitude: 30.047560599999997,
+        longitude: 31.238494199999998,
+      },
+      check_in_time: "12:30 م",
+      check_out_time: "11:30 ص",
+      rate_per_night: {
+        lowest: "‏1,020 ج.م.‏",
+        extracted_lowest: 1020,
+        before_taxes_fees: "‏792 ج.م.‏",
+        extracted_before_taxes_fees: 792,
+      },
+      total_rate: {
+        lowest: "‏1,020 ج.م.‏",
+        extracted_lowest: 1020,
+        before_taxes_fees: "‏792 ج.م.‏",
+        extracted_before_taxes_fees: 792,
+      },
+      nearby_places: [
+        {
+          name: "المتحف المصري بالقاهرة",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "9 د",
+            },
+          ],
+        },
+        {
+          name: "Talaat Harb Square (Downtown)",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "27 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 8 د",
+            },
+          ],
+        },
+        {
+          name: "مطعم شارع الحمرا",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+      ],
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOhj7mzGKOxvlXgmC3UvXrnmTBJ8P5TI7dPUsPJ=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOhj7mzGKOxvlXgmC3UvXrnmTBJ8P5TI7dPUsPJ=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipM0_8NfLZixMKJ81b_Hv3vmy4EA975EFLSHM1Ht=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipM0_8NfLZixMKJ81b_Hv3vmy4EA975EFLSHM1Ht=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/JKkA0YRInYvbnze7FCv5CDejokhy-oKNLB2sUGxBz78W3_G3txq28WAQQgcUBLebjsH990dwa200WE4Qp5u9GK2erSIQJlTGWpYGkSb6bh5kpJEyyHIeKP3ZPE7oy5aEMCHoP1rIZVKedVIL7dUrtELQkr3tCUE=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/content/93/81/9381995168085302f0cc7ed36b5daebce0cbae74.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNlKS-YmusAWsIsTtLuSGcAlBhGYG-VHITD9B5r=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNlKS-YmusAWsIsTtLuSGcAlBhGYG-VHITD9B5r=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/kRj6l1sQxydHIT-P1rz5ZvSXHU2rbHNiiOc6diR7GVw41lXMyBrq0bvtisf4Ngf-IgtjBrx6yK6LqWaaJNfx_6kWYzgjOru4tQSM0knASsRq3mtdpMaY1lajBD6ev91_xw52H6fsZqzA9wDNoaTVHuJVabRrAOs=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/extranet/45/b6/45b6499df4ab03fa41707b926729a2353726a801.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/j6IQU8p_Omhma3LuslzZA7Xgg2XtTC1E--SeneLDzcWnCdf6kXJJq24_bwk2Pud-BCNCJ5USensMX-M8WDurkXo3FlMty570vnduI2Eam7dXLi19wMjqFsruJp81ZsBvG_Ttx_DdXraULQXNU2mnMQd4CY-ln-I=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/content/f5/6d/f56ded6691c437742288a3f50d9b00b98d9bc3f2.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh6.googleusercontent.com/proxy/H07jaoP7DEoJA4h6N8rhqc0WZZJzKChywobLzR1EuWUkDDWabnoSc1R3Ph4H0r3xR8HjJaCd67T65cvF_o2PMRv2bpPL7aKATJTCazsSffDza8q8OKJlr5c6-26Iwxi8dvvFbiiwBN0nq399PJsBQlHxAkr6zQ=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/ee/d7/67/hotel-grand-royal.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipO0kNdtQZUVBIEskl70jyyrrZqF10cA095WxL8D=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipO0kNdtQZUVBIEskl70jyyrrZqF10cA095WxL8D=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMn_GEpv4qoCXRd8v6Twjld_AiOqi1R1rfRkrJz=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMn_GEpv4qoCXRd8v6Twjld_AiOqi1R1rfRkrJz=s10000",
+        },
+      ],
+      overall_rating: 4,
+      reviews: 924,
+      ratings: [
+        {
+          stars: 5,
+          count: 538,
+        },
+        {
+          stars: 4,
+          count: 104,
+        },
+        {
+          stars: 3,
+          count: 115,
+        },
+        {
+          stars: 2,
+          count: 52,
+        },
+        {
+          stars: 1,
+          count: 115,
+        },
+      ],
+      location_rating: 4.7,
+      reviews_breakdown: [
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 139,
+          positive: 78,
+          negative: 50,
+          neutral: 11,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 93,
+          positive: 68,
+          negative: 8,
+          neutral: 17,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 119,
+          positive: 86,
+          negative: 24,
+          neutral: 9,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 83,
+          positive: 47,
+          negative: 33,
+          neutral: 3,
+        },
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 42,
+          positive: 12,
+          negative: 19,
+          neutral: 11,
+        },
+        {
+          name: "مرافِق النوم",
+          description: "Sleep",
+          total_mentioned: 40,
+          positive: 7,
+          negative: 28,
+          neutral: 5,
+        },
+      ],
+      amenities: [
+        "Free breakfast",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Restaurant",
+        "Airport shuttle",
+        "Full-service laundry",
+        "Child-friendly",
+      ],
+      property_token: "ChgI_dWeoLD59vBiGgwvZy8xMTNodnk1ZjMQAQ",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChgI_dWeoLD59vBiGgwvZy8xMTNodnk1ZjMQAQ&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "فندق هورايزون شهرزاد",
+      description:
+        "غرف مفروشة بشكل بسيط في فندق مريح يضمّ مطعمًا ومركزًا للّياقة البدنية ويتميّز بإطلالات على النهر",
+      link: "https://www.horizonshahrazad.com/",
+      gps_coordinates: {
+        latitude: 30.056978299999997,
+        longitude: 31.2154469,
+      },
+      check_in_time: "2:00 م",
+      check_out_time: "11:00 ص",
+      rate_per_night: {
+        lowest: "‏2,502 ج.م.‏",
+        extracted_lowest: 2502,
+        before_taxes_fees: "‏1,943 ج.م.‏",
+        extracted_before_taxes_fees: 1943,
+      },
+      total_rate: {
+        lowest: "‏2,502 ج.م.‏",
+        extracted_lowest: 2502,
+        before_taxes_fees: "‏1,943 ج.م.‏",
+        extracted_before_taxes_fees: 1943,
+      },
+      nearby_places: [
+        {
+          name: "المتحف المصري بالقاهرة",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "6 د",
+            },
+          ],
+        },
+        {
+          name: "Al Agouza Hospital",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "2 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "34 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 17 د",
+            },
+          ],
+        },
+        {
+          name: "White Roof Restaurant",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "2 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: " فندق 4 نجوم",
+      extracted_hotel_class: 4,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOc7IIWulqsedFoRPaYKvDtyBqODW2iM2AOAdt4=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOc7IIWulqsedFoRPaYKvDtyBqODW2iM2AOAdt4=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNqvsixLjFtMdOCz84p2KSSlUe2jMS0n2P_Du6d=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNqvsixLjFtMdOCz84p2KSSlUe2jMS0n2P_Du6d=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMmlRcDj0oaPpdCc5S9zpMnp7B4TP7gZ6MKB3ps=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMmlRcDj0oaPpdCc5S9zpMnp7B4TP7gZ6MKB3ps=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/uqJNGwRAf0niZi3hPkM1vL4LJqcCOZgA4CINzKA7xugXGV1nYyimKgF64egfaP6MlGh2_hhGijtn8_6sHAIQDWKU5AKJ2Qz4CyyGR90U1Pw9iKzcJM9eKueHefYoD5D9VosKY9cF5tMx4j9DzsLHvzNwfUSvhg=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/28/284713/284713a_hb_l_002.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh6.googleusercontent.com/proxy/mSztSuWgNQfbCQbECvkUrIW88iThCw645tOeLGOjxkGe2pv6TeBur84BD1r7uujyQjiwkO1qg1QZcZ5nP8jp4NkzLWLt6mMLJtVkwitp1AAHXIxAWeRW2P7CNVUb1SuXouWG2PutpStJyXSdVs5pImUxkjIW7pY=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/28/284713/284713a_hb_w_001.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNJau56HblNA49SiwOlEsxvzV7DVP2rdwb7mJ6m=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNJau56HblNA49SiwOlEsxvzV7DVP2rdwb7mJ6m=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/OLRFqe3TjGY-EkKoZakA-Yp_WhSogmimfzXyvKHYb3yijC52PXB-_ukGFmGPNUQFEKUiiNXd_nE7gyAiwYxVDhyNUKtb0uCWwjUKztdqOOQI8M_XbWduc1YGjrleujnCmKaZ7GpwGETXelprStVSnmM453JMAA=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/28/284713/284713a_hb_r_001.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNHD8Y8YV8e-AWrcYxO1nKn8TC5dllDzinSxSRY=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNHD8Y8YV8e-AWrcYxO1nKn8TC5dllDzinSxSRY=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPbQjrr2sViqjnNQYEk2h1J0_tivrp4YL4e0ubt=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPbQjrr2sViqjnNQYEk2h1J0_tivrp4YL4e0ubt=s10000",
+        },
+      ],
+      overall_rating: 3.4,
+      reviews: 3171,
+      ratings: [
+        {
+          stars: 5,
+          count: 1228,
+        },
+        {
+          stars: 4,
+          count: 475,
+        },
+        {
+          stars: 3,
+          count: 534,
+        },
+        {
+          stars: 2,
+          count: 243,
+        },
+        {
+          stars: 1,
+          count: 691,
+        },
+      ],
+      location_rating: 3.3,
+      reviews_breakdown: [
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 232,
+          positive: 33,
+          negative: 173,
+          neutral: 26,
+        },
+        {
+          name: "حمّام",
+          description: "Bathroom and toiletries",
+          total_mentioned: 95,
+          positive: 2,
+          negative: 87,
+          neutral: 6,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 220,
+          positive: 25,
+          negative: 185,
+          neutral: 10,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 311,
+          positive: 88,
+          negative: 194,
+          neutral: 29,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 329,
+          positive: 113,
+          negative: 196,
+          neutral: 20,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 185,
+          positive: 98,
+          negative: 57,
+          neutral: 30,
+        },
+      ],
+      amenities: [
+        "Breakfast",
+        "Free Wi-Fi",
+        "Pool",
+        "Air conditioning",
+        "Restaurant",
+        "Room service",
+        "Airport shuttle",
+        "Full-service laundry",
+        "Accessible",
+        "Child-friendly",
+      ],
+      property_token: "ChoIo6e3ivvK8-HgARoNL2cvMTFidHY2NGt0MBAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChoIo6e3ivvK8-HgARoNL2cvMTFidHY2NGt0MBAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "فندق نوفوتيل برج القاهرة",
+      description:
+        "فندق حديث يوفّر إطلالات على نهر النيل ويضمّ مطعمًا ومقهًى على السطح ومسبحًا خارجيًا",
+      link: "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=6600&merchantid=seo-maps-EG-6600&sourceid=aw-cen&utm_medium=seo+maps&utm_source=google+Maps&utm_campaign=seo+maps&y_source=1_MTUzNTk4NjItNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+      gps_coordinates: {
+        latitude: 30.0444933,
+        longitude: 31.226782600000003,
+      },
+      check_in_time: "2:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏4,429 ج.م.‏",
+        extracted_lowest: 4429,
+        before_taxes_fees: "‏3,189 ج.م.‏",
+        extracted_before_taxes_fees: 3189,
+      },
+      total_rate: {
+        lowest: "‏4,429 ج.م.‏",
+        extracted_lowest: 4429,
+        before_taxes_fees: "‏3,189 ج.م.‏",
+        extracted_before_taxes_fees: 3189,
+      },
+      nearby_places: [
+        {
+          name: "برج القاهرة",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "6 د",
+            },
+          ],
+        },
+        {
+          name: "Opera House",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "2 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "31 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 21 د",
+            },
+          ],
+        },
+        {
+          name: "لو جوت",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: " فندق 4 نجوم",
+      extracted_hotel_class: 4,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNCiypolBtrs8vYR_JCMIOKk0nSiCzSgXmWjYbW=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNCiypolBtrs8vYR_JCMIOKk0nSiCzSgXmWjYbW=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPzvJ31qcWiByvIkFo4q7iyLvigqgE3b_swgYn1=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPzvJ31qcWiByvIkFo4q7iyLvigqgE3b_swgYn1=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOfNroae-q8QK8F9EWvGTelXeTER2khFJupHYw8=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOfNroae-q8QK8F9EWvGTelXeTER2khFJupHYw8=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNXDejfkqhj7LzMehlBvZDceZVnscwp7QPJj3mk=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNXDejfkqhj7LzMehlBvZDceZVnscwp7QPJj3mk=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMFOKU-xetaK9TC7QKOYhRFr6YFNBK2fBn-r8YB=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMFOKU-xetaK9TC7QKOYhRFr6YFNBK2fBn-r8YB=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOF3bDiqeIGqQyuwXe7Gp1MdVbB6ckIcjOcZLwu=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOF3bDiqeIGqQyuwXe7Gp1MdVbB6ckIcjOcZLwu=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/9IIYM8II0pN6nzFu1fCoYpwrBMobFFJw3dGxS9m7llQDIsJ7aohnku50lVByRH_gxDZXOz3Pq3bmZ2tbSNgjaXoXUDris0lketaxMaJNqCbM1VF20TdmnVvycrEXVWWEqqPzHLWMAHnQWE4xHv9Yk_M9TQ9ybw=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/13/134910/134910a_hb_ro_070.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMQhVoEEeoF_gPCLm1iem572v_es14sZ5UhNHQl=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMQhVoEEeoF_gPCLm1iem572v_es14sZ5UhNHQl=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMbXrZgPM7MInxV2Dt6IcpshN70mj9MhaUkqqDx=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMbXrZgPM7MInxV2Dt6IcpshN70mj9MhaUkqqDx=s10000",
+        },
+      ],
+      overall_rating: 4.5,
+      reviews: 7652,
+      ratings: [
+        {
+          stars: 5,
+          count: 5655,
+        },
+        {
+          stars: 4,
+          count: 1069,
+        },
+        {
+          stars: 3,
+          count: 451,
+        },
+        {
+          stars: 2,
+          count: 171,
+        },
+        {
+          stars: 1,
+          count: 306,
+        },
+      ],
+      location_rating: 4.6,
+      reviews_breakdown: [
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 2109,
+          positive: 1883,
+          negative: 166,
+          neutral: 60,
+        },
+        {
+          name: "الفطور",
+          description: "Breakfast",
+          total_mentioned: 552,
+          positive: 466,
+          negative: 62,
+          neutral: 24,
+        },
+        {
+          name: "المطاعم",
+          description: "Food and Beverage",
+          total_mentioned: 364,
+          positive: 279,
+          negative: 59,
+          neutral: 26,
+        },
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 604,
+          positive: 375,
+          negative: 182,
+          neutral: 47,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 1343,
+          positive: 1145,
+          negative: 119,
+          neutral: 79,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 810,
+          positive: 719,
+          negative: 70,
+          neutral: 21,
+        },
+      ],
+      amenities: [
+        "Free breakfast",
+        "Free Wi-Fi",
+        "Free parking",
+        "Outdoor pool",
+        "Air conditioning",
+        "Fitness centre",
+        "Bar",
+        "Restaurant",
+        "Room service",
+        "Full-service laundry",
+        "Accessible",
+        "Business centre",
+        "Child-friendly",
+      ],
+      property_token: "ChgI2Im_xeGNyqq7ARoLL2cvMXY2X2RwcGYQAQ",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChgI2Im_xeGNyqq7ARoLL2cvMXY2X2RwcGYQAQ&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "كوزموبوليتان",
+      description:
+        "يعمل جهاز تكيّيف وجهاز تدفئة على ضمان مناخ داخلي مريح في الغرف. تعدّ الشرفة جزءاً من التجهيزات الاعتيادية …",
+      link: "https://cosmopolitancairo.com/",
+      gps_coordinates: {
+        latitude: 30.0478024,
+        longitude: 31.2406543,
+      },
+      check_in_time: "12:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏2,732 ج.م.‏",
+        extracted_lowest: 2732,
+        before_taxes_fees: "‏2,151 ج.م.‏",
+        extracted_before_taxes_fees: 2151,
+      },
+      total_rate: {
+        lowest: "‏2,732 ج.م.‏",
+        extracted_lowest: 2732,
+        before_taxes_fees: "‏2,151 ج.م.‏",
+        extracted_before_taxes_fees: 2151,
+      },
+      nearby_places: [
+        {
+          name: "برج القاهرة",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "8 د",
+            },
+          ],
+        },
+        {
+          name: "Talaat Harb Square (Downtown)",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "4 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "27 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 8 د",
+            },
+          ],
+        },
+        {
+          name: "مطعم روستيكا",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: " فندق 4 نجوم",
+      extracted_hotel_class: 4,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPdoy0LKtoQMGEjr___ZksXHMmoHrklZCB3u-Bo=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPdoy0LKtoQMGEjr___ZksXHMmoHrklZCB3u-Bo=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOy6dY5pjcY_phfxqw7_3kgTP9iUU3EzGMac6xI=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOy6dY5pjcY_phfxqw7_3kgTP9iUU3EzGMac6xI=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOI7IPp4c17UhbMdqSJVP1Jt3fIBjcufecuEl_N=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOI7IPp4c17UhbMdqSJVP1Jt3fIBjcufecuEl_N=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/Qy5w51Xc4dbXAdsmk23-hxATfPeQFXX9GtxmGcLjfBst5xyLTu2qqxfvjMnbuiD45Fa-9FFlws69VTBrCbcs5WeddqdFlQSL7SQ3lireG4NoEztpJw3jJxC_OnNYmIbBbz68WvokSOqA85ab4j-Dl9QVPkkpnS8=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/extranet/e5/fe/e5fe0ca44db3f37ac71f2922b9d2763f78512f1a.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh6.googleusercontent.com/proxy/s1FP_vn_SANmk65jRTk2rsh7PDeMgH-Pp418FsG1kU_HKQCjCdsdI9F9KN2w2zwGWjsdwLfEmc2oddkPQSE2RXtWxryYbnCQ81hi3fdzIZQms2VaiiIeAuGy1YqTHWCK2OqE1fzWjrqCkbI9l-A1Gen57q947A=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/94/947986/947986a_hb_w_002.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNi4oxqxlud44SsmMf-hgDWAaJOXxLHiOEp_Ltm=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNi4oxqxlud44SsmMf-hgDWAaJOXxLHiOEp_Ltm=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/rzqWRvwuPcnjf8B4PxAzybcV003gXKSSXbSojlx0ZqJQvBPJnzDa-g1eSxNnOZGN1eEAkdrF24mjNFBCk3nuN5tSn0ungIrKPfGLoObJHkFO1gbUNQYe4hfFiFA_Rsu2bx9PeUDqkbD6o6vvSOrbJrrogWTcXQ=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/94/947986/947986a_hb_ba_001.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipP-Ich4Bb2I3yWQ4B2leJAlIk2ZceVh99qsuD7K=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipP-Ich4Bb2I3yWQ4B2leJAlIk2ZceVh99qsuD7K=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/trk7fR6WrcvQYLh1phNM4hNrlhfOW5ODmGyFWPIuvC8kguDhHZDBNwN2Rz1hb0EFVEwAyVhGUt4pqXA8CPsog5XLz8pwn1eDuHVovGFLrNFEMyTXS0owuA4t2P1fBs4J51unHiHTRSSw7XxIkWwEaBQRbAomkF0=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/extranet/b9/c3/b9c31921dcd3dda2dd174eb266e723b54b84ae31.jpeg",
+        },
+      ],
+      overall_rating: 4.1,
+      reviews: 561,
+      ratings: [
+        {
+          stars: 5,
+          count: 344,
+        },
+        {
+          stars: 4,
+          count: 80,
+        },
+        {
+          stars: 3,
+          count: 65,
+        },
+        {
+          stars: 2,
+          count: 21,
+        },
+        {
+          stars: 1,
+          count: 51,
+        },
+      ],
+      location_rating: 4.7,
+      reviews_breakdown: [
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 90,
+          positive: 47,
+          negative: 30,
+          neutral: 13,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 72,
+          positive: 44,
+          negative: 26,
+          neutral: 2,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 56,
+          positive: 44,
+          negative: 9,
+          neutral: 3,
+        },
+        {
+          name: "حمّام",
+          description: "Bathroom and toiletries",
+          total_mentioned: 21,
+          positive: 3,
+          negative: 17,
+          neutral: 1,
+        },
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 23,
+          positive: 5,
+          negative: 17,
+          neutral: 1,
+        },
+        {
+          name: "الفطور",
+          description: "Breakfast",
+          total_mentioned: 21,
+          positive: 12,
+          negative: 8,
+          neutral: 1,
+        },
+      ],
+      amenities: [
+        "Free breakfast",
+        "Free Wi-Fi",
+        "Free parking",
+        "Air conditioning",
+        "Restaurant",
+        "Airport shuttle",
+        "Full-service laundry",
+        "Child-friendly",
+      ],
+      property_token: "ChcI7vba5dfgmqkSGgsvZy8xdGYwNG5kbhAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChcI7vba5dfgmqkSGgsvZy8xdGYwNG5kbhAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "The President Hotel Cairo",
+      description:
+        "غرف متواضعة في فندق بسيط يضمّ مطعمَين ومتجرًا للمعجنات الفرنسية وصالة",
+      link: "http://www.thepresidentcairo.com/",
+      gps_coordinates: {
+        latitude: 30.0675107,
+        longitude: 31.2195847,
+      },
+      check_in_time: "2:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏3,671 ج.م.‏",
+        extracted_lowest: 3671,
+        before_taxes_fees: "‏2,851 ج.م.‏",
+        extracted_before_taxes_fees: 2851,
+      },
+      total_rate: {
+        lowest: "‏3,671 ج.م.‏",
+        extracted_lowest: 3671,
+        before_taxes_fees: "‏2,851 ج.م.‏",
+        extracted_before_taxes_fees: 2851,
+      },
+      nearby_places: [
+        {
+          name: "Yamama Center",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "7 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "40 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 12 د",
+            },
+          ],
+        },
+        {
+          name: "اوليفو بيتزا وبار ( زمالك )",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: "فندق 3 نجوم",
+      extracted_hotel_class: 3,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipO8DY1C-d-ps_7eHpWM_TQcKdB-momRd7DZk2ak=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipO8DY1C-d-ps_7eHpWM_TQcKdB-momRd7DZk2ak=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMZ8uUAeyctankZ1Bv-5jzJQIYWFte8wZ4o9wBX=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMZ8uUAeyctankZ1Bv-5jzJQIYWFte8wZ4o9wBX=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNQHkzCMeHCS7g1I1XvEl8NnX8UmIin38UQinm5=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNQHkzCMeHCS7g1I1XvEl8NnX8UmIin38UQinm5=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPfUDLMoiO15BtRiSuQnDRpdZIEYmEWr8JgGb_G=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPfUDLMoiO15BtRiSuQnDRpdZIEYmEWr8JgGb_G=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPSSyxdI6ksqz2oyBi41Bzs6ReCa8CVx5qbOI2l=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPSSyxdI6ksqz2oyBi41Bzs6ReCa8CVx5qbOI2l=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipO9QXNm8YsP6XRokXr_SJd46KPOBLN6QkAxRI8K=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipO9QXNm8YsP6XRokXr_SJd46KPOBLN6QkAxRI8K=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMeAJUIc5fEECpU_-fnE66I-7k3j7MD-NjaUd5C=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMeAJUIc5fEECpU_-fnE66I-7k3j7MD-NjaUd5C=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMMVnPmvAvob32XLtRsmXNf5vf-vGoGItMTxjp3=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMMVnPmvAvob32XLtRsmXNf5vf-vGoGItMTxjp3=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipO2SsZaoCEawvyxZuzr-IaCPiIO4DVDy_OcwdD0=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipO2SsZaoCEawvyxZuzr-IaCPiIO4DVDy_OcwdD0=s10000",
+        },
+      ],
+      overall_rating: 4.8,
+      reviews: 7952,
+      ratings: [
+        {
+          stars: 5,
+          count: 7170,
+        },
+        {
+          stars: 4,
+          count: 262,
+        },
+        {
+          stars: 3,
+          count: 207,
+        },
+        {
+          stars: 2,
+          count: 67,
+        },
+        {
+          stars: 1,
+          count: 246,
+        },
+      ],
+      location_rating: 3.5,
+      reviews_breakdown: [
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 649,
+          positive: 571,
+          negative: 54,
+          neutral: 24,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 422,
+          positive: 344,
+          negative: 64,
+          neutral: 14,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 184,
+          positive: 152,
+          negative: 19,
+          neutral: 13,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 184,
+          positive: 135,
+          negative: 39,
+          neutral: 10,
+        },
+        {
+          name: "الأجواء",
+          description: "Atmosphere",
+          total_mentioned: 139,
+          positive: 133,
+          negative: 3,
+          neutral: 3,
+        },
+        {
+          name: "المطاعم",
+          description: "Food and Beverage",
+          total_mentioned: 41,
+          positive: 27,
+          negative: 12,
+          neutral: 2,
+        },
+      ],
+      amenities: [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Air conditioning",
+        "Fitness centre",
+        "Spa",
+        "Bar",
+        "Restaurant",
+        "Room service",
+        "Kitchen in some rooms",
+        "Airport shuttle",
+        "Full-service laundry",
+        "Accessible",
+      ],
+      property_token: "ChcIpcC99s_dlLFqGgsvZy8xdGQ1YzJ4ehAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChcIpcC99s_dlLFqGgsvZy8xdGQ1YzJ4ehAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "The Square Boutique Hotel",
+      description:
+        "يمتلك هذا الفندق مصعد وقسم استقبال. يشمل العرض مختلف الخدمات والتجهيزات - حفظ أمتعة ومكتبة وغسالة تعمل بعملات …",
+      link: "http://thesquareboutiquehotel.com/",
+      gps_coordinates: {
+        latitude: 30.0473604,
+        longitude: 31.238731400000002,
+      },
+      check_in_time: "2:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏2,677 ج.م.‏",
+        extracted_lowest: 2677,
+        before_taxes_fees: "‏2,308 ج.م.‏",
+        extracted_before_taxes_fees: 2308,
+      },
+      total_rate: {
+        lowest: "‏2,677 ج.م.‏",
+        extracted_lowest: 2677,
+        before_taxes_fees: "‏2,308 ج.م.‏",
+        extracted_before_taxes_fees: 2308,
+      },
+      nearby_places: [
+        {
+          name: "المتحف المصري بالقاهرة",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "10 د",
+            },
+          ],
+        },
+        {
+          name: "Talaat Harb Square (Downtown)",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "27 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 9 د",
+            },
+          ],
+        },
+        {
+          name: "مطعم شارع الحمرا",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: "فندق 3 نجوم",
+      extracted_hotel_class: 3,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNd6IceDCcEJt4PInMZb2yxdv0He38-8CPQzAn1=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNd6IceDCcEJt4PInMZb2yxdv0He38-8CPQzAn1=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPCT8Nh57AXlmS6LFv7g0FbGzKG0Qs0QV_HF8Sj=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPCT8Nh57AXlmS6LFv7g0FbGzKG0Qs0QV_HF8Sj=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMpGUtQwaHmEOZpkPbhndvU3Viyt7ER8lM3B0SB=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMpGUtQwaHmEOZpkPbhndvU3Viyt7ER8lM3B0SB=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOjWNmS2GA7x5K1cLgawRb61-0eR8UO6IsDAwqF=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOjWNmS2GA7x5K1cLgawRb61-0eR8UO6IsDAwqF=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipM8Whk6semCF8BYAhtLWOqRWlATO3W2pVo1R15B=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipM8Whk6semCF8BYAhtLWOqRWlATO3W2pVo1R15B=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOsdx9zhNzyonssebEk_fkI-TnTsQtK5n2JXkFi=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOsdx9zhNzyonssebEk_fkI-TnTsQtK5n2JXkFi=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPR_RkyC3KymKVyp9iba7-hX_rHAVPh5r9vtEAP=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPR_RkyC3KymKVyp9iba7-hX_rHAVPh5r9vtEAP=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMCx0-tTTomPKdCAiW_cjyDnC9x7o22IO6DFClr=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMCx0-tTTomPKdCAiW_cjyDnC9x7o22IO6DFClr=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOhMLwV2vZcbzAoaiMG9lMKscDxpC9yc83fbnia=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOhMLwV2vZcbzAoaiMG9lMKscDxpC9yc83fbnia=s10000",
+        },
+      ],
+      overall_rating: 4.1,
+      reviews: 168,
+      ratings: [
+        {
+          stars: 5,
+          count: 98,
+        },
+        {
+          stars: 4,
+          count: 26,
+        },
+        {
+          stars: 3,
+          count: 22,
+        },
+        {
+          stars: 2,
+          count: 7,
+        },
+        {
+          stars: 1,
+          count: 15,
+        },
+      ],
+      location_rating: 4.7,
+      reviews_breakdown: [
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 24,
+          positive: 14,
+          negative: 9,
+          neutral: 1,
+        },
+        {
+          name: "الفطور",
+          description: "Breakfast",
+          total_mentioned: 16,
+          positive: 13,
+          negative: 1,
+          neutral: 2,
+        },
+        {
+          name: "حمّام",
+          description: "Bathroom and toiletries",
+          total_mentioned: 17,
+          positive: 6,
+          negative: 11,
+          neutral: 0,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 39,
+          positive: 30,
+          negative: 7,
+          neutral: 2,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 28,
+          positive: 23,
+          negative: 3,
+          neutral: 2,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 38,
+          positive: 23,
+          negative: 9,
+          neutral: 6,
+        },
+      ],
+      amenities: [
+        "Free breakfast",
+        "Free Wi-Fi",
+        "Air conditioning",
+        "Restaurant",
+        "Room service",
+        "Full-service laundry",
+        "Child-friendly",
+      ],
+      property_token: "ChoIrY-ilZqgwvPoARoNL2cvMTFmajVxODZ5ahAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChoIrY-ilZqgwvPoARoNL2cvMTFmajVxODZ5ahAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "باريس الشرق",
+      gps_coordinates: {
+        latitude: 30.047772000000002,
+        longitude: 31.242430099999996,
+      },
+      check_in_time: "2:00 م",
+      check_out_time: "11:00 ص",
+      rate_per_night: {
+        lowest: "‏615 ج.م.‏",
+        extracted_lowest: 615,
+        before_taxes_fees: "‏527 ج.م.‏",
+        extracted_before_taxes_fees: 527,
+      },
+      total_rate: {
+        lowest: "‏615 ج.م.‏",
+        extracted_lowest: 615,
+        before_taxes_fees: "‏527 ج.م.‏",
+        extracted_before_taxes_fees: 527,
+      },
+      nearby_places: [
+        {
+          name: "برج القاهرة",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "8 د",
+            },
+          ],
+        },
+        {
+          name: "Mohammed Farid Post Office",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "3 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "28 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 6 د",
+            },
+          ],
+        },
+        {
+          name: "مطعم وصايا",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+      ],
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOIjsf13DZtasXpcTHFNRTw-TnkYkx-jnMgwwO5=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOIjsf13DZtasXpcTHFNRTw-TnkYkx-jnMgwwO5=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMGtNE8C7xQApMZR3wFN4d1GwY-pRtW53E1qLgf=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMGtNE8C7xQApMZR3wFN4d1GwY-pRtW53E1qLgf=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNoT3ad5A97zJQ5L9JP9Ud7WKqMSJpEf_uufVf2=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNoT3ad5A97zJQ5L9JP9Ud7WKqMSJpEf_uufVf2=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMqEAO1zfUAktuIOOQXmvOXwlVpt46RrJL_J14w=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMqEAO1zfUAktuIOOQXmvOXwlVpt46RrJL_J14w=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPLJy7AVbpqO9fBodt8W7M8fVkw3gzFEIOuCc-4=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPLJy7AVbpqO9fBodt8W7M8fVkw3gzFEIOuCc-4=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMKDpl9nlH4cXFk-cfwtYUE5L0Pf4eUjaAhFaqI=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMKDpl9nlH4cXFk-cfwtYUE5L0Pf4eUjaAhFaqI=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOCi0Ke-fNqiw--is18Ot7rHrztTiR5trpFF443=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOCi0Ke-fNqiw--is18Ot7rHrztTiR5trpFF443=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOJHuqeNosmB_LhwNWEd3tH7S52p6hvzaIz5pl2=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOJHuqeNosmB_LhwNWEd3tH7S52p6hvzaIz5pl2=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNqJP5LIK6ntGrvR6NLg2Gi8jm_EX0QUbGfYevg=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNqJP5LIK6ntGrvR6NLg2Gi8jm_EX0QUbGfYevg=s10000",
+        },
+      ],
+      overall_rating: 4.8,
+      reviews: 68,
+      ratings: [
+        {
+          stars: 5,
+          count: 61,
+        },
+        {
+          stars: 4,
+          count: 5,
+        },
+        {
+          stars: 3,
+          count: 0,
+        },
+        {
+          stars: 2,
+          count: 0,
+        },
+        {
+          stars: 1,
+          count: 2,
+        },
+      ],
+      location_rating: 4.6,
+      reviews_breakdown: [
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 9,
+          positive: 8,
+          negative: 0,
+          neutral: 1,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 10,
+          positive: 9,
+          negative: 1,
+          neutral: 0,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 7,
+          positive: 6,
+          negative: 0,
+          neutral: 1,
+        },
+      ],
+      property_token: "ChoIpf7u8aCtv9KMARoNL2cvMTFzdHZkbl81NxAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChoIpf7u8aCtv9KMARoNL2cvMTFzdHZkbl81NxAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "فنــــــــــدق مركــــز التجارة العالمي القاهرة للأجنحـــــــــــــة الفندقيـــــــــــــــــة",
+      description:
+        "في الغرف هناك فراغ معيشة ومطبخ وحمام، يهتم جهاز تكيّيف وجهاز تدفئة بضمان مناخ داخلي مريح. يعد وجود البلكون في …",
+      link: "https://wtccairohotel.com/",
+      gps_coordinates: {
+        latitude: 30.063936100000003,
+        longitude: 31.228256299999998,
+      },
+      check_in_time: "3:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏5,059 ج.م.‏",
+        extracted_lowest: 5059,
+        before_taxes_fees: "‏3,923 ج.م.‏",
+        extracted_before_taxes_fees: 3923,
+      },
+      total_rate: {
+        lowest: "‏5,059 ج.م.‏",
+        extracted_lowest: 5059,
+        before_taxes_fees: "‏3,923 ج.م.‏",
+        extracted_before_taxes_fees: 3923,
+      },
+      nearby_places: [
+        {
+          name: "المتحف المصري بالقاهرة",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "9 د",
+            },
+          ],
+        },
+        {
+          name: "Al Ahli Bank (Courniche Boulaq)",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "4 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "37 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 10 د",
+            },
+          ],
+        },
+        {
+          name: "Sirocco Restaurant & Pool Bar",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "4 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: " فندق 4 نجوم",
+      extracted_hotel_class: 4,
+      images: [
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/sufAGulGtXpegCXkhFSiL0A00p7I13m1CtuPOvxZxwGV5UOdV8tDdWpjtVnhB_fdVV-pjLtK9jnp3AFfMdEurvarDMDXG781Cpn238sUWMBFPYGC9feSCcCWN3ern_36qPAlOKLjEIhNpmWSBwb2Bze-n4siAYI=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://d2hyz2bfif3cr8.cloudfront.net/imageRepo/7/0/145/373/326/WTC_03795_(Residences_Exterior_-_at_night)_O.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipO_YgM4QfodmBYe-h-m_uM2pJ6zKCw1Wo4kXNZo=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipO_YgM4QfodmBYe-h-m_uM2pJ6zKCw1Wo4kXNZo=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOgdUcQ1QIXal7elUgHaFGdyTmQ-PMbD2aj0WCb=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOgdUcQ1QIXal7elUgHaFGdyTmQ-PMbD2aj0WCb=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMhsI9GafYQFViA5dFrsWrhvjSzVYqNe8AcmI3_=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMhsI9GafYQFViA5dFrsWrhvjSzVYqNe8AcmI3_=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNkLs_CRYPcUnmGbIAyq3kwfzfAcYVDtAklyaM7=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNkLs_CRYPcUnmGbIAyq3kwfzfAcYVDtAklyaM7=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPr7U7NfKBXR4tUj2U3fr75YC4E8_H0BnBKtNcM=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPr7U7NfKBXR4tUj2U3fr75YC4E8_H0BnBKtNcM=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPe3D6pXujK2IA111P71SMC5mDHt9zF91-_dvvp=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPe3D6pXujK2IA111P71SMC5mDHt9zF91-_dvvp=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMR6_V7VC-1TnJOt0jZaIlQ6MSy_wNXQKLNWLBj=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMR6_V7VC-1TnJOt0jZaIlQ6MSy_wNXQKLNWLBj=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOvSlaoo2_d5Q8jAQ8Tp4fWzNSdImYUq6wPL2B7=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOvSlaoo2_d5Q8jAQ8Tp4fWzNSdImYUq6wPL2B7=s10000",
+        },
+      ],
+      overall_rating: 4.1,
+      reviews: 372,
+      ratings: [
+        {
+          stars: 5,
+          count: 220,
+        },
+        {
+          stars: 4,
+          count: 65,
+        },
+        {
+          stars: 3,
+          count: 35,
+        },
+        {
+          stars: 2,
+          count: 11,
+        },
+        {
+          stars: 1,
+          count: 41,
+        },
+      ],
+      location_rating: 3.2,
+      reviews_breakdown: [
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 33,
+          positive: 10,
+          negative: 18,
+          neutral: 5,
+        },
+        {
+          name: "مطبخ",
+          description: "Kitchen",
+          total_mentioned: 12,
+          positive: 5,
+          negative: 5,
+          neutral: 2,
+        },
+        {
+          name: "حمّام",
+          description: "Bathroom and toiletries",
+          total_mentioned: 19,
+          positive: 5,
+          negative: 13,
+          neutral: 1,
+        },
+        {
+          name: "مناسب للعائلات",
+          description: "Family friendly",
+          total_mentioned: 10,
+          positive: 6,
+          negative: 3,
+          neutral: 1,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 40,
+          positive: 25,
+          negative: 12,
+          neutral: 3,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 31,
+          positive: 15,
+          negative: 15,
+          neutral: 1,
+        },
+      ],
+      amenities: [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Free parking",
+        "Outdoor pool",
+        "Air conditioning",
+        "Pet-friendly",
+        "Bar",
+        "Restaurant",
+        "Room service",
+        "Kitchen in rooms",
+        "Full-service laundry",
+        "Accessible",
+        "Child-friendly",
+      ],
+      property_token: "ChkI-Yu8_9T62vATGg0vZy8xMXN4eTgxNHR5EAE",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChkI-Yu8_9T62vATGg0vZy8xMXN4eTgxNHR5EAE&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "جراند اجور هوتيل",
+      description:
+        "يعمل جهاز تكيّيف وجهاز تدفئة على ضمان مناخ داخلي مريح في الغرف. يعد وجود البلكون في معظم الغرف من ضمن …",
+      link: "https://onesttravels.wixsite.com/onesttravels/hotels",
+      gps_coordinates: {
+        latitude: 30.047311699999995,
+        longitude: 31.2420041,
+      },
+      check_in_time: "3:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏1,201 ج.م.‏",
+        extracted_lowest: 1201,
+        before_taxes_fees: "‏932 ج.م.‏",
+        extracted_before_taxes_fees: 932,
+      },
+      total_rate: {
+        lowest: "‏1,201 ج.م.‏",
+        extracted_lowest: 1201,
+        before_taxes_fees: "‏932 ج.م.‏",
+        extracted_before_taxes_fees: 932,
+      },
+      nearby_places: [
+        {
+          name: "برج القاهرة",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "8 د",
+            },
+          ],
+        },
+        {
+          name: "Noubar St.",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "4 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "28 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 16 د",
+            },
+          ],
+        },
+        {
+          name: "مطعم وصايا",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: "فندق بنجمتين",
+      extracted_hotel_class: 2,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipP81THdZMKx_JYyP0xRu7Xk2LZBU787azxxKzAq=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipP81THdZMKx_JYyP0xRu7Xk2LZBU787azxxKzAq=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/DLXxe0QDgl7R0vLDvgNbKgrNPZltUPCbETFQ7kr6FbPnWcnPCgI3Bie4DoEJc7zBySFE5gulSaeneBJ3qOa2LQhc3umzU0J31E2Kw2lDzcJAE9o9w7JuTPey919ucMnva3gJc1olyu0Wkd_-lVNhlBInG81lQg=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://cdn.worldota.net/t/1024x768/content/09/70/097054ec6676802ef172846c260c798a8fb3ec47.jpeg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNci869uzt4zXCLZBf54jwT7vTXACUYzziFdKKC=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNci869uzt4zXCLZBf54jwT7vTXACUYzziFdKKC=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipP5meoprwbbt_VeDVprInp9P52sX2TaKmw6wwoN=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipP5meoprwbbt_VeDVprInp9P52sX2TaKmw6wwoN=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMKB-qV2_bLrtPfIHW_15ubwafD8Imnb6dWx_N6=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMKB-qV2_bLrtPfIHW_15ubwafD8Imnb6dWx_N6=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOuh4hXh0Nilui5Q9UGmbkgICRo0HEvHzFdMjhu=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOuh4hXh0Nilui5Q9UGmbkgICRo0HEvHzFdMjhu=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPSTeJ45Xyj2zTmo9ULyF5i34Ucgvr87d65Tks9=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPSTeJ45Xyj2zTmo9ULyF5i34Ucgvr87d65Tks9=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh6.googleusercontent.com/proxy/01TWB5ewtGsFQlrhcOwn3ZDBJUCcjQJkX_3PsE0reBEe7_1s7l2kM2fwgNr9ZRtv2GmuZtglpbU6KBVN0Mv0nWGMLOdWrk-qm5jy5K_FzybmuTnDE8MIjRlW7GRya4I3i1cc7shIkbIMuTKTKmbZ12q6fL05DDs=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/98/989134/989134a_hb_ro_006.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/erBQd5SkJgpj_T0BbSZWDa2YFN-Y2-4IGbWni17W7_JVW3msQsggkAzfKe2pboY81xsKc8xV5RZ1ap7AFY_b5rjkKQg744g18umt5YJhR2bEvl9PMeAgQtkSFGFewy3tyHBwgdT54VgDJgoou7gmay4ssclHzW8=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://images.trvl-media.com/lodging/18000000/17810000/17805100/17805058/0e92ba0d_z.jpg",
+        },
+      ],
+      overall_rating: 4.4,
+      reviews: 294,
+      ratings: [
+        {
+          stars: 5,
+          count: 216,
+        },
+        {
+          stars: 4,
+          count: 33,
+        },
+        {
+          stars: 3,
+          count: 17,
+        },
+        {
+          stars: 2,
+          count: 10,
+        },
+        {
+          stars: 1,
+          count: 18,
+        },
+      ],
+      location_rating: 4.7,
+      reviews_breakdown: [
+        {
+          name: "حمّام",
+          description: "Bathroom and toiletries",
+          total_mentioned: 17,
+          positive: 4,
+          negative: 10,
+          neutral: 3,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 40,
+          positive: 34,
+          negative: 3,
+          neutral: 3,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 45,
+          positive: 35,
+          negative: 7,
+          neutral: 3,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 24,
+          positive: 20,
+          negative: 4,
+          neutral: 0,
+        },
+        {
+          name: "الأمان",
+          description: "Safety",
+          total_mentioned: 7,
+          positive: 6,
+          negative: 1,
+          neutral: 0,
+        },
+        {
+          name: "الفطور",
+          description: "Breakfast",
+          total_mentioned: 10,
+          positive: 6,
+          negative: 2,
+          neutral: 2,
+        },
+      ],
+      amenities: [
+        "Free breakfast",
+        "Free Wi-Fi",
+        "Air conditioning",
+        "Restaurant",
+        "Airport shuttle",
+        "Full-service laundry",
+        "Child-friendly",
+      ],
+      property_token: "ChoItrzC543DrrreARoNL2cvMTFkeGdqd25zeBAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChoItrzC543DrrreARoNL2cvMTFkeGdqd25zeBAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "Fairmont Nile City",
+      description:
+        "فندق أنيق فيه مطاعم راقية وصالة شيشة ومنتجع صحي، فضلاً عن مسبح على السطح مع بار",
+      link: "https://www.fairmont.com/nile-city-cairo/?goto=fiche_hotel&code_hotel=A5E9&merchantid=seo-maps-EG-A5E9&sourceid=aw-cen&utm_medium=seo+maps&utm_source=google+Maps&utm_campaign=seo+maps&y_source=1_MTIzNjE0NjctNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+      gps_coordinates: {
+        latitude: 30.071854799999997,
+        longitude: 31.227727400000003,
+      },
+      check_in_time: "3:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏8,474 ج.م.‏",
+        extracted_lowest: 8474,
+        before_taxes_fees: "‏6,574 ج.م.‏",
+        extracted_before_taxes_fees: 6574,
+      },
+      total_rate: {
+        lowest: "‏8,474 ج.م.‏",
+        extracted_lowest: 8474,
+        before_taxes_fees: "‏6,574 ج.م.‏",
+        extracted_before_taxes_fees: 6574,
+      },
+      nearby_places: [
+        {
+          name: "Nile Towers (Nile Corniche)",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "37 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 27 د",
+            },
+          ],
+        },
+        {
+          name: "L'Uliveto Italian Restaurant",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "1 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: "فندق 5 نجوم",
+      extracted_hotel_class: 5,
+      images: [
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/7skVgKhPC3vm0r1yOu7dmQmau4u9fiBPp1wM8UGo7S-q0AIYN2YxCLBE8xPY9YgxfcMZooCCDGf29Lul2HQOHONCrpVZ5EYfC6IthwGWII1tFYhgLOv9Rd2Acr5dx-1owuPKE5X6509xnUA8yyA8EorscTW_Mwk=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://i.giatamedia.com/m.php?m=AQABAAAAla4KABKvKwYFAM-VixQdyxNl4L9A8ccZGbQ",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOqACYcif5mYIIPLzwFtsN_bvaTo4wlFoRNmR2G=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOqACYcif5mYIIPLzwFtsN_bvaTo4wlFoRNmR2G=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPLtgj9FSqVHF9azCA3PqxCFkfqf30Q2vUCdByr=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPLtgj9FSqVHF9azCA3PqxCFkfqf30Q2vUCdByr=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipO5j_z4fOxz4u_iRTR2KVBn8IjF4Gemf1vjrQvt=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipO5j_z4fOxz4u_iRTR2KVBn8IjF4Gemf1vjrQvt=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/RaAeV5E7XoLKvQC4Q2dsuHAGGoXwlrFDqsQvbjMQuebMcj-8Qkbdo7G7XGpLoEGCBZ-lmhglngbxKxBwU158xKtP9UIhtHUejiggiT3nXKo0OGPL2-a_J7Hl5dmTwsqFD-KBLw1f0jHDNX3SBINaIdfdI3TYeF0=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://photos.hotelbeds.com/giata/original/14/143385/143385a_hb_r_027.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPc1b3n6eIuGf2exPzZiysD0Rgs0w9szXXPUuOq=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPc1b3n6eIuGf2exPzZiysD0Rgs0w9szXXPUuOq=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/rOo-tFOUTH31inYAP27aBuRDcZ41bjli3Tq8m9w-21yMF2jYzTKRkL1e5S-gSmvJeU8mtVQTrzDlGJrxuD24xSkbl3XG_8MNIm5t27nx6WxnbdiI__zfXxBuewixASBBTgv7P62XJRdOSDg4cPl6ooI8S2d9eZM=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://xx.bstatic.com/xdata/w/hotel/840x460_watermarked_standard_bluecom/Ul7Sk3QsZYUcl4Sg0WhyyPKFZhcDauMeQrIborKDlHd7ebDYDgO6-GKI3Fm9O_Kj8UslM3Z4-yTJu5eYhZe1fbXLbPLZmN77ZRlycAbceExkNXjXAEGvmoh15kNBJZjT.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipPxaKS3c0A8UJyw4SQ_rZBhEug1LF3g0M9RtU9v=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipPxaKS3c0A8UJyw4SQ_rZBhEug1LF3g0M9RtU9v=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/GfLF_Rw3RxF5MGFSQJ6f7OHVDlDJBlLjJLR1OMCevhYLEGfJMSvBeVv6pSxKp3exv-G72MGIM48viEN6H2yZKSW6HSn0LmGH8CDc7iT8yQkEHJQ2ISmpjNr2uyVv14LxYnmn3iQtrA5nWPVS3pJmisfiyCFg3Q=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://i.giatamedia.com/m.php?m=AQABAAAAla4KANStKwYFAIYEwwjX3iIGfKU31TG2DMU",
+        },
+      ],
+      overall_rating: 4.7,
+      reviews: 21598,
+      ratings: [
+        {
+          stars: 5,
+          count: 17884,
+        },
+        {
+          stars: 4,
+          count: 2061,
+        },
+        {
+          stars: 3,
+          count: 661,
+        },
+        {
+          stars: 2,
+          count: 243,
+        },
+        {
+          stars: 1,
+          count: 749,
+        },
+      ],
+      location_rating: 3.2,
+      reviews_breakdown: [
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 5117,
+          positive: 4830,
+          negative: 207,
+          neutral: 80,
+        },
+        {
+          name: "المطاعم",
+          description: "Food and Beverage",
+          total_mentioned: 664,
+          positive: 595,
+          negative: 39,
+          neutral: 30,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 2626,
+          positive: 2375,
+          negative: 128,
+          neutral: 123,
+        },
+        {
+          name: "النظافة",
+          description: "Cleanliness",
+          total_mentioned: 1440,
+          positive: 1324,
+          negative: 67,
+          neutral: 49,
+        },
+        {
+          name: "بار",
+          description: "Bar or lounge",
+          total_mentioned: 294,
+          positive: 259,
+          negative: 15,
+          neutral: 20,
+        },
+        {
+          name: "الأجواء",
+          description: "Atmosphere",
+          total_mentioned: 731,
+          positive: 687,
+          negative: 20,
+          neutral: 24,
+        },
+      ],
+      amenities: [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Free parking",
+        "Outdoor pool",
+        "Hot tub",
+        "Air conditioning",
+        "Fitness centre",
+        "Spa",
+        "Bar",
+        "Restaurant",
+        "Room service",
+        "Kitchen in some rooms",
+        "Airport shuttle",
+        "Full-service laundry",
+        "Accessible",
+        "Business centre",
+        "Child-friendly",
+      ],
+      property_token: "ChcI_NWvnpX0gL8_GgsvbS8wMTJoZjUychAB",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChcI_NWvnpX0gL8_GgsvbS8wMTJoZjUychAB&q=CAIRO",
+    },
+    {
+      type: "hotel",
+      name: "فندق جراند نايل تاور",
+      description: "فندق راقٍ بجوار نهر النيل يضمّ 8 مطاعم تشمل مطعمًا دوّارًا",
+      link: "https://www.grandniletower.com/ar",
+      gps_coordinates: {
+        latitude: 30.034274099999998,
+        longitude: 31.226918399999995,
+      },
+      check_in_time: "3:00 م",
+      check_out_time: "12:00 م",
+      rate_per_night: {
+        lowest: "‏5,606 ج.م.‏",
+        extracted_lowest: 5606,
+        before_taxes_fees: "‏4,353 ج.م.‏",
+        extracted_before_taxes_fees: 4353,
+      },
+      total_rate: {
+        lowest: "‏5,606 ج.م.‏",
+        extracted_lowest: 5606,
+        before_taxes_fees: "‏4,353 ج.م.‏",
+        extracted_before_taxes_fees: 4353,
+      },
+      nearby_places: [
+        {
+          name: "المتحف المصري بالقاهرة",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "9 د",
+            },
+          ],
+        },
+        {
+          name: "Grand Hyatt Hotel",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "6 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "36 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 30 د",
+            },
+          ],
+        },
+      ],
+      hotel_class: "فندق 5 نجوم",
+      extracted_hotel_class: 5,
+      images: [
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMgzCKBJBnVej9qwbrQS77Z65KLfTbzDtYcQjO5=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMgzCKBJBnVej9qwbrQS77Z65KLfTbzDtYcQjO5=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipMtFQv4QAqjHfKgdkRRczhNIzO6eQeSXwkvcHp6=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipMtFQv4QAqjHfKgdkRRczhNIzO6eQeSXwkvcHp6=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/7NXBvnn__kNXkqrLpHX9iN531zqCuUVQxTOS4gzjLcr4R8G7I0ZTGsZlfdKUAfi-ekU-bUTtK9B59lH6-OkFJxAEFNabu4Fs71HAHXQZ3HMEvmM1_MlVNgbGK5M4S5P4GgO5LKVeTjr6Bf20MNQ8n3YQ4W2v9g=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/4a/c2/a4/view-from-room.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNH5q5rflFvqVfrkhukw8YQjm-2N9EExMavXVkT=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNH5q5rflFvqVfrkhukw8YQjm-2N9EExMavXVkT=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOEUJJ2jatVfCS0d_DRiHG0mVtVDVN8Y7oupdAB=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOEUJJ2jatVfCS0d_DRiHG0mVtVDVN8Y7oupdAB=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh6.googleusercontent.com/proxy/kN-sdHrTfE9QRyLbtE52TrNxUAbmvWqbn_gdF6I3WUHa6OTuSvoFa-nvg4KXSwdf3vIAInqc5aeGFnoim44uU1-2k49D205fAu3QQ39zOOz_T2dOMDyy4bfnyuvsnjlbNDCnc3vVxc_Kj9xryuGzzKUp5MG7dA=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://d2hyz2bfif3cr8.cloudfront.net/imageRepo/3/0/39/873/720/map001_I.jpg",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/MDqbORMUjw_RLBTiwEps45uWZp1Z3j8jC5ysWsykWmuQriqOqOPFeupmfprvHMw0cXWDkvY71REsSaUrhH5ZoWpqLCi_x-4XP_Zn58M8gWPkRKAihISlKO1iwXMxvQKmzBJTx2SgNPOJu5icQc4kijWWWhtQmI4=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://i.giatamedia.com/m.php?m=AQABAAAAla4KAA3vOQYFADROji5ZAjhfA2jjmQgJxow",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipNhry_XHqlCVUvgVBI00Z_Y0ceG-vbcWlKgC4SP=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipNhry_XHqlCVUvgVBI00Z_Y0ceG-vbcWlKgC4SP=s10000",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/p/AF1QipOVAP8CfaKcd72lYmIVwAqZPDiSWS_3A1GM6JY-=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://lh5.googleusercontent.com/p/AF1QipOVAP8CfaKcd72lYmIVwAqZPDiSWS_3A1GM6JY-=s10000",
+        },
+      ],
+      overall_rating: 4.2,
+      reviews: 15732,
+      ratings: [
+        {
+          stars: 5,
+          count: 9393,
+        },
+        {
+          stars: 4,
+          count: 3044,
+        },
+        {
+          stars: 3,
+          count: 1514,
+        },
+        {
+          stars: 2,
+          count: 566,
+        },
+        {
+          stars: 1,
+          count: 1215,
+        },
+      ],
+      location_rating: 4.1,
+      reviews_breakdown: [
+        {
+          name: "غرفة",
+          description: "Room amenities",
+          total_mentioned: 1013,
+          positive: 427,
+          negative: 414,
+          neutral: 172,
+        },
+        {
+          name: "الخدمة",
+          description: "Service",
+          total_mentioned: 1507,
+          positive: 723,
+          negative: 656,
+          neutral: 128,
+        },
+        {
+          name: "المرافِق الفندقية",
+          description: "Property",
+          total_mentioned: 1639,
+          positive: 1003,
+          negative: 477,
+          neutral: 159,
+        },
+        {
+          name: "المطاعم",
+          description: "Food and Beverage",
+          total_mentioned: 368,
+          positive: 233,
+          negative: 99,
+          neutral: 36,
+        },
+        {
+          name: "المناظر الطبيعة",
+          description: "Nature and outdoor activities",
+          total_mentioned: 208,
+          positive: 196,
+          negative: 4,
+          neutral: 8,
+        },
+        {
+          name: "الموقع الجغرافي للبطولة",
+          description: "Location",
+          total_mentioned: 779,
+          positive: 549,
+          negative: 111,
+          neutral: 119,
+        },
+      ],
+      amenities: [
+        "Breakfast ($)",
+        "Free Wi-Fi",
+        "Parking ($)",
+        "Outdoor pool",
+        "Hot tub",
+        "Air conditioning",
+        "Fitness centre",
+        "Spa",
+        "Restaurant",
+        "Room service",
+        "Full-service laundry",
+        "Accessible",
+        "Child-friendly",
+      ],
+      property_token: "ChYIuoyeiIenoYkgGgovbS8wY204ZjRtEAE",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChYIuoyeiIenoYkgGgovbS8wY204ZjRtEAE&q=CAIRO",
+    },
+    {
+      type: "vacation rental",
+      name: "Town View Hotel",
+      link: "https://www.bluepillow.com/search?p_id=589dfad07c00cb10c8daaa72&dest=ago&cat=Vacation rental (other)&accomodationids=61828d169e3163a56a29a9bf",
+      gps_coordinates: {
+        latitude: 30.04701042175293,
+        longitude: 31.235200881958008,
+      },
+      rate_per_night: {
+        lowest: "‏935 ج.م.‏",
+        extracted_lowest: 935,
+        before_taxes_fees: "‏813 ج.م.‏",
+        extracted_before_taxes_fees: 813,
+      },
+      total_rate: {
+        lowest: "‏935 ج.م.‏",
+        extracted_lowest: 935,
+        before_taxes_fees: "‏813 ج.م.‏",
+        extracted_before_taxes_fees: 813,
+      },
+      prices: [
+        {
+          source: "Bluepillow.com",
+          logo: "https://www.gstatic.com/travel-hotels/branding/190ff319-d0fd-4c45-bfc8-bad6f5f395f2.png",
+          num_guests: 1,
+          rate_per_night: {
+            lowest: "‏935 ج.م.‏",
+            extracted_lowest: 935,
+            before_taxes_fees: "‏813 ج.م.‏",
+            extracted_before_taxes_fees: 813,
+          },
+        },
+      ],
+      nearby_places: [
+        {
+          name: "QNB - Champollion Rd",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "2 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "30 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 30 د",
+            },
+          ],
+        },
+        {
+          name: "مطعم علي بابا",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "3 د",
+            },
+          ],
+        },
+      ],
+      images: [
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/q0_ekj4nt7WGB-V_op6RHT8f3cw9yGqP6vgCRK9IslgOZMDLOxVjM-L3FZAqtzQgb_qjEJrVXws2RGzDU5vcbd4jQUR7V3uaWZcPXDkWbeh9f0l77oJa08ZVakaJHNw5NlKPHde0_hjasH2IdgBa5AnUYJOLbg=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/353658393.jpg?k=e88d64c2fff567a3f5c9725030eaa9e8533dd7e589a3c838c7bde641c06aefce&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/2sT9tiVckEZ0iAvTBVCViRFhXZ1ten0E8gV3fQAUfbXlxvYpUaAdhmIwpIS5mNFV02iXtSbDjG69CozCKfs0lWdHpvRx2R_uF4Om3q1IyUYmEaTzmzpzmepGBlwaPt_H5dhI1IqH8w4st2P6i2sHu6i0BdG7tQ=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/353657146.jpg?k=5e5a2324e0f25d6a137a3a1db963c6180a7f0af4c8bef6b9cd91bbe92efda5cc&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/tiEZdYrpIOQDRtCiQhG4qPRpvd8qCqmX1msF63gOgx3xmLDIS68uCNMznj6d5qqRNCJog9JZSotJIDWONlzfd4bbb5uint9BdaErHkKQ3sov2Pk83YR3omQ_JWZyzdKAGV6cs7f-UrpfU1CRjJMu0Obz2h_VzQ=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/352167032.jpg?k=ff802d018e9000194bc860a1372308cf0f4444401daf71185b34b122d64f03a8&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/0Cjv0uFeV3xdJ5FRaG93Oo-qJBb8l_ZLDneG7BnsIjAkzYANDGLmd76hlegEJl2r7LZXjj25n5EmXky2L7tlwdnAE6YVmKbHQi-wCjwjWk2501jDZ31MG9oBWW0wzqYSiyNSoN-0X4t6QznSQ_Ec2JB6s7ZpZPk=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/353659201.jpg?k=d5bc2f766bb8a58d58a0c8013d10dd57b103873b452ee999535cd26eddefd5c3&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/Ya97u59dPd3rpGKbYn4tQ0HvdqpW16qdulNtZIMA5E0GAKkyRjfGOs2J-g3m3u5Tts7C62OpSGFL5AEKKVBdWjImbvAM-f2Jf2EEe8szKCoq9NboKe8movcSEso5Dp1vCRboC3YHOomndb_Ct3Ai2Lg7QSHy580=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/353658707.jpg?k=fb2ba21acb67326ab04a73c77d55e1d7b9da36b31dad09882d399cd4d5200244&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/pnAEU1Alj0VEw569vrkzDpkd7aBIFMcrfg0hN5IErP-Y14AFhhTRgGS_I-6j6pasfKSbpNmzaU1CP16AtjGbjMdG54us2R5mvuJDqbpOmM3ck8XiyGjgeCq9sV7m7OnzYvmjme3-wDzxmdgL4D4TmJ2F5FsmOew=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://pix8.agoda.net/hotelImages/748/7480087/7480087_19061115350075705605.jpg?ca=8&ce=1&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh6.googleusercontent.com/proxy/vch35KYl-wxj0W6KrJmua_5YpWBJiP4LTvjoVOU2pNzOiJAkkanN9Tx7d0rh0e9LAKDsDFe3NeNW1U4H-jHq9aDljQP3aoaI2EqHlrY8kgJs7GcPjLOmh3EiicIsGAk0lilk_q3ZEtEJ57ek543Lk13N9BG-r1k=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://pix8.agoda.net/hotelImages/748/7480087/7480087_19061115330075705538.jpg?ca=13&ce=1&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/txf5QfIuVXdumdGQxaRLHeMekTeUw93CLuKYwDYnuvVkqkqXbGkMoWGkEK9Sco8XJ7n_KUJtdGkBlqM4aunCsYLnxZOJ5FBkGLadfCf8bzkuF7w-3d6fF_qVZQZDBG-gLFOpKkh5g8t3fzcAgx8_aTiuBNZ033A=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/353656970.jpg?k=391fd5ad48926c138504d2c5f7dbdd99d9fac4ae8b9859ac183e39c6a3283af8&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/ZKBtdIh-TIRzgbeeJMqApJebWbcNQ2g9mzvOA09SJ5ZZS2_t6a0yBGDYw24NK1zE0PzBGQOoKG7Eh_9L-Vflc7kzQl7AqS-BDZ1f1sO7u3saw7kAhRyewO3Dn-polrLE7_koQKTu-oTbEIHKq4kNuHUEjm7MDU8=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://pix8.agoda.net/hotelImages/748/7480087/7480087_19061115350075705602.jpg?ca=8&ce=1&s=1024x",
+        },
+      ],
+      overall_rating: 3.1,
+      reviews: 102,
+      location_rating: 4.6,
+      amenities: [
+        "مكيِّف هواء",
+        "حافلة للمطار",
+        "مناسب للأطفال",
+        "مصعد",
+        "موقد",
+        "تدفئة",
+        "مطبخ",
+        "يُحظر التدخين",
+        "خدمة التلفزيون الكبلي",
+        "غسّالة",
+        "مناسب للكراسي المتحرّكة",
+        "موقف سيارات مجاني",
+        "اتصال Wi-Fi مجاني",
+      ],
+      excluded_amenities: [
+        "لا تتوفّر شرفة.",
+        "لا تتوفّر إمكانية الدخول إلى الشاطئ.",
+        "لا يتوفّر سرير طفل.",
+        "لا يتوفر مركز لياقة بدنية",
+        "لا يتوفّر حوض استحمام ساخن.",
+        "لا يتوفّر حمّام سباحة داخلي.",
+        "لا يتوفّر لوح كيّ.",
+        "لا يتوفّر ميكروويف.",
+        "لا تتوفّر آلة شواء في الهواء الطلق.",
+        "لا يتوفّر حمّام سباحة خارجي.",
+        "لا يتوفّر فرن مع موقد.",
+        "لا يُسمح باصطحاب الحيوانات الأليفة.",
+      ],
+      essential_info: [
+        "عدد الأشخاص: 2",
+        "غرفة نوم واحدة (1)",
+        "حمّام واحد (1)",
+        "سرير واحد (1)",
+      ],
+      property_token: "ChkQ6_vmopqMl6kWGg0vZy8xMWxjdjkzbF9wEAI",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChkQ6_vmopqMl6kWGg0vZy8xMWxjdjkzbF9wEAI&q=CAIRO",
+    },
+    {
+      type: "vacation rental",
+      name: "Brassbell apartments in Downtown Talaat Harb street",
+      link: "https://www.bluepillow.com/search?p_id=589dfad07c00cb10c8daaa72&dest=ago&cat=Apartment&accomodationids=62de89fcde4e4eebed132a02",
+      gps_coordinates: {
+        latitude: 30.051950454711914,
+        longitude: 31.241519927978516,
+      },
+      rate_per_night: {
+        lowest: "‏3,265 ج.م.‏",
+        extracted_lowest: 3265,
+        before_taxes_fees: "‏3,265 ج.م.‏",
+        extracted_before_taxes_fees: 3265,
+      },
+      total_rate: {
+        lowest: "‏3,265 ج.م.‏",
+        extracted_lowest: 3265,
+        before_taxes_fees: "‏3,265 ج.م.‏",
+        extracted_before_taxes_fees: 3265,
+      },
+      prices: [
+        {
+          source: "Bluepillow.com",
+          logo: "https://www.gstatic.com/travel-hotels/branding/190ff319-d0fd-4c45-bfc8-bad6f5f395f2.png",
+          num_guests: 3,
+          rate_per_night: {
+            lowest: "‏3,265 ج.م.‏",
+            extracted_lowest: 3265,
+          },
+        },
+      ],
+      nearby_places: [
+        {
+          name: "Talaat Harb Mall (Downtown)",
+          transportations: [
+            {
+              type: "Walking",
+              duration: "3 د",
+            },
+          ],
+        },
+        {
+          name: "مطار القاهرة الدولي",
+          transportations: [
+            {
+              type: "Taxi",
+              duration: "28 د",
+            },
+            {
+              type: "Public transport",
+              duration: "1 س 3 د",
+            },
+          ],
+        },
+      ],
+      images: [
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/lUcWOG2FixIcHo6rU0vUhVMWafofQxTI_7ebCMcaJ6HGUOMAAk5hTaAS0xBnVv-ugXH8ZoFNmsMHURT-bISpUh8TVMzeNRgYbQ8h1s3_GnGuNtZh32lvRu4QOMOxu4otXWb3bAO30j48vstn5BWoSDUlnyKGUQ=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/349331653.jpg?k=13e958d0f1f8d290c774b718936578ab4ee76de3a793abcf23638b474831cabe&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/xoGer1Joxw-FgdTRDzRPjfcPmwX3IV2Rt_SLhY4XybeiAXkrqL1fTZkka82bXrLmlEiWDL-nLJptbsK6r7QPxPQF3K9-hnwML8-13-4Y2PJ6AkcwLXTxyFqnaRFJy75AHdWDNk9Z3781NqBtphsjpbtXySqDncE=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/349298517.jpg?k=79fee763d562b96a07cab3c1ea66efe1aa97cbe1ce7733a8ada05f6e48f285e7&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh6.googleusercontent.com/proxy/-7QNQWo4c0ksgL4unzmEd_najVC96iXbFSH-K8F11CZLHa3fGnUo0khdNgOLaIfoupE8CmOyIElW4H5FIZr8OJaxkGs_jYSabnMF7_BVHrhd2znoSCBYGWWpPHeOg60U81AjHjgx-rhKzrKLBT7G1sZzZgQpmqs=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/349263417.jpg?k=ec62314a2a56843eaaa9acea7cfdc1a87367c56e3206bf6ba1752d670466a9e5&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh5.googleusercontent.com/proxy/97yMTGMoQvQR005VIMQiTsrQcaUnLIJAjqJY_2gU5WOQKB3VSRQBlY1HlO2u1-uPLN8NXs4LjmMV7sHtPp0qcd8xSVTztt4ybsMaC6I0EXv70CmpTsxDUciWHXaNqpqYY9O6bUWcpZK51MKYhGOguL1yV8pCIWM=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/349263573.jpg?k=327e19324f77c39273984e1336673dd8639e9005cf6b252d1e6900e83e7c439a&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh4.googleusercontent.com/proxy/YJnBvrnL2ezHq3wmaRHjfPemqXZEfuMyPIFh1qaGIY6sQWps9i03pq02soCikOfZh5QJvuMOducqpF6w2Qy_IGNsM4z-wD2BI6t8X1793NxqoKfk6PIOBW7MTNpCJGXx_rwLUjQr1pTSFBYu_J9iR5c-s5x8fmA=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/349334753.jpg?k=976e43dfbaaf0997d66715427af9e0b5ee56401e1459705014f30b9cd5b7c3b5&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/RplXBzIEu_iKzQ7YX5G68Hh8ICoazwMi7XH4HirD-xy_golhiAoSuSKC48ONv51j1WnDrL5fyTRHantuDHDQpjpN-i4lCF9Uje74cM78XPWgg-beh21REglqcT8T0d_6cyFvEs0KXG7onbK-QH2YTZVosXo3Kwc=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/349264744.jpg?k=f64acf0b35d6f040062fcd78b7499bf0ec3e44a9aafeaa4fc1ce1980b2dfa2dd&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/LnhUjxJVRmVBSSjpAP5660Kg4GAE9fyNzfJ1-UdRlNmJz-Zm05wysBYZeu4Cqb-kt2i9laOADgFU7-USq5FgqMEUw-sMyvIU_HoNZ_YO9QypB0rx4fBLVs1ePWfAvu8-geM_zT2x5Y6M6lD570SmI24G5iZJHQ=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/349263530.jpg?k=a1ddc108be13354b18dc2d6fee10ca6a9998afeef3ee7886b5f35d6a9d5d38d1&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/AlD3oHGB5LF7M22U6jas7RXYrp5nxQAo_bV0ZIV8VYc8XFsCO8QvLt31_XgeUwT0ZZHDlofnwNDnU89DfZwMSi2otDa81nRGfoMA2XnW4JsM3HsYDw_eQZK9mD48xPazkgYNdWiXxJUupenNjOn7tzQXSIVXwA=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/349263590.jpg?k=7cf6f21905dff892169da44ccb246777b440aaaec3a70e6cd45e4a84ffc33b0a&o=&s=1024x",
+        },
+        {
+          thumbnail:
+            "https://lh3.googleusercontent.com/proxy/gjCujFCyuYGpc4i-TjEzmxpOF_NBVBnTBkR9lrkfoawh-DIY1uUn0W4qIgtd3X4A0VCEkXxxeexyc0g8_0N-h22Wuc-dgM6j7dn8aISNkGbiNpYDyNYExrRVUhk9onFMAcAHXCwzzi5aLsw2NKeShgZF40q2pw=s287-w287-h192-n-k-no-v1",
+          original_image:
+            "https://q-xx.bstatic.com/xdata/images/hotel/max1024/349263561.jpg?k=e481cc1b2cd41047651e54bef0bfc96f36d1061394c0d9fbc79f660d5d5cf840&o=&s=1024x",
+        },
+      ],
+      overall_rating: 4.2,
+      reviews: 10,
+      location_rating: 4.6,
+      amenities: [
+        "مكيِّف هواء",
+        "تدفئة",
+        "لوح كيّ",
+        "مطبخ",
+        "يسمح باصطحاب الحيوانات الأليفة",
+        "خدمة التلفزيون الكبلي",
+        "غسّالة",
+        "اتصال Wi-Fi مجاني",
+      ],
+      excluded_amenities: [
+        "لا تتوفر حافلة للمطار",
+        "لا تتوفّر شرفة.",
+        "لا تتوفّر إمكانية الدخول إلى الشاطئ.",
+        "غير مناسب للأطفال",
+        "لا يتوفّر سرير طفل.",
+        "لا يتوفّر مصعد.",
+        "لا تتوفّر مدفأة.",
+        "لا يتوفر مركز لياقة بدنية",
+        "لا يتوفّر حوض استحمام ساخن.",
+        "لا يتوفّر حمّام سباحة داخلي.",
+        "لا يتوفّر ميكروويف.",
+        "لا تتوفّر آلة شواء في الهواء الطلق.",
+        "لا يتوفّر حمّام سباحة خارجي.",
+        "لا يتوفّر فرن مع موقد.",
+        "التدخين غير ممنوع",
+        "غير صالح للكراسي المتحرّكة",
+        "لا يتوفّر موقف سيارات.",
+      ],
+      essential_info: [
+        "شقة كاملة",
+        "عدد الأشخاص: 2",
+        "غرفة نوم واحدة (1)",
+        "حمّام واحد (1)",
+        "سرير واحد (1)",
+      ],
+      property_token: "ChoQzKnStprW1aPKARoNL2cvMTF2al80d2swcxAC",
+      serpapi_property_details_link:
+        "https://serpapi.com/search.json?adults=1&check_in_date=2024-03-15&check_out_date=2024-03-15&children=0&currency=EGP&engine=google_hotels&gl=ar&hl=ar&property_token=ChoQzKnStprW1aPKARoNL2cvMTF2al80d2swcxAC&q=CAIRO",
+    },
+  ],
+});
+// Main Data Amadeus
 export const SetTicketsHotels = atom({
   key: "SetTicketsHotels",
   default: [
     {
-      chainCode: "AC",
-      iataCode: "LON",
-      dupeId: 700095490,
-      name: "LA GAFFE LONDON",
-      hotelId: "ACLONGAF",
-      geoCode: {
-        latitude: 51.55936,
-        longitude: -0.17844,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:06",
-    },
-    {
-      chainCode: "AC",
-      iataCode: "LON",
-      dupeId: 700031349,
-      name: "PRINCE WILLIAM",
-      hotelId: "ACLONWIL",
-      geoCode: {
-        latitude: 51.51374,
-        longitude: -0.17843,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:06",
-    },
-    {
-      chainCode: "AC",
-      iataCode: "LON",
-      dupeId: 700054374,
-      name: "ST GEORGIO",
-      hotelId: "ACLON555",
-      geoCode: {
-        latitude: 51.57751,
-        longitude: 0.06893,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:08:52",
-    },
-    {
-      chainCode: "AL",
-      iataCode: "LON",
-      dupeId: 700153486,
-      name: "ALOFT LONDON EXCEL",
-      hotelId: "ALLON591",
-      geoCode: {
-        latitude: 51.50816,
-        longitude: 0.02646,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-02-12T07:36:48",
-    },
-    {
-      chainCode: "AP",
-      iataCode: "LON",
-      dupeId: 501719946,
-      name: "CHILTERN FIREHOUSE",
-      hotelId: "APLONCHI",
-      geoCode: {
-        latitude: 51.51866,
-        longitude: -0.15511,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:12:41",
-    },
-    {
-      chainCode: "AZ",
-      iataCode: "LON",
-      dupeId: 700020819,
-      name: "CITADINES TRAFALGAR SQ LONDON",
-      hotelId: "AZLONOTR",
-      geoCode: {
-        latitude: 51.50704,
-        longitude: -0.12491,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:20:23",
-    },
-    {
-      chainCode: "AZ",
-      iataCode: "LON",
-      dupeId: 700033622,
-      name: "CITADINES BARBICAN LONDON",
-      hotelId: "AZLONOBA",
-      geoCode: {
-        latitude: 51.52212,
-        longitude: -0.09765,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:02:19",
-    },
-    {
-      chainCode: "AZ",
-      iataCode: "LON",
-      dupeId: 700006008,
-      name: "CITADINES HOLBORN LONDON",
-      hotelId: "AZLONOHO",
-      geoCode: {
-        latitude: 51.51793,
-        longitude: -0.11854,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:20:23",
-    },
-    {
-      chainCode: "AZ",
-      iataCode: "LON",
-      dupeId: 700095622,
-      name: "ST MARKS LONDON",
-      hotelId: "AZLON397",
-      geoCode: {
-        latitude: 51.52866,
-        longitude: -0.09328,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:01:00",
-    },
-    {
-      chainCode: "BC",
-      iataCode: "LON",
-      dupeId: 700189789,
-      name: "AKA MARYLEBONE",
-      hotelId: "BCLONAKS",
-      geoCode: {
-        latitude: 51.5173,
-        longitude: -0.15003,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:29:18",
-    },
-    {
-      chainCode: "BG",
-      iataCode: "LON",
-      dupeId: 502112441,
-      name: "MULTI TEST BULGARI LONDON 003",
-      hotelId: "BGLON003",
-      geoCode: {
-        latitude: 47.32992,
-        longitude: -0.20151,
-      },
-      address: {
-        countryCode: "FR",
-      },
-      lastUpdate: "2023-12-08T09:00:18",
-    },
-    {
-      chainCode: "BG",
-      iataCode: "LON",
-      dupeId: 502346457,
-      name: "TEST CONTENT",
-      hotelId: "BGLONBGB",
-      geoCode: {
-        latitude: 51.50682,
-        longitude: -0.12612,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-03-05T09:01:01",
-    },
-    {
-      chainCode: "BR",
-      iataCode: "LON",
-      dupeId: 700152304,
-      name: "ST PANCRAS RENAISSANCE LONDON",
-      hotelId: "BRLONPRB",
-      geoCode: {
-        latitude: 51.52575,
-        longitude: -0.13551,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-01-25T06:51:13",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700012547,
-      name: "BW PREMIER SHAFTESBURY HOTEL",
-      hotelId: "BWLON788",
-      geoCode: {
-        latitude: 51.49093,
-        longitude: -0.28133,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:22",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700057056,
-      name: "BEST WESTERN ATLANTIC HOTEL",
-      hotelId: "BWLON664",
-      geoCode: {
-        latitude: 51.73703,
-        longitude: 0.47366,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:22",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 501246168,
-      name: "BEST WESTERN PLUS GRIMS DYKE",
-      hotelId: "BWLON956",
-      geoCode: {
-        latitude: 51.61937,
-        longitude: -0.34426,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:40:33",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700211622,
-      name: "BEST WESTERN GREATER LONDON HT",
-      hotelId: "BWLON970",
-      geoCode: {
-        latitude: 51.56108,
-        longitude: 0.06984,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:06:58",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700070704,
-      name: "BEST WESTERN THE CROMWELL",
-      hotelId: "BWLON871",
-      geoCode: {
-        latitude: 51.49522,
-        longitude: -0.18429,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:25",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700013288,
-      name: "BEST WESTERN BURNS KENSINGTON",
-      hotelId: "BWLON801",
-      geoCode: {
-        latitude: 51.49237,
-        longitude: -0.19141,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:25",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700076562,
-      name: "BEST WESTERN THE BOLTONS",
-      hotelId: "BWLON897",
-      geoCode: {
-        latitude: 51.49072,
-        longitude: -0.19338,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:11:45",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700146270,
-      name: "BW SERAPHINE KENSINGTON OLYMPI",
-      hotelId: "BWLON966",
-      geoCode: {
-        latitude: 51.49913,
-        longitude: -0.19762,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:31:23",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700116947,
-      name: "BEST WESTERN LONDON HIGHBURY",
-      hotelId: "BWLON939",
-      geoCode: {
-        latitude: 51.56797,
-        longitude: -0.09946,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:20:07",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700095717,
-      name: "BEST WESTERN VICTORIA PALACE",
-      hotelId: "BWLON873",
-      geoCode: {
-        latitude: 51.49173,
-        longitude: -0.14145,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:22",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700134859,
-      name: "BEST WESTERN  PALM HOTEL",
-      hotelId: "BWLON924",
-      geoCode: {
-        latitude: 51.56388,
-        longitude: -0.20509,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:57",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700058005,
-      name: "BEST WESTERN CHISWICK PALACE",
-      hotelId: "BWLON906",
-      geoCode: {
-        latitude: 51.49255,
-        longitude: -0.25115,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:38",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700048011,
-      name: "BEST WESTERN MORNINGTON HOTEL -LONDON",
-      hotelId: "BWLON187",
-      geoCode: {
-        latitude: 51.51159,
-        longitude: -0.17729,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:06",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700096353,
-      name: "BEST WESTERN REIGATE MANOR HOTEL-REIGATE",
-      hotelId: "BWLON118",
-      geoCode: {
-        latitude: 51.24901,
-        longitude: -0.20299,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:06",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700043693,
-      name: "BEST WESTERN PLUS EPPING FOREST",
-      hotelId: "BWLON981",
-      geoCode: {
-        latitude: 51.60327,
-        longitude: 0.01086,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:12:41",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700057408,
-      name: "BEST WESTERN MANOR HOTEL",
-      hotelId: "BWLON642",
-      geoCode: {
-        latitude: 51.40958,
-        longitude: 0.38749,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-10-13T19:12:37",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700048008,
-      name: "DELMERE HOTEL",
-      hotelId: "BWLON683",
-      geoCode: {
-        latitude: 51.51575,
-        longitude: -0.17237,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:10",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700010749,
-      name: "BEST WESTERN SHAFTESBURY PAD",
-      hotelId: "BWLON787",
-      geoCode: {
-        latitude: 51.51358,
-        longitude: -0.18004,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:25",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700147454,
-      name: "BW PLUS SERAPHINE HAMMERSMITH",
-      hotelId: "BWLON953",
-      geoCode: {
-        latitude: 51.4927,
-        longitude: -0.22968,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:23:48",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700006292,
-      name: "BEST WESTERN CORONA",
-      hotelId: "BWLON799",
-      geoCode: {
-        latitude: 51.48992,
-        longitude: -0.13721,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:22",
-    },
-    {
-      chainCode: "BW",
-      iataCode: "LON",
-      dupeId: 700057687,
-      name: "BEST WESTERN WHITE HOUSE HOTEL",
-      hotelId: "BWLON770",
-      geoCode: {
-        latitude: 51.65697,
-        longitude: -0.40203,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:25",
-    },
-    {
-      chainCode: "CC",
-      iataCode: "LON",
-      dupeId: 501383017,
-      name: "HARTE AND GARTER HOTEL AND SPA CLARION C",
-      hotelId: "CCLON193",
-      geoCode: {
-        latitude: 51.48268,
-        longitude: -0.608,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:08:13",
-    },
-    {
-      chainCode: "CH",
-      iataCode: "LON",
-      dupeId: 700005995,
-      name: "CHRYSOS HOTEL",
-      hotelId: "CHLONCHR",
-      geoCode: {
-        latitude: 51.51575,
-        longitude: -0.17311,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:06:15",
-    },
-    {
-      chainCode: "CH",
-      iataCode: "LON",
-      dupeId: 700095680,
-      name: "HOTEL MARBLE ARCH INN",
-      hotelId: "CHLONH32",
-      geoCode: {
-        latitude: 51.5151,
-        longitude: -0.16157,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:22",
-    },
-    {
-      chainCode: "CH",
-      iataCode: "LON",
-      dupeId: 501250441,
-      name: "LONDON BRIDGE APARTMENTS",
-      hotelId: "CHLONLBA",
-      geoCode: {
-        latitude: 51.50353,
-        longitude: -0.09225,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:34:01",
-    },
-    {
-      chainCode: "CH",
-      iataCode: "LON",
-      dupeId: 501284448,
-      name: "WHITECHAPEL CENTRAL APARTMENTS",
-      hotelId: "CHLONWHI",
-      geoCode: {
-        latitude: 51.51551,
-        longitude: -0.06755,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:06:58",
-    },
-    {
-      chainCode: "CH",
-      iataCode: "LON",
-      dupeId: 700095549,
-      name: "CAMELIA HOTEL-ESSEX",
-      hotelId: "CHLONCAM",
-      geoCode: {
-        latitude: 51.53028,
-        longitude: 0.74092,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:30:52",
-    },
-    {
-      chainCode: "CI",
-      iataCode: "LON",
-      dupeId: 700058115,
-      name: "COMFORT HOTEL FINCHLEY",
-      hotelId: "CILON095",
-      geoCode: {
-        latitude: 51.60586,
-        longitude: -0.17457,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:22",
-    },
-    {
-      chainCode: "CI",
-      iataCode: "LON",
-      dupeId: 700029580,
-      name: "COMFORT INN VICTORIA",
-      hotelId: "CILON113",
-      geoCode: {
-        latitude: 51.49315,
-        longitude: -0.14424,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:25",
-    },
-    {
-      chainCode: "CI",
-      iataCode: "LON",
-      dupeId: 700006155,
-      name: "COMFORT INN ST PANCRAS - KINGS CROSS",
-      hotelId: "CILON049",
-      geoCode: {
-        latitude: 51.53013,
-        longitude: -0.1209,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:25",
-    },
-    {
-      chainCode: "CI",
-      iataCode: "LON",
-      dupeId: 700056459,
-      name: "COMFORT INN AND SUITES KINGS CROSS ST. P",
-      hotelId: "CILON143",
-      geoCode: {
-        latitude: 51.52902,
-        longitude: -0.12358,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:22",
-    },
-    {
-      chainCode: "CI",
-      iataCode: "LON",
-      dupeId: 700137463,
-      name: "COMFORT HOTEL LUTON",
-      hotelId: "CILON183",
-      geoCode: {
-        latitude: 51.8827,
-        longitude: -0.41893,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:12:32",
-    },
-    {
-      chainCode: "CN",
-      iataCode: "LON",
-      dupeId: 700153823,
-      name: "CONRAD LONDON ST JAMES",
-      hotelId: "CNLON944",
-      geoCode: {
-        latitude: 51.49982,
-        longitude: -0.13311,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:11:26",
-    },
-    {
-      chainCode: "CP",
-      iataCode: "LON",
-      dupeId: 700023644,
-      name: "CROWNE PLAZA KENSINGTON",
-      hotelId: "CPLON268",
-      geoCode: {
-        latitude: 51.49496,
-        longitude: -0.18393,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:14:06",
-    },
-    {
-      chainCode: "CQ",
-      iataCode: "LON",
-      dupeId: 700029582,
-      name: "CLUB QUARTERS ST. PAULS",
-      hotelId: "CQLON498",
-      geoCode: {
-        latitude: 51.51378,
-        longitude: -0.1013,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:22",
-    },
-    {
-      chainCode: "CQ",
-      iataCode: "LON",
-      dupeId: 700096295,
-      name: "CLUB QUARTERS TRAFALGAR SQUARE",
-      hotelId: "CQLON473",
-      geoCode: {
-        latitude: 51.50733,
-        longitude: -0.12734,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:22",
-    },
-    {
-      chainCode: "CX",
-      iataCode: "LON",
-      dupeId: 502039102,
-      name: "MULTI TEST CARLSON HOTELS",
-      hotelId: "CXLONXXX",
-      geoCode: {
-        latitude: 51.48192,
-        longitude: -0.11351,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:23:03",
-    },
-    {
-      chainCode: "DC",
-      iataCode: "LON",
-      dupeId: 700174486,
-      name: "45 PARK LANE",
-      hotelId: "DCLON45P",
-      geoCode: {
-        latitude: 51.50761,
-        longitude: -0.15336,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:18:49",
-    },
-    {
-      chainCode: "DH",
-      iataCode: "LON",
-      dupeId: 700189821,
-      name: "SHANGRI-LA HOTEL AT THE SHARD, LONDON",
-      hotelId: "DHLONBFG",
-      geoCode: {
-        latitude: 51.5034,
-        longitude: -0.0852,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:08:24",
-    },
-    {
-      chainCode: "DH",
-      iataCode: "LON",
-      dupeId: 700006008,
-      name: "CITADINES PRESTIGE HOLBORN - COVENT GARD",
-      hotelId: "DHLONBDO",
-      geoCode: {
-        latitude: 51.51795,
-        longitude: -0.11828,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:29:34",
-    },
-    {
-      chainCode: "DI",
-      iataCode: "LON",
-      dupeId: 700059403,
-      name: "DAYS INN SOUTH MIMMS M25",
-      hotelId: "DILON568",
-      geoCode: {
-        latitude: 51.68682,
-        longitude: -0.22132,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:59:11",
-    },
-    {
-      chainCode: "DI",
-      iataCode: "LON",
-      dupeId: 700176105,
-      name: "DAYS INN MAIDSTONE",
-      hotelId: "DILON510",
-      geoCode: {
-        latitude: 51.26665,
-        longitude: 0.61385,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-01-21T09:00:18",
-    },
-    {
-      chainCode: "DI",
-      iataCode: "LON",
-      dupeId: 700018136,
-      name: "DAYS HOTEL LONDON- WATERLOO",
-      hotelId: "DILON578",
-      geoCode: {
-        latitude: 51.49685,
-        longitude: -0.11214,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:56:50",
-    },
-    {
-      chainCode: "DS",
-      iataCode: "LON",
-      dupeId: 501420958,
-      name: "HAM YARD HOTEL",
-      hotelId: "DSLONHYH",
-      geoCode: {
-        latitude: 51.51108,
-        longitude: -0.1345,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:08:45",
-    },
-    {
-      chainCode: "DS",
-      iataCode: "LON",
-      dupeId: 700144341,
-      name: "TOWN HALL HOTEL AND APARTMENTS",
-      hotelId: "DSLONTTH",
-      geoCode: {
-        latitude: 51.53055,
-        longitude: -0.0562,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:46",
-    },
-    {
-      chainCode: "DS",
-      iataCode: "LON",
-      dupeId: 700095472,
-      name: "HAYMARKET HOTEL",
-      hotelId: "DSLONHAY",
-      geoCode: {
-        latitude: 51.50839,
-        longitude: -0.13106,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:57",
-    },
-    {
-      chainCode: "DS",
-      iataCode: "LON",
-      dupeId: 700174500,
-      name: "COVENT GARDEN HOTEL",
-      hotelId: "DSLON499",
-      geoCode: {
-        latitude: 51.51442,
-        longitude: -0.12692,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:56:50",
-    },
-    {
-      chainCode: "DS",
-      iataCode: "LON",
-      dupeId: 700095536,
-      name: "NUMBER SIXTEEN",
-      hotelId: "DSLON823",
-      geoCode: {
-        latitude: 51.49301,
-        longitude: -0.17572,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:09:08",
-    },
-    {
-      chainCode: "DS",
-      iataCode: "LON",
-      dupeId: 700174528,
-      name: "SOUTH PLACE HOTEL",
-      hotelId: "DSLONSPH",
-      geoCode: {
-        latitude: 51.51914,
-        longitude: -0.08704,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:26:26",
-    },
-    {
-      chainCode: "DS",
-      iataCode: "LON",
-      dupeId: 700095637,
-      name: "ECCLESTON SQUARE HOTEL",
-      hotelId: "DSLONELI",
-      geoCode: {
-        latitude: 51.49128,
-        longitude: -0.14565,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:54",
-    },
-    {
-      chainCode: "DS",
-      iataCode: "LON",
-      dupeId: 700025190,
-      name: "DORSET SQUARE",
-      hotelId: "DSLONDOR",
-      geoCode: {
-        latitude: 51.52258,
-        longitude: -0.16021,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:20:55",
-    },
-    {
-      chainCode: "DS",
-      iataCode: "LON",
-      dupeId: 700039684,
-      name: "THE SOHO HOTEL",
-      hotelId: "DSLONSOH",
-      geoCode: {
-        latitude: 51.51409,
-        longitude: -0.13357,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:54:13",
-    },
-    {
-      chainCode: "DS",
-      iataCode: "LON",
-      dupeId: 700174514,
-      name: "LA SUITE WEST",
-      hotelId: "DSLONLSW",
-      geoCode: {
-        latitude: 51.51247,
-        longitude: -0.18664,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:15:56",
-    },
-    {
-      chainCode: "EB",
-      iataCode: "LON",
-      dupeId: 700013278,
-      name: "THE LONDON EDITION",
-      hotelId: "EBLONEBE",
-      geoCode: {
-        latitude: 51.51713,
-        longitude: -0.13635,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-01-25T00:20:05",
-    },
-    {
-      chainCode: "ED",
-      iataCode: "LON",
-      dupeId: 502185711,
-      name: "ED TEST PROPERTY1",
-      hotelId: "EDLONDER",
-      geoCode: {
-        latitude: 51.50642,
-        longitude: -0.1272,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:30:05",
-    },
-    {
-      chainCode: "EP",
-      iataCode: "LON",
-      dupeId: 501910133,
-      name: "ROYAL FOUNDATION ST KATHARINE",
-      hotelId: "EPLONRFK",
-      geoCode: {
-        latitude: 51.51131,
-        longitude: -0.04128,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:20:44",
-    },
-    {
-      chainCode: "EP",
-      iataCode: "LON",
-      dupeId: 700075080,
-      name: "54 FIFTY FOUR BOUTIQUE HOTEL",
-      hotelId: "EPLONQUE",
-      geoCode: {
-        latitude: 51.49639,
-        longitude: -0.17929,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:15:40",
-    },
-    {
-      chainCode: "EP",
-      iataCode: "LON",
-      dupeId: 700095608,
-      name: "SAN DOMENICO HOUSE",
-      hotelId: "EPLONSLO",
-      geoCode: {
-        latitude: 51.49186,
-        longitude: -0.16178,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:14",
-    },
-    {
-      chainCode: "FG",
-      iataCode: "LON",
-      dupeId: 700076489,
-      name: "ALBANY HOTEL-EASTBOURNE",
-      hotelId: "FGLONALB",
-      geoCode: {
-        latitude: 50.76387,
-        longitude: 0.28763,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:56:18",
-    },
-    {
-      chainCode: "FG",
-      iataCode: "LON",
-      dupeId: 700032333,
-      name: "LANGORF HOTEL",
-      hotelId: "FGLONLAN",
-      geoCode: {
-        latitude: 51.55111,
-        longitude: -0.18021,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:28:47",
-    },
-    {
-      chainCode: "FG",
-      iataCode: "LON",
-      dupeId: 700031539,
-      name: "ASTOR COURT HOTEL",
-      hotelId: "FGLONAST",
-      geoCode: {
-        latitude: 51.52028,
-        longitude: -0.14282,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:47:40",
-    },
-    {
-      chainCode: "FG",
-      iataCode: "LON",
-      dupeId: 700095587,
-      name: "TOPHAMS HOTEL BELGRAVIA",
-      hotelId: "FGLONUTB",
-      geoCode: {
-        latitude: 51.49554,
-        longitude: -0.14818,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:08:56",
-    },
-    {
-      chainCode: "FG",
-      iataCode: "LON",
-      dupeId: 700170994,
-      name: "STUDIOS 2 LET SERVICED APARTMENTS",
-      hotelId: "FGLONS2L",
-      geoCode: {
-        latitude: 51.51344,
-        longitude: -0.18037,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:01:01",
-    },
-    {
-      chainCode: "FG",
-      iataCode: "LON",
-      dupeId: 700095639,
-      name: "NOTTINGHAM PLACE HOTEL LONDON",
-      hotelId: "FGLONPRH",
-      geoCode: {
-        latitude: 51.52213,
-        longitude: -0.1535,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:30:21",
-    },
-    {
-      chainCode: "FG",
-      iataCode: "LON",
-      dupeId: 501401823,
-      name: "THE GAINSBOROUGH HOTEL",
-      hotelId: "FGLON423",
-      geoCode: {
-        latitude: 51.49507,
-        longitude: -0.17721,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:05:54",
-    },
-    {
-      chainCode: "FI",
-      iataCode: "LON",
-      dupeId: 700174506,
-      name: "FRASER RESIDENCE MONUMENT",
-      hotelId: "FILONFRM",
-      geoCode: {
-        latitude: 51.51016,
-        longitude: -0.0844,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:13:24",
-    },
-    {
-      chainCode: "FI",
-      iataCode: "LON",
-      dupeId: 700174505,
-      name: "FRASER RESIDENCE BLACKFRIARS",
-      hotelId: "FILONJQP",
-      geoCode: {
-        latitude: 51.51295,
-        longitude: -0.10223,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:12:52",
-    },
-    {
-      chainCode: "FI",
-      iataCode: "LON",
-      dupeId: 700176594,
-      name: "FRASER RESIDENCE CITY",
-      hotelId: "FILONFRA",
-      geoCode: {
-        latitude: 51.51033,
-        longitude: -0.08411,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:11:47",
-    },
-    {
-      chainCode: "FI",
-      iataCode: "LON",
-      dupeId: 700174507,
-      name: "FRASER SUITES KENSINGTON",
-      hotelId: "FILONKEN",
-      geoCode: {
-        latitude: 51.49497,
-        longitude: -0.18103,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:12:52",
-    },
-    {
-      chainCode: "FI",
-      iataCode: "LON",
-      dupeId: 700174504,
-      name: "FRASER RESIDENCE BISHOPSGATE",
-      hotelId: "FILONMIN",
-      geoCode: {
-        latitude: 51.51835,
-        longitude: -0.07832,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:13:13",
-    },
-    {
-      chainCode: "FI",
-      iataCode: "LON",
-      dupeId: 700054168,
-      name: "FRASER PLACE CANARY WHARF",
-      hotelId: "FILON767",
-      geoCode: {
-        latitude: 51.50499,
-        longitude: -0.01118,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:13:02",
-    },
-    {
-      chainCode: "FS",
-      iataCode: "LON",
-      dupeId: 700021300,
-      name: "FOUR SEASONS LONDON AT PARK LANE",
-      hotelId: "FSLON509",
-      geoCode: {
-        latitude: 51.50434,
-        longitude: -0.14993,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:57",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700059137,
-      name: "GRANGE BRACKNELL",
-      hotelId: "GFLONBRA",
-      geoCode: {
-        latitude: 51.41816,
-        longitude: -0.74902,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:54:29",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700150356,
-      name: "CLARENDON",
-      hotelId: "GFLONCLD",
-      geoCode: {
-        latitude: 51.51967,
-        longitude: -0.12371,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:58:08",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700095482,
-      name: "GRANGE ST. PAULS",
-      hotelId: "GFLONRAN",
-      geoCode: {
-        latitude: 51.51228,
-        longitude: -0.09906,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:58:55",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700031301,
-      name: "GRANGE WHITE HALL",
-      hotelId: "GFLONWHI",
-      geoCode: {
-        latitude: 51.5191,
-        longitude: -0.1246,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:10",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700095589,
-      name: "BEAUCHAMP",
-      hotelId: "GFLONAMP",
-      geoCode: {
-        latitude: 51.52083,
-        longitude: -0.12495,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:10:11",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700148189,
-      name: "GRANGE TOWER BRIDGE HOTEL",
-      hotelId: "GFLONTWR",
-      geoCode: {
-        latitude: 51.51139,
-        longitude: -0.07227,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:59:27",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700013347,
-      name: "GRANGE HOLBORN",
-      hotelId: "GFLONHOL",
-      geoCode: {
-        latitude: 51.51906,
-        longitude: -0.12102,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:56:50",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700013348,
-      name: "GRANGE ROCHESTER",
-      hotelId: "GFLONROC",
-      geoCode: {
-        latitude: 51.49405,
-        longitude: -0.13622,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:54:13",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700027227,
-      name: "GRANGE BLOOMS TOWNHOUSE",
-      hotelId: "GFLONTWN",
-      geoCode: {
-        latitude: 51.51992,
-        longitude: -0.12562,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:58:08",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700039654,
-      name: "WELLINGTON",
-      hotelId: "GFLONWLL",
-      geoCode: {
-        latitude: 51.49373,
-        longitude: -0.13338,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:10",
-    },
-    {
-      chainCode: "GF",
-      iataCode: "LON",
-      dupeId: 700021510,
-      name: "GRANGE CITY",
-      hotelId: "GFLONCIT",
-      geoCode: {
-        latitude: 51.51096,
-        longitude: -0.0767,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:56:50",
-    },
-    {
-      chainCode: "GZ",
-      iataCode: "LON",
-      dupeId: 700076427,
-      name: "THE CROWN HOTEL",
-      hotelId: "GZLONTCI",
-      geoCode: {
-        latitude: 51.6663,
-        longitude: -0.6165,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:36:06",
-    },
-    {
-      chainCode: "GZ",
-      iataCode: "LON",
-      dupeId: 700059981,
-      name: "MALMAISON LONDON",
-      hotelId: "GZLONMAL",
-      geoCode: {
-        latitude: 51.52091,
-        longitude: -0.10026,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:30:21",
-    },
-    {
-      chainCode: "GZ",
-      iataCode: "LON",
-      dupeId: 700061854,
-      name: "THE ROOKERY HOTEL",
-      hotelId: "GZLON689",
-      geoCode: {
-        latitude: 51.52034,
-        longitude: -0.10223,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:34:16",
-    },
-    {
-      chainCode: "GZ",
-      iataCode: "LON",
-      dupeId: 700095709,
-      name: "HAZLITTS HOTEL",
-      hotelId: "GZLONHAZ",
-      geoCode: {
-        latitude: 51.51434,
-        longitude: -0.13185,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:35:19",
-    },
-    {
-      chainCode: "HA",
-      iataCode: "LON",
-      dupeId: 700019940,
-      name: "THE ROYAL CAMBRIDGE",
-      hotelId: "HALONCAM",
-      geoCode: {
-        latitude: 51.51577,
-        longitude: -0.17239,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:08:34",
-    },
-    {
-      chainCode: "HA",
-      iataCode: "LON",
-      dupeId: 700015887,
-      name: "HENRY VIII HOTEL",
-      hotelId: "HALONHEN",
-      geoCode: {
-        latitude: 51.51262,
-        longitude: -0.18341,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:07",
-    },
-    {
-      chainCode: "HA",
-      iataCode: "LON",
-      dupeId: 700024808,
-      name: "GRAND PLAZA APARTMENTS",
-      hotelId: "HALONGPA",
-      geoCode: {
-        latitude: 51.51357,
-        longitude: -0.19141,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:56:34",
-    },
-    {
-      chainCode: "HA",
-      iataCode: "LON",
-      dupeId: 700132055,
-      name: "THE JADE HOTEL",
-      hotelId: "HALON300",
-      geoCode: {
-        latitude: 51.49374,
-        longitude: -0.19146,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:11:15",
-    },
-    {
-      chainCode: "HA",
-      iataCode: "LON",
-      dupeId: 501416258,
-      name: "FALCON WHARF APARTMENTS",
-      hotelId: "HALONFAL",
-      geoCode: {
-        latitude: 51.47031,
-        longitude: -0.17787,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:09:28",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700024237,
-      name: "HOLIDAY INN LONDON BRENT CROSS",
-      hotelId: "HILOND41",
-      geoCode: {
-        latitude: 51.57165,
-        longitude: -0.22797,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:39",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700039541,
-      name: "HOLIDAY INN BRENTWOOD M25 JCT",
-      hotelId: "HILON1ED",
-      geoCode: {
-        latitude: 51.61072,
-        longitude: 0.26871,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:54",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700008323,
-      name: "HOLIDAY INN KINGS-CROSS",
-      hotelId: "HILON865",
-      geoCode: {
-        latitude: 51.52638,
-        longitude: -0.11373,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:10",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700045274,
-      name: "HOLIDAY INN EXPRESS CROYDON",
-      hotelId: "HILON50D",
-      geoCode: {
-        latitude: 51.3736,
-        longitude: -0.10218,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:07",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 501728584,
-      name: "HOLIDAY INN EXP EXCEL",
-      hotelId: "HILON98B",
-      geoCode: {
-        latitude: 51.50831,
-        longitude: 0.04178,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:07",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700029591,
-      name: "HOLIDAY INN EXP SOUTHWARK ST",
-      hotelId: "HILON005",
-      geoCode: {
-        latitude: 51.5061,
-        longitude: -0.10144,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:10",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700024236,
-      name: "HOLIDAY INN EXP VICTORIA STN",
-      hotelId: "HILONBE3",
-      geoCode: {
-        latitude: 51.48985,
-        longitude: -0.13705,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-01-21T09:00:19",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700153872,
-      name: "HOLIDAY INN STRATFORD CITY",
-      hotelId: "HILON329",
-      geoCode: {
-        latitude: 51.55219,
-        longitude: 0.0258,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:12:32",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700070372,
-      name: "CONCORDE OPERA PARIS OPERA PARIS",
-      hotelId: "HILON638",
-      geoCode: {
-        latitude: 51.54846,
-        longitude: -0.18098,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700153871,
-      name: "HOLIDAY INN COMMERCIAL ROAD",
-      hotelId: "HILONC51",
-      geoCode: {
-        latitude: 51.51466,
-        longitude: -0.05926,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:07:02",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700008340,
-      name: "HOLIDAY INN MAYFAIR",
-      hotelId: "HILON9D3",
-      geoCode: {
-        latitude: 51.50781,
-        longitude: -0.14284,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:10",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700029599,
-      name: "HOLIDAY INN WEST",
-      hotelId: "HILONFD4",
-      geoCode: {
-        latitude: 51.52099,
-        longitude: -0.26298,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:13",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700020449,
-      name: "HOLIDAY INN OXFORD CIRCUS",
-      hotelId: "HILON6AA",
-      geoCode: {
-        latitude: 51.51697,
-        longitude: -0.1492,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700095706,
-      name: "HOLIDAY INN EXP GOLDERS GREEN",
-      hotelId: "HILON72A",
-      geoCode: {
-        latitude: 51.59024,
-        longitude: -0.1993,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:08:37",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700008320,
-      name: "HOLIDAY INN KENSINGTON FORUM",
-      hotelId: "HILONE8A",
-      geoCode: {
-        latitude: 51.49422,
-        longitude: -0.18511,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700027258,
-      name: "HOLIDAY INN LONDON ELSTREE",
-      hotelId: "HILONELS",
-      geoCode: {
-        latitude: 51.64355,
-        longitude: -0.25477,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:10",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700022424,
-      name: "HOLIDAY INN EXP GREENWICH",
-      hotelId: "HILON542",
-      geoCode: {
-        latitude: 51.49039,
-        longitude: 0.01907,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700050307,
-      name: "HOLIDAY INN EXP LONDON-NEWBURY",
-      hotelId: "HILON02A",
-      geoCode: {
-        latitude: 51.57609,
-        longitude: 0.03988,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:07",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700032802,
-      name: "HOLIDAY INN SUTTON",
-      hotelId: "HILON239",
-      geoCode: {
-        latitude: 51.36221,
-        longitude: -0.19621,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 501686633,
-      name: "HOLIDAY INN WATFORD JUNCTION",
-      hotelId: "HILOND11",
-      geoCode: {
-        latitude: 51.6627,
-        longitude: -0.39716,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:12:41",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700028152,
-      name: "HOLIDAY INN CAMDEN LOCK",
-      hotelId: "HILON257",
-      geoCode: {
-        latitude: 51.54023,
-        longitude: -0.1456,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:10",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700028149,
-      name: "HOLIDAY INN EXP PARK ROYAL",
-      hotelId: "HILOND39",
-      geoCode: {
-        latitude: 51.52147,
-        longitude: -0.26354,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:54",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700096153,
-      name: "HOLIDAY INN EXP EPSOM DOWNS",
-      hotelId: "HILONAE1",
-      geoCode: {
-        latitude: 51.3107,
-        longitude: -0.26361,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:44:31",
-    },
-    {
-      chainCode: "HI",
-      iataCode: "LON",
-      dupeId: 700058859,
-      name: "HOLIDAY INN EXP WIMBLEDON S",
-      hotelId: "HILONC9A",
-      geoCode: {
-        latitude: 51.42429,
-        longitude: -0.21578,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700007240,
-      name: "HILTON LONDON EUSTON",
-      hotelId: "HLLON213",
-      geoCode: {
-        latitude: 51.52689,
-        longitude: -0.13028,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:07",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700040419,
-      name: "DOUBLETREE LONDON VICTORIA",
-      hotelId: "HLLON834",
-      geoCode: {
-        latitude: 51.494,
-        longitude: -0.14338,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:51:20",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700027723,
-      name: "THE TRAFALGAR",
-      hotelId: "HLLON101",
-      geoCode: {
-        latitude: 51.50729,
-        longitude: -0.12889,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700020499,
-      name: "HILTON LONDON DOCKLANDS RIVERSIDE",
-      hotelId: "HLLON57D",
-      geoCode: {
-        latitude: 51.50637,
-        longitude: -0.04404,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:10",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700027182,
-      name: "DOUBLETREE BY HILTON LONDON MARBLE ARCH",
-      hotelId: "HLLON611",
-      geoCode: {
-        latitude: 51.51477,
-        longitude: -0.1568,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:26:10",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700056457,
-      name: "HILTON LONDON TOWER BRIDGE",
-      hotelId: "HLLON102",
-      geoCode: {
-        latitude: 51.50475,
-        longitude: -0.08353,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-11-08T04:43:01",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700008158,
-      name: "HILTON LONDON ISLINGTON",
-      hotelId: "HLLON104",
-      geoCode: {
-        latitude: 51.53559,
-        longitude: -0.10631,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:07",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700143906,
-      name: "DOUBLETREE TOWER OF LONDON",
-      hotelId: "HLLON583",
-      geoCode: {
-        latitude: 51.51091,
-        longitude: -0.07849,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:21:26",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700026363,
-      name: "DOUBLETREE LONDON WEST END",
-      hotelId: "HLLON364",
-      geoCode: {
-        latitude: 51.51985,
-        longitude: -0.12213,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:05:45",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700013395,
-      name: "THE WALDORF HILTON",
-      hotelId: "HLLON555",
-      geoCode: {
-        latitude: 51.51264,
-        longitude: -0.11937,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700016651,
-      name: "DBLTREE LONDON EALING",
-      hotelId: "HLLON285",
-      geoCode: {
-        latitude: 51.51138,
-        longitude: -0.29076,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:23:17",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700008150,
-      name: "HILTON LONDON GREEN PARK",
-      hotelId: "HLLON091",
-      geoCode: {
-        latitude: 51.50608,
-        longitude: -0.14699,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:39",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700036343,
-      name: "HILTON WATFORD",
-      hotelId: "HLLON290",
-      geoCode: {
-        latitude: 51.66533,
-        longitude: -0.3606,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "HL",
-      iataCode: "LON",
-      dupeId: 700043184,
-      name: "HILTON LONDON CANARY WHARF",
-      hotelId: "HLLON300",
-      geoCode: {
-        latitude: 51.50054,
-        longitude: -0.01726,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:07",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 700095971,
-      name: "WEST LODGE PARK HOTEL",
-      hotelId: "HOLONWLP",
-      geoCode: {
-        latitude: 51.65962,
-        longitude: -0.15389,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 700189822,
-      name: "THE NADLER SOHO HOTEL",
-      hotelId: "HOLON187",
-      geoCode: {
-        latitude: 51.51475,
-        longitude: -0.13411,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:05:43",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 700076546,
-      name: "CORBIGOE HOTEL",
-      hotelId: "HOLONCRB",
-      geoCode: {
-        latitude: 51.48959,
-        longitude: -0.13655,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:30",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 700020818,
-      name: "LORDS HOTEL",
-      hotelId: "HOLONLOR",
-      geoCode: {
-        latitude: 51.51421,
-        longitude: -0.19169,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:43",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 700012272,
-      name: "THE SANCTUARY HOUSE HOTEL",
-      hotelId: "HOLONSHH",
-      geoCode: {
-        latitude: 51.49969,
-        longitude: -0.13203,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:10",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 501719575,
-      name: "KEW GARDEN HOTEL",
-      hotelId: "HOLONKGA",
-      geoCode: {
-        latitude: 51.47636,
-        longitude: -0.28719,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:13:13",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 700096356,
-      name: "RICHMOND HILL HOTEL",
-      hotelId: "HOLON088",
-      geoCode: {
-        latitude: 51.45187,
-        longitude: -0.29808,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:07",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 700061024,
-      name: "AUBREY PARK HOTEL",
-      hotelId: "HOLONHEX",
-      geoCode: {
-        latitude: 51.78748,
-        longitude: -0.41412,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:27:44",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 700010505,
-      name: "NORFOLK PLAZA HOTEL",
-      hotelId: "HOLONNFP",
-      geoCode: {
-        latitude: 51.51617,
-        longitude: -0.17257,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 700043691,
-      name: "THE FOX AND GOOSE",
-      hotelId: "HOLONFOX",
-      geoCode: {
-        latitude: 51.53127,
-        longitude: -0.29469,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:07",
-    },
-    {
-      chainCode: "HO",
-      iataCode: "LON",
-      dupeId: 700057834,
-      name: "CANNIZARO HOUSE",
-      hotelId: "HOLONCAN",
-      geoCode: {
-        latitude: 51.42434,
-        longitude: -0.22922,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:13:04",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700130876,
-      name: "THE CRAVEN FORMALLY CROWN HYDE PARK",
-      hotelId: "HSLONAXW",
-      geoCode: {
-        latitude: 51.51288,
-        longitude: -0.17891,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:19:19",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 501819953,
-      name: "10 PEMBRIDGE GARDENS NOTTING HILL GATE",
-      hotelId: "HSLONAZS",
-      geoCode: {
-        latitude: 51.50975,
-        longitude: -0.19659,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:18:25",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 501819942,
-      name: "GRESHAM",
-      hotelId: "HSLONAPN",
-      geoCode: {
-        latitude: 51.51591,
-        longitude: -0.17191,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:17:53",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700022425,
-      name: "NAYLAND",
-      hotelId: "HSLONAMZ",
-      geoCode: {
-        latitude: 51.51552,
-        longitude: -0.17222,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:15:23",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700131281,
-      name: "DYLAN APARTMENTS PADDINGTON",
-      hotelId: "HSLONAXT",
-      geoCode: {
-        latitude: 51.51425,
-        longitude: -0.18055,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:32:27",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700095538,
-      name: "HOTEL ONESIXTWO",
-      hotelId: "HSLONBEH",
-      geoCode: {
-        latitude: 51.47816,
-        longitude: 0.01906,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:18:25",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700130402,
-      name: "CASTLETON",
-      hotelId: "HSLONAPG",
-      geoCode: {
-        latitude: 51.51509,
-        longitude: -0.17349,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:39:31",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700008015,
-      name: "HANOVER",
-      hotelId: "HSLONAEL",
-      geoCode: {
-        latitude: 51.49089,
-        longitude: -0.14338,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:06:27",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700147610,
-      name: "BOKA",
-      hotelId: "HSLONBCF",
-      geoCode: {
-        latitude: 51.4888,
-        longitude: -0.19582,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:05:11",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700134956,
-      name: "PARKWOOD",
-      hotelId: "HSLONAWY",
-      geoCode: {
-        latitude: 51.51343,
-        longitude: -0.1631,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:38:29",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700076577,
-      name: "FITZROY",
-      hotelId: "HSLONBCL",
-      geoCode: {
-        latitude: 51.52375,
-        longitude: -0.14038,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:05:00",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700120573,
-      name: "ROYAL LONDON",
-      hotelId: "HSLONAJB",
-      geoCode: {
-        latitude: 51.50071,
-        longitude: -0.22188,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:14:08",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700151417,
-      name: "BRITANNIA INN",
-      hotelId: "HSLONAVP",
-      geoCode: {
-        latitude: 51.56377,
-        longitude: 0.06562,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:38:44",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700194620,
-      name: "GOWER HOUSE",
-      hotelId: "HSLONARI",
-      geoCode: {
-        latitude: 51.52164,
-        longitude: -0.13186,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:16:48",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700006982,
-      name: "EDEN PLAZA",
-      hotelId: "HSLONAUX",
-      geoCode: {
-        latitude: 51.49526,
-        longitude: -0.17924,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:40:19",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700129079,
-      name: "APARTHOTEL 73",
-      hotelId: "HSLONAXM",
-      geoCode: {
-        latitude: 51.51322,
-        longitude: -0.18687,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:06:48",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700137133,
-      name: "SURTEES",
-      hotelId: "HSLONAVU",
-      geoCode: {
-        latitude: 51.49121,
-        longitude: -0.14265,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:38:13",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700219689,
-      name: "HOLLAND PARK GROVE",
-      hotelId: "HSLONBDM",
-      geoCode: {
-        latitude: 51.50581,
-        longitude: -0.22254,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:13:46",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700078996,
-      name: "EUROTRAVELLER HOTEL EXPRESS ELEPHANT - C",
-      hotelId: "HSLONBGP",
-      geoCode: {
-        latitude: 51.49001,
-        longitude: -0.09758,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:18:57",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700133884,
-      name: "LIDOS",
-      hotelId: "HSLONAWE",
-      geoCode: {
-        latitude: 51.49081,
-        longitude: -0.13879,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:38:13",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700219699,
-      name: "CAMDEN TOWN",
-      hotelId: "HSLONBFS",
-      geoCode: {
-        latitude: 51.54805,
-        longitude: -0.13052,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:19:19",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700165373,
-      name: "THE JENKINS",
-      hotelId: "HSLONBAH",
-      geoCode: {
-        latitude: 51.52667,
-        longitude: -0.12745,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:40:34",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700081191,
-      name: "CAMDEN LOCK",
-      hotelId: "HSLONBGV",
-      geoCode: {
-        latitude: 51.54379,
-        longitude: -0.15179,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:16:48",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700194617,
-      name: "27 PADDINGTON",
-      hotelId: "HSLONAXR",
-      geoCode: {
-        latitude: 51.51405,
-        longitude: -0.17817,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:19:19",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700165382,
-      name: "MACY'S",
-      hotelId: "HSLONBCE",
-      geoCode: {
-        latitude: 51.6253,
-        longitude: -0.02175,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:08:14",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700133169,
-      name: "JUBILEE HOTEL",
-      hotelId: "HSLONBGF",
-      geoCode: {
-        latitude: 51.49133,
-        longitude: -0.1456,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:15:45",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 501819935,
-      name: "ROSE COURT",
-      hotelId: "HSLONAIO",
-      geoCode: {
-        latitude: 51.51517,
-        longitude: -0.15981,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:19:19",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700076574,
-      name: "BEACONSFIELD",
-      hotelId: "HSLONBDN",
-      geoCode: {
-        latitude: 51.57593,
-        longitude: -0.09877,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:17:53",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700219691,
-      name: "HAVERSTOCK",
-      hotelId: "HSLONBFP",
-      geoCode: {
-        latitude: 51.54881,
-        longitude: -0.16173,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:13:57",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700194614,
-      name: "THE KENSINGTON STUDIOS",
-      hotelId: "HSLONBBJ",
-      geoCode: {
-        latitude: 51.49855,
-        longitude: -0.2089,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:16:48",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700211713,
-      name: "GO NATIVE MAYFAIR",
-      hotelId: "HSLONBDA",
-      geoCode: {
-        latitude: 51.51215,
-        longitude: -0.15439,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:17:53",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700095597,
-      name: "CHESTER HOTEL VICTORIA",
-      hotelId: "HSLONBFF",
-      geoCode: {
-        latitude: 51.49235,
-        longitude: -0.14086,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:17:31",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 501819933,
-      name: "BRITANNIA INTERNATIONAL",
-      hotelId: "HSLONAES",
-      geoCode: {
-        latitude: 51.49961,
-        longitude: -0.01768,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:15:23",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700165402,
-      name: "CORONATION",
-      hotelId: "HSLONAXX",
-      geoCode: {
-        latitude: 51.49269,
-        longitude: -0.19684,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:06:05",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700033593,
-      name: "SHAKESPEARE HOTEL",
-      hotelId: "HSLONBGE",
-      geoCode: {
-        latitude: 51.51596,
-        longitude: -0.17295,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:19:19",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700095691,
-      name: "BELVEDERE",
-      hotelId: "HSLONBEM",
-      geoCode: {
-        latitude: 51.51656,
-        longitude: -0.17288,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:15:23",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700174549,
-      name: "QUEENS DRIVE",
-      hotelId: "HSLONBBV",
-      geoCode: {
-        latitude: 51.56587,
-        longitude: -0.10153,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:04:39",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700194619,
-      name: "SABA LONDON",
-      hotelId: "HSLONAVF",
-      geoCode: {
-        latitude: 51.50237,
-        longitude: -0.22261,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:13:46",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700174525,
-      name: "ROYAL GUEST HOUSE 2",
-      hotelId: "HSLONARV",
-      geoCode: {
-        latitude: 51.49797,
-        longitude: -0.22229,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:17:31",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 501819982,
-      name: "EURO HOTEL HAMMERSMITH",
-      hotelId: "HSLONBGI",
-      geoCode: {
-        latitude: 51.50116,
-        longitude: -0.2218,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:16:48",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700220024,
-      name: "SAPPHIRE",
-      hotelId: "HSLONBDB",
-      geoCode: {
-        latitude: 51.50097,
-        longitude: -0.22179,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:14:40",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 501819988,
-      name: "ST GEORGE'S PIMLICO PIMLICO HOTELIERS LT",
-      hotelId: "HSLONBGS",
-      geoCode: {
-        latitude: 51.48853,
-        longitude: -0.13952,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:17:53",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700020769,
-      name: "ORCHARD",
-      hotelId: "HSLONARU",
-      geoCode: {
-        latitude: 51.5162,
-        longitude: -0.17087,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:18:57",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700170986,
-      name: "RIDGEWAY",
-      hotelId: "HSLONBGY",
-      geoCode: {
-        latitude: 51.62673,
-        longitude: -0.00894,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:18:57",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 501819974,
-      name: "APARTHOTELS LONDON - TOWER BRIDGE",
-      hotelId: "HSLONBFU",
-      geoCode: {
-        latitude: 51.50308,
-        longitude: -0.07671,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:19:19",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700137490,
-      name: "THE SUMNER",
-      hotelId: "HSLONBCY",
-      geoCode: {
-        latitude: 51.51519,
-        longitude: -0.16092,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:15:23",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700170995,
-      name: "BELLE COUR",
-      hotelId: "HSLONBBI",
-      geoCode: {
-        latitude: 51.49341,
-        longitude: -0.1399,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:32:27",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700076587,
-      name: "ENRICO",
-      hotelId: "HSLONAMI",
-      geoCode: {
-        latitude: 51.49152,
-        longitude: -0.14301,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:19:29",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700194603,
-      name: "PARK VIEW",
-      hotelId: "HSLONBBL",
-      geoCode: {
-        latitude: 51.56477,
-        longitude: -0.10225,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:16:48",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700165397,
-      name: "THE JUSTIN JAMES HOTEL",
-      hotelId: "HSLONBEK",
-      geoCode: {
-        latitude: 51.42029,
-        longitude: -0.21108,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:18:57",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700129516,
-      name: "AVALON HOUSE",
-      hotelId: "HSLONAVZ",
-      geoCode: {
-        latitude: 51.74031,
-        longitude: -0.3184,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:33:15",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700095521,
-      name: "KADIMAH HOTEL",
-      hotelId: "HSLONAXD",
-      geoCode: {
-        latitude: 51.57296,
-        longitude: -0.07047,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:40:04",
-    },
-    {
-      chainCode: "HS",
-      iataCode: "LON",
-      dupeId: 700143336,
-      name: "TWICKENHAM GUEST HOUSE",
-      hotelId: "HSLONBGJ",
-      geoCode: {
-        latitude: 51.45373,
-        longitude: -0.33756,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:17:31",
-    },
-    {
-      chainCode: "HY",
-      iataCode: "LON",
-      dupeId: 700029595,
-      name: "ANDAZ LIVERPOOL STREET LONDON",
-      hotelId: "HYLONGRE",
-      geoCode: {
-        latitude: 51.51651,
-        longitude: -0.08191,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "IC",
-      iataCode: "LON",
-      dupeId: 700009552,
-      name: "INTERCONTINENTAL LONDON PARK",
-      hotelId: "ICLONICA",
-      geoCode: {
-        latitude: 51.5036,
-        longitude: -0.14981,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "IN",
-      iataCode: "LON",
-      dupeId: 700005057,
-      name: "HOTEL INDIGO KENSINGTON EARL",
-      hotelId: "INLON402",
-      geoCode: {
-        latitude: 51.4919,
-        longitude: -0.19188,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:12:17",
-    },
-    {
-      chainCode: "IN",
-      iataCode: "LON",
-      dupeId: 700041975,
-      name: "HOTEL INDIGO PADDINGTON",
-      hotelId: "INLONC25",
-      geoCode: {
-        latitude: 51.51528,
-        longitude: -0.17398,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:42:57",
-    },
-    {
-      chainCode: "IQ",
-      iataCode: "LON",
-      dupeId: 700012189,
-      name: "SAINT GEORGES HOTEL",
-      hotelId: "IQLON257",
-      geoCode: {
-        latitude: 51.51784,
-        longitude: -0.14301,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:28",
-    },
-    {
-      chainCode: "IQ",
-      iataCode: "LON",
-      dupeId: 700024968,
-      name: "THE OAKLEY COURT HOTEL",
-      hotelId: "IQLONOAC",
-      geoCode: {
-        latitude: 51.49023,
-        longitude: -0.67238,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:22:46",
-    },
-    {
-      chainCode: "IR",
-      iataCode: "LON",
-      dupeId: 700029603,
-      name: "EUSTON SQUARE",
-      hotelId: "IRLON235",
-      geoCode: {
-        latitude: 51.52595,
-        longitude: -0.13639,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:08:37",
-    },
-    {
-      chainCode: "JD",
-      iataCode: "LON",
-      dupeId: 700008849,
-      name: "THE KENSINGTON HOTEL",
-      hotelId: "JDLONJUR",
-      geoCode: {
-        latitude: 51.49458,
-        longitude: -0.17892,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "JD",
-      iataCode: "LON",
-      dupeId: 700008850,
-      name: "THE BLOOMSBURY HOTEL",
-      hotelId: "JDLONJGR",
-      geoCode: {
-        latitude: 51.5171,
-        longitude: -0.13062,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "JT",
-      iataCode: "LON",
-      dupeId: 700174550,
-      name: "GROSVENOR HOUSE APARTMENTS",
-      hotelId: "JTLONGHA",
-      geoCode: {
-        latitude: 51.50992,
-        longitude: -0.15509,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:14:54",
-    },
-    {
-      chainCode: "JT",
-      iataCode: "LON",
-      dupeId: 700021301,
-      name: "JUMEIRAH CARLTON TOWER",
-      hotelId: "JTLON423",
-      geoCode: {
-        latitude: 51.49848,
-        longitude: -0.15839,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "KY",
-      iataCode: "LON",
-      dupeId: 700006933,
-      name: "DUKE OF LEINSTER HOTEL",
-      hotelId: "KYLONDUK",
-      geoCode: {
-        latitude: 51.51312,
-        longitude: -0.18404,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:23:33",
-    },
-    {
-      chainCode: "LM",
-      iataCode: "LON",
-      dupeId: 700010646,
-      name: "OLIVER PLAZA",
-      hotelId: "LMLONOLI",
-      geoCode: {
-        latitude: 51.49139,
-        longitude: -0.19541,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "LU",
-      iataCode: "LON",
-      dupeId: 700095468,
-      name: "PARK GRAND LONDON PADDINGTON",
-      hotelId: "LULONTPG",
-      geoCode: {
-        latitude: 51.51416,
-        longitude: -0.18169,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:10:23",
-    },
-    {
-      chainCode: "LU",
-      iataCode: "LON",
-      dupeId: 700045511,
-      name: "THE MARBLE ARCH BY MONTCALM",
-      hotelId: "LULON122",
-      geoCode: {
-        latitude: 51.51515,
-        longitude: -0.16017,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:36:24",
-    },
-    {
-      chainCode: "LW",
-      iataCode: "LON",
-      dupeId: 700095951,
-      name: "THE GROVE",
-      hotelId: "LWLON424",
-      geoCode: {
-        latitude: 51.67727,
-        longitude: -0.43651,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:11",
-    },
-    {
-      chainCode: "LW",
-      iataCode: "LON",
-      dupeId: 700010676,
-      name: "ONE ALDWYCH",
-      hotelId: "LWLON416",
-      geoCode: {
-        latitude: 51.51237,
-        longitude: -0.11873,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "LW",
-      iataCode: "LON",
-      dupeId: 700023453,
-      name: "BAGLIONI HOTEL LONDON",
-      hotelId: "LWLON428",
-      geoCode: {
-        latitude: 51.50171,
-        longitude: -0.18456,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:26",
-    },
-    {
-      chainCode: "LW",
-      iataCode: "LON",
-      dupeId: 700011871,
-      name: "THE RITZ LONDON",
-      hotelId: "LWLON999",
-      geoCode: {
-        latitude: 51.50951,
-        longitude: -0.13551,
-      },
-      address: {
-        countryCode: "US",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "LX",
-      iataCode: "LON",
-      dupeId: 700012937,
-      name: "ST JAMES HOTEL AND CLUB LONDON",
-      hotelId: "LXLONSJH",
-      geoCode: {
-        latitude: 51.50608,
-        longitude: -0.14074,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:18:02",
-    },
-    {
-      chainCode: "LX",
-      iataCode: "LON",
-      dupeId: 700096313,
-      name: "STOKE PARK",
-      hotelId: "LXLON418",
-      geoCode: {
-        latitude: 51.54566,
-        longitude: -0.59501,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700060021,
-      name: "BEXLEYHEATH MARRIOTT HOTEL",
-      hotelId: "MCLONBHM",
-      geoCode: {
-        latitude: 51.45541,
-        longitude: 0.15204,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700024233,
-      name: "LONDON MARRIOTT REGENTS PARK",
-      hotelId: "MCLONRPK",
-      geoCode: {
-        latitude: 51.54187,
-        longitude: -0.17099,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-01-24T22:55:59",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700009923,
-      name: "LONDON MARRIOTT MARBLE ARCH",
-      hotelId: "MCLONMAR",
-      geoCode: {
-        latitude: 51.51587,
-        longitude: -0.16413,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700024273,
-      name: "LONDON MARRIOTT PARK LANE",
-      hotelId: "MCLONPLM",
-      geoCode: {
-        latitude: 51.51296,
-        longitude: -0.15772,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-03-11T06:15:21",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700060042,
-      name: "LONDON MARRIOTT KENSINGTON",
-      hotelId: "MCLONLMM",
-      geoCode: {
-        latitude: 51.49463,
-        longitude: -0.1896,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-03-11T06:01:23",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700062252,
-      name: "MARRIOTT EXEC APTS LONDON",
-      hotelId: "MCLONERM",
-      geoCode: {
-        latitude: 51.50795,
-        longitude: -0.02404,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-01-24T04:58:52",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700027181,
-      name: "LONDON MARRIOTT GROSVENOR SQ",
-      hotelId: "MCLONDTG",
-      geoCode: {
-        latitude: 51.51288,
-        longitude: -0.15079,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-02-12T06:54:31",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700031300,
-      name: "JW MARRIOTT GROSVENOR HOUSE",
-      hotelId: "MCLONGHM",
-      geoCode: {
-        latitude: 51.50988,
-        longitude: -0.15509,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-03-11T06:04:58",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700024272,
-      name: "LONDON MARRIOTT MAIDA VALE",
-      hotelId: "MCLONWHM",
-      geoCode: {
-        latitude: 51.5357,
-        longitude: -0.19013,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-01-08T22:36:22",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700060041,
-      name: "LONDON MARRIOTT COUNTY HALL",
-      hotelId: "MCLONCHM",
-      geoCode: {
-        latitude: 51.50106,
-        longitude: -0.11927,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-03-11T06:11:52",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700060057,
-      name: "WALTHAM ABBEY MARRIOTT",
-      hotelId: "MCLONWAM",
-      geoCode: {
-        latitude: 51.68227,
-        longitude: 0.02076,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "MC",
-      iataCode: "LON",
-      dupeId: 700217189,
-      name: "LONDON MARRIOTT W INDIA QUAY",
-      hotelId: "MCLONCWM",
-      geoCode: {
-        latitude: 51.50795,
-        longitude: -0.02404,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "MD",
-      iataCode: "LON",
-      dupeId: 700009367,
-      name: "LE MERIDIEN PICCADILLY",
-      hotelId: "MDLONMER",
-      geoCode: {
-        latitude: 51.50908,
-        longitude: -0.1368,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:23",
-    },
-    {
-      chainCode: "MR",
-      iataCode: "LON",
-      dupeId: 700012943,
-      name: "ST MARTINS LANE",
-      hotelId: "MRLONSML",
-      geoCode: {
-        latitude: 51.51041,
-        longitude: -0.12698,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:11",
-    },
-    {
-      chainCode: "MU",
-      iataCode: "LON",
-      dupeId: 501415571,
-      name: "CHELSEA HARBOUR",
-      hotelId: "MULON530",
-      geoCode: {
-        latitude: 51.47571,
-        longitude: -0.18201,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:10:02",
-    },
-    {
-      chainCode: "MU",
-      iataCode: "LON",
-      dupeId: 700024283,
-      name: "MILLENNIUM HOTEL KNIGHTSBRIDGE",
-      hotelId: "MULONCHL",
-      geoCode: {
-        latitude: 51.5004,
-        longitude: -0.1602,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:11",
-    },
-    {
-      chainCode: "NS",
-      iataCode: "LON",
-      dupeId: 700041790,
-      name: "NH LONDON KENSINGTON",
-      hotelId: "NSLONKEN",
-      geoCode: {
-        latitude: 51.49495,
-        longitude: -0.19454,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:57:22",
-    },
-    {
-      chainCode: "OD",
-      iataCode: "LON",
-      dupeId: 502027421,
-      name: "OD TEST HOTEL 1",
-      hotelId: "ODLON001",
-      geoCode: {
-        latitude: 38.06035,
-        longitude: -78.49294,
-      },
-      address: {
-        countryCode: "FR",
-      },
-      lastUpdate: "2023-06-15T11:22:53",
-    },
-    {
-      chainCode: "OI",
-      iataCode: "LON",
-      dupeId: 502345898,
-      name: "TEST HOTEL",
-      hotelId: "OILON123",
-      geoCode: {
-        latitude: 0,
-        longitude: 0,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-10-19T09:47:09",
-    },
-    {
-      chainCode: "ON",
-      iataCode: "LON",
-      dupeId: 700058701,
-      name: "EBURY HOUSE HOTEL",
-      hotelId: "ONLONEBU",
-      geoCode: {
-        latitude: 51.49361,
-        longitude: -0.14996,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:58:09",
-    },
-    {
-      chainCode: "ON",
-      iataCode: "LON",
-      dupeId: 700130544,
-      name: "CHISWICK LODGE HOTEL",
-      hotelId: "ONLONCLH",
-      geoCode: {
-        latitude: 51.49447,
-        longitude: -0.25534,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:58:40",
-    },
-    {
-      chainCode: "ON",
-      iataCode: "LON",
-      dupeId: 700058698,
-      name: "EATON HOUSE HOTEL",
-      hotelId: "ONLONEAT",
-      geoCode: {
-        latitude: 51.49361,
-        longitude: -0.14997,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:55:17",
-    },
-    {
-      chainCode: "ON",
-      iataCode: "LON",
-      dupeId: 700219932,
-      name: "NATIONAL HOTEL",
-      hotelId: "ONLONNAT",
-      geoCode: {
-        latitude: 51.5917,
-        longitude: -0.14578,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:36:56",
-    },
-    {
-      chainCode: "ON",
-      iataCode: "LON",
-      dupeId: 700009498,
-      name: "HOTEL LILY",
-      hotelId: "ONLONLIL",
-      geoCode: {
-        latitude: 51.48346,
-        longitude: -0.21829,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:54:14",
-    },
-    {
-      chainCode: "ON",
-      iataCode: "LON",
-      dupeId: 700061824,
-      name: "THE HOUSE HOTEL",
-      hotelId: "ONLONHOU",
-      geoCode: {
-        latitude: 51.55453,
-        longitude: -0.17206,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:54:14",
-    },
-    {
-      chainCode: "PH",
-      iataCode: "LON",
-      dupeId: 700095577,
-      name: "DRAYCOTT HOTEL PREFERRED BOUTI",
-      hotelId: "PHLONCLI",
-      geoCode: {
-        latitude: 51.49298,
-        longitude: -0.15963,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:19:37",
-    },
-    {
-      chainCode: "PH",
-      iataCode: "LON",
-      dupeId: 700012081,
-      name: "THE ROYAL PARK HOTEL PREFERRED",
-      hotelId: "PHLONRPK",
-      geoCode: {
-        latitude: 51.51446,
-        longitude: -0.17709,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:25:24",
-    },
-    {
-      chainCode: "PH",
-      iataCode: "LON",
-      dupeId: 700162706,
-      name: "ME LONDON",
-      hotelId: "PHLONMEH",
-      geoCode: {
-        latitude: 51.51208,
-        longitude: -0.11864,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:23:01",
-    },
-    {
-      chainCode: "PH",
-      iataCode: "LON",
-      dupeId: 501544761,
-      name: "THE STAFFORD LONDON PREFERRED",
-      hotelId: "PHLONTSL",
-      geoCode: {
-        latitude: 51.50599,
-        longitude: -0.14068,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:43:13",
-    },
-    {
-      chainCode: "PH",
-      iataCode: "LON",
-      dupeId: 501943655,
-      name: "THE PELHAM HOTEL",
-      hotelId: "PHLONTPH",
-      geoCode: {
-        latitude: 51.49444,
-        longitude: -0.17501,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:21:11",
-    },
-    {
-      chainCode: "PH",
-      iataCode: "LON",
-      dupeId: 501943654,
-      name: "THE GORE HOTEL",
-      hotelId: "PHLONTGH",
-      geoCode: {
-        latitude: 51.5003,
-        longitude: -0.17982,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:21:18",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 502112631,
-      name: "ALPHA LONDON - TOWER BRIDGE",
-      hotelId: "PILONMAB",
-      geoCode: {
-        latitude: 62.1,
-        longitude: -0.11111,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:00:46",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135295,
-      name: "PREMIER INN ASCOT",
-      hotelId: "PILONAVU",
-      geoCode: {
-        latitude: 51.41226,
-        longitude: -0.70622,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:31",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135304,
-      name: "PREMIER INN BARKING",
-      hotelId: "PILONAQH",
-      geoCode: {
-        latitude: 51.53507,
-        longitude: 0.07152,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:58:25",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700079879,
-      name: "PREMIER INN LONDON ELSTREE - BOREHAMWOOD",
-      hotelId: "PILONAUL",
-      geoCode: {
-        latitude: 51.6585,
-        longitude: -0.2553,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:29",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700140377,
-      name: "PREMIER INN CHESSINGTON",
-      hotelId: "PILONABK",
-      geoCode: {
-        latitude: 51.34691,
-        longitude: -0.31569,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:31",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135387,
-      name: "PREMIER INN COLCHESTER CENTRAL",
-      hotelId: "PILONAWJ",
-      geoCode: {
-        latitude: 51.89781,
-        longitude: 0.89856,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:47",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135471,
-      name: "PREMIER INN GRAVESEND CENTRAL",
-      hotelId: "PILONADG",
-      geoCode: {
-        latitude: 51.43184,
-        longitude: 0.36362,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:00",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700192415,
-      name: "PREMIER INN LONDON GREENWICH",
-      hotelId: "PILONAZV",
-      geoCode: {
-        latitude: -0.02055,
-        longitude: -0.02055,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:20:24",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700140398,
-      name: "PREMIER INN ILFORD",
-      hotelId: "PILONADY",
-      geoCode: {
-        latitude: 51.57696,
-        longitude: 0.04476,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:47",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700186436,
-      name: "PREMIER INN LONDON HARROW",
-      hotelId: "PILONAKD",
-      geoCode: {
-        latitude: 51.58255,
-        longitude: -0.31691,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:00",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135537,
-      name: "PREMIER INN LONDON EUSTON",
-      hotelId: "PILONAKU",
-      geoCode: {
-        latitude: 51.52774,
-        longitude: -0.12906,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:28",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135535,
-      name: "PREMIER INN LONDON BECKTON",
-      hotelId: "PILONAAM",
-      geoCode: {
-        latitude: 51.51458,
-        longitude: 0.06086,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:00",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700095494,
-      name: "PREMIER INN LONDON KENSINGTON",
-      hotelId: "PILONAOP",
-      geoCode: {
-        latitude: 51.49348,
-        longitude: -0.19086,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:13:05",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700076602,
-      name: "PREMIER INN LONDON TOWER BRIDGE",
-      hotelId: "PILONAKW",
-      geoCode: {
-        latitude: 51.50003,
-        longitude: -0.0815,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:00",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700006154,
-      name: "PREMIER INN LONDON KENSINGTON (OLYMPIA)",
-      hotelId: "PILONAYH",
-      geoCode: {
-        latitude: 51.49455,
-        longitude: -0.19658,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:44",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700043107,
-      name: "PREMIER INN LONDON CITY (TOWER HILL)",
-      hotelId: "PILONAPC",
-      geoCode: {
-        latitude: 51.51135,
-        longitude: -0.07195,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:19:22",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135541,
-      name: "PREMIER INN LONDON WIMBLEDON SOUTH",
-      hotelId: "PILONAUM",
-      geoCode: {
-        latitude: 51.41407,
-        longitude: -0.18058,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:47",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700015888,
-      name: "PREMIER INN LONDON VICTORIA",
-      hotelId: "PILONAYR",
-      geoCode: {
-        latitude: 51.49259,
-        longitude: -0.14222,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:16",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135536,
-      name: "PREMIER INN LONDON COUNTY HALL",
-      hotelId: "PILONAKT",
-      geoCode: {
-        latitude: 51.50147,
-        longitude: -0.11876,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:44",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 502308331,
-      name: "PREMIER INN PROPERTY ",
-      hotelId: "PILONHOL",
-      geoCode: {
-        latitude: 51.50015,
-        longitude: -0.12624,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:08:04",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135639,
-      name: "PREMIER INN ROMFORD CENTRAL",
-      hotelId: "PILONAMP",
-      geoCode: {
-        latitude: 51.578,
-        longitude: 0.18783,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:14",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135400,
-      name: "PREMIER INN CROYDON SOUTH",
-      hotelId: "PILONABQ",
-      geoCode: {
-        latitude: 51.36269,
-        longitude: -0.07195,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:18:03",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135706,
-      name: "PREMIER INN TONBRIDGE NORTH",
-      hotelId: "PILONAVM",
-      geoCode: {
-        latitude: 51.20624,
-        longitude: 0.26137,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:31",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135705,
-      name: "PREMIER INN TONBRIDGE",
-      hotelId: "PILONAJP",
-      geoCode: {
-        latitude: 51.18135,
-        longitude: 0.28065,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:44",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700140431,
-      name: "PREMIER INN WALTHAM ABBEY",
-      hotelId: "PILONATA",
-      geoCode: {
-        latitude: 51.66891,
-        longitude: 0.00168,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:08:53",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700140427,
-      name: "PREMIER INN THURROCK WEST",
-      hotelId: "PILONAQW",
-      geoCode: {
-        latitude: 51.48272,
-        longitude: 0.26107,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:16",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135308,
-      name: "PREMIER INN BASILDON (EAST MAYNE)",
-      hotelId: "PILONAAJ",
-      geoCode: {
-        latitude: 51.58069,
-        longitude: 0.49693,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:18:03",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135307,
-      name: "PREMIER INN BASILDON (FESTIVAL PARK)",
-      hotelId: "PILONAQL",
-      geoCode: {
-        latitude: 51.58513,
-        longitude: 0.46247,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:19:53",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135309,
-      name: "PREMIER INN BASILDON SOUTH",
-      hotelId: "PILONAAK",
-      geoCode: {
-        latitude: 51.54892,
-        longitude: 0.47021,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:44",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700058833,
-      name: "PREMIER INN BASILDON (RAYLEIGH)",
-      hotelId: "PILONAPI",
-      geoCode: {
-        latitude: 51.5774,
-        longitude: 0.60005,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:31",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135341,
-      name: "PREMIER INN BRENTWOOD",
-      hotelId: "PILONAYV",
-      geoCode: {
-        latitude: 51.61488,
-        longitude: 0.29937,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:29",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135373,
-      name: "PREMIER INN CHELMSFORD (SPRINGFIELD)",
-      hotelId: "PILONABI",
-      geoCode: {
-        latitude: 51.75536,
-        longitude: 0.51656,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:18:03",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135372,
-      name: "PREMIER INN CHELMSFORD (BOREHAM)",
-      hotelId: "PILONASW",
-      geoCode: {
-        latitude: 51.75638,
-        longitude: 0.52429,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:16",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135386,
-      name: "PREMIER INN COBHAM",
-      hotelId: "PILONAJN",
-      geoCode: {
-        latitude: 51.341,
-        longitude: -0.40013,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:18:03",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189294,
-      name: "PREMIER INN CROYDON TOWN CENTRE",
-      hotelId: "PILONBCZ",
-      geoCode: {
-        latitude: 51.37721,
-        longitude: -0.09704,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:04:40",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189808,
-      name: "PREMIER INN DAGENHAM",
-      hotelId: "PILONBBN",
-      geoCode: {
-        latitude: 51.53129,
-        longitude: 0.15034,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:24:52",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700191988,
-      name: "PREMIER INN DARTFORD",
-      hotelId: "PILONBAW",
-      geoCode: {
-        latitude: 51.45668,
-        longitude: 0.23979,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:22:14",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189374,
-      name: "PREMIER INN LONDON HANGER LANE",
-      hotelId: "PILONAZN",
-      geoCode: {
-        latitude: 51.52917,
-        longitude: -0.29057,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:14:23",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700140389,
-      name: "PREMIER INN ENFIELD",
-      hotelId: "PILONAOS",
-      geoCode: {
-        latitude: 51.67689,
-        longitude: -0.02165,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:16",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135437,
-      name: "PREMIER INN EPSOM NORTH",
-      hotelId: "PILONAQM",
-      geoCode: {
-        latitude: 51.36301,
-        longitude: -0.25674,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:16",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135438,
-      name: "PREMIER INN EPSOM SOUTH",
-      hotelId: "PILONAJJ",
-      geoCode: {
-        latitude: 51.30435,
-        longitude: -0.21882,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:28",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135388,
-      name: "PREMIER INN COLCHESTER (A12)",
-      hotelId: "PILONABN",
-      geoCode: {
-        latitude: 51.91987,
-        longitude: 0.93217,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:31",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135470,
-      name: "PREMIER INN GRAVESEND (A2-SINGLEWELL)",
-      hotelId: "PILONATB",
-      geoCode: {
-        latitude: 51.41176,
-        longitude: 0.37639,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:29",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135477,
-      name: "PREMIER INN HARLOW",
-      hotelId: "PILONADL",
-      geoCode: {
-        latitude: 51.79467,
-        longitude: 0.13022,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:15",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189156,
-      name: "PREMIER INN LONDON LEICESTER SQUARE",
-      hotelId: "PILONBAK",
-      geoCode: {
-        latitude: 51.51096,
-        longitude: -0.13024,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:29",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189809,
-      name: "PREMIER INN LONDON BLACKFRIARS",
-      hotelId: "PILONBBE",
-      geoCode: {
-        latitude: 51.5131,
-        longitude: -0.10561,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:26:26",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189813,
-      name: "PREMIER INN LONDON RICHMOND",
-      hotelId: "PILONBBK",
-      geoCode: {
-        latitude: 51.46672,
-        longitude: -0.29136,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:26:26",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135540,
-      name: "PREMIER INN LONDON WEMBLEY STADIUM",
-      hotelId: "PILONAQP",
-      geoCode: {
-        latitude: 51.56209,
-        longitude: -0.28177,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:47",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189814,
-      name: "PREMIER INN LONDON SOUTHWARK (TATE",
-      hotelId: "PILONBBD",
-      geoCode: {
-        latitude: 51.50477,
-        longitude: -0.10147,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:26:26",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189812,
-      name: "PREMIER INN LONDON ISLINGTON",
-      hotelId: "PILONBAG",
-      geoCode: {
-        latitude: 51.53498,
-        longitude: -0.10563,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:21:27",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700024239,
-      name: "PREMIER INN LONDON HAMPSTEAD",
-      hotelId: "PILONAUZ",
-      geoCode: {
-        latitude: 51.55154,
-        longitude: -0.16721,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:29",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189810,
-      name: "PREMIER INN LONDON EALING",
-      hotelId: "PILONBBH",
-      geoCode: {
-        latitude: 51.51339,
-        longitude: -0.30961,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:25:08",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700013886,
-      name: "PREMIER INN LONDON HAMMERSMITH",
-      hotelId: "PILONAUV",
-      geoCode: {
-        latitude: 51.49309,
-        longitude: -0.23853,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:29",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700076569,
-      name: "PREMIER INN LONDON KINGS CROSS ST PANCRA",
-      hotelId: "PILONAQO",
-      geoCode: {
-        latitude: 51.532,
-        longitude: -0.12209,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:14",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700055828,
-      name: "PREMIER INN LONDON PUTNEY BRIDGE",
-      hotelId: "PILONAKV",
-      geoCode: {
-        latitude: 51.46759,
-        longitude: -0.21115,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:19:53",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135538,
-      name: "PREMIER INN LONDON KEW",
-      hotelId: "PILONAQJ",
-      geoCode: {
-        latitude: 51.48546,
-        longitude: -0.29962,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:06:32",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135539,
-      name: "PREMIER INN LONDON SOUTHWARK",
-      hotelId: "PILONATC",
-      geoCode: {
-        latitude: 51.50672,
-        longitude: -0.09265,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:47",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700076600,
-      name: "PREMIER INN LONDON DOCKLANDS (EXCEL)",
-      hotelId: "PILONARG",
-      geoCode: {
-        latitude: 51.50725,
-        longitude: 0.03571,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:18:03",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 501197324,
-      name: "PREMIER INN LONDON HENDON (THE",
-      hotelId: "PILONBDB",
-      geoCode: {
-        latitude: 51.58475,
-        longitude: -0.24808,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:40:51",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189815,
-      name: "PREMIER INN LONDON STRATFORD",
-      hotelId: "PILONBAF",
-      geoCode: {
-        latitude: 51.54185,
-        longitude: -0.0038,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:21:58",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189807,
-      name: "PREMIER INN CHINGFORD",
-      hotelId: "PILONBBT",
-      geoCode: {
-        latitude: 51.63477,
-        longitude: 0.02372,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:25:24",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189816,
-      name: "PREMIER INN LONDON WATERLOO",
-      hotelId: "PILONBBY",
-      geoCode: {
-        latitude: 51.50329,
-        longitude: -0.11521,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:24:52",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700140405,
-      name: "PREMIER INN LOUGHTON-BUCKHURST HILL",
-      hotelId: "PILONAPH",
-      geoCode: {
-        latitude: 51.62563,
-        longitude: 0.03213,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:28",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700140403,
-      name: "PREMIER INN LONDON EDGWARE",
-      hotelId: "PILONAQK",
-      geoCode: {
-        latitude: 51.60548,
-        longitude: -0.2787,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:16",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189817,
-      name: "PREMIER INN RUISLIP",
-      hotelId: "PILONAZA",
-      geoCode: {
-        latitude: 51.57286,
-        longitude: 0.43144,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:20:09",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700140404,
-      name: "PREMIER INN LONDON GREENFORD",
-      hotelId: "PILONAFU",
-      geoCode: {
-        latitude: 51.53209,
-        longitude: -0.32194,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:44",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135660,
-      name: "PREMIER INN SOUTH MIMMS-POTTERS BAR",
-      hotelId: "PILONAUY",
-      geoCode: {
-        latitude: 51.69032,
-        longitude: -0.22353,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:44",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700140417,
-      name: "PREMIER INN RAINHAM",
-      hotelId: "PILONAOW",
-      geoCode: {
-        latitude: 51.50517,
-        longitude: 0.22609,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:16",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135640,
-      name: "PREMIER INN ROMFORD WEST",
-      hotelId: "PILONAQQ",
-      geoCode: {
-        latitude: 51.58045,
-        longitude: 0.14102,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:31",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135661,
-      name: "PREMIER INN SOUTH SHIELDS",
-      hotelId: "PILONAPA",
-      geoCode: {
-        latitude: 54.97611,
-        longitude: -1.45251,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:14",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700189818,
-      name: "PREMIER INN SUNBURY KEMPTON PARK-SUNBURY",
-      hotelId: "PILONAZG",
-      geoCode: {
-        latitude: 51.4191,
-        longitude: -0.42252,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:21:11",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135436,
-      name: "PREMIER INN EPSOM CENTRAL",
-      hotelId: "PILONACO",
-      geoCode: {
-        latitude: 51.32915,
-        longitude: -0.27149,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:28",
-    },
-    {
-      chainCode: "PI",
-      iataCode: "LON",
-      dupeId: 700135401,
-      name: "PREMIER INN CROYDON WEST",
-      hotelId: "PILONAQI",
-      geoCode: {
-        latitude: 51.35625,
-        longitude: -0.11578,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:29",
-    },
-    {
-      chainCode: "PK",
-      iataCode: "LON",
-      dupeId: 502335853,
-      name: "PARK PLAZA LONDON PARK ROYAL",
-      hotelId: "PKLON613",
-      geoCode: {
-        latitude: 0,
-        longitude: 0,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:05:12",
-    },
-    {
-      chainCode: "PK",
-      iataCode: "LON",
-      dupeId: 700039100,
-      name: "PLAZA ON THE RIVER LONDON",
-      hotelId: "PKLON535",
-      geoCode: {
-        latitude: 51.49601,
-        longitude: -0.12052,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:31",
-    },
-    {
-      chainCode: "PK",
-      iataCode: "LON",
-      dupeId: 700033472,
-      name: "PARK PLAZA RIVERBANK LONDON",
-      hotelId: "PKLON526",
-      geoCode: {
-        latitude: 51.49441,
-        longitude: -0.12129,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:54:14",
-    },
-    {
-      chainCode: "PK",
-      iataCode: "LON",
-      dupeId: 700127473,
-      name: "PARK PLAZA WESTMINSTER BRIDGE LONDON",
-      hotelId: "PKLON533",
-      geoCode: {
-        latitude: 51.501,
-        longitude: -0.1169,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:13:36",
-    },
-    {
-      chainCode: "PK",
-      iataCode: "LON",
-      dupeId: 700018135,
-      name: "PARK PLAZA VICTORIA LONDON",
-      hotelId: "PKLON504",
-      geoCode: {
-        latitude: 51.49415,
-        longitude: -0.14149,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:58:09",
-    },
-    {
-      chainCode: "PU",
-      iataCode: "LON",
-      dupeId: 502143600,
-      name: "MULTI TEST TEST RATE TRANS",
-      hotelId: "PULON001",
-      geoCode: {
-        latitude: 51.5172,
-        longitude: -0.10712,
-      },
-      address: {
-        countryCode: "FR",
-      },
-      lastUpdate: "2024-02-28T10:40:32",
-    },
-    {
-      chainCode: "RA",
-      iataCode: "LON",
-      dupeId: 501365527,
-      name: "RA CRAWLEY GATWICK",
-      hotelId: "RALON583",
-      geoCode: {
-        latitude: 51.11912,
-        longitude: -0.18879,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:14:07",
-    },
-    {
-      chainCode: "RA",
-      iataCode: "LON",
-      dupeId: 700043690,
-      name: "RAMADA HOTEL AND SUITES LONDON",
-      hotelId: "RALONDLX",
-      geoCode: {
-        latitude: 51.50812,
-        longitude: 0.03719,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:51:52",
-    },
-    {
-      chainCode: "RA",
-      iataCode: "LON",
-      dupeId: 700076599,
-      name: "RAMADA HOTEL LONDON NORTH",
-      hotelId: "RALON546",
-      geoCode: {
-        latitude: 51.63234,
-        longitude: -0.26637,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:33:16",
-    },
-    {
-      chainCode: "RC",
-      iataCode: "LON",
-      dupeId: 502346303,
-      name: "RESIDENCE INN BRIDGE MARRIOTT ",
-      hotelId: "RCLONRIR",
-      geoCode: {
-        latitude: 0,
-        longitude: 0,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-02-16T08:27:09",
-    },
-    {
-      chainCode: "RD",
-      iataCode: "LON",
-      dupeId: 700011532,
-      name: "RADISSON BLU PORTMAN LONDON",
-      hotelId: "RDLONS25",
-      geoCode: {
-        latitude: 51.51622,
-        longitude: -0.15792,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:27",
-    },
-    {
-      chainCode: "RD",
-      iataCode: "LON",
-      dupeId: 700024308,
-      name: "RADISSON BLU HAMPSHIRE LONDON",
-      hotelId: "RDLON308",
-      geoCode: {
-        latitude: 51.50997,
-        longitude: -0.12971,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:08",
-    },
-    {
-      chainCode: "RD",
-      iataCode: "LON",
-      dupeId: 700011492,
-      name: "RADISSON BLU GRAFTON LONDON",
-      hotelId: "RDLON311",
-      geoCode: {
-        latitude: 51.52421,
-        longitude: -0.13783,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:27",
-    },
-    {
-      chainCode: "RD",
-      iataCode: "LON",
-      dupeId: 700029581,
-      name: "RADISSON BLU SUSSEX LONDON",
-      hotelId: "RDLON314",
-      geoCode: {
-        latitude: 51.51469,
-        longitude: -0.15523,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:27",
-    },
-    {
-      chainCode: "RD",
-      iataCode: "LON",
-      dupeId: 700011488,
-      name: "RADISSON BLU KENILWORTH LONDON",
-      hotelId: "RDLON312",
-      geoCode: {
-        latitude: 51.51801,
-        longitude: -0.12809,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:27",
-    },
-    {
-      chainCode: "RD",
-      iataCode: "LON",
-      dupeId: 700154748,
-      name: "RADISSON BLU GUILDFORD HOTEL",
-      hotelId: "RDLON178",
-      geoCode: {
-        latitude: 51.23795,
-        longitude: -0.56696,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:12:49",
-    },
-    {
-      chainCode: "RG",
-      iataCode: "LON",
-      dupeId: 700012142,
-      name: "RYDGES KENSINGTON LONDON",
-      hotelId: "RGLON040",
-      geoCode: {
-        latitude: 51.49573,
-        longitude: -0.18276,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:27",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 502143601,
-      name: "MULTI TEST TEST CORP DISC",
-      hotelId: "RTLON001",
-      geoCode: {
-        latitude: 51.5172,
-        longitude: -0.10712,
-      },
-      address: {
-        countryCode: "FR",
-      },
-      lastUpdate: "2024-02-28T10:40:38",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 502148528,
-      name: "MULTI TEST TEST AGENT RATE",
-      hotelId: "RTLON456",
-      geoCode: {
-        latitude: 51.5172,
-        longitude: -0.10712,
-      },
-      address: {
-        countryCode: "FR",
-      },
-      lastUpdate: "2024-02-28T10:40:44",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700020450,
-      name: "NOVOTEL LONDON WEST",
-      hotelId: "RTLONNOV",
-      geoCode: {
-        latitude: 51.49211,
-        longitude: -0.21976,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:08",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 501898773,
-      name: "IBIS STYLES LONDON KENSINGTON",
-      hotelId: "RTLONISK",
-      geoCode: {
-        latitude: 51.4934,
-        longitude: -0.19211,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:21:06",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700095621,
-      name: "IBIS LONDON GREENWICH",
-      hotelId: "RTLONGRE",
-      geoCode: {
-        latitude: 51.47995,
-        longitude: -0.00937,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:08",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700049182,
-      name: "IBIS STYLES LONDON SOUTHWARK",
-      hotelId: "RTLONSOU",
-      geoCode: {
-        latitude: 51.50577,
-        longitude: -0.09519,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:47",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700181715,
-      name: "NOVOTEL LONDON BLACKFRIARS",
-      hotelId: "RTLONBLA",
-      geoCode: {
-        latitude: 51.50516,
-        longitude: -0.10471,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:18:35",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700183399,
-      name: "IBIS LONDON BLACKFRIARS",
-      hotelId: "RTLONBKF",
-      geoCode: {
-        latitude: 51.50514,
-        longitude: -0.10487,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:25:24",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700055827,
-      name: "IBIS LONDON CITY",
-      hotelId: "RTLONCIT",
-      geoCode: {
-        latitude: 51.51534,
-        longitude: -0.07197,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:08",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700027664,
-      name: "NOVOTEL LONDON CITY SOUTH",
-      hotelId: "RTLONCTS",
-      geoCode: {
-        latitude: 51.50572,
-        longitude: -0.09541,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:12",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700041136,
-      name: "IBIS STYLES LONDON LEYTON",
-      hotelId: "RTLONALL",
-      geoCode: {
-        latitude: 51.57355,
-        longitude: -0.01548,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:41:55",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700059563,
-      name: "IBIS LONDON EXCEL DOCKLANDS",
-      hotelId: "RTLONIBI",
-      geoCode: {
-        latitude: 51.50756,
-        longitude: 0.02639,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:08",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700032334,
-      name: "IBIS BUDGET LONDON BARKING",
-      hotelId: "RTLONBAR",
-      geoCode: {
-        latitude: 51.53459,
-        longitude: 0.07074,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:29:03",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700009551,
-      name: "MERCURE LONDON PADDINGTON",
-      hotelId: "RTLONCWN",
-      geoCode: {
-        latitude: 51.51633,
-        longitude: -0.17487,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:57:54",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700183429,
-      name: "IBIS BUDGET LONDON HOUNSLOW",
-      hotelId: "RTLONHOU",
-      geoCode: {
-        latitude: 51.46719,
-        longitude: -0.36668,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:29:19",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700013439,
-      name: "IBIS LONDON EARLS COURT",
-      hotelId: "RTLONEAR",
-      geoCode: {
-        latitude: 51.48622,
-        longitude: -0.19927,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:08",
-    },
-    {
-      chainCode: "RT",
-      iataCode: "LON",
-      dupeId: 700032808,
-      name: "NOVOTEL LONDON EXCEL",
-      hotelId: "RTLONEXC",
-      geoCode: {
-        latitude: 51.50797,
-        longitude: 0.02466,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:08",
-    },
-    {
-      chainCode: "SB",
-      iataCode: "LON",
-      dupeId: 700019411,
-      name: "SOFITEL LONDON ST JAMES",
-      hotelId: "SBLONSOF",
-      geoCode: {
-        latitude: 51.50732,
-        longitude: -0.13239,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:44",
-    },
-    {
-      chainCode: "SC",
-      iataCode: "LON",
-      dupeId: 700131869,
-      name: "CAMBRIDGE HOTEL-HORLEY",
-      hotelId: "SCLON121",
-      geoCode: {
-        latitude: 51.18971,
-        longitude: -0.16407,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:29:51",
-    },
-    {
-      chainCode: "SI",
-      iataCode: "LON",
-      dupeId: 700012635,
-      name: "THE PARK LANE HOTEL LONDON",
-      hotelId: "SILON105",
-      geoCode: {
-        latitude: 51.50497,
-        longitude: -0.14734,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-01-23T09:22:51",
-    },
-    {
-      chainCode: "SM",
-      iataCode: "LON",
-      dupeId: 501935310,
-      name: "THE LEVEL AT MELIA WHITE HOUSE",
-      hotelId: "SMLONLMW",
-      geoCode: {
-        latitude: 51.52531,
-        longitude: -0.14363,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:20:56",
-    },
-    {
-      chainCode: "TA",
-      iataCode: "LON",
-      dupeId: 700096139,
-      name: "THE ROYAL ADELAIDE HOTEL",
-      hotelId: "TALON062",
-      geoCode: {
-        latitude: 51.47747,
-        longitude: -0.60645,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:10:45",
-    },
-    {
-      chainCode: "TG",
-      iataCode: "LON",
-      dupeId: 700193917,
-      name: "TRAVELODGE LONDON SOUTH CROYDON",
-      hotelId: "TGLON246",
-      geoCode: {
-        latitude: 51.35557,
-        longitude: -0.09748,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:08:38",
-    },
-    {
-      chainCode: "TG",
-      iataCode: "LON",
-      dupeId: 700189834,
-      name: "TRAVELODGE WALTON-ON-THAMES",
-      hotelId: "TGLON250",
-      geoCode: {
-        latitude: 51.37345,
-        longitude: -0.41489,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:27:14",
-    },
-    {
-      chainCode: "TG",
-      iataCode: "LON",
-      dupeId: 700193809,
-      name: "TRAVELODGE LONDON CHIGWELL",
-      hotelId: "TGLON215",
-      geoCode: {
-        latitude: 51.60887,
-        longitude: 0.0587,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:44:32",
-    },
-    {
-      chainCode: "TG",
-      iataCode: "LON",
-      dupeId: 700174538,
-      name: "TRAVELODGE LONDON FULHAM",
-      hotelId: "TGLON924",
-      geoCode: {
-        latitude: 51.48315,
-        longitude: -0.20088,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:21:12",
-    },
-    {
-      chainCode: "TG",
-      iataCode: "LON",
-      dupeId: 700189830,
-      name: "TRAVELODGE LONDON SNARESBROOK",
-      hotelId: "TGLON245",
-      geoCode: {
-        latitude: 51.58315,
-        longitude: 0.02069,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:28:01",
-    },
-    {
-      chainCode: "TG",
-      iataCode: "LON",
-      dupeId: 700174541,
-      name: "TRAVELODGE LONDON TEDDINGTON",
-      hotelId: "TGLON859",
-      geoCode: {
-        latitude: 51.42656,
-        longitude: -0.33367,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:14:39",
-    },
-    {
-      chainCode: "TG",
-      iataCode: "LON",
-      dupeId: 700096257,
-      name: "TRAVELODGE TODDINGTON M1 SOUTHBOUND",
-      hotelId: "TGLON735",
-      geoCode: {
-        latitude: 51.94763,
-        longitude: -0.49959,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:21:59",
-    },
-    {
-      chainCode: "TI",
-      iataCode: "LON",
-      dupeId: 700013528,
-      name: "THE GROSVENOR HOTEL VICTORIA",
-      hotelId: "TILONGRV",
-      geoCode: {
-        latitude: 51.49536,
-        longitude: -0.14557,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:12",
-    },
-    {
-      chainCode: "TI",
-      iataCode: "LON",
-      dupeId: 700031486,
-      name: "THISTLE KENSINGTON GARDENS",
-      hotelId: "TILONHOS",
-      geoCode: {
-        latitude: 51.51084,
-        longitude: -0.18414,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:27",
-    },
-    {
-      chainCode: "TI",
-      iataCode: "LON",
-      dupeId: 700013593,
-      name: "THISTLE EUSTON",
-      hotelId: "TILONKNN",
-      geoCode: {
-        latitude: 51.52902,
-        longitude: -0.1373,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:24",
-    },
-    {
-      chainCode: "TI",
-      iataCode: "LON",
-      dupeId: 700013591,
-      name: "THISTLE CITY BARBICAN",
-      hotelId: "TILONNLH",
-      geoCode: {
-        latitude: 51.52749,
-        longitude: -0.09673,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:08",
-    },
-    {
-      chainCode: "TI",
-      iataCode: "LON",
-      dupeId: 700023457,
-      name: "THISTLE HYDE PARK",
-      hotelId: "TILONWHE",
-      geoCode: {
-        latitude: 51.5113,
-        longitude: -0.18092,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:08",
-    },
-    {
-      chainCode: "TI",
-      iataCode: "LON",
-      dupeId: 700013590,
-      name: "AMBA HOTEL CHARING CROSS",
-      hotelId: "TILONCHR",
-      geoCode: {
-        latitude: 51.50836,
-        longitude: -0.12479,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:08",
-    },
-    {
-      chainCode: "TI",
-      iataCode: "LON",
-      dupeId: 700006422,
-      name: "CUMBERLAND HOTEL MARBLE ARCH",
-      hotelId: "TILON001",
-      geoCode: {
-        latitude: 51.51525,
-        longitude: -0.15987,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:24",
-    },
-    {
-      chainCode: "TJ",
-      iataCode: "LON",
-      dupeId: 700006403,
-      name: "ST JAMES COURT, A TAJ HOTEL",
-      hotelId: "TJLON601",
-      geoCode: {
-        latitude: 51.49848,
-        longitude: -0.13748,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:04:41",
-    },
-    {
-      chainCode: "TP",
-      iataCode: "LON",
-      dupeId: 700044848,
-      name: "TOP KENSINGTON GARDENS HOTEL LONDON",
-      hotelId: "TPLONKEN",
-      geoCode: {
-        latitude: 51.51342,
-        longitude: -0.18993,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:12",
-    },
-    {
-      chainCode: "UI",
-      iataCode: "LON",
-      dupeId: 700076555,
-      name: "THE LEONARD HOTEL",
-      hotelId: "UILON434",
-      geoCode: {
-        latitude: 51.51488,
-        longitude: -0.15801,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:00:47",
-    },
-    {
-      chainCode: "UI",
-      iataCode: "LON",
-      dupeId: 700041744,
-      name: "AMERICANA HOTEL",
-      hotelId: "UILONAME",
-      geoCode: {
-        latitude: 51.5244,
-        longitude: -0.16089,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:27",
-    },
-    {
-      chainCode: "UI",
-      iataCode: "LON",
-      dupeId: 700079050,
-      name: "THE ROCKWELL",
-      hotelId: "UILONALE",
-      geoCode: {
-        latitude: 51.49444,
-        longitude: -0.19298,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:06:38",
-    },
-    {
-      chainCode: "UI",
-      iataCode: "LON",
-      dupeId: 700124911,
-      name: "H10 LONDON WATERLOO",
-      hotelId: "UILON182",
-      geoCode: {
-        latitude: 51.4992,
-        longitude: -0.10611,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:19:37",
-    },
-    {
-      chainCode: "UI",
-      iataCode: "LON",
-      dupeId: 700029602,
-      name: "RATHBONE HOTEL",
-      hotelId: "UILONRAT",
-      geoCode: {
-        latitude: 51.51865,
-        longitude: -0.13578,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:56",
-    },
-    {
-      chainCode: "UI",
-      iataCode: "LON",
-      dupeId: 502052185,
-      name: "LON PROPERTY 999",
-      hotelId: "UILON999",
-      geoCode: {
-        latitude: 38.99854,
-        longitude: -105.54781,
-      },
-      address: {
-        countryCode: "US",
-      },
-      lastUpdate: "2023-06-15T11:07:36",
-    },
-    {
-      chainCode: "UI",
-      iataCode: "LON",
-      dupeId: 700189835,
-      name: "TULIP SERVICED APARTMENTS",
-      hotelId: "UILON781",
-      geoCode: {
-        latitude: 51.5541,
-        longitude: -0.0021,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:29:19",
-    },
-    {
-      chainCode: "UI",
-      iataCode: "LON",
-      dupeId: 700032344,
-      name: "BARN HOTEL",
-      hotelId: "UILONBAR",
-      geoCode: {
-        latitude: 51.56134,
-        longitude: -0.41242,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:09",
-    },
-    {
-      chainCode: "UZ",
-      iataCode: "LON",
-      dupeId: 700076543,
-      name: "SANCTUM SERVICED APARTMENTS",
-      hotelId: "UZLON14S",
-      geoCode: {
-        latitude: 51.53627,
-        longitude: -0.19119,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:13:20",
-    },
-    {
-      chainCode: "UZ",
-      iataCode: "LON",
-      dupeId: 700174517,
-      name: "OAKWOOD BOW LANE APTS",
-      hotelId: "UZLON854",
-      geoCode: {
-        latitude: 51.51328,
-        longitude: -0.09327,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:25:55",
-    },
-    {
-      chainCode: "UZ",
-      iataCode: "LON",
-      dupeId: 501383049,
-      name: "OAKWOOD AT EUSTON",
-      hotelId: "UZLONOAE",
-      geoCode: {
-        latitude: 51.52843,
-        longitude: -0.13002,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:00:32",
-    },
-    {
-      chainCode: "UZ",
-      iataCode: "LON",
-      dupeId: 501379144,
-      name: "OAKWOOD AT SPITALFIELD LOFTS",
-      hotelId: "UZLONOSL",
-      geoCode: {
-        latitude: 51.51878,
-        longitude: -0.07661,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:05:23",
-    },
-    {
-      chainCode: "UZ",
-      iataCode: "LON",
-      dupeId: 501363780,
-      name: "OAKWOOD AT MONUMENT STREET APARTMENTS",
-      hotelId: "UZLONMSA",
-      geoCode: {
-        latitude: 51.50951,
-        longitude: -0.08411,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:07:21",
-    },
-    {
-      chainCode: "UZ",
-      iataCode: "LON",
-      dupeId: 700174519,
-      name: "OAKWOOD AT ST JOHNS HOUSE",
-      hotelId: "UZLON690",
-      geoCode: {
-        latitude: 51.51186,
-        longitude: -0.07593,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:24:52",
-    },
-    {
-      chainCode: "VC",
-      iataCode: "LON",
-      dupeId: 700095677,
-      name: "MARRIOTT VAC CLUB GRAND RESIDE",
-      hotelId: "VCLONQLV",
-      geoCode: {
-        latitude: 51.51151,
-        longitude: -0.15493,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-01-25T04:20:20",
-    },
-    {
-      chainCode: "VP",
-      iataCode: "LON",
-      dupeId: 502345642,
-      name: "11 CADOGAN GARDENS",
-      hotelId: "VPLON224",
-      geoCode: {
-        latitude: 0,
-        longitude: 0,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-09-27T11:35:35",
-    },
-    {
-      chainCode: "VP",
-      iataCode: "LON",
-      dupeId: 502345647,
-      name: "MARLIN WATERLOO",
-      hotelId: "VPLON226",
-      geoCode: {
-        latitude: 0,
-        longitude: 0,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-09-27T11:40:15",
-    },
-    {
-      chainCode: "VY",
-      iataCode: "LON",
-      dupeId: 700006042,
-      name: "CLARIDGES",
-      hotelId: "VYLONCLA",
-      geoCode: {
-        latitude: 51.51226,
-        longitude: -0.15028,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:59:13",
-    },
-    {
-      chainCode: "VY",
-      iataCode: "LON",
-      dupeId: 700013277,
-      name: "THE BERKELEY",
-      hotelId: "VYLONBER",
-      geoCode: {
-        latitude: 51.5017,
-        longitude: -0.15645,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:56:51",
-    },
-    {
-      chainCode: "WB",
-      iataCode: "LON",
-      dupeId: 700056650,
-      name: "AMBERLEY CASTLE",
-      hotelId: "WBLONB28",
-      geoCode: {
-        latitude: 50.9086,
-        longitude: -0.53747,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:57:07",
-    },
-    {
-      chainCode: "WH",
-      iataCode: "LON",
-      dupeId: 700148725,
-      name: "W LONDON LEICESTER SQUARE",
-      hotelId: "WHLON464",
-      geoCode: {
-        latitude: 51.51077,
-        longitude: -0.13169,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2024-01-22T14:48:17",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700056546,
-      name: "HALLMARK HOTEL CROYDON",
-      hotelId: "WVLONAER",
-      geoCode: {
-        latitude: 51.37456,
-        longitude: -0.11902,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:04:58",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700032801,
-      name: "BROOK KINGSTON LODGE",
-      hotelId: "WVLONKIN",
-      geoCode: {
-        latitude: 51.41889,
-        longitude: -0.27872,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:07:43",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700004482,
-      name: "AMBASSADORS BLOOMSBURY",
-      hotelId: "WVLONAMB",
-      geoCode: {
-        latitude: 51.52638,
-        longitude: -0.12969,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:16",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 501950001,
-      name: "GO NATIVE MONUMENT",
-      hotelId: "WVLON341",
-      geoCode: {
-        latitude: 51.51033,
-        longitude: -0.08411,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:21:06",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 501911829,
-      name: "GO NATIVE TOWER BRIDGE",
-      hotelId: "WVLON970",
-      geoCode: {
-        latitude: 51.49904,
-        longitude: -0.07965,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:20:45",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700095543,
-      name: "THINK TOWER BRIDGE",
-      hotelId: "WVLONTAS",
-      geoCode: {
-        latitude: 51.50006,
-        longitude: -0.07863,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:40",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700095551,
-      name: "GO NATIVE EARLS COURT",
-      hotelId: "WVLONECA",
-      geoCode: {
-        latitude: 51.49398,
-        longitude: -0.20186,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:01:34",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700038540,
-      name: "COURTHOUSE HOTEL",
-      hotelId: "WVLON442",
-      geoCode: {
-        latitude: 51.51448,
-        longitude: -0.1396,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:36:40",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700034055,
-      name: "196 BISHOPSGATE",
-      hotelId: "WVLONSOM",
-      geoCode: {
-        latitude: 51.51784,
-        longitude: -0.07964,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:07:11",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700225186,
-      name: "THE HOXTON HOLBORN",
-      hotelId: "WVLON185",
-      geoCode: {
-        latitude: 51.51705,
-        longitude: -0.12257,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:51:21",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700165388,
-      name: "ATELIER APARTMENTS",
-      hotelId: "WVLON451",
-      geoCode: {
-        latitude: 51.51945,
-        longitude: -0.10721,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:41:08",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700008792,
-      name: "THE QUEENS GATE HOTEL",
-      hotelId: "WVLONKEX",
-      geoCode: {
-        latitude: 51.49835,
-        longitude: -0.18028,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:07:21",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 501208932,
-      name: "GO NATIVE ALDGATE EAST",
-      hotelId: "WVLONALD",
-      geoCode: {
-        latitude: 51.51516,
-        longitude: -0.06843,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:34:03",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700005229,
-      name: "BERJAYA EDEN PARK LONDON",
-      hotelId: "WVLON762",
-      geoCode: {
-        latitude: 51.512,
-        longitude: -0.18647,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:01:50",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700008508,
-      name: "HYDE PARK TOWERS HOTEL",
-      hotelId: "WVLONHYD",
-      geoCode: {
-        latitude: 51.51242,
-        longitude: -0.18641,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:46:23",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700056757,
-      name: "ARRIVA HOTEL",
-      hotelId: "WVLON021",
-      geoCode: {
-        latitude: 51.52891,
-        longitude: -0.11837,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:24",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700057777,
-      name: "KINGS WARDROBE",
-      hotelId: "WVLON448",
-      geoCode: {
-        latitude: 51.51264,
-        longitude: 0.10089,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:12:49",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700041742,
-      name: "LANCASTER GATE HOTEL",
-      hotelId: "WVLON336",
-      geoCode: {
-        latitude: 51.5113,
-        longitude: -0.18186,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:47:10",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700012749,
-      name: "SLOANE SQUARE HOTEL",
-      hotelId: "WVLONSLO",
-      geoCode: {
-        latitude: 51.49263,
-        longitude: -0.15817,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:59:28",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700076590,
-      name: "HYDE PARK EXECUTIVE APARTMENTS",
-      hotelId: "WVLONYDE",
-      geoCode: {
-        latitude: 51.5122,
-        longitude: -0.18631,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:44:01",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700043531,
-      name: "THE HOXTON SHOREDITCH",
-      hotelId: "WVLONHOX",
-      geoCode: {
-        latitude: 51.5256,
-        longitude: -0.08274,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:54:30",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700174490,
-      name: "CANARY CENTRAL KEY COLLECTION",
-      hotelId: "WVLON329",
-      geoCode: {
-        latitude: 51.49811,
-        longitude: -0.02216,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:22:14",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700008988,
-      name: "KINGSWAY HALL HOTEL",
-      hotelId: "WVLONKHH",
-      geoCode: {
-        latitude: 51.5146,
-        longitude: -0.12205,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:54:30",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 501905377,
-      name: "CHEVAL THORNEY COURT",
-      hotelId: "WVLON009",
-      geoCode: {
-        latitude: 51.50135,
-        longitude: -0.1836,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:20:45",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700135474,
-      name: "WORPLESDON PLACE",
-      hotelId: "WVLONAVR",
-      geoCode: {
-        latitude: 51.27472,
-        longitude: -0.60819,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:29:51",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 501905381,
-      name: "CHEVAL PHOENIX HOUSE",
-      hotelId: "WVLON005",
-      geoCode: {
-        latitude: 51.4942,
-        longitude: -0.15731,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:20:45",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700010943,
-      name: "PARK INTERNATIONAL HOTEL",
-      hotelId: "WVLONKIT",
-      geoCode: {
-        latitude: 51.49489,
-        longitude: -0.18482,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:57:23",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 501164655,
-      name: "GO NATIVE HYDE PARK",
-      hotelId: "WVLONHDP",
-      geoCode: {
-        latitude: 51.51406,
-        longitude: -0.17543,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:39:01",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700013289,
-      name: "THE BYRON HOTEL",
-      hotelId: "WVLONBYR",
-      geoCode: {
-        latitude: 51.51206,
-        longitude: -0.18538,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:41:24",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700024334,
-      name: "BRITANNIA INTERNATIONAL HOTEL",
-      hotelId: "WVLONINT",
-      geoCode: {
-        latitude: 51.50241,
-        longitude: -0.0239,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:39:48",
-    },
-    {
-      chainCode: "WV",
-      iataCode: "LON",
-      dupeId: 700027233,
-      name: "BRITANNIA HAMPSTEAD HOTEL",
-      hotelId: "WVLONIVE",
-      geoCode: {
-        latitude: 51.54424,
-        longitude: -0.16225,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:39:33",
-    },
-    {
-      chainCode: "WW",
-      iataCode: "LON",
-      dupeId: 700012058,
-      name: "ROYAL GARDEN HOTEL",
-      hotelId: "WWLONDEN",
-      geoCode: {
-        latitude: 51.50236,
-        longitude: -0.18883,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:45",
-    },
-    {
-      chainCode: "WW",
-      iataCode: "LON",
-      dupeId: 700060607,
-      name: "OATLANDS PARK HOTEL",
-      hotelId: "WWLONOAT",
-      geoCode: {
-        latitude: 51.37297,
-        longitude: -0.44124,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:55:18",
-    },
-    {
-      chainCode: "WW",
-      iataCode: "LON",
-      dupeId: 700013474,
-      name: "THE REGENCY HOTEL",
-      hotelId: "WWLONREG",
-      geoCode: {
-        latitude: 51.49223,
-        longitude: -0.17891,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:56",
-    },
-    {
-      chainCode: "WW",
-      iataCode: "LON",
-      dupeId: 700018687,
-      name: "CAESAR HOTEL",
-      hotelId: "WWLON527",
-      geoCode: {
-        latitude: 51.5141,
-        longitude: -0.18048,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:09",
-    },
-    {
-      chainCode: "WW",
-      iataCode: "LON",
-      dupeId: 700023458,
-      name: "THE WASHINGTON MAYFAIR HOTEL",
-      hotelId: "WWLONWAS",
-      geoCode: {
-        latitude: 51.50723,
-        longitude: -0.14576,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:12",
-    },
-    {
-      chainCode: "XK",
-      iataCode: "LON",
-      dupeId: 501108165,
-      name: "HOTEL LONDON ALLOCATION",
-      hotelId: "XKLON321",
-      geoCode: {
-        latitude: 51.50218,
-        longitude: -0.12714,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:15:26",
-    },
-    {
-      chainCode: "XL",
-      iataCode: "LON",
-      dupeId: 502030508,
-      name: "TEST RTSVCH  ",
-      hotelId: "XLLONCIW",
-      geoCode: {
-        latitude: 51.49093,
-        longitude: -0.28133,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:22:54",
-    },
-    {
-      chainCode: "XL",
-      iataCode: "LON",
-      dupeId: 502030509,
-      name: "TEST RTSVCH  ",
-      hotelId: "XLLONMCH",
-      geoCode: {
-        latitude: 51.49093,
-        longitude: -0.28133,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:22:54",
-    },
-    {
-      chainCode: "XL",
-      iataCode: "LON",
-      dupeId: 700012068,
-      name: "LANCASTER LONDON W22TY SUMMIT",
-      hotelId: "XLLONRYL",
-      geoCode: {
-        latitude: 51.51252,
-        longitude: -0.17514,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:45",
-    },
-    {
-      chainCode: "XN",
-      iataCode: "LON",
-      dupeId: 700134149,
-      name: "MANDOLAY HOTEL",
-      hotelId: "XNLON001",
-      geoCode: {
-        latitude: 51.24444,
-        longitude: -0.55716,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:52:56",
-    },
-    {
-      chainCode: "XN",
-      iataCode: "LON",
-      dupeId: 700170987,
-      name: "TUNE HOTEL WESTMINSTER",
-      hotelId: "XNLON010",
-      geoCode: {
-        latitude: 51.52886,
-        longitude: -0.11967,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:36:09",
-    },
-    {
-      chainCode: "XN",
-      iataCode: "LON",
-      dupeId: 700170989,
-      name: "TUNE HOTEL LIVERPOOL STREET",
-      hotelId: "XNLON002",
-      geoCode: {
-        latitude: 51.52105,
-        longitude: -0.07761,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:24:21",
-    },
-    {
-      chainCode: "XN",
-      iataCode: "LON",
-      dupeId: 700170993,
-      name: "TUNE HOTEL KINGS CROSS",
-      hotelId: "XNLON004",
-      geoCode: {
-        latitude: 51.52886,
-        longitude: -0.11967,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:25:55",
-    },
-    {
-      chainCode: "XN",
-      iataCode: "LON",
-      dupeId: 700170996,
-      name: "TUNE HOTEL PADDINGTON",
-      hotelId: "XNLON003",
-      geoCode: {
-        latitude: 51.5183,
-        longitude: -0.17069,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:24:21",
-    },
-    {
-      chainCode: "YH",
-      iataCode: "LON",
-      dupeId: 501476616,
-      name: "MOTEL ONE LONDON-TOWER HILL",
-      hotelId: "YHLONLTH",
-      geoCode: {
-        latitude: 51.51252,
-        longitude: -0.07532,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:22:46",
-    },
-    {
-      chainCode: "YH",
-      iataCode: "LON",
-      dupeId: 700165369,
-      name: "TONY S HOUSE HOTEL",
-      hotelId: "YHLONTHH",
-      geoCode: {
-        latitude: 51.51623,
-        longitude: -0.17343,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:25:24",
-    },
-    {
-      chainCode: "YH",
-      iataCode: "LON",
-      dupeId: 700165375,
-      name: "METRO HOTEL",
-      hotelId: "YHLONMHL",
-      geoCode: {
-        latitude: 51.51504,
-        longitude: -0.17639,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:57:39",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700061945,
-      name: "TUDOR LODGE HOTEL",
-      hotelId: "YXLONTUD",
-      geoCode: {
-        latitude: 51.58306,
-        longitude: -0.40049,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:53:12",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700056458,
-      name: "APEX CITY OF LONDON HOTEL",
-      hotelId: "YXLONAPE",
-      geoCode: {
-        latitude: 51.51065,
-        longitude: -0.07921,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:07:20",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700046698,
-      name: "CORUS HYDE PARK",
-      hotelId: "YXLONPLA",
-      geoCode: {
-        latitude: 51.5116,
-        longitude: -0.17761,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:16:45",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700076544,
-      name: "THE VILLA KENSINGTON",
-      hotelId: "YXLONABC",
-      geoCode: {
-        latitude: 51.49387,
-        longitude: -0.18571,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:05:30",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700055142,
-      name: "MARLIN APARTMENTS CANARY WHARF",
-      hotelId: "YXLONACS",
-      geoCode: {
-        latitude: 51.50051,
-        longitude: -0.02528,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:50:04",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700045589,
-      name: "CITY HOTEL",
-      hotelId: "YXLON288",
-      geoCode: {
-        latitude: 51.51655,
-        longitude: -0.06983,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:56:05",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700174498,
-      name: "CLARENDON MINORIES",
-      hotelId: "YXLONCMI",
-      geoCode: {
-        latitude: 51.51262,
-        longitude: -0.0756,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:01",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700028153,
-      name: "KENSINGTON HOUSE HOTEL",
-      hotelId: "YXLONKNS",
-      geoCode: {
-        latitude: 51.50128,
-        longitude: -0.1859,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T10:17:16",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700080336,
-      name: "SO HYDE PARK HOTEL",
-      hotelId: "YXLONAPF",
-      geoCode: {
-        latitude: 51.51443,
-        longitude: -0.19142,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:12:00",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700095601,
-      name: "THE LEVIN HOTEL",
-      hotelId: "YXLON939",
-      geoCode: {
-        latitude: 51.49986,
-        longitude: -0.16183,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T11:04:41",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700055975,
-      name: "MARLIN APTS QUEEN STREET",
-      hotelId: "YXLONQST",
-      geoCode: {
-        latitude: 51.51171,
-        longitude: -0.09281,
-      },
-      address: {
-        countryCode: "GB",
-      },
-      lastUpdate: "2023-06-15T09:47:57",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700174492,
-      name: "CLARENDON ARTILLERY LANE",
-      hotelId: "YXLONCAL",
-      geoCode: {
-        latitude: 51.51854,
-        longitude: -0.07795,
-      },
+      id: 2631062,
+      name: "CAIRO",
+      iataCode: "TRN",
+      subType: "HOTEL_LEISURE",
+      relevance: 1000,
+      type: "location",
+      hotelIds: ["BBTRNAAT"],
       address: {
-        countryCode: "GB",
+        cityName: "TURIN",
+        countryCode: "IT",
       },
-      lastUpdate: "2023-06-15T10:17:01",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700010506,
-      name: "NORFOLK TOWERS PADDINGTON",
-      hotelId: "YXLONNOT",
       geoCode: {
-        latitude: 51.50943,
-        longitude: -0.19665,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 45.03325,
+        longitude: 7.64839,
       },
-      lastUpdate: "2023-06-15T10:24:37",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700079877,
-      name: "SO QUARTIER",
-      hotelId: "YXLONSOQ",
-      geoCode: {
-        latitude: 51.53714,
-        longitude: -0.19204,
-      },
+      id: 1735668,
+      name: "CAIRO",
+      iataCode: "TRN",
+      subType: "HOTEL_LEISURE",
+      relevance: 1000,
+      type: "location",
+      hotelIds: ["GUTRNABA", "AETRNADE", "HVTRNAAQ", "DGTRNACP", "TETRNACE"],
       address: {
-        countryCode: "GB",
+        cityName: "TURIN",
+        countryCode: "IT",
       },
-      lastUpdate: "2023-06-15T10:33:00",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700013303,
-      name: "CHESTERFIELD MAYFAIR ",
-      hotelId: "YXLONCHE",
       geoCode: {
-        latitude: 51.50771,
-        longitude: -0.14737,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 45.03335,
+        longitude: 7.64823,
       },
-      lastUpdate: "2023-06-15T10:08:54",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700010995,
-      name: "HOLIDAY VILLA HOTEL",
-      hotelId: "YXLONHVL",
-      geoCode: {
-        latitude: 51.51313,
-        longitude: -0.18405,
-      },
+      id: 1558119,
+      name: "HILTON ZAMALEK RESIDENCE CAIRO",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["HVCAIAAC", "GUCAIAAW", "DGCAIACH"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:21:59",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700029594,
-      name: "LONDON ELIZABETH HOTEL",
-      hotelId: "YXLON284",
       geoCode: {
-        latitude: 51.51197,
-        longitude: -0.17613,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.06756,
+        longitude: 31.22216,
       },
-      lastUpdate: "2023-06-15T10:13:21",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700010929,
-      name: "HYDE PARK COURT HOTEL",
-      hotelId: "YXLONTYM",
-      geoCode: {
-        latitude: 51.51651,
-        longitude: -0.17273,
-      },
+      id: 1689191,
+      name: "CONRAD CAIRO",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["AECAIAAW", "GUCAIAAG", "HVCAIABJ", "DGCAIAAP"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T09:52:09",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700005922,
-      name: "CENTRAL PARK HOTEL",
-      hotelId: "YXLONCPH",
       geoCode: {
-        latitude: 51.51184,
-        longitude: -0.1856,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.06449,
+        longitude: 31.22606,
       },
-      lastUpdate: "2023-06-15T10:29:20",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700006187,
-      name: "COMMODORE HOTEL",
-      hotelId: "YXLONCOH",
-      geoCode: {
-        latitude: 51.51207,
-        longitude: -0.18097,
-      },
+      id: 1558128,
+      name: "JW MARRIOTT HOTEL CAIRO",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["HVCAIAAN", "AECAIACD", "GUCAIABW", "TECAIAAL"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T11:11:17",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700074710,
-      name: "HYDE PARK SUITES",
-      hotelId: "YXLONHYD",
       geoCode: {
-        latitude: 51.51248,
-        longitude: -0.18647,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.06566,
+        longitude: 31.22769,
       },
-      lastUpdate: "2023-06-15T10:24:53",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700127523,
-      name: "MARLIN ALDGATE",
-      hotelId: "YXLONMAA",
-      geoCode: {
-        latitude: 51.5155,
-        longitude: -0.07095,
-      },
+      id: 2299623,
+      name: "PHARAOHS DOKI HOTEL CAIRO",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["DGCAIAAZ"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:12:34",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700095712,
-      name: "LINDEN HOUSE HOTEL",
-      hotelId: "YXLONLIN",
       geoCode: {
-        latitude: 51.5144,
-        longitude: -0.17294,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.04446,
+        longitude: 31.21758,
       },
-      lastUpdate: "2023-06-15T09:43:46",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700095729,
-      name: "NOTTING HILL GATE HOTEL",
-      hotelId: "YXLONHIL",
-      geoCode: {
-        latitude: 51.51018,
-        longitude: -0.1931,
-      },
+      id: 1558130,
+      name: "NOVOTEL CAIRO AIRPORT",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["HVCAIAAP", "AECAIACQ", "GUCAIACS", "DGCAIACA", "DGCAIACZ"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:26:11",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 501238437,
-      name: "TROY HOTEL",
-      hotelId: "YXLONTRY",
       geoCode: {
-        latitude: 51.51137,
-        longitude: -0.18499,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.12094,
+        longitude: 31.403,
       },
-      lastUpdate: "2023-06-15T10:33:16",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700009550,
-      name: "LONDON BRIDGE HOTEL",
-      hotelId: "YXLONBRI",
-      geoCode: {
-        latitude: 51.50519,
-        longitude: -0.08814,
-      },
+      id: 1689193,
+      name: "BARCELO CAIRO PYRAMIDS",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["AECAIAAY", "DGCAIAAX", "TECAIAAE"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:18:04",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700165377,
-      name: "HYDE PARK APARTMENTS",
-      hotelId: "YXLONHPA",
       geoCode: {
-        latitude: 51.51331,
-        longitude: -0.18029,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.00367,
+        longitude: 31.19151,
       },
-      lastUpdate: "2023-06-15T10:03:40",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700165378,
-      name: "ADRIA",
-      hotelId: "YXLONADR",
-      geoCode: {
-        latitude: 51.49379,
-        longitude: -0.17844,
-      },
+      id: 1689211,
+      name: "SONESTA HOTEL TOWER CASINO CAIRO",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["AECAIABS", "HVCAIAAU", "DGCAIADF"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:25:08",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700006793,
-      name: "DOLPHIN HOUSE",
-      hotelId: "YXLONDOH",
       geoCode: {
-        latitude: 51.48707,
-        longitude: -0.138,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.06486,
+        longitude: 31.25198,
       },
-      lastUpdate: "2023-06-15T10:08:07",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700174499,
-      name: "CLARENDON STEWARD ST",
-      hotelId: "YXLONCSS",
-      geoCode: {
-        latitude: 51.51891,
-        longitude: -0.07758,
-      },
+      id: 1689212,
+      name: "PYRAMISA SUITES HOTEL AND CASINO CAIRO",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["AECAIABT"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:17:01",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700078746,
-      name: "MARLIN APTS MISSION CT",
-      hotelId: "YXLONMCL",
       geoCode: {
-        latitude: 51.5131,
-        longitude: -0.0422,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.12633,
+        longitude: 31.25225,
       },
-      lastUpdate: "2023-06-15T09:57:54",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700053712,
-      name: "MARLIN APTS  EMPIRE SQUARE",
-      hotelId: "YXLONEMS",
-      geoCode: {
-        latitude: 51.49788,
-        longitude: -0.08151,
-      },
+      id: 1558124,
+      name: "NOVOTEL CAIRO 6TH OF OCTOBER",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["HVCAIAAI", "AECAIAEI"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:06:33",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700133805,
-      name: "LEASIDE HOTEL",
-      hotelId: "YXLONLEA",
       geoCode: {
-        latitude: 51.88441,
-        longitude: -0.41959,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 29.99679,
+        longitude: 30.96887,
       },
-      lastUpdate: "2023-06-15T10:32:13",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700062103,
-      name: "WARREN LODGE HOTEL",
-      hotelId: "YXLONWAR",
-      geoCode: {
-        latitude: 51.38793,
-        longitude: -0.45344,
-      },
+      id: 1624705,
+      name: "CAIRO MARRIOTT HOTEL OMAR KHAYYAM CASI",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["HVCAIACT", "AECAIAAD", "GUCAIABQ", "TECAIABV"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:14:39",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700012111,
-      name: "RUBENS AT THE PALACE",
-      hotelId: "YXLONRUB",
       geoCode: {
-        latitude: 51.49836,
-        longitude: -0.14371,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.05711,
+        longitude: 31.22475,
       },
-      lastUpdate: "2023-06-15T10:08:54",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700151421,
-      name: "BROOKLANDS HOTEL SURREY",
-      hotelId: "YXLONBHS",
-      geoCode: {
-        latitude: 51.34767,
-        longitude: -0.47244,
-      },
+      id: 1745003,
+      name: "FOUR SEASONS CAIRO AT FIRST RESIDENCE",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["GUCAIABB", "HVCAIAAH", "AECAIAFB", "DGCAIABQ"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:16:15",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700095546,
-      name: "EGERTON HOUSE HOTEL",
-      hotelId: "YXLONEGT",
       geoCode: {
-        latitude: 51.4968,
-        longitude: -0.16775,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.02424,
+        longitude: 31.21723,
       },
-      lastUpdate: "2023-06-15T10:12:34",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700134432,
-      name: "MONTAGU PLACE HOTEL",
-      hotelId: "YXLONMOP",
-      geoCode: {
-        latitude: 51.51853,
-        longitude: -0.16162,
-      },
+      id: 1634430,
+      name: "MERCURE CAIRO LE SPHINX HOTEL",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["HVCAIAAE", "AECAIAEG"],
       address: {
-        countryCode: "GB",
+        cityName: "GIZA",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T09:44:33",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700040771,
-      name: "THE PARK LANE MEWS HOTEL",
-      hotelId: "YXLONPKL",
       geoCode: {
-        latitude: 51.50592,
-        longitude: -0.14918,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 29.99005,
+        longitude: 31.12813,
       },
-      lastUpdate: "2023-06-15T10:05:30",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700182199,
-      name: "THE WESTBRIDGE HOTEL",
-      hotelId: "YXLONWET",
-      geoCode: {
-        latitude: 51.53929,
-        longitude: -0.00129,
-      },
+      id: 1689262,
+      name: "SHERATON CAIRO HOTEL TOWERS AND CASINO",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["AECAIAEF", "DGCAIACT", "TECAIAAI"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:27:29",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700174495,
-      name: "CLARENDON GOOCH HOUSE",
-      hotelId: "YXLONCGH",
       geoCode: {
-        latitude: 51.49451,
-        longitude: -0.23099,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.08374,
+        longitude: 31.25536,
       },
-      lastUpdate: "2023-06-15T09:41:09",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700005894,
-      name: "THE CAVENDISH LONDON",
-      hotelId: "YXLON248",
-      geoCode: {
-        latitude: 51.50787,
-        longitude: -0.13788,
-      },
+      id: 1558118,
+      name: "INTERCONTINENTAL CAIRO SEMIRAMIS",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["HVCAIAAB", "AECAIABP", "TECAIAAD"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T09:52:41",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700061874,
-      name: "ZETTER HOTEL CLERKENWELL",
-      hotelId: "YXLONZET",
       geoCode: {
-        latitude: 51.52264,
-        longitude: -0.10241,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.04286,
+        longitude: 31.23215,
       },
-      lastUpdate: "2023-06-15T09:52:25",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700165408,
-      name: "PADDINGTON APARTMENTS",
-      hotelId: "YXLONPAD",
-      geoCode: {
-        latitude: 51.51482,
-        longitude: -0.17483,
-      },
+      id: 2769219,
+      name: "CONCORDE EL SALAM HOTEL CAIRO",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["HVCAIAAZ"],
       address: {
-        countryCode: "GB",
+        cityName: "KAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:23:50",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700013161,
-      name: "SYDNEY HOUSE CHELSEA",
-      hotelId: "YXLONSYD",
       geoCode: {
-        latitude: 51.49137,
-        longitude: -0.17185,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.09592,
+        longitude: 31.32376,
       },
-      lastUpdate: "2023-06-15T09:52:25",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700174527,
-      name: "SHOREDITCH HOUSE",
-      hotelId: "YXLONSHO",
-      geoCode: {
-        latitude: 51.52371,
-        longitude: -0.07578,
-      },
+      id: 1558133,
+      name: "SAFIR CAIRO",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["HVCAIAAX", "DGCAIACC", "DGCAIACR", "TECAIACC"],
       address: {
-        countryCode: "GB",
+        cityName: "KAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:18:19",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700162681,
-      name: "APEX TEMPLE COURT HOTEL",
-      hotelId: "YXLONATC",
       geoCode: {
-        latitude: 51.51431,
-        longitude: -0.10907,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.03592,
+        longitude: 31.21248,
       },
-      lastUpdate: "2023-06-15T09:53:59",
     },
     {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 501913882,
-      name: "DE VERE VENUES DEVONPORT HOUSE",
-      hotelId: "YXLON006",
-      geoCode: {
-        latitude: 51.48068,
-        longitude: -0.00715,
-      },
+      id: 1689249,
+      name: "OASIS PYRAMIDS CAIRO",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["AECAIADP"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T11:20:34",
-    },
-    {
-      chainCode: "YX",
-      iataCode: "LON",
-      dupeId: 700096496,
-      name: "MARLIN APTS STRATFORD",
-      hotelId: "YXLONOVS",
       geoCode: {
-        latitude: 51.54592,
-        longitude: 0.00437,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.07,
+        longitude: 31.28,
       },
-      lastUpdate: "2023-06-15T09:55:18",
     },
     {
-      chainCode: "YZ",
-      iataCode: "LON",
-      dupeId: 700153835,
-      name: "STAYBRIDGE SUITES STRATFORD",
-      hotelId: "YZLON383",
-      geoCode: {
-        latitude: 51.54248,
-        longitude: -0.0042,
-      },
+      id: 1689270,
+      name: "MOVENPICK CAIRO PYRAMIDS RESORT",
+      iataCode: "CAI",
+      subType: "HOTEL_LEISURE",
+      relevance: 71,
+      type: "location",
+      hotelIds: ["AECAIAEN", "GUCAIAAN", "DGCAIABM", "HVCAIABE", "BBCAIABD"],
       address: {
-        countryCode: "GB",
+        cityName: "CAIRO",
+        countryCode: "EG",
       },
-      lastUpdate: "2023-06-15T10:05:30",
-    },
-    {
-      chainCode: "YZ",
-      iataCode: "LON",
-      dupeId: 501433155,
-      name: "STAYBRIDGE STES VAUXHALL",
-      hotelId: "YZLONE16",
       geoCode: {
-        latitude: 51.48944,
-        longitude: -0.1211,
-      },
-      address: {
-        countryCode: "GB",
+        latitude: 30.0594,
+        longitude: 31.24975,
       },
-      lastUpdate: "2023-06-15T09:51:06",
     },
   ],
 });
-

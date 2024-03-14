@@ -14,11 +14,13 @@ import {
   originSearch,
 } from "../../../data/RecoilState/FormHandling";
 import { useTranslation } from "react-i18next";
+import { ChooseCityNameHotel } from "../../../data/RecoilState/Hotels/MainSearchData";
 
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 
 function HandleFieldSearchHotels() {
+  const [, setChooseCityName] = useRecoilState(ChooseCityNameHotel);
   const [people, setPeople] = useState([]);
   const getData = async (route: string, query: string) => {
     // console.log("loading Here.....");
@@ -156,6 +158,7 @@ function HandleFieldSearchHotels() {
                         -1
                       ) ?? ""
                     );
+                    setChooseCityName(person.address.cityName);
                   }}
                   className={`flex justify-between cursor-pointer gap-2 whitespace-nowrap `}
                 >

@@ -1,14 +1,20 @@
 import { useRecoilState } from "recoil";
-import { SetTicketsHotels } from "../../data/RecoilState/Hotels/MainSearchData";
+import {
+  SerpAPIHotels,
+  // SetTicketsHotels,
+} from "../../data/RecoilState/Hotels/MainSearchData";
 import TicketHotels from "./TicketHotels";
 import Pagination from "@mui/material/Pagination";
 import { useState } from "react";
 
-const pageSize = 10;
+const pageSize = 4;
 
 function TicketsHotelsMapped() {
-  const [data] = useRecoilState(SetTicketsHotels);
+  // const [data] = useRecoilState(SetTicketsHotels);
+  const [data] = useRecoilState(SerpAPIHotels);
+
   console.log(data);
+  // console.log(data.length);
   // Handle Pagination Data
   const [pagination, setPagination] = useState({
     count: 0,
@@ -28,6 +34,8 @@ function TicketsHotelsMapped() {
         className={`grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-4 `}
       >
         {data.slice(pagination.from, pagination.to).map((item, index) => (
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           <TicketHotels {...item} key={`${index}---${Math.random()}`} />
         ))}
       </div>

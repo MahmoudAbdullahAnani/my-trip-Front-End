@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 import { typeSystem } from "../../../data/RecoilState/FormHandling";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const dataSystems = [
   {
@@ -309,14 +310,24 @@ function ControlSystems() {
 
   // Lang
   const { t, i18n } = useTranslation();
-
+  const navigate = useNavigate();
   return (
     <>
       <div className={`lg:flex hidden justify-end gap-[24px]  `}>
         {dataSystems.map(({ name, title, iconActive, icon }) => (
           <div
             key={`${name}-${Math.random()}`}
-            onClick={() => setTypeSystemState(name)}
+            onClick={() => {
+              setTypeSystemState(name);
+
+              navigate(
+                title === "التوصيل"
+                  ? "/car"
+                  : title === "الفنادق"
+                  ? "/hotel"
+                  : "/"
+              );
+            }}
             style={{
               fill: "rgba(182, 231, 251, 0.30)",
               strokeWidth: "1px",

@@ -19,7 +19,6 @@ import { addUserLogged } from "./data/Features/LoggedUser";
 import { useRecoilState } from "recoil";
 import isLoading from "./data/RecoilState/Loading";
 import { Loder } from "./components/loder/Loder";
-
 import {
   // allNotifications,
   // privateNotifications,
@@ -45,6 +44,7 @@ import { RootState } from "./data/store";
 import { HolderNotifications } from "./data/RecoilState/AuthStatePages/Auth";
 import Hotels from "./pages/Hotels/Hotels";
 import SearchHotels from "./pages/Hotels/SearchHotels";
+import HotelsChoose from "./pages/Hotels/HotelsChoose";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -273,6 +273,7 @@ function App() {
       });
   };
   useEffect(() => {
+   
     const fetchData = async () => {
       await RunDriver();
       const id = await oncData();
@@ -346,6 +347,7 @@ function App() {
         {/* Hotels */}
         <Route path="/hotel" element={<Hotels />} />
         <Route path="/search/hotel" element={<SearchHotels />} />
+        <Route path="/hotel/:hotelId" element={<HotelsChoose />} />
 
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/friends" element={<Friends />} />
