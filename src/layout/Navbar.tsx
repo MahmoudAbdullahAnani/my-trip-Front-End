@@ -8,7 +8,12 @@ import logo from "./../../public/assets/logo.png";
 // import sidBar from "../data/RecoilState/Sidebar";
 import { useSelector } from "react-redux";
 import { RootState } from "../data/store";
-import { iconArithmetic, iconHome, iconTicket } from "../assets/icons/home";
+import {
+  iconArithmetic,
+  iconCar,
+  iconHome,
+  iconHotel,
+} from "../assets/icons/home";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 // import { TypeSystemSearch } from "../data/RecoilState/Search/TypeSystemSearch";
@@ -180,11 +185,16 @@ function Navbar() {
           },
           {
             id: 3,
-            title: "حسابي",
-            route: "/arithmetic",
-            icon: iconArithmetic,
+            title: "توصيل",
+            route: "/car",
+            icon: iconCar,
           },
-          { id: 2, title: "التذكرة", route: "/hotel", icon: iconTicket },
+          {
+            id: 2,
+            title: "الفنادق",
+            route: "/hotel",
+            icon: iconHotel,
+          },
           { id: 1, title: "الرئيسية", route: "/", icon: iconHome },
         ].map(({ icon, route, title, id }) => (
           <Link

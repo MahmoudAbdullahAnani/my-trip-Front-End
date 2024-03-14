@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { FlightOffer } from "../../../../interface/MainData";
 import FiltersBtn from "./Btns/FiltersBtn";
 import { iconArrowDown, iconFilters } from "../../../../assets/icons/home";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const pageSize = 9;
 
@@ -17,6 +19,8 @@ function TicketsMapped() {
   const [ifCheckedFilterState] = useRecoilState(IfCheckedFilter);
   const [tripDataFilters] = useRecoilState(TripDataFilters);
   const [tripStopeFiltersState] = useRecoilState(TripStopeFilters);
+
+  const { t } = useTranslation();
   const data = ifCheckedFilterState ? tripStopeFiltersState : tripDataFilters;
   // Handle Pagination Data
   const [pagination, setPagination] = useState({
@@ -36,8 +40,16 @@ function TicketsMapped() {
   useEffect(() => {}, [tripDataFilters, tripDataFilters]);
   if (data.length <= 0) {
     return (
-      <div className={`col-span-4 lg:col-span-3 flex flex-col items-center`}>
-        <div>Not Found</div>
+      <div
+        className={`col-span-4 my-5 lg:col-span-3 flex flex-col items-center`}
+      >
+        <div className={`flex flex-col gap-5`}>
+          <img
+            className="rounded-xl"
+            src="https://img.freepik.com/premium-vector/search-result-find-illustration_585024-17.jpg"
+          />
+          <Link to="/">{t("رجوع")}</Link>
+        </div>
       </div>
     );
   }
