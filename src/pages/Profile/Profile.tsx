@@ -16,6 +16,7 @@ function Profile() {
   const navigator = useNavigate();
 
   useEffect(() => {
+    window.scroll(0, 0);
     if (stateUserData._id === "") {
       return navigator("/");
     }

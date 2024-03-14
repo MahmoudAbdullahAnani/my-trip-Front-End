@@ -346,7 +346,7 @@ function App() {
         {/* Hotels */}
         <Route path="/hotel" element={<Hotels />} />
         <Route path="/search/hotel" element={<SearchHotels />} />
-        <Route path="/hotel/:hotelId" element={<HotelsChoose />} />
+        <Route path="/hotel/choose" element={<HotelsChoose />} />
 
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/friends" element={<Friends />} />

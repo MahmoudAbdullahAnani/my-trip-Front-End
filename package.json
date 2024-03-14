@@ -43,6 +43,7 @@
     "reactjs-social-login": "^2.6.3",
     "recoil": "^0.7.7",
     "styled-components": "^6.1.1",
+    "sweetalert2": "^11.10.6",
     "swiper": "^11.0.5",
     "zod": "^3.22.4"
   },

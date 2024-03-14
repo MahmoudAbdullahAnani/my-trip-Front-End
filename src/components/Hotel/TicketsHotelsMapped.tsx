@@ -22,6 +22,7 @@ function TicketsHotelsMapped() {
     to: pageSize,
   });
   function handlePagination(_event: React.ChangeEvent<unknown>, page: number) {
+    window.scroll(0, 0);
     setPagination({
       ...pagination,
       from: pageSize * (page - 1),

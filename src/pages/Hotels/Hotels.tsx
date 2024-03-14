@@ -8,6 +8,7 @@ import { useEffect } from "react";
 function Hotels() {
   const [, setTypeSystemState] = useRecoilState(typeSystem);
   useEffect(() => {
+    window.scroll(0, 0);
     setTypeSystemState("hotel");
   }, []);
   return (

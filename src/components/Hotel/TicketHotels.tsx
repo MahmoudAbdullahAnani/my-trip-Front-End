@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import "leaflet/dist/leaflet.css";
 // import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 // import { capitalizeFirstLetter } from "../../pages/Hotels/SearchHotels";
-// import SimpleMap from "./SimpleMap";
+import SimpleMap from "./SimpleMap";
 {
   /* <SimpleMap
           latitude={data.gps_coordinates.latitude}
@@ -12,7 +12,8 @@ import "leaflet/dist/leaflet.css";
         /> */
 }
 // import { format } from "date-fns";
-import { useNavigate } from "react-router-dom";
+// import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 import { HotelData } from "./interfaces/MainDataHotels.interface";
 import { useRef, useState } from "react";
 import {
@@ -28,12 +29,21 @@ import SwiperType from "swiper";
 // import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { Rating } from "@mui/material";
+import { useRecoilState } from "recoil";
+import { HotelChoose } from "../../data/RecoilState/Hotels/MainSearchData";
+import Modal from "@mui/material/Modal";
+import HotelDetails from "./HotelDetails";
 function TicketHotels(data: HotelData) {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const { t, i18n } = useTranslation();
+  const [, setHotelChoose] = useRecoilState(HotelChoose);
   // const center = [data.geoCode.latitude, data.geoCode.longitude];
   // const nameHotel = data.name.toLowerCase();
   // const date = format(new Date(data.lastUpdate), "dd/MM/yyyy");
-  const navigator = useNavigate();
+  // const navigator = useNavigate();
   console.log(data);
   const [thumbsSwiper] = useState(null);
 
@@ -42,7 +52,7 @@ function TicketHotels(data: HotelData) {
   const images = data.images;
   return (
     <div
-      className={`mx-auto w-full  p-3 flex flex-col lg:items-start items-end justify-between gap-5 bg-white border  hover:shadow-md shadow-[#D9D9D9] duration-300 rounded-lg overflow-hidden`}
+      className={`mx-auto w-full lg:h-[650px] p-3 flex flex-col lg:items-start items-end justify-between gap-5 bg-white border  hover:shadow-md shadow-[#D9D9D9] duration-300 rounded-lg overflow-hidden`}
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
     >
       <div className={`w-full rounded-lg overflow-hidden`}>
@@ -63,7 +73,7 @@ function TicketHotels(data: HotelData) {
             Thumbs,
           ]}
           dir={i18n.language === "ar" ? "rtl" : "ltr"}
-          className={`mySwiper relative w-full h-[250px] `}
+          className={`mySwiper relative w-full h-[200px] `}
           // navigation={true}
           spaceBetween={10}
           watchSlidesProgress={true}
@@ -84,18 +94,19 @@ function TicketHotels(data: HotelData) {
                 ]}
               /> */}
               <img
-                src={img.original_image}
+                src={img.original_image.split("=s")[0] + "=s1000"}
+                className={`w-full h-full object-cover`}
                 loading={"lazy"}
                 lang="ar"
                 // alt={img.thumbnail}
-                {...{ decoding: "async" }}
+                decoding="async"
               />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
       <div
-        className={`w-[400px] flex flex-col lg:items-${
+        className={` flex flex-col lg:items-${
           i18n.language === "ar" ? "end" : "start"
         } justify-center items-center`}
       >
@@ -137,9 +148,7 @@ function TicketHotels(data: HotelData) {
           )}
         </div>
 
-        <div
-          className={`flex flex-col justify-end items-center w-full h-full`}
-        >
+        <div className={`flex flex-col justify-end items-center w-full h-full`}>
           <div className={`flex flex-col`}>
             {(data.essential_info || [""]).length > 0
               ? (data.essential_info || [""]).map((item) => (
@@ -149,20 +158,54 @@ function TicketHotels(data: HotelData) {
                   <span key={`${item}----${Math.random()}`}>{item}</span>
                 ))}
           </div>
-          <div>
-            {t("العمل من")} {data.check_in_time} {t("الي")}{" "}
-            {data.check_out_time}
+          {data.check_in_time && (
+            <div>
+              {t("العمل من")} {data.check_in_time} {t("الي")}{" "}
+              {data.check_out_time}
+            </div>
+          )}
+          <div className={`flex gap-3`}>
+            <button
+              className={`px-3 py-2 rounded-lg mx-auto mt-10 bg-[#117C99] duration-200 text-white hover:bg-[#31B2E1]`}
+              onClick={() => {
+                setHotelChoose(data);
+                handleOpen();
+              }}
+              // to={`/hotel/choose`}
+            >
+              {t("التفاصيل")}
+            </button>
+            <Link
+              className={`px-3 py-2 rounded-lg mx-auto mt-10 bg-[#117C99] duration-200 text-white hover:bg-[#31B2E1]`}
+              onClick={() => {
+                setHotelChoose(data);
+              }}
+              to={data.link || ""}
+              target="_blank"
+            >
+              {t("اختيار")}
+            </Link>
           </div>
-          <button
-            className={`px-3 py-2 rounded-lg mx-auto mt-10 bg-[#117C99] duration-200 text-white hover:bg-[#31B2E1]`}
-            onClick={() => {
-              navigator(`/hotel`);
-            }}
-          >
-            {t("التفاصيل")}
-          </button>
         </div>
       </div>
+      <Modal
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="keep-mounted-modal-title"
+        aria-describedby="keep-mounted-modal-description"
+      >
+        <div
+          className={`absolute overflow-scroll bg-white rounded-xl w-[80%] h-[80%] left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]`}
+        >
+          <HotelDetails hotel={data} />
+          <SimpleMap
+            latitude={data.gps_coordinates.latitude}
+            longitude={data.gps_coordinates.longitude}
+            className={`h-[200px] rounded-lg border-none outline-none`}
+          />
+        </div>
+      </Modal>
     </div>
   );
 }

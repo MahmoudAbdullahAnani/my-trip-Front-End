@@ -214,6 +214,7 @@ function SearchHotels() {
   // };
 
   useEffect(() => {
+    window.scroll(0, 0);
     // getHotelsDataSearch();
     // getHotelsData();
     setTypeSystemState("hotel");

@@ -4,6 +4,11 @@ export const ChooseCityNameHotel = atom({
   key: "ChooseCityNameHotel", // unique ID (with respect to other atoms/selectors)
   default: "", // default value (aka initial value)
 });
+
+export const HotelChoose = atom({
+  key: "HotelChoose", // unique ID (with respect to other atoms/selectors)
+  default: {}, // default value (aka initial value)
+});
 export const ChooseHotelIDs = atom({
   key: "ChooseHotelIDs", // unique ID (with respect to other atoms/selectors)
   default: "", // default value (aka initial value)

@@ -26,7 +26,9 @@ function FormModule({ children }: Props) {
         className={`lg:pr-[24px] 2xl:pr-[106px] lg:pe-[82px] sm:pr-[10px] p-[15px] sm:py-10 ml:py-[24px] py-[24px] flex flex-col sm:gap-5 gap-1 xl:h-[calc(283px-(47px+.5rem))] lg:rounded-t-[0px] rounded-t-[17px] lg:rounded-tl-[25px] bg-[#b6e7fb29]  border border-[#FFF] border-1 border-b-0 lg:border-t-0  `}
       >
         <div
-          className={`lg:block hidden w-[calc(100%-165px)] h-[.5px] rounded-l-[100%] bg-[#FFF] absolute bottom-[calc(100%-1px)] left-[20px]`}
+          className={`lg:block hidden ${
+            typeSystemState !== "air" ?"hidden":"w-[calc(100%-165px)]"
+          } h-[.5px] rounded-l-[100%] bg-[#FFF] absolute bottom-[calc(100%-1px)] left-[20px]`}
         ></div>
         {children}
       </div>
