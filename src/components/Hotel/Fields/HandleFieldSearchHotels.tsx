@@ -12,6 +12,7 @@ import { useRecoilState } from "recoil";
 import {
   fromSwitchData,
   originSearch,
+  typeSystem,
 } from "../../../data/RecoilState/FormHandling";
 import { useTranslation } from "react-i18next";
 import { ChooseCityNameHotel } from "../../../data/RecoilState/Hotels/MainSearchData";
@@ -20,6 +21,8 @@ const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 
 function HandleFieldSearchHotels() {
+  const [typeSystemState] = useRecoilState(typeSystem);
+
   const [, setChooseCityName] = useRecoilState(ChooseCityNameHotel);
   const [people, setPeople] = useState([]);
   const getData = async (route: string, query: string) => {
@@ -76,7 +79,9 @@ function HandleFieldSearchHotels() {
           <Combobox.Input
             ref={refFocus}
             dir={i18n.language !== "ar" ? "rtl" : "ltr"}
-            placeholder={t("وجهتك")}
+            placeholder={
+              typeSystemState === "car" ? t("المغادرة") : t("وجهتك")
+            }
             type={"text"}
             onChange={async (event) => {
               await getData("airportSearch", `term=${event.target.value}`);

@@ -45,6 +45,7 @@ import { HolderNotifications } from "./data/RecoilState/AuthStatePages/Auth";
 import Hotels from "./pages/Hotels/Hotels";
 import SearchHotels from "./pages/Hotels/SearchHotels";
 import HotelsChoose from "./pages/Hotels/HotelsChoose";
+import Cars from "./pages/Cars/Cars";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -347,6 +348,11 @@ function App() {
         <Route path="/hotel" element={<Hotels />} />
         <Route path="/search/hotel" element={<SearchHotels />} />
         <Route path="/hotel/choose" element={<HotelsChoose />} />
+
+        {/* Cars */}
+        <Route path="/car" element={<Cars />} />
+        {/* <Route path="/search/car" element={<SearchCars />} /> */}
+        {/* <Route path="/car/choose" element={<CarsChoose />} /> */}
 
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/friends" element={<Friends />} />

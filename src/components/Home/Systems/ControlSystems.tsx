@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { typeSystem } from "../../../data/RecoilState/FormHandling";
+import { typeSystem, typeTravel } from "../../../data/RecoilState/FormHandling";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -311,6 +311,7 @@ function ControlSystems() {
   // Lang
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const [, setTypeTravelRecoilState] = useRecoilState(typeTravel);
   return (
     <>
       <div className={`lg:flex hidden justify-end gap-[24px]  `}>
@@ -319,7 +320,7 @@ function ControlSystems() {
             key={`${name}-${Math.random()}`}
             onClick={() => {
               setTypeSystemState(name);
-
+              setTypeTravelRecoilState("roundTrip");
               navigate(
                 title === "التوصيل"
                   ? "/car"

@@ -1,4 +1,6 @@
 {
+  "Departure": "المغادرة",
+  "End Location": "الوصول",
   "Number of People": "عدد الاشخاص",
   "Work from": "العمل من",
   "to": "الي",
@@ -6,20 +8,8 @@
   "Hotel code": "كود الفندق",
   "Last updated": "اخر تحديث",
   "Hotel name": "اسم الفندق",
-
-
-"Back":"رجوع",
-
-
-
-
-
-
-
-
-
-
-
+  "Back": "رجوع",
+  "Age of passenger": "عمر الراكب",
   "Your destination": "وجهتك",
   "Unauthorized": "غير مصرح لك",
   "You must choose a user first": "يجب عليك اختيار مستخدم اولا",

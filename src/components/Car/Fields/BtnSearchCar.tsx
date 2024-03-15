@@ -5,31 +5,30 @@ import { Link } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { LoadingDataSearch } from "../../../data/RecoilState/Search/MainData";
+import { ReSearch } from "../../../data/RecoilState/Search/TypeSystemSearch";
 import {
   dateGo,
-  dateReturn,
   originSearch,
   typeSystem,
-} from "../../data/RecoilState/FormHandling";
+} from "../../../data/RecoilState/FormHandling";
 import {
-  Rateing,
-  adultsData,
-  childrenData,
-} from "../../data/RecoilState/FormSearchData";
-import { ReSearch } from "../../data/RecoilState/Search/TypeSystemSearch";
-import { LoadingDataSearch } from "../../data/RecoilState/Search/MainData";
+  AgeCars,
+  CityNameCars,
+  CountryNameCars,
+} from "../../../data/RecoilState/car/MainDataCar";
+
 // import { useSelector } from "react-redux";
 // import { RootState } from "../../../data/store";
 
-function BtnSearchHotel() {
-    // Main Data
+function BtnSearchCar() {
+  // Main Data
   const [locationFrom] = useRecoilState(originSearch);
   const [dateGoState] = useRecoilState(dateGo);
-  const [dateReturnState] = useRecoilState(dateReturn);
-  const [childrenDataState] = useRecoilState(childrenData);
-  const [adultsDataState] = useRecoilState(adultsData);
-    const [RateingState] = useRecoilState(Rateing);
-    
+  const [cityNameCars] = useRecoilState(CityNameCars);
+  const [countryNameCars] = useRecoilState(CountryNameCars);
+  const [ageCars] = useRecoilState(AgeCars);
+
   const [reSearchState, setReSearch] = useRecoilState(ReSearch);
   const [, setLoading] = useRecoilState(LoadingDataSearch);
 
@@ -43,10 +42,6 @@ function BtnSearchHotel() {
       systemSearch: systemSearch,
       fromLocation: locationFrom,
       fromDate: dateGoState,
-      toDate: dateReturnState || "",
-      numberAdults: adultsDataState,
-      numberChild: childrenDataState,
-      RateingState,
     };
 
     const sessionId = localStorage.getItem("sessionId");
@@ -75,7 +70,7 @@ function BtnSearchHotel() {
 
   const handleSearchData = async () => {
     if (!locationFrom) {
-      return toast.warn(" يجب اختيار الوجهة ", {
+      return toast.warn(" يجب اختيار مكان المغادرة ", {
         position: "top-right",
         autoClose: 5075,
         hideProgressBar: false,
@@ -87,8 +82,22 @@ function BtnSearchHotel() {
         transition: Flip,
       });
     }
+    if (!cityNameCars) {
+      return toast.warn(" يجب اختيار مدينة الوصول ", {
+        position: "top-right",
+        autoClose: 5075,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Flip,
+      });
+    }
+
     if (!dateGoState) {
-      return toast.warn(" يجب ادخال تاريخ الدخول علي الاقل", {
+      return toast.warn(" يجب ادخال تاريخ الرحلة علي الاقل", {
         position: "top-right",
         autoClose: 5075,
         hideProgressBar: false,
@@ -100,6 +109,46 @@ function BtnSearchHotel() {
         transition: Flip,
       });
     }
+
+    if (!countryNameCars) {
+      return toast.warn(" يحب اختيار الدولة", {
+        position: "top-right",
+        autoClose: 5075,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Flip,
+      });
+    }
+    if (!ageCars) {
+      return toast.warn(" يجب تحديد عمر الراكب", {
+        position: "top-right",
+        autoClose: 5075,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Flip,
+      });
+    }
+    // if (!ageCars) {
+    //   return toast.warn(" يجب تحديد عمر الراكب", {
+    //     position: "top-right",
+    //     autoClose: 5075,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //     transition: Flip,
+    //   });
+    // }
 
     setReSearch(!reSearchState);
     setLoading(true);
@@ -110,8 +159,8 @@ function BtnSearchHotel() {
     //   adultsDataState,
     //   childrenDataState,
     //   RateingState,
-      // });
-      
+    // });
+
     await sendCatchData();
   };
 
@@ -121,7 +170,15 @@ function BtnSearchHotel() {
   return (
     <Link
       onClick={handleSearchData}
-      to={`${!locationFrom || !dateGoState ? "/hotel" : "/search/hotel"}`}
+      to={`${
+        !locationFrom ||
+        !dateGoState ||
+        !cityNameCars ||
+        !countryNameCars ||
+        !ageCars
+          ? "/car"
+          : "/search/car"
+      }`}
       //   to={"/hotel"}
     >
       <button
@@ -134,4 +191,4 @@ function BtnSearchHotel() {
   );
 }
 
-export default BtnSearchHotel;
+export default BtnSearchCar;

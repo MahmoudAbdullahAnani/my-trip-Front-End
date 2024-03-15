@@ -5,6 +5,7 @@ import { typeSystem } from "../../../data/RecoilState/FormHandling";
 import BtnSearch from "./BtnSearch";
 import ControlSystems from "./ControlSystems";
 import BtnSearchHotel from "../../Hotel/BtnSearchHotel";
+import BtnSearchCar from "../../Car/Fields/BtnSearchCar";
 type Props = {
   children: string | JSX.Element | JSX.Element[];
 };
@@ -39,6 +40,7 @@ function FormModule({ children }: Props) {
 
           {typeSystemState === "air" && <BtnSearch />}
           {typeSystemState === "hotel" && <BtnSearchHotel />}
+          {typeSystemState === "car" && <BtnSearchCar />}
         </div>
         <div
           style={{

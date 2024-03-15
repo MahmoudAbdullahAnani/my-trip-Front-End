@@ -21,8 +21,10 @@ import { openLoginPageState } from "../data/RecoilState/AuthStatePages/Auth";
 import MainOAuthNavbar from "../components/ResetPassword/OAuthNavberDesktop/MainOAuthNavbar";
 import { useTranslation } from "react-i18next";
 import LangBtn from "../components/LangBtn";
+import { typeTravel } from "../data/RecoilState/FormHandling";
 // import { typeSystem } from "../data/RecoilState/FormHandling";
 function Navbar() {
+  const [, setTypeTravelRecoilState] = useRecoilState(typeTravel);
   // const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
@@ -208,6 +210,9 @@ function Navbar() {
             }`}
             to={`${route}`}
             key={`${id}----${Math.random()}`}
+            onClick={() => {
+              setTypeTravelRecoilState("roundTrip");
+            }}
           >
             {pathname === route && (
               <span className={`text-[14px] font-bold text-[#005A6C]`}>

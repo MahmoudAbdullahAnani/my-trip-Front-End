@@ -1,24 +1,24 @@
 import { useRecoilState } from "recoil";
-import AutoScroll from "../../components/Home/Systems/AutoScroll";
-import MoveBgHeroSection from "../../components/Home/Systems/MoveBgHeroSection";
-import HeroSectionHotels from "../../components/Hotel/HeroSection/HeroSectionHotels";
 import { typeSystem } from "../../data/RecoilState/FormHandling";
 import { useEffect } from "react";
+import MoveBgHeroSection from "../../components/Home/Systems/MoveBgHeroSection";
+import AutoScroll from "../../components/Home/Systems/AutoScroll";
 import OffersSection from "../../components/Home/Sections/Offers/OffersSection";
 import PopularDestinations from "../../components/Home/Sections/PopularDestinations/PopularDestinations";
 import DestinationSection from "../../components/Home/Sections/Destination/DestinationSection";
+import HeroSectionCars from "../../components/Car/HeroSectionCars";
 
-function Hotels() {
+function Cars() {
   const [, setTypeSystemState] = useRecoilState(typeSystem);
   useEffect(() => {
     window.scroll(0, 0);
-    setTypeSystemState("hotel");
+    setTypeSystemState("car");
   }, []);
   return (
     <>
       <section>
         <MoveBgHeroSection>
-          <HeroSectionHotels />
+          <HeroSectionCars />
           <AutoScroll />
         </MoveBgHeroSection>
       </section>
@@ -29,4 +29,4 @@ function Hotels() {
   );
 }
 
-export default Hotels;
+export default Cars;
