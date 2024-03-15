@@ -1,5 +1,9 @@
 {
+  "Age": "العمر",
+  "Open Map": "فتح الخريطة",
   "Departure": "المغادرة",
+  "Type the destination": "اكتب مكان الوصول",
+  "Map": "الخريطة",
   "End Location": "الوصول",
   "Number of People": "عدد الاشخاص",
   "Work from": "العمل من",

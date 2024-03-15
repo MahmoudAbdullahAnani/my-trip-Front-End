@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState, useMemo } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-const center = [51.505, -0.09];
+import { GeoLocation } from "../../../data/RecoilState/car/MainDataCar";
+import { useRecoilState } from "recoil";
+// const center = [51.505, -0.09];
 const zoom = 13;
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -36,13 +38,14 @@ function DisplayPosition({ map }) {
 
 function ExternalStateExample() {
   const [map, setMap] = useState(null);
+  const [geolocation] = useRecoilState(GeoLocation);
 
   const displayMap = useMemo(
     () => (
       <MapContainer
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        center={center}
+        center={[geolocation.lat, geolocation.long]}
         zoom={zoom}
         style={{ height: "100%", width: "100%" }}
         scrollWheelZoom={false}
@@ -51,12 +54,14 @@ function ExternalStateExample() {
         ref={setMap}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='<div>
+          <a href="https://waronwant.org/our-work/palestine">Free Palestine</a> <img width="30px" src="https://flagsapi.com/PS/shiny/32.png"/>
+          </div>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
       </MapContainer>
     ),
-    []
+    [geolocation.lat]
   );
 
   return (

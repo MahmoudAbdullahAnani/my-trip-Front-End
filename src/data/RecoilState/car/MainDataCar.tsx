@@ -15,3 +15,12 @@ export const AgeCars = atom({
   key: "AgeCars",
   default: 0,
 });
+// GeoLocation
+
+export const GeoLocation = atom({
+  key: "GeoLocation",
+  default: {
+    lat: 0,
+    long: 0,
+  },
+});

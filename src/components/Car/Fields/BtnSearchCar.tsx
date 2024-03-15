@@ -16,6 +16,7 @@ import {
   AgeCars,
   CityNameCars,
   CountryNameCars,
+  GeoLocation,
 } from "../../../data/RecoilState/car/MainDataCar";
 
 // import { useSelector } from "react-redux";
@@ -28,6 +29,7 @@ function BtnSearchCar() {
   const [cityNameCars] = useRecoilState(CityNameCars);
   const [countryNameCars] = useRecoilState(CountryNameCars);
   const [ageCars] = useRecoilState(AgeCars);
+  const [geo] = useRecoilState(GeoLocation);
 
   const [reSearchState, setReSearch] = useRecoilState(ReSearch);
   const [, setLoading] = useRecoilState(LoadingDataSearch);
@@ -136,6 +138,19 @@ function BtnSearchCar() {
         transition: Flip,
       });
     }
+    if (geo.lat === 0 && geo.long === 0) {
+      return toast.warn(" يجب تحديد المكان علي الخريطة", {
+        position: "top-right",
+        autoClose: 5075,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Flip,
+      });
+    }
     // if (!ageCars) {
     //   return toast.warn(" يجب تحديد عمر الراكب", {
     //     position: "top-right",
@@ -152,14 +167,14 @@ function BtnSearchCar() {
 
     setReSearch(!reSearchState);
     setLoading(true);
-    // console.log({
-    //   locationFrom,
-    //   dateGoState,
-    //   toDate: dateReturnState || "",
-    //   adultsDataState,
-    //   childrenDataState,
-    //   RateingState,
-    // });
+    console.log({
+      locationFrom,
+      dateGoState,
+      cityNameCars,
+      countryNameCars,
+      ageCars,
+      geo,
+    });
 
     await sendCatchData();
   };
