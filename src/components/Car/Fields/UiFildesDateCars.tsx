@@ -103,6 +103,9 @@ function UiFildesDateCars({ isSearch = true }: { isSearch: boolean }) {
   // Lang
   const { t, i18n } = useTranslation();
 
+  const handleColor = (time:Date) => {
+    return time.getHours() > 12 ? "text-success" : "text-error";
+  };
   if (isSearch) {
     return (
       <div
@@ -118,17 +121,20 @@ function UiFildesDateCars({ isSearch = true }: { isSearch: boolean }) {
             {typeSystemState === "hotel" ? t("تاريخ الدخول") : t("الذهاب")}
           </h4>
           <DatePicker
+            showTimeSelect
+            timeClassName={handleColor}
             selected={dateGoStateISO}
             onChange={(date) => {
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               setStartDate(date);
               setDateGoISOState(date);
-              setDateGoState(format(date as Date, "dd/MM/yyyy"));
+              setDateGoState(format(date as Date, "yyyy-MM-dd'T'HH:mm:ss"));
             }}
             selectsStart
             minDate={new Date()}
             startDate={startDate}
+            // dateFormatCalendar="yyyy-MM-dd'T'HH:mm:ss"
             showIcon
             icon={iconDate}
             placeholderText={
@@ -177,13 +183,15 @@ function UiFildesDateCars({ isSearch = true }: { isSearch: boolean }) {
           {typeSystemState === "hotel" ? t("الدخول") : t("الذهاب")}
         </h4>
         <DatePicker
+          showTimeSelect
+          timeClassName={handleColor}
           selected={dateGoStateISO}
           onChange={(date) => {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             setStartDate(date);
             setDateGoISOState(date);
-            setDateGoState(format(date as Date, "dd/MM/yyyy"));
+            setDateGoState(format(date as Date, "yyyy-MM-dd'T'HH:mm:ss"));
           }}
           selectsStart
           minDate={new Date()}
@@ -194,7 +202,7 @@ function UiFildesDateCars({ isSearch = true }: { isSearch: boolean }) {
             typeSystemState === "hotel" ? t("تاريخ الدخول") : t("تاريخ الذهاب")
           }
           // popperPlacement="top"
-          dateFormat="dd/MM/yyyy"
+          dateFormat="yyyy-MM-dd HH:mm:ss"
           className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
         />
         {/* <div className={`relative `}>

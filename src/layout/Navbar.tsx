@@ -58,6 +58,7 @@ function Navbar() {
             pathname !== "/dashboard" &&
             pathname !== "/profile/friends" &&
             pathname !== "/search/hotel" &&
+            pathname !== "/search/car" &&
             pathname !== "/profile"
               ? "fixed"
               : ""
@@ -73,6 +74,7 @@ function Navbar() {
             pathname === "/profile" ||
             pathname === "/dashboard" ||
             pathname === "/search/hotel" ||
+            pathname === "/search/car" ||
             pathname === "/profile/trips"
               ? "bg-[#FFF] border border-x-0 border-t-0 shadow-sm shadow-[#656565]"
               : ""

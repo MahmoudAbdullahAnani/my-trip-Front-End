@@ -46,6 +46,7 @@ import Hotels from "./pages/Hotels/Hotels";
 import SearchHotels from "./pages/Hotels/SearchHotels";
 import HotelsChoose from "./pages/Hotels/HotelsChoose";
 import Cars from "./pages/Cars/Cars";
+import SearchCars from "./pages/Cars/SearchCars";
 // import NavTopMobile from "./layout/NavTopMobile";
 
 // Handle driver
@@ -351,7 +352,7 @@ function App() {
 
         {/* Cars */}
         <Route path="/car" element={<Cars />} />
-        {/* <Route path="/search/car" element={<SearchCars />} /> */}
+        <Route path="/search/car" element={<SearchCars />} />
         {/* <Route path="/car/choose" element={<CarsChoose />} /> */}
 
         <Route path="/profile" element={<Profile />} />

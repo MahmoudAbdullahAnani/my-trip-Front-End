@@ -10,13 +10,18 @@ const zoom = 13;
 function DisplayPosition({ map }) {
   const [, setPosition] = useState(() => map.getCenter());
   // const [position, setPosition] = useState(() => map.getCenter());
+  const [, setGeolocation] = useRecoilState(GeoLocation);
 
   // const onClick = useCallback(() => {
-  //   map.setView(center, zoom);
+  //   map.setView([geolocation.lat, geolocation.long], zoom);
   // }, [map]);
 
   const onMove = useCallback(() => {
     setPosition(map.getCenter());
+    setGeolocation({
+      lat: map.getCenter().lat,
+      long: map.getCenter().lng,
+    });
   }, [map]);
 
   useEffect(() => {
@@ -28,9 +33,15 @@ function DisplayPosition({ map }) {
 
   return (
     <>
-      {/* <p>
+      {/* <p className={`p-2 flex flex-col`}>
         latitude: {position.lat.toFixed(4)}, longitude:{" "}
-        {position.lng.toFixed(4)} <button onClick={onClick}>reset</button>
+        {position.lng.toFixed(4)}{" "}
+        <button
+          onClick={onClick}
+          className="bg-red-500 hover:bg-red-600 text-white px-3 rounded-lg"
+        >
+          reset
+        </button>
       </p> */}
     </>
   );
@@ -39,6 +50,7 @@ function DisplayPosition({ map }) {
 function ExternalStateExample() {
   const [map, setMap] = useState(null);
   const [geolocation] = useRecoilState(GeoLocation);
+  // console.log(geolocation);
 
   const displayMap = useMemo(
     () => (
