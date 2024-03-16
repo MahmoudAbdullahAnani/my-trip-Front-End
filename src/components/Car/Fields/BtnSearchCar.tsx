@@ -167,14 +167,14 @@ function BtnSearchCar() {
 
     setReSearch(!reSearchState);
     setLoading(true);
-    console.log({
-      locationFrom,
-      dateGoState,
-      cityNameCars,
-      countryNameCars,
-      ageCars,
-      geo,
-    });
+    // console.log({
+    //   locationFrom,
+    //   dateGoState,
+    //   cityNameCars,
+    //   countryNameCars,
+    //   ageCars,
+    //   geo,
+    // });
 
     await sendCatchData();
   };

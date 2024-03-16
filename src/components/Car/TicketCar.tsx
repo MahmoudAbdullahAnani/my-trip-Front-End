@@ -1,9 +1,52 @@
 import { Link } from "react-router-dom";
 import { TransferOffer } from "./interfaces/MainData.interface";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 function TicketCar(data: TransferOffer) {
-  console.log(data);
+  const durationH = data.duration.split("PT")[1].split("H")[0];
+  const durationM = data.duration.split("PT")[1].split("H")[1].split("M")[0];
+
+  // handle catch data
+
+  const sendCatchData = async () => {
+    const chooseTicket = {
+      CompanyLogo: data.vehicle.imageURL,
+      carID: data.id,
+      startDateCar: data.start.dateTime,
+      endDateCar: data.end.dateTime,
+      distanceCar: `${data.distance?.value || ""} ${data.distance?.unit || ""}`,
+      categoryCar: data.vehicle.category,
+      descriptionCar: data.vehicle.description,
+      serviceProviderCar: data.serviceProvider.name,
+      priceCar: data.quotation.base.monetaryAmount,
+    };
+
+    const sessionId = localStorage.getItem("sessionId");
+    await axios
+      .patch(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${
+              import.meta.env.VITE_PUBLIC_API_LOCAL
+            }/catch-data/ticket/${sessionId}`
+          : `${
+              import.meta.env.VITE_PUBLIC_API_PRODUCTION
+            }/catch-data/ticket/${sessionId}`,
+        {
+          chooseTicket: { ...chooseTicket },
+        }
+      )
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
+      });
+    return true;
+  };
+
+  // console.log(data);
   const { t } = useTranslation();
   return (
     <div className="container mx-auto p-6">
@@ -27,7 +70,7 @@ function TicketCar(data: TransferOffer) {
               <strong>End Date/Time:</strong> {data.end.dateTime}
             </p>
             <p>
-              <strong>Duration:</strong> {data.duration}
+              <strong>Duration:</strong> {durationH}:{durationM}
             </p>
             <p>
               <strong>Distance:</strong> {data.distance?.value || ""}{" "}
@@ -94,7 +137,9 @@ function TicketCar(data: TransferOffer) {
         <div className={`w-full text-center p-5`}>
           <Link
             className={`px-3 mx-auto py-2 rounded-lg  mt-10 bg-[#117C99] duration-200 text-white hover:bg-[#31B2E1]`}
-            onClick={() => {}}
+            onClick={() => {
+              sendCatchData();
+            }}
             to={""}
           >
             {t("اختيار")}
