@@ -278,7 +278,9 @@ function App() {
     const fetchData = async () => {
       await RunDriver();
       const id = await oncData();
-      getFriends();
+      if (id !== "undefined") {
+        getFriends();
+      }
       sendCatchData(`${id}`);
     };
 

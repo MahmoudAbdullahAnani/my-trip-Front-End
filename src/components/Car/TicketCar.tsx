@@ -11,9 +11,9 @@ import { exampleDataCurrency } from "../../data/Fetching/ExampleData";
 // import { useNavigate } from "react-router-dom";
 // import { useState } from "react";
 function TicketCar(data: TransferOffer) {
-  const durationH = data.duration.split("PT")[1].split("H")[0] || "";
-  const durationM =
-    data.duration.split("PT")[1].split("H")[1].split("M")[0] || "";
+  // const durationH = data.duration.split("PT")[1].split("H")[0] || "";
+  // const durationM =
+  //   data.duration.split("PT")[1].split("H")[1].split("M")[0] || "";
 
   // console.log(data);
   // handle payment
@@ -40,8 +40,8 @@ function TicketCar(data: TransferOffer) {
           carrierCodeLogo: data.vehicle.imageURL,
           timeGo: data.start.dateTime,
           timeSet: data.end.dateTime,
-          durationH,
-          durationM,
+          durationH: data.duration,
+          durationM: data.duration,
           isStope: 0,
         }
       )
@@ -90,7 +90,7 @@ function TicketCar(data: TransferOffer) {
               <strong>End Date/Time:</strong> {data.end.dateTime}
             </p>
             <p>
-              <strong>Duration:</strong> {durationH}:{durationM}
+              <strong>Duration:</strong> {data.duration}
             </p>
             <p>
               <strong>Distance:</strong> {data.distance?.value || ""}{" "}
