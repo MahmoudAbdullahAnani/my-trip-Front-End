@@ -320,7 +320,7 @@ function App() {
         <div
           onClick={() => setHolderNotificationsToggle(false)}
           style={{ height: `${document.body.scrollHeight - 100}px` }}
-          className={`absolute w-full bg-[#00000070]`}
+          className={`absolute w-full bg-[#00000070] lg:z-20 z-10`}
         ></div>
       )}
 
