@@ -33,6 +33,7 @@ import { useRecoilState } from "recoil";
 import { HotelChoose } from "../../data/RecoilState/Hotels/MainSearchData";
 import Modal from "@mui/material/Modal";
 import HotelDetails from "./HotelDetails";
+import axios from "axios";
 function TicketHotels(data: HotelData) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -44,12 +45,44 @@ function TicketHotels(data: HotelData) {
   // const nameHotel = data.name.toLowerCase();
   // const date = format(new Date(data.lastUpdate), "dd/MM/yyyy");
   // const navigator = useNavigate();
-  console.log(data);
+  // console.log(data);
   const [thumbsSwiper] = useState(null);
 
   const swiperRef = useRef<SwiperType | null>(null);
 
   const images = data.images;
+
+  // handle catch data
+
+  const sendCatchData = async () => {
+    const chooseTicket = {
+      CompanyLogo: data.images[0].original_image,
+      data,
+    };
+
+    const sessionId = localStorage.getItem("sessionId");
+    await axios
+      .patch(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${
+              import.meta.env.VITE_PUBLIC_API_LOCAL
+            }/catch-data/ticket/${sessionId}`
+          : `${
+              import.meta.env.VITE_PUBLIC_API_PRODUCTION
+            }/catch-data/ticket/${sessionId}`,
+        {
+          chooseTicket: { ...chooseTicket },
+        }
+      )
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+        // if (error.response?.data.statusCode === 401) {
+        //   localStorage.removeItem("token");
+        // }
+      });
+    return true;
+  };
   return (
     <div
       className={`mx-auto w-full lg:h-[650px] p-3 flex flex-col lg:items-start items-end justify-between gap-5 bg-white border  hover:shadow-md shadow-[#D9D9D9] duration-300 rounded-lg overflow-hidden`}
@@ -179,6 +212,7 @@ function TicketHotels(data: HotelData) {
               className={`px-3 py-2 rounded-lg mx-auto mt-10 bg-[#117C99] duration-200 text-white hover:bg-[#31B2E1]`}
               onClick={() => {
                 setHotelChoose(data);
+                sendCatchData();
               }}
               to={data.link || ""}
               target="_blank"
