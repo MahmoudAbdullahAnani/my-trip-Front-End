@@ -181,7 +181,7 @@ function Navbar() {
       {window.innerWidth < 768 && (
         <BottomNavigation
           showLabels
-          className={`hidden items-center h-[80px] fixed w-full bottom-0 z-50 justify-between bg-[#FFF] ps-[26px] pe-[16px]`}
+          className={`hidden items-center h-[80px] fixed w-full bottom-0 z-50 justify-between bg-[#FFF]`}
           value={value}
           onChange={(_event, newValue) => {
             setValue(newValue);
@@ -221,11 +221,11 @@ function Navbar() {
               // style={{
               //   background: "rgba(0, 90, 108, 0.30)",
               // }}
-              className={`flex justify-center ${
+              className={`flex justify-center mx-5 ${
                 continued.includes(pathname) && "bg-[#005A6C4D]"
               } items-center gap-[2px] h-[48px] rounded-[16px] duration-300 px-[10px] py-[16px] text-center ${
                 stateUserData.role === "user" && id === 4 && "hidden"
-              }`}
+              } ${stateUserData._id === "" && id === 4 && "hidden"}`}
               to={`${route}`}
               key={`${id}----${Math.random()}`}
               onClick={() => {
