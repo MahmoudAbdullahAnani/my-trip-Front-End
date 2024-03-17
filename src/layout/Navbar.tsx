@@ -22,8 +22,11 @@ import MainOAuthNavbar from "../components/ResetPassword/OAuthNavberDesktop/Main
 import { useTranslation } from "react-i18next";
 import LangBtn from "../components/LangBtn";
 import { typeTravel } from "../data/RecoilState/FormHandling";
+import BottomNavigation from "@mui/material/BottomNavigation";
 // import { typeSystem } from "../data/RecoilState/FormHandling";
 function Navbar() {
+  const [value, setValue] = useState(0);
+
   const [, setTypeTravelRecoilState] = useRecoilState(typeTravel);
   // const [toggle, setToggle] = useRecoilState(sidBar);
   const { pathname } = useLocation();
@@ -175,7 +178,72 @@ function Navbar() {
       </nav>
 
       {/* Mob */}
+      {window.innerWidth < 768 && (
+        <BottomNavigation
+          showLabels
+          className={`hidden items-center h-[80px] fixed w-full bottom-0 z-50 justify-between bg-[#FFF] ps-[26px] pe-[16px]`}
+          value={value}
+          onChange={(_event, newValue) => {
+            setValue(newValue);
+          }}
+        >
+          {[
+            {
+              id: 4,
+              title: "لوحة التحكم",
+              route: "/dashboard",
+              icon: iconArithmetic,
+              continued: ["/dashboard"],
+            },
+            {
+              id: 3,
+              title: "توصيل",
+              route: "/car",
+              icon: iconCar,
+              continued: ["/search/car", "/car"],
+            },
+            {
+              id: 2,
+              title: "الفنادق",
+              route: "/hotel",
+              icon: iconHotel,
+              continued: ["/search/hotel", "/hotel/choose", "/hotel"],
+            },
+            {
+              id: 1,
+              title: "الرئيسية",
+              route: "/",
+              icon: iconHome,
+              continued: ["/", "/home"],
+            },
+          ].map(({ icon, route, title, id, continued }) => (
+            <Link
+              // style={{
+              //   background: "rgba(0, 90, 108, 0.30)",
+              // }}
+              className={`flex justify-center ${
+                continued.includes(pathname) && "bg-[#005A6C4D]"
+              } items-center gap-[2px] h-[48px] rounded-[16px] duration-300 px-[10px] py-[16px] text-center ${
+                stateUserData.role === "user" && id === 4 && "hidden"
+              }`}
+              to={`${route}`}
+              key={`${id}----${Math.random()}`}
+              onClick={() => {
+                setTypeTravelRecoilState("roundTrip");
+              }}
+            >
+              {continued.includes(pathname) && (
+                <span className={`text-[14px] font-bold text-[#005A6C]`}>
+                  {title}
+                </span>
+              )}
+              <span>{icon}</span>
+            </Link>
+          ))}
+        </BottomNavigation>
+      )}
 
+      {/* 
       <nav
         style={{
           boxShadow: "0px 1px 10px 0px rgba(0, 90, 108, 0.30)",
@@ -235,7 +303,7 @@ function Navbar() {
             <span>{icon}</span>
           </Link>
         ))}
-      </nav>
+      </nav> */}
     </>
   );
 }
