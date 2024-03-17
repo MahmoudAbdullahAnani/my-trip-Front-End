@@ -15,7 +15,7 @@ function TicketCar(data: TransferOffer) {
   const durationM =
     data.duration.split("PT")[1].split("H")[1].split("M")[0] || "";
 
-  console.log(data);
+  // console.log(data);
   // handle payment
   const [dataLoadingState, setDataLoadingState] = useState(false);
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
