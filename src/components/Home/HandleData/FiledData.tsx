@@ -21,7 +21,9 @@ function FiledData() {
   return (
     <>
       <div
-        className={`flex xl:flex-nowrap flex-wrap sm:gap-[24px] gap-[10px] sm:justify-normal ml:flex-row flex-row-reverse justify-center`}
+        className={`flex ${
+          typeSystemState !== "car" ? "xl:flex-nowrap" : ""
+        } flex-wrap sm:gap-[24px] gap-[10px] sm:justify-normal ml:flex-row flex-row-reverse justify-center`}
       >
         {typeSystemState === "air" && <HandleFieldsSearch isSearch={false} />}
         {typeSystemState === "car" && (

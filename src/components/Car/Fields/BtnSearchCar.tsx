@@ -125,8 +125,8 @@ function BtnSearchCar() {
         transition: Flip,
       });
     }
-    if (!ageCars) {
-      return toast.warn(" يجب تحديد عمر الراكب", {
+    if (!ageCars || +ageCars < 12) {
+      return toast.warn(" يجب تحديد عمر الراكب بشكل صحيح و ان اكبر من 12", {
         position: "top-right",
         autoClose: 5075,
         hideProgressBar: false,

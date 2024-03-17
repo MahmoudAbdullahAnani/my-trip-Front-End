@@ -148,7 +148,9 @@ function Navbar() {
                   to={href}
                   id={driver}
                   className={`text-[18px] font-[600] whitespace-nowrap ${
-                    pathname !== "/" && pathname !== "/hotel"
+                    pathname !== "/" &&
+                    pathname !== "/hotel" &&
+                    pathname !== "/car"
                       ? "text-[#117c99b3]"
                       : "text-[#FFF]"
                   } hover:text-[#117C99]  duration-200 `}
@@ -186,27 +188,36 @@ function Navbar() {
             title: "لوحة التحكم",
             route: "/dashboard",
             icon: iconArithmetic,
+            continued: [],
           },
           {
             id: 3,
             title: "توصيل",
             route: "/car",
             icon: iconCar,
+            continued: ["/search/car", "/car"],
           },
           {
             id: 2,
             title: "الفنادق",
             route: "/hotel",
             icon: iconHotel,
+            continued: ["/search/hotel", "/hotel/choose", "/hotel"],
           },
-          { id: 1, title: "الرئيسية", route: "/", icon: iconHome },
-        ].map(({ icon, route, title, id }) => (
+          {
+            id: 1,
+            title: "الرئيسية",
+            route: "/",
+            icon: iconHome,
+            continued: ["/", "/home"],
+          },
+        ].map(({ icon, route, title, id, continued }) => (
           <Link
             // style={{
             //   background: "rgba(0, 90, 108, 0.30)",
             // }}
             className={`flex justify-center ${
-              pathname === route && "bg-[#005A6C4D]"
+              continued.includes(pathname) && "bg-[#005A6C4D]"
             } items-center gap-[2px] h-[48px] rounded-[16px] duration-300 px-[10px] py-[16px] text-center ${
               stateUserData.role === "user" && id === 4 && "hidden"
             }`}
@@ -216,7 +227,7 @@ function Navbar() {
               setTypeTravelRecoilState("roundTrip");
             }}
           >
-            {pathname === route && (
+            {continued.includes(pathname) && (
               <span className={`text-[14px] font-bold text-[#005A6C]`}>
                 {title}
               </span>

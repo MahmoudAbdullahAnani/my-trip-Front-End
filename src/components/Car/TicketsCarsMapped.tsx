@@ -13,7 +13,7 @@ function TicketsCarsMapped() {
   const [data] = useRecoilState(MainDataCars);
 
   const navigator = useNavigate();
-  console.log("data==>", data);
+  // console.log("data==>", data);
   // console.log(data.length);
   // Handle Pagination Data
   const [pagination, setPagination] = useState({

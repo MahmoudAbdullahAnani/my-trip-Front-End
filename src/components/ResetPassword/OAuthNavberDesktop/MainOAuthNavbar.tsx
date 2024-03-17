@@ -74,7 +74,7 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
                 <Link
                   to={`/profile`}
                   onClick={() => setToggle(!toggle)}
-                  className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
                 >
                   {t("حسابي التعريفي")}
                 </Link>
@@ -83,7 +83,7 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
                 <Link
                   onClick={() => setToggle(!toggle)}
                   to={`/profile/friends`}
-                  className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
                 >
                   {t("الأصدقاء")}
                 </Link>
@@ -92,7 +92,7 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
                 <Link
                   onClick={() => setToggle(!toggle)}
                   to={"/profile/trips"}
-                  className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
                 >
                   {t("رحلتي")}
                 </Link>
@@ -102,7 +102,7 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
                   <Link
                     onClick={() => setToggle(!toggle)}
                     to={"/dashboard"}
-                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
                   >
                     {t("لوحة التحكم")}
                   </Link>

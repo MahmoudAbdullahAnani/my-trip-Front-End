@@ -54,13 +54,13 @@ function NavTopMobile() {
 
   return (
     <>
-    {toggleNotification && (
-      <div
-        onClick={() => setToggleNotification(!toggleNotification)}
-        style={{ height: `${bodyHight}px` }}
-        className={`bg-[#00000059] overflow-hidden w-full h-[100%] absolute left-0 top-0 z-30`}
-      ></div>
-    )}
+      {toggleNotification && (
+        <div
+          onClick={() => setToggleNotification(!toggleNotification)}
+          style={{ height: `${bodyHight}px` }}
+          className={`bg-[#00000059] overflow-hidden w-full h-[100%] absolute left-0 top-0 z-30`}
+        ></div>
+      )}
       <div className={`lg:hidden flex justify-between  mt-[calc(25px+54px)]`}>
         {/* Icon User */}
         {toggle && (
@@ -138,7 +138,7 @@ function NavTopMobile() {
                   <Link
                     to={`/profile`}
                     onClick={() => setToggle(!toggle)}
-                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
                   >
                     {t("حسابي التعريفي")}
                   </Link>
@@ -147,7 +147,7 @@ function NavTopMobile() {
                   <Link
                     onClick={() => setToggle(!toggle)}
                     to={`/profile/friends`}
-                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
                   >
                     {t("الأصدقاء")}
                   </Link>
@@ -156,7 +156,7 @@ function NavTopMobile() {
                   <Link
                     onClick={() => setToggle(!toggle)}
                     to={`/profile/trips`}
-                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
                   >
                     {t("رحلتي")}
                   </Link>

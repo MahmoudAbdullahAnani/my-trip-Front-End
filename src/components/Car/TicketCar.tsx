@@ -1,52 +1,69 @@
 import { Link } from "react-router-dom";
 import { TransferOffer } from "./interfaces/MainData.interface";
 import { useTranslation } from "react-i18next";
+import sendCatchData from "./Actions/CatshData";
+import { useState } from "react";
 import axios from "axios";
-
+import { Flip, toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { RootState } from "../../data/store";
+import { exampleDataCurrency } from "../../data/Fetching/ExampleData";
+// import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
 function TicketCar(data: TransferOffer) {
   const durationH = data.duration.split("PT")[1].split("H")[0];
   const durationM = data.duration.split("PT")[1].split("H")[1].split("M")[0];
-
-  // handle catch data
-
-  const sendCatchData = async () => {
-    const chooseTicket = {
-      CompanyLogo: data.vehicle.imageURL,
-      carID: data.id,
-      startDateCar: data.start.dateTime,
-      endDateCar: data.end.dateTime,
-      distanceCar: `${data.distance?.value || ""} ${data.distance?.unit || ""}`,
-      categoryCar: data.vehicle.category,
-      descriptionCar: data.vehicle.description,
-      serviceProviderCar: data.serviceProvider.name,
-      priceCar: data.quotation.base.monetaryAmount,
-    };
-
-    const sessionId = localStorage.getItem("sessionId");
-    await axios
-      .patch(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
-          ? `${
-              import.meta.env.VITE_PUBLIC_API_LOCAL
-            }/catch-data/ticket/${sessionId}`
-          : `${
-              import.meta.env.VITE_PUBLIC_API_PRODUCTION
-            }/catch-data/ticket/${sessionId}`,
+  // handle payment
+  const [dataLoadingState, setDataLoadingState] = useState(false);
+  const stateUserData = useSelector((state: RootState) => state.loggedUser);
+  const EGP =
+    +exampleDataCurrency.rates.EGP * +data.quotation.base.monetaryAmount;
+  async function PaymentCar(data: TransferOffer) {
+    // Stripe
+    setDataLoadingState(true);
+    return await axios
+      .post(
+        `${
+          import.meta.env.VITE_PUBLIC_API_PRODUCTION
+        }/checkout-completed/stripe`,
         {
-          chooseTicket: { ...chooseTicket },
+          typeSystem: "Car",
+          price: Math.floor(EGP),
+          description: data.vehicle.description,
+          user_id: stateUserData ? stateUserData._id : "gust",
+          urlSuccess: `https://ittrip.vercel.app?system=car&itemId=${data.id}&status=success`,
+          urlCancel: `https://ittrip.vercel.app?system=car&itemId=${data.id}&status=cancel`,
+          userEmail: stateUserData ? stateUserData.email : "gust",
+          carrierCodeLogo: data.vehicle.imageURL,
+          timeGo: data.start.dateTime,
+          timeSet: data.end.dateTime,
+          durationH: data.duration.split("PT")[1].split("H")[0],
+          durationM: data.duration.split("PT")[1].split("H")[1].split("M")[0],
+          isStope: 0,
         }
       )
-      .then(() => {})
-      .catch((error) => {
-        console.log(error);
-        // if (error.response?.data.statusCode === 401) {
-        //   localStorage.removeItem("token");
-        // }
+      .then(({ data }) => {
+        setDataLoadingState(false);
+        location.href = data.url;
+        // setURLVisaPaymentState(data.url);
+      })
+      .catch((err) => {
+        console.log("err===> ", err);
+        setDataLoadingState(false);
+        toast.warn("هناك مشكلة بالانترنت لديك", {
+          position: "top-right",
+          autoClose: 5075,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Flip,
+        });
       });
-    return true;
-  };
+  }
 
-  // console.log(data);
   const { t } = useTranslation();
   return (
     <div className="container mx-auto p-6">
@@ -119,8 +136,7 @@ function TicketCar(data: TransferOffer) {
           <div className="p-4 border-t border-gray-200">
             <h3 className="text-xl font-bold mb-2">Quotation Details</h3>
             <p>
-              <strong>Base Amount:</strong> {data.quotation.base.monetaryAmount}{" "}
-              {data.quotation.currencyCode}
+              <strong>Base Amount:</strong> {Math.floor(EGP)} {"EGP"}
             </p>
             <p>
               <strong>Total Taxes:</strong>{" "}
@@ -134,15 +150,17 @@ function TicketCar(data: TransferOffer) {
             </p>
           </div>
         </div>
+
         <div className={`w-full text-center p-5`}>
           <Link
             className={`px-3 mx-auto py-2 rounded-lg  mt-10 bg-[#117C99] duration-200 text-white hover:bg-[#31B2E1]`}
-            onClick={() => {
-              sendCatchData();
+            onClick={async () => {
+              sendCatchData(data);
+              await PaymentCar(data);
             }}
             to={""}
           >
-            {t("اختيار")}
+            {dataLoadingState ? "تحميل..." : t("اختيار")}
           </Link>
         </div>
       </div>

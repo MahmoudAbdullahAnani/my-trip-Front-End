@@ -115,20 +115,25 @@ function AirBill({
     // });
 
     await axios
-      .post(`https://my-trip-back-end.onrender.com/checkout-completed/paypal`, {
-        price: Math.round(+totalPriceUSD),
-        description,
-        user_id,
-        urlSuccess,
-        urlCancel,
-        userEmail,
-        carrierCodeLogo,
-        timeGo,
-        timeSet,
-        durationH,
-        durationM,
-        isStope,
-      })
+      .post(
+        `${
+          import.meta.env.VITE_PUBLIC_API_PRODUCTION
+        }/checkout-completed/paypal`,
+        {
+          price: Math.round(+totalPriceUSD),
+          description,
+          user_id,
+          urlSuccess,
+          urlCancel,
+          userEmail,
+          carrierCodeLogo,
+          timeGo,
+          timeSet,
+          durationH,
+          durationM,
+          isStope,
+        }
+      )
       .then(({ data }) => {
         setDataLoadingState(false);
         // console.log(data);
@@ -153,20 +158,26 @@ function AirBill({
       });
     // Stripe
     await axios
-      .post(`https://my-trip-back-end.onrender.com/checkout-completed/stripe`, {
-        price,
-        description,
-        user_id,
-        urlSuccess,
-        urlCancel,
-        userEmail,
-        carrierCodeLogo,
-        timeGo,
-        timeSet,
-        durationH,
-        durationM,
-        isStope,
-      })
+      .post(
+        `${
+          import.meta.env.VITE_PUBLIC_API_PRODUCTION
+        }/checkout-completed/stripe`,
+        {
+          typeSystem: "Air",
+          price,
+          description,
+          user_id,
+          urlSuccess,
+          urlCancel,
+          userEmail,
+          carrierCodeLogo,
+          timeGo,
+          timeSet,
+          durationH,
+          durationM,
+          isStope,
+        }
+      )
       .then(({ data }) => {
         setDataLoadingState(false);
         setURLVisaPaymentState(data.url);
@@ -237,8 +248,8 @@ function AirBill({
         price: priceOfTotal,
         description: `${arrival} الى ${departure} رحلة من `,
         user_id: stateUserData._id || "guest",
-        urlSuccess: "https://ittrip.vercel.app/",
-        urlCancel: "https://ittrip.vercel.app/",
+        urlSuccess: `https://ittrip.vercel.app?system=car&status=success`,
+        urlCancel: `https://ittrip.vercel.app?system=car&status=cancel`,
         userEmail: dataBookingState.EmailBooking,
         carrierCodeLogo: carrierCodeLogo || "",
         timeGo: timeGo || "",

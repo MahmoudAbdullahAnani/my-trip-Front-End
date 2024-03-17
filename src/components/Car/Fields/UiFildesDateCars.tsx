@@ -103,7 +103,7 @@ function UiFildesDateCars({ isSearch = true }: { isSearch: boolean }) {
   // Lang
   const { t, i18n } = useTranslation();
 
-  const handleColor = (time:Date) => {
+  const handleColor = (time: Date) => {
     return time.getHours() > 12 ? "text-success" : "text-error";
   };
   if (isSearch) {
@@ -176,7 +176,7 @@ function UiFildesDateCars({ isSearch = true }: { isSearch: boolean }) {
       className={`flex sm:gap-[24px]  gap-[10px] sm:justify-normal justify-center lg:flex-nowrap flex-wrap `}
     >
       <div
-        className={`flex flex-col gap-[6px]`}
+        className={`flex flex-col gap-[6px] min-w-[200px] `}
         dir={i18n.language === "ar" ? "rtl" : "ltr"}
       >
         <h4 className={`text-[#000] text-[20px] font-[500] hidden sm:block`}>
@@ -203,7 +203,7 @@ function UiFildesDateCars({ isSearch = true }: { isSearch: boolean }) {
           }
           // popperPlacement="top"
           dateFormat="yyyy-MM-dd HH:mm:ss"
-          className={`sm:w-[188px] w-[156px] h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
+          className={` h-[48px] shadow-lg focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 focus-visible:outline-none text-center text-[#117C99] text-[14px] font-[500] rounded-lg bg-[#FFF] placeholder:text-[#117C99] focus:border-[#117C99]`}
         />
         {/* <div className={`relative `}>
           <input
