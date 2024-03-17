@@ -11,8 +11,11 @@ import { exampleDataCurrency } from "../../data/Fetching/ExampleData";
 // import { useNavigate } from "react-router-dom";
 // import { useState } from "react";
 function TicketCar(data: TransferOffer) {
-  const durationH = data.duration.split("PT")[1].split("H")[0];
-  const durationM = data.duration.split("PT")[1].split("H")[1].split("M")[0];
+  const durationH = data.duration.split("PT")[1].split("H")[0] || "";
+  const durationM =
+    data.duration.split("PT")[1].split("H")[1].split("M")[0] || "";
+
+  console.log(data);
   // handle payment
   const [dataLoadingState, setDataLoadingState] = useState(false);
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
@@ -37,8 +40,8 @@ function TicketCar(data: TransferOffer) {
           carrierCodeLogo: data.vehicle.imageURL,
           timeGo: data.start.dateTime,
           timeSet: data.end.dateTime,
-          durationH: data.duration.split("PT")[1].split("H")[0],
-          durationM: data.duration.split("PT")[1].split("H")[1].split("M")[0],
+          durationH,
+          durationM,
           isStope: 0,
         }
       )

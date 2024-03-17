@@ -176,9 +176,8 @@ function Navbar() {
           </Link>
         </div>
       </nav>
-
       {/* Mob */}
-      {window.innerWidth < 768 && (
+      {window.innerWidth < 992 && (
         <BottomNavigation
           showLabels
           className={`hidden items-center h-[80px] fixed w-full bottom-0 z-50 justify-between bg-[#FFF]`}
