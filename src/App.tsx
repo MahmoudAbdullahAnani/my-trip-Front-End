@@ -54,34 +54,34 @@ import loadStart from "/public/assets/loadStart.gif";
 const handleSteps =
   window.innerWidth > 1024
     ? [
-        {
-          element: "#intro-element-1",
-          popover: {
-            title: "Home",
-            description: "This is Link Home Page...",
-          },
-        },
-        {
-          element: "#intro-element-2",
-          popover: { title: "Hotel", description: "This is Link Hotel..." },
-        },
-        {
-          element: "#intro-element-3",
-          popover: { title: "Fight", description: "This is Link Fight..." },
-        },
+        // {
+        //   element: "#intro-element-1",
+        //   popover: {
+        //     title: "Home",
+        //     description: "This is Link Home Page...",
+        //   },
+        // },
+        // {
+        //   element: "#intro-element-2",
+        //   popover: { title: "Hotel", description: "This is Link Hotel..." },
+        // },
+        // {
+        //   element: "#intro-element-3",
+        //   popover: { title: "Fight", description: "This is Link Fight..." },
+        // },
       ]
     : [
-        {
-          element: "#intro-element-4",
-          popover: { title: "Toggle", description: "This is Link Toggle..." },
-        },
-        {
-          element: "#intro-element-5",
-          popover: {
-            title: "Full Screen",
-            description: "If you have Full Screen click on this button...",
-          },
-        },
+        // {
+        //   element: "#intro-element-4",
+        //   popover: { title: "Toggle", description: "This is Link Toggle..." },
+        // },
+        // {
+        //   element: "#intro-element-5",
+        //   popover: {
+        //     title: "Full Screen",
+        //     description: "If you have Full Screen click on this button...",
+        //   },
+        // },
       ];
 const driverObj = driver({
   showProgress: true,
