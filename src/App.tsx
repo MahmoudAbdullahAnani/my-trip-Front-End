@@ -1,6 +1,6 @@
 // Importing React Hooke
 // import { useState } from 'react'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // Styles
 import "./App.css";
 // react-router-dom
@@ -18,7 +18,7 @@ import axios from "axios";
 import { addUserLogged } from "./data/Features/LoggedUser";
 import { useRecoilState } from "recoil";
 import isLoading from "./data/RecoilState/Loading";
-import { Loder } from "./components/loder/Loder";
+// import { Loder } from "./components/loder/Loder";
 import {
   // allNotifications,
   // privateNotifications,
@@ -48,7 +48,7 @@ import HotelsChoose from "./pages/Hotels/HotelsChoose";
 import Cars from "./pages/Cars/Cars";
 import SearchCars from "./pages/Cars/SearchCars";
 // import NavTopMobile from "./layout/NavTopMobile";
-
+import loadStart from "/public/assets/loadStart.gif";
 // Handle driver
 
 const handleSteps =
@@ -274,7 +274,11 @@ function App() {
         console.log("PendingFriends ===> ", err);
       });
   };
+  const [timeOutLoading, setTimeOutLoading] = useState(true);
   useEffect(() => {
+    setTimeout(() => {
+      setTimeOutLoading(false);
+    }, 6009);
     const fetchData = async () => {
       await RunDriver();
       const id = await oncData();
@@ -294,16 +298,27 @@ function App() {
 
   if (loading) {
     return (
+      // <div
+      //   className={`z-50 h-[100%] w-full absolute top-0 flex justify-center items-center bg-[#283965]`}
+      // >
       <div
-        className={`z-50 h-[100%] w-full absolute top-0 flex justify-center items-center bg-[#283965]`}
+        className={`flex bg-black z-50 fixed h-[100vh] w-[100%] items-center justify-center `}
       >
-        <Loder />
+        <img src={loadStart} className={``} />
       </div>
+      // </div>
     );
   }
 
   return (
     <>
+      {timeOutLoading && (
+        <div
+          className={`flex bg-black z-50 fixed h-[100vh] w-[100%] items-center justify-center `}
+        >
+          <img src={loadStart} className={``} />
+        </div>
+      )}
       {searchFriends.count > 0 && (
         <div
           onClick={() => setSearchfriends({ friends: [], count: 0 })}
