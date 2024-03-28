@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { MessageStore } from "../data/RecoilState/Chat/Message";
 import { useRecoilState } from "recoil";
+import { arabic_letters } from "./Home/Systems/Notification/NotificationComponent";
 
 interface data {
   firstName: string;
@@ -74,7 +75,18 @@ function ChatSingleUser({
       <div>
         <div>
           {messageData.map((message: Message) => (
-            <div key={`--${Math.random()}--${Math.random()}`}>
+            <div
+              key={`--${Math.random()}--${Math.random()}`}
+              className={`text-${
+                arabic_letters.includes(
+                  message.message.message.message === undefined
+                    ? ""
+                    : message.message.message.message[0]
+                )
+                  ? "end"
+                  : "start"
+              }`}
+            >
               <p>{message.message.message.message}</p>
             </div>
           ))}

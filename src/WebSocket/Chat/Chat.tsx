@@ -10,6 +10,7 @@ import { RootState } from "../../data/store";
 //   message: string;
 // };
 import { io } from "socket.io-client";
+import { arabic_letters } from "../../components/Home/Systems/Notification/NotificationComponent";
 
 interface MessageRes {
   client: string;
@@ -102,9 +103,10 @@ function Chat() {
 
     setValue("");
   };
-
   // Lang
   const { t } = useTranslation();
+  // console.log(messages);
+
   return (
     <div
       className={`fixed bottom-12 right-5 z-50 flex flex-col p-3 ${
@@ -128,7 +130,17 @@ function Chat() {
                 <div>
                   {messages.map((msg) => (
                     <div key={`--${Math.random()}--${Math.random()}`}>
-                      <p>{msg}</p>
+                      <p
+                        className={`text-${
+                          arabic_letters.includes(
+                            msg === undefined ? "" : msg[0]
+                          )
+                            ? "end"
+                            : "start"
+                        }`}
+                      >
+                        {msg}
+                      </p>
                     </div>
                   ))}
                 </div>
