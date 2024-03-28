@@ -100,7 +100,6 @@ function Chat() {
       message: value,
     });
 
-
     setValue("");
   };
 
@@ -108,13 +107,14 @@ function Chat() {
   const { t } = useTranslation();
   return (
     <div
-      className={`fixed bottom-12 right-5 z-50 flex flex-col p-3 ${!toggle &&
-        "items-center"}`}
+      className={`fixed bottom-12 right-5 z-50 flex flex-col p-3 ${
+        !toggle && "items-center"
+      }`}
     >
       {toggle && (
         <>
           <div
-            className={`w-[300px] bg-white p-3 h-[400px] rounded-t-lg overflow-y-auto no-scrollbar`}
+            className={`w-[300px] bg-white p-3 sm:h-[400px] h-[200px] rounded-t-lg overflow-y-auto no-scrollbar`}
           >
             <div
               className={`w-full flex items-center justify-center text-white font-semibold h-[48px] bg-[#117c99c7] rounded-t-lg`}

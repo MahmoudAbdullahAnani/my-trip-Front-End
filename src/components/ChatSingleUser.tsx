@@ -52,7 +52,7 @@ function ChatSingleUser({
 
   return (
     <>
-      <div className={`flex items-center justify-start gap-2  my-2`}>
+      <div className={`flex items-center justify-start gap-2 my-2`}>
         <img
           src={
             avatar || "https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
