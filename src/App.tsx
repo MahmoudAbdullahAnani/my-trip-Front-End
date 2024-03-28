@@ -49,6 +49,7 @@ import Cars from "./pages/Cars/Cars";
 import SearchCars from "./pages/Cars/SearchCars";
 // import NavTopMobile from "./layout/NavTopMobile";
 import loadStart from "/public/assets/loadStart.gif";
+import Chat from "./WebSocket/Chat/Chat";
 // Handle driver
 
 const handleSteps =
@@ -284,6 +285,8 @@ function App() {
       const id = await oncData();
       if (id !== "undefined") {
         getFriends();
+
+        localStorage.setItem("userIdDB", id || "");
       }
       sendCatchData(`${id}`);
     };
@@ -293,8 +296,10 @@ function App() {
   // const [dataSearchState] = useRecoilState(dateSearch);
   const [searchFriends, setSearchfriends] = useRecoilState(SearchFriendsState);
   const [searchUsersState, setSearchUsersState] = useRecoilState(SearchUsers);
-  const [toggleHolderNotifications, setHolderNotificationsToggle] =
-    useRecoilState(HolderNotifications);
+  const [
+    toggleHolderNotifications,
+    setHolderNotificationsToggle,
+  ] = useRecoilState(HolderNotifications);
 
   if (loading) {
     return (
@@ -312,6 +317,8 @@ function App() {
 
   return (
     <>
+      {stateUserData.role === "user" && <Chat />}
+
       {timeOutLoading && (
         <div
           className={`flex bg-black z-50 fixed h-[100vh] w-[100%] items-center justify-center `}

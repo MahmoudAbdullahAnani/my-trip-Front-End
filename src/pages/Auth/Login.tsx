@@ -156,6 +156,7 @@ function OAuth() {
         setOpenVerifyPageState(false);
         setTokenJWT(response.data.token);
         dispatch(addUserLogged(response.data?.data));
+        localStorage.setItem("userIdDB", response.data?.data._id || "");
 
         setReRenderDataApp(false);
         if (rememberMe) {

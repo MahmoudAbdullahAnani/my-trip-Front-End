@@ -34,7 +34,6 @@ import "./i18n.js";
 import "chart.js/auto";
 // import "react-chartjs-2/dist/react-chartjs-2.css";
 
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -44,6 +43,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             clientId={import.meta.env.VITE_PUBLIC_GOOGLE_AUTH_CLIENT_ID}
           >
             <ToastContainer />
+
             <Navbar />
             <App />
             <Footer />

@@ -22,6 +22,8 @@ const initialState = {
   country: "",
   nationality: "",
   gender: "",
+  chatSocketId: "",
+  chatSocketAdminId: "",
 };
 
 export const isLoggedUser = createSlice({
@@ -50,6 +52,8 @@ export const isLoggedUser = createSlice({
       state.country = "";
       state.nationality = "";
       state.gender = "";
+      state.chatSocketId= "";
+      state.chatSocketAdminId= "";
       return state;
     },
   },
