@@ -30,11 +30,11 @@ interface Message {
 function ChatSingleUser({
   // messages,
   avatar,
-  // chatSocketId,
+  chatSocketId,
   email,
   firstName,
   lastName,
-  // userId,
+  userId,
 }: data) {
   // console.log(messages, avatar, chatSocketId, email, firstName, lastName);
 
@@ -43,11 +43,12 @@ function ChatSingleUser({
 
   useEffect(() => {}, [messagesState]);
   // console.log(messagesState, "messagesState");
-  // const messageData = messagesState.filter(
-  //   (message) =>
-  //     message.message.userId === userId &&
-  //     message.message.userId !== localStorage.getItem("userIdDB")
-  // );
+  const messageData = messagesState.filter(
+    (message) =>
+      message.message.message.SenderNumber === chatSocketId ||
+      message.message.userId === userId
+  );
+  // console.log(messagesState);
   // console.log(messageData);
 
   return (
@@ -72,7 +73,7 @@ function ChatSingleUser({
       </div>
       <div>
         <div>
-          {messagesState.map((message: Message) => (
+          {messageData.map((message: Message) => (
             <div key={`--${Math.random()}--${Math.random()}`}>
               <p>{message.message.message.message}</p>
             </div>

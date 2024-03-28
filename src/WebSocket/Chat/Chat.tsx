@@ -114,14 +114,14 @@ function Chat() {
       {toggle && (
         <>
           <div
-            className={`w-[300px] bg-white p-3 sm:h-[400px] h-[200px] rounded-t-lg overflow-y-auto no-scrollbar`}
+            className={`shadow-lg border border-b-0 border-[#117c99c7] w-[300px] bg-white p-3 sm:h-[400px] h-[200px] rounded-t-lg overflow-y-auto no-scrollbar`}
           >
             <div
-              className={`w-full flex items-center justify-center text-white font-semibold h-[48px] bg-[#117c99c7] rounded-t-lg`}
+              className={`fixed w-[276px] flex items-center justify-center text-white font-semibold h-[48px] bg-[#117c99c7] rounded-t-lg`}
             >
               {t("تواصل معنا الان")}
             </div>
-            <div>
+            <div className={`mt-[48px]`}>
               {messages.length === 0 ? (
                 <div>{t("لا توجد رسائل")}</div>
               ) : (
@@ -136,7 +136,7 @@ function Chat() {
             </div>
           </div>
           <div
-            className={`flex items-center justify-center gap-3 p-2 relative bg-white bottom-0`}
+            className={`border shadow-lg border-y-0 border-[#117c99c7] flex items-center justify-center gap-3 p-2 relative bg-white bottom-0`}
           >
             <input
               ref={inputRef}
@@ -162,7 +162,7 @@ function Chat() {
             setToggle(!toggle);
           }
         }}
-        className={`text-white bg-[#117C99] p-2  ${
+        className={`shadow-xl text-white bg-[#117C99] p-2  ${
           toggle ? "rounded-b-full" : "rounded-full"
         }`}
         type="button"
