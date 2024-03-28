@@ -307,7 +307,7 @@ function App() {
       //   className={`z-50 h-[100%] w-full absolute top-0 flex justify-center items-center bg-[#283965]`}
       // >
       <div
-        className={`flex bg-black z-50 fixed h-[100vh] w-[100%] items-center justify-center `}
+        className={`flex bg-black z-50 fixed top-0 h-[100vh] w-[100%] items-center justify-center `}
       >
         <img src={loadStart} className={``} />
       </div>
