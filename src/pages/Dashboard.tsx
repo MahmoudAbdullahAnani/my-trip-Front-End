@@ -9,7 +9,7 @@ import DashboardHotels from "./Hotels/DashboardHotels";
 import DashboardCars from "./Cars/DashboardCars";
 import axios from "axios";
 import MainChartsTop from "../components/Dashboard/MainChartsTop";
-import ChatAdmins from "../WebSocket/Chat/ChatAdmins";
+// import ChatAdmins from "../WebSocket/Chat/ChatAdmins";
 
 function Dashboard() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -174,7 +174,7 @@ function Dashboard() {
           // @ts-ignore
           cashData={cashData}
         >
-          <ChatAdmins />
+          {/* <ChatAdmins /> */}
           {typeDashboardView === "trips" && (
             <DashboardTrips
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
