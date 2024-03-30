@@ -169,10 +169,13 @@ function ChatAdmins() {
     (message) => message.message.userId !== localStorage.getItem("userIdDB")
   );
   return (
-    <div
+    <form
       className={`fixed bottom-12 right-5 z-50 flex flex-col no-scrollbar p-3 ${
         !toggle && "items-center"
-      }`}
+        }`}
+         onSubmit={(e) => {
+        e.preventDefault();
+      }}
     >
       {toggle && (
         <>
@@ -306,7 +309,7 @@ function ChatAdmins() {
       >
         <ChatIcon />
       </button>
-    </div>
+    </form>
   );
 }
 

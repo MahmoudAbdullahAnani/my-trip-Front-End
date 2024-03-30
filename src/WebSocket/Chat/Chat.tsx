@@ -112,6 +112,9 @@ function Chat() {
       className={`fixed bottom-12 right-5 z-50 flex flex-col p-3 ${
         !toggle && "items-center"
       }`}
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
     >
       {toggle && (
         <>
