@@ -49,7 +49,7 @@ import Cars from "./pages/Cars/Cars";
 import SearchCars from "./pages/Cars/SearchCars";
 // import NavTopMobile from "./layout/NavTopMobile";
 import loadStart from "/public/assets/loadStart.gif";
-// import Chat from "./WebSocket/Chat/Chat";
+import Chat from "./WebSocket/Chat/Chat";
 // Handle driver
 
 const handleSteps =
@@ -317,7 +317,7 @@ function App() {
 
   return (
     <>
-      {/* {stateUserData.role === "user" && <Chat />} */}
+      {stateUserData.role === "user" && <Chat />}
 
       {timeOutLoading && (
         <div
