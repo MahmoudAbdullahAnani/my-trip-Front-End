@@ -188,14 +188,14 @@ function ChatAdmins() {
               } text-white font-semibold h-[48px] no-scrollbar bg-[#117c99c7] rounded-t-lg`}
             >
               {singleUserMessageView && (
-                <button
+                <div
                   onClick={() =>
                     setSingleUserMessageView(!singleUserMessageView)
                   }
                   className={` p-2 bg-[#1f4d5a42] hover:bg-[#1f4d5a89]  rounded-lg `}
                 >
                   <ArrowBackIcon />
-                </button>
+                </div>
               )}
               <div>{t("تواصل معنا الان")}</div>
             </div>
@@ -296,18 +296,18 @@ function ChatAdmins() {
           )}
         </>
       )}
-      <div
+      <button
         onClick={() => {
           if (stateUserData._id !== "") {
             setToggle(!toggle);
           }
         }}
-        className={`text-white bg-[#117C99] p-2 cursor-pointer ${
+        className={`text-white bg-[#117C99] p-2  ${
           toggle ? "rounded-b-full" : "rounded-full"
         }`}
       >
         <ChatIcon />
-      </div>
+      </button>
     </form>
   );
 }
