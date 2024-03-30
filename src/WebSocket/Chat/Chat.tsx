@@ -108,7 +108,7 @@ function Chat() {
   // console.log(messages);
 
   return (
-    <div
+    <form
       className={`fixed bottom-12 right-5 z-50 flex flex-col p-3 ${
         !toggle && "items-center"
       }`}
@@ -169,7 +169,8 @@ function Chat() {
         </>
       )}
       <button
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           if (stateUserData._id !== "") {
             setToggle(!toggle);
           }
@@ -181,7 +182,7 @@ function Chat() {
       >
         <ChatIcon />
       </button>
-    </div>
+    </form>
   );
 }
 

@@ -76,13 +76,8 @@ function ChatAdmins() {
     socket.on("message", async (message: MessageRes) => {
       // console.log("userId event received!");
       // console.log("message1==> ", message);
-      const {
-        avatar,
-        firstName,
-        lastName,
-        email,
-        chatSocketId,
-      } = await getUserData(message.userId);
+      const { avatar, firstName, lastName, email, chatSocketId } =
+        await getUserData(message.userId);
       // console.log({ data });
 
       setMessages((prev) => [
@@ -121,13 +116,8 @@ function ChatAdmins() {
     );
     socket.on("message", async (message: MessageRes) => {
       console.log("message.client==>", message);
-      const {
-        avatar,
-        firstName,
-        lastName,
-        email,
-        chatSocketId,
-      } = await getUserData(message.userId);
+      const { avatar, firstName, lastName, email, chatSocketId } =
+        await getUserData(message.userId);
       // console.log({ data });
 
       setMessages((prev) => [
@@ -187,7 +177,7 @@ function ChatAdmins() {
       {toggle && (
         <>
           <div
-            className={`w-[300px] bg-white  p-3 sm:h-[400px] h-[200px]  rounded-t-lg overflow-y-auto no-scrollbar`}
+            className={`shadow-lg border border-b-0 border-[#117c99c7] w-[300px] bg-white  p-3 sm:h-[400px] h-[200px]  rounded-t-lg overflow-y-auto no-scrollbar`}
           >
             <div
               className={`w-full flex items-center justify-${
@@ -303,7 +293,8 @@ function ChatAdmins() {
         </>
       )}
       <button
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           if (stateUserData._id !== "") {
             setToggle(!toggle);
           }
