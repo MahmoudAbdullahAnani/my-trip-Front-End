@@ -172,8 +172,8 @@ function ChatAdmins() {
     <form
       className={`fixed bottom-12 right-5 z-50 flex flex-col no-scrollbar p-3 ${
         !toggle && "items-center"
-        }`}
-         onSubmit={(e) => {
+      }`}
+      onSubmit={(e) => {
         e.preventDefault();
       }}
     >
@@ -286,6 +286,7 @@ function ChatAdmins() {
                 className={`bg-[#117c994d] border-${borderValidation} border-red-400 focus-visible:outline-none w-[200px] p-2 rounded-lg`}
               />
               <button
+                type="submit"
                 onClick={onSubmit}
                 className={`text-[#117c99ee] hover:text-[#117c99c5] p-2 rounded-lg bg-[#117c9920] hover:bg-[#117c994d] `}
               >
@@ -296,8 +297,7 @@ function ChatAdmins() {
         </>
       )}
       <button
-        onClick={(e) => {
-          e.preventDefault();
+        onClick={() => {
           if (stateUserData._id !== "") {
             setToggle(!toggle);
           }
@@ -305,7 +305,6 @@ function ChatAdmins() {
         className={`text-white bg-[#117C99] p-2  ${
           toggle ? "rounded-b-full" : "rounded-full"
         }`}
-        type="button"
       >
         <ChatIcon />
       </button>
