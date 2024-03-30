@@ -274,7 +274,7 @@ function ChatAdmins() {
           </div>
           {singleUserMessageView && (
             <div
-              className={`flex items-center justify-center gap-3 p-2 relative bg-white bottom-0`}
+              className={`border shadow-lg border-y-0 border-[#117c99c7] flex items-center justify-center gap-3 p-2 relative bg-white bottom-0`}
             >
               <input
                 ref={inputRef}
@@ -296,18 +296,18 @@ function ChatAdmins() {
           )}
         </>
       )}
-      <button
+      <div
         onClick={() => {
           if (stateUserData._id !== "") {
             setToggle(!toggle);
           }
         }}
-        className={`text-white bg-[#117C99] p-2  ${
+        className={`text-white bg-[#117C99] p-2 cursor-pointer ${
           toggle ? "rounded-b-full" : "rounded-full"
         }`}
       >
         <ChatIcon />
-      </button>
+      </div>
     </form>
   );
 }
