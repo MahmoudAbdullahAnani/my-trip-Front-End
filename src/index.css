@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'node_modules/react-modal-video/scss/modal-video.scss';
 
 /* @import url('https://fonts.cdnfonts.com/css/lama-sans'); */
 
@@ -511,3 +512,4 @@ ul li:has(.inputPay:checked) {
   -ms-border-radius: 16px !important;
   -o-border-radius: 16px !important;
 }
+

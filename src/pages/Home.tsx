@@ -7,15 +7,16 @@ import { useEffect } from "react";
 import AutoScroll from "../components/Home/Systems/AutoScroll";
 import { typeSystem } from "../data/RecoilState/FormHandling";
 import { useRecoilState } from "recoil";
+import Advantages from "../sections/Advantages";
 
 function Home() {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
-  const [,setTypeSystemState] = useRecoilState(typeSystem);
-useEffect(()=>{
-  setTypeSystemState("air");
-},[])
+  const [, setTypeSystemState] = useRecoilState(typeSystem);
+  useEffect(() => {
+    setTypeSystemState("air");
+  }, []);
   return (
     <>
       <section>
@@ -24,8 +25,11 @@ useEffect(()=>{
           <AutoScroll />
         </MoveBgHeroSection>
       </section>
-      <OffersSection />
-      <PopularDestinations />
+      <section className={`px-[16px] lg:px-[96px]`}>
+        <OffersSection />
+        <PopularDestinations />
+        <Advantages />
+      </section>
       <DestinationSection />
     </>
   );

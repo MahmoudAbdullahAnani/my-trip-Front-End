@@ -71,9 +71,7 @@ function PopularDestinations() {
   return (
     <section
       className={`flex flex-col gap-[34px] mt-[107px] ${
-        i18n.language === "ar"
-          ? "lg:pe-[96px] pe-[16px]"
-          : "lg:ps-[96px] ps-[16px]"
+        i18n.language === "ar" ? "" : ""
       }  `}
     >
       <h2

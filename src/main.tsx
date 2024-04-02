@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+// import "./video.sass";
+import "react-modal-video/scss/modal-video.scss";
 import { BrowserRouter } from "react-router-dom";
 import "driver.js/dist/driver.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -32,6 +34,7 @@ import Footer from "./layout/Footer.js";
 import "./i18n.js";
 
 import "chart.js/auto";
+import ScrollToTop from "./ScrollToTop.tsx";
 // import "react-chartjs-2/dist/react-chartjs-2.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -43,7 +46,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             clientId={import.meta.env.VITE_PUBLIC_GOOGLE_AUTH_CLIENT_ID}
           >
             <ToastContainer />
-
+            <ScrollToTop />
             <Navbar />
             <App />
             <Footer />
