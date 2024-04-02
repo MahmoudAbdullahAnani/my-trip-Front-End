@@ -9,7 +9,7 @@ import DashboardHotels from "./Hotels/DashboardHotels";
 import DashboardCars from "./Cars/DashboardCars";
 import axios from "axios";
 import MainChartsTop from "../components/Dashboard/MainChartsTop";
-import ChatAdmins from "../WebSocket/Chat/ChatAdmins";
+// import ChatAdmins from "../WebSocket/Chat/ChatAdmins";
 
 function Dashboard() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -133,9 +133,9 @@ function Dashboard() {
                   handleClose();
                   setTypeDashboardView("trips");
                 }}
-                className={`text-[20px] font-semibold ${typeDashboardView ===
-                  "trips" &&
-                  "bg-[#3990a8] text-white"} rounded-t-[8px] hover:bg-[#3990a8] hover:text-white `}
+                className={`text-[20px] font-semibold ${
+                  typeDashboardView === "trips" && "bg-[#3990a8] text-white"
+                } rounded-t-[8px] hover:bg-[#3990a8] hover:text-white `}
               >
                 {t("طيران")}
               </button>
@@ -144,9 +144,9 @@ function Dashboard() {
                   handleClose();
                   setTypeDashboardView("hotels");
                 }}
-                className={`text-[20px] font-semibold ${typeDashboardView ===
-                  "hotels" &&
-                  "bg-[#3990a8] text-white"} hover:bg-[#3990a8] hover:text-white `}
+                className={`text-[20px] font-semibold ${
+                  typeDashboardView === "hotels" && "bg-[#3990a8] text-white"
+                } hover:bg-[#3990a8] hover:text-white `}
               >
                 {t("فنادق")}
               </button>
@@ -155,9 +155,9 @@ function Dashboard() {
                   handleClose();
                   setTypeDashboardView("cars");
                 }}
-                className={`text-[20px] font-semibold rounded-b-[8px] ${typeDashboardView ===
-                  "cars" &&
-                  "bg-[#3990a8] text-white"} hover:bg-[#3990a8] hover:text-white `}
+                className={`text-[20px] font-semibold rounded-b-[8px] ${
+                  typeDashboardView === "cars" && "bg-[#3990a8] text-white"
+                } hover:bg-[#3990a8] hover:text-white `}
               >
                 {t("توصيل")}
               </button>
@@ -174,7 +174,7 @@ function Dashboard() {
           // @ts-ignore
           cashData={cashData}
         >
-          <ChatAdmins /> 
+          {/* <ChatAdmins />  */}
           {typeDashboardView === "trips" && (
             <DashboardTrips
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
