@@ -70,7 +70,7 @@ function PopularDestinations() {
 
   return (
     <section
-      className={`flex flex-col gap-[34px] mt-[107px] ${
+      className={`pe-[16px] lg:pe-[96px] py-16 md:py-20 lg:py-28 flex flex-col gap-[34px] ${
         i18n.language === "ar" ? "" : ""
       }  `}
     >

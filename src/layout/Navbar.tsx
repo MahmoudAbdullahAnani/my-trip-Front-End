@@ -67,7 +67,7 @@ function Navbar() {
               : ""
           } top-0 w-full  p-0 px-[96px] ${
             pathname !== "/search" && scrollY > innerHeight
-              ? "backdrop-blur-md"
+              ? "bg-[#0000004c] "
               : ""
           }  ${
             pathname === "/search" ||

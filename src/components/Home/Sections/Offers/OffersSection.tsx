@@ -105,9 +105,12 @@ function OffersSection() {
 
   return (
     <section
-      className={`flex flex-col gap-[34px]  mt-[100px]`}
+      className={`px-[16px] lg:px-[96px] py-16 md:py-20 lg:py-28  flex flex-col gap-[34px]  `}
     >
-      <h2 dir={i18n.language === "ar" ? "rtl" : "ltr"} className={`text-[#000] text-[24px] font-[700] `} >
+      <h2
+        dir={i18n.language === "ar" ? "rtl" : "ltr"}
+        className={`text-[#000] text-[24px] font-[700] `}
+      >
         {t("عروض")}
       </h2>
       <div

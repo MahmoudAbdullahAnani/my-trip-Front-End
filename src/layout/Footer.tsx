@@ -169,7 +169,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="bg-primary/10 py-8  text-[#FFF] bg-[#117c99b6]">
+      <div className="bg-primary/10 py-8 lg:pb-8 pb-20  text-[#FFF] bg-[#117c99b6]">
         <div className="container">
           <p className="text-center text-base text-body-color dark:text-white">
             © 2022 - {new Date().getFullYear()} كل الحقوق محفوظة

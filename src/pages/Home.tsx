@@ -8,6 +8,10 @@ import AutoScroll from "../components/Home/Systems/AutoScroll";
 import { typeSystem } from "../data/RecoilState/FormHandling";
 import { useRecoilState } from "recoil";
 import Advantages from "../sections/Advantages";
+import Testimonials from "../sections/Testimonials/Testimonials";
+import Contact from "../sections/Contact/Contact";
+import Video from "../sections/Video/Video";
+import AboutHome from "../sections/About/AboutHome";
 
 function Home() {
   useEffect(() => {
@@ -25,10 +29,15 @@ function Home() {
           <AutoScroll />
         </MoveBgHeroSection>
       </section>
-      <section className={`px-[16px] lg:px-[96px]`}>
+      <section className={``}>
+        <Video />
         <OffersSection />
+
         <PopularDestinations />
         <Advantages />
+        <AboutHome />
+        <Testimonials />
+        <Contact />
       </section>
       <DestinationSection />
     </>

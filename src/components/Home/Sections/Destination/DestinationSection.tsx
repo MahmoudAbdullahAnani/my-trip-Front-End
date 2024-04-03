@@ -1,7 +1,7 @@
 function DestinationSection() {
   return (
     <section
-      className={`lg:mt-[337px] mt-[200px] relative flex justify-center items-center h-[531px] bg-no-repeat bg-cover bg-[url('/public/assets/DestinationSection/DestinationSection-1.png')]`}
+      className={` relative flex justify-center items-center h-[531px] bg-no-repeat bg-cover bg-[url('/public/assets/DestinationSection/DestinationSection-1.png')]`}
     >
       <div
         style={{
