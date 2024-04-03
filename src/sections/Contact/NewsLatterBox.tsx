@@ -1,4 +1,59 @@
+import axios from "axios";
+import { useRef, useState } from "react";
+import { toast } from "react-toastify";
+
 const NewsLatterBox = () => {
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [borderName, setBorderName] = useState("0");
+  const [borderEmail, setBorderEmail] = useState("0");
+  const onSubmit = async (e: Event) => {
+    e.preventDefault();
+    if (name.length < 3) {
+      setBorderName("2");
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      nameRef.current?.focus();
+      return toast.error("Name must be at least 3 characters");
+    }
+    if (email.length < 11) {
+      setBorderEmail("2");
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      emailRef.current?.focus();
+      return toast.error("Email Not Valid");
+    }
+    // send
+
+    await axios
+      .post(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/sub`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/sub`,
+        {
+          name,
+          email,
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        setBorderEmail("0");
+        setBorderName("0");
+        setEmail("");
+        setName("");
+        toast.success(res.data.message);
+      })
+      .catch((err) => {
+        // setErrorGender(err);
+        typeof err.response.data.message !== "string" &&
+          toast.error(err.response.data.message[0]);
+        typeof err.response.data.message === "string" &&
+          toast.error(err.response.data.message);
+        console.log("Sub Msg ===> ", err.response.data.message);
+      });
+  };
   return (
     <div
       className="wow fadeInUp relative z-10 rounded-md bg-primary/[3%] p-8 dark:bg-primary/10 sm:p-11 lg:p-8 xl:p-11"
@@ -15,18 +70,33 @@ const NewsLatterBox = () => {
         <input
           type="text"
           name="name"
+          ref={nameRef}
+          value={name}
+          onChange={(e) => {
+            setBorderName("0");
+            setName(e.target.value);
+          }}
           placeholder="Enter your name"
-          className="mb-4 w-full rounded-md border border-body-color border-opacity-10 py-3 px-6 text-base font-medium text-body-color placeholder-body-color outline-none focus:border-primary focus:border-opacity-100 focus-visible:shadow-none dark:border-white dark:border-opacity-10 dark:bg-[#242B51] focus:dark:border-opacity-50"
+          className={`mb-4 w-full rounded-md border-${borderName}  border-red-900  py-3 px-6 text-base font-medium text-body-color placeholder-body-color outline-none  focus-visible:outline-none focus-visible:shadow-none dark:bg-[#242B51]  `}
         />
         <input
+          value={email}
+          onChange={(e) => {
+            setBorderEmail("0");
+            setEmail(e.target.value);
+          }}
           type="email"
+          ref={emailRef}
           name="email"
           placeholder="Enter your email"
-          className="mb-4 w-full rounded-md border border-body-color border-opacity-10 py-3 px-6 text-base font-medium text-body-color placeholder-body-color outline-none focus:border-primary focus:border-opacity-100 focus-visible:shadow-none dark:border-white dark:border-opacity-10 dark:bg-[#242B51] focus:dark:border-opacity-50"
+          className={`mb-4 w-full rounded-md border-${borderEmail} border-red-900 py-3 px-6 text-base font-medium text-body-color placeholder-body-color outline-none focus:border-primary focus:border-opacity-100 focus-visible:shadow-none dark:bg-[#242B51] `}
         />
         <input
           type="submit"
           value="Subscribe"
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          onClick={onSubmit}
           className="duration-80 mb-4 w-full cursor-pointer rounded-md border border-transparent bg-primary py-3 px-6 text-center text-base font-medium text-black outline-none transition ease-in-out hover:bg-opacity-80 hover:shadow-signUp focus-visible:shadow-none"
         />
         <p className="text-center text-base font-medium leading-relaxed text-body-color">
