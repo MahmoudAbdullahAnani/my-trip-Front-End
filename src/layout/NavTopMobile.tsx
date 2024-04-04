@@ -165,7 +165,7 @@ function NavTopMobile() {
                     onClick={() => setToggle(!toggle)}
                     to={`/contact-us`}
                     className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
-                  >
+                >
                     {t("اتصل بنا")}
                   </Link>
                 </li>
