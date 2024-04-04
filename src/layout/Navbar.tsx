@@ -84,7 +84,7 @@ function Navbar() {
           } `}
         >
           {/* OAuth */}
-          <div className={`flex items-center pt-[32px] text-white`}>
+          <div className={`flex items-center  text-white`}>
             {localStorage.getItem("token") || stateUserData._id.length > 0 ? (
               <div className={``}>
                 <MainOAuthNavbar />
