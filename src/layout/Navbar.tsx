@@ -66,7 +66,7 @@ function Navbar() {
               ? "fixed"
               : ""
           } top-0 w-full  p-0 px-[96px] ${
-            pathname !== "/search" && scrollY > innerHeight
+            pathname !== "/search" && scrollY > innerHeight - 600
               ? "bg-[#0000004c] "
               : ""
           }  ${

@@ -8,32 +8,31 @@ const Video = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <section className="relative z-10 px-[16px] lg:px-[96px] py-16 md:py-20 lg:py-28  bg-slate-200">
+    <section className="relative px-[16px] lg:px-[96px] py-16 md:py-20 lg:py-28 bg-slate-200">
       <div className="container" dir="rtl">
         <div className="container flex flex-col items-center gap-3">
           <div
             className="wow fadeInUp max-w-[570px] mb-[100px] w-full mx-auto text-center"
             data-wow-delay=".1s"
           >
-            <h2 className="mb-4 text-3xl font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px]">
-              نحن مستعدون للمساعدة.
+            <h2 className="mb-4 text-3xl font-[900] !leading-tight text-[#117C99] sm:text-4xl md:text-[48px]">
+              نبذة عن أجواء
             </h2>
-            <p className="text-base !leading-relaxed text-body-color md:text-lg">
-              هناك العديد من التغييرات في مقاطع لوريم إيبسوم المتاحة، ولكن
-              الغالبية تعرضت للتعديل بشكل ما.
+            <p className="text-base !leading-relaxed text-[#000000] md:text-lg">
+              هذا الفيديوا يوضح ما هي أجواء و عن المميزات التي تقدمها
             </p>
           </div>
         </div>
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <div
-              className="wow fadeInUp mx-auto max-w-[770px] overflow-hidden rounded-md"
+              className="wow fadeInUp mx-auto max-w-[770px] overflow-hidden rounded-lg"
               data-wow-delay=".15s"
             >
               <div className="relative aspect-[77/40] items-center justify-center">
                 <img
                   src={img1}
-                  alt="video image h-full"
+                  alt="video image h-full "
                   style={{ width: "100%" }}
                 />
                 <div className="absolute top-0 right-0 flex h-full w-full items-center justify-center">
