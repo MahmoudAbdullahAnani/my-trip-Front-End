@@ -25,7 +25,6 @@ import { useTranslation } from "react-i18next";
 import LangBtn from "../components/LangBtn";
 import NotificationComponent from "../components/Home/Systems/Notification/NotificationComponent";
 function NavTopMobile() {
-  
   // const [allNotificationsState] = useRecoilState(allNotifications);
   // console.log("allNotificationsState===> ", allNotificationsState);
   // console.log("publicNotifications===> ", publicNotifications);
@@ -159,6 +158,24 @@ function NavTopMobile() {
                     className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
                   >
                     {t("رحلتي")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={() => setToggle(!toggle)}
+                    to={`/contact-us`}
+                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
+                  >
+                    {t("اتصل بنا")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={() => setToggle(!toggle)}
+                    to={`/about`}
+                    className="block text-end px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#005A6C4D] "
+                  >
+                    {t("من نحن")}
                   </Link>
                 </li>
               </ul>
