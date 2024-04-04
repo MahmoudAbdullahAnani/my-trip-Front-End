@@ -10,10 +10,12 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import ModalVideo from "react-modal-video";
+import { useTranslation } from "react-i18next";
 const Footer = () => {
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
   const [isOpenMobile, setOpenMobile] = useState(false);
   const [isOpenPc, setOpenPC] = useState(false);
+  const { t, i18n } = useTranslation();
   return (
     <>
       <div className="">
@@ -45,10 +47,9 @@ const Footer = () => {
                   <img src={logo} alt="logo" className="max-w-full" />
                 </a>
                 <p className="mb-7 text-base text-body-color dark:text-dark-6">
-                  نحن نفخر بتقديم خدماتنا ذات المستوى العالمي التي تضمن لك تجربة
-                  سفر مميزة ومريحة. سواء كنت تبحث عن تنظيم عطلة عائلية ممتعة، أو
-                  رحلة عمل فعّالة، فإننا هنا لنجعل كل تفاصيل رحلتك تسير بسلاسة
-                  وبأفضل الأسعار.
+                  {t(
+                    "نحن نفخر بتقديم خدماتنا ذات المستوى العالمي التي تضمن لك تجربة سفر مميزة ومريحة. سواء كنت تبحث عن تنظيم عطلة عائلية ممتعة، أو رحلة عمل فعّالة، فإننا هنا لنجعل كل تفاصيل رحلتك تسير بسلاسة وبأفضل الأسعار."
+                  )}
                 </p>
                 <p className="flex items-center text-sm font-medium text-dark dark:text-white">
                   <span className="mr-3 text-primary">
@@ -91,35 +92,35 @@ const Footer = () => {
             </div>
 
             {stateUserData._id !== "" && (
-              <LinkGroup header="موارد">
-                <NavLink link="/profile" label="الملف الشخصي" />
-                <NavLink link="/profile/friends" label="الاصدقاء" />
+              <LinkGroup header={t("موارد")}>
+                <NavLink link="/profile" label={t("الملف الشخصي")} />
+                <NavLink link="/profile/friends" label={t("الاصدقاء")} />
                 {stateUserData.role === "user" && (
-                  <NavLink link="/profile/trips" label="رحلاتي" />
+                  <NavLink link="/profile/trips" label={t("رحلاتي")} />
                 )}
                 {stateUserData.role === "admin" && (
-                  <NavLink link="/dashboard" label="لوحة التحكم" />
+                  <NavLink link="/dashboard" label={t("لوحة التحكم")} />
                 )}
               </LinkGroup>
             )}
-            <LinkGroup header="شركة">
-              <NavLink link="/#" label="حول اجواء" />
-              <NavLink link="tel:+201028876202" label="اتصل بالدعم" />
+            <LinkGroup header={t("شركة")}>
+              <NavLink link="/#" label={t("حول اجواء")} />
+              <NavLink link="tel:+201028876202" label={t("اتصل بالدعم")} />
             </LinkGroup>
-            <LinkGroup header="روابط سريعة">
+            <LinkGroup header={t("روابط سريعة")}>
               <NavLink
                 link="https://api.whatsapp.com/send?phone=201028876202"
-                label="دعم متميز"
+                label={t("دعم متميز")}
               />
-              <NavLink link="/#" label="خدماتنا" />
+              <NavLink link="/#" label={t("خدماتنا")} />
               {/* <NavLink link="/#" label="طريقة تحميل التطبيق علي الكمبيوتر" />
               <NavLink link="/#" label="طريقة تحميل التطبيق علي الجوال" /> */}
               <div className="">
                 <button className="" onClick={() => setOpenPC(true)}>
-                  طريقة تحميل التطبيق علي الكمبيوتر
+                  {t("طريقة تحميل التطبيق علي الكمبيوتر")}
                 </button>
                 <button className="" onClick={() => setOpenMobile(true)}>
-                  طريقة تحميل التطبيق علي الجوال
+                  {t("طريقة تحميل التطبيق علي الجوال")}
                 </button>
               </div>
             </LinkGroup>
@@ -127,7 +128,7 @@ const Footer = () => {
             <div className="w-full px-4 sm:w-1/2 lg:w-3/12">
               <div className="mb-10 w-full">
                 <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
-                  اتبعنا
+                  {t("اتبعنا")}
                 </h4>
                 <div className="flex gap-3 items-center">
                   <Link
@@ -171,8 +172,11 @@ const Footer = () => {
       </footer>
       <div className="bg-primary/10 py-8 lg:pb-8 pb-20  text-[#FFF] bg-[#117c99b6]">
         <div className="container">
-          <p className="text-center text-base text-body-color dark:text-white">
-            © 2022 - {new Date().getFullYear()} كل الحقوق محفوظة
+          <p
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
+            className="text-center text-base text-body-color dark:text-white"
+          >
+            © 2022 - {new Date().getFullYear()} {t("كل الحقوق محفوظة")}
           </p>
         </div>
       </div>

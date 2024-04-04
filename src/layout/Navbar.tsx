@@ -23,6 +23,7 @@ import { useTranslation } from "react-i18next";
 import LangBtn from "../components/LangBtn";
 import { typeTravel } from "../data/RecoilState/FormHandling";
 import BottomNavigation from "@mui/material/BottomNavigation";
+import Dropdown from "../components/Dropdown";
 // import { typeSystem } from "../data/RecoilState/FormHandling";
 function Navbar() {
   const [value, setValue] = useState(0);
@@ -116,13 +117,9 @@ function Navbar() {
             className={`flex mx-auto lg:gap-[28px] pt-[32px] gap-[40px]`}
             dir={i18n.language !== "ar" ? "rtl" : "ltr"}
           >
+            <Dropdown />
+
             {[
-              {
-                id: 4,
-                title: "الخطط",
-                href: "/plans",
-                driver: "intro-element-4",
-              },
               {
                 id: 3,
                 title: "توصيل",
@@ -186,6 +183,8 @@ function Navbar() {
             setValue(newValue);
           }}
         >
+          {/* <Dropdown /> */}
+
           {[
             {
               id: 4,
@@ -308,27 +307,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-/*
-
-${
-                    pathname !== "/dashboard" &&
-                    pathname !== "/search" &&
-                    pathname !== "/airData" &&
-                    pathname !== "/airPay" &&
-                    pathname !== "/profile/friends" &&
-                    pathname !== "/profile/trips" &&
-                    pathname !== "/profile"
-                      ? href === pathname
-                        ? "text-[#117C99]"
-                        : "text-[#FFF]"
-                      : typeSystemSearchState === "airline" && title === "طيران"
-                      ? "text-[#117C99]"
-                      : typeSystemSearchState === "hotels" && title === "فنادق"
-                      ? "text-[#117C99]"
-                      : typeSystemSearchState === "delivery" &&
-                        title === "توصيل"
-                      ? "text-[#117C99]"
-                      : "text-[#656565]"
-                  }
-*/

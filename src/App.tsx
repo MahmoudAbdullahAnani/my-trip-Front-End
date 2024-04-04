@@ -49,6 +49,8 @@ import Cars from "./pages/Cars/Cars";
 import SearchCars from "./pages/Cars/SearchCars";
 // import NavTopMobile from "./layout/NavTopMobile";
 import loadStart from "/public/assets/loadStart.gif";
+import About from "./pages/About/About";
+import ContactUs from "./pages/ContactUs/ContactUs";
 // import Chat from "./WebSocket/Chat/Chat";
 // Handle driver
 
@@ -296,10 +298,8 @@ function App() {
   // const [dataSearchState] = useRecoilState(dateSearch);
   const [searchFriends, setSearchfriends] = useRecoilState(SearchFriendsState);
   const [searchUsersState, setSearchUsersState] = useRecoilState(SearchUsers);
-  const [
-    toggleHolderNotifications,
-    setHolderNotificationsToggle,
-  ] = useRecoilState(HolderNotifications);
+  const [toggleHolderNotifications, setHolderNotificationsToggle] =
+    useRecoilState(HolderNotifications);
 
   if (loading) {
     return (
@@ -382,6 +382,11 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/friends" element={<Friends />} />
         <Route path="/profile/trips" element={<TripProfile />} />
+
+        {/* About */}
+        <Route path="/about" element={<About />} />
+        {/* Contact-us */}
+        <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
     </>
   );
