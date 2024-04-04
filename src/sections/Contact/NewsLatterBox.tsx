@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
 const NewsLatterBox = () => {
@@ -7,23 +8,25 @@ const NewsLatterBox = () => {
   const emailRef = useRef(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [borderName, setBorderName] = useState("0");
-  const [borderEmail, setBorderEmail] = useState("0");
+  const [borderName, setBorderName] = useState("117C99");
+  const [borderEmail, setBorderEmail] = useState("117C99");
+  const { t } = useTranslation();
+
   const onSubmit = async (e: Event) => {
     e.preventDefault();
     if (name.length < 3) {
-      setBorderName("2");
+      setBorderName("D62121");
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       nameRef.current?.focus();
-      return toast.error("Name must be at least 3 characters");
+      return toast.error(t("Name must be at least 3 characters"));
     }
     if (email.length < 11) {
-      setBorderEmail("2");
+      setBorderEmail("D62121");
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       emailRef.current?.focus();
-      return toast.error("Email Not Valid");
+      return toast.error(t("Email Not Valid"));
     }
     // send
 
@@ -39,32 +42,38 @@ const NewsLatterBox = () => {
       )
       .then((res) => {
         console.log(res.data);
-        setBorderEmail("0");
-        setBorderName("0");
+        setBorderEmail("117C99");
+        setBorderName("117C99");
         setEmail("");
         setName("");
-        toast.success(res.data.message);
+        toast.success(t(res.data.message));
       })
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       .catch((err) => {
+        setBorderEmail("D62121");
+        setBorderName("D62121");
         // setErrorGender(err);
         typeof err.response.data.message !== "string" &&
-          toast.error(err.response.data.message[0]);
+          toast.error(t(err.response.data.message[0]));
         typeof err.response.data.message === "string" &&
-          toast.error(err.response.data.message);
+          toast.error(t(err.response.data.message));
         console.log("Sub Msg ===> ", err.response.data.message);
       });
   };
+
   return (
     <div
       className="wow fadeInUp relative z-10 rounded-md bg-primary/[3%] p-8 dark:bg-primary/10 sm:p-11 lg:p-8 xl:p-11"
       data-wow-delay=".2s"
     >
       <h3 className="mb-4 text-2xl font-bold leading-tight text-black ">
-        Subscribe to receive future updates
+        {t("Subscribe to receive future updates")}
       </h3>
       <p className="mb-11 border-b border-body-color border-opacity-25 pb-11 text-base font-medium leading-relaxed text-body-color dark:border-white dark:border-opacity-25">
-        Lorem ipsum dolor sited Sed ullam corper consectur adipiscing Mae ornare
-        massa quis lectus.
+        {t(
+          "نقدم كل فترة تحديث جديد خاص بالشركة و الابلكيشن الخاص بنا و بعض الخدمات الاخري في الرحلات  الجويه و الفنادق و السيارات لذلك كن علي علم بكل التحديثات"
+        )}
       </p>
       <form>
         <input
@@ -73,34 +82,34 @@ const NewsLatterBox = () => {
           ref={nameRef}
           value={name}
           onChange={(e) => {
-            setBorderName("0");
+            setBorderName("117C99");
             setName(e.target.value);
           }}
-          placeholder="Enter your name"
-          className={`mb-4 w-full rounded-md border-${borderName}  border-red-900  py-3 px-6 text-base font-medium text-body-color placeholder-body-color outline-none  focus-visible:outline-none focus-visible:shadow-none dark:bg-[#242B51]  `}
+          placeholder={t("Enter your name")}
+          className={`mb-4 w-full rounded-md border border-[#${borderName}]  py-3 px-6 text-base font-medium text-[#000] placeholder-[#A3A3A3] shadow-one outline-none focus:border-[#2ABDE4]  focus-visible:shadow-none `}
         />
         <input
           value={email}
           onChange={(e) => {
-            setBorderEmail("0");
+            setBorderEmail("117C99");
             setEmail(e.target.value);
           }}
           type="email"
           ref={emailRef}
           name="email"
-          placeholder="Enter your email"
-          className={`mb-4 w-full rounded-md border-${borderEmail} border-red-900 py-3 px-6 text-base font-medium text-body-color placeholder-body-color outline-none focus:border-primary focus:border-opacity-100 focus-visible:shadow-none dark:bg-[#242B51] `}
+          placeholder={t("Enter your email")}
+          className={`mb-4 w-full rounded-md border border-[#${borderEmail}] py-3 px-6 text-base font-medium text-[#000] placeholder-[#A3A3A3] shadow-one outline-none focus:border-[#2ABDE4]  focus-visible:shadow-none`}
         />
         <input
           type="submit"
-          value="Subscribe"
+          value={t("Subscribe")}
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           onClick={onSubmit}
-          className="duration-80 mb-4 w-full cursor-pointer rounded-md border border-transparent bg-primary py-3 px-6 text-center text-base font-medium text-black outline-none transition ease-in-out hover:bg-opacity-80 hover:shadow-signUp focus-visible:shadow-none"
+          className="rounded-2xl flex gap-2 items-center justify-center bg-[#117C99] py-2 w-full cursor-pointer text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
         />
         <p className="text-center text-base font-medium leading-relaxed text-body-color">
-          No spam guaranteed, So please don’t send any spam mail.
+          {t("No spam guaranteed, So please don’t send any spam mail.")}
         </p>
       </form>
       <div className="absolute top-0 left-0 z-[-1]">

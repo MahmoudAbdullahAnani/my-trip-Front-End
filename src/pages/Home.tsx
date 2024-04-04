@@ -32,7 +32,6 @@ function Home() {
       <section className={``}>
         <Video />
         <OffersSection />
-
         <PopularDestinations />
         <Advantages />
         <AboutHome />

@@ -1,38 +1,40 @@
 {
-  "فريق خدمة العملاء لدينا متفانٍ في تقديم الدعم والمساعدة للعملاء في جميع الأوقات، مما يضمن رضاهم التام وتجربة مريحة خلال عملية التأجير.":"Our customer service team is dedicated to providing support and assistance to customers at all times, ensuring their complete satisfaction and comfortable experience during the rental process.",
-  "نحرص على تقديم عروض مغرية وأسعار تنافسية تتناسب مع ميزانيات العملاء، مما يجعلنا الخيار الأمثل لتأجير السيارات بأفضل قيمة ممكنة.":"We are keen to provide attractive offers and competitive prices that suit customers’ budgets, which makes us the ideal choice for car rental at the best possible value.",
-  "عروض وأسعار تنافسية":"Competitive offers and prices",
-  "خدمة عملاء ممتازة":"Excellent customer service",
-"نقدم مجموعة متنوعة من السيارات بمختلف الفئات والموديلات، مما يتيح للعملاء اختيار السيارة التي تناسب احتياجاتهم بشكل دقيق.":"We offer a variety of cars in different categories and models, allowing customers to choose the car that precisely suits their needs.",
-"تشكيلة واسعة من السيارات":"Wide variety of cars",
-"شهادة التسويق والترويج لخدمات تأجير السيارات":"Certificate in Marketing and Promotion of Car Rental Services",
-"شهادة تكنولوجيا المعلومات في تأجير السيارات":"Information Technology Certificate in Car Rental",
-"شهادة تأمين وسلامة السيارات":"Insurance tax is bad for cars",
-"شهادة خدمة العملاء في تأجير السيارات":"Customer Service Certificate in Car Rental",
-"شهادة إدارة أسطول السيارات":"Fleet management certificate",
-"شهادات ضمان الامان":"Safety guarantee certificates",
-"هذة بعض الشهادات التي حصلنا عليها في مجال تأجير السيارات علي مدار خبرتنا في سنين الخبرة التي حصلنا عليها":"These are some of the certificates we have obtained in the field of car rental over the years of experience we have obtained",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  "يجب أن يتكون الاسم من 5 أحرف على الأقل": "Name must be at least 5 characters",
+  "يجب أن تكون الرسالة من 3 أحرف على الأقل": "Message must be at least 3 characters",
+  "البريد الإلكتروني غير صالح": "Email Not Valid",
+  "تم الاشتراك بنجاح": "Subscribed successfully",
+  "تم إرسال الرسالة بنجاح": "Message sent successfully",
+  "ادخل الرسالة": "Enter your message",
+  "الريد الالكتروني": "Email Address",
+  "هل تحتاج مساعدة؟": "do you need help?",
+  "دعم على مدار الساعة طوال أيام الأسبوع: نحن هنا لدعمك في كل خطوةمن اجل التمتع بأفضل تجربة": "24/7 Support: We are here to support you every step of the way in order to enjoy the best experience",
+  "تقديم رسالة": "Submit Message",
+  "أدخل رسالتك": "Enter your Message",
+  "رسالتك": "Your Message",
+  "أدخل بريدك الإلكتروني": "Enter your email",
+  "بريدك الالكتروني": "Your Email",
+  "أدخل أسمك": "Enter your name",
+  "اسمك": "Your Name",
+  "أشتراك": "Subscribe",
+  "أرسل رسالة": "Send Message",
+  "اشترك لتلقي التحديثات المستقبلية": "Subscribe to receive future updates",
+  "لا نضمن وجود بريد عشوائي، لذا يرجى عدم إرسال أي بريد عشوائي.": "No spam guaranteed, So please don’t send any spam mail.",
+  "نقدم كل فترة تحديث جديد خاص بالشركة و الابلكيشن الخاص بنا و بعض الخدمات الاخري في الرحلات  الجويه و الفنادق و السيارات لذلك كن علي علم بكل التحديثات": "We provide a new update every period regarding the company, our application, and some other services in aviation, hotels, and cars, so be aware of all the updates.",
+  "تحتاج مساعدة؟ افتح تذكرة": "Need Help? Open a Ticket",
+  "سيقوم فريق الدعم لدينا بالرد عليك في أسرع وقت ممكن عبر البريد الإلكتروني.": "Our support team will get back to you ASAP via email.",
+  "فريق خدمة العملاء لدينا متفانٍ في تقديم الدعم والمساعدة للعملاء في جميع الأوقات، مما يضمن رضاهم التام وتجربة مريحة خلال عملية التأجير.": "Our customer service team is dedicated to providing support and assistance to customers at all times, ensuring their complete satisfaction and comfortable experience during the rental process.",
+  "نحرص على تقديم عروض مغرية وأسعار تنافسية تتناسب مع ميزانيات العملاء، مما يجعلنا الخيار الأمثل لتأجير السيارات بأفضل قيمة ممكنة.": "We are keen to provide attractive offers and competitive prices that suit customers’ budgets, which makes us the ideal choice for car rental at the best possible value.",
+  "عروض وأسعار تنافسية": "Competitive offers and prices",
+  "خدمة عملاء ممتازة": "Excellent customer service",
+  "نقدم مجموعة متنوعة من السيارات بمختلف الفئات والموديلات، مما يتيح للعملاء اختيار السيارة التي تناسب احتياجاتهم بشكل دقيق.": "We offer a variety of cars in different categories and models, allowing customers to choose the car that precisely suits their needs.",
+  "تشكيلة واسعة من السيارات": "Wide variety of cars",
+  "شهادة التسويق والترويج لخدمات تأجير السيارات": "Certificate in Marketing and Promotion of Car Rental Services",
+  "شهادة تكنولوجيا المعلومات في تأجير السيارات": "Information Technology Certificate in Car Rental",
+  "شهادة تأمين وسلامة السيارات": "Insurance tax is bad for cars",
+  "شهادة خدمة العملاء في تأجير السيارات": "Customer Service Certificate in Car Rental",
+  "شهادة إدارة أسطول السيارات": "Fleet management certificate",
+  "شهادات ضمان الامان": "Safety guarantee certificates",
+  "هذة بعض الشهادات التي حصلنا عليها في مجال تأجير السيارات علي مدار خبرتنا في سنين الخبرة التي حصلنا عليها": "These are some of the certificates we have obtained in the field of car rental over the years of experience we have obtained",
   "مجموعة واسعة من الخيارات": "Wide range of options",
   "أفضل الأسعار والعروض الترويجية": "Best prices and promotions",
   "حجوزات مرنة وسهلة": "Flexible and easy bookings",
