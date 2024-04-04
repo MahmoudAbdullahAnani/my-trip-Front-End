@@ -1,4 +1,5 @@
-import imgService1 from "/public/service/2.png"
+import { useTranslation } from "react-i18next";
+import imgService1 from "/public/service/2.png";
 // import imgService2 from "/public/service/2.png"
 const checkIcon = (
   <svg width="16" height="13" viewBox="0 0 16 13" className="fill-current">
@@ -7,12 +8,16 @@ const checkIcon = (
 );
 
 const AboutSectionOne = () => {
+  const { t, i18n } = useTranslation();
   const List = ({ text }: { text: string }) => (
-    <p className="mb-5 flex items-center text-lg font-medium text-body-color">
-      <span className="mr-4 flex h-[30px] w-[30px] items-center justify-center rounded-md bg-primary bg-opacity-10 text-primary">
+    <p
+      dir={i18n.language === "ar" ? "rtl" : "ltr"}
+      className="mb-5 flex items-center text-lg font-medium text-body-color"
+    >
+      <span className="mr-4 flex h-[30px] w-[30px] text-[#117C99] items-center justify-center rounded-md bg-primary bg-opacity-10 text-primary">
         {checkIcon}
       </span>
-      {text}
+      {t(text)}
     </p>
   );
 
@@ -20,19 +25,23 @@ const AboutSectionOne = () => {
     <section id="about" className="pt-16 md:pt-20 lg:pt-28">
       <div className="container">
         <div className="border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
-          <div className="-mx-4 flex flex-wrap items-center">
+          <div
+            dir={i18n.language === "ar" ? "ltr" : "rtl"}
+            className="-mx-4 flex flex-wrap items-center"
+          >
             <div className="w-full px-4 lg:w-1/2" dir="rtl">
               <div className="container flex flex-col items-center gap-3">
                 <div
                   className="wow fadeInUp max-w-[570px] mb-[100px] w-full mx-auto text-center"
                   data-wow-delay=".1s"
                 >
-                  <h2 className="mb-4 text-3xl font-bold !leading-tight text-black  sm:text-4xl md:text-[45px]">
-                    شهادات ضمان الامان
+                  <h2 className="mb-4 text-3xl font-bold !leading-tight text-[#117C99]  sm:text-4xl md:text-[45px]">
+                    {t("شهادات ضمان الامان")}
                   </h2>
                   <p className="text-base !leading-relaxed text-body-color md:text-lg">
-                    هذة بعض الشهادات التي حصلنا عليها في مجال تأجير السيارات علي
-                    مدار خبرتنا في سنين الخبرة التي حصلنا عليها{" "}
+                    {t(
+                      `هذة بعض الشهادات التي حصلنا عليها في مجال تأجير السيارات علي مدار خبرتنا في سنين الخبرة التي حصلنا عليها`
+                    )}
                   </p>
                 </div>
               </div>
@@ -42,14 +51,14 @@ const AboutSectionOne = () => {
               >
                 <div className="mx-[-12px] flex flex-wrap">
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="شهادة إدارة أسطول السيارات " />
-                    <List text="شهادة خدمة العملاء في تأجير السيارات " />
-                    <List text="شهادة تأمين وسلامة السيارات " />
+                    <List text="شهادة إدارة أسطول السيارات" />
+                    <List text="شهادة خدمة العملاء في تأجير السيارات" />
+                    <List text="شهادة تأمين وسلامة السيارات" />
                   </div>
 
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="شهادة تكنولوجيا المعلومات في تأجير السيارات " />
-                    <List text="شهادة التسويق والترويج لخدمات تأجير السيارات " />
+                    <List text="شهادة تكنولوجيا المعلومات في تأجير السيارات" />
+                    <List text="شهادة التسويق والترويج لخدمات تأجير السيارات" />
                     {/* <List text="Developer friendly" /> */}
                   </div>
                 </div>

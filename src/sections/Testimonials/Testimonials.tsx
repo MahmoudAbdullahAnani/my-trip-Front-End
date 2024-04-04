@@ -43,7 +43,7 @@ const Testimonials = () => {
             className="wow fadeInUp max-w-[570px] mb-[100px] w-full mx-auto text-center"
             data-wow-delay=".1s"
           >
-            <h2 className="mb-4 text-3xl font-bold !leading-tight text-black  sm:text-4xl md:text-[45px]">
+            <h2 className="mb-4 text-3xl font-bold !leading-tight text-[#117C99]  sm:text-4xl md:text-[45px]">
               ماذا يقول مستخدمونا
             </h2>
             <p className="text-base !leading-relaxed text-body-color md:text-lg">

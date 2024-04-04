@@ -2481,3 +2481,308 @@ export const iconHotel = (
     ></path>
   </svg>
 );
+// ======================== service ============================ \\
+export const service1 = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
+    fill="none"
+  >
+    <path
+      d="M16 12H42"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M16 24H42"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M16 36H42"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M6 12H6.02"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M6 24H6.02"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M6 36H6.02"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+export const service2 = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
+    fill="none"
+  >
+    <path
+      d="M7.70039 17.2402C7.40847 15.9252 7.45329 14.5579 7.8307 13.2649C8.20811 11.9719 8.90588 10.7951 9.85932 9.84364C10.8128 8.89219 11.991 8.19688 13.2848 7.82218C14.5786 7.44748 15.9461 7.40552 17.2604 7.70019C17.9838 6.5688 18.9804 5.63771 20.1583 4.99277C21.3362 4.34782 22.6575 4.00977 24.0004 4.00977C25.3433 4.00977 26.6646 4.34782 27.8425 4.99277C29.0204 5.63771 30.017 6.5688 30.7404 7.70019C32.0567 7.40424 33.4265 7.44601 34.7224 7.82162C36.0182 8.19723 37.1981 8.89448 38.1521 9.8485C39.1061 10.8025 39.8033 11.9823 40.179 13.2782C40.5546 14.5741 40.5963 15.9439 40.3004 17.2602C41.4318 17.9836 42.3629 18.9802 43.0078 20.1581C43.6528 21.336 43.9908 22.6573 43.9908 24.0002C43.9908 25.3431 43.6528 26.6644 43.0078 27.8423C42.3629 29.0202 41.4318 30.0168 40.3004 30.7402C40.5951 32.0545 40.5531 33.422 40.1784 34.7158C39.8037 36.0096 39.1084 37.1878 38.1569 38.1413C37.2055 39.0947 36.0287 39.7925 34.7357 40.1699C33.4427 40.5473 32.0753 40.5921 30.7604 40.3002C30.0379 41.4359 29.0405 42.371 27.8606 43.0188C26.6807 43.6667 25.3564 44.0063 24.0104 44.0063C22.6643 44.0063 21.34 43.6667 20.1601 43.0188C18.9802 42.371 17.9829 41.4359 17.2604 40.3002C15.9461 40.5949 14.5786 40.5529 13.2848 40.1782C11.991 39.8035 10.8128 39.1082 9.85932 38.1568C8.90588 37.2053 8.20811 36.0285 7.8307 34.7355C7.45329 33.4425 7.40847 32.0751 7.70039 30.7602C6.5603 30.0387 5.62121 29.0405 4.97048 27.8586C4.31975 26.6767 3.97852 25.3494 3.97852 24.0002C3.97852 22.651 4.31975 21.3237 4.97048 20.1418C5.62121 18.9598 6.5603 17.9617 7.70039 17.2402Z"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M30 18L18 30"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M18 18H18.02"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M30 30H30.02"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+export const service3 = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
+    fill="none"
+  >
+    <path
+      d="M16 4V12"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M32 4V12"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M38 8H10C7.79086 8 6 9.79086 6 12V40C6 42.2091 7.79086 44 10 44H38C40.2091 44 42 42.2091 42 40V12C42 9.79086 40.2091 8 38 8Z"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M6 20H42"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M18 32L22 36L30 28"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+export const service4 = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
+    fill="none"
+  >
+    <path
+      d="M44 36H12C10.9391 36 9.92172 35.5786 9.17157 34.8284C8.42143 34.0783 8 33.0609 8 32V14C8 12.9391 7.57857 11.9217 6.82843 11.1716C6.07828 10.4214 5.06087 10 4 10"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M34 28V8C34 6.93913 33.5786 5.92172 32.8284 5.17157C32.0783 4.42143 31.0609 4 30 4H28C26.9391 4 25.9217 4.42143 25.1716 5.17157C24.4214 5.92172 24 6.93913 24 8V28"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M40 12H18C16.8954 12 16 12.8954 16 14V26C16 27.1046 16.8954 28 18 28H40C41.1046 28 42 27.1046 42 26V14C42 12.8954 41.1046 12 40 12Z"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M36 44C38.2091 44 40 42.2091 40 40C40 37.7909 38.2091 36 36 36C33.7909 36 32 37.7909 32 40C32 42.2091 33.7909 44 36 44Z"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M18 44C20.2091 44 22 42.2091 22 40C22 37.7909 20.2091 36 18 36C15.7909 36 14 37.7909 14 40C14 42.2091 15.7909 44 18 44Z"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+export const service5 = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
+    fill="none"
+  >
+    <path
+      d="M40 25.9999C40 35.9999 33 40.9999 24.68 43.8999C24.2443 44.0476 23.7711 44.0405 23.34 43.8799C15 40.9999 8 35.9999 8 25.9999V11.9999C8 11.4695 8.21071 10.9608 8.58579 10.5857C8.96086 10.2106 9.46957 9.99992 10 9.99992C14 9.99992 19 7.59992 22.48 4.55992C22.9037 4.19792 23.4427 3.99902 24 3.99902C24.5573 3.99902 25.0963 4.19792 25.52 4.55992C29.02 7.61992 34 9.99992 38 9.99992C38.5304 9.99992 39.0391 10.2106 39.4142 10.5857C39.7893 10.9608 40 11.4695 40 11.9999V25.9999Z"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M24 44V4"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+export const service6 = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
+    fill="none"
+  >
+    <path
+      d="M32 42V38C32 35.8783 31.1571 33.8434 29.6569 32.3431C28.1566 30.8429 26.1217 30 24 30H12C9.87827 30 7.84344 30.8429 6.34315 32.3431C4.84285 33.8434 4 35.8783 4 38V42"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M18 22C22.4183 22 26 18.4183 26 14C26 9.58172 22.4183 6 18 6C13.5817 6 10 9.58172 10 14C10 18.4183 13.5817 22 18 22Z"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M32 22L36 26L44 18"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+export const service7 = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
+    fill="none"
+  >
+    <path
+      d="M22 30H26C27.0609 30 28.0783 29.5786 28.8284 28.8284C29.5786 28.0783 30 27.0609 30 26C30 24.9391 29.5786 23.9217 28.8284 23.1716C28.0783 22.4214 27.0609 22 26 22H20C18.8 22 17.8 22.4 17.2 23.2L6 34"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M14 41.9996L17.2 39.1996C17.8 38.3996 18.8 37.9996 20 37.9996H28C30.2 37.9996 32.2 37.1996 33.6 35.5996L42.8 26.7996C43.5718 26.0702 44.0222 25.0642 44.0522 24.0027C44.0822 22.9412 43.6893 21.9113 42.96 21.1396C42.2307 20.3678 41.2246 19.9173 40.1631 19.8873C39.1017 19.8573 38.0718 20.2502 37.3 20.9796L28.9 28.7796"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M4 32L16 44"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M31.9992 23.8002C35.2025 23.8002 37.7992 21.2034 37.7992 18.0002C37.7992 14.7969 35.2025 12.2002 31.9992 12.2002C28.796 12.2002 26.1992 14.7969 26.1992 18.0002C26.1992 21.2034 28.796 23.8002 31.9992 23.8002Z"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M12 16C15.3137 16 18 13.3137 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 13.3137 8.68629 16 12 16Z"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+export const service8 = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="48"
+    height="48"
+    viewBox="0 0 48 48"
+    fill="none"
+  >
+    <path
+      d="M8 39V9C8 7.67392 8.52678 6.40215 9.46447 5.46447C10.4021 4.52678 11.6739 4 13 4H40V44H13C11.6739 44 10.4021 43.4732 9.46447 42.5355C8.52678 41.5979 8 40.3261 8 39ZM8 39C8 37.6739 8.52678 36.4021 9.46447 35.4645C10.4021 34.5268 11.6739 34 13 34H40"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M18 19L22 23L30 15"
+      stroke="#117C99"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);

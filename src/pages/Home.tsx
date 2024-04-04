@@ -8,7 +8,7 @@ import AutoScroll from "../components/Home/Systems/AutoScroll";
 import { typeSystem } from "../data/RecoilState/FormHandling";
 import { useRecoilState } from "recoil";
 import Advantages from "../sections/Advantages";
-import Testimonials from "../sections/Testimonials/Testimonials";
+// import Testimonials from "../sections/Testimonials/Testimonials";
 import Contact from "../sections/Contact/Contact";
 import Video from "../sections/Video/Video";
 import AboutHome from "../sections/About/AboutHome";
@@ -36,7 +36,7 @@ function Home() {
         <PopularDestinations />
         <Advantages />
         <AboutHome />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Contact />
       </section>
       <DestinationSection />

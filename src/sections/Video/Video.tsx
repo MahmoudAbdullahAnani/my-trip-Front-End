@@ -4,26 +4,27 @@ import ModalVideo from "react-modal-video";
 // import logo from "/public/assets/logoWhite.png";
 import img1 from "/public/video/video.jpg";
 import img2 from "/public/video/shape.svg";
+import { useTranslation } from "react-i18next";
 const Video = () => {
   const [isOpen, setOpen] = useState(false);
-
+  const { t } = useTranslation();
   return (
-    <section className="relative px-[16px] lg:px-[96px] py-16 md:py-20 lg:py-28 bg-slate-200">
-      <div className="container" dir="rtl">
-        <div className="container flex flex-col items-center gap-3">
+    <section className="relative z-[1]  px-[16px] lg:px-[96px] py-16 md:py-20 lg:py-28 bg-slate-200">
+      <div className="container mx-auto" dir="rtl">
+        <div className="container flex flex-col items-center  gap-3">
           <div
             className="wow fadeInUp max-w-[570px] mb-[100px] w-full mx-auto text-center"
             data-wow-delay=".1s"
           >
             <h2 className="mb-4 text-3xl font-[900] !leading-tight text-[#117C99] sm:text-4xl md:text-[48px]">
-              نبذة عن أجواء
+              {t("نبذة عن أجواء")}
             </h2>
             <p className="text-base !leading-relaxed text-[#000000] md:text-lg">
-              هذا الفيديوا يوضح ما هي أجواء و عن المميزات التي تقدمها
+              {t("هذا الفيديو يوضح ما هي أجواء و عن المميزات التي تقدمها")}
             </p>
           </div>
         </div>
-        <div className="-mx-4 flex flex-wrap">
+        <div className="-mx-4 flex flex-wrap ">
           <div className="w-full px-4">
             <div
               className="wow fadeInUp mx-auto max-w-[770px] overflow-hidden rounded-lg"
