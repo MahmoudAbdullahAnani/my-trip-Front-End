@@ -1,13 +1,15 @@
 import { useState } from "react";
 import HandlerFieldsBooking from "./HandlerFieldsBooking";
-// import BtnLoginAirData from "../../../BtnAuth/BtnLoginAirData";
 
-function FormBookingData() {
+// import BtnLoginAirData from "../../../BtnAuth/BtnLoginAirData";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+function FormBookingData({ position }: number) {
   const [togglePrice, setTogglePrice] = useState(true);
 
   return (
-    <div
-      className={`bg-[#e9e9e9] duration-500 rounded-[16px] mt-[16px] lg:mb-[570px] mb-[70px]`}
+    <div // mt-[16px] lg:mb-[570px] mb-[70px]
+      className={`bg-[#e9e9e9] duration-500 rounded-[16px] my-5`}
     >
       <button
         onClick={() => setTogglePrice(!togglePrice)}
@@ -28,7 +30,9 @@ function FormBookingData() {
         } relative duration-500 flex flex-wrap items-end flex-col bg-[#FFF] rounded-[16px] rounded-tr-[0px]`}
       >
         <div className={`mt-[31.68px]`}>
-          <HandlerFieldsBooking />
+          {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment //
+          @ts-ignore */}
+          <HandlerFieldsBooking position={position} />
         </div>
       </div>
     </div>

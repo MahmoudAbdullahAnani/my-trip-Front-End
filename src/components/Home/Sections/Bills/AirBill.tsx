@@ -22,6 +22,7 @@ import {
   URLVisaPayment,
 } from "../../../../data/RecoilState/Payment/StripeURLsPayment";
 import { useTranslation } from "react-i18next";
+import { typeSystem } from "../../../../data/RecoilState/FormHandling";
 
 // interface
 interface DataCheckoutSession {
@@ -65,6 +66,7 @@ function AirBill({
   durationM?: string;
   isStope?: number;
 }) {
+  const [typeSystemState] = useRecoilState(typeSystem);
   const [adultsDataState] = useRecoilState(adultsData);
   const [togglePrice, setTogglePrice] = useState(true);
 
@@ -125,7 +127,7 @@ function AirBill({
           user_id,
           urlSuccess,
           urlCancel,
-          userEmail,
+          userEmail: adultsDataState > 1 ? userEmail.split(",")[1] : userEmail,
           carrierCodeLogo,
           timeGo,
           timeSet,
@@ -169,7 +171,7 @@ function AirBill({
           user_id,
           urlSuccess,
           urlCancel,
-          userEmail,
+          userEmail: adultsDataState > 1 ? userEmail.split(",")[1] : userEmail,
           carrierCodeLogo,
           timeGo,
           timeSet,
@@ -248,8 +250,8 @@ function AirBill({
         price: priceOfTotal,
         description: `${arrival} الى ${departure} رحلة من `,
         user_id: stateUserData._id || "guest",
-        urlSuccess: `https://ittrip.vercel.app?system=car&status=success`,
-        urlCancel: `https://ittrip.vercel.app?system=car&status=cancel`,
+        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success`,
+        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel`,
         userEmail: dataBookingState.EmailBooking,
         carrierCodeLogo: carrierCodeLogo || "",
         timeGo: timeGo || "",

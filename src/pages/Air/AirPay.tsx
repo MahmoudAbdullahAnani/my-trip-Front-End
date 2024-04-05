@@ -3,6 +3,7 @@ import BookingSteps from "../../components/Home/Sections/Search/Headers/BookingS
 import HeaderSearch from "../../components/Home/Sections/Search/Headers/HeaderSearch";
 import { useEffect } from "react";
 import {
+  // DataBooking,
   TicketChose,
   TicketId,
 } from "../../data/RecoilState/Search/TicketData";
@@ -20,6 +21,9 @@ import FormBookingPay from "../../components/Home/Sections/Bills/FormBookingPay"
 import { DataLoading } from "../../components/Home/Sections/Bills/DataLoading";
 import TicketLoading from "../../components/loder/TicketLoading";
 function AirPay() {
+  // const [dataBookingState] = useRecoilState(DataBooking);
+  // console.log(dataBookingState);
+
   const [ticketIdState] = useRecoilState(TicketId);
   const navigator = useNavigate();
 

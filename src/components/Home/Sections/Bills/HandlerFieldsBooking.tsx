@@ -11,6 +11,8 @@ import { useRecoilState } from "recoil";
 import { format } from "date-fns";
 
 import { DataBooking } from "../../../../data/RecoilState/Search/TicketData";
+import { toast } from "react-toastify";
+import { adultsData } from "../../../../data/RecoilState/FormSearchData";
 
 // Interfaces
 export interface Inputs {
@@ -61,10 +63,16 @@ const AirBookingSchema = z
     }
   );
 
-function HandlerFieldsBooking() {
+function HandlerFieldsBooking(position:number) {
   //=========================================================== User Data For air booking ===========================================================================================
   const [dataBookingState, setDataBookingState] = useRecoilState(DataBooking);
+  const countNamesUsers = dataBookingState.NameBooking.split(",");
+  const countEmailBookingUsers = dataBookingState.EmailBooking.split(",");
+  const countPassportNumberBookingUsers =
+    dataBookingState.PassportNumberBooking.split(",");
+
   //=========================================================== User Data For air booking ===========================================================================================
+  const [adultsDataState] = useRecoilState(adultsData);
 
   const navigator = useNavigate();
   const {
@@ -99,15 +107,17 @@ function HandlerFieldsBooking() {
     //   passportNumber,
     // });
     setDataBookingState({
-      BirthDateBooking: handleBirthDate,
-      NameBooking: fullName,
-      GenderBooking: gender,
-      EmailBooking: email,
-      PassportNumberBooking: passportNumber,
-      NationalityBooking: nationality,
-      CountryBooking: country,
+      BirthDateBooking: `${dataBookingState.BirthDateBooking},${handleBirthDate}`,
+      NameBooking: `${dataBookingState.NameBooking},${fullName}`,
+      GenderBooking: `${dataBookingState.GenderBooking},${gender}`,
+      EmailBooking: `${dataBookingState.EmailBooking},${email}`,
+      PassportNumberBooking: `${dataBookingState.PassportNumberBooking},${passportNumber}`,
+      NationalityBooking: `${dataBookingState.NationalityBooking},${nationality}`,
+      CountryBooking: `${dataBookingState.CountryBooking},${country}`,
     });
-
+    if (countNamesUsers.length !== adultsDataState) {
+      return toast.info("استكمل بيانات باقي المسافرين");
+    }
     return navigator("/airPay");
   };
 
@@ -130,7 +140,11 @@ function HandlerFieldsBooking() {
               </label>
               <div className={`w-full flex flex-col items-end `}>
                 <input
-                  defaultValue={dataBookingState.NameBooking}
+                  defaultValue={
+                    adultsDataState > 1
+                      ? countNamesUsers[position]
+                      : dataBookingState.NameBooking
+                  }
                   type="text"
                   id="fullName"
                   {...register("fullName")}
@@ -183,7 +197,11 @@ function HandlerFieldsBooking() {
                 تأكيد البريد الالكتروني
               </label>
               <input
-                defaultValue={dataBookingState.EmailBooking}
+                defaultValue={
+                  adultsDataState > 1
+                    ? countEmailBookingUsers[position]
+                    : dataBookingState.EmailBooking
+                }
                 type="email"
                 id="confirmEmail"
                 {...register("confirmEmail")}
@@ -204,7 +222,11 @@ function HandlerFieldsBooking() {
                 البريد الالكتروني
               </label>
               <input
-                defaultValue={dataBookingState.EmailBooking}
+                defaultValue={
+                  adultsDataState > 1
+                    ? countEmailBookingUsers[position]
+                    : dataBookingState.EmailBooking
+                }
                 type="email"
                 id="email"
                 {...register("email")}
@@ -269,7 +291,11 @@ function HandlerFieldsBooking() {
                 رقم جواز السفر
               </label>
               <input
-                defaultValue={dataBookingState.PassportNumberBooking}
+                defaultValue={
+                  adultsDataState > 1
+                    ? countPassportNumberBookingUsers[position]
+                    : dataBookingState.PassportNumberBooking
+                }
                 type="text"
                 id="passportNumber"
                 {...register("passportNumber")}

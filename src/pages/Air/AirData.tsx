@@ -18,8 +18,22 @@ import HeaderSearch from "../../components/Home/Sections/Search/Headers/HeaderSe
 import TicketBill from "../../components/Home/Sections/Bills/TicketBill";
 import Iusso, { Iusso2 } from "../../components/Home/Sections/Bills/Iusso";
 import FormBookingData from "../../components/Home/Sections/Bills/FormBookingData";
+import { adultsData } from "../../data/RecoilState/FormSearchData";
 
 function AirData() {
+  const [adultsDataState] = useRecoilState(adultsData);
+
+  const CountHandlerFieldsBooking = Array.from(
+    { length: adultsDataState },
+    (_, index) => (
+      <div key={index}>
+        {/* // eslint-disable-next-line @typescript-eslint/ban-ts-comment //
+        @ts-ignore */}
+        <FormBookingData position={index} />
+      </div>
+    )
+  );
+
   const [ticketIdState] = useRecoilState(TicketId);
   const navigator = useNavigate();
 
@@ -67,7 +81,7 @@ function AirData() {
         <div className={`w-[718px] rounded-[16px] `}>
           {data && <TicketBill />}
           <Iusso />
-          <FormBookingData />
+          {CountHandlerFieldsBooking}
         </div>
       </div>
     </section>

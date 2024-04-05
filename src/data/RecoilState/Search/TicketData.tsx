@@ -16,7 +16,7 @@ export const DataBooking = atom({
   key: "DataBooking", // unique ID (with respect to other atoms/selectors)
   default: {
     NameBooking: "",
-    GenderBooking: "" as "Mr" | "Mrs",
+    GenderBooking: "",
     EmailBooking: "",
     BirthDateBooking: "",
     PassportNumberBooking: "",

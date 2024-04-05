@@ -23,7 +23,7 @@ const PriceFilter = atom({
 });
 const LoadingDataSearch = atom({
   key: "LoadingDataSearch", // unique ID (with respect to other atoms/selectors)
-  default:true, // default value (aka initial value)
+  default: true, // default value (aka initial value)
 });
 
 // Stope Filters
@@ -36,8 +36,6 @@ const TripStopeFilters = atom({
   key: "TripStopeFilters", // unique ID (with respect to other atoms/selectors)
   default: [], // default value (aka initial value)
 });
-
-
 
 export {
   MainData,
