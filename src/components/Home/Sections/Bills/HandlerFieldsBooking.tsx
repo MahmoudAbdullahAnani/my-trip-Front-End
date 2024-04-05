@@ -115,7 +115,7 @@ function HandlerFieldsBooking(position:number) {
       NationalityBooking: `${dataBookingState.NationalityBooking},${nationality}`,
       CountryBooking: `${dataBookingState.CountryBooking},${country}`,
     });
-    if (countNamesUsers.length !== adultsDataState) {
+    if (countNamesUsers.length < adultsDataState) {
       return toast.info("استكمل بيانات باقي المسافرين");
     }
     return navigator("/airPay");

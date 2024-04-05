@@ -147,7 +147,7 @@ function AirBill({
           user_id,
           urlSuccess,
           urlCancel,
-          userEmail: adultsDataState > 1 ? userEmail.split(",")[1] : userEmail,
+          userEmail: userEmail.split(",")[1],
           carrierCodeLogo,
           timeGo,
           timeSet,
@@ -191,7 +191,7 @@ function AirBill({
           user_id,
           urlSuccess,
           urlCancel,
-          userEmail: adultsDataState > 1 ? userEmail.split(",")[1] : userEmail,
+          userEmail: userEmail.split(",")[1],
           carrierCodeLogo,
           timeGo,
           timeSet,
@@ -278,10 +278,10 @@ function AirBill({
         user_id: stateUserData._id || "guest",
         urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&${queryString}&${queryString2}&user_id=${localStorage.getItem(
           "userIdDB"
-        )}&description=${arrival} الى ${departure} رحلة من `,
+        )}&arrival=${arrival}&departure=${departure}`,
         urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&${queryString}&${queryString2}&user_id=${localStorage.getItem(
           "userIdDB"
-        )}&description=${arrival} الى ${departure} رحلة من `,
+        )}&arrival=${arrival}&departure=${departure}`, // &description=${arrival}*الى*${departure}*رحلة*من
         userEmail: dataBookingState.EmailBooking,
         carrierCodeLogo: carrierCodeLogo || "",
         timeGo: timeGo || "",
