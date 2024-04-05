@@ -37,7 +37,7 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
 
   const departureIataCode = itineraries[0].segments[0].departure.iataCode;
   const [arrivalIataCodeReturn, setArrivalIataCode] = useState(
-    itineraries[0].segments[0].arrival.iataCode
+    (itineraries[0].segments[0].arrival || { iataCode: "" }).iataCode
   );
 
   // بيانات الطائرة و الرحلة
@@ -76,7 +76,9 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
   const [durationReturnM, setDurationReturnM] = useState("");
   useEffect(() => {
     if (itineraries[0].segments.length > 1) {
-      setArrivalIataCode(itineraries[0].segments[1].arrival.iataCode);
+      setArrivalIataCode(
+        (itineraries[0].segments[1].arrival || { iataCode: "" }).iataCode
+      );
     }
     if (travelTypeState !== "oneWay") {
       // تاريخ العودة
@@ -85,9 +87,12 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
         itineraries[1].duration.split("PT")[1].split("H")[1].split("M")[0]
       );
 
-      const returnDate = itineraries[1].segments[0].arrival.at;
+      const returnDate =
+        (itineraries[1].segments[0].arrival || { at: "" }).at;
 
-      setArrivalIataCodeReturn(itineraries[1].segments[0].arrival.iataCode);
+      setArrivalIataCodeReturn(
+        (itineraries[1].segments[0].arrival || { iataCode: "" }).iataCode
+      );
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
       setDaysDifference(
@@ -125,7 +130,11 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
           <TicketOneWay
             ticketId={id}
             dTerminal={itineraries[0].segments[0].departure.terminal || ""}
-            aTerminal={itineraries[0].segments[1].arrival.terminal || ""}
+            aTerminal={
+              // (itineraries[0].segments[1].arrival || { terminal: "" })
+              //   .terminal || ""
+              ""
+            }
             degree={degree}
             aircraftCode={outboundAircraft[0]?.aircraftCode || ""}
             carrierCode={outboundAircraft[0]?.carrierCode || ""}
@@ -139,7 +148,7 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
               "2022-05-01T00:00:00.000Z"
             }
             arrivalDateReturn={
-              itineraries[0].segments[1]?.arrival.at ||
+              (itineraries[0].segments[1]?.arrival || { at: "" }).at ||
               "2022-05-01T00:00:00.000Z"
             }
             isStope={itineraries[0].segments[0]?.numberOfStops || 0}
@@ -150,9 +159,15 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
           <Ticket
             ticketId={id}
             d1Terminal={itineraries[0].segments[0]?.departure.terminal || ""}
-            a1Terminal={itineraries[0].segments[1]?.arrival.terminal || ""}
+            a1Terminal={
+              (itineraries[0].segments[1]?.arrival || { terminal: "" })
+                .terminal || ""
+            }
             d2Terminal={itineraries[1].segments[0].departure.terminal || ""}
-            a2Terminal={itineraries[1].segments[1]?.arrival.terminal || ""}
+            a2Terminal={
+              (itineraries[1].segments[1]?.arrival || { terminal: "" })
+                .terminal || ""
+            }
             degree={degree}
             daysDifference={daysDifference}
             aircraftCode={outboundAircraft[0]?.aircraftCode || ""}
@@ -172,7 +187,7 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
               "2022-05-01T00:00:00.000Z"
             }
             arrivalDateReturn1={
-              itineraries[0].segments[1]?.arrival.at ||
+              (itineraries[0].segments[1]?.arrival || { at: "" }).at ||
               "2022-05-01T00:00:00.000Z"
             }
             //travel 2
@@ -181,7 +196,8 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
               "2022-05-01T00:00:00.000Z"
             }
             arrivalDateReturn2={
-              itineraries[1].segments[1]?.arrival.at || "2022-05-01T00:00:00.000Z"
+              (itineraries[1].segments[1]?.arrival || { at: "" }).at ||
+              "2022-05-01T00:00:00.000Z"
             }
             //
             aircraftCodeReturn={dataAirReturn[0]?.aircraftCode || ""}
@@ -215,7 +231,11 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
           <TicketOneWay
             ticketId={id}
             dTerminal={itineraries[0].segments[0].departure.terminal || ""}
-            aTerminal={itineraries[0].segments[1].arrival.terminal || ""}
+            aTerminal={
+              // (itineraries[0].segments[1].arrival || { terminal: "" })
+              //   .terminal || ""
+              ""
+            }
             degree={degree}
             isMobile={true}
             aircraftCode={outboundAircraft[0]?.aircraftCode || ""}
@@ -230,7 +250,7 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
               "2022-05-01T00:00:00.000Z"
             }
             arrivalDateReturn={
-              itineraries[0].segments[1]?.arrival.at ||
+              (itineraries[0].segments[1]?.arrival || { at: "" }).at ||
               "2022-05-01T00:00:00.000Z"
             }
             isStope={itineraries[0].segments[0]?.numberOfStops || 0}
@@ -241,9 +261,15 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
           <Ticket
             ticketId={id}
             d1Terminal={itineraries[0].segments[0]?.departure.terminal || ""}
-            a1Terminal={itineraries[0].segments[1]?.arrival.terminal || ""}
+            a1Terminal={
+              (itineraries[0].segments[1]?.arrival || { terminal: "" })
+                .terminal || ""
+            }
             d2Terminal={itineraries[1].segments[0].departure.terminal || ""}
-            a2Terminal={itineraries[1].segments[1]?.arrival.terminal || ""}
+            a2Terminal={
+              (itineraries[1].segments[1]?.arrival || { terminal: "" })
+                .terminal || ""
+            }
             degree={degree}
             isMobile={true}
             daysDifference={daysDifference}
@@ -264,7 +290,7 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
               "2022-05-01T00:00:00.000Z"
             }
             arrivalDateReturn1={
-              itineraries[0].segments[1]?.arrival.at ||
+              (itineraries[0].segments[1]?.arrival || { at: "" }).at ||
               "2022-05-01T00:00:00.000Z"
             }
             //travel 2
@@ -273,7 +299,7 @@ function CardTrip({ itineraries, price, travelerPricings, id }: FlightOffer) {
               "2022-05-01T00:00:00.000Z"
             }
             arrivalDateReturn2={
-              itineraries[1].segments[1]?.arrival.at ||
+              (itineraries[1].segments[1]?.arrival || { at: "" }).at ||
               "2022-05-01T00:00:00.000Z"
             }
             //
