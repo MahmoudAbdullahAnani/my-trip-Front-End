@@ -53,6 +53,21 @@ import About from "./pages/About/About";
 import ContactUs from "./pages/ContactUs/ContactUs";
 // import Chat from "./WebSocket/Chat/Chat";
 // Handle driver
+interface URLParameters {
+  [key: string]: string;
+}
+
+export function GetURLParameters(url: string): URLParameters {
+  const params: URLParameters = {};
+  const urlParams = url.split("?")[1]?.split("&") || [];
+
+  for (let i = 0; i < urlParams.length; i++) {
+    const [key, value] = urlParams[i].split("=");
+    params[key] = decodeURIComponent(value);
+  }
+
+  return params;
+}
 
 const handleSteps =
   window.innerWidth > 1024
@@ -246,6 +261,20 @@ function App() {
         //   localStorage.removeItem("token");
         // }
       });
+    // paypal = https://ittrip.vercel.app/?system=air&status=success&token=19E23685Y62210623&PayerID=JG8RVZQPP5RA4
+    // paypal = https://ittrip.vercel.app/?system=air&status=success
+    // const parameters = getURLParameters(window.location.href);
+    // // console.log(parameters);
+    // if (parameters.system && parameters.status === "success") {
+    //   await axios.post(
+    //     import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+    //       ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/checkout-completed`
+    //       : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/checkout-completed`,
+    //     {
+    //       url: window.location.href,
+    //     }
+    //   );
+    // }
     return true;
   };
 
@@ -287,7 +316,6 @@ function App() {
       const id = await oncData();
       if (id !== "undefined") {
         getFriends();
-
         localStorage.setItem("userIdDB", id || "");
       }
       sendCatchData(`${id}`);
