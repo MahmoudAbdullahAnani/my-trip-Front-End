@@ -7,6 +7,7 @@ import { StoreCurrency } from "../../../../data/Fetching/StoreCurrency";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   DataBooking,
+  TicketId,
   priceOfTotalState,
 } from "../../../../data/RecoilState/Search/TicketData";
 import { RootState } from "../../../../data/store";
@@ -24,6 +25,12 @@ import {
 import { useTranslation } from "react-i18next";
 import { typeSystem } from "../../../../data/RecoilState/FormHandling";
 import { ObjectToQueryString } from "../../../../App";
+import { FlightOffer } from "../../../../interface/MainData";
+import {
+  IfCheckedFilter,
+  TripDataFilters,
+  TripStopeFilters,
+} from "../../../../data/RecoilState/Search/MainData";
 
 // interface
 interface DataCheckoutSession {
@@ -88,6 +95,18 @@ function AirBill({
   // const [, setURLfawryPaymentState] = useRecoilState(URLfawryPayment);
   const [dataLoadingState, setDataLoadingState] = useRecoilState(DataLoading);
   const navigate = useNavigate();
+
+  const [ticketIdState] = useRecoilState(TicketId);
+  // Find Obj Data
+  const [ifCheckedFilterState] = useRecoilState(IfCheckedFilter);
+  const [tripDataFilters] = useRecoilState(TripDataFilters);
+  const [tripStopeFiltersState] = useRecoilState(TripStopeFilters);
+  const mainData = ifCheckedFilterState
+    ? tripStopeFiltersState
+    : tripDataFilters;
+  const data: FlightOffer = mainData.filter(
+    ({ id }) => id === ticketIdState
+  )[0];
 
   const createCheckoutSession = async ({
     price,
@@ -247,14 +266,18 @@ function AirBill({
     if (pathname === "/airPay") {
       sendCatchData();
       setPriceOfTotal(priceOfTotal);
+      
       const queryString = ObjectToQueryString(dataBookingState);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const queryString2 = ObjectToQueryString(data);
 
       createCheckoutSession({
         price: priceOfTotal,
         description: `${arrival} الى ${departure} رحلة من `,
         user_id: stateUserData._id || "guest",
-        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&${queryString}`,
-        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&${queryString}`,
+        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&${queryString}&${queryString2}&user_id=${localStorage.getItem("userIdDB")}`,
+        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&${queryString}&${queryString2}&user_id=${localStorage.getItem("userIdDB")}`,
         userEmail: dataBookingState.EmailBooking,
         carrierCodeLogo: carrierCodeLogo || "",
         timeGo: timeGo || "",

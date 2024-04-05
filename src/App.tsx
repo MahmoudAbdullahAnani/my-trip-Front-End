@@ -51,6 +51,7 @@ import SearchCars from "./pages/Cars/SearchCars";
 import loadStart from "/public/assets/loadStart.gif";
 import About from "./pages/About/About";
 import ContactUs from "./pages/ContactUs/ContactUs";
+import { adultsData } from "./data/RecoilState/FormSearchData";
 // import Chat from "./WebSocket/Chat/Chat";
 // Handle driver
 interface URLParameters {
@@ -213,6 +214,7 @@ function App() {
   // };
 
   const [reRenderDataApp] = useRecoilState(reRenderData);
+  const [adultsDataState] = useRecoilState(adultsData);
 
   const dispatch = useDispatch();
   const [loading, setLoading] = useRecoilState(isLoading);
@@ -274,7 +276,7 @@ function App() {
         //   localStorage.removeItem("token");
         // }
       });
-    // paypal = https://ittrip.vercel.app/?system=air&status=success&token=19E23685Y62210623&PayerID=JG8RVZQPP5RA4
+    // strip = https://ittrip.vercel.app/?system=air&status=success&BirthDateBooking=%2C28%2F05%2F2002&NameBooking=%2CMahmoud%20Abdullah&GenderBooking=%2CMr&EmailBooking=%2Cmahmoud18957321%40gmail.com&PassportNumberBooking=%2C4587978&NationalityBooking=%2CBY&CountryBooking=%2CEG&type=flight-offer&id=1&source=GDS&instantTicketingRequired=false&nonHomogeneous=false&oneWay=false&lastTicketingDate=2024-04-05&lastTicketingDateTime=2024-04-05&numberOfBookableSeats=4&itineraries=%5Bobject%20Object%5D&price=%5Bobject%20Object%5D&pricingOptions=%5Bobject%20Object%5D&validatingAirlineCodes=F9&travelerPricings=%5Bobject%20Object%5D
     // paypal = https://ittrip.vercel.app/?system=air&status=success
     const parameters = GetURLParameters(window.location.href);
     if (parameters.system && parameters.status === "success") {
@@ -283,7 +285,8 @@ function App() {
           ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/checkout-completed`
           : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/checkout-completed`,
         {
-          parameters,
+          OrderData: window.location.href,
+          adultsDataState,
         }
       );
     }
