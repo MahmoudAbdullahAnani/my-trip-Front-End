@@ -266,7 +266,7 @@ function AirBill({
     if (pathname === "/airPay") {
       sendCatchData();
       setPriceOfTotal(priceOfTotal);
-      
+
       const queryString = ObjectToQueryString(dataBookingState);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -276,8 +276,12 @@ function AirBill({
         price: priceOfTotal,
         description: `${arrival} الى ${departure} رحلة من `,
         user_id: stateUserData._id || "guest",
-        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&${queryString}&${queryString2}&user_id=${localStorage.getItem("userIdDB")}`,
-        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&${queryString}&${queryString2}&user_id=${localStorage.getItem("userIdDB")}`,
+        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&${queryString}&${queryString2}&user_id=${localStorage.getItem(
+          "userIdDB"
+        )}&description=${arrival} الى ${departure} رحلة من `,
+        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&${queryString}&${queryString2}&user_id=${localStorage.getItem(
+          "userIdDB"
+        )}&description=${arrival} الى ${departure} رحلة من `,
         userEmail: dataBookingState.EmailBooking,
         carrierCodeLogo: carrierCodeLogo || "",
         timeGo: timeGo || "",
