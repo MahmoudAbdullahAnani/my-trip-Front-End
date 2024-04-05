@@ -68,7 +68,20 @@ export function GetURLParameters(url: string): URLParameters {
 
   return params;
 }
+type ObjectWithStringValues = {
+  [key: string]: string;
+};
 
+export function ObjectToQueryString(obj: ObjectWithStringValues): string {
+  const params: string[] = [];
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const value = encodeURIComponent(obj[key]);
+      params.push(`${key}=${value}`);
+    }
+  }
+  return params.join("&");
+}
 const handleSteps =
   window.innerWidth > 1024
     ? [
@@ -263,18 +276,17 @@ function App() {
       });
     // paypal = https://ittrip.vercel.app/?system=air&status=success&token=19E23685Y62210623&PayerID=JG8RVZQPP5RA4
     // paypal = https://ittrip.vercel.app/?system=air&status=success
-    // const parameters = getURLParameters(window.location.href);
-    // // console.log(parameters);
-    // if (parameters.system && parameters.status === "success") {
-    //   await axios.post(
-    //     import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
-    //       ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/checkout-completed`
-    //       : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/checkout-completed`,
-    //     {
-    //       url: window.location.href,
-    //     }
-    //   );
-    // }
+    const parameters = GetURLParameters(window.location.href);
+    if (parameters.system && parameters.status === "success") {
+      await axios.post(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/checkout-completed`
+          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/checkout-completed`,
+        {
+          parameters,
+        }
+      );
+    }
     return true;
   };
 

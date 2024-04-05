@@ -23,6 +23,7 @@ import {
 } from "../../../../data/RecoilState/Payment/StripeURLsPayment";
 import { useTranslation } from "react-i18next";
 import { typeSystem } from "../../../../data/RecoilState/FormHandling";
+import { ObjectToQueryString } from "../../../../App";
 
 // interface
 interface DataCheckoutSession {
@@ -246,12 +247,14 @@ function AirBill({
     if (pathname === "/airPay") {
       sendCatchData();
       setPriceOfTotal(priceOfTotal);
+      const queryString = ObjectToQueryString(dataBookingState);
+
       createCheckoutSession({
         price: priceOfTotal,
         description: `${arrival} الى ${departure} رحلة من `,
         user_id: stateUserData._id || "guest",
-        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success`,
-        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel`,
+        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&${queryString}`,
+        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&${queryString}`,
         userEmail: dataBookingState.EmailBooking,
         carrierCodeLogo: carrierCodeLogo || "",
         timeGo: timeGo || "",
