@@ -271,17 +271,17 @@ function AirBill({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const queryString2 = ObjectToQueryString(data);
-      
+
       createCheckoutSession({
         price: priceOfTotal,
         description: `${arrival} الى ${departure} رحلة من `,
         user_id: stateUserData._id || "guest",
-        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&${queryString}&${queryString2}&user_id=${localStorage.getItem(
+        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&isStope=${isStope}&price=${priceOfTotal}&durationM=${durationM}&durationH=${durationH}&logo=${carrierCodeLogo}&timeGo=${timeGo}&timeSet=${timeSet}&${queryString}&${queryString2}&user_id=${localStorage.getItem(
           "userIdDB"
         )}&arrival=${arrival}&departure=${departure}`,
-        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&${queryString}&${queryString2}&user_id=${localStorage.getItem(
+        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&isStope=${isStope}&price=${priceOfTotal}&durationM=${durationM}&durationH=${durationH}&logo=${carrierCodeLogo}&timeGo=${timeGo}&timeSet=${timeSet}&${queryString}&${queryString2}&user_id=${localStorage.getItem(
           "userIdDB"
-        )}&arrival=${arrival}&departure=${departure}`, // &description=${arrival}*الى*${departure}*رحلة*من
+        )}&arrival=${arrival}&departure=${departure}`,
         userEmail: dataBookingState.EmailBooking,
         carrierCodeLogo: carrierCodeLogo || "",
         timeGo: timeGo || "",

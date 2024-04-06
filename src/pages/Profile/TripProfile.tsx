@@ -47,9 +47,10 @@ const pageSize = 5;
 function TripProfile() {
   const [loading, setLoading] = useState(false);
 
-  const [dataOrders, setDataOrders] = useState<{ data: Data[]; count: number }>(
-    { data: [], count: 0 }
-  );
+  const [dataOrders, setDataOrders] = useState<{
+    data: Data[];
+    count: number;
+  }>({ data: [], count: 0 });
   const getMyOrders = async () => {
     setLoading(true);
     const token = localStorage.getItem("token") || "";
@@ -68,9 +69,10 @@ function TripProfile() {
       .then(({ data }) => {
         const filterStripe = data.data.filter(
           ({ payment_method_types }: { payment_method_types: string }) =>
-            payment_method_types === "card-Stripe"
+            payment_method_types === "air-Stripe" ||
+            payment_method_types === "air-PayPal"
         );
-        // console.log({ filterStripe });
+        console.log({ filterStripe });
 
         setDataOrders({
           data: filterStripe,
