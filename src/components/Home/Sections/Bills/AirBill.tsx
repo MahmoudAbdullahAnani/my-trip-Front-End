@@ -271,7 +271,7 @@ function AirBill({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const queryString2 = ObjectToQueryString(data);
-
+      
       createCheckoutSession({
         price: priceOfTotal,
         description: `${arrival} الى ${departure} رحلة من `,
