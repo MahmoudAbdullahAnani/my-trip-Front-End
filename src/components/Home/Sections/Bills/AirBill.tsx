@@ -276,10 +276,10 @@ function AirBill({
         price: priceOfTotal,
         description: `${arrival} الى ${departure} رحلة من `,
         user_id: stateUserData._id || "guest",
-        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&isStope=${isStope}&price=${priceOfTotal}&durationM=${durationM}&durationH=${durationH}&logo=${carrierCodeLogo}&timeGo=${timeGo}&timeSet=${timeSet}&${queryString}&${queryString2}&user_id=${localStorage.getItem(
+        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&isStope=${isStope}&price1=${priceOfTotal}&durationM=${durationM}&durationH=${durationH}&logo=${carrierCodeLogo}&timeGo=${timeGo}&timeSet=${timeSet}&${queryString}&${queryString2}&user_id=${localStorage.getItem(
           "userIdDB"
         )}&arrival=${arrival}&departure=${departure}`,
-        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&isStope=${isStope}&price=${priceOfTotal}&durationM=${durationM}&durationH=${durationH}&logo=${carrierCodeLogo}&timeGo=${timeGo}&timeSet=${timeSet}&${queryString}&${queryString2}&user_id=${localStorage.getItem(
+        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&isStope=${isStope}&price1=${priceOfTotal}&durationM=${durationM}&durationH=${durationH}&logo=${carrierCodeLogo}&timeGo=${timeGo}&timeSet=${timeSet}&${queryString}&${queryString2}&user_id=${localStorage.getItem(
           "userIdDB"
         )}&arrival=${arrival}&departure=${departure}`,
         userEmail: dataBookingState.EmailBooking,
