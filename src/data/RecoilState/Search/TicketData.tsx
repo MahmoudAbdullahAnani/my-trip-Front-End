@@ -22,6 +22,8 @@ export const DataBooking = atom({
     PassportNumberBooking: "",
     NationalityBooking: "",
     CountryBooking: "",
+    ExpiryDate: "",
+    PhoneNumber: "",
   }, // default value (aka initial value)
 });
 

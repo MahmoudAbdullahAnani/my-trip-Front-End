@@ -6,6 +6,7 @@ export interface FlightOffer {
   nonHomogeneous: boolean;
   oneWay: boolean;
   lastTicketingDate: string;
+  paymentCardRequired: boolean;
   lastTicketingDateTime: string;
   numberOfBookableSeats: number;
   itineraries: Itinerary[];
@@ -92,7 +93,6 @@ export interface Amenity {
     name: string;
   };
 }
-
 
 export type Testimonial = {
   id: number;

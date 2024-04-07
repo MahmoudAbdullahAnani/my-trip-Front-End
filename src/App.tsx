@@ -51,7 +51,8 @@ import SearchCars from "./pages/Cars/SearchCars";
 import loadStart from "/public/assets/loadStart.gif";
 import About from "./pages/About/About";
 import ContactUs from "./pages/ContactUs/ContactUs";
-import { adultsData } from "./data/RecoilState/FormSearchData";
+import { getTokenForAmadeus } from "./Keys/GetTokenForAmadeus";
+
 // import Chat from "./WebSocket/Chat/Chat";
 // Handle driver
 interface URLParameters {
@@ -214,7 +215,6 @@ function App() {
   // };
 
   const [reRenderDataApp] = useRecoilState(reRenderData);
-  const [adultsDataState] = useRecoilState(adultsData);
 
   const dispatch = useDispatch();
   const [loading, setLoading] = useRecoilState(isLoading);
@@ -254,6 +254,34 @@ function App() {
     setLoading(false);
     return id;
   };
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const dataTrip = JSON.parse(localStorage.getItem("data"));
+
+  const confirmationOrder = async (OrderId: string) => {
+    const amadeusToken = await getTokenForAmadeus();
+    await axios
+      .post(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${
+              import.meta.env.VITE_PUBLIC_API_LOCAL
+            }/checkout-completed/${OrderId}/${amadeusToken}`
+          : `${
+              import.meta.env.VITE_PUBLIC_API_PRODUCTION
+            }/checkout-completed/${OrderId}/${amadeusToken}`,
+        {
+          Data: dataTrip,
+          stringFiData: localStorage.getItem("data"),
+        }
+      )
+      .then((res) => {
+        console.log("checkout-completed--OrderIDData==> ", res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const sendCatchData = async (id: string) => {
     await axios
       .post(
@@ -280,15 +308,24 @@ function App() {
     // paypal = https://ittrip.vercel.app/?system=air&status=success
     const parameters = GetURLParameters(window.location.href);
     if (parameters.system && parameters.status === "success") {
-      await axios.post(
-        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
-          ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/checkout-completed`
-          : `${import.meta.env.VITE_PUBLIC_API_PRODUCTION}/checkout-completed`,
-        {
-          OrderData: window.location.href,
-          adultsDataState,
-        }
-      );
+      await axios
+        .post(
+          import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+            ? `${import.meta.env.VITE_PUBLIC_API_LOCAL}/checkout-completed`
+            : `${
+                import.meta.env.VITE_PUBLIC_API_PRODUCTION
+              }/checkout-completed`,
+          {
+            OrderData: window.location.href,
+          }
+        )
+        .then((res) => {
+          confirmationOrder(res.data._id);
+          console.log("checkout-completed--data==> ", res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
     return true;
   };

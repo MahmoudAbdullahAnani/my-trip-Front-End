@@ -21,15 +21,18 @@ export interface Inputs {
   email: string;
   confirmEmail: string;
   birthDate: Date;
+  expiryDate: Date;
   passportNumber: string;
   nationality: string;
   country: string;
+  phoneNumber: string;
 }
 // Schema Login
 const AirBookingSchema = z
   .object({
     fullName: z.string().min(3, { message: "من فضلك ادخل اسمك الكامل" }),
     gender: z.union([z.literal("Mr"), z.literal("Mrs")]),
+    phoneNumber: z.string().min(1, { message: "رقم الهاتف مطلوب" }),
     email: z
       .string()
       .min(3, { message: "البريد الالكتروني مطلوب" })
@@ -37,6 +40,9 @@ const AirBookingSchema = z
     confirmEmail: z.string().email({ message: "البريد الالكتروني غير صحيح" }),
     birthDate: z.date({
       required_error: "تاريخ الميلاد مطلوب",
+    }),
+    expiryDate: z.date({
+      required_error: "تاريخ انتهاء الصلاحية الباسبور مطلوب",
     }),
     passportNumber: z
       .string()
@@ -63,13 +69,14 @@ const AirBookingSchema = z
     }
   );
 
-function HandlerFieldsBooking(position:number) {
+function HandlerFieldsBooking(position: number) {
   //=========================================================== User Data For air booking ===========================================================================================
   const [dataBookingState, setDataBookingState] = useRecoilState(DataBooking);
   const countNamesUsers = dataBookingState.NameBooking.split(",");
   const countEmailBookingUsers = dataBookingState.EmailBooking.split(",");
   const countPassportNumberBookingUsers =
     dataBookingState.PassportNumberBooking.split(",");
+  const countPhoneNumberBookingUsers = dataBookingState.PhoneNumber.split(",");
 
   //=========================================================== User Data For air booking ===========================================================================================
   const [adultsDataState] = useRecoilState(adultsData);
@@ -95,8 +102,11 @@ function HandlerFieldsBooking(position:number) {
     gender,
     nationality,
     passportNumber,
+    expiryDate,
+    phoneNumber,
   }) => {
-    const handleBirthDate = format(birthDate, "dd/MM/yyyy");
+    const handleBirthDate = format(birthDate, "yyyy-MM-dd");
+    const handleExpiryDate = format(expiryDate, "yyyy-MM-dd");
     // console.log({
     //   handleBirthDate,
     //   country,
@@ -105,6 +115,8 @@ function HandlerFieldsBooking(position:number) {
     //   gender,
     //   nationality,
     //   passportNumber,
+    //   handleExpiryDate,
+    //   phoneNumber,
     // });
     setDataBookingState({
       BirthDateBooking: `${dataBookingState.BirthDateBooking},${handleBirthDate}`,
@@ -114,6 +126,8 @@ function HandlerFieldsBooking(position:number) {
       PassportNumberBooking: `${dataBookingState.PassportNumberBooking},${passportNumber}`,
       NationalityBooking: `${dataBookingState.NationalityBooking},${nationality}`,
       CountryBooking: `${dataBookingState.CountryBooking},${country}`,
+      ExpiryDate: `${dataBookingState.ExpiryDate},${handleExpiryDate}`,
+      PhoneNumber: `${dataBookingState.PhoneNumber},${phoneNumber}`,
     });
     if (countNamesUsers.length < adultsDataState) {
       return toast.info("استكمل بيانات باقي المسافرين");
@@ -239,6 +253,7 @@ function HandlerFieldsBooking(position:number) {
               </span>
             </div>
           </div>
+          {/* Birth Date */}
           <div
             className={`flex flex-wrap md:flex-nowrap justify-end w-full gap-[25px]`}
           >
@@ -305,6 +320,63 @@ function HandlerFieldsBooking(position:number) {
               <span className={`text-red-400 rounded-md `}>
                 {errors?.passportNumber?.message}
               </span>
+            </div>
+            {/* phoneNumber */}
+            <div className={`flex flex-col items-end gap-[10px] w-full`}>
+              <label
+                htmlFor="phoneNumber"
+                className={`text-[16px] font-medium text-[#000]`}
+              >
+                رقم الهاتف للتواصل
+              </label>
+              <input
+                defaultValue={
+                  adultsDataState > 1
+                    ? countPhoneNumberBookingUsers[position]
+                    : dataBookingState.PhoneNumber
+                }
+                type="text"
+                id="phoneNumber"
+                {...register("phoneNumber")}
+                className={`w-full max-w-[588px] px-[12px] py-[13px] rounded-[8px] text-[#333333] placeholder:text-[#333333] border border-[#117C99] focus-visible:outline-[#117C99]`}
+                dir="rtl"
+              />
+              <span className={`text-red-400 rounded-md `}>
+                {errors?.phoneNumber?.message}
+              </span>
+            </div>
+            {/* expiry Date */}
+            <div
+              className={`flex flex-wrap md:flex-nowrap justify-end w-full gap-[25px]`}
+            >
+              {/* Birth Date */}
+              <div className={`flex flex-col items-end gap-[10px] w-full`}>
+                <label
+                  htmlFor="expiryDate"
+                  className={`text-[16px] font-medium text-[#000]`}
+                >
+                  تاريخ انتهاء الصلاحية
+                </label>
+                <ReactDatePicker
+                  {...register("expiryDate", {
+                    required: "هذا الحقل مطلوب",
+                    value: startDate,
+                    setValueAs: () => startDate,
+                  })}
+                  id="expiryDate"
+                  showYearDropdown
+                  // maxDate={new Date()}
+                  showIcon
+                  icon={iconDate}
+                  dateFormat="dd/MM/yyyy"
+                  selected={startDate}
+                  onChange={(date: Date) => setStartDate(date)}
+                  className={`w-full max-w-[270px] h-[48px] text-center px-[12px] py-[13px] rounded-[8px] text-[#333333] placeholder:text-[#333333] border border-[#117C99] focus-visible:outline-[#117C99]`}
+                />
+                <span className={`text-red-400 rounded-md `}>
+                  {errors?.expiryDate?.message}
+                </span>
+              </div>
             </div>
             {/* nationality and counter */}
             <div

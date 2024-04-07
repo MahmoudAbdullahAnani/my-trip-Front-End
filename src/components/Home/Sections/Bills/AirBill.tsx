@@ -23,7 +23,10 @@ import {
   URLVisaPayment,
 } from "../../../../data/RecoilState/Payment/StripeURLsPayment";
 import { useTranslation } from "react-i18next";
-import { typeSystem } from "../../../../data/RecoilState/FormHandling";
+import {
+  typeSystem,
+  typeTravel,
+} from "../../../../data/RecoilState/FormHandling";
 import { ObjectToQueryString } from "../../../../App";
 import { FlightOffer } from "../../../../interface/MainData";
 import {
@@ -262,34 +265,43 @@ function AirBill({
   const [dataBookingState] = useRecoilState(DataBooking);
   const stateUserData = useSelector((state: RootState) => state.loggedUser);
 
+  const [typeTravelState] = useRecoilState(typeTravel);
+
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        sendCatchData();
+        setPriceOfTotal(priceOfTotal);
+
+        const queryStringOfUser = ObjectToQueryString(dataBookingState);
+
+        localStorage.setItem("data", JSON.stringify(data));
+        createCheckoutSession({
+          price: priceOfTotal,
+          description: `${arrival} الى ${departure} رحلة من `,
+          user_id: stateUserData._id || "guest",
+          urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&typeTravelState=${typeTravelState}&&adultsDataState=${adultsDataState}&${queryStringOfUser}&isStope=${isStope}&price1=${priceOfTotal}&durationM=${durationM}&durationH=${durationH}&logo=${carrierCodeLogo}&timeGo=${timeGo}&timeSet=${timeSet}&user_id=${localStorage.getItem(
+            "userIdDB"
+          )}&arrival=${arrival}&departure=${departure}`,
+          urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&typeTravelState=${typeTravelState}&&adultsDataState=${adultsDataState}&${queryStringOfUser}&isStope=${isStope}&price1=${priceOfTotal}&durationM=${durationM}&durationH=${durationH}&logo=${carrierCodeLogo}&timeGo=${timeGo}&timeSet=${timeSet}&user_id=${localStorage.getItem(
+            "userIdDB"
+          )}&arrival=${arrival}&departure=${departure}`,
+          userEmail: dataBookingState.EmailBooking,
+          carrierCodeLogo: carrierCodeLogo || "",
+          timeGo: timeGo || "",
+          timeSet: timeSet || "",
+          durationH: durationH || "",
+          durationM: durationM || "",
+          isStope: isStope || 0,
+        });
+      } catch (error) {
+        console.error("Error fetching trip data:", error);
+        // يمكنك تنفيذ الإجراءات الضرورية هنا في حالة وجود خطأ
+      }
+    };
+
     if (pathname === "/airPay") {
-      sendCatchData();
-      setPriceOfTotal(priceOfTotal);
-
-      const queryString = ObjectToQueryString(dataBookingState);
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      const queryString2 = ObjectToQueryString(data);
-
-      createCheckoutSession({
-        price: priceOfTotal,
-        description: `${arrival} الى ${departure} رحلة من `,
-        user_id: stateUserData._id || "guest",
-        urlSuccess: `https://ittrip.vercel.app?system=${typeSystemState}&status=success&isStope=${isStope}&price1=${priceOfTotal}&durationM=${durationM}&durationH=${durationH}&logo=${carrierCodeLogo}&timeGo=${timeGo}&timeSet=${timeSet}&${queryString}&${queryString2}&user_id=${localStorage.getItem(
-          "userIdDB"
-        )}&arrival=${arrival}&departure=${departure}`,
-        urlCancel: `https://ittrip.vercel.app?system=${typeSystemState}&status=cancel&isStope=${isStope}&price1=${priceOfTotal}&durationM=${durationM}&durationH=${durationH}&logo=${carrierCodeLogo}&timeGo=${timeGo}&timeSet=${timeSet}&${queryString}&${queryString2}&user_id=${localStorage.getItem(
-          "userIdDB"
-        )}&arrival=${arrival}&departure=${departure}`,
-        userEmail: dataBookingState.EmailBooking,
-        carrierCodeLogo: carrierCodeLogo || "",
-        timeGo: timeGo || "",
-        timeSet: timeSet || "",
-        durationH: durationH || "",
-        durationM: durationM || "",
-        isStope: isStope || 0,
-      });
+      fetchData();
     }
   }, []);
 
