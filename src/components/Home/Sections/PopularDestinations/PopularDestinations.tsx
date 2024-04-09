@@ -86,7 +86,7 @@ function PopularDestinations() {
   }, []);
   return (
     <section
-      className={` py-16 md:py-20 lg:py-28 flex flex-col gap-[34px] ${
+      className={` py-16 md:py-20 ${data.length<=0 && "hidden"} lg:py-28 flex flex-col gap-[34px] ${
         i18n.language === "ar"
           ? "pe-[16px] lg:pe-[96px]"
           : "ps-[16px] lg:ps-[96px]"
