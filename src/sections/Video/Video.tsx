@@ -57,7 +57,7 @@ const Video = () => {
         </div>
       </div>
 
-      <div>
+      <div className="z-50">
         <ModalVideo
           channel="youtube"
           isOpen={isOpen}
