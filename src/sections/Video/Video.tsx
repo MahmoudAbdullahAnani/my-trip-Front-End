@@ -57,12 +57,15 @@ const Video = () => {
         </div>
       </div>
 
-      <ModalVideo
-        channel="youtube"
-        isOpen={isOpen}
-        videoId="yx_jYRR73z4"
-        onClose={() => setOpen(false)}
-      />
+      <div>
+        <ModalVideo
+          channel="youtube"
+          isOpen={isOpen}
+          videoId="EDcPgnWILHA"
+          onClose={() => setOpen(false)}
+          animationSpeed={500}
+        />
+      </div>
 
       <div className="absolute bottom-0 left-0 right-0 z-[-1]">
         <img src={img2} alt="shape" className="w-full" />
