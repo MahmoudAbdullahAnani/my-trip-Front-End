@@ -20,6 +20,7 @@ import {
 } from "../../data/RecoilState/Notifications/NotificationsData";
 import UpdatePrivateNotification from "./UpdatePrivateNotification";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import StaticSections from "./StaticSections/StaticSections";
 function countUsersOnMonths(data: []) {
   let countJanuary = 0;
   let countFebruary = 0;
@@ -288,6 +289,7 @@ function MainChartsTop({
 
   return (
     <>
+      
       <div className="bg-white p-4 rounded-md shadow-md">
         <h2
           className="text-lg font-semibold mb-4"
@@ -319,6 +321,7 @@ function MainChartsTop({
           // }}
         />
       </div>
+      <StaticSections />
       {children}
       <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
         <h2
