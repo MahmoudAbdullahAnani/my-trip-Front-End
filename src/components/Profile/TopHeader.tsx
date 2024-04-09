@@ -20,7 +20,7 @@ function TopHeader() {
   const { t } = useTranslation();
 
   return (
-    <div className={`flex items-center gap-[14px]`}>
+    <div className={`flex items-center gap-[14px] mt-[100px]`}>
       <h1 className={`text-[32px] font-bold text-[#000]`}>{t("إعدادات المستخدم")}</h1>
       <div className="block ll:hidden">
         <Button

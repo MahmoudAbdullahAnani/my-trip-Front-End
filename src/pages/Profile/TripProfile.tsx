@@ -15,20 +15,6 @@ import notFoundTrip from "/public/assets/profile/notFoundTrip.png";
 import { iconBlush } from "../../assets/icons/home";
 import { Bounce, toast } from "react-toastify";
 interface Data {
-  __v?: number;
-  user_id: string;
-  updatedAt: string;
-  createdAt: string;
-  totalOrderPrice: number;
-  status: string;
-  payment_method_types: string;
-  payment_intent: string;
-  name: string;
-  evt_id: string;
-  email: string;
-  description: string;
-  currency: string;
-  _id: string;
   metaData: {
     description: string;
     logo: string;
@@ -38,8 +24,31 @@ interface Data {
     user_id: string;
     durationH: string;
     durationM: string;
-    isStope: string;
+    isStope: number;
   };
+  _id: string;
+  name: string;
+  totalOrderPrice: number;
+  description: string;
+  address: string;
+  user_id: string;
+  currency: string;
+  email: string;
+  payment_method_types: string;
+  status: string;
+  typeSystem: string;
+  ExpiryDate: string;
+  PhoneNumber: string;
+  adultsDataState: string;
+  GenderBooking: string;
+  BirthDateBooking: string;
+  NationalityBooking: string;
+  CountryBooking: string;
+  PassportNumberBooking: string;
+  typeTravelState: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
 
 const pageSize = 5;
@@ -72,7 +81,7 @@ function TripProfile() {
             payment_method_types === "air-Stripe" ||
             payment_method_types === "air-PayPal"
         );
-        console.log({ filterStripe });
+        // console.log({ filterStripe });
 
         setDataOrders({
           data: filterStripe,

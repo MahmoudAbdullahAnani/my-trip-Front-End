@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { iconArrowDown, iconArrowTop, iconDot } from "../../assets/icons/home";
 // Date
 import { parseISO, format } from "date-fns";
@@ -12,7 +12,7 @@ interface metaData {
   user_id: string;
   durationH: string;
   durationM: string;
-  isStope: string;
+  isStope: number;
 }
 
 function CartOrder({
@@ -29,18 +29,27 @@ metaData) {
   const [toggle, setToggle] = useState(false);
 
   // handle Date
-  const parsedDepartureDate = parseISO(timeGo);
-  const parsedArrivalDate = parseISO(timeSet);
-
-  // Time Ticket
-  const handleParsedDepartureTime = format(parsedDepartureDate, "h:mm a");
-  const handleParsedArrivalTime = format(parsedArrivalDate, "h:mm a");
+  const [handleParsedDepartureTime, setHandleParsedDepartureTime] =
+    useState("");
+  const [handleParsedArrivalTime, setHandleParsedArrivalTime] = useState("");
+  useEffect(() => {
+    if (timeGo !== "") {
+      const parsedDepartureDate = parseISO(timeGo);
+      const handleTimeGo = format(parsedDepartureDate, "h:mm a");
+      setHandleParsedDepartureTime(handleTimeGo);
+    }
+    if (timeSet !== "") {
+      const parsedArrivalDate = parseISO(timeSet);
+      const handleTimeSet = format(parsedArrivalDate, "h:mm a");
+      setHandleParsedArrivalTime(handleTimeSet);
+    }
+  }, [timeGo, timeSet]);
 
   return (
     <div
       key={`${user_id}---${Math.random()}`}
       dir={"ltr"}
-      className="w-full pe-[24px] pt-[30px] pb-[14px] xl:mt-0 mt-[50px] rounded-[16px] bg-[#FFF]"
+      className="w-full px-[24px] pt-[30px] pb-[14px] xl:mt-0 mt-[50px] rounded-[16px] bg-[#FFF]"
       style={{ boxShadow: "rgba(0, 90, 108, 0.3) 0px 4px 4px" }}
     >
       <div className="flex flex-wrap justify-end items-center lg:gap-[113px] gap-[53px] ">
@@ -79,15 +88,18 @@ metaData) {
         </div>
       </div>
       <div className="flex flex-col justify-end items-end mt-[54px]">
-        <button
-          className="flex items-center justify-center gap-[8px] text-[#117C99] hover:text-[#117c999c] text-[15px]"
-          onClick={() => setToggle(!toggle)}
-        >
-          <span className="relative top-[2px]">
-            {!toggle ? iconArrowDown : iconArrowTop}
-          </span>
-          <span>مشاهدة تفاصيل </span>
-        </button>
+        <div className={`flex justify-between items-center w-full`}>
+          <div></div>
+          <button
+            className="flex items-center justify-center gap-[8px] text-[#117C99] hover:text-[#117c999c] text-[15px]"
+            onClick={() => setToggle(!toggle)}
+          >
+            <span className="relative top-[2px]">
+              {!toggle ? iconArrowDown : iconArrowTop}
+            </span>
+            <span>مشاهدة تفاصيل </span>
+          </button>
+        </div>
         {toggle && <div className="">Details Data</div>}
       </div>
     </div>

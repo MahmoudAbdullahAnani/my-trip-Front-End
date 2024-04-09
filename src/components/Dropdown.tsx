@@ -8,6 +8,8 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
+const blockRouts = ["/", "/hotel", "/car"];
+
 export default function Dropdown() {
   const { t, i18n } = useTranslation();
   const { pathname } = useLocation();
@@ -17,13 +19,13 @@ export default function Dropdown() {
         <Menu.Button
           dir={i18n.language !== "ar" ? "ltr" : "rtl"}
           className={`inline-flex items-center w-full justify-center gap-x-1.5 rounded-md text-[18px] font-[600] whitespace-nowrap text-[${
-            pathname === "/" ? "#FFF" : "#117c99b3"
+            blockRouts.includes(pathname) ? "#FFF" : "#117c99b3"
           }] hover:text-[#117C99]  duration-200 `}
         >
           {t("المزيد")}
           <ChevronDownIcon
             className={`-mr-1 h-5 w-5 text-[18px] font-[600] whitespace-nowrap text-[${
-              pathname === "/" ? "#FFF" : "#117c99b3"
+              blockRouts.includes(pathname) ? "#FFF" : "#117c99b3"
             }] hover:text-[#117C99]  duration-200`}
             aria-hidden="true"
           />
