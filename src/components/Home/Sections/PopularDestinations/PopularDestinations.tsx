@@ -4,70 +4,86 @@ import exampleMainImage from "/public/assets/heroSection.jpeg";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Mousewheel, Pagination, Keyboard } from "swiper/modules";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import SwiperType from "swiper";
 import { iconLeftSwiper, iconRightSwiper } from "../../../../assets/icons/home";
 import { useTranslation } from "react-i18next";
-
-const data = [
-  {
-    id: 1,
-    mainImage: exampleMainImage,
-    titleAR: "مصر",
-    titleEN: "Egypt",
-    link: "/",
-  },
-  {
-    id: 2,
-    mainImage: exampleMainImage,
-    titleAR: "مكة",
-    titleEN: "Macca",
-    link: "/",
-  },
-  {
-    id: 1,
-    mainImage: exampleMainImage,
-    titleAR: "المغرب",
-    titleEN: "Morocco",
-    link: "/",
-  },
-  {
-    id: 1,
-    mainImage: exampleMainImage,
-    titleAR: "القاهرة",
-    titleEN: "Egypt",
-    link: "/",
-  },
-  {
-    id: 1,
-    mainImage: exampleMainImage,
-    titleAR: "القاهرة",
-    titleEN: "Egypt",
-    link: "/",
-  },
-  {
-    id: 1,
-    mainImage: exampleMainImage,
-    titleAR: "القاهرة",
-    titleEN: "Egypt",
-    link: "/",
-  },
-  {
-    id: 1,
-    mainImage: exampleMainImage,
-    titleAR: "القاهرة",
-    titleEN: "Egypt",
-    link: "/",
-  },
-];
+import axios from "axios";
 
 function PopularDestinations() {
+  const [data, setData] = useState([
+    {
+      id: 1,
+      img: exampleMainImage,
+      titleAR: "مصر",
+      titleEN: "Egypt",
+    },
+    {
+      id: 2,
+      img: exampleMainImage,
+      titleAR: "مكة",
+      titleEN: "Macca",
+    },
+    {
+      id: 1,
+      img: exampleMainImage,
+      titleAR: "المغرب",
+      titleEN: "Morocco",
+    },
+    {
+      id: 1,
+      img: exampleMainImage,
+      titleAR: "القاهرة",
+      titleEN: "Egypt",
+    },
+    {
+      id: 1,
+      img: exampleMainImage,
+      titleAR: "القاهرة",
+      titleEN: "Egypt",
+    },
+    {
+      id: 1,
+      img: exampleMainImage,
+      titleAR: "القاهرة",
+      titleEN: "Egypt",
+    },
+    {
+      id: 1,
+      img: exampleMainImage,
+      titleAR: "القاهرة",
+      titleEN: "Egypt",
+    },
+  ]);
   // console.log(window.innerWidth);
   const swiperRef = useRef<SwiperType | null>(null);
 
   // Lang
   const { t, i18n } = useTranslation();
 
+  const getData = async () => {
+    await axios
+      .get(
+        import.meta.env.VITE_PUBLIC_NODE_MODE === "development"
+          ? `${
+              import.meta.env.VITE_PUBLIC_API_LOCAL
+            }/static-sections/popular-destinations`
+          : `${
+              import.meta.env.VITE_PUBLIC_API_PRODUCTION
+            }/static-sections/popular-destinations`
+      )
+      .then(async ({ data }) => {
+
+        setData(data.data);
+      })
+      .catch((err) => {
+        console.log("static-sections-PopularDestinations==> ", err);
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <section
       className={` py-16 md:py-20 lg:py-28 flex flex-col gap-[34px] ${

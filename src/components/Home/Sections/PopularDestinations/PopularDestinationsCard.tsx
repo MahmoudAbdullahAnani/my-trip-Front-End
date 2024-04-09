@@ -1,23 +1,15 @@
-import { Link } from "react-router-dom";
-
 interface DataInterface {
   id: number;
-  mainImage: string;
+  img: string;
   titleAR: string;
   titleEN: string;
-  link: string;
 }
-function PopularDestinationsCard({
-  mainImage,
-  titleAR,
-  titleEN,
-  link,
-}: DataInterface) {
+function PopularDestinationsCard({ img, titleAR, titleEN }: DataInterface) {
   return (
-    <Link to={link} className={``}>
+    <div className={`h-full`}>
       <img
         className={`h-full object-fill `}
-        src={mainImage}
+        src={img}
         // width={100}
         // height={100}
       />
@@ -27,7 +19,7 @@ function PopularDestinationsCard({
         <span>{titleAR}</span>
         <span>{titleEN}</span>
       </div>
-    </Link>
+    </div>
   );
 }
 
