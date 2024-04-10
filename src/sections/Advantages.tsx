@@ -8,6 +8,7 @@ import {
   service5,
   service6,
   service7,
+  service8
 } from "../assets/icons/home";
 
 const data = [
@@ -55,7 +56,7 @@ const data = [
   },
   {
     _id: Math.random(),
-    icon: service7,
+    icon: service8,
     title: "معلومات موثوقة ودقيقة",
     content: `نحرص على توفير معلومات دقيقة وشاملة حول الرحلات، الفنادق، والسيارات المتاحة، لتمكينك من اتخاذ قرارات مدروسة ومناسبة.`,
   },
