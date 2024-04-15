@@ -145,12 +145,14 @@ function UpdatePrivateNotification() {
                     <h3 className={"font-bold text-[20px]"}>{title}</h3>
                     <div className={`flex items-center`}>
                       <button
+                        name="deletePrivateNotification"
                         className={`text-red-500 hover:bg-red-100 p-2 rounded-lg`}
                         onClick={() => deletePrivateNotification(_id)}
                       >
                         <DeleteIcon />
                       </button>
                       <button
+                        name="updatePrivateNotification"
                         className={`text-blue-500 hover:bg-blue-100 p-2 rounded-lg`}
                         onClick={() =>
                           updatePrivateNotification(

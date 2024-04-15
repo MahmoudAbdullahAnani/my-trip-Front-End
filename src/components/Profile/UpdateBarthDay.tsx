@@ -98,6 +98,7 @@ function UpdateBarthDay({
           )}
         </div>
         <button
+          name="updateBarthDay"
           onClick={() => {
             setErrorBarthDay("");
             if (barthDayChanges) {

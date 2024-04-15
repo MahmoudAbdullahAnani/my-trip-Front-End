@@ -34,6 +34,7 @@ function MainOAuthNavbar({ isMobile = false }: { isMobile?: boolean }) {
           <NotificationComponent isMobile={isMobile} />
 
           <button
+            name="dropdownInformdropdownAvatarNameButtonationButton"
             onClick={() => setToggle(!toggle)}
             id="dropdownAvatarNameButton"
             data-dropdown-toggle="dropdownAvatarName"

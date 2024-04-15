@@ -83,7 +83,8 @@ function NavTopMobile() {
               className={`flex justify-center items-center border border-[#117C99] p-2 relative bottom-[20px] bg-[#FFFFFF] rounded-[8px]`}
             >
               <NotificationComponent isMobile={true} />
-              <button
+                <button
+                  name="iconUser"
                 onClick={() => setToggle(!toggle)}
                 id="dropdownAvatarNameButton"
                 data-dropdown-toggle="dropdownAvatarName"
@@ -179,7 +180,8 @@ function NavTopMobile() {
                   </Link>
                 </li>
               </ul>
-              <button
+                <button
+                  name="logout"
                 onClick={handleOpen}
                 className={`w-full text-center p-2 hover:text-red-400`}
               >
@@ -194,6 +196,7 @@ function NavTopMobile() {
             className={`flex flex-col gap-[15px] relative bottom-[10px] w-[150px]`}
           >
             <button
+              name="login"
               onClick={handleOpenPage}
               // to={``}
               style={{ border: "1px solid #F9C534" }}

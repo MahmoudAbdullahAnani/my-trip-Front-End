@@ -356,12 +356,14 @@ function MainChartsTop({
                       <h3 className={"font-bold text-[20px]"}>{title}</h3>
                       <div className={`flex items-center`}>
                         <button
+                          name="delete"
                           className={`text-red-500 hover:bg-red-100 p-2 rounded-lg`}
                           onClick={() => deletePublicNotification(_id)}
                         >
                           <DeleteIcon />
                         </button>
                         <button
+                          name="update"
                           className={`text-blue-500 hover:bg-blue-100 p-2 rounded-lg`}
                           onClick={() =>
                             updatePublicNotification(
@@ -403,6 +405,7 @@ function MainChartsTop({
           </h2>
           {dataOfUserSearchPrivateNotificationsState._id !== "" && (
             <button
+              name="delete"
               onClick={() =>
                 setDataOfUserSearchPrivateNotificationsState({
                   _id: "",

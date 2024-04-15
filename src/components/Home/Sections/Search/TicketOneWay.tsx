@@ -114,7 +114,7 @@ function TicketOneWay({
           <div
             className={`flex flex-col gap-[15px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] items-start  p-[12px] border-2 border-[#FFF] rounded-[16px] bg-[#D9D9D9]`}
           >
-            <button onClick={handleClose} className={`rounded-full`}>
+            <button name="close" onClick={handleClose} className={`rounded-full`}>
               {iconRedClose}
             </button>
             <div
@@ -169,6 +169,7 @@ function TicketOneWay({
               </div>
             </div>
             <button
+              name="close"
               onClick={ChoseTicket}
               className={`text-[#FFF] text-[20px] mx-auto w-[154px] h-[48px] font-[700] py-[10px] px-[16px] rounded-[16px] duration-200 bg-[#117C99] hover:bg-[#117c99ba]`}
             >
@@ -392,6 +393,7 @@ function TicketOneWay({
                       className={`hidden lg:flex items-start w-[701px] h-[500px] p-[12px] border-2 border-[#FFF] rounded-[16px] bg-[#D9D9D9]`}
                     >
                       <button
+                        name="close"
                         onClick={handleTooltipClose}
                         className={`rounded-full`}
                       >
@@ -458,6 +460,7 @@ function TicketOneWay({
                 arrow
               >
                 <button
+                  name="open"
                   onClick={handleTooltipOpen}
                   className={` border-2 border-[#117C99] hover:bg-[#117c99f3] text-[#005A6C] hover:text-[#fff] text-[16px] font-[700] xl:w-[93px] w-[73px] ms-auto xl:h-[48px] h-[38px] rounded-[16px] flex justify-center items-center `}
                 >

@@ -87,6 +87,7 @@ function UpdateName({
           )}
         </div>
         <button
+          name="name"
           onClick={() => {
             if (nameChanges) {
               setNameChanges(false);

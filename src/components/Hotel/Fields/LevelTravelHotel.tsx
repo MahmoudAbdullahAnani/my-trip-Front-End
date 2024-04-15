@@ -187,6 +187,7 @@ function LevelTravelHotel() {
               className={` border-2 border-[#909090] flex  px-[14px] py-[10px] w-[257px] h-[44px] rounded-[8px]  justify-between`}
             >
               <button
+                name="adults"
                 className={` text-[#000000] rounded-md px-2 `}
                 onClick={() =>
                   incrementAndDecrementData(
@@ -219,6 +220,7 @@ function LevelTravelHotel() {
                 <span>{iconAd}</span>
               </div>
               <button
+                name="adults"
                 className={` text-[#000000] rounded-md px-2 ${
                   adultsDataState < 1 && "opacity-30"
                 }`}
@@ -242,6 +244,7 @@ function LevelTravelHotel() {
               className={` border-2 border-[#909090] flex  px-[14px] py-[10px] w-[257px] h-[44px] rounded-[8px]  justify-between`}
             >
               <button
+                name="youths"
                 className={` text-[#000000] rounded-md px-2 `}
                 onClick={() =>
                   incrementAndDecrementData(
@@ -268,6 +271,7 @@ function LevelTravelHotel() {
                 <span>{iconChelderin}</span>
               </div>
               <button
+                name="youths"
                 className={`text-[#000000] rounded-md px-2 ${
                   youthsDataState < 1 && "opacity-30"
                 }`}

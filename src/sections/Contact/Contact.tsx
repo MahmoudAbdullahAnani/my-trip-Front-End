@@ -160,6 +160,7 @@ const Contact = () => {
                       className="rounded-2xl flex gap-2 items-center justify-center bg-[#117C99] py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
                     /> */}
                     <button
+                      name="submit"
                       type="submit"
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                       // @ts-ignore

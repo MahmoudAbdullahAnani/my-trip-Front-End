@@ -146,6 +146,7 @@ export default function PopularDestinationsControl() {
       />
       {itemSelections.length > 0 && (
         <button
+          name="delete"
           onClick={() => {
             const token = localStorage.getItem("token") || "";
 

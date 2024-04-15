@@ -91,6 +91,7 @@ metaData) {
         <div className={`flex justify-between items-center w-full`}>
           <div></div>
           <button
+            name="toggle"
             className="flex items-center justify-center gap-[8px] text-[#117C99] hover:text-[#117c999c] text-[15px]"
             onClick={() => setToggle(!toggle)}
           >

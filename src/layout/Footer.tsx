@@ -18,7 +18,7 @@ const Footer = () => {
   const { t, i18n } = useTranslation();
   return (
     <>
-      <div className="">
+      <div>
         <ModalVideo
           channel="youtube"
           isOpen={isOpenPc}
@@ -81,10 +81,7 @@ const Footer = () => {
                       </defs>
                     </svg>
                   </span>
-                  <Link
-                    to={"https://api.whatsapp.com/send?phone=201028876202"}
-                    className=""
-                  >
+                  <Link to={"https://api.whatsapp.com/send?phone=201028876202"}>
                     +012 (877) 219 24
                   </Link>
                 </p>
@@ -115,11 +112,17 @@ const Footer = () => {
               <NavLink link="/#" label={t("خدماتنا")} />
               {/* <NavLink link="/#" label="طريقة تحميل التطبيق علي الكمبيوتر" />
               <NavLink link="/#" label="طريقة تحميل التطبيق علي الجوال" /> */}
-              <div className="">
-                <button className="" onClick={() => setOpenPC(true)}>
+              <div>
+                <button
+                  name="dropdownInformdropdownAvatarNameButtonationButton"
+                  onClick={() => setOpenPC(true)}
+                >
                   {t("طريقة تحميل التطبيق علي الكمبيوتر")}
                 </button>
-                <button className="" onClick={() => setOpenMobile(true)}>
+                <button
+                  name="dropdownInformdropdownAvatarNameButtonationButton"
+                  onClick={() => setOpenMobile(true)}
+                >
                   {t("طريقة تحميل التطبيق علي الجوال")}
                 </button>
               </div>

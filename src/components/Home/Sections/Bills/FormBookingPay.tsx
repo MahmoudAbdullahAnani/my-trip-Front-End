@@ -70,6 +70,7 @@ function FormBookingPay() {
       className={`bg-[#e9e9e9] duration-500 rounded-[16px] mt-[16px] lg:mb-[570px] mb-[70px]`}
     >
       <button
+        name="togglePrice"
         onClick={() => setTogglePrice(!togglePrice)}
         className={`cursor-pointer relative text-[#000] ms-auto ${
           togglePrice
@@ -144,6 +145,7 @@ function FormBookingPay() {
             {/* desktop */}
             {URLPaymentState === "" ? (
               <button
+                name="togglePrice"
                 onClick={() =>
                   toast.warn("يجب اختيار طريقة دفع", {
                     position: "top-right",
@@ -203,6 +205,7 @@ function FormBookingPay() {
             {/* mobile */}
             {URLPaymentState === "" ? (
               <button
+                name="togglePrice"
                 onClick={() =>
                   toast.warn("يجب اختيار طريقة دفع", {
                     position: "top-right",

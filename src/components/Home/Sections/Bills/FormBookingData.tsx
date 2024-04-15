@@ -12,6 +12,7 @@ function FormBookingData({ position }: number) {
       className={`bg-[#e9e9e9] duration-500 rounded-[16px] my-5`}
     >
       <button
+        name="togglePrice"
         onClick={() => setTogglePrice(!togglePrice)}
         className={`cursor-pointer relative text-[#000] ms-auto ${
           togglePrice

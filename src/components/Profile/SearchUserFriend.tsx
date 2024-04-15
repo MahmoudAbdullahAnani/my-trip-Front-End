@@ -170,6 +170,7 @@ function SearchUserFriend() {
                         : `${firstName} ${lastName}`}
                     </h4>
                     <button
+                      name="addFriend"
                       className={`text-white h-[48px] w-[48px] flex justify-center items-center rounded-[16px] bg-[#117c99b8] hover:bg-[#117c99e0]`}
                       onClick={() => addToFriend(_id)}
                     >

@@ -166,6 +166,7 @@ export default function Form({ isOrigin }: { isOrigin: boolean }) {
                 name: string;
               }) => (
                 <button
+                  name="iataCode"
                   onClick={() => {
                     setKeyword(
                       address?.cityName + ", " + name + " (" + iataCode + ")"

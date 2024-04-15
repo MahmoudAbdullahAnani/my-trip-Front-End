@@ -145,6 +145,7 @@ function UpdatePublicNotification() {
           className={`shadow-lg text-center border w-full h-[50px] focus-visible:outline-none focus-visible:border-[#58a8f7] p-2 rounded-lg`}
         />
         <button
+          name="updatePublicNotificationById"
           disabled={!UpdatePublicNotification_id}
           onClick={updatePublicNotificationById}
           style={{ boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" }}

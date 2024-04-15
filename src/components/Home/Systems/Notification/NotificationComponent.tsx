@@ -232,6 +232,7 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
                           <div className={`text-start`}>
                             <span>{title}</span>
                             <button
+                              name="exit"
                               onClick={() => {
                                 setIsSee(_id);
                               }}
@@ -324,7 +325,7 @@ function NotificationComponent({ isMobile = false }: { isMobile?: boolean }) {
           )}
         </ul>
       </div>
-      <button onClick={() => setToggle(!toggle)} className="relative">
+      <button name="exit" onClick={() => setToggle(!toggle)} className="relative">
         <div className="absolute right-0 top-0 bg-red-500 rounded-full">
           <span className="text-[12px] text-white p-1">
             {publicNotifications.length + privateNotifications.length}

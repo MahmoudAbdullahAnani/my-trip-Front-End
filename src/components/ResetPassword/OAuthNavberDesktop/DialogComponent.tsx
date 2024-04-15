@@ -62,7 +62,7 @@ function DialogComponent({ stylesBtn, isMobile, iconOut }: ComponentInterface) {
   if (isMobile) {
     return (
       <div className={`${pathname === "/" && "hidden"}`}>
-        <button onClick={handleMobilClickOpen} className={stylesBtn}>
+        <button name="lang" onClick={handleMobilClickOpen} className={stylesBtn}>
           <span>{iconOut}</span>
           {/* <span>{t("تسجيل خروج")}</span> */}
         </button>

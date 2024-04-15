@@ -90,12 +90,14 @@ function CardPendingFriend({ _id, firstName, avatar, lastName }: IFriends) {
         </h4>
         <div className={`flex gap-[10px]`}>
           <button
+            name="no"
             className={`h-[48px] w-[48px] flex justify-center items-center rounded-[16px] bg-[#FCDAD1] hover:bg-[#f4beb0b0]`}
             onClick={() => filterPendingFriend("no")}
           >
             {iconDelete}
           </button>
           <button
+            name="yes"
             className={`h-[48px] text-white w-[48px] flex justify-center items-center rounded-[16px] bg-[#117C99] hover:bg-[#117c99b8]`}
             onClick={() => filterPendingFriend("yes")}
           >

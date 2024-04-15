@@ -225,6 +225,7 @@ function LevelTravel() {
               className={` border-2 border-[#909090] flex  px-[14px] py-[10px] w-[257px] h-[44px] rounded-[8px]  justify-between`}
             >
               <button
+                name="adults"
                 className={` text-[#000000] rounded-md px-2 `}
                 onClick={() =>
                   incrementAndDecrementData(
@@ -251,6 +252,7 @@ function LevelTravel() {
                 <span>{iconAd}</span>
               </div>
               <button
+              name="adults"
                 className={` text-[#000000] rounded-md px-2 ${
                   adultsDataState < 1 && "opacity-30"
                 }`}
@@ -274,6 +276,7 @@ function LevelTravel() {
               className={` border-2 border-[#909090] flex  px-[14px] py-[10px] w-[257px] h-[44px] rounded-[8px]  justify-between`}
             >
               <button
+                name="youths"
                 className={` text-[#000000] rounded-md px-2 `}
                 onClick={() =>
                   incrementAndDecrementData(
@@ -300,6 +303,7 @@ function LevelTravel() {
                 <span>{iconChelderin}</span>
               </div>
               <button
+                name="youths"
                 className={`text-[#000000] rounded-md px-2 ${
                   youthsDataState < 1 && "opacity-30"
                 }`}
@@ -326,6 +330,7 @@ function LevelTravel() {
               className={` border-2 border-[#909090] flex  px-[14px] py-[10px] w-[257px] h-[44px] rounded-[8px]  justify-between`}
             >
               <button
+                name="children"
                 className={` text-[#000000] rounded-md px-2 `}
                 onClick={() =>
                   incrementAndDecrementData(
@@ -352,6 +357,7 @@ function LevelTravel() {
                 <span>{iconChelderin}</span>
               </div>
               <button
+                name="children"
                 className={`text-[#000000] rounded-md px-2 ${
                   childrenDataState < 1 && "opacity-30"
                 }`}

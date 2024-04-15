@@ -140,6 +140,7 @@ function CountryAndNationality({ data, iconStyle }: TypeComponent) {
           </div>
         </div>
         <button
+          name="save"
           onClick={() => {
             setErrorNationality("");
             setErrorCountry("");

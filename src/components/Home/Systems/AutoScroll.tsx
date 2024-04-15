@@ -6,6 +6,7 @@ function AutoScroll() {
 
   return (
     <button
+      name="autoScroll"
       onClick={() => window.scrollBy(0, window.innerHeight)}
       style={{
         border: "1px solid #FFF",
@@ -21,6 +22,7 @@ function AutoScroll() {
           height={100}
           className={`w-[47px] h-[40px]`}
           src={arrowAnimation}
+          alt="ajwaa"
         />
       </div>
     </button>

@@ -92,7 +92,8 @@ function Navbar() {
               </div>
             ) : (
               <>
-                <button
+                  <button
+                    name="login"
                   onClick={handleOpenPage}
                   // to={``}
                   style={{ border: "1px solid #F9C534" }}
@@ -169,6 +170,7 @@ function Navbar() {
               src={logo}
               className={`text-slate-400 font-bold text-4xl duration-300`}
               style={{ fontSize: "3rem" }}
+              alt="ajwaa"
             />
           </Link>
         </div>

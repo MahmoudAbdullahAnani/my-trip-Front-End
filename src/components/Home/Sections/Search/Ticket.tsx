@@ -162,13 +162,14 @@ function Ticket({
             className={`flex flex-col gap-[15px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] items-start  p-[12px] border-2 border-[#FFF] rounded-[16px] bg-[#D9D9D9]`}
           >
             <div className={`flex w-full`}>
-              <button onClick={handleClose} className={`rounded-full`}>
+              <button name="close" onClick={handleClose} className={`rounded-full`}>
                 {iconRedClose}
               </button>
               <div
                 className={`py-[16px] flex gap-2 justify-center text-[#FFF] h-full flex-1  ms-[5px]`}
               >
                 <button
+                  name="go"
                   onClick={() => setView("go")}
                   className={`${
                     view !== "go" ? "bg-[#006c4b]" : "bg-[#006c4c95]"
@@ -177,6 +178,7 @@ function Ticket({
                   {t("رحلة الذهاب")}
                 </button>
                 <button
+                  name="return"
                   onClick={() => setView("return")}
                   className={`${
                     view !== "return" ? "bg-[#006c4b]" : "bg-[#006c4c95]"
@@ -292,6 +294,7 @@ function Ticket({
               </div>
             )}
             <button
+              name="ChoseTicket"
               onClick={ChoseTicket}
               className={`text-[#FFF] text-[20px] mx-auto w-[154px] h-[48px] font-[700] py-[10px] px-[16px] rounded-[16px] duration-200 bg-[#117C99] hover:bg-[#117c99ba]`}
             >
@@ -480,6 +483,7 @@ function Ticket({
             {/* افضل سعر */}
             <div className="mt-auto hidden lg:mr-1 mr-0">
               <button
+                name="price"
                 className={` border-2 border-[#117C99] hover:bg-[#117c99f3] text-[#005A6C] hover:text-[#fff] text-[16px] font-[700] xl:w-[93px] w-[73px] ms-auto xl:h-[48px] h-[38px] rounded-[16px] flex justify-center items-center `}
               >
                 <span className={` text-[16px] font-[700]`}>التفصيل</span>
@@ -672,6 +676,7 @@ function Ticket({
                     className={`hidden lg:flex items-start w-[701px] h-[500px] p-[12px] border-2 border-[#FFF] rounded-[16px] bg-[#D9D9D9]`}
                   >
                     <button
+                      name="close"
                       onClick={handleTooltipClose}
                       className={`rounded-full`}
                     >
@@ -795,6 +800,7 @@ function Ticket({
                       className={`py-[16px] flex flex-col gap-2 justify-center h-full  ms-[5px]`}
                     >
                       <button
+                        name="go"
                         onClick={() => setView("go")}
                         className={`${
                           view !== "go" ? "bg-[#006c4b]" : "bg-[#006c4c95]"
@@ -803,6 +809,7 @@ function Ticket({
                         رحلة الذهاب{" "}
                       </button>
                       <button
+                        name="return"
                         onClick={() => setView("return")}
                         className={`${
                           view !== "return" ? "bg-[#006c4b]" : "bg-[#006c4c95]"
@@ -818,6 +825,7 @@ function Ticket({
             >
               <div className="mt-auto lg:mr-1 mr-0">
                 <button
+                  name="go"
                   onClick={handleTooltipOpen}
                   className={` border-2 border-[#117C99] hover:bg-[#117c99f3] text-[#005A6C] hover:text-[#fff] text-[16px] font-[700] xl:w-[93px] w-[73px] ms-auto xl:h-[48px] h-[38px] rounded-[16px] flex justify-center items-center `}
                 >

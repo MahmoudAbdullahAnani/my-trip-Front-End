@@ -34,6 +34,7 @@ function GeoCodeCar() {
           {t("الخريطة")}
         </h4>
         <button
+          name="open"
           onClick={handleOpen}
           className={`bg-[#FFF] w-full text-center shadow-lg focus:border border-[#117C99] focus:shadow-[#58a8f752] hover:shadow-[#58a8f752] duration-200 sm:w-[188px] h-[48px] rounded-[8px] sm:text-center sm:px-0 p-[10px] focus-visible:outline-none text-[#117C99] text-[14px] placeholder:text-[14px] font-[500] placeholder:font-[500]`}
         >

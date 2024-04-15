@@ -8,8 +8,10 @@ function PopularDestinationsCard({ img, titleAR, titleEN }: DataInterface) {
   return (
     <div className={`h-full`}>
       <img
-        className={`h-full object-fill `}
+        className={`h-full object-fill`}
         src={img}
+        alt="ajwaa"
+
         // width={100}
         // height={100}
       />

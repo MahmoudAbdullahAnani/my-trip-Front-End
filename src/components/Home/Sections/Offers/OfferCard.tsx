@@ -64,6 +64,7 @@ function OfferCard({
             className={`h-full w-full`}
             width={100}
             height={100}
+            alt="ajwaa"
           />
           <span
             className={`text-[#F36E16] text-[14px]  font-normal p-[8px] bg-[#FDEAB4] rounded-[30px] text-center absolute top-[calc(8px+8px+12px)] right-[calc(8px+8px+12px)]`}
@@ -170,6 +171,7 @@ function OfferCard({
             {EGP.format(+totalPriceEGP)}
           </h5> */}
           <button
+            name="toggleMore"
             onClick={() => {}}
             className={`text-[#005A6C] hover:text-[#005a6cc0] text-[14px] font-[700]  hidden lg:flex items-center justify-center`}
           >
@@ -185,6 +187,7 @@ function OfferCard({
             </h5>
           ) : (
             <button
+              name="toggleMore"
               onClick={() => setToggleMore(!toggleMore)}
               className={`text-[#005A6C] hover:text-[#005a6cc0] text-[14px] font-[700] flex lg:hidden items-center justify-center`}
             >
@@ -205,6 +208,7 @@ function OfferCard({
         </div>
         {toggleMore && (
           <button
+            name="toggleMore"
             onClick={() => setToggleMore(!toggleMore)}
             className={`text-[#005A6C] hover:text-[#005a6cc0] text-[14px] font-[700] flex lg:hidden items-center justify-center`}
           >

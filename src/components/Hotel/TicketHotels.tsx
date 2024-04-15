@@ -199,6 +199,7 @@ function TicketHotels(data: HotelData) {
           )}
           <div className={`flex gap-3`}>
             <button
+            name="choose"
               className={`px-3 py-2 rounded-lg mx-auto mt-10 bg-[#117C99] duration-200 text-white hover:bg-[#31B2E1]`}
               onClick={() => {
                 setHotelChoose(data);

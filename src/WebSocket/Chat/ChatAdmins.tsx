@@ -223,6 +223,7 @@ function ChatAdmins() {
                         }) => {
                           return (
                             <button
+                              name="message"
                               onClick={() => {
                                 setSingleUserMessage({
                                   chatSocketId,
@@ -286,6 +287,7 @@ function ChatAdmins() {
                 className={`bg-[#117c994d] border-${borderValidation} border-red-400 focus-visible:outline-none w-[200px] p-2 rounded-lg`}
               />
               <button
+                name="send"
                 type="submit"
                 onClick={onSubmit}
                 className={`text-[#117c99ee] hover:text-[#117c99c5] p-2 rounded-lg bg-[#117c9920] hover:bg-[#117c994d] `}
@@ -297,6 +299,7 @@ function ChatAdmins() {
         </>
       )}
       <button
+        name="toggle"
         onClick={() => {
           if (stateUserData._id !== "") {
             setToggle(!toggle);

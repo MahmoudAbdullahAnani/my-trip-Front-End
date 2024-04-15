@@ -105,6 +105,7 @@ export default function Advantages() {
           ))}
         </div>
         <button
+  name="toggle"
           onClick={() => setToggle(toggle === 6 ? data.length : 6)}
           type="button"
           className={`w-[177px] h-[47px] mt-2  rounded-[13px] border-2 border-[#117C99] text-[#117C99] hover:bg-[#216678] hover:text-[#fff] duration-150 text-[14px] font-[500] `}

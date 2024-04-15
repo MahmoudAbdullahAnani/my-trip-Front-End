@@ -85,6 +85,7 @@ function PassportNumber({
           )}
         </div>
         <button
+          name="save"
           onClick={() => {
             if (passportNumberChanges) {
               setPassportNumberChange(false);

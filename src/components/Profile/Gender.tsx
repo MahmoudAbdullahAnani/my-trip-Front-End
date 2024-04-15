@@ -91,6 +91,7 @@ function Gender({ data, iconStyle }: TypeComponent) {
           </div>
         </div>
         <button
+          name="gender"
           onClick={() => {
             setErrorGender("");
             setToggleSave(!toggleSave);

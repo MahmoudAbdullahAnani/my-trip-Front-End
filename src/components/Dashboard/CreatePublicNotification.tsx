@@ -159,6 +159,7 @@ function CreatePublicNotification() {
         <p className={`text-[#ff0000] text-[14px]`}>{exDateError}</p>
       )}
       <button
+        name="CreateNotification"
         onClick={CreateNotification}
         style={{ boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" }}
         className={`py-2 mt-2 rounded-[13px] bg-[#117C99] hover:bg-[#216678] text-[#FFF] hover:text-[#cfcfcf] duration-150 mm:text-[14.957px] mm:font-black text-[14px] font-[500] `}

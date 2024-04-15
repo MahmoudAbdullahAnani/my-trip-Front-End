@@ -396,6 +396,7 @@ function VerifyCode() {
             ارسل كود التحقق مرة اخري <CountDown />
           </h5>
           <button
+            name="verifyCode"
             className={`flex justify-center items-center w-full h-[48px] mt-[36px] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px] text-[20px] font-bold`}
             type="submit"
             disabled={isSubmitting}

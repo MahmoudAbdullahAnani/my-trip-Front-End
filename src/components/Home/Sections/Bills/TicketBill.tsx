@@ -98,6 +98,7 @@ function TicketBill() {
       </div>
       <div className={`flex flex-col justify-end items-end mt-[54px]`}>
         <button
+          name="toggleDetailsData"
           onClick={() => setToggleDetailsData(!toggleDetailsData)}
           className={`flex items-center justify-center gap-[8px] text-[#117C99] hover:text-[#117c999c] text-[15px]`}
         >

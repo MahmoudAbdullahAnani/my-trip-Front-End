@@ -71,6 +71,7 @@ function CheckOutTicket({
           {EGP.format(+totalPriceEGP)}
         </div>
         <button
+          name="ChoseTicket"
           onClick={ChoseTicket}
           className={`text-[#FFF] text-[20px] w-[154px] h-[48px] font-[700] py-[10px] px-[16px] rounded-[16px] duration-200 bg-[#117C99] hover:bg-[#117c99ba]`}
         >
@@ -91,6 +92,7 @@ function CheckOutTicket({
           {EGP.format(+totalPriceEGP)}
         </div>
         <button
+          name="ChoseTicket"
           onClick={ChoseTicket}
           className={`text-[#FFF] text-[20px] w-[154px] h-[48px] font-[700] py-[10px] px-[16px] rounded-[16px] duration-200 bg-[#117C99] hover:bg-[#117c99ba]`}
         >

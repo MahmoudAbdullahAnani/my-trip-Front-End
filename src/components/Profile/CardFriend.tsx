@@ -73,6 +73,7 @@ function CardFriend({ _id, firstName, avatar, lastName }: IFriends) {
             : `${firstName} ${lastName}`}
         </h4>
         <button
+          name="delete"
           className={`h-[48px] w-[48px] flex justify-center items-center rounded-[16px] bg-[#FCDAD1] hover:bg-[#f4beb0b0]`}
           onClick={deleteFriend}
         >

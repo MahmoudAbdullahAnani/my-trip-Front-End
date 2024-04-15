@@ -8,6 +8,7 @@ function LangBtn() {
   const { pathname } = useLocation();
   return (
     <button
+      name="lang"
       onClick={() => {
         localStorage.setItem("lang", i18n.language === "ar" ? "en" : "ar");
         i18n.changeLanguage(i18n.language === "ar" ? "en" : "ar");

@@ -362,6 +362,8 @@ function OAuth() {
           </div>
           <div className={`mx-auto w-full flex justify-center mt-[26px]`}>
             <button
+
+              name="login"
               className={`flex justify-center items-center lg:w-full h-[48px] w-[100%] bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px]  text-[20px] font-bold`}
               type="submit"
               disabled={isSubmitting}

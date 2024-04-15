@@ -59,9 +59,9 @@ function ForgotPassword() {
 
   const [incorrectData, setIncorrectData] = useState<string>("");
 
-    const [, setOpenResetPasswordPageState] = useRecoilState(
-      OpenResetPasswordPage
-    );
+  const [, setOpenResetPasswordPageState] = useRecoilState(
+    OpenResetPasswordPage
+  );
   const [, setEmailVerify] = useRecoilState(emailVerify);
   const [, setOpenPage] = useRecoilState(openLoginPageState);
   const [, setOpenSignupPage] = useRecoilState(openSignupPageState);
@@ -239,6 +239,7 @@ function ForgotPassword() {
             }
           )}
           <button
+            name="forgotPassword"
             className={`flex justify-center items-center w-full h-[48px] mt-[30px]  bg-[#117C99] hover:bg-[#117c99d4] text-[#FFFFFF] hover:text-[#ebeaeace] rounded-[8px] text-[20px] font-bold`}
             type="submit"
             disabled={isSubmitting}
@@ -275,7 +276,7 @@ export function LinksForgotPassword({ isSignUp }: { isSignUp: boolean }) {
   }
   return (
     <div className={`flex justify-around  `}>
-      <button>إنشاء حساب</button>
+      <button name="forgotPassword">إنشاء حساب</button>
       <span>انا لا امتلك حساب</span>
     </div>
   );

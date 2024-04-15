@@ -125,6 +125,7 @@ function BtnSearchHotel() {
       //   to={"/hotel"}
     >
       <button
+        name="search"
         style={{ boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" }}
         className={`w-[177px] h-[47px] mt-2  rounded-[13px] bg-[#117C99] hover:bg-[#216678] text-[#FFF] hover:text-[#cfcfcf] duration-150 px-[68px] mm:text-[14.957px] mm:font-black text-[14px] font-[500] `}
       >
