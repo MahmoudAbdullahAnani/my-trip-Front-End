@@ -164,6 +164,15 @@ const Footer = () => {
                   >
                     <TwitterIcon />
                   </Link>
+                  <Link
+                    className={`text-xl hover:text-blue-300 `}
+                    to="https://job-artifacts.eascdn.net/production/7aeab11c-204b-4fc6-aded-dbd93405eac5/2a8fbfac-1d38-4070-bb86-2f56892292fe/application-82a4f715-032b-4eb4-b4db-b09eafb9c6b8.apk?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20240415%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20240415T190520Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=05c993cec0b6dd03448dc8652dd5d87ef893949c0a6f4e9944c9856e69b6b5c340fbfc8b9c5ebb5010c4b8980f0dea8087b8283e3aa4a29a584a0a98e36af1761435aed0ecce61fe4503c78265a0f1555f4850bedaf4394b9ee7a88565ba67220253d1d052fcd6a0331b08f15d1a13238a033cc33da5fb12cee52e902b704bc0cd5fb96b127d8cbd2d453881bfb14209dccb30083e29c3ac939e7399a80da575e4234d46b068824bb12015dfa1d6fdd9c42e0715e73fdf456054c80e11aa16d9725defd6cf632bc00cca4fabc2b4c65b9e2c5a81dbccb174508e3a91a54f93e85d88442a99a63ecfca9354558484b10f8639bcda563358c6aae8961b2a080c42"
+                  >
+                    <img
+                      src="https://www.talabat.com/assets/images/logo_playstore.svg"
+                      alt="google-play"
+                    />
+                  </Link>
                 </div>
                 {/* <p className="text-base text-body-color dark:text-dark-6 mt-2">
                   &copy; {new Date().getFullYear()} كل الحقوق محفوظة.
@@ -220,3 +229,5 @@ const NavLink = ({ link, label }: { label?: string; link: string }) => {
     </li>
   );
 };
+
+// https://job-artifacts.eascdn.net/production/7aeab11c-204b-4fc6-aded-dbd93405eac5/2a8fbfac-1d38-4070-bb86-2f56892292fe/application-82a4f715-032b-4eb4-b4db-b09eafb9c6b8.apk?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=www-production%40exponentjs.iam.gserviceaccount.com%2F20240415%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20240415T190520Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=05c993cec0b6dd03448dc8652dd5d87ef893949c0a6f4e9944c9856e69b6b5c340fbfc8b9c5ebb5010c4b8980f0dea8087b8283e3aa4a29a584a0a98e36af1761435aed0ecce61fe4503c78265a0f1555f4850bedaf4394b9ee7a88565ba67220253d1d052fcd6a0331b08f15d1a13238a033cc33da5fb12cee52e902b704bc0cd5fb96b127d8cbd2d453881bfb14209dccb30083e29c3ac939e7399a80da575e4234d46b068824bb12015dfa1d6fdd9c42e0715e73fdf456054c80e11aa16d9725defd6cf632bc00cca4fabc2b4c65b9e2c5a81dbccb174508e3a91a54f93e85d88442a99a63ecfca9354558484b10f8639bcda563358c6aae8961b2a080c42
