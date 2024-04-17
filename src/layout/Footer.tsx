@@ -167,7 +167,7 @@ const Footer = () => {
                   <Link
                     download={true}
                     className={`text-xl hover:text-blue-300`}
-                    to="https://expo.dev/artifacts/eas/h8FPzWz73WUqkPxaiCBDWQ.apk"
+                    to="https://expo.dev/artifacts/eas/dMKksCtsBQJwb6jGCEUpLH.apk"
                   >
                     <img
                       src="https://www.talabat.com/assets/images/logo_playstore.svg"
