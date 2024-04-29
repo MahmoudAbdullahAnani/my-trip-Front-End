@@ -31,7 +31,7 @@ function Home() {
       </section>
       <section className={``}>
         <Video />
-        <OffersSection />
+        {/* <OffersSection /> */}
         <PopularDestinations />
         <Advantages />
         <AboutHome />
