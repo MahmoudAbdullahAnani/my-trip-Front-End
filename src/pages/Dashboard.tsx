@@ -97,7 +97,12 @@ function Dashboard() {
     <div className={`my-[20px] lg:px-[96px] px-[10px] `}>
       <div className="flex items-center justify-between">
         <div>
-          <Link to={``} className={`text-sm text-red-400 hover:text-red-500`}>
+          <Link
+            to={`https://admin-dashboard-ajwaa.vercel.app/?token=${localStorage.getItem(
+              "token"
+            )}`}
+            className={`text-sm text-red-400 hover:text-red-500`}
+          >
             الانتقال الي لوحة التحكم المركزية
           </Link>
         </div>
