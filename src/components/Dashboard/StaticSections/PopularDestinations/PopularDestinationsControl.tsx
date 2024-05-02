@@ -33,12 +33,12 @@ export default function PopularDestinationsControl() {
     {
       field: "img",
       headerName: "Image",
-      width: 90,
+      width: 200,
       renderCell: (params) => (
         <img
           src={params.value}
           alt="Destination"
-          style={{ width: 50, height: 50 }}
+          style={{ width: 200, height: 80 }}
         />
       ),
     },

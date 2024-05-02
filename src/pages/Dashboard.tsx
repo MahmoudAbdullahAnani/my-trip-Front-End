@@ -9,6 +9,7 @@ import DashboardHotels from "./Hotels/DashboardHotels";
 import DashboardCars from "./Cars/DashboardCars";
 import axios from "axios";
 import MainChartsTop from "../components/Dashboard/MainChartsTop";
+import { Link } from "react-router-dom";
 // import ChatAdmins from "../WebSocket/Chat/ChatAdmins";
 
 function Dashboard() {
@@ -94,75 +95,82 @@ function Dashboard() {
 
   return (
     <div className={`my-[20px] lg:px-[96px] px-[10px] `}>
-      <div
-        dir={i18n.language === "ar" ? "rtl" : "ltr"}
-        className={`flex items-center `}
-      >
-        <h1 className={`whitespace-nowrap text-[32px] font-bold text-[#000]`}>
-          {t("لوحة التحكم")}
-          <span className={`text-[16px] `}>{` ${t(typeDashboardView)}`}</span>
-        </h1>
-        <div className="">
-          <Button
-            id="basic-button"
-            aria-controls={open ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-            className={`text-red-900 bg-red-500`}
-          >
-            {open ? (
-              <MenuOpenIcon className={`text-[#117c99]`} />
-            ) : (
-              <MenuIcon className={`text-[#117c99] `} />
-            )}
-          </Button>
-          <Menu
-            className="rounded-[16px]"
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
-            <div className={`flex flex-col w-[200px] gap-[10px]`}>
-              <button
-                onClick={() => {
-                  handleClose();
-                  setTypeDashboardView("trips");
-                }}
-                className={`text-[20px] font-semibold ${
-                  typeDashboardView === "trips" && "bg-[#3990a8] text-white"
-                } rounded-t-[8px] hover:bg-[#3990a8] hover:text-white `}
-              >
-                {t("طيران")}
-              </button>
-              <button
-                onClick={() => {
-                  handleClose();
-                  setTypeDashboardView("hotels");
-                }}
-                className={`text-[20px] font-semibold ${
-                  typeDashboardView === "hotels" && "bg-[#3990a8] text-white"
-                } hover:bg-[#3990a8] hover:text-white `}
-              >
-                {t("فنادق")}
-              </button>
-              <button
-                onClick={() => {
-                  handleClose();
-                  setTypeDashboardView("cars");
-                }}
-                className={`text-[20px] font-semibold rounded-b-[8px] ${
-                  typeDashboardView === "cars" && "bg-[#3990a8] text-white"
-                } hover:bg-[#3990a8] hover:text-white `}
-              >
-                {t("توصيل")}
-              </button>
-            </div>
-          </Menu>
+      <div className="flex items-center justify-between">
+        <div>
+          <Link to={``} className={`text-sm text-red-400 hover:text-red-500`}>
+            الانتقال الي لوحة التحكم المركزية
+          </Link>
+        </div>
+        <div
+          dir={i18n.language === "ar" ? "rtl" : "ltr"}
+          className={`flex items-center `}
+        >
+          <h1 className={`whitespace-nowrap text-[32px] font-bold text-[#000]`}>
+            {t("لوحة التحكم")}
+            <span className={`text-[16px] `}>{` ${t(typeDashboardView)}`}</span>
+          </h1>
+          <div className="">
+            <Button
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+              className={`text-red-900 bg-red-500`}
+            >
+              {open ? (
+                <MenuOpenIcon className={`text-[#117c99]`} />
+              ) : (
+                <MenuIcon className={`text-[#117c99] `} />
+              )}
+            </Button>
+            <Menu
+              className="rounded-[16px]"
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <div className={`flex flex-col w-[200px] gap-[10px]`}>
+                <button
+                  onClick={() => {
+                    handleClose();
+                    setTypeDashboardView("trips");
+                  }}
+                  className={`text-[20px] font-semibold ${
+                    typeDashboardView === "trips" && "bg-[#3990a8] text-white"
+                  } rounded-t-[8px] hover:bg-[#3990a8] hover:text-white `}
+                >
+                  {t("طيران")}
+                </button>
+                <button
+                  onClick={() => {
+                    handleClose();
+                    setTypeDashboardView("hotels");
+                  }}
+                  className={`text-[20px] font-semibold ${
+                    typeDashboardView === "hotels" && "bg-[#3990a8] text-white"
+                  } hover:bg-[#3990a8] hover:text-white `}
+                >
+                  {t("فنادق")}
+                </button>
+                <button
+                  onClick={() => {
+                    handleClose();
+                    setTypeDashboardView("cars");
+                  }}
+                  className={`text-[20px] font-semibold rounded-b-[8px] ${
+                    typeDashboardView === "cars" && "bg-[#3990a8] text-white"
+                  } hover:bg-[#3990a8] hover:text-white `}
+                >
+                  {t("توصيل")}
+                </button>
+              </div>
+            </Menu>
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 mt-[20px]">

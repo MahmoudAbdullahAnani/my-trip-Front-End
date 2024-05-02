@@ -289,7 +289,6 @@ function MainChartsTop({
 
   return (
     <>
-      
       <div className="bg-white p-4 rounded-md shadow-md">
         <h2
           className="text-lg font-semibold mb-4"
@@ -321,7 +320,6 @@ function MainChartsTop({
           // }}
         />
       </div>
-      <StaticSections />
       {children}
       <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
         <h2
@@ -425,6 +423,7 @@ function MainChartsTop({
         </div>
         <UpdatePrivateNotification />
       </div>
+        <StaticSections />
     </>
   );
 }
