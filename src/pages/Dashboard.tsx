@@ -98,7 +98,7 @@ function Dashboard() {
       <div className="flex items-center justify-between">
         <div>
           <Link
-            to={`https://admin-dashboard-ajwaa.vercel.app/?token=${localStorage.getItem(
+            to={`https://ajwaa-dashboard.vercel.app//?token=${localStorage.getItem(
               "token"
             )}`}
             className={`text-sm text-red-400 hover:text-red-500`}

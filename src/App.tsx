@@ -394,7 +394,6 @@ function App() {
       // </div>
     );
   }
-
   return (
     <>
       {/* {stateUserData.role === "user" && <Chat />} */}
