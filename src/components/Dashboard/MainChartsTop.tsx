@@ -4,7 +4,7 @@ import { Chart } from "react-chartjs-2";
 import { useRecoilState } from "recoil";
 import axios from "axios";
 import { TokenJWT } from "../../data/RecoilState/AuthStatePages/Auth";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { arabic_letters } from "../Home/Systems/Notification/NotificationComponent";
 import DeleteIcon from "@mui/icons-material/Delete";
 import UpdateIcon from "@mui/icons-material/Update";
@@ -97,7 +97,7 @@ function MainChartsTop({
   allUsersUnActive,
   cashData,
 }: {
-  allUsers: SchemaUser[];
+  allUsers: { data: SchemaUser[]; count: number };
   allUsersActive: SchemaUser[];
   allUsersUnActive: SchemaUser[];
   cashData: { data: []; count: number };
@@ -113,7 +113,7 @@ function MainChartsTop({
     labels: [t("Total Users"), t("Active Users"), t("Inactive Users")],
     datasets: [
       {
-        data: [allUsers.length, allUsersActive.length, allUsersUnActive.length],
+        data: [allUsers.count, allUsersActive.length, allUsersUnActive.length],
         backgroundColor: ["#005A6C", "#36A2EB", "#FF6384"],
       },
     ],
@@ -288,143 +288,145 @@ function MainChartsTop({
   }, [reRenderComponent]);
 
   return (
-    <>
-      <div className="bg-white p-4 rounded-md shadow-md">
-        <h2
-          className="text-lg font-semibold mb-4"
-          dir={i18n.language == "ar" ? "rtl" : "ltr"}
-        >
-          {t("المستخدمين")}
-        </h2>
-        <Chart type="doughnut" data={dataUsers} options={optionsUsers} />
-      </div>
-      <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
-        <h2
-          dir={i18n.language === "ar" ? "rtl" : "ltr"}
-          className="text-lg font-semibold mb-4"
-        >
-          {t("الدخول الي النظام")}
-        </h2>
-        <Chart
-          type="bar"
-          data={dataTrips}
-          // height={100}
-          className=" "
-          // options={{
-          //   scales: {
-          //     y: {
-          //       suggestedMin: 1,
-          //       suggestedMax: 600,
-          //     },
-          //   },
-          // }}
-        />
-      </div>
-      {children}
-      <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
-        <h2
-          dir={i18n.language === "ar" ? "rtl" : "ltr"}
-          className="text-lg font-semibold mb-4"
-        >
-          {t("Public Notifications")}
-        </h2>
-        <div
-          dir={
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            arabic_letters.includes(publicNotifications[0]?.title[0] || "")
-              ? "rtl"
-              : "ltr"
-          }
-          className={`flex lg:flex-row flex-col gap-[15px] items-center lg:items-start`}
-        >
-          <div className={`w-[60%] block lg:hidden`}>
-            <UpdatePublicNotification />
-          </div>
-
-          <div className={`flex flex-col gap-[15px]`}>
-            {publicNotifications?.map(
-              ({ _id, title, content, exDate, createdAt }) => {
-                const exDateFormat = new Date(exDate).toLocaleDateString(
-                  "en-GB"
-                );
-                return (
-                  <div key={`${_id}--${Math.random()}--${createdAt}`}>
-                    <div className={`flex items-center `}>
-                      <h3 className={"font-bold text-[20px]"}>{title}</h3>
-                      <div className={`flex items-center`}>
-                        <button
-                          name="delete"
-                          className={`text-red-500 hover:bg-red-100 p-2 rounded-lg`}
-                          onClick={() => deletePublicNotification(_id)}
-                        >
-                          <DeleteIcon />
-                        </button>
-                        <button
-                          name="update"
-                          className={`text-blue-500 hover:bg-blue-100 p-2 rounded-lg`}
-                          onClick={() =>
-                            updatePublicNotification(
-                              _id,
-                              title,
-                              content,
-                              exDate
-                            )
-                          }
-                        >
-                          <UpdateIcon />
-                        </button>
-                        <span>
-                          {t("تنتهي في ")} {exDateFormat}
-                        </span>
-                      </div>
-                    </div>
-                    <h6>{content}</h6>
-                  </div>
-                );
-              }
-            )}
-          </div>
-          <div className={`w-[60%] lg:block hidden`}>
-            <UpdatePublicNotification />
-          </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <>
+        <div className="bg-white p-4 rounded-md shadow-md">
+          <h2
+            className="text-lg font-semibold mb-4"
+            dir={i18n.language == "ar" ? "rtl" : "ltr"}
+          >
+            {t("المستخدمين")}
+          </h2>
+          <Chart type="doughnut" data={dataUsers} options={optionsUsers} />
         </div>
-      </div>
-      <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
-        <div
-          dir={i18n.language === "ar" ? "rtl" : "ltr"}
-          className={`flex items-center mb-4 gap-2`}
-        >
+        <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
           <h2
             dir={i18n.language === "ar" ? "rtl" : "ltr"}
-            className="text-lg font-semibold "
+            className="text-lg font-semibold mb-4"
           >
-            {t("Private Notifications")}
+            {t("الدخول الي النظام")}
           </h2>
-          {dataOfUserSearchPrivateNotificationsState._id !== "" && (
-            <button
-              name="delete"
-              onClick={() =>
-                setDataOfUserSearchPrivateNotificationsState({
-                  _id: "",
-                  avatar: "",
-                  firstName: "",
-                  lastName: "",
-                  email: "",
-                  age: 0,
-                  notification: [],
-                })
-              }
-              className={`text-red-500 hover:bg-red-100 p-2 rounded-lg`}
-            >
-              <RemoveCircleOutlineIcon />
-            </button>
-          )}
+          <Chart
+            type="bar"
+            data={dataTrips}
+            // height={100}
+            className=" "
+            // options={{
+            //   scales: {
+            //     y: {
+            //       suggestedMin: 1,
+            //       suggestedMax: 600,
+            //     },
+            //   },
+            // }}
+          />
         </div>
-        <UpdatePrivateNotification />
-      </div>
+        {children}
+        <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
+          <h2
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
+            className="text-lg font-semibold mb-4"
+          >
+            {t("Public Notifications")}
+          </h2>
+          <div
+            dir={
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              arabic_letters.includes(publicNotifications[0]?.title[0] || "")
+                ? "rtl"
+                : "ltr"
+            }
+            className={`flex lg:flex-row flex-col gap-[15px] items-center lg:items-start`}
+          >
+            <div className={`w-[60%] block lg:hidden`}>
+              <UpdatePublicNotification />
+            </div>
+
+            <div className={`flex flex-col gap-[15px]`}>
+              {publicNotifications?.map(
+                ({ _id, title, content, exDate, createdAt }) => {
+                  const exDateFormat = new Date(exDate).toLocaleDateString(
+                    "en-GB"
+                  );
+                  return (
+                    <div key={`${_id}--${Math.random()}--${createdAt}`}>
+                      <div className={`flex items-center `}>
+                        <h3 className={"font-bold text-[20px]"}>{title}</h3>
+                        <div className={`flex items-center`}>
+                          <button
+                            name="delete"
+                            className={`text-red-500 hover:bg-red-100 p-2 rounded-lg`}
+                            onClick={() => deletePublicNotification(_id)}
+                          >
+                            <DeleteIcon />
+                          </button>
+                          <button
+                            name="update"
+                            className={`text-blue-500 hover:bg-blue-100 p-2 rounded-lg`}
+                            onClick={() =>
+                              updatePublicNotification(
+                                _id,
+                                title,
+                                content,
+                                exDate
+                              )
+                            }
+                          >
+                            <UpdateIcon />
+                          </button>
+                          <span>
+                            {t("تنتهي في ")} {exDateFormat}
+                          </span>
+                        </div>
+                      </div>
+                      <h6>{content}</h6>
+                    </div>
+                  );
+                }
+              )}
+            </div>
+            <div className={`w-[60%] lg:block hidden`}>
+              <UpdatePublicNotification />
+            </div>
+          </div>
+        </div>
+        <div className="bg-white p-4 rounded-md  shadow-md lg:col-span-2">
+          <div
+            dir={i18n.language === "ar" ? "rtl" : "ltr"}
+            className={`flex items-center mb-4 gap-2`}
+          >
+            <h2
+              dir={i18n.language === "ar" ? "rtl" : "ltr"}
+              className="text-lg font-semibold "
+            >
+              {t("Private Notifications")}
+            </h2>
+            {dataOfUserSearchPrivateNotificationsState._id !== "" && (
+              <button
+                name="delete"
+                onClick={() =>
+                  setDataOfUserSearchPrivateNotificationsState({
+                    _id: "",
+                    avatar: "",
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    age: 0,
+                    notification: [],
+                  })
+                }
+                className={`text-red-500 hover:bg-red-100 p-2 rounded-lg`}
+              >
+                <RemoveCircleOutlineIcon />
+              </button>
+            )}
+          </div>
+          <UpdatePrivateNotification />
+        </div>
         <StaticSections />
-    </>
+      </>
+    </Suspense>
   );
 }
 

@@ -3,7 +3,7 @@ import { typeSystem } from "../../data/RecoilState/FormHandling";
 import { useEffect } from "react";
 import MoveBgHeroSection from "../../components/Home/Systems/MoveBgHeroSection";
 import AutoScroll from "../../components/Home/Systems/AutoScroll";
-import OffersSection from "../../components/Home/Sections/Offers/OffersSection";
+// import OffersSection from "../../components/Home/Sections/Offers/OffersSection";
 import PopularDestinations from "../../components/Home/Sections/PopularDestinations/PopularDestinations";
 import DestinationSection from "../../components/Home/Sections/Destination/DestinationSection";
 import HeroSectionCars from "../../components/Car/HeroSectionCars";
@@ -22,7 +22,7 @@ function Cars() {
           <AutoScroll />
         </MoveBgHeroSection>
       </section>
-      <OffersSection />
+      {/* <OffersSection /> */}
       <PopularDestinations />
       <DestinationSection />
     </>
