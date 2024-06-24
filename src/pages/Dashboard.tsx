@@ -10,6 +10,7 @@ import DashboardCars from "./Cars/DashboardCars";
 import axios from "axios";
 import MainChartsTop from "../components/Dashboard/MainChartsTop";
 import { Link } from "react-router-dom";
+import { SchemaUser } from "./Auth/Login";
 // import ChatAdmins from "../WebSocket/Chat/ChatAdmins";
 
 function Dashboard() {
@@ -26,7 +27,7 @@ function Dashboard() {
 
   const [typeDashboardView, setTypeDashboardView] = React.useState("trips");
 
-  const [allUsers, setAllUsers] = React.useState([]);
+  const [allUsers, setAllUsers] = React.useState({ data:[] as SchemaUser[], count: 0 as number });
   const [allUsersActive, setAllUsersActive] = React.useState([]);
   const [allUsersUnActive, setAllUsersUnActive] = React.useState([]);
 
