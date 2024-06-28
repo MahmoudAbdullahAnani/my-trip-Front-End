@@ -70,7 +70,7 @@ export default function Advantages() {
       id="features"
       className="bg-[#F9F9F9] py-16 md:py-20 lg:py-28 px-[16px] lg:px-[96px]"
     >
-      <div className="container flex flex-col items-center gap-3">
+      <div className="flex flex-col items-center gap-3">
         <div
           className="wow fadeInUp max-w-[570px] mb-[100px] w-full mx-auto text-center"
           data-wow-delay=".1s"

@@ -6,9 +6,9 @@ interface DataInterface {
 }
 function PopularDestinationsCard({ img, titleAR, titleEN }: DataInterface) {
   return (
-    <div className={`h-full`}>
+    <div className={`h-full ]`}>
       <img
-        className={`h-full object-fill`}
+        className={`h-full lg:w-full w-[100px] object-fill`}
         src={img}
         alt="ajwaa"
 

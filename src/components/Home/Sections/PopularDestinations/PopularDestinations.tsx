@@ -86,7 +86,9 @@ function PopularDestinations() {
   }, []);
   return (
     <section
-      className={` py-16 md:py-20 ${data.length<=0 && "hidden"} lg:py-28 flex flex-col gap-[34px] ${
+      className={` py-16 md:py-20 ${
+        data.length <= 0 && "hidden"
+      } lg:py-28 flex flex-col gap-[34px] ${
         i18n.language === "ar"
           ? "pe-[16px] lg:pe-[96px]"
           : "ps-[16px] lg:ps-[96px]"
@@ -111,7 +113,7 @@ function PopularDestinations() {
         // }}
         // modules={[Pagination]}
         dir={i18n.language === "ar" ? "rtl" : "ltr"}
-        className={`mySwiper relative w-full md:h-[337px] sm:h-[200px] `}
+        className={`mySwiper relative lg:w-full w-[85%] md:h-[337px] sm:h-[200px] sm:max-h-[800px] max-h-[237px] `}
         // navigation={true}
         // modules={[Navigation]}
         spaceBetween={window.innerWidth > 800 ? 24 : 12}
@@ -121,14 +123,14 @@ function PopularDestinations() {
         {data.map((data) => (
           <SwiperSlide
             dir="rtl"
-            className={`rounded-[16px] overflow-hidden`}
+            className={`rounded-[16px] overflow-hidden `}
             key={`${data.id}----${Math.random()}`}
           >
             <PopularDestinationsCard {...data} />
           </SwiperSlide>
         ))}
         <div
-          className="absolute  left-[6%]  hidden sm:block top-[40%] z-20  translate-[50%]  cursor-pointer "
+          className="absolute left-[6%] hidden sm:block top-[40%] z-20 translate-[50%] cursor-pointer "
           onClick={() => swiperRef.current?.slideNext()}
         >
           <div

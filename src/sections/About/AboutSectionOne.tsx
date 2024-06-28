@@ -23,13 +23,13 @@ const AboutSectionOne = () => {
 
   return (
     <section id="about" className="pt-16 md:pt-20 lg:pt-28">
-      <div className="container">
+      <div className="">
         <div className="border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
           <div
             dir={i18n.language === "ar" ? "ltr" : "rtl"}
-            className="-mx-4 flex flex-wrap items-center"
+            className="flex flex-wrap items-center"
           >
-            <div className="w-full px-4 lg:w-1/2" dir="rtl">
+            <div className="w-full lg:w-1/2" dir="rtl">
               <div className="container flex flex-col items-center gap-3">
                 <div
                   className="wow fadeInUp max-w-[570px] mb-[100px] w-full mx-auto text-center"
@@ -65,7 +65,7 @@ const AboutSectionOne = () => {
               </div>
             </div>
 
-            <div className="w-full px-4 lg:w-1/2">
+            <div className="w-full lg:w-1/2">
               <div
                 className="wow fadeInUp relative mx-auto aspect-[25/24] max-w-[500px] lg:mr-0"
                 data-wow-delay=".2s"

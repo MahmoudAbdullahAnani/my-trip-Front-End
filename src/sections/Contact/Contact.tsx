@@ -68,14 +68,14 @@ const Contact = () => {
     <section
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
       id="contact"
-      className="overflow-hidden py-16 md:py-20 lg:py-28  px-[16px] lg:px-[96px] bg-[#F9F9F9]"
+      className="overflow-hidden pt-16 md:pt-20 lg:pt-28 lg:px-[96px] bg-[#F9F9F9]"
     >
-      <div className="container">
-        <div className="-mx-4 flex flex-wrap">
+      <div className="">
+        <div className=" flex flex-wrap">
           <div className="w-full px-4 lg:w-7/12 xl:w-8/12">
             <div
               dir={i18n.language === "ar" ? "rtl" : "ltr"}
-              className="wow fadeInUp mb-12 rounded-md bg-primary/[3%] py-11 px-8 dark:bg-dark sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]"
+              className="wow fadeInUp mb-12 rounded-md bg-primary/[3%] py-11 dark:bg-dark sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]"
               data-wow-delay=".15s"
             >
               <h2 className="mb-3 text-2xl font-bold text-[#117C99]  sm:text-3xl lg:text-2xl xl:text-3xl">

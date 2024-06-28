@@ -24,7 +24,7 @@ const AboutSectionTwo = () => {
 
   return (
     <section className="py-16 md:py-20 lg:py-28">
-      <div className="container">
+      <div className="">
         <div
           dir={i18n.language === "ar" ? "ltr" : "rtl"}
           className="-mx-4 flex flex-wrap items-center"
