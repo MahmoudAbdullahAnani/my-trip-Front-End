@@ -15,8 +15,6 @@ function FormModule({ children }: Props) {
   return (
     <div
       className={`flex flex-col `}
-      data-aos={"fade-left"}
-      data-aos-delay="8000"
     >
       <ControlSystems />
       <div
