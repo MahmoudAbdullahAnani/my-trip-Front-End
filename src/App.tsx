@@ -1,6 +1,6 @@
 // Importing React Hooke
 // import { useState } from 'react'
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 // Styles
 import "./App.css";
 // react-router-dom
@@ -17,7 +17,7 @@ import ResetPassword from "./components/ResetPassword/ResetPassword";
 import axios from "axios";
 import { addUserLogged } from "./data/Features/LoggedUser";
 import { useRecoilState } from "recoil";
-import isLoading from "./data/RecoilState/Loading";
+import isLoading, { timeOutLoadingState } from "./data/RecoilState/Loading";
 // import { Loder } from "./components/loder/Loder";
 import {
   // allNotifications,
@@ -358,7 +358,8 @@ function App() {
         console.log("PendingFriends ===> ", err);
       });
   };
-  const [timeOutLoading, setTimeOutLoading] = useState(true);
+  const [timeOutLoading, setTimeOutLoading] =
+    useRecoilState(timeOutLoadingState);
   useEffect(() => {
     setTimeout(() => {
       setTimeOutLoading(false);

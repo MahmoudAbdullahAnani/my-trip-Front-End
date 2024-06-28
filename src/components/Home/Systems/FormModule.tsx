@@ -6,15 +6,18 @@ import BtnSearch from "./BtnSearch";
 import ControlSystems from "./ControlSystems";
 import BtnSearchHotel from "../../Hotel/BtnSearchHotel";
 import BtnSearchCar from "../../Car/Fields/BtnSearchCar";
+
 type Props = {
   children: string | JSX.Element | JSX.Element[];
 };
 function FormModule({ children }: Props) {
   const [typeSystemState] = useRecoilState(typeSystem);
-
-  // const [TypeSystemState] = useRecoilState(typeSystem);
   return (
-    <div className={`flex flex-col `}>
+    <div
+      className={`flex flex-col `}
+      data-aos={"fade-left"}
+      data-aos-delay="8000"
+    >
       <ControlSystems />
       <div
         dir="rtl"
@@ -28,7 +31,7 @@ function FormModule({ children }: Props) {
       >
         <div
           className={`lg:block hidden ${
-            typeSystemState !== "air" ?"hidden":"w-[calc(100%-165px)]"
+            typeSystemState !== "air" ? "hidden" : "w-[calc(100%-165px)]"
           } h-[.5px] rounded-l-[100%] bg-[#FFF] absolute bottom-[calc(100%-1px)] left-[20px]`}
         ></div>
         {children}

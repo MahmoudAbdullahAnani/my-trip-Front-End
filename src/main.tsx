@@ -37,6 +37,8 @@ import "chart.js/auto";
 import ScrollToTop from "./ScrollToTop.tsx";
 // import "react-chartjs-2/dist/react-chartjs-2.css";
 
+import "aos/dist/aos.css";
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>

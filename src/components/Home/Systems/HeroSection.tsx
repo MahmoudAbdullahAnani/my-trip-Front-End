@@ -7,7 +7,10 @@ import TypeTravelComponentMobile from "./TypeTravelComponentMobile";
 import HeroSectionHotels from "../../Hotel/HeroSection/HeroSectionHotels";
 import FiledData from "../HandleData/FiledData";
 
+
 function HeroSection() {
+
+
   const [typeSystemState] = useRecoilState(typeSystem);
 
   if (typeSystemState === "car") {
